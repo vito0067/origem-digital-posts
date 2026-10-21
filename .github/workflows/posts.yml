@@ -1,0 +1,73 @@
+# Fábrica de posts: quando um post novo entra em fila/, renderiza (vídeo ou fotos), publica a prévia
+# no GitHub Pages e avisa o n8n, que manda a prévia para o Vito aprovar no WhatsApp.
+name: Renderizar posts
+
+on:
+  push:
+    branches: [main]
+    paths: ["fila/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: posts
+  cancel-in-progress: false
+
+jobs:
+  renderizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    environment:
+      name: github-pages
+      url: ${{ steps.publicar.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Fontes de emoji
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-color-emoji
+
+      - name: Instalar
+        run: npm ci --no-audit --no-fund
+
+      - name: Renderizar os posts novos
+        id: render
+        run: node ferramentas/renderizar-novos.mjs
+
+      - name: Guardar as mídias no repositório
+        run: |
+          git config user.name "fabrica-de-posts"
+          git config user.email "fabrica-de-posts@users.noreply.github.com"
+          git add docs
+          git diff --cached --quiet && exit 0
+          git commit -m "Mídias renderizadas: ${{ steps.render.outputs.novos }}"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: publicar
+        uses: actions/deploy-pages@v4
+
+      - name: Avisar o n8n
+        if: steps.render.outputs.novos != '' || steps.render.outputs.erros != ''
+        env:
+          NOVOS: ${{ steps.render.outputs.novos }}
+          ERROS: ${{ steps.render.outputs.erros }}
+        run: |
+          # espera a prévia estar no ar antes de avisar
+          for id in ${NOVOS//,/ }; do
+            for i in $(seq 1 30); do curl -fsS -o /dev/null "https://vito0067.github.io/origem-digital-posts/$id/post.json" && break; sleep 10; done
+          done
+          corpo=$(node -e 'console.log(JSON.stringify({ ids: (process.env.NOVOS || "").split(",").filter(Boolean), erros: process.env.ERROS ? Buffer.from(process.env.ERROS, "base64").toString() : "" }))')
+          curl -fsS --retry 3 -X POST -H "Content-Type: application/json" -d "$corpo" https://hauntedelephant-n8n.cloudfy.live/webhook/instagram-novo-post
