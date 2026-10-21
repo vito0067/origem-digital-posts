@@ -5,7 +5,7 @@ name: Renderizar posts
 on:
   push:
     branches: [main]
-    paths: ["fila/**"]
+    paths: ["fila/**", "src/**", "ferramentas/**"]
   workflow_dispatch:
 
 permissions:

@@ -19,7 +19,9 @@ const FPS = 30;
 const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const browserExecutable = process.env.REMOTION_BROWSER ?? (process.platform === "win32" && existsSync(EDGE) ? EDGE : null);
 
-export const hashPost = (texto) => createHash("sha256").update(texto).digest("hex").slice(0, 16);
+/** Mude quando os modelos mudarem de cara: os posts ainda não publicados são renderizados de novo. */
+export const VERSAO_MODELOS = "2";
+export const hashPost = (texto) => createHash("sha256").update(`${VERSAO_MODELOS}:${texto}`).digest("hex").slice(0, 16);
 
 /** Baixa as imagens externas (Higgsfield) para public/_tmp/<id>/ e troca o endereço no post. */
 async function baixarImagens(post, tmp) {

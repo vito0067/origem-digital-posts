@@ -2,16 +2,23 @@
 // o renderizador transforma em vídeo (reel) ou fotos (carrossel/imagem).
 
 export type Mensagem = { de: "cliente" | "aurora"; texto: string };
+export type Coluna = { titulo: string; itens: string[] };
 
 export type Cena =
-  /** Frase grande. Escreva *assim* a palavra de destaque (serifa itálica). */
+  /** Frase grande. Escreva *assim* a palavra de destaque (serifa itálica com degradê). */
   | { tipo: "frase"; texto: string; etiqueta?: string; apoio?: string }
-  /** Conversa de WhatsApp. Sempre sai com a etiqueta "CONVERSA DE EXEMPLO". */
+  /** Uma palavra por batida, bem grande (ex.: "Responde." "Explica." "Encaminha."). */
+  | { tipo: "palavras"; palavras: string[]; titulo?: string }
+  /** Texto que se escreve sozinho, letra por letra, com cursor. */
+  | { tipo: "digitando"; texto: string; etiqueta?: string }
+  /** Conversa de WhatsApp dentro de um celular em 3D. Sempre sai com "CONVERSA DE EXEMPLO". */
   | { tipo: "conversa"; nome?: string; mensagens: Mensagem[] }
-  /** Número que rola até o valor, com uma frase embaixo. */
-  | { tipo: "numero"; valor: number; prefixo?: string; sufixo?: string; texto: string; etiqueta?: string }
-  /** Lista de 2 a 5 itens. */
-  | { tipo: "lista"; titulo: string; itens: string[]; etiqueta?: string }
+  /** Número que rola dentro de um anel que se desenha. `de` = total do anel (ex.: 24 de 24 h). */
+  | { tipo: "numero"; valor: number; de?: number; prefixo?: string; sufixo?: string; texto: string; etiqueta?: string }
+  /** Lista de 2 a 5 itens. `riscar: true` = cada item aparece e é riscado (o que deixa de acontecer). */
+  | { tipo: "lista"; titulo: string; itens: string[]; etiqueta?: string; riscar?: boolean }
+  /** Antes e depois, lado a lado (ex.: "Sem atendimento" x "Com a Aurora"). */
+  | { tipo: "comparar"; esquerda: Coluna; direita: Coluna; etiqueta?: string }
   /** Imagem (URL do Higgsfield ou arquivo em public/), com frase. */
   | { tipo: "imagem"; imagem: string; texto?: string; etiqueta?: string };
 
@@ -20,6 +27,8 @@ export type Post = {
   /** Data e hora com fuso, ex.: 2026-10-28T19:30:00-03:00 */
   publicar_em: string;
   formato: "reel" | "carrossel" | "imagem";
+  /** "gelo" (claro) ou "noite" (escuro). Padrão: gelo. */
+  tema?: "gelo" | "noite";
   legenda: string;
   cenas: Cena[];
   musica?: { clima?: "calmo" | "animado" };

@@ -12,7 +12,8 @@ const PROIBIDO = [
 const SE_APRESENTA_IA = /\b(IA|intelig[eê]ncia artificial|atendente virtual|assistente virtual)\b/i;
 
 const textos = (post) => [post.legenda, ...post.cenas.flatMap((c) =>
-  [c.texto, c.apoio, c.titulo, c.etiqueta, c.prefixo, c.sufixo, ...(c.itens ?? []), ...(c.mensagens ?? []).map((m) => m.texto)].filter(Boolean))];
+  [c.texto, c.apoio, c.titulo, c.etiqueta, c.prefixo, c.sufixo, ...(c.itens ?? []), ...(c.palavras ?? []), ...(c.mensagens ?? []).map((m) => m.texto),
+    c.esquerda?.titulo, c.direita?.titulo, ...(c.esquerda?.itens ?? []), ...(c.direita?.itens ?? [])].filter(Boolean))];
 
 export function validar(post, pasta) {
   const p = [];
@@ -20,13 +21,18 @@ export function validar(post, pasta) {
   if (pasta && pasta !== post.id) p.push(`a pasta (${pasta}) e o id (${post.id}) precisam ser iguais`);
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?-03:00$/.test(post.publicar_em ?? "") || isNaN(Date.parse(post.publicar_em))) p.push("publicar_em inválido (ex.: 2026-10-28T19:30:00-03:00)");
   if (!["reel", "carrossel", "imagem"].includes(post.formato)) p.push("formato deve ser reel, carrossel ou imagem");
+  if (post.tema !== undefined && !["gelo", "noite"].includes(post.tema)) p.push("tema deve ser gelo ou noite");
   if (!Array.isArray(post.cenas) || post.cenas.length < 1) p.push("precisa de pelo menos 1 cena");
   else {
     if (post.formato === "carrossel" && (post.cenas.length < 2 || post.cenas.length > 9)) p.push("carrossel: de 2 a 9 cenas (o cartão final entra sozinho)");
     if (post.formato === "reel" && post.cenas.length > 7) p.push("reel: no máximo 7 cenas");
     post.cenas.forEach((c, i) => {
       const n = `cena ${i + 1}`;
-      if (!["frase", "conversa", "numero", "lista", "imagem"].includes(c.tipo)) p.push(`${n}: tipo desconhecido`);
+      if (!["frase", "palavras", "digitando", "conversa", "numero", "lista", "comparar", "imagem"].includes(c.tipo)) p.push(`${n}: tipo desconhecido`);
+      if (c.tipo === "palavras" && (!Array.isArray(c.palavras) || c.palavras.length < 2 || c.palavras.length > 6 || c.palavras.some((w) => w.replace(/\*/g, "").length > 14))) p.push(`${n}: palavras: de 2 a 6, cada uma com até 14 letras`);
+      if (c.tipo === "digitando" && (!c.texto || c.texto.length > 120)) p.push(`${n}: digitando: texto de 1 a 120 letras`);
+      if (c.tipo === "comparar" && (![c.esquerda, c.direita].every((l) => l && l.titulo && Array.isArray(l.itens) && l.itens.length >= 1 && l.itens.length <= 4 && l.itens.every((x) => x.length <= 40)) || c.esquerda.titulo.length > 18 || c.direita.titulo.length > 18)) p.push(`${n}: comparar: 2 colunas com título (até 18 letras) e 1 a 4 itens de até 40 letras`);
+      if (c.tipo === "numero" && c.de !== undefined && (typeof c.de !== "number" || c.de < c.valor)) p.push(`${n}: "de" precisa ser um número maior ou igual ao valor`);
       if (c.tipo === "frase" && !c.texto) p.push(`${n}: frase sem texto`);
       if (c.tipo === "frase" && c.texto.replace(/\*/g, "").length > 140) p.push(`${n}: frase longa demais (máx. 140 letras)`);
       if (c.tipo === "numero" && (typeof c.valor !== "number" || !c.texto)) p.push(`${n}: número precisa de valor e texto`);
