@@ -135,13 +135,15 @@ export const Reflexo: React.FC<{ inicio: number; dur?: number; raio?: number }> 
  * Foto ou vídeo da biblioteca atrás da cena, com um véu na cor do tema para o texto continuar legível.
  * O vídeo (clipes de 5 s) desacelera para caber na cena; a foto faz um zoom lento.
  */
-export const Fundo: React.FC<{ src: string; dur: number; foto?: boolean }> = ({ src, dur, foto = false }) => {
+export const posicaoFoco = (foco?: string) => (foco === "cima" ? "50% 12%" : foco === "baixo" ? "50% 85%" : foco === "centro" ? "50% 50%" : "50% 35%");
+
+export const Fundo: React.FC<{ src: string; dur: number; foto?: boolean; foco?: string }> = ({ src, dur, foto = false, foco }) => {
   const f = useCurrentFrame();
   const t = useTema();
   const url = /^https?:/.test(src) ? src : staticFile(src);
   const video = /.(mp4|webm|mov)$/i.test(src);
   const zoom = foto ? 1.04 : 1.04 + 0.1 * entre(f, 0, dur, 0, 1, (x) => x);
-  const estilo: React.CSSProperties = { width: "100%", height: "100%", objectFit: "cover", transform: `scale(${zoom})` };
+  const estilo: React.CSSProperties = { width: "100%", height: "100%", objectFit: "cover", objectPosition: posicaoFoco(foco), transform: `scale(${zoom})` };
   const veu = t.nome === "noite"
     ? "linear-gradient(180deg, rgba(11,10,36,.70) 0%, rgba(11,10,36,.38) 30%, rgba(11,10,36,.50) 60%, rgba(11,10,36,.94) 100%)"
     : "linear-gradient(180deg, rgba(248,250,252,.86) 0%, rgba(248,250,252,.60) 32%, rgba(248,250,252,.72) 62%, rgba(248,250,252,.96) 100%)";

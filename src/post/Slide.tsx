@@ -37,7 +37,7 @@ export const Slide: React.FC<{ post: Post; indice: number }> = ({ post, indice }
     <ComTema nome={post.tema}>
       <AbsoluteFill>
         <Mundo x={indice * 1080} y={0} largura={1080} altura={1350} />
-        {c?.fundo && <Fundo src={c.fundo} dur={4} foto />}
+        {c?.fundo && <Fundo src={c.fundo} dur={4} foto foco={c.foco} />}
         <Marca topo={58} />
         <Area topo={TOPO} base={BASE}>
           {c ? <CenaQualquer c={c} dur={duracaoSlide(post, indice)} altura={ALTURA} foto /> : <Final foto />}

@@ -61,7 +61,7 @@ export const Reel: React.FC<{ post: Post }> = ({ post }) => {
         {post.cenas.map((c, i) => (
           <Sequence key={i} from={q(lt.itens[i].ini)} durationInFrames={q(lt.itens[i].dur)}>
             <Camera dur={lt.itens[i].dur} entra={i === 0 ? { x: 0, y: 0, zoom: true } : mov(i)} sai={mov(i + 1)}>
-              {c.fundo && <Fundo src={c.fundo} dur={lt.itens[i].dur} />}
+              {c.fundo && <Fundo src={c.fundo} dur={lt.itens[i].dur} foco={c.foco} />}
               <Area topo={TOPO} base={BASE}><CenaQualquer c={c} dur={lt.itens[i].dur} altura={ALTURA} /></Area>
             </Camera>
           </Sequence>

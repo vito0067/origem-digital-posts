@@ -8,7 +8,7 @@ import { Rolagem } from "../comum/tipo";
 import { Simbolo } from "../comum/pecas";
 import type { Cena } from "./tipos";
 import { preenchido, useTema } from "./tema";
-import { Apoio, Reflexo, Rotulo, Texto, Vidro } from "./pecas";
+import { Apoio, Reflexo, Rotulo, Texto, Vidro, posicaoFoco } from "./pecas";
 import { BATIDA, letrasPorLinha, quebrar, tamanhoFrase, tempoDigitar, tempoItens, tempoMensagens, tempoPalavras } from "./tempos";
 
 const palavras = (t = "") => t.replace(/\*/g, "").split(/\s+/).filter(Boolean).length;
@@ -345,7 +345,7 @@ const CenaImagem: React.FC<P<"imagem">> = ({ c, dur, foto, altura }) => {
       <Rotulo texto={c.etiqueta} />
       <Vidro raio={48} style={{ padding: 14, opacity: m, transform: `translateY(${(1 - m) * 40}px)` }}>
         <div style={{ position: "relative", width: 912, height: c.texto ? altura * 0.58 : altura * 0.86, borderRadius: 36, overflow: "hidden" }}>
-          <Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", transform: `scale(${zoom})` }} />
+          <Img src={src} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: posicaoFoco(c.foco), transform: `scale(${zoom})` }} />
         </div>
       </Vidro>
       {c.texto && <div style={{ marginTop: 46 }}><Grande texto={c.texto} inicio={foto ? -5 : 0.5} escala={0.7} /></div>}

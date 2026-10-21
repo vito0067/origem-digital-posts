@@ -8,6 +8,8 @@ export type Coluna = { titulo: string; itens: string[] };
 export type Extras = {
   /** Fundo de foto ou vídeo ("biblioteca/arquivo.jpg|.mp4" ou URL), atrás do conteúdo. */
   fundo?: string;
+  /** Que parte da foto mostrar quando ela é cortada: "cima" (rosto de pessoa), "centro" ou "baixo". Padrão: um pouco acima do centro. */
+  foco?: "cima" | "centro" | "baixo";
   /** O que a narração diz nesta cena (a gravação é uma só, cortada nas pausas). */
   fala?: string;
   /** Preenchido pelo renderizador: quanto dura a fala desta cena. */

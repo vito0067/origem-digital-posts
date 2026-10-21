@@ -35,7 +35,8 @@
     {
       "tipo": "imagem",
       "imagem": "biblioteca/dia-dona-celular.jpg",
-      "texto": "E se cada mensagem fosse *respondida na hora*?"
+      "texto": "E se cada mensagem fosse *respondida na hora*?",
+      "foco": "cima"
     },
     {
       "tipo": "comparar",
