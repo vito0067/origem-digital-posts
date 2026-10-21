@@ -32,8 +32,8 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Fontes de emoji
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-color-emoji
+      - name: Fontes de emoji e ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-color-emoji ffmpeg
 
       - name: Instalar
         run: npm ci --no-audit --no-fund

@@ -1,6 +1,12 @@
 // Confere um post antes de renderizar: formato, limites do Instagram e as regras da marca.
 // Devolve a lista de problemas (vazia = pode seguir).
 
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const PUBLICO = fileURLToPath(new URL("../public/", import.meta.url));
+
 // Preços oficiais (lib/precos.ts do site). Qualquer outro "R$" no post é barrado.
 const PRECOS = ["987", "1.647", "657", "1.097", "1.447", "2.415", "43", "54", "217", "327", "260", "381"];
 const PROIBIDO = [
@@ -11,9 +17,9 @@ const PROIBIDO = [
 ];
 const SE_APRESENTA_IA = /\b(IA|intelig[eê]ncia artificial|atendente virtual|assistente virtual)\b/i;
 
-const textos = (post) => [post.legenda, ...post.cenas.flatMap((c) =>
+const textos = (post) => [post.legenda, post.falaFinal, ...post.cenas.flatMap((c) =>
   [c.texto, c.apoio, c.titulo, c.etiqueta, c.prefixo, c.sufixo, ...(c.itens ?? []), ...(c.palavras ?? []), ...(c.mensagens ?? []).map((m) => m.texto),
-    c.esquerda?.titulo, c.direita?.titulo, ...(c.esquerda?.itens ?? []), ...(c.direita?.itens ?? [])].filter(Boolean))];
+    c.fala, c.esquerda?.titulo, c.direita?.titulo, ...(c.esquerda?.itens ?? []), ...(c.direita?.itens ?? [])].filter(Boolean))];
 
 export function validar(post, pasta) {
   const p = [];
@@ -48,10 +54,23 @@ export function validar(post, pasta) {
       }
     });
     if (post.cenas.some((c) => c.tipo === "conversa") && !/exemplo/i.test(post.legenda ?? "")) p.push("a legenda precisa dizer que a conversa é um exemplo");
+    // fundos, falas e narração
+    post.cenas.forEach((c, i) => {
+      if (c.fundo !== undefined) {
+        if (typeof c.fundo !== "string" || !/.(jpe?g|png|webp|mp4)$/i.test(c.fundo.split("?")[0])) p.push(`cena ${i + 1}: fundo precisa ser .jpg, .png, .webp ou .mp4`);
+        else if (!/^https?:/.test(c.fundo) && !existsSync(join(PUBLICO, c.fundo))) p.push(`cena ${i + 1}: o fundo "${c.fundo}" não existe em public/ (veja public/biblioteca/biblioteca.json)`);
+        if (/.mp4$/i.test(c.fundo ?? "") && post.formato !== "reel") p.push(`cena ${i + 1}: fundo em vídeo só no Reels`);
+      }
+      if (c.fala !== undefined && (typeof c.fala !== "string" || c.fala.length > 260)) p.push(`cena ${i + 1}: fala de até 260 letras`);
+    });
+    const falas = post.cenas.filter((c) => c.fala).length + (post.falaFinal ? 1 : 0);
+    if (falas && !post.narracao?.audio) p.push("tem fala, mas falta narracao.audio (a gravação única com todas as falas)");
+    if (post.narracao?.audio && !falas) p.push("tem narracao.audio, mas nenhuma cena tem fala");
+    if (post.narracao?.audio && post.formato !== "reel") p.push("narração só no Reels");
   }
   if (!post.legenda || post.legenda.length > 2200) p.push("legenda vazia ou maior que 2.200 letras");
   if ((post.legenda?.match(/#[\p{L}\d_]+/gu) ?? []).length > 8) p.push("no máximo 8 hashtags");
-  for (const t of textos(post)) {
+  for (const t of textos(post).filter(Boolean)) {
     for (const [re, msg] of PROIBIDO) if (re.test(t)) p.push(msg);
     for (const m of t.matchAll(/R\$\s?([\d.]+)/g)) if (!PRECOS.includes(m[1].replace(/\.$/, ""))) p.push(`preço fora da tabela: R$ ${m[1]}`);
   }

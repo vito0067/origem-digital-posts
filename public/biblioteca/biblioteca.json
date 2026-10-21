@@ -1,0 +1,161 @@
+{
+  "sobre": "Biblioteca de imagens e vídeos da marca (gerados no Higgsfield em 21/10/2026, sem texto dentro). Use em \"fundo\" (qualquer cena; vídeo só no Reels) ou em cenas \"imagem\". Prefira o tema igual ao do post. Pode gerar mais e acrescentar aqui.",
+  "itens": [
+    {
+      "arquivo": "biblioteca/noite-clinica-cidade.mp4",
+      "tipo": "video",
+      "tema": "noite",
+      "descricao": "Recepção de clínica vazia à noite, celular acende no balcão, cidade pela janela (vídeo 5 s, câmera aproximando)"
+    },
+    {
+      "arquivo": "biblioteca/noite-clinica-cidade.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Recepção de clínica vazia à noite, celular aceso no balcão, cidade pela janela"
+    },
+    {
+      "arquivo": "biblioteca/noite-sofa-domingo.mp4",
+      "tipo": "video",
+      "tema": "noite",
+      "descricao": "Domingo à noite em casa: pessoa no sofá ao fundo, celular acendendo na mesinha (vídeo 5 s)"
+    },
+    {
+      "arquivo": "biblioteca/noite-sofa-domingo.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Domingo à noite em casa: pessoa no sofá, celular aceso na mesinha"
+    },
+    {
+      "arquivo": "biblioteca/noite-maos-celular.mp4",
+      "tipo": "video",
+      "tema": "noite",
+      "descricao": "Mãos segurando o celular no escuro, tela brilhando (vídeo 5 s)"
+    },
+    {
+      "arquivo": "biblioteca/noite-maos-celular.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Mãos segurando o celular no escuro, tela brilhando"
+    },
+    {
+      "arquivo": "biblioteca/noite-cidade-janela.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Cidade à noite vista de uma janela grande (hora azul)"
+    },
+    {
+      "arquivo": "biblioteca/noite-cidade-janela.mp4",
+      "tipo": "video",
+      "tema": "noite",
+      "descricao": "Cidade à noite vista de uma janela, câmera andando de lado, luzes piscando (vídeo 5 s)"
+    },
+    {
+      "arquivo": "biblioteca/noite-celular-cabeceira.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Celular acendendo na mesa de cabeceira, quarto escuro"
+    },
+    {
+      "arquivo": "biblioteca/noite-salao.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Salão de beleza fechado à noite, celular aceso no balcão"
+    },
+    {
+      "arquivo": "biblioteca/noite-petshop.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Pet shop fechado à noite, celular aceso no balcão"
+    },
+    {
+      "arquivo": "biblioteca/noite-oficina.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Oficina mecânica à noite, porta meio fechada, celular na bancada"
+    },
+    {
+      "arquivo": "biblioteca/noite-restaurante.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Restaurante fechado à noite, cadeiras em cima das mesas, celular no balcão"
+    },
+    {
+      "arquivo": "biblioteca/noite-clinica-recepcao.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Recepção de clínica à noite (ATENÇÃO: aparece o Pão de Açúcar, do Rio; prefira noite-clinica-cidade)"
+    },
+    {
+      "arquivo": "biblioteca/noite-abstrato-vidro.jpg",
+      "tipo": "imagem",
+      "tema": "noite",
+      "descricao": "Fundo abstrato: vidro fosco flutuando no índigo, brilho violeta"
+    },
+    {
+      "arquivo": "biblioteca/dia-clinica-recepcao.mp4",
+      "tipo": "video",
+      "tema": "gelo",
+      "descricao": "Recepção de clínica clara de manhã, câmera andando para a frente (vídeo 5 s)"
+    },
+    {
+      "arquivo": "biblioteca/dia-clinica-recepcao.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Recepção de clínica clara de manhã, sol entrando"
+    },
+    {
+      "arquivo": "biblioteca/dia-dona-celular.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Dona de loja sorrindo para o celular, aliviada (pessoa gerada por IA: nunca apresentar como cliente real)"
+    },
+    {
+      "arquivo": "biblioteca/dia-salao.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Salão de beleza claro de manhã"
+    },
+    {
+      "arquivo": "biblioteca/dia-petshop.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Pet shop claro de manhã, cachorrinho calmo"
+    },
+    {
+      "arquivo": "biblioteca/dia-oficina.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Oficina mecânica organizada de manhã, porta aberta"
+    },
+    {
+      "arquivo": "biblioteca/dia-academia.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Estúdio de academia claro de manhã"
+    },
+    {
+      "arquivo": "biblioteca/dia-cafe.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Balcão de café de manhã, xícaras e doces"
+    },
+    {
+      "arquivo": "biblioteca/dia-mesa-trabalho.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Mesa branca com notebook e celular perto da janela, manhã"
+    },
+    {
+      "arquivo": "biblioteca/dia-abstrato-vidro.jpg",
+      "tipo": "imagem",
+      "tema": "gelo",
+      "descricao": "Fundo abstrato: vidro fosco flutuando em branco, céu e lavanda"
+    },
+    {
+      "arquivo": "biblioteca/dia-dona-celular.mp4",
+      "tipo": "video",
+      "tema": "gelo",
+      "descricao": "Dona de loja sorri aliviada olhando o celular (vídeo 5 s; pessoa gerada por IA: nunca apresentar como cliente real)"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import { AbsoluteFill } from "remotion";
 import { DEGRADE, MONO } from "../comum/marca";
 import type { Post } from "./tipos";
 import { ComTema, useTema } from "./tema";
-import { Marca, Mundo } from "./pecas";
+import { Fundo, Marca, Mundo } from "./pecas";
 import { Area, CenaQualquer, Final } from "./cenas";
 import { FINAL, duracaoCena } from "./tempos";
 
@@ -37,6 +37,7 @@ export const Slide: React.FC<{ post: Post; indice: number }> = ({ post, indice }
     <ComTema nome={post.tema}>
       <AbsoluteFill>
         <Mundo x={indice * 1080} y={0} largura={1080} altura={1350} />
+        {c?.fundo && <Fundo src={c.fundo} dur={4} foto />}
         <Marca topo={58} />
         <Area topo={TOPO} base={BASE}>
           {c ? <CenaQualquer c={c} dur={duracaoSlide(post, indice)} altura={ALTURA} foto /> : <Final foto />}

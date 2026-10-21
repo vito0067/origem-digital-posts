@@ -11,7 +11,7 @@ export const Raiz = () => (
   <>
     <Composition id="Reel" component={Reel} width={1080} height={1920} fps={FPS} durationInFrames={300}
       defaultProps={{ post: EXEMPLO }}
-      calculateMetadata={({ props }) => ({ durationInFrames: q(linhaDoTempo((props.post as Post).cenas).total) })} />
+      calculateMetadata={({ props }) => ({ durationInFrames: q(linhaDoTempo((props.post as Post).cenas, (props.post as Post).vozFinalDur).total) })} />
     <Composition id="Slide" component={Slide} width={1080} height={1350} fps={FPS} durationInFrames={150}
       defaultProps={{ post: EXEMPLO, indice: 0 }}
       calculateMetadata={({ props }) => ({ durationInFrames: q(duracaoSlide(props.post as Post, props.indice as number)) + 1 })} />

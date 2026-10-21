@@ -36,7 +36,14 @@ export const tempoItens = (n: number, inicio = 1.0) => Array.from({ length: n },
 /** Quanto tempo leva para escrever um texto (cena "digitando"). */
 export const tempoDigitar = (texto: string) => Math.min(4, 0.3 + texto.length * 0.045);
 
+/** A fala de cada cena começa um pouco depois do corte. */
+export const VOZ_ATRASO = 0.35;
+/** A cena dura o necessário para o desenho E para a fala (com um respiro), sempre em segundos cheios. */
 export const duracaoCena = (c: Cena): number => {
+  const visual = duracaoVisual(c);
+  return c.vozDur ? Math.max(visual, cheio(VOZ_ATRASO + c.vozDur + 0.45)) : visual;
+};
+const duracaoVisual = (c: Cena): number => {
   switch (c.tipo) {
     case "frase": return preso(cheio(1.4 + palavras(c.texto) * 0.28 + palavras(c.apoio) * 0.2), 3, 6);
     case "palavras": return preso(c.palavras.length + 1, 3, 7);
@@ -54,10 +61,11 @@ export const duracaoCena = (c: Cena): number => {
 };
 
 /** Início e duração de cada cena, e a duração total (com o cartão final). */
-export const linhaDoTempo = (cenas: Cena[]) => {
+export const linhaDoTempo = (cenas: Cena[], vozFinalDur?: number) => {
   let t = 0;
   const itens = cenas.map((c) => { const dur = duracaoCena(c); const r = { ini: t, dur }; t += dur; return r; });
-  return { itens, final: t, total: t + FINAL };
+  const final = vozFinalDur ? Math.max(FINAL, cheio(VOZ_ATRASO + vozFinalDur + 2.2)) : FINAL;
+  return { itens, final: t, total: t + final };
 };
 
 /** Divide um texto em linhas de até `max` letras (sem contar os asteriscos), respeitando "\n". */

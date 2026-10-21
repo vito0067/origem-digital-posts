@@ -6,7 +6,8 @@ import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 import { TAXA, Faixa, bumbo, palma, chimbal, baixo, pad, pluck, sino, filtro, reverb, eco, curvaDucking, salvarWav } from "./sintetizador.mjs";
 
-const ffmpeg = fileURLToPath(new URL("../node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe", import.meta.url));
+// No Windows usa o ffmpeg que vem com o Remotion; no GitHub (Linux), o do sistema.
+export const ffmpeg = process.env.FFMPEG ?? (process.platform === "win32" ? fileURLToPath(new URL("../node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe", import.meta.url)) : "ffmpeg");
 
 /** Lê um mp3/wav como faixa estéreo 44,1 kHz. */
 export function lerAudio(caminho) {

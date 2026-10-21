@@ -11,7 +11,9 @@
     {
       "tipo": "frase",
       "etiqueta": "Domingo · 19h",
-      "texto": "Quem responde o *seu WhatsApp* agora?"
+      "texto": "Quem responde o *seu WhatsApp* agora?",
+      "fundo": "biblioteca/noite-sofa-domingo.mp4",
+      "fala": "Domingo, sete da noite. Quem está respondendo o seu WhatsApp agora?"
     },
     {
       "tipo": "conversa",
@@ -29,7 +31,8 @@
           "de": "cliente",
           "texto": "Quero sim, obrigada!"
         }
-      ]
+      ],
+      "fala": "Enquanto você descansa, a Aurora atende. Ela se apresenta como inteligência artificial, tira a dúvida e passa o pedido para a sua equipe."
     },
     {
       "tipo": "palavras",
@@ -45,11 +48,18 @@
       "valor": 24,
       "de": 24,
       "sufixo": "h",
-      "texto": "por dia, inclusive no *fim de semana*."
+      "texto": "por dia, inclusive no *fim de semana*.",
+      "fala": "Vinte e quatro horas por dia, inclusive no fim de semana."
     },
     {
       "tipo": "frase",
-      "texto": "Você descansa. O cliente *é atendido*."
+      "texto": "Você descansa. O cliente *é atendido*.",
+      "fundo": "biblioteca/noite-cidade-janela.mp4",
+      "fala": "Você descansa. E o cliente é atendido."
     }
-  ]
+  ],
+  "narracao": {
+    "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261021_232055_aa91ead2-1281-4a11-95c9-18694a4eac24.mp3"
+  },
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio."
 }

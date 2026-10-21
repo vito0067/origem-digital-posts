@@ -1,7 +1,7 @@
 // Peças visuais dos posts: o "mundo" (fundo contínuo por onde a câmera anda), o cartão de vidro,
 // o texto cinético, a etiqueta e a assinatura. Tudo segue o tema (gelo ou noite).
 import React from "react";
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Img, OffthreadVideo, staticFile, useCurrentFrame } from "remotion";
 import { MONO, SANS, SERIFA } from "../comum/marca";
 import { entre, mola, q, sorteio } from "../comum/tempo";
 import { Grao, Simbolo } from "../comum/pecas";
@@ -129,4 +129,29 @@ export const Reflexo: React.FC<{ inicio: number; dur?: number; raio?: number }> 
   const x = entre(f, inicio, inicio + dur, -30, 130);
   if (f < q(inicio) || f > q(inicio + dur)) return null;
   return <div style={{ position: "absolute", inset: 0, borderRadius: raio, pointerEvents: "none", background: `linear-gradient(105deg, rgba(255,255,255,0) ${x - 16}%, rgba(255,255,255,.55) ${x}%, rgba(255,255,255,0) ${x + 16}%)`, mixBlendMode: "soft-light" }} />;
+};
+
+/**
+ * Foto ou vídeo da biblioteca atrás da cena, com um véu na cor do tema para o texto continuar legível.
+ * O vídeo (clipes de 5 s) desacelera para caber na cena; a foto faz um zoom lento.
+ */
+export const Fundo: React.FC<{ src: string; dur: number; foto?: boolean }> = ({ src, dur, foto = false }) => {
+  const f = useCurrentFrame();
+  const t = useTema();
+  const url = /^https?:/.test(src) ? src : staticFile(src);
+  const video = /.(mp4|webm|mov)$/i.test(src);
+  const zoom = foto ? 1.04 : 1.04 + 0.1 * entre(f, 0, dur, 0, 1, (x) => x);
+  const estilo: React.CSSProperties = { width: "100%", height: "100%", objectFit: "cover", transform: `scale(${zoom})` };
+  const veu = t.nome === "noite"
+    ? "linear-gradient(180deg, rgba(11,10,36,.70) 0%, rgba(11,10,36,.38) 30%, rgba(11,10,36,.50) 60%, rgba(11,10,36,.94) 100%)"
+    : "linear-gradient(180deg, rgba(248,250,252,.86) 0%, rgba(248,250,252,.60) 32%, rgba(248,250,252,.72) 62%, rgba(248,250,252,.96) 100%)";
+  return (
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      {video && !foto
+        ? <OffthreadVideo src={url} muted playbackRate={Math.max(0.35, Math.min(1, 4.9 / dur))} style={estilo} />
+        : <Img src={url} style={estilo} />}
+      <AbsoluteFill style={{ background: veu }} />
+      <AbsoluteFill style={{ background: t.nome === "noite" ? "radial-gradient(ellipse 80% 26% at 50% 42%, rgba(11,10,36,.55), rgba(11,10,36,0) 100%)" : "radial-gradient(ellipse 80% 26% at 50% 42%, rgba(248,250,252,.6), rgba(248,250,252,0) 100%)" }} />
+    </AbsoluteFill>
+  );
 };

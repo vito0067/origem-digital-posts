@@ -4,7 +4,17 @@
 export type Mensagem = { de: "cliente" | "aurora"; texto: string };
 export type Coluna = { titulo: string; itens: string[] };
 
-export type Cena =
+/** O que toda cena pode ter além do conteúdo. */
+export type Extras = {
+  /** Fundo de foto ou vídeo ("biblioteca/arquivo.jpg|.mp4" ou URL), atrás do conteúdo. */
+  fundo?: string;
+  /** O que a narração diz nesta cena (a gravação é uma só, cortada nas pausas). */
+  fala?: string;
+  /** Preenchido pelo renderizador: quanto dura a fala desta cena. */
+  vozDur?: number;
+};
+
+export type Cena = Extras & (
   /** Frase grande. Escreva *assim* a palavra de destaque (serifa itálica com degradê). */
   | { tipo: "frase"; texto: string; etiqueta?: string; apoio?: string }
   /** Uma palavra por batida, bem grande (ex.: "Responde." "Explica." "Encaminha."). */
@@ -20,7 +30,7 @@ export type Cena =
   /** Antes e depois, lado a lado (ex.: "Sem atendimento" x "Com a Aurora"). */
   | { tipo: "comparar"; esquerda: Coluna; direita: Coluna; etiqueta?: string }
   /** Imagem (URL do Higgsfield ou arquivo em public/), com frase. */
-  | { tipo: "imagem"; imagem: string; texto?: string; etiqueta?: string };
+  | { tipo: "imagem"; imagem: string; texto?: string; etiqueta?: string });
 
 export type Post = {
   id: string;
@@ -32,6 +42,12 @@ export type Post = {
   legenda: string;
   cenas: Cena[];
   musica?: { clima?: "calmo" | "animado" };
+  /** Narração: uma gravação só com as falas das cenas (e a final), separadas por pausas longas. */
+  narracao?: { audio: string };
+  /** O que a narração diz no cartão final. */
+  falaFinal?: string;
+  /** Preenchido pelo renderizador. */
+  vozFinalDur?: number;
   /** Preenchido pelo renderizador: a trilha gerada para este reel. */
   audio?: string;
 };

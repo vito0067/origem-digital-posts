@@ -9,6 +9,8 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { gerarTrilha } from "./trilha.mjs";
+import { cortarNarracao } from "./narracao.mjs";
+import { lerAudio } from "./mixagem.mjs";
 import { validar } from "./validar.mjs";
 import { paginaPost, paginaIndice } from "./paginas.mjs";
 import { linhaDoTempo, SAIDA } from "../src/post/tempos.ts";
@@ -20,19 +22,36 @@ const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
 const browserExecutable = process.env.REMOTION_BROWSER ?? (process.platform === "win32" && existsSync(EDGE) ? EDGE : null);
 
 /** Mude quando os modelos mudarem de cara: os posts ainda não publicados são renderizados de novo. */
-export const VERSAO_MODELOS = "2";
+export const VERSAO_MODELOS = "3";
 export const hashPost = (texto) => createHash("sha256").update(`${VERSAO_MODELOS}:${texto}`).digest("hex").slice(0, 16);
 
-/** Baixa as imagens externas (Higgsfield) para public/_tmp/<id>/ e troca o endereço no post. */
-async function baixarImagens(post, tmp) {
+/** Baixa um arquivo externo (Higgsfield) para public/<tmp>/ e devolve o caminho relativo a public/. */
+async function baixar(url, tmp, nome) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error(`não consegui baixar ${nome} (${r.status})`);
+  const tipo = r.headers.get("content-type") ?? "";
+  const ext = (url.match(/\.(png|jpe?g|webp|mp4|mp3|wav)(\?|$)/i)?.[1] ?? (tipo.includes("png") ? "png" : tipo.includes("mp4") ? "mp4" : tipo.includes("mpeg") ? "mp3" : tipo.includes("wav") ? "wav" : "jpg")).toLowerCase();
+  writeFileSync(join(RAIZ, "public", tmp, `${nome}.${ext}`), Buffer.from(await r.arrayBuffer()));
+  return `${tmp}/${nome}.${ext}`;
+}
+
+/** Baixa as imagens, os fundos e a narração externos e troca os endereços no post. */
+async function baixarExternos(post, tmp) {
   for (const [i, c] of post.cenas.entries()) {
-    if (c.tipo !== "imagem" || !/^https?:/.test(c.imagem)) continue;
-    const r = await fetch(c.imagem);
-    if (!r.ok) throw new Error(`não consegui baixar a imagem da cena ${i + 1} (${r.status})`);
-    const ext = (r.headers.get("content-type") ?? "").includes("png") ? "png" : "jpg";
-    writeFileSync(join(RAIZ, "public", tmp, `img-${i + 1}.${ext}`), Buffer.from(await r.arrayBuffer()));
-    c.imagem = `${tmp}/img-${i + 1}.${ext}`;
+    if (c.tipo === "imagem" && /^https?:/.test(c.imagem)) c.imagem = await baixar(c.imagem, tmp, `img-${i + 1}`);
+    if (c.fundo && /^https?:/.test(c.fundo)) c.fundo = await baixar(c.fundo, tmp, `fundo-${i + 1}`);
   }
+  if (post.narracao?.audio && /^https?:/.test(post.narracao.audio)) post.narracao.audio = await baixar(post.narracao.audio, tmp, "narracao");
+}
+
+/** Corta a narração (uma gravação só) nas pausas e anota quanto dura a fala de cada cena. */
+function prepararNarracao(post) {
+  if (post.formato !== "reel" || !post.narracao?.audio) return null;
+  const slots = [...post.cenas.map((c, i) => (c.fala ? i : null)).filter((i) => i !== null), ...(post.falaFinal ? [-1] : [])];
+  const faixa = lerAudio(join(RAIZ, "public", post.narracao.audio));
+  const pecas = cortarNarracao(faixa, slots.map((i) => (i === -1 ? post.falaFinal : post.cenas[i].fala)));
+  pecas.forEach((p, k) => { const d = +(p.ate - p.de).toFixed(2); if (slots[k] === -1) post.vozFinalDur = d; else post.cenas[slots[k]].vozDur = d; });
+  return { faixa, pecas, slots };
 }
 
 export async function renderizar(caminhos) {
@@ -46,8 +65,9 @@ export async function renderizar(caminhos) {
     const tmp = `_tmp/${post.id}`;
     rmSync(join(RAIZ, "public", tmp), { recursive: true, force: true });
     mkdirSync(join(RAIZ, "public", tmp), { recursive: true });
-    await baixarImagens(post, tmp);
-    if (post.formato === "reel") { gerarTrilha(post, join(RAIZ, "public", tmp, "trilha.wav")); post.audio = `${tmp}/trilha.wav`; }
+    await baixarExternos(post, tmp);
+    const narracao = prepararNarracao(post);
+    if (post.formato === "reel") { gerarTrilha(post, join(RAIZ, "public", tmp, "trilha.wav"), narracao); post.audio = `${tmp}/trilha.wav`; }
     posts.push({ post, hash: hashPost(bruto), original: JSON.parse(bruto) });
   }
   if (!posts.length) return [];
@@ -65,7 +85,7 @@ export async function renderizar(caminhos) {
       const inputProps = { post };
       const composition = await selectComposition({ serveUrl, id: "Reel", inputProps, browserExecutable });
       await renderMedia({ serveUrl, composition, inputProps, codec: "h264", crf: 20, pixelFormat: "yuv420p", colorSpace: "bt709", audioCodec: "aac", outputLocation: join(pasta, "reel.mp4"), browserExecutable });
-      const lt = linhaDoTempo(post.cenas);
+      const lt = linhaDoTempo(post.cenas, post.vozFinalDur);
       await renderStill({ serveUrl, composition, inputProps, frame: Math.round((lt.itens[0].dur - SAIDA) * FPS) - 2, output: join(pasta, "capa.jpg"), imageFormat: "jpeg", jpegQuality: 90, browserExecutable });
       midias = [url("reel.mp4")]; capa = url("capa.jpg");
     } else {

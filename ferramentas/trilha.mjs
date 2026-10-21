@@ -1,8 +1,8 @@
 // Trilha original de cada Reel, composta em código na mesma grade do vídeo (120 BPM): a batida entra
 // no 1º corte, cada corte cai num tempo forte e cada animação tem o seu som (palavra, tecla, mensagem...).
-import { linhaDoTempo, tempoMensagens, tempoPalavras, tempoItens, tempoDigitar, BPM } from "../src/post/tempos.ts";
+import { linhaDoTempo, tempoMensagens, tempoPalavras, tempoItens, tempoDigitar, BPM, VOZ_ATRASO } from "../src/post/tempos.ts";
 import { Faixa, SFX, salvarWav, TAXA } from "./sintetizador.mjs";
-import { secao, acordeFinal } from "./mixagem.mjs";
+import { secao, acordeFinal, mixFinal } from "./mixagem.mjs";
 
 const Fmaj7 = { notas: [53, 57, 60, 64], baixo: 41 };
 const CE = { notas: [52, 55, 60, 62], baixo: 40 };
@@ -11,9 +11,12 @@ const Am7 = { notas: [57, 60, 64, 67], baixo: 45 };
 const Dm9 = { notas: [50, 53, 57, 60, 64], baixo: 38 };
 const palavras = (t = "") => t.replace(/\*/g, "").split(/\s+/).filter(Boolean).length;
 
-/** Gera o .wav da trilha de um post (formato reel) em `saida`. */
-export function gerarTrilha(post, saida) {
-  const lt = linhaDoTempo(post.cenas);
+/**
+ * Gera o .wav da trilha de um post (formato reel) em `saida`.
+ * `narracao` (opcional) = { faixa, pecas: [{de, ate}], slots: [índice da cena | -1 = cartão final] }.
+ */
+export function gerarTrilha(post, saida, narracao = null) {
+  const lt = linhaDoTempo(post.cenas, post.vozFinalDur);
   const D = lt.total;
   const animado = (post.musica?.clima ?? "animado") === "animado";
   const noite = post.tema === "noite";
@@ -82,6 +85,27 @@ export function gerarTrilha(post, saida) {
   E(SFX.brilho(), lt.final + 0.3, 0.5);
   E(SFX.pop(), lt.final + 1.6, 0.55);
   E(SFX.sucesso(), lt.final + 1.65, 0.35);
+
+  // ---------- com narração: cada pedaço da gravação entra no começo da sua cena e a música abaixa sob a voz
+  if (narracao) {
+    const voz = new Faixa(D), fala = [], fade = Math.round(0.012 * TAXA);
+    let pico = 0;
+    for (let i = 0; i < narracao.faixa.L.length; i++) pico = Math.max(pico, Math.abs(narracao.faixa.L[i]), Math.abs(narracao.faixa.R[i]));
+    const g = 0.85 / (pico || 1);
+    narracao.pecas.forEach((p, k) => {
+      const slot = narracao.slots[k];
+      const em = (slot === -1 ? lt.final : lt.itens[slot].ini) + VOZ_ATRASO;
+      const a = Math.round(p.de * TAXA), b = Math.min(narracao.faixa.L.length, Math.round(p.ate * TAXA)), d0 = Math.round(em * TAXA);
+      for (let j = a; j < b; j++) {
+        const i = d0 + (j - a); if (i >= voz.L.length) break;
+        const env = Math.min(1, (j - a) / fade, (b - j) / fade);
+        voz.L[i] += narracao.faixa.L[j] * g * env; voz.R[i] += narracao.faixa.R[j] * g * env;
+      }
+      fala.push([em, em + (p.ate - p.de)]);
+    });
+    mixFinal({ duracao: D, voz, musica, efeitos: ef, fala, saida, musicaDb: -7, ganhoEfeitos: 0.55 });
+    return;
+  }
 
   // ---------- mix: música um pouco abaixo dos efeitos e saída suave no fim
   const m = new Faixa(D);

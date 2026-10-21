@@ -6,7 +6,7 @@ import { entre, q } from "../comum/tempo";
 import { SEGURO } from "../comum/vertical";
 import type { Post } from "./tipos";
 import { ComTema } from "./tema";
-import { Marca, Mundo } from "./pecas";
+import { Fundo, Marca, Mundo } from "./pecas";
 import { linhaDoTempo, SAIDA } from "./tempos";
 import { Area, CenaQualquer, Final } from "./cenas";
 
@@ -50,7 +50,7 @@ const posicaoCamera = (f: number, cortes: number[]) => {
 
 export const Reel: React.FC<{ post: Post }> = ({ post }) => {
   const f = useCurrentFrame();
-  const lt = linhaDoTempo(post.cenas);
+  const lt = linhaDoTempo(post.cenas, post.vozFinalDur);
   const cortes = [...lt.itens.slice(1).map((i) => i.ini), lt.final];
   const cam = posicaoCamera(f, cortes);
   return (
@@ -58,10 +58,10 @@ export const Reel: React.FC<{ post: Post }> = ({ post }) => {
       <AbsoluteFill>
         <Mundo x={cam.x} y={cam.y} largura={1080} altura={1920} />
         {post.audio && <Audio src={staticFile(post.audio)} />}
-        <Marca topo={SEGURO.topo + 10} />
         {post.cenas.map((c, i) => (
           <Sequence key={i} from={q(lt.itens[i].ini)} durationInFrames={q(lt.itens[i].dur)}>
             <Camera dur={lt.itens[i].dur} entra={i === 0 ? { x: 0, y: 0, zoom: true } : mov(i)} sai={mov(i + 1)}>
+              {c.fundo && <Fundo src={c.fundo} dur={lt.itens[i].dur} />}
               <Area topo={TOPO} base={BASE}><CenaQualquer c={c} dur={lt.itens[i].dur} altura={ALTURA} /></Area>
             </Camera>
           </Sequence>
@@ -71,6 +71,7 @@ export const Reel: React.FC<{ post: Post }> = ({ post }) => {
             <Area topo={TOPO} base={BASE}><Final /></Area>
           </Camera>
         </Sequence>
+        <Marca topo={SEGURO.topo + 10} />
       </AbsoluteFill>
     </ComTema>
   );
