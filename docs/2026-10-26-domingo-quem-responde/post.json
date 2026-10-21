@@ -2,9 +2,10 @@
   "id": "2026-10-26-domingo-quem-responde",
   "publicar_em": "2026-10-26T19:00:00-03:00",
   "formato": "reel",
+  "tema": "noite",
   "legenda": "Domingo, 19h. Alguém está chamando o seu negócio agora.\n\nEnquanto você descansa, a pergunta chega: tem horário amanhã cedo? Se ninguém responde, ela fica esperando até segunda.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, responde no seu WhatsApp em segundos, 24 horas por dia, e passa para você quem quer marcar.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#atendimentoaocliente #whatsappbusiness #petshop #pequenosnegocios #inteligenciaartificial #saopaulo",
   "musica": {
-    "clima": "calmo"
+    "clima": "animado"
   },
   "cenas": [
     {
@@ -31,8 +32,18 @@
       ]
     },
     {
+      "tipo": "palavras",
+      "titulo": "A Aurora",
+      "palavras": [
+        "Responde.",
+        "Explica.",
+        "*Encaminha.*"
+      ]
+    },
+    {
       "tipo": "numero",
       "valor": 24,
+      "de": 24,
       "sufixo": "h",
       "texto": "por dia, inclusive no *fim de semana*."
     },
@@ -46,6 +57,6 @@
   ],
   "capa": "https://vito0067.github.io/origem-digital-posts/2026-10-26-domingo-quem-responde/capa.jpg",
   "previa": "https://vito0067.github.io/origem-digital-posts/2026-10-26-domingo-quem-responde/",
-  "hash": "43ca2608cd26259e",
-  "renderizado_em": "2026-10-21T18:40:57.771Z"
+  "hash": "5f24922982c277d8",
+  "renderizado_em": "2026-10-21T19:04:47.236Z"
 }
