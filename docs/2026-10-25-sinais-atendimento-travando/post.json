@@ -35,7 +35,8 @@
     {
       "tipo": "imagem",
       "imagem": "biblioteca/dia-dona-celular.jpg",
-      "texto": "E se cada mensagem fosse *respondida na hora*?"
+      "texto": "E se cada mensagem fosse *respondida na hora*?",
+      "foco": "cima"
     },
     {
       "tipo": "comparar",
@@ -88,6 +89,6 @@
   ],
   "capa": "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-1.jpg",
   "previa": "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/",
-  "hash": "e874a7deafeb9fb1",
-  "renderizado_em": "2026-10-21T23:34:20.582Z"
+  "hash": "8b3829cad51ce07c",
+  "renderizado_em": "2026-10-21T23:40:53.805Z"
 }
