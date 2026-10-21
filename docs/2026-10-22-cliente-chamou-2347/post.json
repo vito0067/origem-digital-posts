@@ -1,0 +1,70 @@
+{
+  "id": "2026-10-22-cliente-chamou-2347",
+  "publicar_em": "2026-10-22T12:30:00-03:00",
+  "formato": "reel",
+  "tema": "noite",
+  "legenda": "23h47. Um cliente acabou de chamar no seu WhatsApp.\n\nEle quer saber preço e horário, e quer saber agora. Se ninguém responde, ele procura outro lugar.\n\nCom a Origem Digital, a Aurora, uma atendente de inteligência artificial, responde no seu WhatsApp em segundos, 24 horas por dia, e passa para você quem quer marcar.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#atendimentoaocliente #whatsappbusiness #clinicas #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": {
+    "clima": "animado"
+  },
+  "narracao": {
+    "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261021_232055_61fc47b2-156a-4a6a-b74d-84eb413be1ff.mp3"
+  },
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "23h47",
+      "texto": "Um cliente acabou de *chamar*.",
+      "fundo": "biblioteca/noite-clinica-cidade.mp4",
+      "fala": "Onze e quarenta e sete da noite. Um cliente acabou de chamar no seu WhatsApp."
+    },
+    {
+      "tipo": "digitando",
+      "etiqueta": "Mensagem nova",
+      "texto": "Oi! Quanto custa a avaliação? Vocês têm horário amanhã?",
+      "fala": "Ele quer saber o preço e o horário. E quer saber agora."
+    },
+    {
+      "tipo": "frase",
+      "texto": "Se ninguém responde, ele *procura outro*.",
+      "fundo": "biblioteca/noite-maos-celular.mp4",
+      "fala": "Se ninguém responde, ele procura outro lugar."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Clínica Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Oi! Quanto custa a avaliação? Vocês têm horário amanhã?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Oi! Sou a Aurora, atendente de IA da clínica. Vou passar seu pedido para a equipe te mandar valores e horários logo cedo, tudo bem?"
+        },
+        {
+          "de": "cliente",
+          "texto": "Tudo bem, obrigada!"
+        }
+      ],
+      "fala": "Com a Origem Digital, a Aurora, uma atendente de inteligência artificial, responde em segundos e passa para você quem quer marcar."
+    },
+    {
+      "tipo": "palavras",
+      "titulo": "A Aurora",
+      "palavras": [
+        "Responde.",
+        "Explica.",
+        "*Encaminha.*"
+      ]
+    }
+  ],
+  "falaFinal": "Peça seu diagnóstico gratuito. O link está na bio.",
+  "midias": [
+    "https://vito0067.github.io/origem-digital-posts/2026-10-22-cliente-chamou-2347/reel.mp4"
+  ],
+  "capa": "https://vito0067.github.io/origem-digital-posts/2026-10-22-cliente-chamou-2347/capa.jpg",
+  "previa": "https://vito0067.github.io/origem-digital-posts/2026-10-22-cliente-chamou-2347/",
+  "hash": "6df63be346fb3d31",
+  "renderizado_em": "2026-10-21T23:34:13.083Z"
+}

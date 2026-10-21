@@ -9,7 +9,8 @@
       "tipo": "frase",
       "etiqueta": "Atendimento",
       "texto": "3 sinais de que o seu atendimento está *travando vendas*",
-      "apoio": "Arraste e veja se algum acontece aí."
+      "apoio": "Arraste e veja se algum acontece aí.",
+      "fundo": "biblioteca/dia-salao.jpg"
     },
     {
       "tipo": "frase",
@@ -28,7 +29,13 @@
       "tipo": "frase",
       "etiqueta": "Sinal 3",
       "texto": "Responder vira *trabalho extra* no fim do dia.",
-      "apoio": "A loja fecha, mas o celular continua apitando."
+      "apoio": "A loja fecha, mas o celular continua apitando.",
+      "fundo": "biblioteca/dia-mesa-trabalho.jpg"
+    },
+    {
+      "tipo": "imagem",
+      "imagem": "biblioteca/dia-dona-celular.jpg",
+      "texto": "E se cada mensagem fosse *respondida na hora*?"
     },
     {
       "tipo": "comparar",
@@ -76,10 +83,11 @@
     "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-4.jpg",
     "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-5.jpg",
     "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-6.jpg",
-    "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-7.jpg"
+    "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-7.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-8.jpg"
   ],
   "capa": "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/slide-1.jpg",
   "previa": "https://vito0067.github.io/origem-digital-posts/2026-10-25-sinais-atendimento-travando/",
-  "hash": "d7371aab9279713e",
-  "renderizado_em": "2026-10-21T19:01:46.261Z"
+  "hash": "e874a7deafeb9fb1",
+  "renderizado_em": "2026-10-21T23:34:20.582Z"
 }
