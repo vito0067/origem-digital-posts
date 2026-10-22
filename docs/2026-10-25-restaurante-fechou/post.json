@@ -1,0 +1,71 @@
+{
+  "id": "2026-10-25-restaurante-fechou",
+  "publicar_em": "2026-10-25T19:00:00-03:00",
+  "formato": "reel",
+  "tema": "noite",
+  "legenda": "A cozinha fechou. O WhatsApp do restaurante não.\n\nDez da noite, chega a pergunta: tem mesa para oito pessoas no sábado? Se ninguém responde, a reserva vai para outro lugar.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, responde no seu WhatsApp em segundos, 24 horas por dia, e passa o pedido para a sua equipe confirmar.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#restaurantes #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": {
+    "clima": "calmo"
+  },
+  "narracao": {
+    "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261022_120711_e8c5cc04-41e6-46ed-829e-412f2733c1e2.mp3"
+  },
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "22h · Restaurante",
+      "texto": "A cozinha fechou. O *WhatsApp não*.",
+      "fundo": "biblioteca/noite-restaurante.jpg",
+      "fala": "Dez da noite. A cozinha fechou, mas o WhatsApp do restaurante não."
+    },
+    {
+      "tipo": "digitando",
+      "etiqueta": "Mensagem nova",
+      "texto": "Boa noite! Tem mesa para 8 pessoas no sábado?",
+      "fala": "Chega uma pergunta: tem mesa para oito pessoas no sábado?"
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Restaurante Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Boa noite! Tem mesa para 8 pessoas no sábado?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Boa noite! Sou a Aurora, atendente de IA do restaurante. Vou passar seu pedido para a equipe confirmar a mesa amanhã cedo, tudo bem?"
+        },
+        {
+          "de": "cliente",
+          "texto": "Tudo bem, obrigado!"
+        }
+      ],
+      "fala": "A Aurora, atendente de inteligência artificial, se apresenta, responde em segundos e passa o pedido para a equipe confirmar."
+    },
+    {
+      "tipo": "lista",
+      "titulo": "O que *acaba*",
+      "riscar": true,
+      "itens": [
+        "Cliente esperando",
+        "Pergunta esquecida"
+      ],
+      "fala": "Acaba o cliente esperando. Acaba a pergunta esquecida."
+    },
+    {
+      "tipo": "frase",
+      "texto": "Você fecha a cozinha. O cliente *é atendido*.",
+      "fundo": "biblioteca/noite-celular-cabeceira.jpg",
+      "fala": "Você fecha a cozinha. E o cliente continua sendo atendido."
+    }
+  ],
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio.",
+  "midias": [
+    "https://vito0067.github.io/origem-digital-posts/2026-10-25-restaurante-fechou/reel.mp4"
+  ],
+  "capa": "https://vito0067.github.io/origem-digital-posts/2026-10-25-restaurante-fechou/capa.jpg",
+  "previa": "https://vito0067.github.io/origem-digital-posts/2026-10-25-restaurante-fechou/",
+  "hash": "57d47b66879a258c",
+  "renderizado_em": "2026-10-22T12:13:14.062Z"
+}
