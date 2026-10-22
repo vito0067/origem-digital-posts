@@ -18,8 +18,9 @@ import { linhaDoTempo, SAIDA } from "../src/post/tempos.ts";
 export const RAIZ = fileURLToPath(new URL("..", import.meta.url));
 export const BASE_URL = (process.env.BASE_URL ?? "https://vito0067.github.io/origem-digital-posts").replace(/\/$/, "");
 const FPS = 30;
-const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-const browserExecutable = process.env.REMOTION_BROWSER ?? (process.platform === "win32" && existsSync(EDGE) ? EDGE : null);
+export const EDGE_PADRAO = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
+// Padrão: o navegador do próprio Remotion (baixa uma vez). USAR_EDGE=1 usa o Edge do Windows.
+const browserExecutable = process.env.REMOTION_BROWSER ?? (process.env.USAR_EDGE && existsSync(EDGE_PADRAO) ? EDGE_PADRAO : null);
 
 /** Mude quando os modelos mudarem de cara: os posts ainda não publicados são renderizados de novo. */
 export const VERSAO_MODELOS = "3";

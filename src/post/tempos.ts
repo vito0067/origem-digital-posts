@@ -52,6 +52,8 @@ const duracaoVisual = (c: Cena): number => {
     case "lista": return preso(cheio(1.0 + c.itens.length * 1.0 + (c.riscar ? 1.2 : 0.9)), 3, 8);
     case "comparar": return preso(cheio(1.0 + Math.max(c.esquerda.itens.length, c.direita.itens.length) * 2 + 0.5), 4, 10);
     case "imagem": return preso(cheio(2.8 + palavras(c.texto) * 0.25), 3, 6);
+    case "objeto": return preso(cheio(2.6 + palavras(c.texto) * 0.25 + palavras(c.apoio) * 0.15), 4, 6);
+    case "site": return preso(cheio(2.4 + (c.paineis?.length ?? 0) * 0.6 + palavras(c.texto) * 0.2), 4, 7);
     case "conversa": {
       const ts = tempoMensagens(c.mensagens);
       const m = c.mensagens[c.mensagens.length - 1];

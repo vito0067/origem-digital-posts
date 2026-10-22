@@ -9,6 +9,7 @@ import { Simbolo } from "../comum/pecas";
 import type { Cena } from "./tipos";
 import { preenchido, useTema } from "./tema";
 import { Apoio, Reflexo, Rotulo, Texto, Vidro, posicaoFoco } from "./pecas";
+import { CenaObjeto, CenaSite } from "./artefatos";
 import { BATIDA, letrasPorLinha, quebrar, tamanhoFrase, tempoDigitar, tempoItens, tempoMensagens, tempoPalavras } from "./tempos";
 
 const palavras = (t = "") => t.replace(/\*/g, "").split(/\s+/).filter(Boolean).length;
@@ -365,6 +366,8 @@ export const CenaQualquer: React.FC<{ c: Cena; dur: number; foto?: boolean; altu
     case "lista": return <CenaLista c={c} {...p} />;
     case "comparar": return <CenaComparar c={c} {...p} />;
     case "imagem": return <CenaImagem c={c} {...p} />;
+    case "objeto": return <CenaObjeto c={c} foto={foto} altura={altura} />;
+    case "site": return <CenaSite c={c} foto={foto} />;
   }
 };
 

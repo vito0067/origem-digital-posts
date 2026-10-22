@@ -9,6 +9,7 @@ import { ComTema } from "./tema";
 import { Fundo, Marca, Mundo } from "./pecas";
 import { linhaDoTempo, SAIDA } from "./tempos";
 import { Area, CenaQualquer, Final } from "./cenas";
+import { Artefatos } from "./artefatos";
 
 // Conteúdo entre o topo e a base livres do Reels (o app cobre o resto).
 const TOPO = SEGURO.topo + 120, BASE = 1920 - SEGURO.base, ALTURA = 1920 - TOPO - BASE;
@@ -62,6 +63,7 @@ export const Reel: React.FC<{ post: Post }> = ({ post }) => {
           <Sequence key={i} from={q(lt.itens[i].ini)} durationInFrames={q(lt.itens[i].dur)}>
             <Camera dur={lt.itens[i].dur} entra={i === 0 ? { x: 0, y: 0, zoom: true } : mov(i)} sai={mov(i + 1)}>
               {c.fundo && <Fundo src={c.fundo} dur={lt.itens[i].dur} foco={c.foco} />}
+              {c.artefatos && <Artefatos lista={c.artefatos} foto={false} topo={TOPO} altura={ALTURA} />}
               <Area topo={TOPO} base={BASE}><CenaQualquer c={c} dur={lt.itens[i].dur} altura={ALTURA} /></Area>
             </Camera>
           </Sequence>

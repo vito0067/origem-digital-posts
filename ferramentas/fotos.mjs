@@ -9,7 +9,7 @@ import { RAIZ } from "./renderizar.mjs";
 const [, , caminho, saida, ...segs] = process.argv;
 const post = JSON.parse(readFileSync(caminho, "utf8"));
 const EDGE = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
-const browserExecutable = process.platform === "win32" ? EDGE : null;
+const browserExecutable = process.env.USAR_EDGE ? EDGE : null;
 const serveUrl = await bundle({ entryPoint: join(RAIZ, "src", "index.ts") });
 const inputProps = { post };
 const composition = await selectComposition({ serveUrl, id: "Reel", inputProps, browserExecutable });

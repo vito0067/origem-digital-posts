@@ -7,6 +7,7 @@ import type { Post } from "./tipos";
 import { ComTema, useTema } from "./tema";
 import { Fundo, Marca, Mundo } from "./pecas";
 import { Area, CenaQualquer, Final } from "./cenas";
+import { Artefatos } from "./artefatos";
 import { FINAL, duracaoCena } from "./tempos";
 
 const TOPO = 150, BASE = 130, ALTURA = 1350 - TOPO - BASE;
@@ -38,6 +39,7 @@ export const Slide: React.FC<{ post: Post; indice: number }> = ({ post, indice }
       <AbsoluteFill>
         <Mundo x={indice * 1080} y={0} largura={1080} altura={1350} />
         {c?.fundo && <Fundo src={c.fundo} dur={4} foto foco={c.foco} />}
+        {c?.artefatos && <Artefatos lista={c.artefatos} foto topo={TOPO} altura={ALTURA} />}
         <Marca topo={58} />
         <Area topo={TOPO} base={BASE}>
           {c ? <CenaQualquer c={c} dur={duracaoSlide(post, indice)} altura={ALTURA} foto /> : <Final foto />}

@@ -18,7 +18,7 @@ const PROIBIDO = [
 const SE_APRESENTA_IA = /\b(IA|intelig[eê]ncia artificial|atendente virtual|assistente virtual)\b/i;
 
 const textos = (post) => [post.legenda, post.falaFinal, ...post.cenas.flatMap((c) =>
-  [c.texto, c.apoio, c.titulo, c.etiqueta, c.prefixo, c.sufixo, ...(c.itens ?? []), ...(c.palavras ?? []), ...(c.mensagens ?? []).map((m) => m.texto),
+  [c.texto, c.apoio, ...(c.paineis ?? []), c.titulo, c.etiqueta, c.prefixo, c.sufixo, ...(c.itens ?? []), ...(c.palavras ?? []), ...(c.mensagens ?? []).map((m) => m.texto),
     c.fala, c.esquerda?.titulo, c.direita?.titulo, ...(c.esquerda?.itens ?? []), ...(c.direita?.itens ?? [])].filter(Boolean))];
 
 export function validar(post, pasta) {
@@ -34,7 +34,7 @@ export function validar(post, pasta) {
     if (post.formato === "reel" && post.cenas.length > 7) p.push("reel: no máximo 7 cenas");
     post.cenas.forEach((c, i) => {
       const n = `cena ${i + 1}`;
-      if (!["frase", "palavras", "digitando", "conversa", "numero", "lista", "comparar", "imagem"].includes(c.tipo)) p.push(`${n}: tipo desconhecido`);
+      if (!["frase", "palavras", "digitando", "conversa", "numero", "lista", "comparar", "imagem", "objeto", "site"].includes(c.tipo)) p.push(`${n}: tipo desconhecido`);
       if (c.tipo === "palavras" && (!Array.isArray(c.palavras) || c.palavras.length < 2 || c.palavras.length > 6 || c.palavras.some((w) => w.replace(/\*/g, "").length > 14))) p.push(`${n}: palavras: de 2 a 6, cada uma com até 14 letras`);
       if (c.tipo === "digitando" && (!c.texto || c.texto.length > 120)) p.push(`${n}: digitando: texto de 1 a 120 letras`);
       if (c.tipo === "comparar" && (![c.esquerda, c.direita].every((l) => l && l.titulo && Array.isArray(l.itens) && l.itens.length >= 1 && l.itens.length <= 4 && l.itens.every((x) => x.length <= 40)) || c.esquerda.titulo.length > 18 || c.direita.titulo.length > 18)) p.push(`${n}: comparar: 2 colunas com título (até 18 letras) e 1 a 4 itens de até 40 letras`);
@@ -62,6 +62,10 @@ export function validar(post, pasta) {
         if (/.mp4$/i.test(c.fundo ?? "") && post.formato !== "reel") p.push(`cena ${i + 1}: fundo em vídeo só no Reels`);
       }
       if (c.fala !== undefined && (typeof c.fala !== "string" || c.fala.length > 260)) p.push(`cena ${i + 1}: fala de até 260 letras`);
+      const existe = (arq) => typeof arq === "string" && (/^https?:/.test(arq) || existsSync(join(PUBLICO, arq)));
+      if (c.artefatos !== undefined && (!Array.isArray(c.artefatos) || c.artefatos.length > 3 || !c.artefatos.every(existe))) p.push(`cena ${i + 1}: artefatos = até 3 arquivos que existem em public/biblioteca/objetos/`);
+      if (c.tipo === "objeto" && (!existe(c.objeto) || !c.texto)) p.push(`cena ${i + 1}: objeto precisa de um arquivo da biblioteca e de texto`);
+      if (c.tipo === "site" && (!c.texto || (c.paineis ?? []).length > 3 || (c.paineis ?? []).some((x) => x.length > 26))) p.push(`cena ${i + 1}: site precisa de texto e de até 3 painéis de até 26 letras`);
     });
     const falas = post.cenas.filter((c) => c.fala).length + (post.falaFinal ? 1 : 0);
     if (falas && !post.narracao?.audio) p.push("tem fala, mas falta narracao.audio (a gravação única com todas as falas)");

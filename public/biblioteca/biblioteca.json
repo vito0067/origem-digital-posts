@@ -1,5 +1,5 @@
 {
-  "sobre": "Biblioteca de imagens e vídeos da marca (gerados no Higgsfield em 21/10/2026, sem texto dentro). Use em \"fundo\" (qualquer cena; vídeo só no Reels) ou em cenas \"imagem\". Prefira o tema igual ao do post. Pode gerar mais e acrescentar aqui.",
+  "sobre": "Biblioteca de imagens e vídeos da marca (gerados no Higgsfield em 21/10/2026, sem texto dentro). Use em \"fundo\" (qualquer cena; vídeo só no Reels) ou em cenas \"imagem\". Prefira o tema igual ao do post. Pode gerar mais e acrescentar aqui. Os OBJETOS (fundo transparente, 3D de vidro na cor da marca) servem para a cena \"objeto\" e para \"artefatos\" (até 3 flutuando em qualquer cena).",
   "itens": [
     {
       "arquivo": "biblioteca/noite-clinica-cidade.mp4",
@@ -156,6 +156,80 @@
       "tipo": "video",
       "tema": "gelo",
       "descricao": "Dona de loja sorri aliviada olhando o celular (vídeo 5 s; pessoa gerada por IA: nunca apresentar como cliente real)"
+    }
+  ],
+  "objetos": [
+    {
+      "arquivo": "biblioteca/objetos/balao-conversa.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Balão de conversa com três pontinhos (mensagem, WhatsApp, atendimento)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/relogio.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Relógio sem números (tempo, resposta rápida, 24 h)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/sino.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Sino de notificação (mensagem chegando, aviso)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/celular.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Celular flutuando com a tela acesa"
+    },
+    {
+      "arquivo": "biblioteca/objetos/calendario.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Calendário em branco (agenda, horário marcado)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/raio.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Raio (rapidez, em segundos)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/escudo.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Escudo com check (segurança, confiança, LGPD)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/foguete.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Foguete subindo (lançamento, crescimento, site no ar)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/lua.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Lua com estrelas (noite, madrugada, fora do horário)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/estrela.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Estrela dourada (avaliação no Google, qualidade)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/lupa.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Lupa (ser encontrado no Google, busca)"
+    },
+    {
+      "arquivo": "biblioteca/objetos/cursor.png",
+      "tipo": "objeto",
+      "tema": "ambos",
+      "descricao": "Cursor clicando (clique, botão, site)"
     }
   ]
 }

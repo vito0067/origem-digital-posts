@@ -10,6 +10,8 @@ export type Extras = {
   fundo?: string;
   /** Que parte da foto mostrar quando ela é cortada: "cima" (rosto de pessoa), "centro" ou "baixo". Padrão: um pouco acima do centro. */
   foco?: "cima" | "centro" | "baixo";
+  /** Até 3 objetos 3D da biblioteca (public/biblioteca/objetos/*.png) flutuando nas bordas da cena. */
+  artefatos?: string[];
   /** O que a narração diz nesta cena (a gravação é uma só, cortada nas pausas). */
   fala?: string;
   /** Preenchido pelo renderizador: quanto dura a fala desta cena. */
@@ -31,6 +33,10 @@ export type Cena = Extras & (
   | { tipo: "lista"; titulo: string; itens: string[]; etiqueta?: string; riscar?: boolean }
   /** Antes e depois, lado a lado (ex.: "Sem atendimento" x "Com a Aurora"). */
   | { tipo: "comparar"; esquerda: Coluna; direita: Coluna; etiqueta?: string }
+  /** Um objeto 3D da biblioteca entra voando e flutua no centro, com a frase embaixo. */
+  | { tipo: "objeto"; objeto: string; texto: string; etiqueta?: string; apoio?: string }
+  /** Notebook com um site; 1 a 3 painéis (frases curtas) saem voando da tela em 3D. */
+  | { tipo: "site"; texto: string; paineis?: string[]; etiqueta?: string }
   /** Imagem (URL do Higgsfield ou arquivo em public/), com frase. */
   | { tipo: "imagem"; imagem: string; texto?: string; etiqueta?: string });
 
