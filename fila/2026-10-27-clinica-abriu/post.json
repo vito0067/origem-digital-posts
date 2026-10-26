@@ -1,0 +1,61 @@
+{
+  "id": "2026-10-27-clinica-abriu",
+  "publicar_em": "2026-10-27T19:30:00-03:00",
+  "formato": "reel",
+  "tema": "gelo",
+  "legenda": "A clínica abriu. O WhatsApp já estava esperando.\n\nUma pessoa pergunta se tem horário para avaliação nesta semana. Se ninguém vê a mensagem a tempo, ela fica sem resposta.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, responde no seu WhatsApp em segundos, 24 horas por dia, e passa o pedido para a equipe confirmar.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#clinica #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": {
+    "clima": "calmo"
+  },
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "Terça · manhã",
+      "texto": "A clínica abriu. O WhatsApp *já estava esperando*.",
+      "fundo": "biblioteca/dia-clinica-recepcao.mp4",
+      "fala": "A clínica abriu. E o WhatsApp já estava esperando."
+    },
+    {
+      "tipo": "digitando",
+      "etiqueta": "Mensagem nova",
+      "texto": "Oi! Tem horário para avaliação esta semana?",
+      "fala": "Uma pessoa pergunta se tem horário para avaliação nesta semana."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Clínica Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Oi! Tem horário para avaliação esta semana?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Oi! Sou a Aurora, atendente de IA da clínica. Temos horários nesta semana. Quer que eu passe seu pedido para a equipe confirmar?"
+        },
+        {
+          "de": "cliente",
+          "texto": "Quero sim, obrigada!"
+        }
+      ],
+      "fala": "A Aurora, que se apresenta como inteligência artificial, responde na hora e passa o pedido para a equipe confirmar."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/relogio.png",
+      "texto": "Resposta em *segundos*, 24 horas por dia.",
+      "fala": "Resposta em segundos, vinte e quatro horas por dia."
+    },
+    {
+      "tipo": "frase",
+      "texto": "Menos cliente esperando. *Mais tempo* para você.",
+      "fundo": "biblioteca/dia-dona-celular.mp4",
+      "foco": "cima",
+      "fala": "Menos cliente esperando. Mais tempo para você."
+    }
+  ],
+  "narracao": {
+    "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261026_123244_db979251-92c1-4987-a21f-b10700f5de26.mp3"
+  },
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio."
+}

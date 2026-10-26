@@ -1,0 +1,60 @@
+{
+  "id": "2026-10-29-salao-mao-na-tinta",
+  "publicar_em": "2026-10-29T12:30:00-03:00",
+  "formato": "carrossel",
+  "tema": "noite",
+  "legenda": "Mão na tinta, celular tocando: quem responde o cliente?\n\nNo meio do almoço do salão, a cadeira está ocupada e chega a pergunta: tem horário amanhã? A resposta fica para depois, e o depois às vezes chega tarde.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, responde no WhatsApp do salão em segundos e passa o pedido para a equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do post é um exemplo.\n\n#salaodebeleza #cabeleireira #atendimentoaocliente #whatsappbusiness #pequenosnegocios #saopaulo",
+  "cenas": [
+    {
+      "tipo": "frase",
+      "texto": "Mão na tinta. *Celular tocando.*",
+      "apoio": "Quem responde o cliente do salão?",
+      "fundo": "biblioteca/noite-salao.jpg"
+    },
+    {
+      "tipo": "lista",
+      "titulo": "O que *acaba*",
+      "riscar": true,
+      "itens": [
+        "Parar o atendimento para responder",
+        "Mensagem esquecida no fim do dia",
+        "Cliente esperando horas"
+      ]
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/balao-conversa.png",
+      "texto": "A pergunta chega *no meio do almoço*.",
+      "apoio": "Horário, preço, endereço."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Salão Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Oi! Tem horário amanhã à tarde para corte?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Oi! Sou a Aurora, atendente de IA do salão. Posso passar seu pedido para a equipe confirmar o horário. Pode ser?"
+        }
+      ]
+    },
+    {
+      "tipo": "comparar",
+      "esquerda": {
+        "titulo": "Sem a Aurora",
+        "itens": [
+          "Resposta só quando der"
+        ]
+      },
+      "direita": {
+        "titulo": "Com a Aurora",
+        "itens": [
+          "Resposta em segundos"
+        ]
+      }
+    }
+  ]
+}
