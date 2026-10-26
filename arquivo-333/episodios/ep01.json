@@ -1,0 +1,347 @@
+{
+  "id": "o-sinal-ep01",
+  "serie": "O Sinal",
+  "episodio": 1,
+  "titulo": "3h33",
+  "narracao": "narracao/ep01-v2.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261026_192231_d31da6df-255a-465b-b346-3c87c5357584.mp3",
+  "voz": "Gideon (Eleven v4, estabilidade 0.4)",
+  "formato": "3D desenho em código (motor3d), 26/10/2026",
+  "publicar": {
+    "data": "2026-10-26",
+    "hora": "20:00",
+    "publicado": true,
+    "capaEm": 38.5,
+    "legenda": "Às 3h33, todos os celulares do Brasil receberam a mesma mensagem: \"Não olhe pela janela.\" 📼\n\nO Sinal, episódio 1.\nEpisódio 2 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "cidade_aerea",
+          "fachadas_celulares",
+          "torre_aproxima"
+        ],
+        "pesos": [
+          1.1,
+          1,
+          1
+        ]
+      },
+      "entrada": "preto",
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "CELULARES VIBRANDO",
+          "de": 0,
+          "ate": 214000000,
+          "em": 2.2,
+          "fim": 4.6
+        }
+      ],
+      "antes": 0.45,
+      "segura": 0.25,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.7
+        ],
+        [
+          "vibrar",
+          0.05,
+          0.9
+        ],
+        [
+          "vibrar",
+          0.3,
+          0.4,
+          -0.6
+        ],
+        [
+          "vibrar",
+          0.5,
+          0.4,
+          0.6
+        ],
+        [
+          "vibrar",
+          0.7,
+          0.3,
+          -0.3
+        ]
+      ],
+      "fala": "Às três e trinta e três da manhã... todos os celulares do Brasil vibraram ao mesmo tempo.",
+      "legenda": "Às *3h33* da manhã, *todos* os celulares do Brasil vibraram ao mesmo tempo."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_lado",
+          "quarto_rosto"
+        ]
+      },
+      "antes": 0.1,
+      "segura": 0.25,
+      "sons": [
+        [
+          "trovao",
+          0.4,
+          0.45
+        ]
+      ],
+      "fala": "A Marina ainda estava acordada. Achou que fosse um alerta de enchente.",
+      "legenda": "A Marina ainda estava acordada. Achou que fosse um alerta de enchente."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_mensagem"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Remetente desconhecido",
+          "texto": "Nova mensagem",
+          "em": 0.2,
+          "y": 380
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.45,
+      "sons": [
+        [
+          "notificacao2",
+          0.2,
+          0.6
+        ]
+      ],
+      "fala": "Mas a mensagem não tinha remetente. Só quatro palavras.",
+      "legenda": "Mas a mensagem não tinha *remetente.* Só *quatro* palavras."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "janela_costas"
+        ]
+      },
+      "entrada": "glitch",
+      "semLegenda": true,
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "Não olhe pela janela.",
+          "em": 0.35,
+          "ate": 2.1
+        },
+        {
+          "tipo": "relampago",
+          "em": 2.75
+        }
+      ],
+      "antes": 0.35,
+      "segura": 1,
+      "sons": [
+        [
+          "impacto",
+          "voz",
+          1
+        ],
+        [
+          "glitch",
+          "voz",
+          0.5
+        ],
+        [
+          "trovao",
+          "fimvoz+0.25",
+          0.8
+        ]
+      ],
+      "fala": "Não olhe... pela janela.",
+      "legenda": "*NÃO OLHE PELA JANELA.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rua_luzes",
+          "aerea_luzes"
+        ],
+        "pesos": [
+          1.1,
+          1
+        ]
+      },
+      "entrada": "flash",
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "JANELAS ACESAS",
+          "de": 0,
+          "ate": 12480,
+          "em": 0.4,
+          "fim": 5
+        }
+      ],
+      "antes": 0.2,
+      "segura": 0.3,
+      "sons": [
+        [
+          "whoosh",
+          0,
+          0.35
+        ]
+      ],
+      "fala": "Em poucos segundos, as luzes de todos os prédios da rua começaram a acender.",
+      "legenda": "Em poucos segundos, as luzes de *todos* os prédios da rua começaram a acender."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "celular_vibra"
+        ]
+      },
+      "antes": 0.35,
+      "segura": 0.3,
+      "sons": [
+        [
+          "vibrar",
+          0.05,
+          1
+        ],
+        [
+          "vibrar",
+          0.75,
+          0.8
+        ]
+      ],
+      "fala": "Aí o celular dela vibrou de novo.",
+      "legenda": "Aí o celular dela vibrou *de novo.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Remetente desconhecido",
+          "texto": "Marina.",
+          "em": 0.15,
+          "y": 300
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [
+        [
+          "notificacao2",
+          0.15,
+          0.55
+        ],
+        [
+          "grave",
+          "voz+1.4",
+          0.6
+        ]
+      ],
+      "fala": "Uma segunda mensagem. Dessa vez... com o nome dela.",
+      "legenda": "Uma segunda mensagem. Dessa vez, com o *nome dela.*"
+    },
+    {
+      "visual": {
+        "tipo": "fotoRecebida",
+        "arquivo": "cenas/3d/foto_janela.png",
+        "legendaFoto": "FOTO RECEBIDA · 3:34"
+      },
+      "antes": 0.2,
+      "segura": 0.4,
+      "sons": [
+        [
+          "obturador",
+          0.05,
+          0.9
+        ],
+        [
+          "carimbo",
+          "fimvoz-0.6",
+          0.5
+        ]
+      ],
+      "fala": "E uma foto. Da janela dela. Tirada do lado de fora.",
+      "legenda": "E uma foto. Da janela dela. Tirada do *lado de fora.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "recuo_12"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ALTURA DA JANELA",
+          "de": 0,
+          "ate": 36,
+          "sufixo": " m",
+          "em": 1.6,
+          "fim": 3.4
+        }
+      ],
+      "antes": 0.5,
+      "segura": 1.7,
+      "sons": [
+        [
+          "subida",
+          0,
+          0.55
+        ],
+        [
+          "impacto",
+          "fimvoz+0.1",
+          1
+        ],
+        [
+          "grave",
+          "fimvoz+0.1",
+          0.8
+        ]
+      ],
+      "fala": "A Marina mora no décimo segundo andar.",
+      "legenda": "A Marina mora no *12º andar.*"
+    },
+    {
+      "visual": {
+        "tipo": "final"
+      },
+      "semLegenda": true,
+      "antes": 0.3,
+      "segura": 1.3,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          1.6,
+          0.7
+        ]
+      ],
+      "fala": "Episódio dois, amanhã. Siga o Arquivo três e trinta e três.",
+      "legenda": "Episódio 2 amanhã. Siga o *Arquivo 3:33.*"
+    }
+  ]
+}

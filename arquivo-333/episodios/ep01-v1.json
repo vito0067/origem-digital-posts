@@ -1,0 +1,79 @@
+{
+  "id": "o-sinal-ep01",
+  "serie": "O Sinal",
+  "episodio": 1,
+  "titulo": "3h33",
+  "narracao": "narracao/ep01.mp3",
+  "cenas": [
+    {
+      "visual": "relogio",
+      "antes": 0.15,
+      "segura": 0.35,
+      "fala": "Às três e trinta e três da manhã, todos os celulares do Brasil vibraram ao mesmo tempo.",
+      "legenda": "Às *3h33* da manhã, *todos* os celulares do Brasil vibraram ao mesmo tempo."
+    },
+    {
+      "visual": "quarto",
+      "antes": 0.1,
+      "segura": 0.3,
+      "fala": "Eu estava acordada. Achei que era um alerta de enchente.",
+      "legenda": "Eu estava acordada. Achei que era um alerta de enchente."
+    },
+    {
+      "visual": "notificacao",
+      "antes": 0.15,
+      "segura": 0.55,
+      "fala": "Mas a mensagem não tinha remetente. Só quatro palavras.",
+      "legenda": "Mas a mensagem não tinha *remetente.* Só *quatro* palavras."
+    },
+    {
+      "visual": "mensagem",
+      "antes": 0.35,
+      "segura": 1,
+      "fala": "Não olhe pela janela.",
+      "legenda": "*NÃO OLHE PELA JANELA.*"
+    },
+    {
+      "visual": "rua",
+      "antes": 0.25,
+      "segura": 0.35,
+      "fala": "Em poucos segundos, as luzes de todos os prédios da rua começaram a acender.",
+      "legenda": "Em poucos segundos, as luzes de *todos* os prédios da rua começaram a acender."
+    },
+    {
+      "visual": "vibra",
+      "antes": 0.3,
+      "segura": 0.3,
+      "fala": "Então o meu celular vibrou de novo.",
+      "legenda": "Então o meu celular vibrou *de novo.*"
+    },
+    {
+      "visual": "nome",
+      "antes": 0.15,
+      "segura": 0.35,
+      "fala": "Uma segunda mensagem. Dessa vez, com o meu nome.",
+      "legenda": "Uma segunda mensagem. Dessa vez, com o *meu nome.*"
+    },
+    {
+      "visual": "foto",
+      "antes": 0.2,
+      "segura": 0.5,
+      "fala": "E uma foto. Da minha janela. Tirada do lado de fora.",
+      "legenda": "E uma foto. Da minha janela. Tirada do *lado de fora.*"
+    },
+    {
+      "visual": "predio",
+      "antes": 0.6,
+      "segura": 1.6,
+      "fala": "Eu moro no décimo segundo andar.",
+      "legenda": "Eu moro no *12º andar.*"
+    },
+    {
+      "visual": "final",
+      "antes": 0.3,
+      "segura": 0.6,
+      "fala": "Episódio dois, amanhã. Siga o Arquivo três e trinta e três.",
+      "legenda": "Episódio 2 amanhã. Siga o *Arquivo 3:33.*"
+    }
+  ]
+}

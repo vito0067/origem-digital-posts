@@ -1,0 +1,21 @@
+# gerados ou pesados (ficam só no computador)
+node_modules
+saida/
+testes/
+public/ep/
+public/narracao/
+public/cenas/
+*.log
+# do three.js só vão para o GitHub os arquivos que o motor usa
+vendor/three/*
+!vendor/three/LICENSE
+!vendor/three/build/
+vendor/three/build/*
+!vendor/three/build/three.module.js
+!vendor/three/examples/
+vendor/three/examples/*
+!vendor/three/examples/jsm/
+vendor/three/examples/jsm/*
+!vendor/three/examples/jsm/geometries/
+vendor/three/examples/jsm/geometries/*
+!vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js

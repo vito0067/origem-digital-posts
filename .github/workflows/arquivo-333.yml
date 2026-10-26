@@ -1,0 +1,60 @@
+# Arquivo 3:33: quando um episódio novo (ou alterado) entra em arquivo-333/episodios/, renderiza o vídeo 3D,
+# sobe a cópia leve, a capa e a folha de revisão num release (arquivo-<id>) e anota em arquivo-333/publicacao/render/.
+# O n8n lê a agenda (render/agenda.json) para publicar no Instagram às 20h.
+name: Arquivo 3:33 · renderizar episódios
+
+on:
+  push:
+    branches: [main]
+    paths: ["arquivo-333/episodios/**"]
+  workflow_dispatch:
+    inputs:
+      episodio:
+        description: "Episódio para renderizar de novo (ex.: ep02). Vazio = só os que mudaram."
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: arquivo-333
+  cancel-in-progress: false
+
+jobs:
+  renderizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: ffmpeg e fontes
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-liberation
+
+      - name: Instalar
+        run: npm ci --no-audit --no-fund
+
+      - name: Renderizar
+        id: render
+        working-directory: arquivo-333
+        env:
+          GL: swangle
+          CONC: "4"
+          GH_TOKEN: ${{ github.token }}
+          FORCAR: ${{ inputs.episodio }}
+        run: node ferramentas/nuvem.mjs
+
+      - name: Guardar o resultado
+        if: always()
+        run: |
+          git config user.name "arquivo-333"
+          git config user.email "arquivo-333@users.noreply.github.com"
+          git add arquivo-333/publicacao/render
+          git diff --cached --quiet && exit 0
+          git commit -m "Arquivo 3:33: renderizado ${{ steps.render.outputs.feitos }}"
+          git pull --rebase origin main
+          git push origin HEAD:main
