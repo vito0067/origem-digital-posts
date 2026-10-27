@@ -4,15 +4,15 @@
 - **O horário:** as mensagens chegam sempre num minuto que termina em 33 (3h33, 4h33…) e vêm de um "Remetente desconhecido".
 - **Quem olha é visto:** quem olha pela janela à noite passa a ser fotografado de fora, do alto, onde não existe prédio nem drone.
 - **O remetente sabe o nome de todo mundo.** Ninguém descobre quem é antes do último episódio.
-- **A Marina é a protagonista:** 28 anos, mora sozinha no apto 1203, 12º andar, num prédio da Zona Oeste de São Paulo. Aparece sempre igual (moletom cinza, calça azul-marinho, cabelo castanho ondulado no ombro). Na Higgsfield ela é o elemento "Marina-333".
+- **A Marina é a protagonista:** 28 anos, mora sozinha no apto 1203, 12º andar, do **Ed. Mirante**, de frente para um parque, na Zona Oeste de São Paulo. Aparece sempre igual (moletom cinza, calça azul-marinho, cabelo castanho chanel). No motor 3D ela é `APARENCIAS.marina`.
 - **Quem narra é o Arquivista (desde 26/10/2026):** voz masculina grave (Gideon, Eleven v4), em terceira pessoa ("A Marina...", "ela..."). Nunca "eu".
 - **Personagens fixos:**
   - Seu Álvaro, do 1201: aposentado e curioso.
   - Dona Cida, a síndica: manda áudio no grupo do prédio.
   - Rafa, o porteiro da noite.
   - Bia, do 1102: estudante e a mais corajosa.
-- **Cenas em 3D, em terceira pessoa:** imagens e vídeos curtos gerados na Higgsfield (estilo filme de animação 3D sombrio, azul-noite com luzes quentes). Mensagens e anotações ("12º ANDAR") entram por cima, feitas em código. O remetente nunca aparece.
-- **Reaproveitar cenários:** a torre por fora (cenas/ep01/s8, v8), o quarto (s2, s3, s4), a rua (s5, v5) e a cidade (s1, v1) servem para os próximos episódios; cada episódio novo gera só 2 a 4 imagens e 1 ou 2 vídeos.
+- **Cenas em 3D feitas em código** (motor3d, desde 26/10/2026; nada de imagem de IA). Cenários prontos: a cidade com a torre e o parque, o quarto dela e a portaria (com o Rafa, o elevador e as portas de vidro). Personagens prontos: Marina, Rafa, Bia, Seu Álvaro e Dona Cida. O remetente nunca aparece. Os próximos cenários do arco: o corredor do 12º (portas 1201 a 1204, elevador), a escada, o 13º andar e o quarto igual ao dela.
+- **Como fazer:** skill `arquivo-333` (`.claude/skills/arquivo-333/` no repositório).
 
 ## Formato de cada episódio
 - **Tamanho:** de 9 a 11 falas e de 40 a 55 segundos.
@@ -35,7 +35,12 @@
 11. **Remetente.** O remetente pede uma coisa em troca de abrir as portas: "Olhe pela janela." Gancho: ela olha.
 12. **3h34.** O que ela vê fecha a temporada e abre a 2ª, já anunciando a próxima série.
 
-## Episódio 2: roteiro pronto (já em terceira pessoa)
+## Episódios feitos
+- **Ep. 1 · 3h33** (26/10/2026): ver `episodios/ep01.json`.
+- **Ep. 2 · Quem tirou a foto** (agendado para 27/10/2026): a foto foi tirada do ar, a 36 m em cima do parque; o grupo do Ed. Mirante tem 40 mensagens e todo mundo recebeu foto da própria janela; a Dona Cida pede para ninguém abrir a cortina; o Rafa manda áudio: "as portas do prédio trancaram sozinhas. Ninguém sai." Ver `episodios/ep02.json`.
+- **Próximo: Ep. 3 · Portas** (28/10/2026): seguir o arco acima (ninguém sai, o elevador para no 12º, o sinal some menos o do remetente, "Amanhã, às 3h33, um de vocês vai olhar", e a luz do 1201 acende com a cortina abrindo).
+
+## (Histórico) Roteiro original do episódio 2, antes da versão final
 Falas, cada uma separada por três quebras de linha na gravação:
 1. Às três e trinta e três, todo mundo recebeu a mesma mensagem. Mas a Marina recebeu uma foto da própria janela.
 2. Ela ampliou a foto. Tinha sido tirada de frente pro décimo segundo andar.

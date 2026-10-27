@@ -4,6 +4,7 @@ import React, { useLayoutEffect, useRef } from "react";
 import { continueRender, delayRender } from "remotion";
 import * as THREE from "three";
 import { Cidade, Quarto } from "./cenario";
+import { Portaria } from "./portaria";
 import { PLANOS, type Mundo } from "./planos";
 
 type Estado = Mundo & { renderer: any; camera: any };
@@ -18,7 +19,7 @@ function mundo(): Estado {
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.domElement.style.width = "100%"; renderer.domElement.style.height = "100%";
-  ESTADO = { renderer, camera: new THREE.PerspectiveCamera(40, W / H, 0.03, 900), cidade: new Cidade(), quarto: new Quarto() };
+  ESTADO = { renderer, camera: new THREE.PerspectiveCamera(40, W / H, 0.03, 900), cidade: new Cidade(), quarto: new Quarto(), portaria: new Portaria() };
   return ESTADO;
 }
 
@@ -31,12 +32,13 @@ export const Mundo3D: React.FC<{ plano: string; s: number; dur: number }> = ({ p
       if (ref.current && m.renderer.domElement.parentElement !== ref.current) ref.current.appendChild(m.renderer.domElement);
       const fn = PLANOS[plano];
       if (!fn) throw new Error(`plano desconhecido: ${plano}`);
+      m.cidade.padrao(); m.quarto.padrao(); m.portaria.padrao();
       const t = fn(s, dur, m);
       const cam = m.camera;
       cam.fov = t.fov ?? 60; cam.position.set(...t.pos); cam.up.set(0, 1, 0); cam.lookAt(...t.alvo);
       if (t.rolar) cam.rotateZ(t.rolar);
       cam.updateProjectionMatrix();
-      m.renderer.render(t.cena === "cidade" ? m.cidade.cena : m.quarto.cena, cam);
+      m.renderer.render(t.cena === "cidade" ? m.cidade.cena : t.cena === "portaria" ? m.portaria.cena : m.quarto.cena, cam);
     } finally {
       continueRender(h);
     }

@@ -1,6 +1,6 @@
 # Arquivo 3:33: quando um episódio novo (ou alterado) entra em arquivo-333/episodios/, renderiza o vídeo 3D,
 # sobe a cópia leve, a capa e a folha de revisão num release (arquivo-<id>) e anota em arquivo-333/publicacao/render/.
-# O n8n lê a agenda (render/agenda.json) para publicar no Instagram às 20h.
+# Depois põe no GitHub Pages os vídeos dos próximos dias (docs/arquivo/), que o n8n usa para publicar no Instagram às 20h.
 name: Arquivo 3:33 · renderizar episódios
 
 on:
@@ -15,14 +15,15 @@ on:
 
 permissions:
   contents: write
-
-concurrency:
-  group: arquivo-333
-  cancel-in-progress: false
+  pages: write
+  id-token: write
 
 jobs:
   renderizar:
     runs-on: ubuntu-latest
+    concurrency:
+      group: arquivo-333
+      cancel-in-progress: false
     timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
@@ -58,3 +59,30 @@ jobs:
           git commit -m "Arquivo 3:33: renderizado ${{ steps.render.outputs.feitos }}"
           git pull --rebase origin main
           git push origin HEAD:main
+
+  pages:
+    # mesmo grupo da fábrica de posts: as duas publicam o mesmo Pages, uma de cada vez
+    needs: renderizar
+    if: always()
+    runs-on: ubuntu-latest
+    concurrency:
+      group: posts
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.publicar.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - uses: actions/configure-pages@v5
+      - name: Vídeos do Arquivo no Pages
+        run: node arquivo-333/ferramentas/pages.mjs
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: publicar
+        uses: actions/deploy-pages@v4

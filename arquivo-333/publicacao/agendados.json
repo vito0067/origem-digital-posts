@@ -1,0 +1,17 @@
+{
+  "_como_usar": "Uma linha por episódio. Quem agenda ou publica em uma rede anota aqui (data e hora de Brasília) e dá push. 'pendente' = ainda falta. O n8n anota o Instagram sozinho no futuro.",
+  "o-sinal-ep01": {
+    "data": "2026-10-26",
+    "tiktok": "publicado 26/10 19h58",
+    "youtube": "publicado 26/10 ~20h (https://youtube.com/shorts/ki8Qvkp93Zs)",
+    "instagram": "publicado 26/10 ~20h",
+    "youtubeRelacionado": "pendente"
+  },
+  "o-sinal-ep02": {
+    "data": "2026-10-27",
+    "tiktok": "agendado 27/10 20h00",
+    "youtube": "agendado 27/10 20h00 (na playlist O Sinal)",
+    "instagram": "pendente",
+    "youtubeRelacionado": "pendente"
+  }
+}

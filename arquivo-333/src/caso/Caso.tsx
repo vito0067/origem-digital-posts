@@ -1,15 +1,17 @@
-// Formato novo do Arquivo 3:33 (26/10/2026): cenas 3D em terceira pessoa (imagens e vídeos da Higgsfield),
-// câmera e cortes feitos aqui, legenda palavra por palavra, etiqueta de "arquivo" e cartão final datilografado.
+// Formato do Arquivo 3:33 (desde 26/10/2026): cenas 3D em terceira pessoa feitas em código (motor3d), cortes em
+// "chicote" entre os planos, legenda palavra por palavra, medidas na tela, etiqueta de "arquivo" e cartão final datilografado.
 import React, { useMemo } from "react";
 import { AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame } from "remotion";
 import { loadFont as carregarElite } from "@remotion/google-fonts/SpecialElite";
 import { loadFont as carregarAnton } from "@remotion/google-fonts/Anton";
+import { loadFont as carregarInter } from "@remotion/google-fonts/Inter";
 import { FPS, q } from "../serie/tempo";
 import { Mundo3D } from "../motor3d/Mundo3D";
 
 export const ELITE = carregarElite("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
 export const ANTON = carregarAnton("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
-const UI = "'Segoe UI', Arial, sans-serif";
+export const INTER = carregarInter("normal", { weights: ["400", "700"], subsets: ["latin"] }).fontFamily;
+const UI = `${INTER}, Arial, sans-serif`;
 const COR = { vermelho: "#FF3B3B", amarelo: "#FFD23F", texto: "#F5F7FA", papel: "#E9E2D0" };
 
 const lim = (x: number, a = 0, b = 1) => Math.max(a, Math.min(b, x));
@@ -29,7 +31,10 @@ export type Extra =
   | { tipo: "remendo"; x: number; y: number; w: number; h: number; texto: string }
   | { tipo: "marcador"; x: number; y: number; texto: string; sub?: string; em: number }
   | { tipo: "relampago"; em: number }
-  | { tipo: "dado"; rotulo: string; de: number; ate: number; em: number; fim?: number; sufixo?: string; y?: number };
+  | { tipo: "dado"; rotulo: string; de: number; ate: number; em: number; fim?: number; sufixo?: string; y?: number }
+  | { tipo: "visor"; em: number; ate?: number; texto?: string }
+  | { tipo: "grupo"; nome: string; sub?: string; em: number; intervalo?: number; mensagens: { de: string; texto: string; foto?: boolean; eu?: boolean }[] }
+  | { tipo: "audio"; de: string; em: number; dur: number; y?: number };
 export type Palavra = { w: string; em: number };
 export type Bloco = { palavras: Palavra[]; de: number; ate: number };
 export type CenaT = { visual: Visual; extras?: Extra[]; entrada?: "corte" | "flash" | "glitch" | "preto"; semLegenda?: boolean;
@@ -142,6 +147,93 @@ const Dado: React.FC<{ e: Extract<Extra, { tipo: "dado" }>; s: number }> = ({ e,
   );
 };
 
+/** Visor de câmera fotográfica: cantos, mira, REC piscando, hora e zoom (para "a foto foi tirada daqui"). */
+const Visor: React.FC<{ e: Extract<Extra, { tipo: "visor" }>; s: number }> = ({ e, s }) => {
+  if (s < e.em || (e.ate !== undefined && s > e.ate)) return null;
+  const d = s - e.em, entra = saida(d / 0.25), foco = 1 - saida(d / 0.6);
+  const seg = 7 + Math.floor(d), hora = `03:34:${String(seg).padStart(2, "0")}`;
+  const canto = (x: number, y: number, dx: number, dy: number) => <path d={`M ${x + dx * 90} ${y} L ${x} ${y} L ${x} ${y + dy * 90}`} stroke="#fff" strokeWidth={7} fill="none" />;
+  return (
+    <AbsoluteFill style={{ opacity: entra }}>
+      <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
+        {canto(90, 330, 1, 1)}{canto(990, 330, -1, 1)}{canto(90, 1560, 1, -1)}{canto(990, 1560, -1, -1)}
+        <rect x={540 - 120 - 120 * foco} y={945 - 90 - 90 * foco} width={240 + 240 * foco} height={180 + 180 * foco} stroke={foco < 0.05 ? "#4cff7a" : "#fff"} strokeWidth={5} fill="none" />
+        <line x1={540} y1={905} x2={540} y2={985} stroke="#fff" strokeWidth={3} opacity={0.7} /><line x1={500} y1={945} x2={580} y2={945} stroke="#fff" strokeWidth={3} opacity={0.7} />
+        {Math.floor(s * 2) % 2 === 0 && <circle cx={150} cy={400} r={16} fill={COR.vermelho} />}
+      </svg>
+      <div style={{ position: "absolute", left: 180, top: 380, fontFamily: ELITE, fontSize: 40, color: "#fff" }}>REC</div>
+      <div style={{ position: "absolute", right: 120, top: 380, fontFamily: ELITE, fontSize: 40, color: "#fff" }}>{hora}</div>
+      {e.texto && <div style={{ position: "absolute", left: 0, right: 0, top: 470, textAlign: "center", fontFamily: ELITE, fontSize: 44, color: "#fff", letterSpacing: 4, textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}>{e.texto}</div>}
+    </AbsoluteFill>
+  );
+};
+
+/** O grupo do prédio: um cartão de conversa em perspectiva, com as mensagens chegando uma a uma. */
+const Grupo: React.FC<{ e: Extract<Extra, { tipo: "grupo" }>; s: number }> = ({ e, s }) => {
+  const f = Math.round((s - e.em) * FPS);
+  if (f < 0) return null;
+  const m = spring({ frame: f, fps: FPS, config: { damping: 16, stiffness: 120, mass: 0.9 } });
+  const passo = e.intervalo ?? 0.32, n = Math.min(e.mensagens.length, Math.floor((s - e.em - 0.25) / passo) + 1);
+  const visiveis = e.mensagens.slice(0, Math.max(0, n)).slice(-3);
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: 330, display: "flex", justifyContent: "center", perspective: 1600 }}>
+      <div style={{ width: 800, borderRadius: 36, overflow: "hidden", background: "rgba(11,20,26,0.93)", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 40px 100px rgba(0,0,0,0.7)",
+        transform: `translateY(${(1 - m) * 120}px) rotateX(${6 - 3 * m}deg) rotateY(${-12 + 5 * m}deg) scale(${0.86 + 0.14 * m})`, opacity: lim(m * 1.4) }}>
+        <div style={{ padding: "24px 30px", background: "#1f2c34", display: "flex", gap: 20, alignItems: "center" }}>
+          <div style={{ width: 70, height: 70, borderRadius: 35, background: "#3b4a54", color: "#cfd8dc", fontFamily: UI, fontWeight: 700, fontSize: 34, display: "flex", alignItems: "center", justifyContent: "center" }}>ED</div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{ fontFamily: UI, fontWeight: 700, fontSize: 38, color: "#e9edef" }}>{e.nome}</span>
+            {e.sub && <span style={{ fontFamily: UI, fontSize: 28, color: "#8696a0" }}>{e.sub}</span>}
+          </div>
+        </div>
+        <div style={{ padding: "18px 24px 26px", display: "flex", flexDirection: "column", gap: 14, height: e.mensagens.length > 2 ? 600 : undefined, overflow: "hidden", justifyContent: "flex-end" }}>
+          {visiveis.map((msg, i) => {
+            const k = e.mensagens.indexOf(msg), chega = saida((s - e.em - 0.25 - k * passo) / 0.18);
+            return (
+              <div key={k} style={{ alignSelf: msg.eu ? "flex-end" : "flex-start", maxWidth: 600, background: msg.eu ? "#005c4b" : "#202c33", borderRadius: 18, padding: "12px 20px",
+                transform: `translateY(${(1 - chega) * 30}px) scale(${0.9 + 0.1 * chega})`, opacity: chega }}>
+                <div style={{ fontFamily: UI, fontWeight: 700, fontSize: 27, color: "#53bdeb", marginBottom: 4 }}>{msg.de}</div>
+                {msg.foto && <div style={{ width: 260, height: 110, borderRadius: 10, marginBottom: 8, background: "linear-gradient(160deg, #2b3a55, #0e1422)", position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", left: 105, top: 30, width: 50, height: 42, background: "#ffcf7a", boxShadow: "0 0 20px rgba(255,200,120,0.6)" }} />
+                  <div style={{ position: "absolute", inset: 0, border: "4px solid rgba(255,59,59,0.8)", borderRadius: 10 }} /></div>}
+                <div style={{ fontFamily: UI, fontSize: 33, color: "#e9edef" }}>{msg.texto}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/** Áudio de WhatsApp tocando: bolha com play, ondinha que vai sendo "ouvida" e o tempo. */
+const AudioMsg: React.FC<{ e: Extract<Extra, { tipo: "audio" }>; s: number }> = ({ e, s }) => {
+  const f = Math.round((s - e.em) * FPS);
+  if (f < 0) return null;
+  const m = spring({ frame: f, fps: FPS, config: { damping: 15, stiffness: 140 } });
+  const prog = lim((s - e.em - 0.2) / e.dur), barras = 34;
+  const alt = (k: number) => 14 + 46 * Math.abs(Math.sin(k * 1.7) * Math.cos(k * 0.6 + 1));
+  const seg = Math.floor(prog * e.dur);
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: e.y ?? 380, display: "flex", justifyContent: "center", perspective: 1400 }}>
+      <div style={{ width: 820, padding: "26px 30px", borderRadius: 30, background: "rgba(32,44,51,0.95)", boxShadow: "0 30px 80px rgba(0,0,0,0.6)",
+        transform: `translateY(${(1 - m) * 80}px) rotateY(${-10 + 4 * m}deg) scale(${0.88 + 0.12 * m})`, opacity: lim(m * 1.4) }}>
+        <div style={{ fontFamily: UI, fontWeight: 700, fontSize: 30, color: "#53bdeb", marginBottom: 14 }}>{e.de}</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
+          <div style={{ width: 0, height: 0, borderTop: "26px solid transparent", borderBottom: "26px solid transparent", borderLeft: "40px solid #d1d7db", marginLeft: 8 }} />
+          <div style={{ display: "flex", alignItems: "center", gap: 7, height: 70, flex: 1 }}>
+            {Array.from({ length: barras }, (_, k) => {
+              const tocando = k / barras < prog, viva = tocando && k / barras > prog - 0.12;
+              return <div key={k} style={{ width: 10, borderRadius: 5, height: alt(k) * (viva ? 1 + 0.25 * Math.sin(s * 30 + k) : 1), background: tocando ? "#53bdeb" : "#8696a0" }} />;
+            })}
+          </div>
+          <div style={{ fontFamily: UI, fontSize: 28, color: "#8696a0", width: 70 }}>0:{String(seg).padStart(2, "0")}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Relampago: React.FC<{ e: Extract<Extra, { tipo: "relampago" }>; s: number }> = ({ e, s }) => {
   const d = s - e.em;
   if (d < 0 || d > 0.6) return null;
@@ -174,15 +266,15 @@ const FotoRecebida: React.FC<{ v: Visual; s: number; dur: number }> = ({ v, s, d
 const Final: React.FC<{ s: number; episodio: number }> = ({ s, episodio }) => {
   const tipo = (txt: string, em: number, vel = 22) => txt.slice(0, Math.max(0, Math.floor((s - em) * vel)));
   const piscar = Math.floor(s * 3) % 2 === 0;
-  const selo = spring({ frame: Math.round((s - 1.6) * FPS), fps: FPS, config: { damping: 9, stiffness: 160 } });
+  const selo = spring({ frame: Math.round((s - 0.9) * FPS), fps: FPS, config: { damping: 9, stiffness: 160 } });
   return (
     <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 40%, #121826 0%, #05070C 70%)", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-      <div style={{ fontFamily: ELITE, fontSize: 40, color: "#9AA6BF", letterSpacing: 10, marginBottom: 18 }}>{tipo("CASO 01 · O SINAL", 0.05, 30)}</div>
+      <div style={{ fontFamily: ELITE, fontSize: 40, color: "#9AA6BF", letterSpacing: 10, marginBottom: 18 }}>{tipo("CASO 01 · O SINAL", 0, 60)}</div>
       <div style={{ fontFamily: ANTON, fontSize: 176, lineHeight: 1, color: COR.texto, letterSpacing: 2 }}>
         ARQUIVO <span style={{ color: COR.vermelho, textShadow: "0 0 40px rgba(255,59,59,0.8)" }}>3:33</span>
       </div>
       <div style={{ marginTop: 60, fontFamily: ELITE, fontSize: 58, color: COR.papel, minHeight: 70 }}>
-        {tipo(`Episódio ${episodio + 1} amanhã, 20h`, 0.5)}<span style={{ opacity: piscar ? 1 : 0 }}>▌</span>
+        {tipo(`Episódio ${episodio + 1} amanhã, 20h`, 0.25, 40)}<span style={{ opacity: piscar ? 1 : 0 }}>▌</span>
       </div>
       <div style={{ marginTop: 70, transform: `scale(${0.6 + 0.4 * selo}) rotate(-4deg)`, opacity: lim(selo * 2), border: `5px solid ${COR.vermelho}`, padding: "10px 34px", fontFamily: ANTON, fontSize: 64, color: COR.vermelho, letterSpacing: 6 }}>
         SIGA PARA NÃO PERDER
@@ -287,7 +379,12 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
     const planos = v.planos ?? [], pesos = v.pesos ?? planos.map(() => 1), total = pesos.reduce((a, b) => a + b, 0);
     let ini = 0, k = 0;
     while (k < planos.length - 1 && s >= ini + (pesos[k] / total) * dur) { ini += (pesos[k] / total) * dur; k++; }
-    fundo = <Mundo3D plano={planos[k]} s={s - ini} dur={(pesos[k] / total) * dur} />;
+    const local = s - ini, chicote = k > 0 ? 1 - saida(local / 0.2) : 0, lado = k % 2 ? -1 : 1;
+    fundo = (
+      <AbsoluteFill style={{ transform: `translateX(${lado * 160 * chicote}px) scale(${1 + 0.08 * chicote})`, filter: chicote > 0.01 ? `blur(${18 * chicote}px)` : undefined }}>
+        <Mundo3D plano={planos[k]} s={local} dur={(pesos[k] / total) * dur} />
+      </AbsoluteFill>
+    );
   }
   else fundo = (
     <Camera v={v} s={s} dur={dur}>
@@ -306,7 +403,10 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
         e.tipo === "textao" ? <Textao key={i} e={e} s={s} /> :
         e.tipo === "marcador" ? <Marcador key={i} e={e} s={s} /> :
         e.tipo === "relampago" ? <Relampago key={i} e={e} s={s} /> :
-        e.tipo === "dado" ? <Dado key={i} e={e} s={s} /> : null)}
+        e.tipo === "dado" ? <Dado key={i} e={e} s={s} /> :
+        e.tipo === "visor" ? <Visor key={i} e={e} s={s} /> :
+        e.tipo === "grupo" ? <Grupo key={i} e={e} s={s} /> :
+        e.tipo === "audio" ? <AudioMsg key={i} e={e} s={s} /> : null)}
       <Entrada tipo={c.entrada} s={s} />
     </AbsoluteFill>
   );

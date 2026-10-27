@@ -5,6 +5,9 @@ import * as THREE from "three";
 export type Aparencia = {
   pele: string; cabelo: string; roupa: string; calca: string; tenis: string;
   penteado?: "chanel" | "curto" | "careca" | "coque"; capuz?: boolean; altura?: number;
+  bone?: string;      // cor do boné (porteiro); sem isso, sem boné
+  bigode?: boolean;   // Seu Álvaro
+  oculos?: boolean;
 };
 export type Pose = {
   cabeca?: [number, number, number];        // rotação x (cima/baixo), y (lados), z (inclinar), em graus
@@ -98,6 +101,17 @@ export class Boneco {
       }
       if (pent === "coque") { const c = esfera(0.11, cabelo, 20); c.position.set(0, 0.3, -0.12); this.cabeca.add(c); }
     }
+    if (a.bone) {
+      const mb = mat(a.bone, { roughness: 0.7 });
+      const copa = new THREE.Mesh(new THREE.SphereGeometry(0.325, 40, 20, 0, Math.PI * 2, 0, Math.PI * 0.45), mb); copa.rotation.x = -0.12; copa.castShadow = true; this.cabeca.add(copa);
+      const aba = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.02, 32, 1, false, -Math.PI / 2, Math.PI), mb); aba.position.set(0, 0.17, 0.21); aba.rotation.x = -0.22; aba.scale.set(1, 1, 1.1); aba.castShadow = true; this.cabeca.add(aba);
+    }
+    if (a.bigode) { const b = new THREE.Mesh(new THREE.CapsuleGeometry(0.028, 0.1, 6, 12), mat(a.cabelo)); b.rotation.z = Math.PI / 2; b.position.set(0, -0.085, 0.29); this.cabeca.add(b); }
+    if (a.oculos) {
+      const mo = mat("#1b1b1f", { roughness: 0.4 });
+      for (const l of [1, -1]) { const aro = new THREE.Mesh(new THREE.TorusGeometry(0.062, 0.009, 8, 24), mo); aro.position.set(0.105 * l, 0.035, 0.3); this.cabeca.add(aro); }
+      const ponte = new THREE.Mesh(new THREE.CylinderGeometry(0.007, 0.007, 0.08, 6), mo); ponte.rotation.z = Math.PI / 2; ponte.position.set(0, 0.045, 0.305); this.cabeca.add(ponte);
+    }
 
     // celular (fica na mão direita; aparece só quando a pose pede)
     this.celular = new THREE.Group();
@@ -146,6 +160,14 @@ export class Boneco {
 
 export const APARENCIAS: Record<string, Aparencia> = {
   marina: { pele: "#c98e6a", cabelo: "#3b2418", roupa: "#9aa3ad", calca: "#1f2a44", tenis: "#e8e8e8", penteado: "chanel" },
+  // Rafa, o porteiro da noite: jaqueta azul-marinho do uniforme e boné
+  rafa: { pele: "#8a5a3c", cabelo: "#16100c", roupa: "#24344f", calca: "#1d2027", tenis: "#121214", penteado: "curto", capuz: false, bone: "#1c2638" },
+  // Bia, do 1102: estudante, moletom vinho, coque
+  bia: { pele: "#e2b48e", cabelo: "#6b2f1a", roupa: "#7a2e3a", calca: "#2b2f3a", tenis: "#f0f0f0", penteado: "coque" },
+  // Seu Álvaro, do 1201: aposentado, cabelo e bigode brancos, óculos, cardigã marrom
+  alvaro: { pele: "#d9a98a", cabelo: "#d6d6d6", roupa: "#6b5843", calca: "#3d3a36", tenis: "#4a3b2c", penteado: "curto", capuz: false, bigode: true, oculos: true, altura: 0.96 },
+  // Dona Cida, a síndica: coque grisalho, blusa verde-escura
+  cida: { pele: "#b8805f", cabelo: "#8d8580", roupa: "#2f5f5a", calca: "#2a2a30", tenis: "#3a3030", penteado: "coque", capuz: false, oculos: true, altura: 0.94 },
 };
 
 // Poses prontas
@@ -153,6 +175,14 @@ export const POSES: Record<string, (t: number) => Pose> = {
   em_pe: (t) => ({ respira: t, bracoE: [0, 0, 6], bracoD: [0, 0, -6] }),
   sentada_celular: (t) => ({ respira: t, cabeca: [18, 0, 0], tronco: [8, 0, 0], pernaE: [-88, 0, 4], pernaD: [-88, 0, -4], joelhoE: 88, joelhoD: 88,
     bracoE: [-48, 0, -14], bracoD: [-52, 0, 18], cotoveloE: 70, cotoveloD: 72 }),
+  // em pé fechando a cortina: braços abertos para a frente, segurando os panos
+  fechando_cortina: (t) => ({ respira: t, cabeca: [4, 0, 0], bracoE: [-82, 0, 38], bracoD: [-82, 0, -38], cotoveloE: 18, cotoveloD: 18 }),
+  // em pé puxando a porta com as duas mãos, corpo para trás
+  puxando_porta: (t) => ({ respira: t, tronco: [-10, 0, 0], cabeca: [6, 0, 0], bracoE: [-78, 0, -6], bracoD: [-78, 0, 6], cotoveloE: 12, cotoveloD: 12,
+    pernaE: [18, 0, 0], pernaD: [-14, 0, 0], joelhoE: 10, joelhoD: 4, olhos: 1.3, sobrancelha: 1 }),
+  // sentado gravando áudio: celular perto da boca
+  gravando_audio: (t) => ({ respira: t, cabeca: [6, 0, 0], tronco: [4, 0, 0], pernaE: [-88, 0, 4], pernaD: [-88, 0, -4], joelhoE: 88, joelhoD: 88,
+    bracoE: [-30, 0, -8], bracoD: [-112, 0, 22], cotoveloE: 50, cotoveloD: 118, olhos: 1.15, sobrancelha: 0.8, boca: "aberta" }),
   sentada_olhando_cima: (t) => ({ respira: t, cabeca: [-10, 0, 0], tronco: [0, 0, 0], pernaE: [-88, 0, 4], pernaD: [-88, 0, -4], joelhoE: 88, joelhoD: 88,
     bracoE: [-30, 0, -10], bracoD: [-34, 0, 12], cotoveloE: 60, cotoveloD: 62, olhos: 1.3 }),
 };

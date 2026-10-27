@@ -1,0 +1,437 @@
+{
+  "id": "o-sinal-ep02",
+  "serie": "O Sinal",
+  "episodio": 2,
+  "titulo": "Quem tirou a foto",
+  "narracao": "narracao/ep02.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261026_234313_26403750-a1ab-4114-8d19-a53a94874762.mp3",
+  "voz": "Gideon (narrador) + Andre (Rafa, no áudio), Eleven v4, estabilidade 0.4",
+  "formato": "3D desenho em código (motor3d), 26/10/2026",
+  "publicar": {
+    "data": "2026-10-27",
+    "hora": "20:00",
+    "capaEm": 31.6,
+    "legenda": "Alguém fotografou a janela dela. De um lugar onde não existe nada. 📼\n\nO Sinal, episódio 2 (o 1 está no perfil).\nEpisódio 3 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "Quem tirou essa foto estava parado no ar | O Sinal, Ep. 2 #shorts",
+    "descricaoYoutube": "Às 3h33, todos receberam a mesma mensagem. A Marina recebeu uma foto da própria janela, tirada de um lugar onde não existe nada.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "foto_janela",
+          "fachadas_celulares",
+          "foto_janela"
+        ],
+        "pesos": [
+          0.75,
+          1.15,
+          1.4
+        ]
+      },
+      "entrada": "corte",
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "ate": 1.95
+        },
+        {
+          "tipo": "visor",
+          "em": 4.95,
+          "texto": "FOTO RECEBIDA · 3:34"
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.25,
+      "sons": [
+        [
+          "obturador",
+          0.05,
+          0.9
+        ],
+        [
+          "grave",
+          0.1,
+          0.6
+        ],
+        [
+          "vibrar",
+          2,
+          0.6
+        ],
+        [
+          "vibrar",
+          2.4,
+          0.4,
+          -0.5
+        ],
+        [
+          "obturador",
+          4.95,
+          1
+        ],
+        [
+          "notificacao2",
+          5.05,
+          0.5
+        ]
+      ],
+      "fala": "Às três e trinta e três, o Brasil inteiro recebeu a mesma mensagem. Mas a Marina recebeu uma foto. Da própria janela.",
+      "legenda": "Às *3h33*, o Brasil inteiro recebeu a mesma mensagem. Mas a Marina recebeu uma *foto.* Da própria *janela.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "foto_zoom"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "texto": "ZOOM 4×"
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "whoosh",
+          0,
+          0.4
+        ]
+      ],
+      "fala": "Ela ampliou a foto. Tinha sido tirada de frente pro décimo segundo andar.",
+      "legenda": "Ela ampliou a foto. Tinha sido tirada de frente pro *12º andar.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "parque_vazio"
+        ]
+      },
+      "entrada": "glitch",
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [
+        [
+          "glitch",
+          0,
+          0.4
+        ],
+        [
+          "grave",
+          "fimvoz-0.6",
+          0.5
+        ]
+      ],
+      "fala": "Só que na frente do prédio dela não tem prédio nenhum. Só o parque.",
+      "legenda": "Só que na frente do prédio dela não tem prédio *nenhum.* Só o parque."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "ponto_no_ar"
+        ]
+      },
+      "entrada": "flash",
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ALTITUDE DE QUEM FOTOGRAFOU",
+          "de": 0,
+          "ate": 36,
+          "sufixo": " m",
+          "em": 3.6,
+          "fim": 4.9
+        }
+      ],
+      "antes": 0.2,
+      "segura": 0.6,
+      "sons": [
+        [
+          "obturador",
+          0.05,
+          1
+        ],
+        [
+          "subida",
+          0.4,
+          0.5
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          0.9
+        ]
+      ],
+      "fala": "Quem tirou aquela foto... estava parado no ar. A trinta e seis metros do chão.",
+      "legenda": "Quem tirou aquela foto estava *parado no ar.* A *36 metros* do chão."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_grupo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "sub": "40 mensagens novas",
+          "em": 0.3,
+          "intervalo": 0.38,
+          "mensagens": [
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "gente vcs receberam isso??",
+              "foto": true
+            },
+            {
+              "de": "Ap 804",
+              "texto": "a minha também",
+              "foto": true
+            },
+            {
+              "de": "Ap 1201 · Seu Álvaro",
+              "texto": "Quem está fazendo essa brincadeira?"
+            },
+            {
+              "de": "Ap 503",
+              "texto": "é a MINHA janela",
+              "foto": true
+            },
+            {
+              "de": "Ap 1401",
+              "texto": "tiraram agora??",
+              "foto": true
+            }
+          ]
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "notificacao2",
+          0.55,
+          0.42
+        ],
+        [
+          "notificacao2",
+          0.93,
+          0.42
+        ],
+        [
+          "notificacao2",
+          1.31,
+          0.42
+        ],
+        [
+          "notificacao2",
+          1.69,
+          0.42
+        ],
+        [
+          "notificacao2",
+          2.07,
+          0.42
+        ]
+      ],
+      "fala": "Ela abriu o grupo do prédio. Quarenta mensagens.",
+      "legenda": "Ela abriu o grupo do prédio. *40* mensagens."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "fachada_fotos"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "JANELAS FOTOGRAFADAS",
+          "de": 0,
+          "ate": 56,
+          "em": 0.2,
+          "fim": 3.2
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [
+        [
+          "obturador",
+          0.3,
+          0.6
+        ],
+        [
+          "obturador",
+          0.7,
+          0.5
+        ],
+        [
+          "obturador",
+          1.05,
+          0.5
+        ],
+        [
+          "obturador",
+          1.4,
+          0.45
+        ],
+        [
+          "obturador",
+          1.75,
+          0.45
+        ],
+        [
+          "obturador",
+          2.1,
+          0.4
+        ],
+        [
+          "obturador",
+          2.45,
+          0.4
+        ]
+      ],
+      "fala": "Todos os moradores tinham recebido uma foto da própria janela.",
+      "legenda": "*Todos* os moradores tinham recebido uma foto da própria janela."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "cortina_fecha"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "em": 0.2,
+          "mensagens": [
+            {
+              "de": "Dona Cida · Síndica",
+              "texto": "Ninguém abre a cortina. NINGUÉM."
+            }
+          ]
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "notificacao2",
+          0.35,
+          0.45
+        ],
+        [
+          "whoosh",
+          0.6,
+          0.3
+        ]
+      ],
+      "fala": "A síndica pediu pra ninguém abrir as cortinas.",
+      "legenda": "A síndica pediu pra ninguém abrir as *cortinas.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "portaria_rafa"
+        ]
+      },
+      "antes": 0.15,
+      "segura": 0.2,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.4
+        ]
+      ],
+      "fala": "Aí o Rafa, o porteiro da noite, mandou um áudio.",
+      "legenda": "Aí o Rafa, o porteiro da noite, mandou um áudio."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "porta_trava",
+          "rafa_puxa_porta"
+        ],
+        "pesos": [
+          1.2,
+          1
+        ]
+      },
+      "vozTelefone": true,
+      "extras": [
+        {
+          "tipo": "audio",
+          "de": "Rafa · Portaria",
+          "em": 0.15,
+          "dur": 3.8,
+          "y": 330
+        }
+      ],
+      "antes": 0.3,
+      "segura": 1.2,
+      "sons": [
+        [
+          "audio",
+          0.2,
+          0.6
+        ],
+        [
+          "tranca",
+          2,
+          1
+        ],
+        [
+          "impacto",
+          "fimvoz+0.1",
+          1
+        ],
+        [
+          "grave",
+          "fimvoz+0.1",
+          0.8
+        ]
+      ],
+      "fala": "Gente... as portas do prédio trancaram sozinhas. Ninguém sai.",
+      "legenda": "Gente... as portas do prédio *trancaram sozinhas.* *Ninguém sai.*"
+    },
+    {
+      "visual": {
+        "tipo": "final"
+      },
+      "semLegenda": true,
+      "antes": 0.3,
+      "segura": 0.9,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          0.95,
+          0.7
+        ]
+      ],
+      "fala": "Episódio três, amanhã. Siga o Arquivo três e trinta e três.",
+      "legenda": "Episódio 3 amanhã. Siga o *Arquivo 3:33.*"
+    }
+  ]
+}

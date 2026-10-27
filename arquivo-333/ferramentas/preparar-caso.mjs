@@ -29,7 +29,7 @@ const cenas = ep.cenas.map((c, i) => {
 const duracao = t + 0.15;
 
 // ---------- 3. legenda palavra por palavra (blocos de até 3 palavras) ----------
-const ESPECIAIS = { "3h33": 6, "3:33": 6, "12º": 4, "2": 2 };
+const ESPECIAIS = { "3h33": 6, "3:33": 6, "12º": 4, "2": 2, "3": 1, "36": 4, "40": 3, "56": 5 };
 const peso = (w) => {
   const limpa = w.replace(/\*/g, "").replace(/[.,!?]/g, "");
   if (ESPECIAIS[limpa] !== undefined) return ESPECIAIS[limpa];
@@ -62,7 +62,12 @@ const EF = {
   subida: (seg = 2) => { const r = filtro(ruido(seg), "banda", (x) => 200 + 3500 * Math.pow(x / seg, 2), 1.2); const o = oscilador("seno", 0, seg, { freqFn: (x) => 60 * Math.pow(2, 2 * x / seg) }); for (let i = 0; i < r.length; i++) { const x = i / r.length; r[i] = (r[i] * 0.5 + o[i] * 0.4) * x * x; } return r; },
   grave: () => { const s = oscilador("seno", 0, 2.4, { fase: 0, freqFn: (x) => 34 + 40 * Math.exp(-x * 6) }); decai(s, 0.8, 0.002); for (let i = 0; i < s.length; i++) s[i] = Math.tanh(s[i] * 1.8); return s; },
   sino: () => sino(81, 2.5, 0.5),
+  // trava magnética das portas fechando: estalo metálico + baque grave
+  tranca: () => mistura([[SFX.carimbo(), 0, 0.9], [decai(filtro(ruido(0.12), "banda", 5200, 3), 0.02, 0.0005), 0.01, 0.8], [EF_grave(), 0.02, 0.7]], 1.2),
+  // começo de áudio de WhatsApp
+  audio: () => SFX.clique(),
 };
+function EF_grave() { const g = oscilador("seno", 0, 1, { fase: 0, freqFn: (x) => 48 + 60 * Math.exp(-x * 25) }); return decai(g, 0.25, 0.001); }
 const quando = (c, ref) => {
   if (typeof ref === "number") return c.inicio + ref;
   const m = /^(voz|fimvoz|fim)([+-][\d.]+)?$/.exec(ref);
@@ -71,6 +76,13 @@ const quando = (c, ref) => {
 };
 
 const voz = montarVoz(gravacao, cenas.map((c) => ({ de: c.pedaco.de, ate: c.pedaco.ate, em: c.vozEm - c.pedaco.de })), duracao);
+for (const c of cenas.filter((c) => c.vozTelefone)) {
+  const a = Math.max(0, N(c.vozEm - 0.05)), b = Math.min(voz.L.length, N(c.vozEm + c.vozDur + 0.1));
+  for (const canal of [voz.L, voz.R]) {
+    const trecho = filtro(filtro(canal.slice(a, b), "passa-alta", 380, 0.8), "passa-baixa", 3100, 0.8);
+    for (let i = 0; i < trecho.length; i++) canal[a + i] = Math.tanh(trecho[i] * 2.2) * 0.62;
+  }
+}
 const fala = cenas.map((c) => [c.vozEm, c.vozEm + c.vozDur]);
 
 // clima: sub em mi grave + cluster dissonante que respira + chuva dos dois lados

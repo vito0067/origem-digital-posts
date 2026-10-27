@@ -16,8 +16,9 @@
 
 ## Formato e receita (aprovado pelo Vito em 26/10/2026, a partir do vídeo-modelo youtu.be/5HwmrSwNY-Y)
 - **O que é:** animação 3D estilo desenho, feita inteira em código pelo motor do projeto (`src/motor3d/`, three.js): personagens de cabeça grande, cidade de brinquedo à noite, câmera em terceira pessoa, cortes rápidos e "medidas na tela" (contadores). Ele gostou da voz (Gideon), da legenda e da edição; o visual com imagens de IA (Higgsfield) foi reprovado.
-- **Passo a passo:** está em `ROTINA-DIARIA.md`.
-- **Peças do motor:** `boneco.ts` (personagens e poses), `cenario.ts` (cidade com a torre e o quarto do 12º andar; quarto por dentro), `planos.ts` (as tomadas de câmera) e `Mundo3D.tsx`. Para testar um plano: `node ferramentas/planos.mjs nome:segundo:duracao`.
+- **Passo a passo:** na skill `arquivo-333` (`.claude/skills/arquivo-333/` no repositório). O resumo do dia a dia está em `ROTINA-DIARIA.md`.
+- **Peças do motor:** `boneco.ts` (personagens e poses), `cenario.ts` (cidade com a torre e o quarto do 12º andar; quarto por dentro), `portaria.ts` (térreo com o Rafa), `planos.ts` (as tomadas de câmera) e `Mundo3D.tsx`. Para testar um plano: `node ferramentas/planos.mjs nome:segundo:duracao`.
+- **Onde fica (desde 26/10/2026):** `4-midia/posts-automaticos/arquivo-333`, dentro do repositório público `vito0067/origem-digital-posts`, para a nuvem conseguir trabalhar sozinha. A pasta antiga `4-midia/canal-viral` virou esta.
 - **Custo:** só a voz, de 0,5 a 2 créditos por episódio. Renderizar leva cerca de 1,5 min.
 
 ## Ritmo
@@ -30,6 +31,7 @@
 - **Música e imagens só nossas:** trilha composta em código, imagens e vídeos gerados para o perfil.
 - **Público:** adulto ou geral, nunca "conteúdo para crianças".
 
-## Publicação
-- **Instagram:** vai ser automática pelo n8n, como a fábrica de posts da Origem. Falta a chave da conta @arquivo333.0, que o Vito cola no n8n.
-- **TikTok e YouTube:** as APIs só deixam publicar como privado até a plataforma aprovar o app. Por isso a publicação é feita pelo Chrome (perfil do e-mail da Origem), com o agendamento das próprias plataformas, que deixam agendar com dias de antecedência. Falta o Vito ligar a extensão do Claude nesse perfil do Chrome.
+## Publicação (desde 26/10/2026)
+- **TikTok e YouTube:** agendados pelo Chrome (perfil do e-mail da Origem), com o agendador das plataformas, até 10 dias antes. As APIs só deixam robô publicar como privado.
+- **Instagram:** n8n "Arquivo 3:33 - Publicar Instagram" às 20h, quando a chave da conta estiver no n8n. Até lá, pelo Chrome às 20h.
+- **Tudo:** skill `arquivo-333`, arquivo `referencia/nuvem.md`.

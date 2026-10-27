@@ -4,8 +4,8 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import { Boneco, APARENCIAS, POSES } from "./boneco";
 
-const mat = (cor: string, extra: Record<string, unknown> = {}) => new THREE.MeshStandardMaterial({ color: cor, roughness: 0.85, metalness: 0, ...extra });
-const caixa = (w: number, h: number, d: number, m: any, arred = 0) => {
+export const mat = (cor: string, extra: Record<string, unknown> = {}) => new THREE.MeshStandardMaterial({ color: cor, roughness: 0.85, metalness: 0, ...extra });
+export const caixa = (w: number, h: number, d: number, m: any, arred = 0) => {
   const g = arred > 0 ? new RoundedBoxGeometry(w, h, d, 3, arred) : new THREE.BoxGeometry(w, h, d);
   const me = new THREE.Mesh(g, m); me.castShadow = true; me.receiveShadow = true; return me;
 };
@@ -60,6 +60,9 @@ export type JanelaInfo = { predio: number; andar: number; x: number; y: number; 
 export class Cidade {
   cena: any; janelas: any; info: JanelaInfo[] = []; cores: Float32Array; chuva: Chuva;
   lua: any; ceuLuz: any; luzQuarto: any; luzCelular: any; marina: Boneco; rotulo12: any; flash = 0;
+  fotos: any; ordemFotos: number[] = []; flashFoto: any; mira: any;
+  /** Onde o "fotógrafo" estava: parado no ar, de frente para a janela da Marina, em cima do parque. */
+  static FOTOGRAFO: [number, number, number] = [1.5, 34.9, 30];
   static ANDAR = 3; static TORRE = { w: 12, d: 10, andares: 14 }; static JANELA_MARINA = { andar: 12, x: 1.5 };
 
   constructor() {
@@ -93,6 +96,12 @@ export class Cidade {
       const l = new THREE.Mesh(new THREE.SphereGeometry(0.32, 16, 12), new THREE.MeshBasicMaterial({ color: "#ffd38a" })); l.position.set(x, 5.1, z); cena.add(l);
     }
     for (const x of [-15, 15]) { const pl = new THREE.PointLight("#ffbf6b", 30, 26, 1.6); pl.position.set(x, 5, 9); cena.add(pl); }
+    // postes ao longo da trilha do parque (luz quente no meio do escuro)
+    for (let z = 26; z <= 98; z += 12) {
+      const p = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 3.6, 8), mat("#2b2f3a")); p.position.set(3.4, 1.8, z); cena.add(p);
+      const l = new THREE.Mesh(new THREE.SphereGeometry(0.28, 14, 10), new THREE.MeshBasicMaterial({ color: "#ffd38a" })); l.position.set(3.4, 3.7, z); cena.add(l);
+    }
+    for (const z of [32, 56]) { const pl = new THREE.PointLight("#ffbf6b", 22, 18, 1.6); pl.position.set(3.2, 3.6, z); cena.add(pl); }
 
     // prédios: a torre da Marina no centro, os outros atrás e dos lados (nunca na frente: ali é o parque)
     const cores = ["#b7b0a6", "#a7b4c4", "#c4a98f", "#9fb3a4", "#b9a3a8", "#c9c2b2", "#8f9fb8"];
@@ -147,6 +156,48 @@ export class Cidade {
     this.rotulo12 = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, depthTest: false, transparent: true }));
     this.rotulo12.scale.set(5.2, 1.62, 1); this.rotulo12.position.set(JM.x, (JM.andar - 1) * Cidade.ANDAR + 1.7 + 2.6, Cidade.TORRE.d / 2 + 1.2); this.rotulo12.visible = false;
     cena.add(this.rotulo12);
+
+    // molduras vermelhas de "foto tirada" nas janelas da frente da torre (aparecem uma a uma)
+    const frente: [number, number][] = [];
+    for (let a = 0; a < T.andares; a++) for (let c = 0; c < 4; c++) frente.push([-T.w / 2 + (c + 0.5) * (T.w / 4), a * Cidade.ANDAR + 1.7]);
+    const texMold = (() => {
+      const c = document.createElement("canvas"); c.width = 256; c.height = 216; const g = c.getContext("2d")!;
+      g.strokeStyle = "#ff3b3b"; g.lineWidth = 14; g.shadowColor = "#ff3b3b"; g.shadowBlur = 16; const L = 64, m = 14;
+      for (const [x, y, dx, dy] of [[m, m, 1, 1], [256 - m, m, -1, 1], [m, 216 - m, 1, -1], [256 - m, 216 - m, -1, -1]] as const) { g.beginPath(); g.moveTo(x + dx * L, y); g.lineTo(x, y); g.lineTo(x, y + dy * L); g.stroke(); }
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+    })();
+    this.fotos = new THREE.InstancedMesh(new THREE.PlaneGeometry(2.3, 1.95), new THREE.MeshBasicMaterial({ map: texMold, transparent: true, toneMapped: false, fog: false, depthWrite: false }), frente.length);
+    const rf = sorteio(77); const idx = frente.map((_, i) => i).sort(() => rf() - 0.5);
+    idx.forEach((i, k) => { m.compose(new THREE.Vector3(frente[i][0], frente[i][1], T.d / 2 + 0.09), new THREE.Quaternion(), new THREE.Vector3(1, 1, 1)); this.fotos.setMatrixAt(k, m); });
+    this.ordemFotos = idx; this.fotos.count = 0; cena.add(this.fotos);
+
+    // o clarão da foto, no ar, e a mira que marca o ponto
+    const brilho = (() => {
+      const c = document.createElement("canvas"); c.width = c.height = 256; const g = c.getContext("2d")!;
+      const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(0.18, "rgba(220,235,255,0.85)"); gr.addColorStop(0.5, "rgba(140,170,255,0.25)"); gr.addColorStop(1, "rgba(0,0,0,0)");
+      g.fillStyle = gr; g.fillRect(0, 0, 256, 256); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+    })();
+    this.flashFoto = new THREE.Sprite(new THREE.SpriteMaterial({ map: brilho, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false, fog: false, toneMapped: false }));
+    this.flashFoto.position.set(...Cidade.FOTOGRAFO); this.flashFoto.visible = false; cena.add(this.flashFoto);
+    const texMira = (() => {
+      const c = document.createElement("canvas"); c.width = c.height = 256; const g = c.getContext("2d")!;
+      g.strokeStyle = "#ff3b3b"; g.lineWidth = 10; g.shadowColor = "#ff3b3b"; g.shadowBlur = 18;
+      g.beginPath(); g.arc(128, 128, 80, 0, Math.PI * 2); g.stroke();
+      for (const [x1, y1, x2, y2] of [[128, 18, 128, 78], [128, 178, 128, 238], [18, 128, 78, 128], [178, 128, 238, 128]]) { g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke(); }
+      const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+    })();
+    this.mira = new THREE.Sprite(new THREE.SpriteMaterial({ map: texMira, transparent: true, depthTest: false, fog: false, toneMapped: false }));
+    this.mira.position.set(...Cidade.FOTOGRAFO); this.mira.scale.set(3, 3, 1); this.mira.visible = false; cena.add(this.mira);
+  }
+
+  /** Volta o que é passageiro ao normal (cada plano liga só o que precisa). */
+  padrao() {
+    this.rotulo12.visible = false; this.fotos.count = 0; this.flashFoto.visible = false; this.mira.visible = false;
+  }
+
+  /** Flash da câmera no ar: 0 apagado, 1 clarão máximo. */
+  clarao(i: number) {
+    this.flashFoto.visible = i > 0.01; this.flashFoto.material.opacity = Math.min(1, i); const e = 4 + 26 * i; this.flashFoto.scale.set(e, e, 1);
   }
 
   /** Torre da Marina: maciça, com um "buraco" no 12º andar onde fica o quarto dela, visto de fora. */
@@ -161,6 +212,8 @@ export class Cidade {
     const wx0 = JM.x - 0.8, wx1 = JM.x + 0.8, wy0 = y0 + 1.05, wy1 = y0 + 2.35;
     bloco(-0.6, wx0, y0, y1, zf - 0.3, zf); bloco(wx1, 3.6, y0, y1, zf - 0.3, zf);
     bloco(wx0, wx1, y0, wy0, zf - 0.3, zf); bloco(wx0, wx1, wy1, y1, zf - 0.3, zf);
+    // faixas das lajes na frente (cada andar marcado), menos a do vão do quarto
+    for (let a = 1; a < T.andares; a++) { const f = caixa(T.w + 0.1, 0.16, 0.12, mat("#8f8a80")); f.position.set(0, a * A, zf + 0.05); cena.add(f); }
     // laje do telhado e caixa d'água (detalhe de prédio paulistano)
     const cx = caixa(4, 2.2, 3, mat("#8d877c"), 0.2); cx.position.set(-2.5, h + 1.1, -1); cena.add(cx);
     // o quarto por dentro (paredes viradas para dentro)
@@ -200,7 +253,7 @@ export class Cidade {
 
 // ---------------------------------------------------------------- quarto da Marina (cenário de dentro)
 export class Quarto {
-  cena: any; marina: Boneco; luzCelular: any; luaLuz: any; chuva: Chuva; relogio: any; celularCama: any; telaCama: any; cortinaE: any; cortinaD: any; ceuLuz: any;
+  cena: any; marina: Boneco; luzCelular: any; luaLuz: any; chuva: Chuva; relogio: any; celularCama: any; telaCama: any; cortinaE: any; cortinaD: any; ceuLuz: any; recorte: any;
   constructor() {
     const cena = new THREE.Scene(); this.cena = cena;
     cena.background = new THREE.Color("#05070d");
@@ -241,6 +294,9 @@ export class Quarto {
     // luar entrando pela janela
     this.luaLuz = new THREE.SpotLight("#9fb6ff", 22, 14, 0.6, 0.6, 1.2); this.luaLuz.position.set(1.5, 4.5, -D / 2 - 3); this.luaLuz.target.position.set(0, 0, 0.5);
     this.luaLuz.castShadow = true; this.luaLuz.shadow.mapSize.set(1024, 1024); cena.add(this.luaLuz); cena.add(this.luaLuz.target);
+    // luz quente vinda da porta do corredor, atrás dela: desenha o contorno (cabelo e ombros) contra o fundo escuro
+    this.recorte = new THREE.SpotLight("#ffae6b", 7, 7, 0.55, 0.85, 1.3); this.recorte.position.set(-0.6, 2.5, 2.2); this.recorte.target.position.set(0.2, 1.1, -1.4);
+    cena.add(this.recorte); cena.add(this.recorte.target);
     // a Marina
     this.marina = new Boneco(APARENCIAS.marina); cena.add(this.marina.raiz);
     this.luzCelular = new THREE.PointLight("#7fb0ff", 0.45, 2.2, 2); cena.add(this.luzCelular);
@@ -250,6 +306,14 @@ export class Quarto {
     this.telaCama = new THREE.Mesh(new THREE.PlaneGeometry(0.145, 0.3), new THREE.MeshBasicMaterial({ color: "#a8ccff" })); this.telaCama.rotation.x = -Math.PI / 2; this.telaCama.position.y = 0.011; this.celularCama.add(this.telaCama);
     this.celularCama.position.set(0.6, 0.43, -1.05); this.celularCama.rotation.y = 0.4; cena.add(this.celularCama);
   }
+
+  /** Cortinas: 0 abertas, 1 fechadas (os dois panos se encontram no meio da janela). */
+  cortinas(p: number) {
+    const x = 1.45 - 0.98 * Math.max(0, Math.min(1, p));
+    this.cortinaE.position.x = -x; this.cortinaD.position.x = x;
+  }
+
+  padrao() { this.cortinas(0); this.celularCama.visible = false; this.recorte.intensity = 7; this.luzCelular.intensity = 0.45; }
 
   private texturaCidadeLaFora() {
     const c = document.createElement("canvas"); c.width = 1024; c.height = 600; const g = c.getContext("2d")!; const r = sorteio(5);
