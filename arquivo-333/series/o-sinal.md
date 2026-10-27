@@ -40,7 +40,8 @@
 - **Ep. 2 · Quem tirou a foto** (agendado para 27/10/2026): a foto foi tirada do ar, a 36 m em cima do parque; o grupo do Ed. Mirante tem 40 mensagens e todo mundo recebeu foto da própria janela; a Dona Cida pede para ninguém abrir a cortina; o Rafa manda áudio: "as portas do prédio trancaram sozinhas. Ninguém sai." Ver `episodios/ep02.json`.
 - **Ep. 3 · Portas** (28/10/2026): ninguém sai; o elevador desce vazio e para no 12º; sem sinal, menos o do remetente; "Amanhã, às 3h33, um de vocês vai olhar."; a luz do 1201 acende e a cortina do Seu Álvaro abre sozinha. Ver `episodios/ep03.json`.
 - **Ep. 4 · 1201** (29/10/2026): o Seu Álvaro sumiu; a Bia acha a porta aberta, sete espelhos tapados e "ELES SÓ VEEM QUEM OLHA" na parede; gancho: foto da porta da Marina, tirada de dentro do corredor, agora. Ver `episodios/ep04.json`.
-- **Próximo: Ep. 5 · O corredor** (30/10/2026): seguir o arco acima (ela não abre a porta; a Bia bate e diz "sou eu"; gancho: "A Bia está no 11º andar com você?").
+- **Ep. 5 · O corredor** (30/10/2026): alguém bate na porta da Marina dizendo ser a Bia, mas no grupo a Bia está na escada; pelo olho mágico há alguém de costas; gancho: o remetente pergunta "A Bia está no 11º andar com você?" e as batidas param ("eu ouvi"). Ver `episodios/ep05.json`.
+- **Próximo: Ep. 6 · Duas Bias** (31/10/2026): seguir o arco acima.
 
 ## (Histórico) Roteiro original do episódio 2, antes da versão final
 Falas, cada uma separada por três quebras de linha na gravação:
