@@ -7,6 +7,8 @@ on:
   push:
     branches: [main]
     paths: ["arquivo-333/episodios/**"]
+  schedule:
+    - cron: "17 */2 * * *"   # a cada 2 horas pega o próximo da fila (se não houver, termina em segundos)
   workflow_dispatch:
     inputs:
       episodio:
@@ -24,7 +26,9 @@ jobs:
     concurrency:
       group: arquivo-333
       cancel-in-progress: false
-    timeout-minutes: 180
+    timeout-minutes: 300
+    outputs:
+      feitos: ${{ steps.render.outputs.feitos }}
     steps:
       - uses: actions/checkout@v4
 
@@ -63,7 +67,7 @@ jobs:
   pages:
     # mesmo grupo da fábrica de posts: as duas publicam o mesmo Pages, uma de cada vez
     needs: renderizar
-    if: always()
+    if: always() && needs.renderizar.outputs.feitos != ''
     runs-on: ubuntu-latest
     concurrency:
       group: posts

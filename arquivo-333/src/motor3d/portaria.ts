@@ -74,7 +74,7 @@ export class Portaria {
     // lâmpadas frias no teto (a da frente, à direita, pisca)
     for (const [x, z] of [[-1.8, -1], [1.8, -1], [-1.8, 1.8], [1.8, 1.8]] as const) {
       const l = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.04, 0.3), new THREE.MeshBasicMaterial({ color: "#eaf2ff", toneMapped: false })); l.position.set(x, H - 0.06, z); cena.add(l); this.lampadas.push(l);
-      const p = new THREE.PointLight("#dfe9ff", 5, 6.5, 1.6); p.position.set(x, H - 0.3, z); p.castShadow = x < 0 && z < 0; cena.add(p); this.luzesTeto.push(p);
+      const p = new THREE.PointLight("#dfe9ff", 5, 6.5, 1.6); p.position.set(x, H - 0.3, z); cena.add(p); this.luzesTeto.push(p);
     }
     this.padrao();
   }

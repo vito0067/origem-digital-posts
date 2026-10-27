@@ -21,16 +21,20 @@ const hash = (txt) => createHash("sha1").update(txt).digest("hex").slice(0, 12);
 const forcar = (process.env.FORCAR ?? "").split(/[ ,]+/).filter(Boolean).map((x) => x.replace(/\.json$/, ""));
 
 const arquivos = readdirSync(PASTA_EP).filter((f) => /^ep\d+\.json$/.test(f)).sort();
-const pendentes = arquivos.filter((f) => {
+const todos = arquivos.filter((f) => {
   const nome = f.replace(/\.json$/, "");
   const txt = readFileSync(join(PASTA_EP, f), "utf8");
   const ep = JSON.parse(txt);
-  if (ep.rascunho) return false;
+  if (ep.rascunho || ep.publicar?.publicado) return false; // rascunho ou já publicado: não renderiza
   if (forcar.includes(nome)) return true;
   const reg = join(PASTA_RENDER, `${nome}.json`);
   return !existsSync(reg) || JSON.parse(readFileSync(reg, "utf8")).hash !== hash(txt);
 });
-console.log("para renderizar:", pendentes.join(", ") || "nenhum");
+// um por rodada (o de data mais próxima): sem placa de vídeo cada um leva bastante tempo, e a Action roda de novo
+// a cada 2 horas até zerar a fila
+const dataDe = (f) => JSON.parse(readFileSync(join(PASTA_EP, f), "utf8")).publicar?.data ?? "9999";
+const pendentes = todos.sort((x, y) => dataDe(x).localeCompare(dataDe(y))).slice(0, 1);
+console.log("na fila:", todos.join(", ") || "nenhum", "| agora:", pendentes.join(", ") || "nenhum");
 
 const feitos = [], erros = [];
 for (const f of pendentes) {
