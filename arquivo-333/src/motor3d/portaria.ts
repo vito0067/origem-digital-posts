@@ -7,7 +7,7 @@ import { Chuva, caixa, mat, sorteio } from "./cenario";
 
 export class Portaria {
   cena: any; rafa: Boneco; chuva: Chuva; ledTrava: any; luzTrava: any; ledTeclado: any; lampadas: any[] = []; luzesTeto: any[] = [];
-  indicador: any; telaIndicador: any; telaCameras: any; portaE: any; portaD: any;
+  indicador: any; telaIndicador: any; telaCameras: any; portaE: any; portaD: any; elevE: any; elevD: any; luzCabine: any;
   static W = 8; static D = 7; static H = 3.2;
 
   constructor() {
@@ -20,7 +20,13 @@ export class Portaria {
     const tapete = caixa(2.2, 0.02, 3, mat("#5a2a2a", { roughness: 1 })); tapete.position.set(0, 0.01, 1.6); cena.add(tapete);
     const parede = mat("#59606f"), madeira = mat("#6a472f", { roughness: 0.6 });
     const fundo = caixa(W, H, 0.15, madeira); fundo.position.set(0, H / 2, -D / 2); cena.add(fundo);
-    for (const x of [-W / 2, W / 2]) { const p = caixa(0.15, H, D, parede); p.position.set(x, H / 2, 0); cena.add(p); }
+    const pDir = caixa(0.15, H, D, parede); pDir.position.set(W / 2, H / 2, 0); cena.add(pDir);
+    // parede da esquerda com o vão do elevador (z de -0,36 a 0,9; 2,3 m de altura) e a cabine atrás
+    const pEsq = (z0: number, z1: number, y0: number, y1: number) => { const b = caixa(0.15, y1 - y0, z1 - z0, parede); b.position.set(-W / 2, (y0 + y1) / 2, (z0 + z1) / 2); cena.add(b); };
+    pEsq(-D / 2, -0.36, 0, H); pEsq(0.9, D / 2, 0, H); pEsq(-0.36, 0.9, 2.3, H);
+    const cabine = new THREE.Mesh(new THREE.BoxGeometry(1.4, 2.3, 1.26), new THREE.MeshStandardMaterial({ color: "#c7ccd4", side: THREE.BackSide, roughness: 0.35, metalness: 0.4 }));
+    cabine.position.set(-W / 2 - 0.78, 1.15, 0.27); cena.add(cabine);
+    this.luzCabine = new THREE.PointLight("#eef3ff", 4, 3, 1.5); this.luzCabine.position.set(-W / 2 - 0.8, 2.1, 0.27); cena.add(this.luzCabine);
     const teto = caixa(W, 0.1, D, mat("#2a2e38")); teto.position.y = H; cena.add(teto);
     // parede da frente com o vão das portas (x de -1,4 a 1,4; 2,6 m de altura)
     const frente = (x0: number, x1: number, y0: number, y1: number) => { const b = caixa(x1 - x0, y1 - y0, 0.15, parede); b.position.set((x0 + x1) / 2, (y0 + y1) / 2, D / 2); cena.add(b); };
@@ -59,9 +65,10 @@ export class Portaria {
     const cadeira = caixa(0.55, 0.08, 0.55, mat("#202329")); cadeira.position.set(-0.6, 0.86, -2.45); cena.add(cadeira);
     this.rafa = new Boneco(APARENCIAS.rafa); cena.add(this.rafa.raiz);
     // elevador na parede da esquerda, com o mostrador do andar
-    const portaElev = (z: number) => { const p = caixa(0.06, 2.3, 0.62, mat("#8e949e", { metalness: 0.75, roughness: 0.28 })); p.position.set(-W / 2 + 0.1, 1.15, z); cena.add(p); };
-    portaElev(-0.05); portaElev(0.59);
-    const molduraElev = caixa(0.08, 2.5, 1.5, metal); molduraElev.position.set(-W / 2 + 0.07, 1.25, 0.27); cena.add(molduraElev);
+    const portaElev = (z: number) => { const p = caixa(0.06, 2.3, 0.62, mat("#8e949e", { metalness: 0.75, roughness: 0.28 })); p.position.set(-W / 2 + 0.1, 1.15, z); cena.add(p); return p; };
+    this.elevE = portaElev(-0.05); this.elevD = portaElev(0.59);
+    // batente do elevador (só a moldura, para a cabine aparecer quando abrir)
+    for (const [h, d, y, z] of [[0.12, 1.5, 2.36, 0.27], [2.3, 0.1, 1.15, -0.41], [2.3, 0.1, 1.15, 0.95]] as const) { const b = caixa(0.1, h, d, metal); b.position.set(-W / 2 + 0.09, y, z); cena.add(b); }
     this.telaIndicador = document.createElement("canvas"); this.telaIndicador.width = 256; this.telaIndicador.height = 128;
     const texInd = new THREE.CanvasTexture(this.telaIndicador); texInd.colorSpace = THREE.SRGBColorSpace;
     this.indicador = new THREE.Mesh(new THREE.PlaneGeometry(0.42, 0.21), new THREE.MeshBasicMaterial({ map: texInd, toneMapped: false }));
@@ -93,8 +100,11 @@ export class Portaria {
     this.luzTrava.intensity = p > 0.5 ? 2.4 : 1.2;
   }
 
+  /** Portas do elevador: 0 fechadas, 1 abertas (a cabine aparece vazia e iluminada). */
+  elevador(p: number) { const a = Math.max(0, Math.min(1, p)) * 0.6; this.elevE.position.z = -0.05 - a; this.elevD.position.z = 0.59 + a; }
+
   padrao() {
-    this.travar(0); this.mostrarAndar(0); this.rafa.segurarCelular(false);
+    this.travar(0); this.mostrarAndar(0); this.elevador(0); this.rafa.segurarCelular(false);
     this.rafa.raiz.position.set(-0.6, 0.3, -2.45); this.rafa.raiz.rotation.set(0, 0, 0);
   }
 

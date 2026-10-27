@@ -3,11 +3,13 @@
 import * as THREE from "three";
 import { Cidade, Quarto, texturaTexto } from "./cenario";
 import { Portaria } from "./portaria";
+import { Corredor } from "./corredor";
+import { Sala1201 } from "./sala1201";
 import { POSES } from "./boneco";
 
-export type Mundo = { cidade: Cidade; quarto: Quarto; portaria: Portaria };
+export type Mundo = { cidade: Cidade; quarto: Quarto; portaria: Portaria; corredor: Corredor; sala1201: Sala1201 };
 type V3 = [number, number, number];
-export type Tomada = { cena: "cidade" | "quarto" | "portaria"; pos: V3; alvo: V3; fov?: number; rolar?: number };
+export type Tomada = { cena: "cidade" | "quarto" | "portaria" | "corredor" | "sala1201"; pos: V3; alvo: V3; fov?: number; rolar?: number };
 export type Plano = (s: number, dur: number, m: Mundo) => Tomada;
 
 const lim = (x: number) => Math.max(0, Math.min(1, x));
@@ -201,6 +203,96 @@ export const PLANOS: Record<string, Plano> = {
     const puxa = Math.max(0, Math.sin(s * 9)) * 0.05;
     pt.rafa.posar(POSES.puxando_porta(s)); pt.rafa.raiz.position.set(0.5, 0, 2.62 - puxa); pt.rafa.raiz.rotation.set(0, 0, 0);
     return { cena: "portaria", pos: soma(mix([-1.9, 1.45, 1.0], [-1.45, 1.4, 1.5], arranca(s / dur)), tremor(s, 0.01)), alvo: [0.4, 1.3, 3.0], fov: 60 };
+  },
+
+  // ---------- cidade: a janela do vizinho (1201), ao lado da dela (ep. 3)
+  /** De fora, as duas janelas do 12º: a do 1201 acende no meio do plano. */
+  janela_vizinho: (s, dur, m) => {
+    cidadeEscura(m);
+    m.cidade.atualizar(s, [0, ANDAR12, 12]);
+    m.cidade.vizinho.visible = true;
+    m.cidade.janela1201(lim((s - dur * 0.6) / 0.3), 0);
+    m.cidade.rotulo1201.visible = s > dur * 0.68;
+    return { cena: "cidade", pos: mix([0.6, ANDAR12 + 0.9, 21], [0.2, ANDAR12 + 0.5, 17.5], arranca(s / dur)), alvo: [0, ANDAR12 + 0.3, ZF], fov: 55 };
+  },
+  /** Perto da janela do 1201: a cortina abre devagar, sozinha, e não tem ninguém. */
+  janela_vizinho_abre: (s, dur, m) => {
+    cidadeEscura(m);
+    m.cidade.atualizar(s, [-1.5, ANDAR12, 10]);
+    m.cidade.vizinho.visible = true;
+    m.cidade.janela1201(1, suave(s / (dur * 0.85)));
+    const pos = soma(mix([-1.1, ANDAR12 + 0.15, 9.6], [-1.4, ANDAR12 + 0.05, 8.0], suave(s / dur)), tremor(s, 0.012));
+    return { cena: "cidade", pos, alvo: [-1.5, ANDAR12, ZF], fov: 48 };
+  },
+
+  // ---------- portaria: o elevador (ep. 3)
+  /** O elevador chega ao térreo, abre vazio e fecha de novo. */
+  elevador_abre_vazio: (s, dur, m) => {
+    const pt = m.portaria, p = s / dur;
+    pt.mostrarAndar(0);
+    pt.elevador(p < 0.15 ? 0 : p < 0.4 ? (p - 0.15) / 0.25 : p < 0.75 ? 1 : 1 - (p - 0.75) / 0.25);
+    pt.atualizar(s);
+    return { cena: "portaria", pos: mix([-1.2, 1.55, 0.9], [-1.9, 1.5, 0.5], arranca(p)), alvo: [-4.2, 1.2, 0.27], fov: 60 };
+  },
+  /** Close no mostrador do elevador subindo sozinho: T, 1, 2... até 12. */
+  elevador_sobe: (s, dur, m) => {
+    const pt = m.portaria;
+    pt.mostrarAndar(Math.min(12, Math.floor((1 - Math.pow(1 - lim(s / (dur * 0.85)), 3)) * 12.99))); // mesma curva do contador (dado)
+    pt.atualizar(s);
+    return { cena: "portaria", pos: mix([-2.9, 2.35, 0.6], [-3.2, 2.5, 0.42], arranca(s / dur)), alvo: [-3.87, 2.68, 0.27], fov: 50 };
+  },
+
+  // ---------- corredor do 12º andar (ep. 4 em diante)
+  /** A Bia sobe pela escada e anda até o 1201, que está entreaberto (câmera atrás dela). */
+  corredor_bia: (s, dur, m) => {
+    const c = m.corredor, p = s / dur;
+    c.abrir1201(0.35); c.atualizar(s);
+    c.bia.raiz.visible = true; c.bia.posar(POSES.andando(s)); c.bia.raiz.position.set(-0.25, 0, 4.6 - 4.2 * p); c.bia.raiz.rotation.set(0, Math.PI, 0);
+    const b = c.bia.raiz.position;
+    return { cena: "corredor", pos: [0.45, 1.25, b.z + 1.9], alvo: [-0.5, 1.1, b.z - 3], fov: 66 };
+  },
+  /** A porta do 1201 entreaberta, com a luz da sala vazando (a câmera se aproxima). */
+  corredor_1201_aberta: (s, dur, m) => {
+    const c = m.corredor;
+    c.abrir1201(0.55 + 0.15 * suave(s / dur)); c.atualizar(s);
+    return { cena: "corredor", pos: mix([1.0, 1.55, -0.6], [0.85, 1.5, -1.8], arranca(s / dur)), alvo: [-1.6, 1.15, -3.1], fov: 62 };
+  },
+  /** A "foto" da porta da Marina (1203), tirada do corredor, agora. Câmera quase parada, grande-angular. */
+  corredor_porta_1203: (s, dur, m) => {
+    const c = m.corredor;
+    c.atualizar(s);
+    return { cena: "corredor", pos: soma([-0.95, 1.4, -0.9], tremor(s, 0.004)), alvo: [1.2, 1.25, -3], fov: 74 };
+  },
+  /** A Bia na frente da porta da Marina, batendo (ep. 5). */
+  bia_bate_porta: (s, dur, m) => {
+    const c = m.corredor;
+    c.atualizar(s);
+    c.bia.raiz.visible = true; c.bia.posar(POSES.batendo_porta(s)); c.bia.raiz.position.set(0.55, 0, -3); c.bia.raiz.rotation.set(0, Math.PI / 2, 0);
+    return { cena: "corredor", pos: mix([-0.8, 1.5, -0.7], [-0.7, 1.45, -1.4], arranca(s / dur)), alvo: [0.9, 1.3, -3], fov: 62 };
+  },
+
+  // ---------- sala do 1201 (ep. 4)
+  /** Entrando na sala: sofá, espelhos cobertos e a janela aberta com a cortina batendo. */
+  sala_entrada: (s, dur, m) => {
+    m.sala1201.atualizar(s);
+    return { cena: "sala1201", pos: mix([1.7, 1.6, 2.2], [1.2, 1.55, 1.2], arranca(s / dur)), alvo: [-0.3, 1.3, -2.5], fov: 68 };
+  },
+  /** Passando pelos espelhos cobertos com lençol. */
+  sala_espelhos: (s, dur, m) => {
+    m.sala1201.atualizar(s);
+    const z = 1.9 - 3.0 * arranca(s / dur);
+    return { cena: "sala1201", pos: [0.9, 1.45, z + 0.6], alvo: [2.44, 1.25, z - 0.6], fov: 62 };
+  },
+  /** A frase vermelha na parede ("ELES SÓ VEEM QUEM OLHA"). */
+  parede_frase: (s, dur, m) => {
+    m.sala1201.atualizar(s);
+    return { cena: "sala1201", pos: mix([1.9, 1.55, 0.8], [0.6, 1.6, 0.3], arranca(s / dur)), alvo: [-2.5, 1.55, 0.2], fov: 62 };
+  },
+  /** De frente para a janela aberta do 1201: a cortina bate e a chuva entra. */
+  sala_janela_aberta: (s, dur, m) => {
+    const flash = s > dur - 0.6 ? Math.max(0, 1 - (s - (dur - 0.6)) * 4) : 0;
+    m.sala1201.atualizar(s * 1.3, flash);
+    return { cena: "sala1201", pos: mix([0.4, 1.5, 1.4], [0.15, 1.55, 0.1], arranca(s / dur)), alvo: [0, 1.6, -2.5], fov: 66 };
   },
 
   quarto_lado: (s, dur, m) => {

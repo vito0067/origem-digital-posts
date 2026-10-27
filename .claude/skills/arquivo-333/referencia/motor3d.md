@@ -46,6 +46,21 @@
   - **Direita:** caixas de correio e um vaso.
 - **Luz:** lâmpadas frias no teto; a da frente à direita pisca.
 
+### `corredor` (corredor.ts → Corredor): o 12º andar
+- **Planta:** corredor de 2,4 × 12 m, com piso de ladrilho e porta da escada em z = 6 (placa verde "ESCADA").
+- **Portas:** 1201 e 1202 à esquerda (x = -1,2), 1203 (a da Marina) e 1204 à direita, em z = -3 e 1,5.
+- **Outros detalhes:** elevador no fundo (z = -6), com o mostrador do andar (`mostrarAndar(n)`), e um extintor vermelho.
+- **O 1201:** `abrir1201(p)` vai de 0 a 1 e abre a porta para dentro, com a luz quente da sala vazando.
+- **Personagens:** `bia` e `marina` ficam escondidas no `padrao()`. O plano liga `raiz.visible = true`.
+- **Luz:** três luzes no teto, a do meio pisca.
+
+### `sala1201` (sala1201.ts → Sala1201): a sala do Seu Álvaro, vazia
+- **Janela:** fica em z = -2,5, ABERTA, com a cortina vermelha batendo e a chuva entrando.
+- **Espelhos:** os 7 espelhos cobertos com lençol estão em `Sala1201.ESPELHOS` (4 na parede da direita e 3 no fundo).
+- **A frase:** "ELES SÓ VEEM QUEM OLHA" em vermelho escorrendo, na parede da esquerda (x = -2,5).
+- **Móveis:** sofá, mesinha, poltrona virada para a janela e abajur aceso.
+- **Atualizar:** `atualizar(t, flash)`.
+
 ## Personagens (boneco.ts → `new Boneco(APARENCIAS.x)`)
 - **Fixos:**
   - `marina`: moletom cinza, calça azul-marinho, cabelo chanel castanho;
@@ -58,7 +73,8 @@
   - `capuz`, `bone` (cor), `bigode`, `oculos`, `altura`.
 - **Poses** (`POSES`, funções do tempo para respirar):
   - `em_pe`, `sentada_celular`, `sentada_olhando_cima`;
-  - `fechando_cortina`, `puxando_porta`, `gravando_audio`.
+  - `fechando_cortina`, `puxando_porta`, `gravando_audio`;
+  - `andando` (anda no lugar: avance mexendo a `raiz.position`), `batendo_porta`.
 - **Pose solta:** `posar({ cabeca:[x,y,z], tronco, bracoE/D:[x,y,z], cotoveloE/D, pernaE/D, joelhoE/D, olhos 0.2..1.6, boca "neutra|aberta|medo|triste", sobrancelha -1..1 })`.
 - **Celular:** `segurarCelular(true)` põe o celular na mão direita.
 
@@ -75,6 +91,8 @@
 - `parque_vazio`: da janela para fora, o parque escuro e vazio.
 - `ponto_no_ar`: clarão no ar e recuo que mostra a mira a 36 m em cima do parque.
 - `fachada_fotos`: a torre vista do parque, janelas acendendo com moldura vermelha.
+- `janela_vizinho`: as duas janelas do 12º vistas de fora; a do 1201 acende aos 60% do plano, com a placa "1201".
+- `janela_vizinho_abre`: perto da janela do 1201, a cortina abre devagar, sozinha (`cidade.janela1201(luz, cortina)`).
 
 ### Quarto
 - `quarto_lado`: ela na cama, de lado.
@@ -91,6 +109,20 @@
 - `portaria_rafa`: o Rafa no balcão gravando áudio.
 - `porta_trava`: o LED passa de verde a vermelho, com tranco aos 70% do plano.
 - `rafa_puxa_porta`: o Rafa puxa a porta trancada.
+- `elevador_abre_vazio`: o elevador abre no térreo, vazio e iluminado, e fecha (`portaria.elevador(p)`).
+- `elevador_sobe`: close no mostrador indo de T a 12, com a mesma curva do extra `dado`, para os dois baterem.
+
+### Corredor do 12º
+- `corredor_bia`: a Bia andando até o 1201 entreaberto, câmera atrás dela.
+- `corredor_1201_aberta`: a porta do 1201 aberta, com a luz da sala.
+- `corredor_porta_1203`: a "foto" da porta da Marina tirada do corredor (use com `visor`).
+- `bia_bate_porta`: a Bia batendo na porta 1203.
+
+### Sala do 1201
+- `sala_entrada`: entrando na sala (sofá, poltrona, janela aberta).
+- `sala_espelhos`: passando pelos espelhos cobertos.
+- `parede_frase`: a frase vermelha. Boa para a capa e para abrir o episódio.
+- `sala_janela_aberta`: de frente para a janela aberta, com a cortina batendo e um relâmpago no fim.
 
 ## Regras para criar um plano
 - **Modelo:**
@@ -108,7 +140,8 @@
 - **Formato vertical:** para 9:16, o fov é o VERTICAL, então use de 55 a 78 (abaixo de 40 fica um "tubo").
 - **Testar:** confira sempre com `planos.mjs` em 2 ou 3 tempos (início, meio e fim) e olhe a folha.
 - **Cena escura:** suba `ceuLuz`, `lua` ou `recorte` só naquele plano, e não no cenário inteiro.
-- **Cenário novo** (corredor do 12º, elevador por dentro, escada, 13º andar, quarto igual ao dela):
+- **Batente e moldura:** nunca use uma caixa maciça na frente de um vão (porta, elevador). Ela tampa o que está atrás. Monte com três peças finas.
+- **Cenário novo** (escada, 13º andar, quarto igual ao dela, elevador por dentro):
   - crie uma classe como a `Portaria`, num arquivo próprio, com `padrao()` e `atualizar(t)`;
   - registre no `Mundo3D.tsx` e no tipo `Mundo`/`Tomada` do `planos.ts`.
 

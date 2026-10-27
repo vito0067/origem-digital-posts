@@ -60,7 +60,7 @@ export type JanelaInfo = { predio: number; andar: number; x: number; y: number; 
 export class Cidade {
   cena: any; janelas: any; info: JanelaInfo[] = []; cores: Float32Array; chuva: Chuva;
   lua: any; ceuLuz: any; luzQuarto: any; luzCelular: any; marina: Boneco; rotulo12: any; flash = 0;
-  fotos: any; ordemFotos: number[] = []; flashFoto: any; mira: any;
+  fotos: any; ordemFotos: number[] = []; flashFoto: any; mira: any; vizinho: any; vizLuz: any; vizCortE: any; vizCortD: any; rotulo1201: any;
   /** Onde o "fotógrafo" estava: parado no ar, de frente para a janela da Marina, em cima do parque. */
   static FOTOGRAFO: [number, number, number] = [1.5, 34.9, 30];
   static ANDAR = 3; static TORRE = { w: 12, d: 10, andares: 14 }; static JANELA_MARINA = { andar: 12, x: 1.5 };
@@ -188,11 +188,32 @@ export class Cidade {
     })();
     this.mira = new THREE.Sprite(new THREE.SpriteMaterial({ map: texMira, transparent: true, depthTest: false, fog: false, toneMapped: false }));
     this.mira.position.set(...Cidade.FOTOGRAFO); this.mira.scale.set(3, 3, 1); this.mira.visible = false; cena.add(this.mira);
+
+    // a janela do 1201, ao lado da dela (x = -1,5 no 12º andar): luz própria e duas cortinas que abrem sozinhas
+    this.vizinho = new THREE.Group(); this.vizinho.position.set(-1.5, (JM.andar - 1) * Cidade.ANDAR + 1.7, T.d / 2 + 0.06); cena.add(this.vizinho);
+    this.vizLuz = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.25), new THREE.MeshBasicMaterial({ color: "#000000", toneMapped: false, fog: false })); this.vizinho.add(this.vizLuz);
+    const corT = new THREE.MeshBasicMaterial({ color: "#1a1012", toneMapped: false, fog: false });
+    this.vizCortE = new THREE.Mesh(new THREE.PlaneGeometry(0.75, 1.25), corT); this.vizCortE.position.z = 0.01; this.vizinho.add(this.vizCortE);
+    this.vizCortD = new THREE.Mesh(new THREE.PlaneGeometry(0.75, 1.25), corT); this.vizCortD.position.z = 0.01; this.vizinho.add(this.vizCortD);
+    const texV = texturaTexto("1201", { cor: "#ffffff", fundo: "rgba(10,12,20,0.75)", borda: "#ff3b3b", fonte: "bold 120px Arial", w: 512, h: 200 });
+    this.rotulo1201 = new THREE.Sprite(new THREE.SpriteMaterial({ map: texV, depthTest: false, transparent: true })); this.rotulo1201.scale.set(3.4, 1.33, 1);
+    this.rotulo1201.position.set(-1.5, (JM.andar - 1) * Cidade.ANDAR + 1.7 + 1.75, T.d / 2 + 1.2); this.rotulo1201.visible = false; cena.add(this.rotulo1201);
   }
 
   /** Volta o que é passageiro ao normal (cada plano liga só o que precisa). */
   padrao() {
     this.rotulo12.visible = false; this.fotos.count = 0; this.flashFoto.visible = false; this.mira.visible = false;
+    this.vizinho.visible = false; this.rotulo1201.visible = false; this.janela1201(0, 0);
+  }
+
+  /** Janela do 1201 (Seu Álvaro): luz 0..1 e cortina 0 (fechada) a 1 (aberta). Ligue com cidade.vizinho.visible = true. */
+  janela1201(luz: number, cortina: number) {
+    const e = [0.012, 0.016, 0.03], q = [1.0, 0.72, 0.32];
+    this.vizLuz.material.color.setRGB(e[0] + (q[0] - e[0]) * luz, e[1] + (q[1] - e[1]) * luz, e[2] + (q[2] - e[2]) * luz);
+    const w = 0.75 * (1 - 0.82 * Math.max(0, Math.min(1, cortina))) - 0.025; // fica sempre uma fresta de luz no meio
+    this.vizCortE.scale.x = this.vizCortD.scale.x = w / 0.75;
+    this.vizCortE.position.x = -0.75 + w / 2; this.vizCortD.position.x = 0.75 - w / 2;
+    const tom = 0.03 + 0.5 * luz; this.vizCortE.material.color.setRGB(tom, tom * 0.55, tom * 0.28); // pano iluminado por trás
   }
 
   /** Flash da câmera no ar: 0 apagado, 1 clarão máximo. */

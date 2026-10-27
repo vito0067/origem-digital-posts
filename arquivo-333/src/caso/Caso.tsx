@@ -26,7 +26,7 @@ export type Visual = {
   zoom?: [number, number]; foco?: [number, number]; mover?: [number, number]; tremer?: number; legendaFoto?: string;
 };
 export type Extra =
-  | { tipo: "cartao"; titulo: string; texto: string; em: number; y?: number }
+  | { tipo: "cartao"; titulo: string; texto: string; em: number; ate?: number; y?: number }
   | { tipo: "textao"; texto: string; em: number; ate: number }
   | { tipo: "remendo"; x: number; y: number; w: number; h: number; texto: string }
   | { tipo: "marcador"; x: number; y: number; texto: string; sub?: string; em: number }
@@ -75,8 +75,9 @@ const Midia: React.FC<{ v: Visual; dur: number }> = ({ v, dur }) => {
 /** Notificação flutuando no ar, em perspectiva (nada de tela de celular em primeira pessoa). */
 const Cartao: React.FC<{ e: Extract<Extra, { tipo: "cartao" }>; s: number }> = ({ e, s }) => {
   const f = Math.round((s - e.em) * FPS);
-  if (f < 0) return null;
-  const m = spring({ frame: f, fps: FPS, config: { damping: 16, stiffness: 120, mass: 0.9 } });
+  if (f < 0 || (e.ate !== undefined && s > e.ate + 0.25)) return null;
+  const some = e.ate !== undefined ? lim(1 - (s - e.ate) / 0.25) : 1; // "ate": sai antes de outro extra entrar
+  const m = spring({ frame: f, fps: FPS, config: { damping: 16, stiffness: 120, mass: 0.9 } }) * some;
   const boia = Math.sin(s * 1.6) * 8;
   return (
     <div style={{ position: "absolute", left: 0, right: 0, top: e.y ?? 560, display: "flex", justifyContent: "center", perspective: 1400 }}>

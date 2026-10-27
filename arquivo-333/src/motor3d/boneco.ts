@@ -183,6 +183,11 @@ export const POSES: Record<string, (t: number) => Pose> = {
   // sentado gravando áudio: celular perto da boca
   gravando_audio: (t) => ({ respira: t, cabeca: [6, 0, 0], tronco: [4, 0, 0], pernaE: [-88, 0, 4], pernaD: [-88, 0, -4], joelhoE: 88, joelhoD: 88,
     bracoE: [-30, 0, -8], bracoD: [-112, 0, 22], cotoveloE: 50, cotoveloD: 118, olhos: 1.15, sobrancelha: 0.8, boca: "aberta" }),
+  // andando (pernas e braços alternam; use a posição da raiz para avançar)
+  andando: (t) => { const a = Math.sin(t * 6.5); return { respira: t, cabeca: [4, 0, 0], pernaE: [a * 24, 0, 0], pernaD: [-a * 24, 0, 0], joelhoE: Math.max(0, -a) * 32, joelhoD: Math.max(0, a) * 32,
+    bracoE: [-a * 22, 0, 6], bracoD: [a * 22, 0, -6], cotoveloE: 15, cotoveloD: 15 }; },
+  // batendo na porta com a mão direita
+  batendo_porta: (t) => ({ respira: t, cabeca: [2, 0, 0], bracoD: [-92, 0, -12], cotoveloD: 68 + Math.max(0, Math.sin(t * 13)) * 38, bracoE: [0, 0, 6] }),
   sentada_olhando_cima: (t) => ({ respira: t, cabeca: [-10, 0, 0], tronco: [0, 0, 0], pernaE: [-88, 0, 4], pernaD: [-88, 0, -4], joelhoE: 88, joelhoD: 88,
     bracoE: [-30, 0, -10], bracoD: [-34, 0, 12], cotoveloE: 60, cotoveloD: 62, olhos: 1.3 }),
 };

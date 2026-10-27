@@ -6,11 +6,11 @@
   "narracao": "narracao/ep03.mp3",
   "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261027_002850_cb3d4234-2895-4f14-a20c-64a10ce008b7.mp3",
   "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
-  "formato": "3D desenho em código (motor3d), 26/10/2026",
+  "formato": "3D desenho em código (motor3d); roteiro e voz pela rotina da nuvem, cenas novas no PC (26/10/2026)",
   "publicar": {
     "data": "2026-10-28",
     "hora": "20:00",
-    "capaEm": 36,
+    "capaEm": 9.5,
     "legenda": "O prédio inteiro ficou sem sinal. Menos um número. 📼\n\nO Sinal, episódio 3 (o 1 está no perfil).\nEpisódio 4 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
     "tituloYoutube": "Ninguém sai do prédio. E o elevador parou no andar dela | O Sinal, Ep. 3 #shorts",
     "descricaoYoutube": "As portas trancaram, o sinal sumiu e o elevador parou no 12º andar. Só o Remetente desconhecido ainda consegue falar com a Marina.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
@@ -57,8 +57,12 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "torre_aproxima",
-          "recuo_12"
+          "elevador_abre_vazio",
+          "elevador_sobe"
+        ],
+        "pesos": [
+          1.25,
+          1
         ]
       },
       "extras": [
@@ -68,21 +72,26 @@
           "de": 0,
           "ate": 12,
           "sufixo": "º",
-          "em": 3.2,
-          "fim": 5.6
+          "em": 4.6,
+          "fim": 7.6
         }
       ],
       "antes": 0.15,
       "segura": 0.3,
       "sons": [
         [
+          "sino",
+          0.6,
+          0.45
+        ],
+        [
           "whoosh",
-          0,
-          0.4
+          4.5,
+          0.35
         ],
         [
           "sino",
-          3.2,
+          7.6,
           0.5
         ],
         [
@@ -297,7 +306,11 @@
         "tipo": "3d",
         "planos": [
           "cortina_fecha",
-          "foto_janela"
+          "janela_vizinho"
+        ],
+        "pesos": [
+          0.8,
+          1.25
         ]
       },
       "extras": [],
@@ -322,8 +335,7 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "parque_vazio",
-          "foto_janela"
+          "janela_vizinho_abre"
         ]
       },
       "entrada": "flash",

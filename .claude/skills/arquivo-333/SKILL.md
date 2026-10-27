@@ -87,7 +87,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
      1. `node ferramentas/preparar-caso.mjs episodios/epNN.json`.
      2. `node ferramentas/quadros.mjs <id> <10 a 14 tempos>`: monte uma folha e OLHE antes de seguir.
      3. `CONC=3 node ferramentas/renderizar.mjs <id>`, cerca de 1,5 min.
-     4. Cópia leve com o ffmpeg do Remotion (`../node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe`, 1450k, comando no `nuvem.mjs`) e a capa.
+     4. Cópia leve com o ffmpeg do Remotion (`../node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe`, comando no `nuvem.mjs`; a taxa acompanha a duração para ficar abaixo de 10 MB) e a capa. Mais simples: `TODOS=1 FORCAR=epNN node ferramentas/nuvem.mjs` faz tudo isso e ainda sobe o release.
    - **Na nuvem:** só dê push no `episodios/epNN.json`. A Action "Arquivo 3:33 · renderizar episódios" renderiza sem placa de vídeo, então demora. Detalhes em [referencia/nuvem.md](referencia/nuvem.md).
 7. **Revisar** (a folha de quadros), contra a lista abaixo. Corrija e refaça o que falhar.
 8. **Publicar ou agendar:** [referencia/publicar.md](referencia/publicar.md).
@@ -110,6 +110,14 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
   - a parede da janela fica em z = -2,5 e o batente do meio em x = 0;
   - no lado da janela, mantenha a câmera com x ≥ 0,3 ou x ≤ -0,3 longe do batente, ou dentro do quarto (z > -2,38).
 - **Ordem do Pages:** a fábrica de posts da Origem usa o mesmo Pages. Os dois fluxos rodam `pages.mjs` antes de publicar, para um não apagar os vídeos do outro.
+- **Narração cortada errado:** o `preparar-caso` mostra o tempo de cada fala. Calcule sílabas por segundo; o normal é de 4 a 6. Se uma fala sair com menos de 3,8 e a seguinte com mais de 7, o corte errou. Junte as duas falas numa cena só (ou grave de novo com pausas maiores).
+- **Renderizar no PC e publicar como a nuvem:**
+  - Comando (na pasta `arquivo-333`): `GH_TOKEN=$(printf "protocol=https
+host=github.com
+
+" | git credential fill | sed -n 's/^password=//p') TODOS=1 FORCAR=epNN node ferramentas/nuvem.mjs`.
+  - Leva cerca de 2 min por episódio e sobe o release.
+  - Depois faça commit de `publicacao/render/` e push. A Action vê que já está feito e não refaz.
 - **Upload pelo Chrome:**
   - só aceita arquivos das pastas da sessão (use `Desktop\Origem-Digital\arquivo-333-envios\`);
   - até 10 MB por arquivo.

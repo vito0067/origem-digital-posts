@@ -33,8 +33,39 @@ const todos = arquivos.filter((f) => {
 // um por rodada (o de data mais próxima): sem placa de vídeo cada um leva bastante tempo, e a Action roda de novo
 // a cada 2 horas até zerar a fila
 const dataDe = (f) => JSON.parse(readFileSync(join(PASTA_EP, f), "utf8")).publicar?.data ?? "9999";
-const pendentes = todos.sort((x, y) => dataDe(x).localeCompare(dataDe(y))).slice(0, 1);
+const pendentes = todos.sort((x, y) => dataDe(x).localeCompare(dataDe(y))).slice(0, process.env.TODOS ? 99 : 1); // no PC (rápido): TODOS=1
 console.log("na fila:", todos.join(", ") || "nenhum", "| agora:", pendentes.join(", ") || "nenhum");
+
+// ---- release pelo REST do GitHub (funciona na Action e no PC; no PC: GH_TOKEN vindo do "git credential fill")
+const API = `https://api.github.com/repos/${REPO}`;
+const cab = () => ({ Authorization: `Bearer ${process.env.GH_TOKEN}`, Accept: "application/vnd.github+json" });
+async function subirRelease(tag, titulo, anexos) {
+  if (!process.env.GH_TOKEN) throw new Error("falta GH_TOKEN para subir o release");
+  let r = await fetch(`${API}/releases/tags/${tag}`, { headers: cab() });
+  let rel = r.ok ? await r.json() : null;
+  if (!rel) {
+    r = await fetch(`${API}/releases`, { method: "POST", headers: cab(), body: JSON.stringify({ tag_name: tag, name: titulo, target_commitish: "main", body: "Renderizado pelo Arquivo 3:33. A cópia leve (-upload.mp4) é a que vai para as redes." }) });
+    if (!r.ok) throw new Error(`criar release: HTTP ${r.status} ${await r.text()}`);
+    rel = await r.json();
+  }
+  for (const arq of anexos) {
+    const nome = basename(arq), velho = (rel.assets ?? []).find((a) => a.name === nome);
+    if (velho) await fetch(`${API}/releases/assets/${velho.id}`, { method: "DELETE", headers: cab() });
+    const tipo = nome.endsWith(".mp4") ? "video/mp4" : nome.endsWith(".mp3") ? "audio/mpeg" : "image/jpeg";
+    const up = await fetch(`https://uploads.github.com/repos/${REPO}/releases/${rel.id}/assets?name=${encodeURIComponent(nome)}`, { method: "POST", headers: { ...cab(), "Content-Type": tipo }, body: readFileSync(arq) });
+    if (!up.ok) throw new Error(`subir ${nome}: HTTP ${up.status} ${await up.text()}`);
+  }
+}
+
+/** Folha com 16 quadros do vídeo (na nuvem, filtro tile do ffmpeg; no Windows, que não tem esse filtro, monta pelo PowerShell). */
+function folhaDeRevisao(mp4, duracao, saida) {
+  if (process.platform !== "win32") return rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-i", mp4, "-vf", "fps=1/2,scale=216:384,tile=8x4", "-frames:v", "1", "-q:v", "4", saida]);
+  const tmp = join(SAIDA, "_folha"); mkdirSync(tmp, { recursive: true });
+  const quadros = Array.from({ length: 16 }, (_, k) => +(0.4 + (k * (duracao - 0.8)) / 15).toFixed(2));
+  quadros.forEach((t, k) => rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-ss", String(t), "-i", mp4, "-frames:v", "1", "-vf", "scale=270:480", "-q:v", "4", join(tmp, `${String(k).padStart(2, "0")}.jpg`)]));
+  const ps = `Add-Type -AssemblyName System.Drawing; $l = Get-ChildItem '${tmp}' -Filter *.jpg | Sort-Object Name; $b = New-Object System.Drawing.Bitmap 2160, 960; $g = [System.Drawing.Graphics]::FromImage($b); $i = 0; foreach ($f in $l) { $im = [System.Drawing.Image]::FromFile($f.FullName); $g.DrawImage($im, ($i % 8) * 270, [math]::Floor($i / 8) * 480, 270, 480); $im.Dispose(); $i++ }; $b.Save('${saida}', [System.Drawing.Imaging.ImageFormat]::Jpeg); $g.Dispose(); $b.Dispose()`;
+  execFileSync("powershell", ["-NoProfile", "-Command", ps], { stdio: "inherit" });
+}
 
 const feitos = [], erros = [];
 for (const f of pendentes) {
@@ -60,17 +91,18 @@ for (const f of pendentes) {
     rodar("node", ["ferramentas/renderizar.mjs", id]);
     const mp4 = join(SAIDA, `${id}.mp4`), leve = join(SAIDA, `${id}-upload.mp4`);
     // 5. cópia leve (o Chrome e o n8n sobem essa), capa e folha de revisão
-    rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-i", mp4, "-c:v", "libx264", "-preset", "slow", "-b:v", "1450k", "-maxrate", "2200k", "-bufsize", "4000k",
+    // taxa de vídeo pela duração, para a cópia leve ficar abaixo de ~9,5 MB (o Chrome só sobe até 10 MB)
+    const durSeg = JSON.parse(readFileSync(join(RAIZ, "public", "ep", `${id}.json`), "utf8")).duracao;
+    const kbps = Math.max(700, Math.min(1450, Math.floor((9.3 * 8192) / durSeg - 150)));
+    rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-i", mp4, "-c:v", "libx264", "-preset", "slow", "-b:v", `${kbps}k`, "-maxrate", `${Math.round(kbps * 1.5)}k`, "-bufsize", `${kbps * 3}k`,
       "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", leve]);
     const linha = JSON.parse(readFileSync(join(RAIZ, "public", "ep", `${id}.json`), "utf8"));
     const capaEm = ep.publicar?.capaEm ?? linha.duracao * 0.5;
     rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-ss", String(capaEm), "-i", mp4, "-frames:v", "1", "-q:v", "3", join(SAIDA, `${id}-capa.jpg`)]);
-    rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-i", mp4, "-vf", "fps=1/2,scale=216:384,tile=8x4", "-frames:v", "1", "-q:v", "4", join(SAIDA, `${id}-revisao.jpg`)]);
+    folhaDeRevisao(mp4, linha.duracao, join(SAIDA, `${id}-revisao.jpg`));
     // 6. release no GitHub (substitui os arquivos se já existir)
     const tag = `arquivo-${id}`, anexos = [leve, join(SAIDA, `${id}-capa.jpg`), join(SAIDA, `${id}-revisao.jpg`), narr];
-    let existe = true; try { execFileSync("gh", ["release", "view", tag, "--repo", REPO], { stdio: "ignore" }); } catch { existe = false; }
-    if (existe) rodar("gh", ["release", "upload", tag, ...anexos, "--clobber", "--repo", REPO]);
-    else rodar("gh", ["release", "create", tag, ...anexos, "--repo", REPO, "--title", `Arquivo 3:33 · ${ep.serie} · Ep. ${ep.episodio}`, "--notes", "Renderizado pela nuvem. A cópia leve (-upload.mp4) é a que vai para as redes."]);
+    await subirRelease(tag, `Arquivo 3:33 · ${ep.serie} · Ep. ${ep.episodio}`, anexos);
     // 7. registro
     const base = `https://github.com/${REPO}/releases/download/${tag}`;
     const reg = { id, arquivo: f, hash: hash(txt), episodio: ep.episodio, serie: ep.serie, duracao: +linha.duracao.toFixed(2), publicar: ep.publicar ?? null,

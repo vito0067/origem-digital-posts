@@ -6,11 +6,11 @@
   "narracao": "narracao/ep04.mp3",
   "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261027_002855_5dbc5231-c929-4a5f-88aa-fe52bf6ed5aa.mp3",
   "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
-  "formato": "3D desenho em código (motor3d), 26/10/2026",
+  "formato": "3D desenho em código (motor3d); roteiro e voz pela rotina da nuvem, cenas novas no PC (26/10/2026)",
   "publicar": {
     "data": "2026-10-29",
     "hora": "20:00",
-    "capaEm": 45,
+    "capaEm": 28.5,
     "legenda": "O Seu Álvaro sumiu. E deixou um aviso na parede. 📼\n\nO Sinal, episódio 4 (o 1 está no perfil).\nEpisódio 5 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
     "tituloYoutube": "Sete espelhos cobertos e uma frase na parede | O Sinal, Ep. 4 #shorts",
     "descricaoYoutube": "O Seu Álvaro, do 1201, sumiu. A porta está aberta, os espelhos estão cobertos e há uma frase escrita na parede.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
@@ -20,17 +20,15 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "rosto_medo",
-          "quarto_lado"
+          "parede_frase",
+          "rosto_medo"
+        ],
+        "pesos": [
+          0.9,
+          1.1
         ]
       },
-      "extras": [
-        {
-          "tipo": "visor",
-          "em": 0,
-          "ate": 1.6
-        }
-      ],
+      "extras": [],
       "antes": 0.1,
       "segura": 0.25,
       "sons": [
@@ -38,6 +36,11 @@
           "grave",
           0.05,
           0.7
+        ],
+        [
+          "glitch",
+          0.05,
+          0.35
         ],
         [
           "impacto",
@@ -52,7 +55,7 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "quarto_grupo"
+          "corredor_bia"
         ]
       },
       "extras": [
@@ -103,7 +106,12 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "rosto_mensagem"
+          "corredor_1201_aberta",
+          "sala_entrada"
+        ],
+        "pesos": [
+          1,
+          1.1
         ]
       },
       "extras": [
@@ -148,8 +156,7 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "foto_janela",
-          "fachadas_celulares"
+          "sala_espelhos"
         ]
       },
       "extras": [
@@ -166,24 +173,9 @@
       "segura": 0.3,
       "sons": [
         [
-          "obturador",
-          0.2,
-          0.6
-        ],
-        [
-          "obturador",
-          0.8,
-          0.5
-        ],
-        [
-          "obturador",
-          1.4,
-          0.5
-        ],
-        [
-          "obturador",
-          2,
-          0.5
+          "whoosh",
+          0.1,
+          0.3
         ],
         [
           "impacto",
@@ -198,7 +190,7 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "recuo_12"
+          "parede_frase"
         ]
       },
       "antes": 0.15,
@@ -222,7 +214,7 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "parque_vazio"
+          "sala_janela_aberta"
         ]
       },
       "entrada": "flash",
@@ -256,7 +248,11 @@
         "tipo": "3d",
         "planos": [
           "quarto_rosto",
-          "rosto_medo"
+          "ponto_no_ar"
+        ],
+        "pesos": [
+          1,
+          1.2
         ]
       },
       "antes": 0.15,
@@ -312,7 +308,11 @@
         "tipo": "3d",
         "planos": [
           "celular_vibra",
-          "rosto_mensagem"
+          "corredor_porta_1203"
+        ],
+        "pesos": [
+          0.9,
+          1.4
         ]
       },
       "extras": [
@@ -321,11 +321,17 @@
           "titulo": "Remetente desconhecido",
           "texto": "Foto recebida · agora",
           "em": 1,
-          "y": 330
+          "y": 330,
+          "ate": 3.4
+        },
+        {
+          "tipo": "visor",
+          "em": 3.6,
+          "texto": "CORREDOR · 12º · AGORA"
         }
       ],
       "antes": 0.15,
-      "segura": 0.3,
+      "segura": 1.2,
       "sons": [
         [
           "vibrar",
@@ -342,32 +348,10 @@
           "notificacao2",
           1.1,
           0.6
-        ]
-      ],
-      "fala": "Mas o celular vibrou. Uma foto nova. A porta do apartamento dela.",
-      "legenda": "Mas o celular *vibrou.* Uma foto nova. A *porta* do apartamento dela."
-    },
-    {
-      "visual": {
-        "tipo": "3d",
-        "planos": [
-          "rosto_medo"
-        ]
-      },
-      "entrada": "flash",
-      "extras": [
-        {
-          "tipo": "visor",
-          "em": 0,
-          "texto": "CORREDOR · 12º · AGORA"
-        }
-      ],
-      "antes": 0.15,
-      "segura": 0.7,
-      "sons": [
+        ],
         [
           "obturador",
-          0.05,
+          3.6,
           1
         ],
         [
@@ -381,8 +365,8 @@
           0.9
         ]
       ],
-      "fala": "Vista de dentro do corredor. Tirada agora.",
-      "legenda": "Vista de dentro do *corredor.* Tirada *agora.*"
+      "fala": "Mas o celular vibrou. Uma foto nova. A porta do apartamento dela. Vista de dentro do corredor. Tirada agora.",
+      "legenda": "Mas o celular *vibrou.* Uma foto nova. A *porta* do apartamento dela. Vista de dentro do *corredor.* Tirada *agora.*"
     },
     {
       "visual": {
