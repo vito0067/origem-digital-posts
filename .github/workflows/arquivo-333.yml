@@ -67,7 +67,7 @@ jobs:
   pages:
     # mesmo grupo da fábrica de posts: as duas publicam o mesmo Pages, uma de cada vez
     needs: renderizar
-    if: always() && needs.renderizar.outputs.feitos != ''
+    if: always() && (needs.renderizar.outputs.feitos != '' || github.event_name != 'schedule')
     runs-on: ubuntu-latest
     concurrency:
       group: posts
