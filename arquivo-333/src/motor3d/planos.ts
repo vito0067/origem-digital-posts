@@ -311,7 +311,8 @@ export const PLANOS: Record<string, Plano> = {
     const p = suave(s / dur);
     marinaNoQuarto(m, s, "sentada_celular", { olhos: 1.1, sobrancelha: 0.9, cabeca: [14, 0, -6 * p] }); telaCom(m, "mensagem");
     m.quarto.atualizar(s);
-    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] - 0.38, c[1] - 0.12, c[2] - 1.25], [c[0] - 0.26, c[1] - 0.1, c[2] - 1.08], p), alvo: [c[0], c[1] - 0.22, c[2]], fov: 56 };
+    // câmera DENTRO do quarto (z > -2,38): do lado de fora, a divisória do meio da janela (x = 0) tampava metade da tela
+    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] - 0.34, c[1] - 0.12, c[2] - 0.93], [c[0] - 0.25, c[1] - 0.1, c[2] - 0.84], p), alvo: [c[0], c[1] - 0.22, c[2]], fov: 60 };
   },
   ombro_celular: (s, dur, m) => {
     const p = suave(s / dur);
@@ -339,6 +340,6 @@ export const PLANOS: Record<string, Plano> = {
     const p = suave(s / (dur * 0.6));
     marinaNoQuarto(m, s, "sentada_celular", { olhos: 1 + 0.55 * p, sobrancelha: 1, boca: p > 0.5 ? "medo" : "neutra", cabeca: [12, 0, 0] }); telaCom(m, "nome");
     m.quarto.atualizar(s);
-    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.1, c[1] - 0.05, c[2] - 1.2], [c[0] + 0.05, c[1] - 0.04, c[2] - 0.95], suave(s / dur)), alvo: [c[0], c[1] - 0.1, c[2]], fov: 54 };
+    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.12, c[1] - 0.05, c[2] - 0.94], [c[0] + 0.06, c[1] - 0.04, c[2] - 0.82], suave(s / dur)), alvo: [c[0], c[1] - 0.1, c[2]], fov: 60 };
   },
 };

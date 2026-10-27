@@ -16,16 +16,24 @@
   },
   "o-sinal-ep03": {
     "data": "2026-10-28",
-    "tiktok": "pendente",
-    "youtube": "pendente",
+    "tiktok": "agendado 28/10 20h00 (capa: elevador vazio)",
+    "youtube": "ATENÇÃO: já existe no YouTube Studio um envio PRIVADO do Ep. 3 (26/10, com título e descrição). Abra esse em Conteúdo e termine (playlist O Sinal, miniatura, Uso de IA = Sim, não é para crianças, programar 28/10 20h00) em vez de subir de novo",
     "instagram": "pendente",
     "youtubeRelacionado": "pendente"
   },
   "o-sinal-ep04": {
     "data": "2026-10-29",
-    "tiktok": "pendente",
+    "tiktok": "agendado 29/10 20h00 (capa: a frase na parede)",
     "youtube": "pendente",
     "instagram": "pendente",
     "youtubeRelacionado": "pendente"
+  },
+  "o-sinal-ep05": {
+    "data": "2026-10-30",
+    "tiktok": "pendente",
+    "youtube": "pendente",
+    "instagram": "pendente",
+    "youtubeRelacionado": "pendente",
+    "nota": "roteiro e voz da rotina da nuvem (27/10); renderizado de novo no PC em 27/10 com o close do rosto corrigido"
   }
 }
