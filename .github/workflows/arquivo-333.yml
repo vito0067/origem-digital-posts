@@ -30,7 +30,10 @@ jobs:
     outputs:
       feitos: ${{ steps.render.outputs.feitos }}
     steps:
+      # sempre o main mais novo (uma rodada que ficou na fila não pode renderizar de novo o que outra já fez)
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-node@v4
         with:
@@ -61,7 +64,7 @@ jobs:
           git add arquivo-333/publicacao/render
           git diff --cached --quiet && exit 0
           git commit -m "Arquivo 3:33: renderizado ${{ steps.render.outputs.feitos }}"
-          git pull --rebase origin main
+          git pull --rebase -X theirs origin main
           git push origin HEAD:main
 
   pages:
