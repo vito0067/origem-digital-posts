@@ -1,0 +1,376 @@
+{
+  "id": "o-sinal-ep03",
+  "serie": "O Sinal",
+  "episodio": 3,
+  "titulo": "Portas",
+  "narracao": "narracao/ep03.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261027_002850_cb3d4234-2895-4f14-a20c-64a10ce008b7.mp3",
+  "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
+  "formato": "3D desenho em código (motor3d), 26/10/2026",
+  "publicar": {
+    "data": "2026-10-28",
+    "hora": "20:00",
+    "capaEm": 36,
+    "legenda": "O prédio inteiro ficou sem sinal. Menos um número. 📼\n\nO Sinal, episódio 3 (o 1 está no perfil).\nEpisódio 4 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "Ninguém sai do prédio. E o elevador parou no andar dela | O Sinal, Ep. 3 #shorts",
+    "descricaoYoutube": "As portas trancaram, o sinal sumiu e o elevador parou no 12º andar. Só o Remetente desconhecido ainda consegue falar com a Marina.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rafa_puxa_porta",
+          "porta_trava"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "ate": 1.6
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.25,
+      "sons": [
+        [
+          "grave",
+          0.05,
+          0.7
+        ],
+        [
+          "tranca",
+          1.9,
+          0.9
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          0.8
+        ]
+      ],
+      "fala": "Ontem, as portas do prédio trancaram sozinhas. E agora ninguém sai, nem o Rafa, nem a Marina.",
+      "legenda": "Ontem, as portas do prédio *trancaram* sozinhas. E agora *ninguém sai*, nem o Rafa, nem a Marina."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "torre_aproxima",
+          "recuo_12"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ANDAR DO ELEVADOR",
+          "de": 0,
+          "ate": 12,
+          "sufixo": "º",
+          "em": 3.2,
+          "fim": 5.6
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "whoosh",
+          0,
+          0.4
+        ],
+        [
+          "sino",
+          3.2,
+          0.5
+        ],
+        [
+          "impacto",
+          "fimvoz-0.2",
+          0.8
+        ]
+      ],
+      "fala": "O elevador desceu até o térreo, abriu vazio, e subiu sozinho. Parou no décimo segundo andar. O andar dela.",
+      "legenda": "O elevador desceu até o térreo, abriu *vazio*, e subiu sozinho. Parou no *12º andar.* O andar dela."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "celular_vibra",
+          "rosto_medo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "BARRAS DE SINAL",
+          "de": 4,
+          "ate": 0,
+          "em": 1.6,
+          "fim": 3.4
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "vibrar",
+          0.1,
+          0.6
+        ],
+        [
+          "grave",
+          "fimvoz-0.5",
+          0.6
+        ]
+      ],
+      "fala": "Ela tentou ligar pra alguém. Sem sinal. Nenhuma barra, em lugar nenhum do prédio.",
+      "legenda": "Ela tentou ligar pra alguém. *Sem sinal.* Nenhuma barra, em lugar *nenhum* do prédio."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_mensagem"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Remetente desconhecido",
+          "texto": "Você está sem sinal. Eu não.",
+          "em": 0.6,
+          "y": 330
+        }
+      ],
+      "entrada": "glitch",
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "glitch",
+          0,
+          0.4
+        ],
+        [
+          "notificacao2",
+          0.7,
+          0.6
+        ]
+      ],
+      "fala": "Só um número continuava funcionando. O do Remetente desconhecido.",
+      "legenda": "Só um número continuava funcionando. O do *Remetente desconhecido.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_rosto",
+          "rosto_mensagem"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "Amanhã, às 3h33, um de vocês vai olhar.",
+          "em": 0.8,
+          "ate": 5.6
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "vibrar",
+          0.1,
+          0.7
+        ],
+        [
+          "notificacao2",
+          0.9,
+          0.6
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          0.9
+        ]
+      ],
+      "fala": "Às três e trinta e quatro, a mensagem chegou: amanhã, às três e trinta e três, um de vocês vai olhar.",
+      "legenda": "Às 3h34, a mensagem chegou: amanhã, às *3h33*, um de vocês vai *olhar.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "janela_costas"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "relampago",
+          "em": 3.2
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.6
+        ],
+        [
+          "trovao",
+          3.2,
+          0.7
+        ]
+      ],
+      "fala": "Um de vocês. Ele não disse quem. E ninguém sabia como sair dali.",
+      "legenda": "*Um de vocês.* Ele não disse quem. E ninguém sabia como *sair* dali."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_grupo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "sub": "sinal fraco",
+          "em": 0.3,
+          "intervalo": 0.7,
+          "mensagens": [
+            {
+              "de": "Ap 804",
+              "texto": "alguém consegue sair??"
+            },
+            {
+              "de": "Ap 503",
+              "texto": "as portas não abrem"
+            },
+            {
+              "de": "Ap 1401",
+              "texto": "…"
+            },
+            {
+              "de": "Ap 1201 · Seu Álvaro",
+              "texto": "Vou olhar."
+            }
+          ]
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "notificacao2",
+          0.4,
+          0.4
+        ],
+        [
+          "notificacao2",
+          1.1,
+          0.4
+        ],
+        [
+          "notificacao2",
+          1.8,
+          0.4
+        ],
+        [
+          "grave",
+          2.6,
+          0.6
+        ]
+      ],
+      "fala": "No grupo do prédio, as mensagens foram parando. Uma por uma. Até sobrar o Seu Álvaro, do doze zero um.",
+      "legenda": "No grupo do prédio, as mensagens foram *parando.* Até sobrar o *Seu Álvaro*, do 1201."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "cortina_fecha",
+          "foto_janela"
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "whoosh",
+          0.2,
+          0.3
+        ],
+        [
+          "coracao",
+          1.5,
+          0.5
+        ]
+      ],
+      "fala": "Ela espiou pela fresta da cortina. E viu a luz do apartamento dele acender.",
+      "legenda": "Ela espiou pela fresta da cortina. E viu a *luz* do apartamento dele *acender.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "parque_vazio",
+          "foto_janela"
+        ]
+      },
+      "entrada": "flash",
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "subida",
+          0,
+          0.5
+        ],
+        [
+          "impacto",
+          "fimvoz+0.1",
+          1
+        ],
+        [
+          "grave",
+          "fimvoz+0.1",
+          0.8
+        ]
+      ],
+      "fala": "Do outro lado da parede, a cortina dele começou a abrir. Devagar. Sozinha.",
+      "legenda": "Do outro lado da parede, a cortina dele começou a *abrir.* Devagar. *Sozinha.*"
+    },
+    {
+      "visual": {
+        "tipo": "final"
+      },
+      "semLegenda": true,
+      "antes": 0.3,
+      "segura": 0.9,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          0.95,
+          0.7
+        ]
+      ],
+      "fala": "Episódio quatro, amanhã. Siga o Arquivo três e trinta e três.",
+      "legenda": "Episódio 4 amanhã. Siga o *Arquivo 3:33.*"
+    }
+  ]
+}

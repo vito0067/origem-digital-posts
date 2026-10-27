@@ -1,0 +1,410 @@
+{
+  "id": "o-sinal-ep04",
+  "serie": "O Sinal",
+  "episodio": 4,
+  "titulo": "1201",
+  "narracao": "narracao/ep04.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261027_002855_5dbc5231-c929-4a5f-88aa-fe52bf6ed5aa.mp3",
+  "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
+  "formato": "3D desenho em código (motor3d), 26/10/2026",
+  "publicar": {
+    "data": "2026-10-29",
+    "hora": "20:00",
+    "capaEm": 45,
+    "legenda": "O Seu Álvaro sumiu. E deixou um aviso na parede. 📼\n\nO Sinal, episódio 4 (o 1 está no perfil).\nEpisódio 5 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "Sete espelhos cobertos e uma frase na parede | O Sinal, Ep. 4 #shorts",
+    "descricaoYoutube": "O Seu Álvaro, do 1201, sumiu. A porta está aberta, os espelhos estão cobertos e há uma frase escrita na parede.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo",
+          "quarto_lado"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "ate": 1.6
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.25,
+      "sons": [
+        [
+          "grave",
+          0.05,
+          0.7
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          0.9
+        ]
+      ],
+      "fala": "O remetente avisou: às três e trinta e três, um de vocês vai olhar. E o Seu Álvaro sumiu.",
+      "legenda": "O remetente avisou: às *3h33*, um de vocês vai olhar. E o *Seu Álvaro* sumiu."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_grupo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "em": 0.3,
+          "intervalo": 0.7,
+          "mensagens": [
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "subi de escada"
+            },
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "a porta do 1201 tá ABERTA"
+            },
+            {
+              "de": "Ap 804",
+              "texto": "não entra Bia"
+            }
+          ]
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "notificacao2",
+          0.4,
+          0.4
+        ],
+        [
+          "notificacao2",
+          1.1,
+          0.4
+        ],
+        [
+          "notificacao2",
+          1.8,
+          0.4
+        ]
+      ],
+      "fala": "A Bia, do onze zero dois, subiu pela escada e achou a porta do doze zero um aberta.",
+      "legenda": "A Bia, do 1102, subiu pela escada e achou a porta do *1201* aberta."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_mensagem"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "em": 0.3,
+          "intervalo": 0.9,
+          "mensagens": [
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "a sala tá normal",
+              "foto": true
+            },
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "mas olha os espelhos",
+              "foto": true
+            }
+          ]
+        }
+      ],
+      "entrada": "glitch",
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "notificacao2",
+          0.4,
+          0.4
+        ],
+        [
+          "notificacao2",
+          1.3,
+          0.4
+        ]
+      ],
+      "fala": "Ela mandou uma foto pro grupo do prédio. A sala estava arrumada. Mas os espelhos...",
+      "legenda": "Ela mandou uma foto pro grupo. A sala estava arrumada. Mas os *espelhos...*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "foto_janela",
+          "fachadas_celulares"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ESPELHOS COBERTOS",
+          "de": 0,
+          "ate": 7,
+          "em": 0.3,
+          "fim": 2.8
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "obturador",
+          0.2,
+          0.6
+        ],
+        [
+          "obturador",
+          0.8,
+          0.5
+        ],
+        [
+          "obturador",
+          1.4,
+          0.5
+        ],
+        [
+          "obturador",
+          2,
+          0.5
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          0.8
+        ]
+      ],
+      "fala": "Sete espelhos. Todos cobertos com lençol, como se alguém não quisesse ser visto.",
+      "legenda": "*Sete* espelhos. Todos cobertos com lençol, como se alguém não quisesse ser *visto.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "recuo_12"
+        ]
+      },
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "subida",
+          0,
+          0.5
+        ],
+        [
+          "grave",
+          "fimvoz-0.3",
+          0.6
+        ]
+      ],
+      "fala": "Na parede da sala, em letras vermelhas, uma frase que ninguém ali tinha escrito.",
+      "legenda": "Na parede da sala, em letras *vermelhas*, uma frase que ninguém ali tinha escrito."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "parque_vazio"
+        ]
+      },
+      "entrada": "flash",
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "ELES SÓ VEEM QUEM OLHA",
+          "em": 0.1,
+          "ate": 2.2
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.5,
+      "sons": [
+        [
+          "impacto",
+          0.05,
+          1
+        ],
+        [
+          "grave",
+          0.1,
+          0.8
+        ]
+      ],
+      "fala": "Eles só veem quem olha.",
+      "legenda": "Eles só *veem* quem *olha.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_rosto",
+          "rosto_medo"
+        ]
+      },
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "coracao",
+          0.2,
+          0.5
+        ],
+        [
+          "grave",
+          "fimvoz-0.4",
+          0.6
+        ]
+      ],
+      "fala": "A Marina entendeu. O Seu Álvaro olhou pela janela. E foi visto.",
+      "legenda": "A Marina entendeu. O Seu Álvaro *olhou* pela janela. E foi *visto.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "cortina_fecha",
+          "janela_costas"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "relampago",
+          "em": 3.4
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "whoosh",
+          0.2,
+          0.3
+        ],
+        [
+          "trovao",
+          3.4,
+          0.6
+        ]
+      ],
+      "fala": "Desde então, a Marina não olha mais pra fora. Nem pra cortina. Nem pro parque.",
+      "legenda": "Desde então, a Marina não olha mais pra fora. Nem pra *cortina.* Nem pro *parque.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "celular_vibra",
+          "rosto_mensagem"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Remetente desconhecido",
+          "texto": "Foto recebida · agora",
+          "em": 1,
+          "y": 330
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "vibrar",
+          0.1,
+          0.8
+        ],
+        [
+          "vibrar",
+          0.5,
+          0.6,
+          -0.4
+        ],
+        [
+          "notificacao2",
+          1.1,
+          0.6
+        ]
+      ],
+      "fala": "Mas o celular vibrou. Uma foto nova. A porta do apartamento dela.",
+      "legenda": "Mas o celular *vibrou.* Uma foto nova. A *porta* do apartamento dela."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo"
+        ]
+      },
+      "entrada": "flash",
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "texto": "CORREDOR · 12º · AGORA"
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.7,
+      "sons": [
+        [
+          "obturador",
+          0.05,
+          1
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          1
+        ],
+        [
+          "grave",
+          "fimvoz+0.05",
+          0.9
+        ]
+      ],
+      "fala": "Vista de dentro do corredor. Tirada agora.",
+      "legenda": "Vista de dentro do *corredor.* Tirada *agora.*"
+    },
+    {
+      "visual": {
+        "tipo": "final"
+      },
+      "semLegenda": true,
+      "antes": 0.3,
+      "segura": 0.9,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          0.95,
+          0.7
+        ]
+      ],
+      "fala": "Episódio cinco, amanhã. Siga o Arquivo três e trinta e três.",
+      "legenda": "Episódio 5 amanhã. Siga o *Arquivo 3:33.*"
+    }
+  ]
+}
