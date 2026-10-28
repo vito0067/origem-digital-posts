@@ -1,0 +1,367 @@
+{
+  "id": "o-sinal-ep06",
+  "serie": "O Sinal",
+  "episodio": 6,
+  "titulo": "Duas Bias",
+  "narracao": "narracao/ep06.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261028_133321_4ad47faa-96f7-4e74-be2c-f80ed933c628.mp3",
+  "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
+  "formato": "3D desenho em código (motor3d); roteiro e voz pela rotina da nuvem (28/10/2026)",
+  "publicar": {
+    "data": "2026-10-31",
+    "hora": "20:00",
+    "capaEm": 3.5,
+    "legenda": "Duas Bias. Uma na porta, outra no andar de baixo. As duas mandaram a mesma frase. 📼\n\nO Sinal, episódio 6 (o 1 está no perfil).\nEpisódio 7 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "Duas pessoas dizem ser a Bia. Só uma existe | O Sinal, Ep. 6 #shorts",
+    "descricaoYoutube": "A Bia bate na porta da Marina e, ao mesmo tempo, manda mensagem do 11º andar. Uma delas não existe. A Marina faz uma pergunta para testar as duas, e recebe a mesma resposta das duas.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "corredor_porta_1203",
+          "bia_bate_porta"
+        ],
+        "pesos": [
+          1,
+          1.2
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "ate": 2.4,
+          "texto": "CORREDOR · 12º · AGORA"
+        },
+        {
+          "tipo": "dado",
+          "rotulo": "BIAS NO PRÉDIO",
+          "de": 1,
+          "ate": 2,
+          "em": 3.2,
+          "fim": 5
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0.05,
+          0.7
+        ],
+        [
+          "glitch",
+          0.05,
+          0.35
+        ],
+        [
+          "impacto",
+          4.2,
+          0.8
+        ]
+      ],
+      "fala": "A Bia estava na porta da Marina. E, ao mesmo tempo, mandando mensagem do décimo primeiro andar.",
+      "legenda": "A *Bia* estava na porta da Marina. E, ao mesmo tempo, mandando mensagem do *11º andar.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "bia_bate_porta"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "ABRE, MARINA.",
+          "em": 2,
+          "ate": 5
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "impacto",
+          0.2,
+          0.8
+        ],
+        [
+          "grave",
+          "fimvoz-0.4",
+          0.5
+        ]
+      ],
+      "fala": "Do corredor, a voz sussurrou de novo. Abre, Marina. Eu sei que você está aí.",
+      "legenda": "Do corredor, a *voz* sussurrou de novo. Abre, Marina. Eu sei que você está *aí.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_lado",
+          "rosto_medo"
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "coracao",
+          0.3,
+          0.6
+        ],
+        [
+          "grave",
+          "fimvoz-0.4",
+          0.5
+        ]
+      ],
+      "fala": "A Marina colou o ouvido na madeira. Do outro lado, uma respiração lenta.",
+      "legenda": "A Marina colou o ouvido na madeira. Do outro lado, uma *respiração* lenta."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_grupo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "em": 0.8,
+          "intervalo": 2.2,
+          "mensagens": [
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "tô no 11º, a luz caiu"
+            },
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "tem alguém na minha porta"
+            }
+          ]
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "notificacao2",
+          0.9,
+          0.5
+        ],
+        [
+          "notificacao2",
+          3,
+          0.5
+        ]
+      ],
+      "fala": "Então o grupo do prédio acendeu. Era a Bia, de novo. Estou no décimo primeiro. Tem alguém na minha porta.",
+      "legenda": "Então o grupo acendeu. Era a *Bia,* de novo. Estou no *11º.* Tem alguém na minha *porta.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "corredor_porta_1203"
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "impacto",
+          0.2,
+          0.9
+        ],
+        [
+          "grave",
+          "fimvoz-0.3",
+          0.7
+        ]
+      ],
+      "fala": "Duas Bias. Uma no corredor. A outra, um andar abaixo.",
+      "legenda": "*Duas* Bias. Uma no corredor. A outra, um andar *abaixo.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo"
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.5,
+      "sons": [
+        [
+          "grave",
+          0.1,
+          0.8
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          0.9
+        ]
+      ],
+      "fala": "E uma delas não existia.",
+      "legenda": "E uma delas não *existia.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_mensagem",
+          "quarto_rosto"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Para: Bia",
+          "texto": "Onde a gente se encontra toda terça?",
+          "em": 1.2,
+          "y": 330,
+          "ate": 5.5
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "whoosh",
+          0.1,
+          0.3
+        ],
+        [
+          "subida",
+          2,
+          0.4
+        ]
+      ],
+      "fala": "A Marina decidiu testar as duas. Mandou uma única pergunta: onde a gente se encontra toda terça?",
+      "legenda": "A Marina decidiu *testar* as duas. Mandou uma única pergunta: onde a gente se *encontra* toda terça?"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "bia_bate_porta",
+          "corredor_bia"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0.3,
+          "texto": "OLHO MÁGICO · 1203"
+        }
+      ],
+      "antes": 0.15,
+      "segura": 0.3,
+      "sons": [
+        [
+          "subida",
+          0,
+          0.5
+        ],
+        [
+          "grave",
+          "fimvoz-0.3",
+          0.6
+        ]
+      ],
+      "fala": "Na porta, a voz ficou em silêncio. Parecia estar pensando.",
+      "legenda": "Na porta, a voz ficou em *silêncio.* Parecia estar *pensando.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "celular_vibra",
+          "rosto_medo",
+          "corredor_porta_1203"
+        ],
+        "pesos": [
+          0.8,
+          1.2,
+          1.2
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Bia · 11º andar",
+          "texto": "NÃO ABRE. A OUTRA NÃO SOU EU.",
+          "em": 3.2,
+          "y": 330,
+          "ate": 8
+        }
+      ],
+      "entrada": "glitch",
+      "antes": 0.15,
+      "segura": 1.2,
+      "sons": [
+        [
+          "vibrar",
+          0.1,
+          0.8
+        ],
+        [
+          "vibrar",
+          0.5,
+          0.6,
+          -0.4
+        ],
+        [
+          "notificacao2",
+          3.3,
+          0.6
+        ],
+        [
+          "impacto",
+          "fimvoz+0.05",
+          1
+        ],
+        [
+          "glitch",
+          3.3,
+          0.4
+        ]
+      ],
+      "fala": "Um segundo depois, o celular vibrou. E, ao mesmo tempo, a voz atravessou a porta. As duas disseram a mesma frase: não abre. A outra não sou eu.",
+      "legenda": "Um segundo depois, o celular *vibrou.* E a *voz* atravessou a porta. As duas disseram a mesma frase: não abre. A outra *não sou eu.*"
+    },
+    {
+      "visual": {
+        "tipo": "final"
+      },
+      "semLegenda": true,
+      "antes": 0.3,
+      "segura": 0.9,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          0.95,
+          0.7
+        ]
+      ],
+      "fala": "Episódio sete, amanhã. Siga o Arquivo três e trinta e três.",
+      "legenda": "Episódio 7 amanhã. Siga o *Arquivo 3:33.*"
+    }
+  ]
+}
