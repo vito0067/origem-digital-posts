@@ -42,7 +42,8 @@
 - **Ep. 4 · 1201** (29/10/2026): o Seu Álvaro sumiu; a Bia acha a porta aberta, sete espelhos tapados e "ELES SÓ VEEM QUEM OLHA" na parede; gancho: foto da porta da Marina, tirada de dentro do corredor, agora. Ver `episodios/ep04.json`.
 - **Ep. 5 · O corredor** (30/10/2026): alguém bate na porta da Marina dizendo ser a Bia, mas no grupo a Bia está na escada; pelo olho mágico há alguém de costas; gancho: o remetente pergunta "A Bia está no 11º andar com você?" e as batidas param ("eu ouvi"). Ver `episodios/ep05.json`.
 - **Ep. 6 · Duas Bias** (31/10/2026): a Bia na porta e a Bia no 11º; a Marina testa as duas com uma pergunta; gancho: as duas respondem ao mesmo tempo "Não abre. A outra não sou eu." Ver `episodios/ep06.json`.
-- **Próximo: Ep. 7 · A síndica** (01/11/2026): seguir o arco acima.
+- **Ep. 7 · A síndica** (01/11/2026): a Dona Cida manda áudio: o prédio foi construído em 1983 depois de um apagão de 3h33; a planta original (que ela guardava na gaveta) tem um 13º andar, mas o último botão do elevador é o 12. Ver `episodios/ep07.json`.
+- **Próximo: Ep. 8 · 13º** (02/11/2026): seguir o arco acima.
 
 ## (Histórico) Roteiro original do episódio 2, antes da versão final
 Falas, cada uma separada por três quebras de linha na gravação:
