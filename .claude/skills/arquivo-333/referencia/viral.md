@@ -29,7 +29,23 @@
 5. **Comentários:**
    - termine com uma pergunta implícita (quem é o remetente?);
    - responda os primeiros comentários com mistério, nunca com spoiler;
-   - fixe um comentário com o próximo episódio.
+   - fixe um comentário com uma pergunta ("Quem você acha que é o remetente? 👀") + o próximo episódio.
+
+## TikTok travado (diagnóstico de 29/10/2026)
+- **Sintoma:** 4 visualizações em 7 dias, 0% vindo do "Para você", 1 seguidor. O MESMO vídeo fez 10 mil no Instagram, então o problema é a conta, não o vídeo.
+- **Causa mais provável:** conta nova operada só pelo computador (criada, editada e alimentada pelo site, com agendamento). O TikTok confia pouco nesse tipo de conta e não manda os vídeos para o "Para você".
+- **O que o Vito faz no celular (só ele pode):**
+  1. Instalar o app do TikTok e entrar na @arquivo333.0.
+  2. Em Perfil → ☰ → Configurações → Conta → **Status da conta**: ver se há restrição ou violação. Se houver, contestar ali mesmo.
+  3. Em cada vídeo → ··· → **Análise**: ver se aparece "Não qualificado para o feed Para você". Se aparecer, tocar e pedir revisão.
+  4. Usar o app como uma pessoa durante 3 a 5 dias, uns 15 min por dia: assistir vídeos de terror e suspense até o fim, curtir, seguir uns 10 perfis do nicho, comentar 2 ou 3. Isso "ensina" o TikTok qual é o nicho da conta.
+  5. Postar os próximos episódios **pelo app** (com o vídeo baixado no celular), com a legenda pronta. Se dois episódios postados pelo app ainda tiverem 0% de "Para você", a conta está queimada: criar uma conta nova PELO CELULAR e recomeçar do ep. 1, um por dia.
+- **Enquanto isso:** o agendamento pelo site continua, para a série não ficar com buraco.
+
+## Instagram: o que fez o ep. 2 estourar (10 mil, 29/10)
+- A 1ª tela é o visor mirando a janela, com o contador "56" e a palavra "PRÓPRIA" em amarelo: imagem estranha + número + mistério antes de qualquer fala.
+- A capa repete esse quadro, então o perfil fica com cara de "arquivo de casos".
+- Use "Testar Reel" (trial reels, para não seguidores) nos episódios que abrirem fraco, quando a opção aparecer na conta.
 
 ## Textos (modelos)
 - **Legenda (IG e TikTok):**

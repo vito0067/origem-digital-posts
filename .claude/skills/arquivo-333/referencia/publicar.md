@@ -30,6 +30,7 @@
   - agendar vai só até uns 10 dias;
   - o nome do perfil só muda a cada 7 dias (o próximo a partir de 2/11/2026);
   - conta nova pode ficar "em análise" algumas horas.
+- **ATENÇÃO (29/10/2026): a conta está sem distribuição** (0% de "Para você", 1 a 2 visualizações por vídeo). Continue agendando para manter a série em dia, mas leia "TikTok travado" em `viral.md`: o conserto depende do Vito no celular.
 
 ## YouTube (studio.youtube.com, canal UCp1qPtKzd1zkQr04_J4xIHw)
 1. Vá em `…/videos/upload?d=ud`, ache o input de arquivo e faça `file_upload`.
@@ -47,7 +48,7 @@
 9. Clique em "Programar". Confira em Conteúdo → Shorts ("Programado").
 - **Depois que o episódio sair:**
   - em Editar → "Vídeo relacionado", ligue o episódio NOVO ao anterior e o anterior ao novo, para quem chega maratonar;
-  - fixe um comentário: "Episódio N+1 sai amanhã às 20h. A série completa está na playlist."
+  - fixe um comentário que puxa resposta: "Quem você acha que é o remetente? 👀 Episódio N+1 sai amanhã às 20h, e a série completa está na playlist." Comentário conta muito no algoritmo, e pergunta gera comentário.
 
 ## Instagram (instagram.com, conta de CRIADOR desde 26/10/2026)
 - **Automático (melhor):** o fluxo do n8n "Arquivo 3:33 - Publicar Instagram" publica às 20h.

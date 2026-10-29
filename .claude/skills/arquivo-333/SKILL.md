@@ -42,12 +42,14 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
    - **Personagens:** quando um personagem manda áudio, usa outra voz, com `"vozTelefone": true` na cena e o extra `audio`.
 5. **Legenda:** Anton 90 px, até 3 palavras por vez, palavra falada em amarelo e palavras de medo em `*vermelho*`.
 6. **Etiqueta e final:** etiqueta "ARQUIVO 3:33 · SÉRIE · EP. N" no topo. Cartão final datilografado: "Episódio N+1 amanhã, 20h" + "SIGA PARA NÃO PERDER" + "Ficção · criada com inteligência artificial".
-7. **O gancho do primeiro segundo é o mais importante:**
-   - O 1º quadro já mostra a imagem mais forte do episódio: o visor mirando a janela, o rosto com medo, o LED vermelho.
+7. **O gancho do primeiro segundo é o mais importante (regras revisadas com os números de 29/10/2026, ver `publicacao/numeros.md`):**
+   - O 1º quadro já mostra a imagem mais forte do episódio: o visor mirando a janela, o rosto com medo, o LED vermelho, de preferência com um `dado` (contador) já na tela. O ep. 2, que abriu no visor com "56", fez 10 mil no Instagram.
    - Nada de abrir no preto nem em cidade parada.
-   - A 1ª fala resume o "até agora" e já termina em pergunta ou ameaça.
-   - Prova: no Instagram, o ep. 1 abriu numa cidade escura e as pessoas passavam no 1º segundo. O ep. 2 abre no visor.
-8. **Duração:** de 50 a 65 s, entre 9 e 11 falas. Para entrar na monetização do TikTok, o vídeo precisa passar de 60 s. Quando o TikTok passar de 8 mil seguidores, fique entre 61 e 70 s.
+   - **A 1ª fala é um gancho que funciona para quem NUNCA viu a série**, com até 12 palavras e menos de 3 s: uma ameaça ou um fato impossível, concreto ("Alguém bateu na porta dela dizendo ser a vizinha. A vizinha estava no andar de baixo."). Nada de começar com "A Marina recebeu..." ou com recapitulação: no YouTube, metade das pessoas desliza no 1º segundo quando a abertura é recap (ep. 2: 50% ficaram; ep. 1, com o letreiro "NÃO OLHE PELA JANELA": 60%).
+   - Junto da 1ª fala, um `textao` de 3 a 6 palavras com a frase-gancho (ex.: "ELA NÃO ESTAVA SOZINHA"), do segundo 0 até ~2,5 s.
+   - O "até agora" vira **uma frase curta na 2ª fala**, no máximo.
+8. **Duração:** de **48 a 58 s**, entre 9 e 10 falas. O YouTube e o Instagram premiam quem assiste até o fim, e hoje o TikTok está travado (0% de "Para você"), então a regra dos 61 s do TikTok fica suspensa. Volte para 61 a 70 s quando o TikTok voltar a distribuir e passar de 8 mil seguidores.
+9. **Fim curto (a partir do ep. 8):** a última fala da história termina no gancho. A fala final passa a ser só "**Episódio N, amanhã.**" (uns 1,5 s), com o cartão `final` e `segura` de no máximo 0,6 s. O "Siga" fica escrito no cartão. Antes, a chamada falada + o cartão somavam uns 4 s parados no fim, e isso derrubava o "assistiu até o fim".
 
 ## Regras da história e das plataformas (sempre)
 - **Rótulo de IA:** ligado nas 3 redes. "Ficção criada com IA" na legenda e no cartão final.
@@ -57,7 +59,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
   - conteúdo para crianças (o público é adulto ou geral).
 - **Mistério:** o remetente nunca aparece; ninguém descobre quem é antes do último episódio da série.
 - **Números:** por extenso na fala e em algarismo na legenda.
-- **Fala final:** sempre "Episódio N, amanhã. Siga o Arquivo três e trinta e três."
+- **Fala final:** a partir do ep. 8, só "Episódio N, amanhã." (ver o item 9 do formato). Até o ep. 7 era "Episódio N, amanhã. Siga o Arquivo três e trinta e três."
 - **Segredos:** nunca escreva senha, chave ou token em arquivo nenhum.
 
 ## Como fazer um episódio
