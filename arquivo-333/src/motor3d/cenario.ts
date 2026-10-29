@@ -334,7 +334,7 @@ export class Quarto {
     this.cortinaE.position.x = -x; this.cortinaD.position.x = x;
   }
 
-  padrao() { this.cortinas(0); this.celularCama.visible = false; this.recorte.intensity = 7; this.luzCelular.intensity = 0.45; }
+  padrao() { this.cortinas(0); this.celularCama.visible = false; this.recorte.intensity = 7; this.luzCelular.intensity = 0.45; this.marina.raiz.visible = true; }
 
   private texturaCidadeLaFora() {
     const c = document.createElement("canvas"); c.width = 1024; c.height = 600; const g = c.getContext("2d")!; const r = sorteio(5);

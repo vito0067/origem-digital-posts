@@ -1,0 +1,391 @@
+{
+  "id": "o-sinal-ep08",
+  "serie": "O Sinal",
+  "episodio": 8,
+  "titulo": "13º",
+  "narracao": "narracao/ep08.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261029_215423_1dc4f618-4518-4c0c-97a4-770c60407034.mp3",
+  "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
+  "formato": "3D desenho em código (motor3d); 1º episódio no formato revisado de 29/10/2026 (gancho para quem nunca viu, 48-58 s, fim curto). Planos novos: escada_bia, corredor_13, porta_sem_numero, quarto_igual.",
+  "publicar": {
+    "data": "2026-11-02",
+    "hora": "20:00",
+    "capaEm": 1.2,
+    "legenda": "O prédio tem 12 andares. A Bia filmou o 13º. 📼\n\nO Sinal, episódio 8 (o 1 está no perfil).\nEpisódio 9 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "O prédio tem 12 andares. Ela filmou o 13º | O Sinal, Ep. 8 #shorts",
+    "descricaoYoutube": "A Bia sobe pela escada atrás do andar que só existe na planta da síndica. Ela encontra um corredor sem números, o elevador marcando 13 e, atrás de uma porta que abre sozinha, um quarto igual ao da Marina.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "corredor_13"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "13º ANDAR",
+          "em": 0,
+          "ate": 2.4
+        },
+        {
+          "tipo": "visor",
+          "em": 0,
+          "ate": 3.6,
+          "texto": "CORREDOR · 13º · AGORA"
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.25,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.8
+        ],
+        [
+          "glitch",
+          0.05,
+          0.4
+        ],
+        [
+          "impacto",
+          2.2,
+          0.7
+        ]
+      ],
+      "fala": "O prédio tem doze andares. A Bia filmou o décimo terceiro.",
+      "legenda": "O prédio tem *12* andares. A Bia filmou o *13º.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_grupo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "em": 0.3,
+          "intervalo": 1.6,
+          "mensagens": [
+            {
+              "de": "Dona Cida · Síndica",
+              "texto": "a planta tem 13 andares"
+            },
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "vou subir pela escada"
+            },
+            {
+              "de": "Ap 1203 · Marina",
+              "texto": "bia não"
+            }
+          ]
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "notificacao2",
+          0.3,
+          0.5
+        ],
+        [
+          "notificacao2",
+          1.9,
+          0.5
+        ],
+        [
+          "notificacao2",
+          3.5,
+          0.5
+        ]
+      ],
+      "fala": "Ninguém acreditou na planta da síndica. Então a Bia decidiu subir pela escada.",
+      "legenda": "Ninguém acreditou na planta da síndica. Então a Bia decidiu *subir* pela escada."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "escada_bia"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.2,
+      "sons": [
+        [
+          "grave",
+          0.1,
+          0.5
+        ]
+      ],
+      "fala": "Ela passou pela porta verde no fim do corredor e começou a contar os degraus.",
+      "legenda": "Ela passou pela porta *verde* no fim do corredor e começou a contar os *degraus.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "escada_bia",
+          "rosto_medo"
+        ],
+        "pesos": [
+          1.2,
+          1
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "DEGRAUS ACIMA DO 12º",
+          "de": 0,
+          "ate": 26,
+          "em": 0.2,
+          "fim": 3
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "subida",
+          0.2,
+          0.5
+        ],
+        [
+          "coracao",
+          2.4,
+          0.8
+        ]
+      ],
+      "fala": "Depois do décimo segundo, a escada deveria terminar. Mas continuava subindo.",
+      "legenda": "Depois do *12º,* a escada deveria terminar. Mas continuava *subindo.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "corredor_13"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Ap 1102 · Bia",
+          "texto": "🎥 vídeo · 13º andar",
+          "em": 0.2,
+          "ate": 2.1,
+          "y": 330
+        },
+        {
+          "tipo": "visor",
+          "em": 2.2,
+          "texto": "CORREDOR · 13º · AGORA"
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "notificacao2",
+          0.2,
+          0.5
+        ],
+        [
+          "glitch",
+          2.1,
+          0.4
+        ],
+        [
+          "grave",
+          2.2,
+          0.6
+        ]
+      ],
+      "fala": "No grupo, chegou um vídeo. Um corredor igual ao delas. Só que nenhuma porta tinha número.",
+      "legenda": "No grupo, chegou um *vídeo.* Um corredor igual ao delas. Só que nenhuma porta tinha *número.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "corredor_13"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ANDAR DO ELEVADOR",
+          "de": 0,
+          "ate": 13,
+          "sufixo": "º",
+          "em": 0.1,
+          "fim": 2.2
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.3,
+      "sons": [
+        [
+          "sino",
+          1.6,
+          0.6
+        ],
+        [
+          "impacto",
+          2.1,
+          0.7
+        ]
+      ],
+      "fala": "E, no fundo, o elevador marcava treze.",
+      "legenda": "E, no fundo, o elevador marcava *13.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "porta_sem_numero"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "texto": "13º · PORTA SEM NÚMERO"
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.35,
+      "sons": [
+        [
+          "tranca",
+          0.4,
+          0.7
+        ],
+        [
+          "grave",
+          0.5,
+          0.8
+        ]
+      ],
+      "fala": "Então, uma das portas começou a abrir. Sozinha.",
+      "legenda": "Então, uma das portas começou a *abrir.* *Sozinha.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo"
+        ]
+      },
+      "extras": [],
+      "antes": 0.1,
+      "segura": 0.2,
+      "sons": [
+        [
+          "coracao",
+          0.2,
+          0.9
+        ],
+        [
+          "coracao",
+          1.1,
+          0.9
+        ]
+      ],
+      "fala": "A Marina ampliou o vídeo e prendeu a respiração.",
+      "legenda": "A Marina ampliou o vídeo e prendeu a *respiração.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_igual"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "texto": "13º · ??? · 3:33"
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.2,
+      "sons": [
+        [
+          "grave",
+          0.1,
+          0.7
+        ],
+        [
+          "whoosh",
+          0.2,
+          0.4
+        ]
+      ],
+      "fala": "Lá dentro, tinha uma cama, um relógio marcando três e trinta e três e uma janela de frente pro parque. Era o quarto dela.",
+      "legenda": "Lá dentro, tinha uma cama, um relógio marcando *3h33* e uma janela de frente pro parque. Era o *quarto dela.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_igual"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "relampago",
+          "em": 1.2
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.5,
+      "sons": [
+        [
+          "trovao",
+          1.1,
+          0.9
+        ],
+        [
+          "impacto",
+          1.2,
+          0.8
+        ]
+      ],
+      "fala": "E alguém tinha deixado a cortina aberta.",
+      "legenda": "E alguém tinha deixado a cortina *aberta.*"
+    },
+    {
+      "visual": {
+        "tipo": "final"
+      },
+      "semLegenda": true,
+      "antes": 0.2,
+      "segura": 0.6,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          0.6,
+          0.7
+        ]
+      ],
+      "fala": "Episódio nove, amanhã.",
+      "legenda": "Episódio 9 amanhã."
+    }
+  ]
+}

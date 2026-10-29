@@ -295,6 +295,36 @@ export const PLANOS: Record<string, Plano> = {
     return { cena: "sala1201", pos: mix([0.4, 1.5, 1.4], [0.15, 1.55, 0.1], arranca(s / dur)), alvo: [0, 1.6, -2.5], fov: 66 };
   },
 
+  // ---------- o 13º andar (ep. 8)
+  /** A Bia anda até a porta da escada, no fim do corredor do 12º (câmera atrás dela, a placa verde na frente). */
+  escada_bia: (s, dur, m) => {
+    const c = m.corredor, p = s / dur;
+    c.atualizar(s);
+    c.bia.raiz.visible = true; c.bia.posar(POSES.andando(s)); c.bia.raiz.position.set(0.15, 0, 1.6 + 3.2 * p); c.bia.raiz.rotation.set(0, 0, 0);
+    const b = c.bia.raiz.position;
+    return { cena: "corredor", pos: [-0.45, 1.3, b.z - 1.9], alvo: [0.1, 1.25, 6], fov: 66 };
+  },
+  /** O corredor do 13º: igual ao do 12º, mas sem número nas portas, com luz fria e o elevador marcando 13 no fundo. */
+  corredor_13: (s, dur, m) => {
+    const c = m.corredor;
+    c.andar13(true); c.atualizar(s * 1.6);
+    return { cena: "corredor", pos: mix([0.35, 1.45, 4.6], [0.2, 1.42, 1.2], arranca(s / dur)), alvo: [0, 1.6, -6], fov: 64, rolar: Math.sin(s * 0.9) * 0.01 };
+  },
+  /** Uma porta sem número do 13º se abre sozinha, com luz fria lá dentro (é o vão do 1201, sem a placa). */
+  porta_sem_numero: (s, dur, m) => {
+    const c = m.corredor;
+    c.andar13(true); c.abrir1201(0.12 + 0.68 * suave(s / dur)); c.luz1201.intensity = 4 + 16 * suave(s / dur); c.atualizar(s * 1.6);
+    return { cena: "corredor", pos: soma(mix([0.95, 1.5, -1.6], [0.85, 1.45, -2.35], arranca(s / dur)), tremor(s, 0.003)), alvo: [-1.25, 1.15, -3.05], fov: 64 };
+  },
+  /** O quarto igual ao da Marina, VAZIO: a cama, o relógio em 3:33, a cortina aberta e um relâmpago no fim. */
+  quarto_igual: (s, dur, m) => {
+    const q = m.quarto, p = arranca(s / dur);
+    q.marina.raiz.visible = false; q.luzCelular.intensity = 0; q.recorte.intensity = 2.2;
+    const flash = s > dur - 0.7 ? Math.max(0, 1 - (s - (dur - 0.7)) * 3.5) : 0;
+    q.atualizar(s, flash);
+    return { cena: "quarto", pos: mix([0.95, 1.6, 1.5], [0.3, 1.55, 0.15], p), alvo: mix([-0.25, 1.2, -2.4], [-0.55, 1.1, -2.2], p), fov: 70 };
+  },
+
   quarto_lado: (s, dur, m) => {
     const p = suave(s / dur);
     marinaNoQuarto(m, s, "sentada_celular", { olhos: 1, sobrancelha: 0.4 }); telaCom(m, "luz");

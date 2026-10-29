@@ -6,7 +6,7 @@ import { Boneco, APARENCIAS } from "./boneco";
 import { caixa, mat, texturaTexto } from "./cenario";
 
 export class Corredor {
-  cena: any; bia: Boneco; marina: Boneco; porta1201: any; luz1201: any; lampadas: any[] = []; luzesTeto: any[] = []; telaIndicador: any; indicador: any;
+  cena: any; bia: Boneco; marina: Boneco; porta1201: any; luz1201: any; lampadas: any[] = []; luzesTeto: any[] = []; telaIndicador: any; indicador: any; placas: any[] = []; luzVerde: any;
   static W = 2.4; static L = 12; static H = 2.7;
   /** Centro das portas (x da parede, z do meio da porta). */
   static PORTAS = { "1201": [-1.2, -3], "1202": [-1.2, 1.5], "1203": [1.2, -3], "1204": [1.2, 1.5] } as Record<string, [number, number]>;
@@ -40,7 +40,7 @@ export class Corredor {
       const piv = new THREE.Group(); piv.position.set(x + lado * 0.05, 0, z - 0.475); cena.add(piv); // dobradiça
       const folha = caixa(0.05, 2.08, 0.95, madeira); folha.position.set(0, 1.04, 0.475); piv.add(folha);
       const placa = new THREE.Mesh(new THREE.PlaneGeometry(0.26, 0.11), new THREE.MeshStandardMaterial({ map: texturaTexto(num, { cor: "#2a2116", fundo: "#c9a96a", fonte: "bold 150px Arial", w: 512, h: 220 }), metalness: 0.6, roughness: 0.35 }));
-      placa.position.set(lado * 0.03, 1.62, 0.475); placa.rotation.y = lado * Math.PI / 2; piv.add(placa);
+      placa.position.set(lado * 0.03, 1.62, 0.475); placa.rotation.y = lado * Math.PI / 2; piv.add(placa); this.placas.push(placa);
       const olho = new THREE.Mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.02, 12), metal); olho.rotation.z = Math.PI / 2; olho.position.set(lado * 0.03, 1.5, 0.475); piv.add(olho);
       const mac = new THREE.Mesh(new THREE.SphereGeometry(0.035, 12, 10), metal); mac.position.set(lado * 0.05, 1.0, 0.85); piv.add(mac);
       const tapete = caixa(0.5, 0.015, 0.8, mat(num === "1203" ? "#6b2a2a" : "#3b3f4a", { roughness: 1 })); tapete.position.set(x + lado * 0.3, 0.008, z); cena.add(tapete);
@@ -59,7 +59,7 @@ export class Corredor {
     const portaEsc = caixa(1.0, 2.1, 0.05, mat("#6d6f73", { metalness: 0.4 })); portaEsc.position.set(0, 1.05, L / 2 - 0.05); cena.add(portaEsc);
     const saida = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.16), new THREE.MeshBasicMaterial({ map: texturaTexto("ESCADA", { cor: "#ffffff", fundo: "#0f8a3c", fonte: "bold 120px Arial", w: 512, h: 160 }), toneMapped: false }));
     saida.position.set(0, 2.35, L / 2 - 0.08); saida.rotation.y = Math.PI; cena.add(saida);
-    const verde = new THREE.PointLight("#2bd16a", 1.2, 3, 2); verde.position.set(0, 2.2, L / 2 - 0.4); cena.add(verde);
+    const verde = new THREE.PointLight("#2bd16a", 1.2, 3, 2); verde.position.set(0, 2.2, L / 2 - 0.4); cena.add(verde); this.luzVerde = verde;
     // extintor (o vermelho do corredor)
     const ext = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 16), mat("#c0261f", { roughness: 0.4 })); ext.position.set(W / 2 - 0.12, 0.6, 3.6); ext.castShadow = true; cena.add(ext);
     // luzes do teto (a do meio pisca)
@@ -83,15 +83,27 @@ export class Corredor {
   /** Porta do 1201: 0 fechada, 1 escancarada (a luz da sala aumenta junto). */
   abrir1201(p: number) { this.porta1201.rotation.y = -p * 1.2; this.luz1201.intensity = 7 * Math.min(1, p * 2.5); }
 
+  /** O 13º andar (ep. 8): o mesmo corredor, mas sem número nas portas, luz fria e fraca e o elevador marcando 13. */
+  andar13(sim: boolean) {
+    this.modo13 = sim;
+    for (const p of this.placas) p.visible = !sim;
+    for (const p of this.luzesTeto) { p.intensity = sim ? 1.3 : 4; p.color.set(sim ? "#b9c8ff" : "#ffe9c9"); }
+    this.luz1201.color.set(sim ? "#9fb6ff" : "#ffbf7a");
+    this.mostrarAndar(sim ? 13 : 12);
+  }
+  modo13 = false;
+
   padrao() {
-    this.abrir1201(0); this.mostrarAndar(12);
+    this.abrir1201(0); this.andar13(false);
     this.bia.raiz.visible = false; this.marina.raiz.visible = false;
     for (const p of this.luzesTeto) p.intensity = 4;
   }
 
   atualizar(t: number) {
     const pisca = Math.sin(t * 19) > 0.55 && Math.sin(t * 2.3) > 0 ? 0.12 : 1;
-    this.luzesTeto[1].intensity = 4 * pisca; this.lampadas[1].material.color.set(pisca < 1 ? "#4a4740" : "#fff3dc");
+    const base = this.modo13 ? 1.3 : 4;
+    this.luzesTeto[1].intensity = base * pisca; this.lampadas[1].material.color.set(pisca < 1 ? "#4a4740" : this.modo13 ? "#c9d4ff" : "#fff3dc");
+    for (const i of [0, 2]) this.lampadas[i].material.color.set(this.modo13 ? "#c9d4ff" : "#fff3dc");
   }
 
   private texturaPiso() {

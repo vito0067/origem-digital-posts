@@ -43,7 +43,8 @@
 - **Ep. 5 · O corredor** (30/10/2026): alguém bate na porta da Marina dizendo ser a Bia, mas no grupo a Bia está na escada; pelo olho mágico há alguém de costas; gancho: o remetente pergunta "A Bia está no 11º andar com você?" e as batidas param ("eu ouvi"). Ver `episodios/ep05.json`.
 - **Ep. 6 · Duas Bias** (31/10/2026): a Bia na porta e a Bia no 11º; a Marina testa as duas com uma pergunta; gancho: as duas respondem ao mesmo tempo "Não abre. A outra não sou eu." Ver `episodios/ep06.json`.
 - **Ep. 7 · A síndica** (01/11/2026): a Dona Cida manda áudio: o prédio foi construído em 1983 depois de um apagão de 3h33; a planta original (que ela guardava na gaveta) tem um 13º andar, mas o último botão do elevador é o 12. Ver `episodios/ep07.json`.
-- **Próximo: Ep. 8 · 13º** (02/11/2026): seguir o arco acima.
+- **Ep. 8 · 13º** (02/11/2026, feito no PC em 29/10, 1º no formato revisado): "O prédio tem doze andares. A Bia filmou o décimo terceiro."; a Bia sobe pela escada (26 degraus acima do 12º); vídeo no grupo: corredor igual sem número nas portas, elevador marcando 13; uma porta sem número abre sozinha; lá dentro, o quarto da Marina, vazio, relógio em 3:33; gancho: "E alguém tinha deixado a cortina aberta." Ver `episodios/ep08.json`. Planos novos: escada_bia, corredor_13, porta_sem_numero, quarto_igual (o corredor ganhou `andar13(true)`).
+- **Próximo: Ep. 9 · A janela aberta** (03/11/2026): seguir o arco acima. A Bia está DENTRO do quarto igual (13º); quem conta é a Marina vendo pelo grupo.
 
 ## (Histórico) Roteiro original do episódio 2, antes da versão final
 Falas, cada uma separada por três quebras de linha na gravação:
