@@ -1,0 +1,67 @@
+{
+  "id": "2026-10-31-academia-perguntas-todo-dia",
+  "publicar_em": "2026-10-31T10:30:00-03:00",
+  "formato": "carrossel",
+  "tema": "gelo",
+  "legenda": "Horário, plano, aula experimental: a academia responde isso todo dia.\n\nO aluno novo manda mensagem enquanto você está no meio da aula. A pergunta é simples, mas a resposta fica para depois, e quem estava decidido pode acabar escolhendo outra academia.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, responde essas dúvidas no WhatsApp da academia em segundos e passa o interessado para a sua equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do post é um exemplo.\n\n#academia #personaltrainer #atendimentoaocliente #whatsappbusiness #pequenosnegocios #saopaulo",
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "Academia",
+      "texto": "3 perguntas que a academia recebe *todo dia*",
+      "apoio": "Arraste e veja quem responde.",
+      "fundo": "biblioteca/dia-academia.jpg"
+    },
+    {
+      "tipo": "frase",
+      "etiqueta": "Pergunta 1",
+      "texto": "\"Qual o *horário* de funcionamento?\"",
+      "apoio": "Simples, mas chega no meio da aula."
+    },
+    {
+      "tipo": "frase",
+      "etiqueta": "Pergunta 2",
+      "texto": "\"Posso fazer uma *aula experimental*?\"",
+      "apoio": "Quem pergunta já está quase decidido."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/relogio.png",
+      "etiqueta": "Pergunta 3",
+      "texto": "\"Dá para falar com *alguém agora*?\"",
+      "apoio": "E o instrutor está com a turma."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Academia Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Oi! Posso fazer uma aula experimental?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Oi! Sou a Aurora, atendente de IA da academia. Vou passar seu pedido para a equipe combinar o melhor dia com você. Pode ser?"
+        }
+      ]
+    },
+    {
+      "tipo": "comparar",
+      "etiqueta": "A diferença",
+      "esquerda": {
+        "titulo": "Sem a Aurora",
+        "itens": [
+          "Resposta depois da aula",
+          "Interessado esperando"
+        ]
+      },
+      "direita": {
+        "titulo": "Com a Aurora",
+        "itens": [
+          "Resposta em segundos",
+          "Equipe só com quem quer entrar"
+        ]
+      }
+    }
+  ]
+}
