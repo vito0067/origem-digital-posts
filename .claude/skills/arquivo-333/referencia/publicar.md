@@ -30,7 +30,8 @@
   - agendar vai só até uns 10 dias;
   - o nome do perfil só muda a cada 7 dias (o próximo a partir de 2/11/2026);
   - conta nova pode ficar "em análise" algumas horas.
-- **ATENÇÃO (29/10/2026): a conta está sem distribuição** (0% de "Para você", 1 a 2 visualizações por vídeo). Continue agendando para manter a série em dia, mas leia "TikTok travado" em `viral.md`: o conserto depende do Vito no celular.
+- **Agendado não pode ser editado:** só excluir. Para trocar um vídeo agendado, publique o novo e peça ao Vito para excluir o antigo; depois de publicado, dá para deixar em "Somente eu".
+- **ATENÇÃO (29/10/2026): a conta estava sem distribuição; em 30/10 voltou a dar sinal** (0% de "Para você", 1 a 2 visualizações por vídeo). Continue agendando para manter a série em dia, mas leia "TikTok travado" em `viral.md`: o conserto depende do Vito no celular.
 
 ## YouTube (studio.youtube.com, canal UCp1qPtKzd1zkQr04_J4xIHw)
 1. Vá em `…/videos/upload?d=ud`, ache o input de arquivo e faça `file_upload`.
