@@ -42,7 +42,7 @@
 7. Clique em "Avançar" 3 vezes.
 8. **Agendar:**
    1. "Programar";
-   2. triplo clique na hora, digite 20:00 e Enter;
+   2. clique uma vez na hora (abre a lista), ctrl+a, digite 20:00 e Enter. **Olhe se ficou 20:00 antes de clicar em Programar**: o triplo clique às vezes não pega e fica 00:00;
    3. confira a data;
    4. Fuso horário = (GMT-0300) Horário local.
 9. Clique em "Programar". Confira em Conteúdo → Shorts ("Programado").
