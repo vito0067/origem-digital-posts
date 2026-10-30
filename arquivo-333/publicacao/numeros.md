@@ -8,6 +8,10 @@ Uma linha por leitura (data de Brasília). YT = YouTube Shorts, IG = Instagram R
 | 29/10 | 1 | 1.209 | 59,8% | 0:38 de 0:50 | 500 | 1 | +17 / 70 / 1 |
 | 29/10 | 2 | 1.259 | 50,1% | 0:37 de 0:53 | 10 mil (245 curtidas, 4 comentários) | 1 | +10 |
 | 29/10 | 3 | 1.025 (1 dia) | — | — | 870 (1 dia) | 2 | — |
+| 30/10 | 1 | — | — | — | 527 | 1 | IG 78 |
+| 30/10 | 2 | — | — | — | 10.175 (99,4% não seguidores; 251 curtidas, 25 salvos, 11 compart., 62 visitas ao perfil) | 1 | — |
+| 30/10 | 3 | 1.188 | — | — | 1.051 | 2 | — |
+| 30/10 | 4 (~19 h) | 678 | — | — | 1.356 (43 curtidas, 4 salvos, 6 compart., 1 visita ao perfil) | 0 | — |
 
 ## O que os números dizem (29/10/2026)
 - **YouTube:** cada episódio chega a ~1,2 mil e para. Quem fica assiste bem (média de 37 a 38 s, uns 70% do vídeo), mas **metade desliza no primeiro segundo**. O ep. 1, que abre com o letreiro "NÃO OLHE PELA JANELA", segurou 59,8%. O ep. 2, que abre com a recapitulação, 50,1%. Conclusão: a abertura tem que funcionar para quem nunca viu a série.
