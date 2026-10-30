@@ -22,7 +22,7 @@
    - gancho na penúltima fala;
    - cartão final curto.
 3. **Maratona:**
-   - série numerada ("O Sinal, Ep. N") e a 1ª fala recapitulando;
+   - série numerada ("O Sinal, Ep. N"), com a 1ª fala como gancho para quem nunca viu e, no máximo, uma frase curta de "até agora" na 2ª;
    - playlist em ordem e "vídeo relacionado" ligando os episódios;
    - o ep. 1 fixado no perfil.
 4. **Constância:** todo dia às 20h, sem falhar. O agendador das plataformas garante o horário.
@@ -46,6 +46,12 @@
 - A 1ª tela é o visor mirando a janela, com o contador "56" e a palavra "PRÓPRIA" em amarelo: imagem estranha + número + mistério antes de qualquer fala.
 - A capa repete esse quadro, então o perfil fica com cara de "arquivo de casos".
 - Use "Testar Reel" (trial reels, para não seguidores) nos episódios que abrirem fraco, quando a opção aparecer na conta.
+
+## Quando um episódio estourar (mais de 5 mil em menos de 2 dias)
+Publique no mesmo dia um "parte 2": mesmo gancho, continuação curta, e leve para o perfil. O ep. 2 fez 10 mil e não aproveitamos. Em 30/10/2026, ele trouxe só 62 visitas ao perfil.
+
+## Fixados no Instagram
+Fixe, nesta ordem: o mais visto, o ep. 1 e o mais recente com gancho forte. Só dá pelo celular (peça ao Vito).
 
 ## Textos (modelos)
 - **Legenda (IG e TikTok):**

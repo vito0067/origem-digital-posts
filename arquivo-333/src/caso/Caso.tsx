@@ -34,7 +34,9 @@ export type Extra =
   | { tipo: "dado"; rotulo: string; de: number; ate: number; em: number; fim?: number; sufixo?: string; y?: number }
   | { tipo: "visor"; em: number; ate?: number; texto?: string }
   | { tipo: "grupo"; nome: string; sub?: string; em: number; intervalo?: number; mensagens: { de: string; texto: string; foto?: boolean; eu?: boolean }[] }
-  | { tipo: "audio"; de: string; em: number; dur: number; y?: number };
+  | { tipo: "audio"; de: string; em: number; dur: number; y?: number }
+  | { tipo: "olhoMagico"; em: number; ate?: number; texto?: string }
+  | { tipo: "planta"; em: number; ate?: number; contaEm?: number; contaFim?: number; destacaEm?: number };
 export type Palavra = { w: string; em: number };
 export type Bloco = { palavras: Palavra[]; de: number; ate: number };
 export type CenaT = { visual: Visual; extras?: Extra[]; entrada?: "corte" | "flash" | "glitch" | "preto"; semLegenda?: boolean;
@@ -149,6 +151,61 @@ const Dado: React.FC<{ e: Extract<Extra, { tipo: "dado" }>; s: number }> = ({ e,
 };
 
 /** Visor de câmera fotográfica: cantos, mira, REC piscando, hora e zoom (para "a foto foi tirada daqui"). */
+/** Visão pelo olho mágico: tudo preto, com um círculo de vidro no meio. */
+const OlhoMagico: React.FC<{ e: Extract<Extra, { tipo: "olhoMagico" }>; s: number }> = ({ e, s }) => {
+  if (s < e.em || (e.ate !== undefined && s > e.ate)) return null;
+  const cx = 540, cy = 830, r = 490;
+  return (
+    <AbsoluteFill>
+      <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
+        <defs>
+          <radialGradient id="om" gradientUnits="userSpaceOnUse" cx={cx} cy={cy} r={r}>
+            <stop offset="0.55" stopColor="#000" stopOpacity="0" /><stop offset="0.86" stopColor="#000" stopOpacity="0.55" /><stop offset="1" stopColor="#000" stopOpacity="1" />
+          </radialGradient>
+          <mask id="omBuraco"><rect width={1080} height={1920} fill="#fff" /><circle cx={cx} cy={cy} r={r} fill="#000" /></mask>
+        </defs>
+        <circle cx={cx} cy={cy} r={r} fill="url(#om)" />
+        <rect width={1080} height={1920} fill="#020203" mask="url(#omBuraco)" />
+        <circle cx={cx} cy={cy} r={r} fill="none" stroke="#2a2d33" strokeWidth={14} />
+        <ellipse cx={cx - 190} cy={cy - 270} rx={70} ry={26} fill="#fff" opacity={0.1} transform={`rotate(-35 ${cx - 190} ${cy - 270})`} />
+      </svg>
+      {e.texto && <div style={{ position: "absolute", left: 0, right: 0, top: 268, textAlign: "center", fontFamily: ELITE, fontSize: 38, color: "#d8deea", letterSpacing: 4 }}>{e.texto}</div>}
+    </AbsoluteFill>
+  );
+};
+
+/** A planta original do prédio (azul de engenharia): os andares vão sendo contados e o 13º fica em vermelho. */
+const Planta: React.FC<{ e: Extract<Extra, { tipo: "planta" }>; s: number }> = ({ e, s }) => {
+  if (s < e.em || (e.ate !== undefined && s > e.ate + 0.2)) return null;
+  const some = e.ate !== undefined ? lim(1 - (s - e.ate) / 0.2) : 1;
+  const m = spring({ frame: Math.round((s - e.em) * FPS), fps: FPS, config: { damping: 16, stiffness: 120, mass: 0.9 } }) * some;
+  const c0 = e.contaEm ?? e.em, c1 = e.contaFim ?? c0;
+  const contados = c1 > c0 ? Math.floor(lim((s - c0) / (c1 - c0)) * 13 + 0.001) : 13;
+  const destaca = e.destacaEm !== undefined && s >= e.destacaEm;
+  const W = 820, H = 880, n = 13, ah = 54, bx = 250, bw = 320, by0 = 800;
+  return (
+    <div style={{ position: "absolute", left: (1080 - W) / 2, top: 235, width: W, height: H, opacity: lim(m * 1.4), transform: `translateY(${(1 - m) * 70}px) rotate(${-1.5 + Math.sin(s * 1.1) * 0.25}deg) scale(${0.9 + 0.1 * m})`, boxShadow: "0 30px 80px rgba(0,0,0,0.7)" }}>
+      <svg width={W} height={H}>
+        <defs><pattern id="grade" width={40} height={40} patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#5f8fd6" strokeWidth={1} opacity={0.3} /></pattern></defs>
+        <rect width={W} height={H} fill="#12316e" /><rect width={W} height={H} fill="url(#grade)" />
+        <rect x={14} y={14} width={W - 28} height={H - 28} fill="none" stroke="#cfe0ff" strokeWidth={3} />
+        <text x={W / 2} y={62} textAnchor="middle" fontFamily={ELITE} fontSize={34} fill="#e6efff">ED. MIRANTE · PLANTA ORIGINAL · 1983</text>
+        {Array.from({ length: n }, (_, i) => {
+          const y = by0 - (i + 1) * ah, vermelho = i === 12 && destaca, marcado = i < contados;
+          const cor = vermelho ? "#ff3b3b" : "#cfe0ff";
+          return <g key={i} opacity={i === 12 && !marcado ? 0.55 : 1}>
+            <rect x={bx} y={y} width={bw} height={ah} fill={vermelho ? "rgba(255,59,59,0.28)" : marcado ? "rgba(207,224,255,0.16)" : "none"} stroke={cor} strokeWidth={vermelho ? 5 : 2.5} />
+            {[0, 1, 2, 3].map((k) => <rect key={k} x={bx + 28 + k * 70} y={y + 14} width={40} height={26} fill="none" stroke={cor} strokeWidth={1.5} opacity={0.7} />)}
+            <text x={bx - 22} y={y + 38} textAnchor="end" fontFamily={ELITE} fontSize={32} fill={cor} fontWeight={vermelho ? 700 : 400}>{i + 1}º</text>
+          </g>;
+        })}
+        <line x1={bx - 70} y1={by0} x2={bx + bw + 70} y2={by0} stroke="#cfe0ff" strokeWidth={4} />
+        {destaca && <text x={bx + bw + 24} y={by0 - 13 * ah + 38} fontFamily={ELITE} fontSize={34} fill="#ff3b3b">???</text>}
+      </svg>
+    </div>
+  );
+};
+
 const Visor: React.FC<{ e: Extract<Extra, { tipo: "visor" }>; s: number }> = ({ e, s }) => {
   if (s < e.em || (e.ate !== undefined && s > e.ate)) return null;
   const d = s - e.em, entra = saida(d / 0.25), foco = 1 - saida(d / 0.6);
@@ -406,6 +463,8 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
         e.tipo === "relampago" ? <Relampago key={i} e={e} s={s} /> :
         e.tipo === "dado" ? <Dado key={i} e={e} s={s} /> :
         e.tipo === "visor" ? <Visor key={i} e={e} s={s} /> :
+        e.tipo === "olhoMagico" ? <OlhoMagico key={i} e={e} s={s} /> :
+        e.tipo === "planta" ? <Planta key={i} e={e} s={s} /> :
         e.tipo === "grupo" ? <Grupo key={i} e={e} s={s} /> :
         e.tipo === "audio" ? <AudioMsg key={i} e={e} s={s} /> : null)}
       <Entrada tipo={c.entrada} s={s} />

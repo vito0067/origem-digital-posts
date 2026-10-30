@@ -274,7 +274,7 @@ export class Cidade {
 
 // ---------------------------------------------------------------- quarto da Marina (cenário de dentro)
 export class Quarto {
-  cena: any; marina: Boneco; luzCelular: any; luaLuz: any; chuva: Chuva; relogio: any; celularCama: any; telaCama: any; cortinaE: any; cortinaD: any; ceuLuz: any; recorte: any;
+  cena: any; marina: Boneco; luzCelular: any; luzCabelo: any; luaLuz: any; chuva: Chuva; relogio: any; celularCama: any; telaCama: any; cortinaE: any; cortinaD: any; ceuLuz: any; recorte: any;
   constructor() {
     const cena = new THREE.Scene(); this.cena = cena;
     cena.background = new THREE.Color("#05070d");
@@ -318,6 +318,9 @@ export class Quarto {
     // luz quente vinda da porta do corredor, atrás dela: desenha o contorno (cabelo e ombros) contra o fundo escuro
     this.recorte = new THREE.SpotLight("#ffae6b", 7, 7, 0.55, 0.85, 1.3); this.recorte.position.set(-0.6, 2.5, 2.2); this.recorte.target.position.set(0.2, 1.1, -1.4);
     cena.add(this.recorte); cena.add(this.recorte.target);
+    // luz suave de cima e da frente, só nos closes (desenha o cabelo e o rosto sem estourar)
+    this.luzCabelo = new THREE.SpotLight("#d7dcff", 0, 5, 0.8, 1, 1.2); this.luzCabelo.position.set(0.6, 2.9, -2.3); this.luzCabelo.target.position.set(0.2, 1.3, -1.4);
+    cena.add(this.luzCabelo); cena.add(this.luzCabelo.target);
     // a Marina
     this.marina = new Boneco(APARENCIAS.marina); cena.add(this.marina.raiz);
     this.luzCelular = new THREE.PointLight("#7fb0ff", 0.45, 2.2, 2); cena.add(this.luzCelular);
@@ -334,7 +337,7 @@ export class Quarto {
     this.cortinaE.position.x = -x; this.cortinaD.position.x = x;
   }
 
-  padrao() { this.cortinas(0); this.celularCama.visible = false; this.recorte.intensity = 7; this.luzCelular.intensity = 0.45; this.marina.raiz.visible = true; }
+  padrao() { this.cortinas(0); this.celularCama.visible = false; this.recorte.intensity = 7; this.luzCelular.intensity = 0.45; this.luzCabelo.intensity = 0; this.marina.raiz.visible = true; }
 
   private texturaCidadeLaFora() {
     const c = document.createElement("canvas"); c.width = 1024; c.height = 600; const g = c.getContext("2d")!; const r = sorteio(5);

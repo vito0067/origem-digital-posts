@@ -42,6 +42,8 @@ function marinaNoQuarto(m: Mundo, s: number, pose: keyof typeof POSES, extra: Re
 }
 /** Onde está a cabeça da Marina no quarto (para mirar a câmera no rosto). */
 function cabeca(m: Mundo): V3 { const v = new THREE.Vector3(); m.quarto.marina.cabeca.getWorldPosition(v); return [v.x, v.y, v.z]; }
+/** Luz dos closes: o rosto sem estourar (menos lua e celular) e o cabelo aparecendo (mais recorte da porta), como no vídeo-modelo. Chamar depois do atualizar. */
+function luzClose(m: Mundo) { const q = m.quarto; q.luaLuz.intensity = 1.5; q.recorte.intensity = 14; q.luzCelular.intensity = 0.06; q.ceuLuz.intensity = 0.8; q.luzCabelo.intensity = 7; }
 function desenhaGrupo() {
   const c = document.createElement("canvas"); c.width = 256; c.height = 512; const g = c.getContext("2d")!;
   g.fillStyle = "#0b141a"; g.fillRect(0, 0, 256, 512); g.fillStyle = "#1f2c34"; g.fillRect(0, 0, 256, 64);
@@ -163,9 +165,9 @@ export const PLANOS: Record<string, Plano> = {
   quarto_grupo: (s, dur, m) => {
     const p = arranca(s / dur);
     marinaNoQuarto(m, s, "sentada_celular", { olhos: 1.2, sobrancelha: 0.9, cabeca: [16, -4 * p, 0] }); telaCom(m, "grupo");
-    m.quarto.atualizar(s);
-    m.quarto.luzCelular.intensity = 0.45 + 0.5 * Math.pow(Math.max(0, Math.sin(s * 11)), 8);
-    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.48, c[1] - 0.32, c[2] - 1.18], [c[0] + 0.34, c[1] - 0.28, c[2] - 1.02], p), alvo: [c[0], c[1] - 0.12, c[2]], fov: 56 };
+    m.quarto.atualizar(s); luzClose(m);
+    m.quarto.luzCelular.intensity = 0.06 + 0.3 * Math.pow(Math.max(0, Math.sin(s * 11)), 8);
+    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.6, c[1] - 0.14, c[2] - 0.92], [c[0] + 0.5, c[1] - 0.12, c[2] - 0.88], p), alvo: [c[0], c[1] + 0.1, c[2]], fov: 74 };
   },
   /** Ela fecha a cortina (vista de trás); o quarto escurece. */
   cortina_fecha: (s, dur, m) => {
@@ -258,6 +260,21 @@ export const PLANOS: Record<string, Plano> = {
     return { cena: "corredor", pos: mix([1.0, 1.55, -0.6], [0.85, 1.5, -1.8], arranca(s / dur)), alvo: [-1.6, 1.15, -3.1], fov: 62 };
   },
   /** A "foto" da porta da Marina (1203), tirada do corredor, agora. Câmera quase parada, grande-angular. */
+  // Pelo olho mágico da porta 1203: alguém parado de costas no corredor (usar com o extra olhoMagico)
+  olho_magico: (s, dur, m) => {
+    const c = m.corredor;
+    c.atualizar(s);
+    c.bia.raiz.visible = true; c.bia.posar(POSES.batendo_porta(0)); c.bia.raiz.position.set(-0.55, 0, -3); c.bia.raiz.rotation.set(0, -Math.PI / 2, 0);
+    return { cena: "corredor", pos: soma([1.08, 1.5, -3], tremor(s, 0.003)), alvo: [-1, 1.05, -3], fov: 84 - 12 * arranca(s / dur) };
+  },
+  // Duas Bias no mesmo corredor: uma batendo na porta, a outra parada lá no fundo, olhando para a câmera
+  duas_bias: (s, dur, m) => {
+    const c = m.corredor;
+    c.atualizar(s);
+    c.bia.raiz.visible = true; c.bia.posar(POSES.batendo_porta(s)); c.bia.raiz.position.set(0.55, 0, -2.6); c.bia.raiz.rotation.set(0, Math.PI / 2, 0);
+    c.bia2.raiz.visible = true; c.bia2.posar(POSES.em_pe(0)); c.bia2.raiz.position.set(-0.25, 0, -5); c.bia2.raiz.rotation.set(0, 0, 0);
+    return { cena: "corredor", pos: mix([-0.55, 1.45, 0.9], [-0.5, 1.42, -0.1], arranca(s / dur)), alvo: [0.05, 1.15, -4], fov: 62 };
+  },
   corredor_porta_1203: (s, dur, m) => {
     const c = m.corredor;
     c.atualizar(s);
@@ -334,15 +351,15 @@ export const PLANOS: Record<string, Plano> = {
   quarto_rosto: (s, dur, m) => {
     const p = suave(s / dur);
     marinaNoQuarto(m, s, "sentada_celular", { olhos: 0.9, sobrancelha: 0.8, cabeca: [16, 0, 8 * p] }); telaCom(m, "luz");
-    m.quarto.atualizar(s);
-    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.5, c[1] - 0.1, c[2] - 1.25], [c[0] + 0.36, c[1] - 0.08, c[2] - 1.08], p), alvo: [c[0], c[1] - 0.18, c[2]], fov: 56 };
+    m.quarto.atualizar(s); luzClose(m);
+    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.6, c[1] + 0.05, c[2] - 0.92], [c[0] + 0.48, c[1] + 0.05, c[2] - 0.88], p), alvo: [c[0], c[1] - 0.06, c[2]], fov: 72 };
   },
   rosto_mensagem: (s, dur, m) => {
     const p = suave(s / dur);
     marinaNoQuarto(m, s, "sentada_celular", { olhos: 1.1, sobrancelha: 0.9, cabeca: [14, 0, -6 * p] }); telaCom(m, "mensagem");
-    m.quarto.atualizar(s);
+    m.quarto.atualizar(s); luzClose(m);
     // câmera DENTRO do quarto (z > -2,38): do lado de fora, a divisória do meio da janela (x = 0) tampava metade da tela
-    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] - 0.34, c[1] - 0.12, c[2] - 0.93], [c[0] - 0.25, c[1] - 0.1, c[2] - 0.84], p), alvo: [c[0], c[1] - 0.22, c[2]], fov: 60 };
+    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] - 0.6, c[1] + 0.05, c[2] - 0.92], [c[0] - 0.48, c[1] + 0.05, c[2] - 0.88], p), alvo: [c[0], c[1] - 0.06, c[2]], fov: 72 };
   },
   ombro_celular: (s, dur, m) => {
     const p = suave(s / dur);
@@ -369,7 +386,7 @@ export const PLANOS: Record<string, Plano> = {
   rosto_medo: (s, dur, m) => {
     const p = suave(s / (dur * 0.6));
     marinaNoQuarto(m, s, "sentada_celular", { olhos: 1 + 0.55 * p, sobrancelha: 1, boca: p > 0.5 ? "medo" : "neutra", cabeca: [12, 0, 0] }); telaCom(m, "nome");
-    m.quarto.atualizar(s);
-    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.12, c[1] - 0.05, c[2] - 0.94], [c[0] + 0.06, c[1] - 0.04, c[2] - 0.82], suave(s / dur)), alvo: [c[0], c[1] - 0.1, c[2]], fov: 60 };
+    m.quarto.atualizar(s); luzClose(m);
+    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] + 0.42, c[1] + 0.05, c[2] - 0.92], [c[0] + 0.28, c[1] + 0.05, c[2] - 0.86], suave(s / dur)), alvo: [c[0], c[1] - 0.04, c[2]], fov: 72 };
   },
 };

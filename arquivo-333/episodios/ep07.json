@@ -4,15 +4,14 @@
   "episodio": 7,
   "titulo": "A síndica",
   "narracao": "narracao/ep07.mp3",
-  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261029_133828_5b5a4a74-572a-49e2-aeb3-0dba3d8daabf.mp3",
   "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
-  "formato": "3D desenho em código (motor3d); roteiro e voz pela rotina da nuvem (29/10/2026)",
+  "formato": "3D desenho em código (motor3d); refeito no PC em 30/10/2026 no formato revisado (gancho autônomo, até 58 s, fim curto)",
   "publicar": {
     "data": "2026-11-01",
     "hora": "20:00",
-    "capaEm": 3.5,
-    "legenda": "O prédio foi construído depois de um apagão de 3h33. E a planta tem um andar que não existe. 📼\n\nO Sinal, episódio 7 (o 1 está no perfil).\nEpisódio 8 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
-    "tituloYoutube": "A planta do prédio tem um andar que não existe | O Sinal, Ep. 7 #shorts",
+    "capaEm": 1,
+    "legenda": "A síndica escondeu essa planta por 43 anos. Olhe o último andar. 📼\n\nO Sinal, episódio 7 (o 1 está no perfil).\nEpisódio 8 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "A síndica escondeu essa planta por 43 anos | O Sinal, Ep. 7 #shorts",
     "descricaoYoutube": "A síndica do Ed. Mirante revela que o prédio foi construído em 1983, logo depois de um apagão de 3h33, e manda a planta original: ela tem um 13º andar que ninguém conhece.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
   },
   "cenas": [
@@ -20,43 +19,42 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "corredor_porta_1203",
-          "bia_bate_porta"
-        ],
-        "pesos": [
-          1,
-          1.2
+          "quarto_grupo"
         ]
       },
       "extras": [
         {
-          "tipo": "visor",
+          "tipo": "planta",
+          "em": 0
+        },
+        {
+          "tipo": "textao",
+          "texto": "43 ANOS ESCONDIDA",
           "em": 0,
-          "ate": 2.4,
-          "texto": "CORREDOR · 12º · 4:31"
+          "ate": 1.3
         }
       ],
-      "antes": 0.15,
-      "segura": 0.3,
+      "antes": 0.05,
+      "segura": 0.25,
       "sons": [
         [
           "grave",
-          0.05,
-          0.7
+          0,
+          0.85
         ],
         [
           "glitch",
           0.05,
-          0.3
+          0.35
         ],
         [
           "impacto",
-          3.2,
-          0.8
+          0.1,
+          1
         ]
       ],
-      "fala": "Duas Bias pediram para ela não abrir. E a Marina não abriu nenhuma. Mas o que batia na porta continuava lá.",
-      "legenda": "*Duas* Bias pediram para ela não abrir. E a Marina não abriu *nenhuma.* Mas o que batia na porta continuava *lá.*"
+      "fala": "A síndica escondeu essa planta numa gaveta por quarenta e três anos.",
+      "legenda": "A síndica escondeu essa *planta* numa gaveta por *43 anos.*"
     },
     {
       "visual": {
@@ -70,7 +68,7 @@
           "tipo": "grupo",
           "nome": "Ed. Mirante · Moradores",
           "em": 0.4,
-          "intervalo": 2,
+          "intervalo": 1.6,
           "mensagens": [
             {
               "de": "Ap 1102 · Bia",
@@ -86,13 +84,18 @@
           "tipo": "audio",
           "de": "Dona Cida · Síndica",
           "em": 2.2,
-          "dur": 3,
-          "y": 600
+          "dur": 2.4,
+          "y": 640
         }
       ],
-      "antes": 0.15,
-      "segura": 0.3,
+      "antes": 0.12,
+      "segura": 0.25,
       "sons": [
+        [
+          "impacto",
+          0.15,
+          0.7
+        ],
         [
           "notificacao2",
           0.5,
@@ -104,8 +107,8 @@
           0.5
         ]
       ],
-      "fala": "Então o grupo do prédio acendeu. Era um áudio da Dona Cida, a síndica.",
-      "legenda": "Então o grupo do prédio *acendeu.* Era um áudio da Dona Cida, a *síndica.*"
+      "fala": "As batidas ainda não tinham parado, quando ela mandou um áudio no grupo do prédio.",
+      "legenda": "As batidas ainda não tinham *parado,* quando ela mandou um *áudio* no grupo do prédio."
     },
     {
       "visual": {
@@ -116,8 +119,8 @@
         ]
       },
       "extras": [],
-      "antes": 0.15,
-      "segura": 0.3,
+      "antes": 0.12,
+      "segura": 0.25,
       "sons": [
         [
           "coracao",
@@ -130,8 +133,8 @@
           0.5
         ]
       ],
-      "fala": "Ela falava baixo, quase sem fôlego. Disse que precisava contar uma coisa antes das quatro e trinta e três.",
-      "legenda": "Ela falava *baixo,* quase sem fôlego. Disse que precisava contar uma coisa antes das *4h33.*"
+      "fala": "A Dona Cida falava baixo. Disse que precisava contar uma coisa antes das quatro e trinta e três.",
+      "legenda": "A Dona Cida falava *baixo.* Precisava contar uma coisa antes das *4h33.*"
     },
     {
       "visual": {
@@ -147,12 +150,12 @@
           "rotulo": "APAGÃO DE 1983 (MINUTOS)",
           "de": 0,
           "ate": 213,
-          "em": 3.2,
-          "fim": 7
+          "em": 2.8,
+          "fim": 6.4
         }
       ],
-      "antes": 0.15,
-      "segura": 0.3,
+      "antes": 0.12,
+      "segura": 0.25,
       "sons": [
         [
           "grave",
@@ -170,8 +173,8 @@
           0.7
         ]
       ],
-      "fala": "O Edifício Mirante foi construído em mil novecentos e oitenta e três. Logo depois de um apagão que durou três horas e trinta e três minutos.",
-      "legenda": "O Edifício Mirante foi construído em *1983.* Logo depois de um *apagão* que durou 3h33 minutos."
+      "fala": "O Edifício Mirante foi construído em mil novecentos e oitenta e três. Logo depois de um apagão de três horas e trinta e três minutos.",
+      "legenda": "O Edifício Mirante foi construído em *1983.* Logo depois de um *apagão* de 3h33."
     },
     {
       "visual": {
@@ -182,8 +185,8 @@
         ]
       },
       "extras": [],
-      "antes": 0.15,
-      "segura": 0.3,
+      "antes": 0.12,
+      "segura": 0.25,
       "sons": [
         [
           "grave",
@@ -203,6 +206,7 @@
       "visual": {
         "tipo": "3d",
         "planos": [
+          "celular_vibra",
           "rosto_mensagem"
         ]
       },
@@ -211,39 +215,12 @@
           "tipo": "cartao",
           "titulo": "Dona Cida · Síndica",
           "texto": "planta_original_1983.jpg",
-          "em": 1.2,
-          "y": 330,
-          "ate": 5
+          "em": 1.4,
+          "y": 330
         }
       ],
-      "antes": 0.15,
-      "segura": 0.3,
-      "sons": [
-        [
-          "whoosh",
-          0.1,
-          0.3
-        ],
-        [
-          "subida",
-          2,
-          0.4
-        ]
-      ],
-      "fala": "A síndica guardava a planta original numa gaveta. E nunca tinha mostrado para ninguém.",
-      "legenda": "A síndica guardava a *planta* original numa gaveta. E nunca tinha mostrado para *ninguém.*"
-    },
-    {
-      "visual": {
-        "tipo": "3d",
-        "planos": [
-          "celular_vibra",
-          "quarto_grupo"
-        ]
-      },
-      "extras": [],
-      "antes": 0.15,
-      "segura": 0.3,
+      "antes": 0.12,
+      "segura": 0.25,
       "sons": [
         [
           "vibrar",
@@ -252,47 +229,44 @@
         ],
         [
           "notificacao2",
-          1.8,
-          0.5
+          1.5,
+          0.6
         ]
       ],
-      "fala": "A Marina pediu uma foto. A Dona Cida mandou.",
-      "legenda": "A Marina pediu uma *foto.* A Dona Cida *mandou.*"
+      "fala": "A Marina pediu uma foto da planta. A Dona Cida mandou.",
+      "legenda": "A Marina pediu uma *foto* da planta. A Dona Cida *mandou.*"
     },
     {
       "visual": {
         "tipo": "3d",
         "planos": [
-          "recuo_12",
-          "rosto_medo"
+          "quarto_rosto"
         ]
       },
       "extras": [
         {
-          "tipo": "dado",
-          "rotulo": "ANDARES NA PLANTA",
-          "de": 1,
-          "ate": 13,
-          "em": 0.4,
-          "fim": 3.6
+          "tipo": "planta",
+          "em": 0,
+          "contaEm": 0.3,
+          "contaFim": 3
         }
       ],
-      "antes": 0.15,
-      "segura": 0.3,
+      "antes": 0.12,
+      "segura": 0.25,
       "sons": [
         [
           "subida",
-          0.5,
+          0.4,
           0.4
         ],
         [
           "coracao",
-          2.5,
+          2.2,
           0.6
         ]
       ],
-      "fala": "Ela contou os andares da planta, um por um. E contou de novo.",
-      "legenda": "Ela contou os *andares* da planta, um por um. E contou de *novo.*"
+      "fala": "Ela contou os andares, um por um. E contou de novo.",
+      "legenda": "Ela contou os *andares,* um por um. E contou de *novo.*"
     },
     {
       "visual": {
@@ -314,11 +288,16 @@
           "ate": 12,
           "sufixo": "º",
           "em": 0.2,
-          "fim": 3
+          "fim": 2.4
+        },
+        {
+          "tipo": "planta",
+          "em": 2.7,
+          "destacaEm": 3.1
         }
       ],
-      "antes": 0.15,
-      "segura": 1,
+      "antes": 0.12,
+      "segura": 0.7,
       "sons": [
         [
           "sino",
@@ -326,27 +305,32 @@
           0.4
         ],
         [
-          "grave",
-          "fimvoz-0.5",
-          0.7
+          "impacto",
+          3.1,
+          1
         ],
         [
-          "impacto",
+          "glitch",
+          3.1,
+          0.4
+        ],
+        [
+          "grave",
           "fimvoz+0.05",
-          1
+          0.9
         ]
       ],
-      "entrada": "glitch",
       "fala": "No elevador, o último botão é o doze. Mas na planta, existe um décimo terceiro andar.",
-      "legenda": "No elevador, o último botão é o *12.* Mas na planta, existe um *13º* andar."
+      "legenda": "No elevador, o último botão é o *12.* Mas na planta, existe um *13º* andar.",
+      "entrada": "glitch"
     },
     {
       "visual": {
         "tipo": "final"
       },
       "semLegenda": true,
-      "antes": 0.3,
-      "segura": 0.9,
+      "antes": 0.2,
+      "segura": 0.6,
       "sons": [
         [
           "sino",
@@ -355,12 +339,13 @@
         ],
         [
           "carimbo",
-          0.95,
+          0.6,
           0.7
         ]
       ],
-      "fala": "Episódio oito, amanhã. Siga o Arquivo três e trinta e três.",
-      "legenda": "Episódio 8 amanhã. Siga o *Arquivo 3:33.*"
+      "fala": "Episódio oito, amanhã.",
+      "legenda": "Episódio 8 amanhã."
     }
-  ]
+  ],
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261030_191335_5a02aa9b-715d-4cb7-92e4-eaca41799daf.mp3"
 }

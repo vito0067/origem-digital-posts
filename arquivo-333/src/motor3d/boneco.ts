@@ -99,7 +99,11 @@ export class Boneco {
         for (let k = 0; k < 7; k++) { const c = esfera(0.075, cabelo, 16); const ang = -1.2 + k * 0.4; c.position.set(Math.sin(ang) * 0.29, -0.2 - (k % 2) * 0.03, Math.cos(ang) * -0.12 - 0.05); this.cabeca.add(c); }
         const franja = esfera(0.16, cabelo, 24); franja.scale.set(1.25, 0.42, 0.7); franja.position.set(0.06, 0.25, 0.16); franja.rotation.z = -0.25; this.cabeca.add(franja);
       }
-      if (pent === "coque") { const c = esfera(0.11, cabelo, 20); c.position.set(0, 0.3, -0.12); this.cabeca.add(c); }
+      if (pent === "coque") {
+        const c = esfera(0.11, cabelo, 20); c.position.set(0, 0.3, -0.12); this.cabeca.add(c);
+        // a parte de trás da cabeça também tem cabelo (aparece quando a personagem está de costas)
+        const nuca = esfera(0.27, cabelo, 32); nuca.scale.set(1.12, 1.02, 0.78); nuca.position.set(0, -0.01, -0.12); this.cabeca.add(nuca);
+      }
     }
     if (a.bone) {
       const mb = mat(a.bone, { roughness: 0.7 });
@@ -159,7 +163,7 @@ export class Boneco {
 }
 
 export const APARENCIAS: Record<string, Aparencia> = {
-  marina: { pele: "#c98e6a", cabelo: "#3b2418", roupa: "#9aa3ad", calca: "#1f2a44", tenis: "#e8e8e8", penteado: "chanel" },
+  marina: { pele: "#c98e6a", cabelo: "#6a4029", roupa: "#9aa3ad", calca: "#1f2a44", tenis: "#e8e8e8", penteado: "chanel" },
   // Rafa, o porteiro da noite: jaqueta azul-marinho do uniforme e boné
   rafa: { pele: "#8a5a3c", cabelo: "#16100c", roupa: "#24344f", calca: "#1d2027", tenis: "#121214", penteado: "curto", capuz: false, bone: "#1c2638" },
   // Bia, do 1102: estudante, moletom vinho, coque

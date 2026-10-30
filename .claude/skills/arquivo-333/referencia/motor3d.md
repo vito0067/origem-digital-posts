@@ -117,6 +117,9 @@
 - `corredor_1201_aberta`: a porta do 1201 aberta, com a luz da sala.
 - `corredor_porta_1203`: a "foto" da porta da Marina tirada do corredor (use com `visor`).
 - `bia_bate_porta`: a Bia batendo na porta 1203.
+- `olho_magico`: visto de dentro da porta 1203, alguém parado de costas com a mão levantada. Use sempre com o extra `olhoMagico`.
+- `duas_bias`: uma Bia batendo na porta e a outra parada lá no fundo, olhando para a câmera.
+- **13º andar:** `escada_bia`, `corredor_13`, `porta_sem_numero`, `quarto_igual`.
 
 ### Sala do 1201
 - `sala_entrada`: entrando na sala (sofá, poltrona, janela aberta).
@@ -136,7 +139,7 @@
   ```
 - **Câmera:**
   - nunca dentro de parede, cabeça ou cabelo, nem passando por eles;
-  - close de rosto a 0,9–1,25 m da cabeça (use `cabeca(m)`), com fov de 54 a 62.
+  - close de rosto a pelo menos 1 m da cabeça (use `cabeca(m)`), com fov de 70 a 74, deslocado no máximo 0,6 m em x (mais que isso, a cortina tampa a tela), chamando `luzClose(m)` depois do `atualizar`.
 - **Formato vertical:** para 9:16, o fov é o VERTICAL, então use de 55 a 78 (abaixo de 40 fica um "tubo").
 - **Testar:** confira sempre com `planos.mjs` em 2 ou 3 tempos (início, meio e fim) e olhe a folha.
 - **Cena escura:** suba `ceuLuz`, `lua` ou `recorte` só naquele plano, e não no cenário inteiro.
@@ -151,6 +154,8 @@
 - **`cartao`:** `{ titulo, texto, em, y? }`, notificação do "Remetente desconhecido" (ícone "?").
 - **`grupo`:** `{ nome, sub?, em, intervalo?, mensagens:[{ de, texto, foto?, eu? }] }`, conversa do prédio (mostra no máximo 3 de cada vez).
 - **`audio`:** `{ de, em, dur, y? }`, bolha de áudio do WhatsApp tocando.
+- **`olhoMagico`:** `{ em, ate?, texto? }`, tudo preto com um círculo de vidro no meio (combina com o plano `olho_magico`).
+- **`planta`:** `{ em, ate?, contaEm?, contaFim?, destacaEm? }`, a planta azul do prédio. Sem `contaEm`, mostra todos os andares; com ele, conta um a um; em `destacaEm`, o 13º fica vermelho.
 - **`textao`:** `{ texto, em, ate }`, a mensagem grande letra por letra.
 - **`relampago`:** `{ em }`.
 - **Visuais especiais:**

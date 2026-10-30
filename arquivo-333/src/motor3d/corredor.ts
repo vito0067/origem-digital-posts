@@ -6,7 +6,7 @@ import { Boneco, APARENCIAS } from "./boneco";
 import { caixa, mat, texturaTexto } from "./cenario";
 
 export class Corredor {
-  cena: any; bia: Boneco; marina: Boneco; porta1201: any; luz1201: any; lampadas: any[] = []; luzesTeto: any[] = []; telaIndicador: any; indicador: any; placas: any[] = []; luzVerde: any;
+  cena: any; bia: Boneco; bia2: Boneco; marina: Boneco; porta1201: any; luz1201: any; lampadas: any[] = []; luzesTeto: any[] = []; telaIndicador: any; indicador: any; placas: any[] = []; luzVerde: any;
   static W = 2.4; static L = 12; static H = 2.7;
   /** Centro das portas (x da parede, z do meio da porta). */
   static PORTAS = { "1201": [-1.2, -3], "1202": [-1.2, 1.5], "1203": [1.2, -3], "1204": [1.2, 1.5] } as Record<string, [number, number]>;
@@ -69,6 +69,7 @@ export class Corredor {
     }
     // personagens
     this.bia = new Boneco(APARENCIAS.bia); cena.add(this.bia.raiz);
+    this.bia2 = new Boneco(APARENCIAS.bia); cena.add(this.bia2.raiz);
     this.marina = new Boneco(APARENCIAS.marina); cena.add(this.marina.raiz);
     this.padrao();
   }
@@ -95,7 +96,7 @@ export class Corredor {
 
   padrao() {
     this.abrir1201(0); this.andar13(false);
-    this.bia.raiz.visible = false; this.marina.raiz.visible = false;
+    this.bia.raiz.visible = false; this.bia2.raiz.visible = false; this.marina.raiz.visible = false;
     for (const p of this.luzesTeto) p.intensity = 4;
   }
 

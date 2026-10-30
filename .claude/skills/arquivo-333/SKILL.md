@@ -49,7 +49,12 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
    - Junto da 1ª fala, um `textao` de 3 a 6 palavras com a frase-gancho (ex.: "ELA NÃO ESTAVA SOZINHA"), do segundo 0 até ~2,5 s.
    - O "até agora" vira **uma frase curta na 2ª fala**, no máximo.
 8. **Duração:** de **48 a 58 s**, entre 9 e 10 falas. O YouTube e o Instagram premiam quem assiste até o fim, e hoje o TikTok está travado (0% de "Para você"), então a regra dos 61 s do TikTok fica suspensa. Volte para 61 a 70 s quando o TikTok voltar a distribuir e passar de 8 mil seguidores.
-9. **Fim curto (a partir do ep. 8):** a última fala da história termina no gancho. A fala final passa a ser só "**Episódio N, amanhã.**" (uns 1,5 s), com o cartão `final` e `segura` de no máximo 0,6 s. O "Siga" fica escrito no cartão. Antes, a chamada falada + o cartão somavam uns 4 s parados no fim, e isso derrubava o "assistiu até o fim".
+9. **Fim curto (eps. 5 em diante):** a última fala da história termina no gancho. A fala final passa a ser só "**Episódio N, amanhã.**" (uns 1,5 s), com o cartão `final` e `segura` de no máximo 0,6 s. O "Siga" fica escrito no cartão. Antes, a chamada falada + o cartão somavam uns 4 s parados no fim, e isso derrubava o "assistiu até o fim".
+
+10. **Luz e personagem (revisão de 30/10/2026, contra o vídeo-modelo):**
+   - **Closes:** cabeça inteira em quadro, cabelo visível e rosto sem estourar. Os planos de close chamam `luzClose(m)`. Ao criar um close novo, use a mesma função, câmera a 1 m ou mais da cabeça e fov entre 70 e 74.
+   - **Mostre o que a voz fala:** se a fala cita um objeto ou um lugar (planta, olho mágico, foto), ele aparece na tela. Falta o objeto? Crie o extra ou o plano, não troque por um rosto genérico.
+   - **Variedade:** no máximo 2 vezes o mesmo plano por episódio, e nenhum episódio abre com a mesma imagem do anterior.
 
 ## Regras da história e das plataformas (sempre)
 - **Rótulo de IA:** ligado nas 3 redes. "Ficção criada com IA" na legenda e no cartão final.
@@ -59,7 +64,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
   - conteúdo para crianças (o público é adulto ou geral).
 - **Mistério:** o remetente nunca aparece; ninguém descobre quem é antes do último episódio da série.
 - **Números:** por extenso na fala e em algarismo na legenda.
-- **Fala final:** a partir do ep. 8, só "Episódio N, amanhã." (ver o item 9 do formato). Até o ep. 7 era "Episódio N, amanhã. Siga o Arquivo três e trinta e três."
+- **Fala final:** do ep. 5 em diante, só "Episódio N, amanhã." (ver o item 9 do formato). Até o ep. 4 era "Episódio N, amanhã. Siga o Arquivo três e trinta e três."
 - **Segredos:** nunca escreva senha, chave ou token em arquivo nenhum.
 
 ## Como fazer um episódio
@@ -91,7 +96,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
      3. `CONC=3 node ferramentas/renderizar.mjs <id>`, cerca de 1,5 min.
      4. Cópia leve com o ffmpeg do Remotion (`../node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe`, comando no `nuvem.mjs`; a taxa acompanha a duração para ficar abaixo de 10 MB) e a capa. Mais simples: `TODOS=1 FORCAR=epNN node ferramentas/nuvem.mjs` faz tudo isso e ainda sobe o release.
    - **Na nuvem:** só dê push no `episodios/epNN.json`. A Action "Arquivo 3:33 · renderizar episódios" renderiza sem placa de vídeo, então demora. Detalhes em [referencia/nuvem.md](referencia/nuvem.md).
-7. **Revisar** (a folha de quadros), contra a lista abaixo. Corrija e refaça o que falhar.
+7. **Revisar** (a folha de quadros), contra a lista abaixo e a skill `revisao-arquivo-333`. Corrija e refaça o que falhar.
 8. **Publicar ou agendar:** [referencia/publicar.md](referencia/publicar.md).
 9. **Registrar:** `publicacao/epNN.md`, `publicacao/agendados.json` e a lista de episódios da bíblia. Depois commit e push.
 
