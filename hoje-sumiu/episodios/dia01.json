@@ -1,0 +1,66 @@
+{
+  "id": "hoje-sumiu-dia01",
+  "dia": 1,
+  "coisa": "a cor vermelha",
+  "voz": "Gideon, Eleven v4, estabilidade 0.42; acelerada 5% no preparo",
+  "falas": [
+    {
+      "fala": "Hoje sumiu a cor vermelha.",
+      "legenda": "Hoje sumiu a cor ~vermelha.~"
+    },
+    {
+      "fala": "Do mundo inteiro. Para sempre.",
+      "legenda": "Do mundo *inteiro.* Para *sempre.*",
+      "segura": 0.3
+    },
+    {
+      "fala": "O problema é que você só nota quando chega no semáforo.",
+      "legenda": "O problema é que você só nota quando chega no *semáforo.*"
+    },
+    {
+      "fala": "A luz de cima sumiu. Sobrou o amarelo e o verde. Então ninguém sabe mais quando parar.",
+      "legenda": "A luz de cima *sumiu.* Sobrou o amarelo e o verde. Então ninguém sabe mais quando *parar.*"
+    },
+    {
+      "fala": "Você pensa: tudo bem, tem a placa de pare. Mas a placa era vermelha. Agora é uma placa cinza, e ninguém respeita placa cinza.",
+      "legenda": "Você pensa: tudo bem, tem a *placa* de pare. Mas a placa era ~vermelha.~ Agora é uma placa *cinza,* e ninguém respeita placa *cinza.*",
+      "segura": 0.2
+    },
+    {
+      "fala": "Às oito da manhã, a cidade inteira travou.",
+      "legenda": "Às *8h* da manhã, a cidade inteira *travou.*",
+      "segura": 0.3
+    },
+    {
+      "fala": "E o caminhão dos bombeiros? Cinza, no meio do trânsito. Ninguém abre caminho.",
+      "legenda": "E o caminhão dos *bombeiros?* *Cinza,* no meio do trânsito. Ninguém abre *caminho.*"
+    },
+    {
+      "fala": "No mercado, o morango ficou cinza. Você não sabe mais se ele está maduro. Só descobre na mordida.",
+      "legenda": "No mercado, o *morango* ficou cinza. Você não sabe mais se ele está *maduro.* Só descobre na *mordida.*",
+      "segura": 0.85
+    },
+    {
+      "fala": "No futebol, o juiz tira o cartão vermelho. Só que agora é um papel cinza. O jogador olha, e continua jogando.",
+      "legenda": "No futebol, o juiz tira o *cartão* ~vermelho.~ Só que agora é um papel *cinza.* O jogador olha, e continua *jogando.*"
+    },
+    {
+      "fala": "Mas o mais estranho é que ninguém reclama. Para todo mundo, o vermelho nunca existiu.",
+      "legenda": "Mas o mais *estranho* é que ninguém reclama. Para todo mundo, o ~vermelho~ *nunca existiu.*",
+      "segura": 0.45
+    },
+    {
+      "fala": "Só o Seu Nilo lembra. E ele anotou: dia um, a cor vermelha.",
+      "legenda": "Só o *Seu Nilo* lembra. E ele anotou: *dia 1,* a cor ~vermelha.~",
+      "segura": 0.35
+    },
+    {
+      "fala": "Amanhã, outra coisa vai sumir. E quem escolhe é você.",
+      "legenda": "*Amanhã,* outra coisa vai sumir. E quem escolhe é *você.*"
+    },
+    {
+      "fala": "Comenta aqui embaixo. O comentário mais curtido some do mundo.",
+      "legenda": "*Comenta* aqui embaixo. O comentário mais curtido *some* do mundo."
+    }
+  ]
+}

@@ -9,7 +9,7 @@ O objetivo é simples: a próxima sessão, aqui ou na nuvem, não pode repetir u
 
 ## Onde ficam
 Descubra na hora, porque podem aparecer novas:
-- **Repositório de posts:** `Documents\Origem Digital\4-midia\posts-automaticos\.claude\skills\` (`arquivo-333`, `revisao-arquivo-333`, `atualizar-skills`). São as que a nuvem também lê. Em `~\.claude\skills\` ficam só os atalhos para elas.
+- **Repositório de posts:** `Documents\Origem Digital\4-midia\posts-automaticos\.claude\skills\` (`arquivo-333`, `revisao-arquivo-333`, `hoje-sumiu`, `atualizar-skills`). São as que a nuvem também lê. Em `~\.claude\skills\` ficam só os atalhos para elas.
 - **Pessoais:** `~\.claude\skills\`.
 - **Tarefas agendadas do PC:** `~\.claude\scheduled-tasks\*\SKILL.md`. Também são instruções e também envelhecem.
 - **Skills `anthropic-skills:*`:** vêm prontas e não são editadas aqui. A `origem-digital` está desatualizada (e-mail e arquivos de preço): se o assunto tocar nela, avise e confie no código.
