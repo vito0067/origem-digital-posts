@@ -1,5 +1,7 @@
 # Hoje Sumiu · Dia 1: a cor vermelha
 
+**Publicado em 31/10/2026, ~14h30:** [Instagram](https://www.instagram.com/hojesumiu/reel/DfKr3JAJIRk/), [TikTok](https://www.tiktok.com/@hojesumiu/video/7702884621343591700), [YouTube](https://www.youtube.com/shorts/3w7qQu_6wfw). Enviada a cópia leve de 9 MB.
+
 **Vídeo:** `saida/enviar/hoje-sumiu-dia01.mp4`. **Capa:** `saida/enviar/hoje-sumiu-dia01-capa.jpg`.
 Ligar o rótulo de conteúdo com IA nas 3 redes.
 
