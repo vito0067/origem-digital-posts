@@ -79,3 +79,9 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 - Violência, sangue e criança em perigo. O humor é de bairro, não maldoso.
 - Parecer notícia verdadeira. Sempre "Ficção criada com IA" no fim e rótulo de IA ligado.
 - Senha, chave ou token em qualquer arquivo (o repositório é público).
+
+## Limites das contas pelo navegador (31/10/2026)
+- **TikTok:** na conta nova, foto, bio e comentário não salvaram pelo navegador, sem mensagem de erro. Ao salvar o perfil, confirme o aviso de apelido na hora: ele trava a troca por 7 dias. Peça ao Vito para fazer isso pelo celular.
+- **Instagram:** a versão web não oferece fixar comentário nem editar o nome. Só pelo app.
+- **YouTube:** fixar comentário pede uma verificação única no Studio, que é o Vito quem faz.
+- **Envio:** a ferramenta aceita até 10 MB. Use uma cópia leve em `Desktop\Origem-Digital\hoje-sumiu-envios`.
