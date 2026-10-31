@@ -1,0 +1,376 @@
+{
+  "id": "o-sinal-ep09",
+  "serie": "O Sinal",
+  "episodio": 9,
+  "titulo": "A janela aberta",
+  "narracao": "narracao/ep09.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261031_130953_82ce8ec5-925f-4c17-a510-664a4c462440.mp3",
+  "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
+  "formato": "3D desenho em código (motor3d); formato revisado, fim curto.",
+  "publicar": {
+    "data": "2026-11-03",
+    "hora": "20:00",
+    "capaEm": 1.2,
+    "legenda": "Um celular num quarto que não existe recebia as mensagens do prédio. Com 43 anos de atraso. 📼\n\nO Sinal, episódio 9 (o 1 está no perfil).\nEpisódio 10 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "As mensagens de hoje foram enviadas há 43 anos | O Sinal, Ep. 9 #shorts",
+    "descricaoYoutube": "A Bia encontra, no quarto igual ao da Marina, um celular que recebe todas as mensagens do prédio. Ao rolar o histórico até a primeira, a data revela algo impossível.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_igual"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "ELE LÊ O PRÉDIO INTEIRO",
+          "em": 0,
+          "ate": 2.5
+        },
+        {
+          "tipo": "visor",
+          "em": 0,
+          "ate": 4,
+          "texto": "13º · QUARTO · 3:33"
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.25,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.8
+        ],
+        [
+          "glitch",
+          0.05,
+          0.4
+        ],
+        [
+          "impacto",
+          2.3,
+          0.7
+        ]
+      ],
+      "fala": "Um celular, num quarto impossível, lia as mensagens de todo o prédio.",
+      "legenda": "Um *celular,* num quarto *impossível,* lia as mensagens de todo o prédio."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_grupo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "grupo",
+          "nome": "Ed. Mirante · Moradores",
+          "em": 0.3,
+          "intervalo": 2.2,
+          "mensagens": [
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "entrei. é igualzinho"
+            },
+            {
+              "de": "Ap 1203 · Marina",
+              "texto": "bia, não toca em nada"
+            },
+            {
+              "de": "Ap 1102 · Bia",
+              "texto": "tem um celular aqui"
+            }
+          ]
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "notificacao2",
+          0.3,
+          0.5
+        ],
+        [
+          "notificacao2",
+          2.5,
+          0.5
+        ],
+        [
+          "notificacao2",
+          4.7,
+          0.5
+        ]
+      ],
+      "fala": "A Bia entrou no quarto igual ao da Marina. Pelo grupo, a Marina implorou que ela não tocasse em nada.",
+      "legenda": "A Bia entrou no quarto igual ao da Marina. Pelo grupo, a Marina *implorou* que ela não *tocasse* em nada."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "celular_vibra"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "vibrar",
+          0.3,
+          0.6
+        ],
+        [
+          "glitch",
+          0.4,
+          0.4
+        ],
+        [
+          "notificacao2",
+          1.8,
+          0.5
+        ],
+        [
+          "notificacao2",
+          3.2,
+          0.5
+        ]
+      ],
+      "fala": "A Bia tocou. A tela acendeu, e as mensagens do prédio chegavam ali no mesmo segundo.",
+      "legenda": "A Bia *tocou.* A tela acendeu, e as mensagens do prédio chegavam ali no *mesmo segundo.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_mensagem"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "3:33 · 3:33 · 3:33",
+          "em": 0.2,
+          "ate": 3
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "coracao",
+          0.2,
+          0.8
+        ],
+        [
+          "impacto",
+          1.9,
+          0.7
+        ]
+      ],
+      "fala": "Ao lado de cada uma, a mesma hora. Três e trinta e três.",
+      "legenda": "Ao lado de cada uma, a mesma hora. *3h33.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_igual"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0,
+          "texto": "BIA · AO VIVO · 13º"
+        },
+        {
+          "tipo": "dado",
+          "rotulo": "MENSAGENS NO CELULAR",
+          "de": 0,
+          "ate": 312,
+          "em": 0.2,
+          "fim": 4.5
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "subida",
+          0.2,
+          0.5
+        ],
+        [
+          "grave",
+          3,
+          0.6
+        ]
+      ],
+      "fala": "A Bia rolou a conversa para cima. Eram centenas de mensagens, de números que ninguém conhecia.",
+      "legenda": "A Bia rolou a conversa para cima. Eram *centenas* de mensagens, de números que *ninguém* conhecia."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Remetente desconhecido",
+          "texto": "Não olhe pela janela.",
+          "em": 0.2,
+          "ate": 3,
+          "y": 330
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "notificacao2",
+          0.2,
+          0.5
+        ],
+        [
+          "coracao",
+          2,
+          0.9
+        ]
+      ],
+      "fala": "Todas começavam com a mesma frase. Não olhe pela janela.",
+      "legenda": "Todas começavam com a mesma frase. *Não olhe* pela *janela.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_rosto"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Ap 1102 · Bia",
+          "texto": "🎥 câmera · primeira mensagem",
+          "em": 0.3,
+          "ate": 3.5,
+          "y": 330
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "subida",
+          0.2,
+          0.5
+        ],
+        [
+          "coracao",
+          3.5,
+          0.8
+        ]
+      ],
+      "fala": "A Bia rolou até a primeira de todas, e a Marina viu a data pela câmera dela.",
+      "legenda": "A Bia rolou até a *primeira* de todas, e a Marina viu a *data* pela câmera dela."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "1983",
+          "em": 0.1,
+          "ate": 2
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "impacto",
+          0.1,
+          0.9
+        ],
+        [
+          "grave",
+          0.2,
+          0.8
+        ]
+      ],
+      "fala": "Mil novecentos e oitenta e três.",
+      "legenda": "*1983.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "janela_costas"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ANOS DE ATRASO",
+          "de": 0,
+          "ate": 43,
+          "em": 0.2,
+          "fim": 2.8
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.5,
+      "sons": [
+        [
+          "grave",
+          0.1,
+          0.7
+        ],
+        [
+          "trovao",
+          3.0,
+          0.9
+        ]
+      ],
+      "fala": "As mensagens de hoje foram enviadas há quarenta e três anos.",
+      "legenda": "As mensagens de hoje foram enviadas há *43 anos.*"
+    },
+    {
+      "visual": {
+        "tipo": "final"
+      },
+      "semLegenda": true,
+      "antes": 0.2,
+      "segura": 0.6,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          0.6,
+          0.7
+        ]
+      ],
+      "fala": "Episódio dez, amanhã.",
+      "legenda": "Episódio 10 amanhã."
+    }
+  ]
+}
