@@ -3,8 +3,9 @@
 **Por que pelo navegador:** TikTok e YouTube só deixam um robô publicar como PRIVADO até a plataforma auditar o aplicativo. Por isso, o TikTok e o YouTube são agendados pelo Chrome, com o agendador das próprias plataformas, que publicam sozinhas às 20h mesmo com o computador desligado. O Instagram vai pela API (n8n) quando a chave existir; até lá, pelo Chrome às 20h.
 
 ## Antes de tudo
-- **Navegador certo:** o Chrome do perfil do e-mail da Origem. Em `list_connected_browsers`, é o "Browser 1" (deviceId 241d2700-…), onde o TikTok abre em @arquivo333.0.
-- **NUNCA** publique no outro Chrome (perfil principal, com o @origem__digital).
+- **Navegador certo:** o que estiver logado no Arquivo 3:33. Os nomes "Browser 1" e "Browser 2" em `list_connected_browsers` mudam a cada conexão, então não escolha pelo nome. Em 01/11/2026, o Chrome que era do Arquivo estava logado no Hoje Sumiu.
+- **Conta certa:** antes de agendar ou publicar, confira se a conta ativa é a arquivo333.0 (no YouTube, o canal Arquivo 3:33). Se for outra, não publique nada: registre e avise o Vito.
+- **NUNCA** publique no @origem__digital nem no @hojesumiu.
 - **Abas:** crie uma aba sua (`tabs_create_mcp`) e não mexa nas abas que o Vito estiver usando.
 - **Arquivos:** copie a cópia leve (`<id>-upload.mp4`, menos de 10 MB) e a capa (`<id>-capa.jpg`) para `C:\Users\User\Desktop\Origem-Digital\arquivo-333-envios\`.
   - Se o episódio foi feito na nuvem, baixe do Pages: `https://vito0067.github.io/origem-digital-posts/arquivo/<id>.mp4` e `-capa.jpg`.
