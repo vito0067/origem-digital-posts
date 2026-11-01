@@ -46,7 +46,8 @@
 - **Ep. 7 · A síndica** (01/11/2026): a Dona Cida manda áudio: o prédio foi construído em 1983 depois de um apagão de 3h33; a planta original (que ela guardava na gaveta) tem um 13º andar, mas o último botão do elevador é o 12. Ver `episodios/ep07.json`.
 - **Ep. 8 · 13º** (02/11/2026, feito no PC em 29/10, 1º no formato revisado): "O prédio tem doze andares. A Bia filmou o décimo terceiro."; a Bia sobe pela escada (26 degraus acima do 12º); vídeo no grupo: corredor igual sem número nas portas, elevador marcando 13; uma porta sem número abre sozinha; lá dentro, o quarto da Marina, vazio, relógio em 3:33; gancho: "E alguém tinha deixado a cortina aberta." Ver `episodios/ep08.json`. Planos novos: escada_bia, corredor_13, porta_sem_numero, quarto_igual (o corredor ganhou `andar13(true)`).
 - **Ep. 9 · A janela aberta** (03/11/2026): um celular no quarto igual (13º) recebe todas as mensagens do prédio; a Bia toca nele, rola o histórico (312 mensagens, todas "Não olhe pela janela") e a primeira é de 1983; gancho: "As mensagens de hoje foram enviadas há quarenta e três anos." Ver `episodios/ep09.json`.
-- **Próximo: Ep. 10 · 1983** (04/11/2026): o jornal velho guardado no quarto fala do apagão e de "fotos tiradas do céu"; gancho: uma das fotos de 1983 mostra a Marina.
+- **Ep. 10 · 1983** (04/11/2026): debaixo da cama do 13º, um jornal de 1983 fala do apagão de 3h33 e de "fotos tiradas do céu" (56 pessoas fotografadas, caso arquivado em 3 dias); gancho: no verso, uma foto antiga mostra a Marina na janela do 12º. Ver `episodios/ep10.json`.
+- **Próximo: Ep. 11 · Remetente** (05/11/2026): o remetente pede "Olhe pela janela" em troca de abrir as portas; gancho: ela olha.
 
 ## (Histórico) Roteiro original do episódio 2, antes da versão final
 Falas, cada uma separada por três quebras de linha na gravação:
