@@ -65,7 +65,7 @@ Depois de "Do mundo inteiro. Para sempre.", um cartão mostra o @ de quem escrev
 Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estranha e volta no chamado. Efeitos de papel: folha virando em onda, dobra, buzina, apito, mordida, lápis.
 
 ## Como fazer um dia novo
-1. **Ler:** o que os comentários do dia anterior escolheram (pelo Chrome, nos comentários do Reel mais curtido). Fora de `Proibido`, o mais curtido vale.
+1. **Ler os votos, só leitura (sem comentar nem curtir):** abra o Reel do dia anterior no navegador do app, que funciona sem login. Feche o aviso de cadastro, role os comentários até o número bater com o total da página, salve o texto da página num arquivo e rode `node ferramentas/votos.mjs arquivo.txt`. Confira o resultado com os olhos: a lista de veto não pega tudo. Fora de `Proibido`, o mais curtido vale. Mostre o tema ao Vito antes de produzir.
 2. **Roteiro** em `episodios/diaNN.json`. Atualizar a linha do mural e o contador.
 3. **Voz:** gerar e salvar em `public/<id>.mp3`. Depois `node ferramentas/preparar-dia.mjs episodios/diaNN.json`.
 4. **Cena:** o bloco `cena` no próprio `episodios/diaNN.json`, com as peças da biblioteca: leia `hoje-sumiu/PECAS.md` e copie de `episodios/exemplo-dados.json`. Não crie `DiaN.tsx` nem código novo por dia; se faltar uma peça, acrescente em `src/pecas/objetos.ts`. O que sumiu antes continua sumido: o vermelho já nasce cinza e o mural ganha uma nota "DIA N" sozinho. Dias 1 e 2 têm código próprio: não mexa.

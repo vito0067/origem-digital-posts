@@ -12,7 +12,7 @@ Atualize ao fim de cada dia. O repositório é público: nada de senha, chave, t
 **Nunca publique nem agende no TikTok pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. A cada dia, rode `node ferramentas/kit-celular.mjs N` e diga a ele onde está a pasta. Instagram e YouTube seguem pelo computador, conferindo a conta na tela.
 
 ## Próximo passo
-1. Ler os comentários do [Reel do Dia 2](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) e mostrar o tema vencedor ao Vito antes de produzir.
+1. O Vito pediu para esperar até umas 18h de 02/11/2026. Reler os votos do [Reel do Dia 2](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) com `ferramentas/votos.mjs` (passo a passo na skill) e acordar o tema com ele. **Parcial de 02/11, 8h:** "Crianças" 13 (vetado), "Bactérias" 6, "Calor" 6, "O boleto" 5. Somando comentários iguais: Bactérias 11, Boleto 11, Calor 7. Em 02/11 não foi possível agendar o aviso das 18h: quem chama é o Vito.
 2. Produzir o Dia 3 só com um arquivo de dados, usando a biblioteca (`PECAS.md`), com o crédito a quem comentou e a regra "não vale governo nem pessoa".
 
 ## Biblioteca de peças
@@ -30,7 +30,9 @@ Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. Testada com fotos soltas de 
 | 2 | o frio | [Reel](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) | [vídeo](https://www.tiktok.com/@hojesumiu/video/7703353832205503765) | [Short](https://www.youtube.com/shorts/hbJqJA46i0c) |
 
 ## Números
-**Dia 1, lidos em 01/11/2026 ~19h40.** O Dia 2 ainda não foi lido.
+**Dia 2, lido em 02/11/2026 ~8h, só no Instagram:** 67 curtidas e 22 comentários em 11 horas.
+
+**Dia 1, lidos em 01/11/2026 ~19h40.**
 | Rede | Views | Curtidas | Comentários | Outros |
 |---|---|---|---|---|
 | Instagram | 2.186 | 62 | 19 | 11 compartilhamentos, 24 seguidores |
