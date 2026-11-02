@@ -329,7 +329,7 @@
       },
       "semLegenda": true,
       "antes": 0.2,
-      "segura": 0.6,
+      "segura": 0.45,
       "sons": [
         [
           "sino",
@@ -348,9 +348,20 @@
         {
           "tipo": "aposta",
           "texto": "A Marina vai olhar pela janela ou não?",
-          "em": 0.3
+          "em": 0.2
         }
-      ]
+      ],
+      "vozAntes": {
+        "arquivo": "narracao/apostas-ep08-10.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261102_121159_de8ec1d1-82b5-47ce-8eae-8d4a5d46598b.mp3",
+        "textos": [
+          "A Bia entra ou volta pela escada?",
+          "A Bia fica nesse quarto ou foge agora?",
+          "A Marina vai olhar pela janela ou não?"
+        ],
+        "indice": 2,
+        "pausa": 0.3
+      }
     }
   ]
 }

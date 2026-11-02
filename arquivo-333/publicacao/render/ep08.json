@@ -1,10 +1,10 @@
 {
   "id": "o-sinal-ep08",
   "arquivo": "ep08.json",
-  "hash": "63f49c2e89e8",
+  "hash": "29a8e9022996",
   "episodio": 8,
   "serie": "O Sinal",
-  "duracao": 53.13,
+  "duracao": 55.92,
   "publicar": {
     "data": "2026-11-02",
     "hora": "20:00",
@@ -16,7 +16,7 @@
   "video": "https://github.com/vito0067/origem-digital-posts/releases/download/arquivo-o-sinal-ep08/o-sinal-ep08-upload.mp4",
   "capa": "https://github.com/vito0067/origem-digital-posts/releases/download/arquivo-o-sinal-ep08/o-sinal-ep08-capa.jpg",
   "revisao": "https://github.com/vito0067/origem-digital-posts/releases/download/arquivo-o-sinal-ep08/o-sinal-ep08-revisao.jpg",
-  "tamanhoMB": 9.3,
-  "renderizadoEm": "2026-11-02T11:14:49.023Z",
-  "minutos": 2.9
+  "tamanhoMB": 9,
+  "renderizadoEm": "2026-11-02T12:15:27.000Z",
+  "minutos": 2.2
 }

@@ -1,10 +1,10 @@
 {
   "id": "o-sinal-ep09",
   "arquivo": "ep09.json",
-  "hash": "1c24f4df03e0",
+  "hash": "675a7d0bf03c",
   "episodio": 9,
   "serie": "O Sinal",
-  "duracao": 50.61,
+  "duracao": 53.57,
   "publicar": {
     "data": "2026-11-03",
     "hora": "20:00",
@@ -16,7 +16,7 @@
   "video": "https://github.com/vito0067/origem-digital-posts/releases/download/arquivo-o-sinal-ep09/o-sinal-ep09-upload.mp4",
   "capa": "https://github.com/vito0067/origem-digital-posts/releases/download/arquivo-o-sinal-ep09/o-sinal-ep09-capa.jpg",
   "revisao": "https://github.com/vito0067/origem-digital-posts/releases/download/arquivo-o-sinal-ep09/o-sinal-ep09-revisao.jpg",
-  "tamanhoMB": 9.2,
-  "renderizadoEm": "2026-11-02T12:02:51.623Z",
-  "minutos": 1.8
+  "tamanhoMB": 8.8,
+  "renderizadoEm": "2026-11-02T12:17:21.581Z",
+  "minutos": 1.9
 }

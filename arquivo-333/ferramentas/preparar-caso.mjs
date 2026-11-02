@@ -17,14 +17,24 @@ const ep = JSON.parse(readFileSync(process.argv[2], "utf8"));
 const gravacao = lerAudio(join(PUBLICO, ep.narracao));
 const pedacos = cortarNarracao(gravacao, ep.cenas.map((c) => c.fala));
 
+// a pergunta do final, gravada à parte (cena com "vozAntes": o narrador fala a pergunta antes da fala da cena)
+const perguntas = new Map();
+ep.cenas.forEach((c, i) => {
+  if (!c.vozAntes) return;
+  const g = lerAudio(join(PUBLICO, c.vozAntes.arquivo));
+  const textos = c.vozAntes.textos ?? [c.vozAntes.texto];
+  perguntas.set(i, { g, ...cortarNarracao(g, textos)[c.vozAntes.indice ?? 0] });
+});
+
 // ---------- 2. linha do tempo ----------
 let t = 0;
 const cenas = ep.cenas.map((c, i) => {
   const antes = c.antes ?? 0.12, segura = c.segura ?? 0.3;
   const p = pedacos[i], dur = p.ate - p.de;
-  const inicio = t, vozEm = t + antes, fim = vozEm + dur + segura;
+  const q = perguntas.get(i), dq = q ? q.ate - q.de + (c.vozAntes.pausa ?? 0.3) : 0;
+  const inicio = t, vozEm = t + antes + dq, fim = vozEm + dur + segura;
   t = fim;
-  return { ...c, indice: i, inicio, vozEm, vozDur: dur, fim, pedaco: p };
+  return { ...c, indice: i, inicio, vozEm, vozDur: dur, fim, pedaco: p, perguntaEm: q ? inicio + antes : undefined };
 });
 const duracao = t + 0.15;
 
@@ -76,6 +86,10 @@ const quando = (c, ref) => {
 };
 
 const voz = montarVoz(gravacao, cenas.map((c) => ({ de: c.pedaco.de, ate: c.pedaco.ate, em: c.vozEm - c.pedaco.de })), duracao);
+for (const [i, q] of perguntas) {
+  const c = cenas[i], v2 = montarVoz(q.g, [{ de: q.de, ate: q.ate, em: c.perguntaEm - q.de }], duracao);
+  for (let k = 0; k < voz.L.length; k++) { voz.L[k] += v2.L[k]; voz.R[k] += v2.R[k]; }
+}
 for (const c of cenas.filter((c) => c.vozTelefone)) {
   const a = Math.max(0, N(c.vozEm - 0.05)), b = Math.min(voz.L.length, N(c.vozEm + c.vozDur + 0.1));
   for (const canal of [voz.L, voz.R]) {
@@ -84,6 +98,7 @@ for (const c of cenas.filter((c) => c.vozTelefone)) {
   }
 }
 const fala = cenas.map((c) => [c.vozEm, c.vozEm + c.vozDur]);
+for (const [i, q] of perguntas) fala.push([cenas[i].perguntaEm, cenas[i].perguntaEm + q.ate - q.de]);
 
 // clima: sub em mi grave + cluster dissonante que respira + chuva dos dois lados
 const clima = new Faixa(duracao + 2);

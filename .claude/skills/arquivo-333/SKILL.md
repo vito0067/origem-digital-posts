@@ -14,7 +14,10 @@ O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena n
 
 **Aposta para o público comentar (pedido do Vito, 01/11/2026):** todo episódio termina com uma pergunta sobre o que vai acontecer, ligada à cena ("ela abre a porta ou não?"). É só opinião: o voto não muda a história já escrita.
 - **Onde vai:** logo depois da 1ª linha da legenda (no bloco `publicar`), na seção "Pergunta para fixar" de `publicacao/epNN.md` e, do ep. 8 em diante, no cartão final, com o extra `aposta` na cena `final`.
-- **Sem alongar o fim:** o cartão continua com `segura` de no máximo 0,6 s, e a fala final segue sendo só "Episódio N, amanhã."
+- **O NARRADOR FALA A PERGUNTA (pedido do Vito, 02/11/2026):** "o que mais pega as pessoas é a voz, não só a legenda". Do ep. 8 em diante, a pergunta é falada no cartão final, antes de "Episódio N, amanhã", e também escrita no cartão (extra `aposta`, com `em: 0.2`). Pergunta curta, sim ou não, ligada à cena, com palavras sem risco de acento (veja `referencia/voz.md`).
+  - **Episódio novo:** a fala da cena `final` é um turno só: `"A Marina abre a porta ou não? Episódio onze, amanhã."`, com `semLegenda: true`. O texto do extra `aposta` é igual à pergunta falada.
+  - **Episódio já gravado:** gere só a pergunta (barato, uns 0,3 de crédito por frase) e use `vozAntes` na cena `final`: `{ arquivo, url, textos, indice, pausa }`. O `preparar-caso` encaixa a pergunta antes da fala da cena, sem regerar a narração aprovada (foi assim nos eps. 8 a 10).
+  - **Duração do cartão:** com a pergunta falada, o cartão final dura uns 5 a 6 s (antes, uns 3 s). Mantenha `segura` de no máximo 0,45 s e o episódio abaixo de 58 s.
 
 ## Onde fica cada coisa
 O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-333/` (no PC: `Documents\Origem Digital\4-midia\posts-automaticos\arquivo-333`).
@@ -72,7 +75,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
   - conteúdo para crianças (o público é adulto ou geral).
 - **Mistério:** o remetente nunca aparece; ninguém descobre quem é antes do último episódio da série.
 - **Números:** por extenso na fala e em algarismo na legenda.
-- **Fala final:** do ep. 5 em diante, só "Episódio N, amanhã." (ver o item 9 do formato). Até o ep. 4 era "Episódio N, amanhã. Siga o Arquivo três e trinta e três."
+- **Fala final:** do ep. 5 em diante, "Episódio N, amanhã." (ver o item 9 do formato); do ep. 8 em diante, vem depois da pergunta falada ("A Bia entra ou não? Episódio nove, amanhã."). Até o ep. 4 era "Episódio N, amanhã. Siga o Arquivo três e trinta e três."
 - **Segredos:** nunca escreva senha, chave ou token em arquivo nenhum.
 
 ## Como fazer um episódio

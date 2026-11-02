@@ -82,6 +82,12 @@ for (const f of pendentes) {
       if (!r.ok) throw new Error(`não consegui baixar a narração: HTTP ${r.status}`);
       writeFileSync(narr, Buffer.from(await r.arrayBuffer()));
     }
+    // 1b. a pergunta falada do final (vozAntes), gravada à parte
+    for (const c of ep.cenas) if (c.vozAntes && !existsSync(join(RAIZ, "public", c.vozAntes.arquivo))) {
+      const r = await fetch(c.vozAntes.url);
+      if (!r.ok) throw new Error(`não consegui baixar a pergunta falada: HTTP ${r.status}`);
+      writeFileSync(join(RAIZ, "public", c.vozAntes.arquivo), Buffer.from(await r.arrayBuffer()));
+    }
     // 2. fotos 3D paradas (cenas/3d/<plano>.png) que ainda não existem
     const fotos = ep.cenas.filter((c) => c.visual.arquivo?.startsWith("cenas/3d/") && !existsSync(join(RAIZ, "public", c.visual.arquivo)))
       .map((c) => `${basename(c.visual.arquivo, ".png")}:${c.visual.fotoSeg ?? 1.5}`);
