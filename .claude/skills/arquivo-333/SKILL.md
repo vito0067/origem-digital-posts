@@ -19,6 +19,14 @@ O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena n
   - **Episódio já gravado:** gere só a pergunta (barato, uns 0,3 de crédito por frase) e use `vozAntes` na cena `final`: `{ arquivo, url, textos, indice, pausa }`. O `preparar-caso` encaixa a pergunta antes da fala da cena, sem regerar a narração aprovada (foi assim nos eps. 8 a 10).
   - **Duração do cartão:** com a pergunta falada, o cartão final dura uns 5 a 6 s (antes, uns 3 s). Mantenha `segura` de no máximo 0,45 s e o episódio abaixo de 58 s.
 
+**Divulgação do guia "Sem Câmera" no meio do vídeo (pedido do Vito, 02/11/2026, por tempo limitado; ele diz quando acabar):** o Vito vende um guia em PDF e quer 3 a 6 s de divulgação no meio dos episódios.
+- **Como é:** cena `avulsa` entre os cortes, a 40%-60% do vídeo, nunca em cima de uma revelação. O narrador (Gideon, gravado à parte, arquivo `narracao/divulgacao-guia.mp3`) diz: "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio." Na tela, `visual: { tipo: "divulgacao", titulo: "SEM CÂMERA", linhas: ["GUIA EM PDF", "LINK NA BIO"] }`. Sem promessa de dinheiro.
+- **No JSON:** a cena leva `"avulsa": { "arquivo", "url" }`, `"semLegenda": true`, `"entrada": "preto"`, `"sons": []`, e a `fala` é o texto da frase. O `preparar-caso` tira essa cena do corte da narração principal e mixa a voz dela à parte. O `nuvem.mjs` baixa o arquivo pela `url` se faltar.
+- **Legendas:** a legenda do Instagram/TikTok e a descrição do YouTube ganham "Guia para fazer vídeos assim: link na bio." antes de "Ficção criada com inteligência artificial.".
+- **Custo e tempo:** a frase gravada custa 0,69 crédito (serve para todos os episódios). A cena dura uns 7 s, então o episódio passa de 58 s (ep. 8: 63 s). Vale enquanto o Vito pedir.
+- **Conferir:** olhe a folha de revisão (o título não pode encostar nas bordas: 168 px) e, no Pages, o tamanho do mp4 contra o local.
+- **Se o envio do render falhar no PC:** o `fetch` do Node às vezes não conecta em `uploads.github.com`. O `nuvem.mjs` agora tenta o `curl`; se ainda assim falhar, rode `SO_ENVIO=1 TODOS=1 FORCAR=epNN node ferramentas/nuvem.mjs` (só refaz o envio e o registro, sem renderizar de novo). Cuidado: o envio apaga o arquivo antigo do release antes de subir o novo; confira que `o-sinal-epNN-upload.mp4` está lá no fim.
+
 ## Onde fica cada coisa
 O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-333/` (no PC: `Documents\Origem Digital\4-midia\posts-automaticos\arquivo-333`).
 - `episodios/epNN.json`: o episódio, com falas, cenas, sons e o bloco `publicar`. É a fonte de tudo.

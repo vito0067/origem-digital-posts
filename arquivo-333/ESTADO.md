@@ -27,6 +27,7 @@ Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada.
 
 ## Regras novas
 - **TikTok (Vito, 01/11/2026):** nunca publique nem agende pelo computador. Para cada episódio, rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. No TikTok, só leia os números.
+- **Divulgação do guia "Sem Câmera" (02/11/2026):** os eps. 8 a 10 ganharam um cartão falado de ~7 s no meio (cena `avulsa`, voz do Gideon, título SEM CÂMERA / GUIA EM PDF / LINK NA BIO) e a frase "Guia para fazer vídeos assim: link na bio." nas legendas. Os vídeos passaram de 61 s. Regra na skill. No YouTube, a versão nova entra programada e a antiga fica privada.
 - **Aposta:** todo episódio tem uma pergunta ligada à cena. Do ep. 8 em diante, ela está na legenda, no comentário fixado e no cartão final (extra `aposta`). Em 02/11, os eps. 8 a 10 foram renderizados de novo com a aposta; no YouTube, a versão nova entra programada e a antiga fica privada, sem excluir. Só opinião: não muda a história.
 
 ## Riscos

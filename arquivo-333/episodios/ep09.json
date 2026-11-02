@@ -11,9 +11,9 @@
     "data": "2026-11-03",
     "hora": "20:00",
     "capaEm": 1.2,
-    "legenda": "Um celular num quarto que não existe recebia as mensagens do prédio. Com 43 anos de atraso. 📼\n\nA Bia fica nesse quarto até descobrir mais, ou foge agora? 👇\n\nO Sinal, episódio 9 (o 1 está no perfil).\nEpisódio 10 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "legenda": "Um celular num quarto que não existe recebia as mensagens do prédio. Com 43 anos de atraso. 📼\n\nA Bia fica nesse quarto até descobrir mais, ou foge agora? 👇\n\nO Sinal, episódio 9 (o 1 está no perfil).\nEpisódio 10 amanhã, às 20h. Siga para não perder.\n\nGuia para fazer vídeos assim: link na bio.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
     "tituloYoutube": "As mensagens de hoje foram enviadas há 43 anos | O Sinal, Ep. 9 #shorts",
-    "descricaoYoutube": "A Bia encontra, no quarto igual ao da Marina, um celular que recebe todas as mensagens do prédio. Ao rolar o histórico até a primeira, a data revela algo impossível.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+    "descricaoYoutube": "A Bia encontra, no quarto igual ao da Marina, um celular que recebe todas as mensagens do prédio. Ao rolar o histórico até a primeira, a data revela algo impossível.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nGuia para fazer vídeos assim: link na bio.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
   },
   "cenas": [
     {
@@ -218,6 +218,28 @@
       ],
       "fala": "A Bia rolou a conversa para cima. Eram centenas de mensagens, de números que ninguém conhecia.",
       "legenda": "A Bia rolou a conversa para cima. Eram *centenas* de mensagens, de números que *ninguém* conhecia."
+    },
+    {
+      "visual": {
+        "tipo": "divulgacao",
+        "titulo": "SEM CÂMERA",
+        "linhas": [
+          "GUIA EM PDF",
+          "LINK NA BIO"
+        ]
+      },
+      "semLegenda": true,
+      "entrada": "preto",
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [],
+      "fala": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "legenda": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "extras": [],
+      "avulsa": {
+        "arquivo": "narracao/divulgacao-guia.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261102_204022_21f29ed0-171b-4c1e-9817-e9f5054842ed.mp3"
+      }
     },
     {
       "visual": {

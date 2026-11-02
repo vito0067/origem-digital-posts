@@ -11,9 +11,9 @@
     "data": "2026-11-04",
     "hora": "20:00",
     "capaEm": 1.2,
-    "legenda": "Um jornal de 1983 guardava uma foto que não devia existir. 📼\n\nA Marina vai olhar pela janela ou não? 👇\n\nO Sinal, episódio 10 (o 1 está no perfil).\nEpisódio 11 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "legenda": "Um jornal de 1983 guardava uma foto que não devia existir. 📼\n\nA Marina vai olhar pela janela ou não? 👇\n\nO Sinal, episódio 10 (o 1 está no perfil).\nEpisódio 11 amanhã, às 20h. Siga para não perder.\n\nGuia para fazer vídeos assim: link na bio.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
     "tituloYoutube": "A foto da Marina em um jornal de 1983 | O Sinal, Ep. 10 #shorts",
-    "descricaoYoutube": "No quarto igual ao dela, a Bia encontra um jornal de 1983 sobre o apagão de 3h33 e as \"fotos tiradas do céu\". No verso, uma foto mostra a Marina.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+    "descricaoYoutube": "No quarto igual ao dela, a Bia encontra um jornal de 1983 sobre o apagão de 3h33 e as \"fotos tiradas do céu\". No verso, uma foto mostra a Marina.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nGuia para fazer vídeos assim: link na bio.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
   },
   "cenas": [
     {
@@ -190,6 +190,28 @@
       ],
       "fala": "No pé da página, uma frase pequena. Testemunhas juravam ter visto fotos tiradas do céu.",
       "legenda": "Uma frase pequena. Testemunhas juravam ver *fotos* tiradas do *céu.*"
+    },
+    {
+      "visual": {
+        "tipo": "divulgacao",
+        "titulo": "SEM CÂMERA",
+        "linhas": [
+          "GUIA EM PDF",
+          "LINK NA BIO"
+        ]
+      },
+      "semLegenda": true,
+      "entrada": "preto",
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [],
+      "fala": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "legenda": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "extras": [],
+      "avulsa": {
+        "arquivo": "narracao/divulgacao-guia.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261102_204022_21f29ed0-171b-4c1e-9817-e9f5054842ed.mp3"
+      }
     },
     {
       "visual": {
