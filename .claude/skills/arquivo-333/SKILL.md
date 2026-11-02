@@ -82,6 +82,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
    - Quebras de clima: um personagem novo, uma prova visual, um número.
    - Termine num gancho mais forte que o do episódio anterior.
 3. **Voz (Higgsfield, cerca de 1 crédito):**
+   - **Antes de gerar, leia [referencia/voz.md](referencia/voz.md) e rode `node ferramentas/revisar-voz.mjs episodios/epNN.json`** (palavra proibida: "celular" e as que o Vito apontar). Depois de gerar, diga ao Vito quais palavras de risco ficaram e peça para ele ouvir.
    - `generate_audio` com `model: "elevenlabs_v4"`, `stability: 0.4`, `similarity_boost: 0.8`.
    - `dialogue`: um turno por fala, com `voice_id` `1ad38ba4-9cc4-4f2f-9fde-b0fefdf67ae5` (Gideon, `voice_type: "preset"`).
    - Áudio de personagem: Andre `f1e8226e-2248-4d5f-b43c-0a79e9949dbf` para homem jovem. Para outras vozes, `list_voices`.
@@ -115,6 +116,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
   - nenhum objeto escuro tampa a tela (árvore, batente).
 - **Legenda:** não fica em cima de cartão, grupo ou dado. Eles vão no alto (300 a 1100 px) e a legenda, de 1250 px para baixo.
 - **Rostos:** aparecem inteiros nos closes, e a luz não estoura.
+- **Voz:** nenhuma palavra proibida de `referencia/voz.md` na `fala`, e o Vito avisado das palavras vigiadas.
 - **Som:** o corte da narração bate com as falas (de 4 a 6 sílabas por segundo, `preparar-caso` mostra) e os efeitos caem no momento certo (ex.: a trava no "trancaram").
 - **Final:** o gancho aparece e o cartão final dura menos de 2 s parado.
 - **Tamanho:** a cópia leve tem menos de 10 MB.
