@@ -10,7 +10,7 @@ Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada.
 | Rede | Como sai | No ar até | Agendado | Falta |
 |---|---|---|---|---|
 | YouTube | agendado pelo Chrome | ep. 7 | eps. 8, 9 e 10 (versões com a aposta; as antigas ficaram privadas) | vídeos relacionados e comentários fixados |
-| Instagram | Chrome às 20h (a tarefa publica) | ep. 7 | o site não agenda | ep. 8 em 02/11, ep. 9 em 03/11, ep. 10 em 04/11 |
+| Instagram | **n8n, sozinho às 20h (ligado em 02/11)**; Chrome só se falhar | ep. 7 | o fluxo lê o `agenda.json` do Pages | provar a 1ª publicação real (ep. 8, 02/11 às 20h) na tabela `public.arquivo_instagram` |
 | TikTok | **o Vito, pelo celular** | ep. 7 | ep. 8 (agendado antes da regra) | postar os eps. 9 e 10 com os kits |
 
 ## Quando O Sinal acabar (ep. 12, 06/11)
@@ -32,10 +32,10 @@ Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada.
 ## Riscos
 - **Chrome trocando de perfil:** em 02/11, a conexão do Chrome mudou várias vezes para o perfil Trabalho (`117dcc99…`) no meio de um envio. As ferramentas recusam agir fora do grupo de abas, mas refaça `select_browser` com o deviceId da Origem e confira a conta antes de cada passo; use passos curtos.
 - **Tarefas paradas:** as tarefas do PC podem parar pedindo permissão. Em 01/11, as duas ficaram paradas das 19h15 às 20h20 e o ep. 7 só saiu no Instagram pela conversa principal. Encerrar uma rodada parada pode iniciar outra na hora: antes de publicar à mão, confira se há rodada aberta, para o episódio não sair duas vezes.
-- **Instagram manual:** depende do PC ligado e do Chrome certo; atrasou os eps. 6 e 7. O conserto é a chave da conta no n8n (fluxo U5ZEYtmvwySTwvAj, desligado), que precisa do Vito no Meta Business Suite.
+- **Instagram automático (02/11/2026):** o fluxo U5ZEYtmvwySTwvAj foi ligado e a chave lê a conta certa, mas a publicação real só será provada às 20h do ep. 8. O aviso de erro no WhatsApp pode não chegar (o chip `demo-aurora2` está com "Connection Closed" desde pelo menos 01/11): depois das 20h10, **confira sempre a tabela `public.arquivo_instagram`**. Se falhar, vale o Chrome, depois de conferir no perfil que o episódio não saiu antes. A API não tem o rótulo de IA: o aviso fica na legenda e no cartão final. **A chave vence em ~60 dias: renovar até ~01/01/2027.**
 
 ## Pendências
-- **Do Vito:** excluir o ep. 8 agendado no TikTok até 02/11 às 20h e postar pelo celular; escolher o tema do Caso 02; postar os eps. 9 e 10 pelo celular; Meta Business Suite; verificação em 2 etapas no Google; separar o Hoje Sumiu em outro perfil do Chrome.
+- **Do Vito:** excluir o ep. 8 agendado no TikTok até 02/11 às 20h e postar pelo celular; escolher o tema do Caso 02; postar os eps. 9 e 10 pelo celular; renovar a chave do Instagram até ~01/01/2027; verificação em 2 etapas no Google; separar o Hoje Sumiu em outro perfil do Chrome.
 - **Do Claude:** vídeos relacionados e comentários fixados no YouTube; ler a retenção no YouTube Studio e registrar em `publicacao/numeros.md`; eps. 11 e 12; planejar o filme de O Sinal (só plano, sem gastar créditos até o Vito confirmar o formato).
 
 ## Números de 01/11/2026

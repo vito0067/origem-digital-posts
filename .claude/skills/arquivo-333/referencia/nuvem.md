@@ -20,7 +20,8 @@
    - Com a folga, o computador pode ficar dias desligado sem perder post.
 4. **Instagram:**
    - **n8n "Arquivo 3:33 - Publicar Instagram":** todo dia às 20h lê `https://vito0067.github.io/origem-digital-posts/arquivo/agenda.json` e publica o Reel do dia, com rótulo de IA e legenda.
-   - Precisa da credencial "Instagram — token arquivo333". Até ela existir, a tarefa das 19h50 publica pelo Chrome.
+   - **Ligado desde 02/11/2026**, com a credencial "Instagram — token arquivo333" (vence em ~60 dias: renovar até ~01/01/2027). A tarefa das 19h50 não publica pelo Chrome se o fluxo estiver ativo.
+   - O vídeo tem que estar certo no Pages antes das 20h: ele vem do release pelo `pages.mjs`, que roda a cada push em `arquivo-333/episodios/`.
 
 ## Voz da rotina
 Antes de gravar a voz, leia `referencia/voz.md` e confira as falas com a lista de palavras proibidas (a rotina roda no GitHub, sem ouvir áudio). Se o terminal permitir, rode `node arquivo-333/ferramentas/revisar-voz.mjs arquivo-333/episodios/epNN.json`. No resultado da rodada, liste as palavras vigiadas de cada episódio para o Vito ouvir.

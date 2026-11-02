@@ -2,7 +2,7 @@
 
 **Quem publica onde:**
 - **YouTube:** agendado pelo Chrome, porque um robô só publica como privado até a plataforma auditar o aplicativo. O agendador do YouTube publica sozinho às 20h, mesmo com o computador desligado.
-- **Instagram:** pela API (n8n) quando a chave existir; até lá, pelo Chrome às 20h.
+- **Instagram:** automático pelo n8n desde 02/11/2026 (veja a seção Instagram abaixo). Não publique pelo Chrome sem antes conferir que o fluxo falhou.
 - **TikTok:** só o Vito, pelo celular. Em `agendados.json`, o status é "com o Vito, pelo celular".
 
 ## Antes de tudo
@@ -58,10 +58,13 @@
   - fixe um comentário que puxa resposta: "Quem você acha que é o remetente? 👀 Episódio N+1 sai amanhã às 20h, e a série completa está na playlist." Comentário conta muito no algoritmo, e pergunta gera comentário.
 
 ## Instagram (instagram.com, conta de CRIADOR desde 26/10/2026)
-- **Automático (melhor):** o fluxo do n8n "Arquivo 3:33 - Publicar Instagram" publica às 20h.
-  - Ele lê `docs/arquivo/agenda.json` no Pages.
-  - Precisa da chave da conta (ver a pendência no cérebro). Se ele estiver ligado, NÃO publique pelo navegador.
-- **Pelo navegador (às 20h, o site não agenda):**
+- **Automático (desde 02/11/2026):** o fluxo do n8n "Arquivo 3:33 - Publicar Instagram" (U5ZEYtmvwySTwvAj) está LIGADO e publica todo dia às 20h o episódio do `agenda.json`, com a credencial "Instagram — token arquivo333".
+  - **Onde lê:** `https://vito0067.github.io/origem-digital-posts/arquivo/agenda.json` e o vídeo e a capa do Pages (`o-sinal-epNN.mp4`). Antes das 20h, confira que o mp4 do Pages é a versão certa (compare o tamanho com a cópia leve do release).
+  - **Não publique pelo Chrome**, para o episódio não sair duas vezes. A tarefa das 19h50 já checa se o fluxo está ativo.
+  - **Conferir depois das 20h10:** a tabela `public.arquivo_instagram` (status `publicado`, com o link) e o `agendados.json`. Se falhar, o fluxo avisa o Vito no WhatsApp; só então vale publicar pelo Chrome, depois de conferir no perfil que o episódio não saiu.
+  - **Rótulo de IA:** a API do Instagram não tem o botão. O aviso fica na legenda e no cartão final do vídeo: todo episódio precisa dos dois.
+  - **Chave:** vence em cerca de 60 dias (renovar até ~01/01/2027). Quando vencer, o fluxo falha e avisa o Vito.
+- **Pelo navegador (plano B; o site não agenda):**
   1. "Criar" → Post → input de arquivo → `file_upload` do mp4 → OK no aviso de reels.
   2. Recorte "Original" (9:16) → Avançar.
   3. "Capa" → "Selecionar do computador" → a capa → Avançar.
