@@ -1,0 +1,133 @@
+{
+  "id": "hoje-sumiu-dia02",
+  "dia": 2,
+  "coisa": "o frio",
+  "escolha": "Instagram, 01/11/2026: 'Presidentes' (9 curtidas) e 'Lula' (6) vetados pela regra de governo e pessoa real; 'Frio', de @formulaperderpeso (7 curtidas), foi o mais curtido que valia.",
+  "voz": "Mark, Eleven v4, estabilidade 0.5, similaridade 0.75; sem aceleração",
+  "velocidade": 1,
+  "falas": [
+    {
+      "fala": "Hoje sumiu o frio.",
+      "legenda": "Hoje sumiu o ~frio.~"
+    },
+    {
+      "fala": "Do mundo inteiro. Para sempre.",
+      "legenda": "Do mundo *inteiro.* Para *sempre.*",
+      "segura": 0.2
+    },
+    {
+      "fala": "Esse foi o comentário mais curtido que valia.",
+      "legenda": "Esse foi o comentário *mais curtido* que *valia.*",
+      "segura": 0.5
+    },
+    {
+      "fala": "Você pensa: que ótimo. Nunca mais blusa. Nunca mais banho gelado.",
+      "legenda": "Você pensa: que *ótimo.* Nunca mais *blusa.* Nunca mais banho *gelado.*"
+    },
+    {
+      "fala": "Mas a geladeira funciona com frio. Você abre a porta, e sai um ar quente. O leite azedou antes do almoço.",
+      "legenda": "Mas a *geladeira* funciona com ~frio.~ Você abre a porta, e sai um ar *quente.* O leite *azedou* antes do almoço.",
+      "segura": 0.4
+    },
+    {
+      "fala": "Então a sorveteria fecha. O sorvete derrete antes de chegar na casquinha.",
+      "legenda": "Então a *sorveteria* fecha. O sorvete *derrete* antes de chegar na *casquinha.*",
+      "segura": 0.3
+    },
+    {
+      "fala": "No churrasco de domingo, o refrigerante está quente. E a família inteira para de se falar.",
+      "legenda": "No *churrasco* de domingo, o refrigerante está *quente.* E a família inteira para de se *falar.*",
+      "segura": 0.3
+    },
+    {
+      "fala": "E o gelo? Sem frio, ele derrete no mundo inteiro. No polo também.",
+      "legenda": "E o *gelo?* Sem ~frio,~ ele derrete no mundo inteiro. No *polo* também."
+    },
+    {
+      "fala": "O mar sobe. A praia agora fica na sua rua.",
+      "legenda": "O *mar* sobe. A *praia* agora fica na sua *rua.*",
+      "segura": 0.5
+    },
+    {
+      "fala": "Só uma coisa não mudou. Sua mãe continua mandando você levar casaco.",
+      "legenda": "Só uma coisa não *mudou.* Sua *mãe* continua mandando você levar *casaco.*",
+      "segura": 0.55
+    },
+    {
+      "fala": "Mas o mais estranho é que ninguém reclama. Para todo mundo, o frio nunca existiu.",
+      "legenda": "Mas o mais *estranho* é que ninguém reclama. Para todo mundo, o ~frio~ *nunca existiu.*",
+      "segura": 0.4
+    },
+    {
+      "fala": "Só o Seu Nilo lembra. A regra dele é clara: aqui não some governo nem pessoa. E ele anotou: dia dois, o frio.",
+      "legenda": "Só o *Seu Nilo* lembra. A regra dele é clara: aqui não some *governo* nem *pessoa.* E ele anotou: *dia 2,* o ~frio.~",
+      "segura": 0.35
+    },
+    {
+      "fala": "Amanhã, outra coisa vai sumir. E quem escolhe é você.",
+      "legenda": "*Amanhã,* outra coisa vai sumir. E quem escolhe é *você.*"
+    },
+    {
+      "fala": "Comenta aqui embaixo. O comentário mais curtido some do mundo.",
+      "legenda": "*Comenta* aqui embaixo. O comentário mais curtido *some* do mundo."
+    }
+  ],
+  "cortes": [
+    [
+      0.04,
+      1.64
+    ],
+    [
+      1.98,
+      4.44
+    ],
+    [
+      4.7,
+      7.52
+    ],
+    [
+      7.68,
+      11.14
+    ],
+    [
+      11.3,
+      18.02
+    ],
+    [
+      18.4,
+      25.48
+    ],
+    [
+      25.62,
+      31.3
+    ],
+    [
+      31.6,
+      36.72
+    ],
+    [
+      36.92,
+      40.22
+    ],
+    [
+      40.4,
+      45
+    ],
+    [
+      45.18,
+      50.78
+    ],
+    [
+      50.96,
+      60.08
+    ],
+    [
+      60.28,
+      64.5
+    ],
+    [
+      64.7,
+      68.56
+    ]
+  ]
+}

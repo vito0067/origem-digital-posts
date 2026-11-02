@@ -5,10 +5,10 @@
 import * as THREE from "three";
 
 type M = Record<string, number>;
-const lim = (x: number) => Math.max(0, Math.min(1, x));
-const sm = (x: number) => { const t = lim(x); return t * t * (3 - 2 * t); };
-const volta = (x: number) => { const t = lim(x), c = 2.1; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
-const sorteio = (s: number) => () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+export const lim = (x: number) => Math.max(0, Math.min(1, x));
+export const sm = (x: number) => { const t = lim(x); return t * t * (3 - 2 * t); };
+export const volta = (x: number) => { const t = lim(x), c = 2.1; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
+export const sorteio = (s: number) => () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
 
 // ---------------------------------------------------------------- papel
 function criaGrao() {
@@ -20,9 +20,9 @@ function criaGrao() {
   const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
 }
 let GRAO: any = null;
-const novoPapel = (cor: string, extra: Record<string, unknown> = {}) => { if (!GRAO) GRAO = criaGrao(); return new THREE.MeshStandardMaterial({ color: cor, roughness: 0.93, metalness: 0, map: GRAO, bumpMap: GRAO, bumpScale: 0.35, ...extra }); };
+export const novoPapel = (cor: string, extra: Record<string, unknown> = {}) => { if (!GRAO) GRAO = criaGrao(); return new THREE.MeshStandardMaterial({ color: cor, roughness: 0.93, metalness: 0, map: GRAO, bumpMap: GRAO, bumpScale: 0.35, ...extra }); };
 const CACHE = new Map<string, any>();
-const papel = (cor: string) => { let m = CACHE.get(cor); if (!m) { m = novoPapel(cor); CACHE.set(cor, m); } return m; };
+export const papel = (cor: string) => { let m = CACHE.get(cor); if (!m) { m = novoPapel(cor); CACHE.set(cor, m); } return m; };
 const borda = () => papel("#fffdf6");
 /** Grão com o mesmo tamanho em qualquer peça (caixas não ficam com o papel esticado). */
 function uvMundo(geo: any, esc = 0.45) {
@@ -30,20 +30,20 @@ function uvMundo(geo: any, esc = 0.45) {
   for (let i = 0; i < p.count; i++) { const ax = Math.abs(n.getX(i)), ay = Math.abs(n.getY(i)), az = Math.abs(n.getZ(i)); if (ax >= ay && ax >= az) uv.setXY(i, p.getZ(i) * esc, p.getY(i) * esc); else if (ay >= az) uv.setXY(i, p.getX(i) * esc, p.getZ(i) * esc); else uv.setXY(i, p.getX(i) * esc, p.getY(i) * esc); }
   return geo;
 }
-const caixa = (w: number, h: number, d: number, m: any) => { const b = new THREE.Mesh(uvMundo(new THREE.BoxGeometry(w, h, d)), m); b.castShadow = true; b.receiveShadow = true; return b; };
+export const caixa = (w: number, h: number, d: number, m: any) => { const b = new THREE.Mesh(uvMundo(new THREE.BoxGeometry(w, h, d)), m); b.castShadow = true; b.receiveShadow = true; return b; };
 /** Peça recortada: a cor na frente e a borda branca do papel na lateral. */
-const recorte = (s: any, m: any, prof = 0.04, lado: any = null) => { const g = new THREE.ExtrudeGeometry(s, { depth: prof, bevelEnabled: false, curveSegments: 16 }); g.scale(1, 1, 1); const u = g.attributes.uv; for (let i = 0; i < u.count; i++) u.setXY(i, u.getX(i) * 0.45, u.getY(i) * 0.45); const r = new THREE.Mesh(g, [m, lado ?? borda()]); r.castShadow = true; r.receiveShadow = true; return r; };
+export const recorte = (s: any, m: any, prof = 0.04, lado: any = null) => { const g = new THREE.ExtrudeGeometry(s, { depth: prof, bevelEnabled: false, curveSegments: 16 }); g.scale(1, 1, 1); const u = g.attributes.uv; for (let i = 0; i < u.count; i++) u.setXY(i, u.getX(i) * 0.45, u.getY(i) * 0.45); const r = new THREE.Mesh(g, [m, lado ?? borda()]); r.castShadow = true; r.receiveShadow = true; return r; };
 // formas
-function sRet(w: number, h: number, r = 0, y0 = 0, x0 = 0) { const s = new THREE.Shape(), x = x0 - w / 2, y = y0; r = Math.min(r, w / 2, h / 2); s.moveTo(x + r, y); s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r); s.lineTo(x + w, y + h - r); s.quadraticCurveTo(x + w, y + h, x + w - r, y + h); s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r); s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y); return s; }
-function sCirc(r: number, cx = 0, cy = 0) { const s = new THREE.Shape(); s.absarc(cx, cy, r, 0, Math.PI * 2, false); return s; }
-function sOval(rx: number, ry: number, cx = 0, cy = 0) { const s = new THREE.Shape(); s.absellipse(cx, cy, rx, ry, 0, Math.PI * 2, false, 0); return s; }
+export function sRet(w: number, h: number, r = 0, y0 = 0, x0 = 0) { const s = new THREE.Shape(), x = x0 - w / 2, y = y0; r = Math.min(r, w / 2, h / 2); s.moveTo(x + r, y); s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r); s.lineTo(x + w, y + h - r); s.quadraticCurveTo(x + w, y + h, x + w - r, y + h); s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r); s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y); return s; }
+export function sCirc(r: number, cx = 0, cy = 0) { const s = new THREE.Shape(); s.absarc(cx, cy, r, 0, Math.PI * 2, false); return s; }
+export function sOval(rx: number, ry: number, cx = 0, cy = 0) { const s = new THREE.Shape(); s.absellipse(cx, cy, rx, ry, 0, Math.PI * 2, false, 0); return s; }
 /** Morro/nuvem/moita: base reta e o topo cheio de calombos. */
-function sCalombos(w: number, h: number, n: number, sem = 3) { const r = sorteio(sem), s = new THREE.Shape(); s.moveTo(-w / 2, 0); let x = -w / 2; const dx = w / n; for (let i = 0; i < n; i++) { const k = Math.sin(((i + 0.5) / n) * Math.PI); const alt = h * (0.45 + 0.75 * k) * (0.8 + r() * 0.4); s.quadraticCurveTo(x + dx / 2, alt * 1.24, x + dx, i === n - 1 ? 0 : alt * 0.84); x += dx; } s.lineTo(-w / 2, 0); return s; }
+export function sCalombos(w: number, h: number, n: number, sem = 3) { const r = sorteio(sem), s = new THREE.Shape(); s.moveTo(-w / 2, 0); let x = -w / 2; const dx = w / n; for (let i = 0; i < n; i++) { const k = Math.sin(((i + 0.5) / n) * Math.PI); const alt = h * (0.45 + 0.75 * k) * (0.8 + r() * 0.4); s.quadraticCurveTo(x + dx / 2, alt * 1.24, x + dx, i === n - 1 ? 0 : alt * 0.84); x += dx; } s.lineTo(-w / 2, 0); return s; }
 /** Copa de árvore: círculo de calombos. */
-function sCopa(r0: number, n = 8, sem = 5) { const r = sorteio(sem), s = new THREE.Shape(); for (let i = 0; i <= n; i++) { const a = (i / n) * Math.PI * 2, b = ((i - 0.5) / n) * Math.PI * 2, rr = r0 * (0.9 + r() * 0.15); if (i === 0) s.moveTo(Math.cos(a) * rr, Math.sin(a) * rr); else s.quadraticCurveTo(Math.cos(b) * r0 * 1.32, Math.sin(b) * r0 * 1.32, Math.cos(a) * rr, Math.sin(a) * rr); } return s; }
+export function sCopa(r0: number, n = 8, sem = 5) { const r = sorteio(sem), s = new THREE.Shape(); for (let i = 0; i <= n; i++) { const a = (i / n) * Math.PI * 2, b = ((i - 0.5) / n) * Math.PI * 2, rr = r0 * (0.9 + r() * 0.15); if (i === 0) s.moveTo(Math.cos(a) * rr, Math.sin(a) * rr); else s.quadraticCurveTo(Math.cos(b) * r0 * 1.32, Math.sin(b) * r0 * 1.32, Math.cos(a) * rr, Math.sin(a) * rr); } return s; }
 function sOct(r: number) { const s = new THREE.Shape(); for (let i = 0; i < 8; i++) { const a = Math.PI / 8 + (i / 8) * Math.PI * 2, x = Math.cos(a) * r, y = Math.sin(a) * r; if (i) s.lineTo(x, y); else s.moveTo(x, y); } s.closePath(); return s; }
 function sMorango(e = 1) { const s = new THREE.Shape(); s.moveTo(0, -0.62 * e); s.bezierCurveTo(-0.72 * e, -0.05 * e, -0.58 * e, 0.5 * e, 0, 0.5 * e); s.bezierCurveTo(0.58 * e, 0.5 * e, 0.72 * e, -0.05 * e, 0, -0.62 * e); return s; }
-function texto(txt: string, { cor = "#ffffff", fonte = "900 170px Arial", w = 512, h = 256 } = {}) { const c = document.createElement("canvas"); c.width = w; c.height = h; const g = c.getContext("2d")!; g.fillStyle = cor; g.font = fonte; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(txt, w / 2, h / 2 + 8); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return new THREE.MeshBasicMaterial({ map: t, transparent: true, toneMapped: false }); }
+export function texto(txt: string, { cor = "#ffffff", fonte = "900 170px Arial", w = 512, h = 256 } = {}) { const c = document.createElement("canvas"); c.width = w; c.height = h; const g = c.getContext("2d")!; g.fillStyle = cor; g.font = fonte; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(txt, w / 2, h / 2 + 8); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return new THREE.MeshBasicMaterial({ map: t, transparent: true, toneMapped: false }); }
 
 // ---------------------------------------------------------------- fantoche de papel
 type Pose = { brE?: number; brD?: number; cab?: number; pulo?: number; anda?: number; olho?: number; boca?: string; olhar?: [number, number]; sobr?: number; incl?: number };
@@ -96,24 +96,25 @@ export class Fantoche {
 }
 
 // ---------------------------------------------------------------- o mundo
-const CINZA = "#a2a5ab", CINZA2 = "#8d9096";
+export const CINZA = "#a2a5ab";
 const VERM = "#e5202b";
 export class MundoPapel {
   cena: any; m: M; pops: any[] = []; viras: any[] = []; carros: any[] = []; nuvens: any[] = []; gente: any[] = []; multidao: any[] = [];
-  lamp: any; sol: any; cliente: any; moranguinho: any; mordidas: any; feirante: any; juiz: any; jogador: any; outros: any[] = []; bola: any; nilo: any; caminhao: any; giroflex: any;
+  tetos: { g: any; w: number; d: number; h: number; x: number; z: number }[] = []; dia: number; ondaV: number; extra: ((t: number) => void) | null = null; lamp: any; sol: any; cliente: any; moranguinho: any; mordidas: any; feirante: any; juiz: any; jogador: any; outros: any[] = []; bola: any; nilo: any; caminhao: any; giroflex: any;
   constructor(m: M) {
-    this.m = m; const c = new THREE.Scene(); this.cena = c;
+    this.m = m; this.dia = m.dia ?? 1; this.ondaV = this.dia === 1 ? m.onda : -99; /* do Dia 2 em diante, o vermelho já nasce cinza */ const c = new THREE.Scene(); this.cena = c;
     c.background = new THREE.Color("#f5e3c8"); c.fog = new THREE.Fog("#f5e3c8", 130, 300);
     c.add(new THREE.HemisphereLight("#ffffff", "#e8dcc0", 1.25));
     const s = new THREE.DirectionalLight("#fff0d8", 2.9); s.position.set(26, 44, 30); s.target.position.set(0, 0, -2); s.castShadow = true; s.shadow.mapSize.set(4096, 4096);
     const k = s.shadow.camera; k.left = -46; k.right = 46; k.top = 50; k.bottom = -46; k.near = 1; k.far = 150; s.shadow.bias = -0.0004; s.shadow.normalBias = 0.02; c.add(s); c.add(s.target);
     const f = new THREE.DirectionalLight("#cfe6ff", 0.5); f.position.set(-30, 18, 26); c.add(f);
-    this.livro(); this.chao(); this.ceu(); this.cidade(); this.semaforo(); this.placa(); this.transito(); this.caminhaoBombeiro(); this.mercado(); this.campo(); this.povo(); this.seuNilo(); this.interrogacao();
+    this.livro(); this.chao(); this.ceu(); this.cidade(); this.semaforo(); this.placa(); this.transito(); if (this.dia === 1) { this.caminhaoBombeiro(); this.mercado(); this.campo(); } this.povo(); this.seuNilo(); this.interrogacao();
   }
   // registro de animações
-  private pop(g: any, t0: number, modo: "dobra" | "sobe" | "cresce" = "dobra", dur = 0.5, t1?: number) { this.pops.push({ g, t0, modo, dur, t1 }); }
-  private vira(g: any, mats: any[], t: number, eixo: "x" | "y" | "z" = "y", cinza = CINZA) { this.viras.push({ g, mats, t, eixo, cinza, cor: mats.map((m) => "#" + m.color.getHexString()), base: g.rotation[eixo] }); }
-  private ondaT(x: number, z: number) { return this.m.onda + Math.hypot(x - 3.6, z - 5.4) / 17; }
+  pop(g: any, t0: number, modo: "dobra" | "sobe" | "cresce" = "dobra", dur = 0.5, t1?: number) { this.pops.push({ g, t0, modo, dur, t1 }); }
+  vira(g: any, mats: any[], t: number, eixo: "x" | "y" | "z" = "y", cinza = CINZA) { this.viras.push({ g, mats, t, eixo, cinza, cor: mats.map((m) => "#" + m.color.getHexString()), base: g.rotation[eixo] }); }
+  ondaT(x: number, z: number) { return this.m.onda + Math.hypot(x - 3.6, z - 5.4) / 17; }
+  private ondaVerm(x: number, z: number) { return this.ondaV + Math.hypot(x - 3.6, z - 5.4) / 17; }
   private livro() {
     const c = this.cena;
     const mesa = new THREE.Mesh(new THREE.PlaneGeometry(700, 700), novoPapel("#c8975e")); mesa.rotation.x = -Math.PI / 2; mesa.position.y = -1.5; mesa.receiveShadow = true; { const cv = document.createElement("canvas"); cv.width = 1024; cv.height = 1024; const g = cv.getContext("2d")!; g.fillStyle = "#c8975e"; g.fillRect(0, 0, 1024, 1024); const r = sorteio(4); for (let i = 0; i < 12; i++) { g.fillStyle = `rgba(${90 + r() * 40},${55 + r() * 25},${25 + r() * 15},${0.1 + r() * 0.12})`; g.fillRect(i * 86, 0, 84, 1024); g.fillStyle = "rgba(70,40,20,.35)"; g.fillRect(i * 86 + 84, 0, 2, 1024); } g.globalAlpha = 0.08; g.strokeStyle = "#5a3a1c"; for (let i = 0; i < 500; i++) { const x = r() * 1024; g.beginPath(); g.moveTo(x, r() * 1024); g.lineTo(x + r() * 4 - 2, r() * 1024); g.stroke(); } const t = new THREE.CanvasTexture(cv); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(5, 5); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; mesa.material = new THREE.MeshStandardMaterial({ map: t, roughness: 0.75 }); } c.add(mesa);
@@ -169,7 +170,7 @@ export class MundoPapel {
       const g = new THREE.Group(); g.position.set(x, y, z); c.add(g); const f = new THREE.Group(); g.add(f); const m = novoPapel(VERM);
       const b = recorte(sOval(1.6 * e, 2 * e), m, 0.06); f.add(b); const fx = recorte(sOval(0.7 * e, 2 * e), papel("#ffffff"), 0.02); fx.position.z = 0.07; f.add(fx);
       const cs = recorte(sRet(0.9 * e, 0.6 * e, 0.1, -3.6 * e), papel("#b98a57"), 0.05); f.add(cs); const fi = recorte(sRet(0.05, 1.2 * e, 0, -3 * e, 0), papel("#6a5436"), 0.01); f.add(fi);
-      this.vira(f, [m], this.ondaT(x, z)); this.nuvens.push({ g, x, y, f: 0.5, fase: x });
+      this.vira(f, [m], this.ondaVerm(x, z)); this.nuvens.push({ g, x, y, f: 0.5, fase: x });
     }
   }
   private predio(x: number, z: number, w: number, d: number, h: number, cor: string, t0: number, op: { telhado?: "plano" | "duas"; verm?: boolean; toldo?: boolean; porta?: boolean } = {}) {
@@ -188,9 +189,9 @@ export class MundoPapel {
     if ((op.telhado ?? "plano") === "duas") { const s = new THREE.Shape(); s.moveTo(-w / 2 - 0.25, 0); s.lineTo(w / 2 + 0.25, 0); s.lineTo(0, Math.min(2.2, w * 0.45)); s.closePath(); const t = recorte(s, mat, d + 0.5, mat); t.position.z = -d / 2 - 0.25; tg.add(t); }
     else { const t = caixa(w + 0.5, 0.42, d + 0.5, mat); t.position.y = 0.2; tg.add(t); }
     const salva = verm ? [mat] : [];
-    if (op.toldo) { const tol = new THREE.Group(); tol.position.set(0, 2.25, d / 2 + 0.55); g.add(tol); const n = 6, wT = w * 0.86; for (let i = 0; i < n; i++) { const mm = i % 2 ? papel("#ffffff") : novoPapel(VERM); const f = caixa(wT / n, 0.07, 1.25, mm); f.position.set((i - (n - 1) / 2) * (wT / n), 0, 0); f.rotation.x = 0.42; tol.add(f); if (i % 2 === 0) salva.push(mm); } this.vira(tol, salva.slice(verm ? 1 : 0), this.ondaT(x, z) + 0.06); }
-    if (verm) this.vira(tg, [mat], this.ondaT(x, z));
-    this.pop(g, t0, "sobe", 0.55);
+    if (op.toldo) { const tol = new THREE.Group(); tol.position.set(0, 2.25, d / 2 + 0.55); g.add(tol); const n = 6, wT = w * 0.86; for (let i = 0; i < n; i++) { const mm = i % 2 ? papel("#ffffff") : novoPapel(VERM); const f = caixa(wT / n, 0.07, 1.25, mm); f.position.set((i - (n - 1) / 2) * (wT / n), 0, 0); f.rotation.x = 0.42; tol.add(f); if (i % 2 === 0) salva.push(mm); } this.vira(tol, salva.slice(verm ? 1 : 0), this.ondaVerm(x, z) + 0.06); }
+    if (verm) this.vira(tg, [mat], this.ondaVerm(x, z));
+    this.pop(g, t0, "sobe", 0.55); this.tetos.push({ g, w, d, h, x, z });
     return g;
   }
   private arvore(x: number, z: number, e: number, t0: number, i: number) {
@@ -218,7 +219,7 @@ export class MundoPapel {
     for (const [x, z] of [[-3.8, 5.8], [8.6, 5.3], [-10, 5.4], [14, 5.4], [-18, 5.5], [4, -3.4], [-4, -6]] as const) {
       const g = new THREE.Group(); g.position.set(x, 0.12, z); this.cena.add(g); const f = new THREE.Group(); g.add(f); const m = novoPapel(VERM);
       const haste = recorte(sRet(0.1, 0.6), papel("#59616f"), 0.03); haste.position.z = -0.015; f.add(haste); const cx = caixa(0.46, 0.5, 0.34, m); cx.position.y = 0.8; f.add(cx);
-      this.vira(f, [m], this.ondaT(x, z)); this.pop(g, dist(x, z), "dobra", 0.4);
+      this.vira(f, [m], this.ondaVerm(x, z)); this.pop(g, dist(x, z), "dobra", 0.4);
     }
     // postes
     for (const [x, z] of [[3.3, -5], [-3.3, -11], [12, 5.3], [-14, 5.3]] as const) {
@@ -232,7 +233,7 @@ export class MundoPapel {
     const pala = (y: number) => { const s = new THREE.Shape(); s.absarc(0, 0, 0.5, 0, Math.PI, false); s.closePath(); const p = recorte(s, papel("#141923"), 0.3, papel("#2b3343")); p.position.set(0, y + 0.1, 0.13); p.rotation.x = -0.55; g.add(p); };
     const lampada = (y: number, cor: string, luz: number) => { const fundo = recorte(sCirc(0.47, 0, 0), papel("#0e121a"), 0.02); fundo.position.set(0, y, 0.14); g.add(fundo); const m = new THREE.MeshBasicMaterial({ color: cor, toneMapped: false }); const l = recorte(sCirc(0.39), m, 0.04, m); const pv = new THREE.Group(); pv.position.set(0, y, 0.17); pv.add(l); g.add(pv); return { m, pv }; };
     const v = lampada(6.72, "#ff1020", 1); lampada(5.77, "#ffc000", 1); lampada(4.82, "#10c85a", 1);
-    this.lamp = v; this.vira(v.pv, [v.m], this.m.onda, "y", "#3a3e47");
+    this.lamp = v; this.vira(v.pv, [v.m], this.ondaV, "y", "#3a3e47");
     this.pop(g, 0, "sobe", 0.2);
   }
   private placa() {
@@ -261,7 +262,7 @@ export class MundoPapel {
     const add = (eixo: "x" | "z", linha: number, dir: 1 | -1, jam: number[], ang = 0) => jam.forEach((alvo, k) => {
       const i = this.carros.length, cor = cores[i % cores.length], verm = cor === VERM, { g, mat } = this.carro(cor, verm);
       const raiz = new THREE.Group(); raiz.add(g); this.cena.add(raiz);
-      if (verm) this.vira(g, [mat], this.m.onda + 0.2 + (i % 13) * 0.11, "y");
+      if (verm) this.vira(g, [mat], this.ondaV + 0.2 + (i % 13) * 0.11, "y");
       this.carros.push({ raiz, eixo, linha, dir, alvo, anda: k % 2 === 0, s0: (i * 7.31) % 46, v: 5.5 + (i % 4), ang: (Math.sin(i * 3.1) * 0.2 + ang) });
     });
     add("z", 1.25, -1, [5.6, 8.2, 10.8, 13.2, -2, -4.6, -7.2, -9.8, -12.4, -15, -17.6, -20.2]);
@@ -349,7 +350,7 @@ export class MundoPapel {
     for (let i = 0; i < 17; i++) { const x = -4.4 + (i % 6) * 1.75 + R() * 0.3, y = 1.75 + Math.floor(i / 6) * 1.65 + R() * 0.3; if (Math.abs(x) < 1 && y > 2.6) continue; const n = new THREE.Group(); n.position.set(x, y, 0.13 + i * 0.002); n.rotation.z = (R() - 0.5) * 0.3; mural.add(n); const nt = recorte(sRet(1.28, 1.08, 0.02, -0.54), papel(cores[i % 6]), 0.012); n.add(nt); for (let k = 0; k < 3; k++) { const l = recorte(sRet(0.92 - k * 0.14, 0.05, 0.02, 0.24 - k * 0.24), papel("#6a7388"), 0.002); l.position.z = 0.014; n.add(l); } const pi = recorte(sCirc(0.08, 0, 0.43), papel("#3a86ff"), 0.012); pi.position.z = 0.016; n.add(pi); pontos.push([x, y + 0.43]); }
     for (let i = 0; i + 1 < pontos.length; i += 2) { const [a, b] = [pontos[i], pontos[i + 1]], dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy); const fio = recorte(sRet(l, 0.025, 0, -0.012, l / 2), papel("#27324a"), 0.002); fio.position.set(a[0], a[1], 0.17); fio.rotation.z = Math.atan2(dy, dx); mural.add(fio); }
     // a nota principal do dia
-    const prin = new THREE.Group(); prin.position.set(0, 4.8, 0.2); prin.rotation.z = 0.03; mural.add(prin); prin.add(recorte(sRet(2.3, 1.3, 0.03, -0.65), papel("#ffffff"), 0.015)); const pt = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 1.05), texto("DIA 1", { cor: "#27324a", fonte: "900 150px Arial" })); pt.position.z = 0.02; prin.add(pt); this.pop(prin, this.m.anotou + 0.4, "cresce", 0.35);
+    for (let d = 1; d <= this.dia; d++) { const prin = new THREE.Group(); prin.position.set((d - (this.dia + 1) / 2) * 2.5, 4.8, 0.2); prin.rotation.z = d % 2 ? 0.03 : -0.04; mural.add(prin); prin.add(recorte(sRet(2.3, 1.3, 0.03, -0.65), papel("#ffffff"), 0.015)); const pt = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 1.05), texto("DIA " + d, { cor: "#27324a", fonte: "900 150px Arial" })); pt.position.z = 0.02; prin.add(pt); if (d === this.dia) this.pop(prin, this.m.anotou + 0.4, "cresce", 0.35); }
     // mesa, abajur
     const mesa = new THREE.Group(); mesa.position.set(2.1, 0, 0.9); g.add(mesa); this.pop(mesa, t0 + 0.15, "sobe", 0.45);
     const tp = caixa(3.4, 0.18, 1.5, papel("#b98a57")); tp.position.y = 1.35; mesa.add(tp); for (const x of [-1.5, 1.5]) { const p = caixa(0.16, 1.3, 1.2, papel("#9c7144")); p.position.set(x, 0.65, 0); mesa.add(p); }
@@ -399,13 +400,16 @@ export class MundoPapel {
     // multidão feliz: ninguém reclama
     for (const g of this.multidao) g.f.posar({ brE: -0.3 - (Math.sin(t * 5 + g.fase) + 1) * 0.5, brD: 0.3 + (Math.sin(t * 5 + g.fase * 1.4) + 1) * 0.5, pulo: Math.abs(Math.sin(t * 4.6 + g.fase)) * 0.09, cab: Math.sin(t * 2.3 + g.fase) * 0.08, boca: "sorriso" });
     // mercado
+    if (this.feirante) {
     const v = sm((t - m.moranguinhos) / 0.3), susto = t > m.moranguinhos;
     this.feirante.posar({ boca: susto ? "aberta" : "sorriso", olho: susto ? 1.3 : 1, sobr: susto ? 1 : 0, brE: susto ? -1.1 : -0.15, brD: susto ? 1.1 : 0.15, pulo: susto ? Math.abs(Math.sin((t - m.moranguinhos) * 8)) * 0.05 * Math.max(0, 1 - (t - m.moranguinhos) / 1.2) : 0, cab: Math.sin(t * 2) * 0.05 });
     const leva = sm((t - (m.mordida - 0.85)) / 0.5), nhac = t > m.mordida, azedo = t > m.azedo;
     const baixa = azedo ? sm((t - m.azedo) / 0.3) : 0, angulo = 0.45 + (2.75 - 0.45) * leva - baixa * 1.6;
     this.cliente.posar({ brD: angulo, brE: azedo ? -0.75 : -0.15 + Math.sin(t * 3) * 0.05, boca: azedo ? "azedo" : nhac ? "aberta" : leva > 0.2 ? "aberta" : "neutra", olho: azedo ? 0.14 : 1 + 0.2 * v, sobr: azedo ? -1 : 0.7, cab: azedo ? Math.sin(t * 22) * 0.07 : -0.05 * leva, olhar: [0.6, leva * 0.6 - 0.4], pulo: azedo ? Math.abs(Math.sin((t - m.azedo) * 10)) * 0.05 * Math.max(0, 1 - (t - m.azedo) / 0.9) : 0 });
     { const hx = 0.37 + 0.68 * Math.sin(angulo), hy = 1.24 - 0.68 * Math.cos(angulo), boca = sm((t - (m.mordida - 0.32)) / 0.28) * (azedo ? 1 - sm((t - m.azedo) / 0.22) : 1); this.moranguinho.position.set(hx + (0.1 - hx) * boca, hy + (1.5 - hy) * boca, 0.2); this.moranguinho.scale.setScalar(1 - 0.1 * boca); this.mordidas.visible = nhac; }
+    }
     // futebol
+    if (this.juiz) {
     const levanta = sm((t - (m.apito - 0.1)) / 0.35), passou = t > m.ombros, kick = sm((t - m.ombros - 0.35) / 0.8);
     this.juiz.posar({ brD: 0.2 + levanta * 2.7, brE: -0.15 - levanta * 0.3, boca: levanta > 0.3 && !passou ? "aberta" : passou ? "aberta" : "neutra", sobr: -0.8 * levanta, olhar: [-0.8, 0.1], cab: 0.05 * Math.sin(t * 3), pulo: levanta < 1 ? 0 : 0 });
     const sacode = passou ? Math.max(0, 1 - Math.abs(t - m.ombros - 0.3) * 1.8) : 0;
@@ -413,9 +417,11 @@ export class MundoPapel {
     this.jogador.raiz.position.x = -0.6 - kick * 4.2;
     this.bola.position.x = -2 - kick * 5; this.bola.rotation.z = kick * 16; this.bola.position.y = 0.3 + Math.abs(Math.sin(kick * 9)) * 0.28 * (1 - kick);
     this.outros.forEach((o, i) => o.posar({ anda: t * 7 + i, pulo: Math.abs(Math.sin(t * 7 + i)) * 0.05, brE: -0.2 + Math.sin(t * 7 + i) * 0.25, brD: 0.2 - Math.sin(t * 7 + i) * 0.25, olhar: [i % 2 ? -0.6 : 0.6, 0], boca: "sorriso" }));
+    }
     // Seu Nilo: preocupado, escreve quando a voz diz "anotou"
     const esc = t > m.anotou && t < m.anotou + 2.4;
     this.nilo.posar({ brD: esc ? 0.95 + Math.sin(t * 13) * 0.14 : 0.3, brE: -0.15 + (t > m.nilo + 0.7 && !esc ? -0.8 * (0.5 + 0.5 * Math.sin(t * 2.2)) : 0), boca: esc ? "neutra" : "neutra", olho: Math.sin(t * 1.3) > 0.992 ? 0.1 : 1.08, sobr: 0.85, olhar: esc ? [0.7, -0.8] : [0, 0.1], cab: esc ? -0.06 : Math.sin(t * 1.1) * 0.03 });
     if (this.giroflex) this.giroflex.rotation.y = 0;
+    this.extra?.(t);
   }
 }

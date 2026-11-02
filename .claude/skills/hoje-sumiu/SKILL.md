@@ -45,13 +45,18 @@ Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion 
 - **Fim:** "O QUE SOME AMANHÃ?" com 3 comentários de exemplo (avisar que são exemplo), "Ficção criada com IA" e "COMENTA AQUI ⬇".
 
 ## Voz (a primeira queixa do Vito foi aqui)
-- **Modelo:** `elevenlabs_v4`, voz Gideon `1ad38ba4-9cc4-4f2f-9fde-b0fefdf67ae5`, estabilidade 0.42, um turno por fala. O preparo acelera 5%, o que deixa mais viva.
+- **Modelo:** `elevenlabs_v4`, voz Mark `27c04473-84a9-4b60-a41f-c8e8458bd4f1` (`voice_type: "preset"`), estabilidade 0.5, similaridade 0.75, um turno por fala, e `"velocidade": 1` no episódio: sem aceleração. O Vito escolheu essa voz em 01/11/2026 por ser natural e tranquila. A Gideon, do Dia 1, parecia demais com o Arquivo 3:33: não volte a usar.
+- **Frase curta:** vírgula sai corrida. Prefira ponto entre as frases.
+- **Confira os cortes:** o corte automático pode jogar uma frase na fala errada. Compare os trechos de voz com o roteiro e, se errar, use `"cortes": [[de, ate], ...]` no episódio. Ritmo fora da faixa em uma fala e na vizinha é sinal de corte errado.
 - **Eu não ouço áudio.** Só consigo medir. Por isso:
   - palavra estrangeira, sigla ou nome raro fica fora do roteiro. A ElevenLabs errou "ketchup" feio;
   - se for indispensável, escreva na `fala` como se pronuncia, com acento na sílaba forte, e mantenha a grafia certa na `legenda`;
   - números sempre por extenso na `fala`;
   - confira o ritmo que o `preparar-dia` imprime: de 4 a 6 sílabas por segundo em toda fala;
   - em voz nova, avise que precisa ser ouvida por ele.
+
+## Crédito de quem escolheu (pedido do Vito, 01/11/2026)
+Depois de "Do mundo inteiro. Para sempre.", um cartão mostra o @ de quem escreveu, o comentário e as curtidas, conferidas no dia. A voz diz que foi o mais curtido. Se houve veto, diga "o mais curtido que valia", porque outro comentário teve mais curtidas. O @ fica só na tela e na legenda, nunca na voz: nome de conta é pronúncia arriscada.
 
 ## Som
 Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estranha e volta no chamado. Efeitos de papel: folha virando em onda, dobra, buzina, apito, mordida, lápis.
@@ -60,7 +65,7 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 1. **Ler:** o que os comentários do dia anterior escolheram (pelo Chrome, nos comentários do Reel mais curtido). Fora de `Proibido`, o mais curtido vale.
 2. **Roteiro** em `episodios/diaNN.json`. Atualizar a linha do mural e o contador.
 3. **Voz:** gerar e salvar em `public/<id>.mp3`. Depois `node ferramentas/preparar-dia.mjs episodios/diaNN.json`.
-4. **Cena:** em `mundo-papel.ts`, criar os objetos do dia e o que vira do avesso. Reaproveite cidade, gente e campo.
+4. **Cena:** cada dia tem dois arquivos próprios, no molde do Dia 2: `src/DiaN.tsx` (cenário registrado em `CENARIOS[N]`, câmera e edição; ligar em `Raiz.tsx`) e `ferramentas/dias/diaNN.mjs` (marcas e efeitos). `mundo-papel.ts` guarda só o livro, a cidade e o que é de todos os dias. O que sumiu antes continua sumido: do Dia 2 em diante, o vermelho já nasce cinza. O mural ganha uma nota "DIA N" sozinho.
 5. **Testar:** `EP=<id> ESCALA=0.33 node ferramentas/render.mjs Dia fotos 0.4 5 10 ...`, montar folha com `ferramentas/folha.ps1` e OLHAR antes do vídeo inteiro.
 6. **Render:** `EP=<id> CONC=4 node ferramentas/render.mjs Dia`, cerca de 2 min. Depois conferir quadros do vídeo pronto: teste com foto solta já escondeu defeito.
 7. **Revisar** com a lista abaixo. **Publicar** com o rótulo de IA ligado, nas 3 redes. Responder comentários nas primeiras horas.
@@ -75,13 +80,17 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 - Duração acima de 62 s?
 
 ## Proibido
-- Sumir pessoa real, marca, governo, religião, doença, ou qualquer coisa que humilhe alguém: se o comentário mais curtido for assim, use o seguinte e diga no vídeo que "o Seu Nilo vetou".
+- Sumir pessoa real, marca, governo, religião, doença, ou qualquer coisa que humilhe alguém: se o comentário mais curtido for assim, use o seguinte. Diga no vídeo a regra do Seu Nilo: "aqui não some governo nem pessoa".
 - Violência, sangue e criança em perigo. O humor é de bairro, não maldoso.
 - Parecer notícia verdadeira. Sempre "Ficção criada com IA" no fim e rótulo de IA ligado.
 - Senha, chave ou token em qualquer arquivo (o repositório é público).
 
 ## Limites das contas pelo navegador (31/10/2026)
-- **TikTok:** na conta nova, foto, bio e comentário não salvaram pelo navegador, sem mensagem de erro. Ao salvar o perfil, confirme o aviso de apelido na hora: ele trava a troca por 7 dias. Peça ao Vito para fazer isso pelo celular.
+- **Antes de postar:** confira a conta em cada rede, nos dois perfis do Chrome. Em 01/11/2026 o Arquivo 3:33 estava logado no perfil em uso e por pouco o vídeo não saiu lá. Sinais de conta certa: "Editar perfil" na página @hojesumiu e, no YouTube Studio, o canal Hoje Sumiu.
+- **YouTube:** espere a verificação terminar antes de publicar. Publicar antes dispara um aviso de risco de advertência.
+- **Instagram:** na tela de corte, escolha "Original", porque o padrão é quadrado. A capa com o título entra em "Selecionar do computador".
+- **TikTok:** o @ na legenda marca a conta de lá, que pode ser outra pessoa: escreva o nome sem @ e diga "no Instagram". No Dia 2, o comentário também não salvou pelo navegador. Ele fica para o celular.
+- **TikTok (conta nova):** foto, bio e comentário não salvaram pelo navegador, sem mensagem de erro. Ao salvar o perfil, confirme o aviso de apelido na hora: ele trava a troca por 7 dias. Peça ao Vito para fazer isso pelo celular.
 - **Instagram:** a versão web não oferece fixar comentário nem editar o nome. Só pelo app.
 - **YouTube:** fixar comentário pede uma verificação única no Studio, que é o Vito quem faz.
 - **Envio:** a ferramenta aceita até 10 MB. Use uma cópia leve em `Desktop\Origem-Digital\hoje-sumiu-envios`.

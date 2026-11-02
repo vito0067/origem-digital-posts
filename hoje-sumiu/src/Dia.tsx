@@ -7,21 +7,24 @@ import { loadFont as caveat } from "@remotion/google-fonts/Caveat";
 import * as THREE from "three";
 import { MundoPapel } from "./mundo-papel";
 
-const LILITA = lilita("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
-const CAVEAT = caveat("normal", { weights: ["700"], subsets: ["latin"] }).fontFamily;
-const NAVY = "#16233f", AZUL = "#0a6cff", AMAR = "#ffd23f", VERM = "#e5202b", CINZA = "#8b8f96";
-type V = [number, number, number];
+/** Cenário próprio de cada dia, montado em cima do livro. */
+export const CENARIOS: Record<number, (w: MundoPapel) => void> = {};
+
+export const LILITA = lilita("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
+export const CAVEAT = caveat("normal", { weights: ["700"], subsets: ["latin"] }).fontFamily;
+export const NAVY = "#16233f", AZUL = "#0a6cff", AMAR = "#ffd23f", VERM = "#e5202b", CINZA = "#8b8f96";
+export type V = [number, number, number];
 type Palavra = { w: string; em: number };
 export type LinhaDia = { id: string; dia: number; coisa: string; duracao: number; marcas: Record<string, number>; cenas: { i: number; fala: string; inicio: number; vozEm: number; vozDur: number; fim: number; palavras: Palavra[] }[] };
-const lim = (x: number) => Math.max(0, Math.min(1, x));
+export const lim = (x: number) => Math.max(0, Math.min(1, x));
 const sm = (x: number) => { const t = lim(x); return t * t * (3 - 2 * t); };
 const voo = (x: number) => { const t = lim(x); return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
-const sai = (x: number) => 1 - Math.pow(1 - lim(x), 3);
-const volta = (x: number) => { const t = lim(x), c = 2.2; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
+export const sai = (x: number) => 1 - Math.pow(1 - lim(x), 3);
+export const volta = (x: number) => { const t = lim(x), c = 2.2; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); };
 const mix = (a: V, b: V, p: number): V => [a[0] + (b[0] - a[0]) * p, a[1] + (b[1] - a[1]) * p, a[2] + (b[2] - a[2]) * p];
 
 // ---------------------------------------------------------------- roteiro de câmera: um voo só, do começo ao fim
-type Tomada = { t: number; dur: number; pos: V; alvo: V; fov: number; arco?: number; deriva?: V; foco?: number };
+export type Tomada = { t: number; dur: number; pos: V; alvo: V; fov: number; arco?: number; deriva?: V; foco?: number };
 function tomadas(l: LinhaDia): Tomada[] {
   const c = l.cenas, m = l.marcas;
   return [
@@ -49,7 +52,7 @@ function camEm(T: Tomada[], t: number, m: Record<string, number>) {
   for (const [e, a] of [[m.onda, 0.12], [m.placaVira, 0.05], [m.trava, 0.16], [m.mordida, 0.07], [m.cartaoVira, 0.05], [m.interrogacao, 0.14]] as const) { const d = t - e; if (d > 0 && d < 0.55) { const A = a * Math.exp(-d * 8); r.pos[0] += Math.sin(t * 71) * A; r.pos[1] += Math.cos(t * 63) * A; r.fov -= A * 16; } }
   return r;
 }
-function camBase(T: Tomada[], t: number) {
+export function camBase(T: Tomada[], t: number) {
   let k = 0; for (let i = 0; i < T.length; i++) if (t >= T[i].t) k = i;
   const s = T[k]; if (k === 0) { const d = t; return { pos: mix(s.pos, [s.pos[0] + (s.deriva?.[0] ?? 0), s.pos[1] + (s.deriva?.[1] ?? 0), s.pos[2] + (s.deriva?.[2] ?? 0)], d) as V, alvo: s.alvo, fov: s.fov, foco: s.foco ?? 0, arrasto: 0 }; }
   const a = T[k - 1], dA = s.t - a.t, ini: V = [a.pos[0] + (a.deriva?.[0] ?? 0) * dA, a.pos[1] + (a.deriva?.[1] ?? 0) * dA, a.pos[2] + (a.deriva?.[2] ?? 0) * dA];
@@ -67,10 +70,11 @@ function mundo(m: Record<string, number>) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true }); renderer.setPixelRatio(1); renderer.setSize(1080, 1920, false);
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.02; renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.domElement.style.width = "100%"; renderer.domElement.style.height = "100%";
-  W = { renderer, m: new MundoPapel(m), cam: new THREE.PerspectiveCamera(45, 1080 / 1920, 0.1, 900) };
+  const livro = new MundoPapel(m); CENARIOS[m.dia ?? 1]?.(livro);
+  W = { renderer, m: livro, cam: new THREE.PerspectiveCamera(45, 1080 / 1920, 0.1, 900) };
   return W;
 }
-const Cena3D: React.FC<{ t: number; c: any; m: Record<string, number>; k: number }> = ({ t, c, m, k }) => {
+export const Cena3D: React.FC<{ t: number; c: any; m: Record<string, number>; k: number }> = ({ t, c, m, k }) => {
   const borrao = (c.arrasto ?? 0) * 2.6;
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
@@ -85,9 +89,9 @@ const Cena3D: React.FC<{ t: number; c: any; m: Record<string, number>; k: number
 };
 
 // ---------------------------------------------------------------- edição
-const adesivo = (borda = 16, sombra = 8): React.CSSProperties => ({ WebkitTextStroke: `${borda}px #fff`, paintOrder: "stroke fill", filter: `drop-shadow(0 ${sombra}px 0 rgba(22,35,63,.42))` });
+export const adesivo = (borda = 16, sombra = 8): React.CSSProperties => ({ WebkitTextStroke: `${borda}px #fff`, paintOrder: "stroke fill", filter: `drop-shadow(0 ${sombra}px 0 rgba(22,35,63,.42))` });
 /** Etiqueta de papel presa num ponto do mundo: acompanha o objeto enquanto a câmera voa. */
-const Etiqueta: React.FC<{ txt: string; x: number; y: number; t: number; em: number; ate: number; cor?: string; r?: number }> = ({ txt, x, y, t, em, ate, cor = AZUL, r = -2 }) => {
+export const Etiqueta: React.FC<{ txt: string; x: number; y: number; t: number; em: number; ate: number; cor?: string; r?: number }> = ({ txt, x, y, t, em, ate, cor = AZUL, r = -2 }) => {
   if (t < em || t > ate + 0.18) return null;
   const e = volta((t - em) / 0.26) * (t > ate ? 1 - sai((t - ate) / 0.18) : 1), X = Math.max(190, Math.min(890, x)), Y = Math.max(440, Math.min(1130, y));
   return <div style={{ position: "absolute", left: X, top: Y, transform: `translate(-50%,-100%) rotate(${r}deg) scale(${e})`, transformOrigin: "50% 100%" }}>
@@ -97,24 +101,24 @@ const Etiqueta: React.FC<{ txt: string; x: number; y: number; t: number; em: num
     <div style={{ width: 0, height: 0, margin: "0 auto", borderLeft: "17px solid transparent", borderRight: "17px solid transparent", borderTop: "22px solid #fffdf6" }} />
   </div>;
 };
-const Contador: React.FC<{ rot: string; num: string; t: number; em: number; ate: number }> = ({ rot, num, t, em, ate }) => {
+export const Contador: React.FC<{ rot: string; num: string; t: number; em: number; ate: number }> = ({ rot, num, t, em, ate }) => {
   if (t < em || t > ate + 0.15) return null;
   const e = volta((t - em) / 0.28) * (t > ate ? 1 - sai((t - ate) / 0.15) : 1);
   return <div style={{ position: "absolute", top: 365, width: "100%", display: "flex", justifyContent: "center" }}><div style={{ background: NAVY, color: "#fff", fontFamily: LILITA, textAlign: "center", padding: "16px 46px 12px", borderRadius: 22, transform: `rotate(1.5deg) scale(${e})`, boxShadow: "0 10px 0 rgba(22,35,63,.3)", border: "7px solid #fffdf6" }}><div style={{ fontSize: 40, opacity: 0.86, letterSpacing: 1 }}>{rot}</div><div style={{ fontSize: 112, lineHeight: 1, color: AMAR }}>{num}</div></div></div>;
 };
 function blocos(p: Palavra[]) { const b: Palavra[][] = []; let a: Palavra[] = []; p.forEach((x, k) => { a.push(x); const fim = /[.!?,:]\W*$/.test(x.w.replace(/[*~]/g, "")); if (a.length >= 3 || fim || k === p.length - 1) { b.push(a); a = []; } }); return b; }
-const Legenda: React.FC<{ l: LinhaDia; t: number; onda: number; escondida: boolean }> = ({ l, t, onda, escondida }) => {
+export const Legenda: React.FC<{ l: LinhaDia; t: number; onda: number; escondida: boolean; corAntes?: string }> = ({ l, t, onda, escondida, corAntes = VERM }) => {
   const c = l.cenas.find((x) => t >= x.inicio && t < x.fim); if (!c || escondida) return null;
   const bl = blocos(c.palavras); let at = bl[0]; for (const b of bl) if (t >= b[0].em) at = b;
   return <div style={{ position: "absolute", left: 30, right: 30, top: 1205, textAlign: "center", fontFamily: LILITA, fontSize: 104, lineHeight: 1.08, color: NAVY, textTransform: "uppercase" }}>
     {at.map((x, i) => {
       const dita = t >= x.em, e = dita ? volta((t - x.em) / 0.16) : 0, w = x.w.replace(/[*~]/g, ""), esp = x.w.includes("~"), forte = x.w.includes("*");
       if (!dita) return null;
-      return <span key={i + w} style={{ display: "inline-block", margin: "0 13px", transform: `scale(${e}) rotate(${(i % 2 ? 1 : -1) * 1.1}deg)`, color: esp ? (t < onda + 0.1 ? VERM : CINZA) : forte ? AZUL : NAVY, ...adesivo(18, 9) }}>{w}</span>;
+      return <span key={i + w} style={{ display: "inline-block", margin: "0 13px", transform: `scale(${e}) rotate(${(i % 2 ? 1 : -1) * 1.1}deg)`, color: esp ? (t < onda + 0.1 ? corAntes : CINZA) : forte ? AZUL : NAVY, ...adesivo(18, 9) }}>{w}</span>;
     })}
   </div>;
 };
-const Comentario: React.FC<{ txt: string; t: number; em: number; r: number }> = ({ txt, t, em, r }) => {
+export const Comentario: React.FC<{ txt: string; t: number; em: number; r: number }> = ({ txt, t, em, r }) => {
   const e = volta((t - em) / 0.28); if (t < em) return null;
   return <div style={{ alignSelf: "center", display: "flex", alignItems: "center", gap: 18, background: "#fffdf6", borderRadius: 26, padding: "16px 30px 12px", fontFamily: LILITA, fontSize: 62, color: NAVY, transform: `rotate(${r}deg) scale(${e})`, boxShadow: "0 9px 0 rgba(22,35,63,.28)" }}><span style={{ width: 54, height: 54, borderRadius: 54, background: AMAR, display: "inline-block", border: `5px solid ${NAVY}` }} />{txt}</div>;
 };
