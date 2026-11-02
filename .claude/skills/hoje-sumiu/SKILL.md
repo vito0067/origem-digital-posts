@@ -9,6 +9,9 @@ Todo dia uma coisa some do mundo para sempre. As consequências são reais e se 
 
 O Vito aprovou esta direção em 30/10/2026, juntando o que mais gostou dos templates 1 (cidade 3D) e 3 (papel recortado). Trabalhe com autonomia: ele quer resultado sem precisar explicar de novo. Decisões de gosto já estão aqui.
 
+## Comece por aqui
+Leia `hoje-sumiu/ESTADO.md`: dia atual, links, próximo passo, pendências, contas e números. Atualize esse arquivo ao fim de cada dia.
+
 ## Onde fica
 Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion + three.js; usa as ferramentas de `arquivo-333`).
 - `episodios/diaNN.json`: falas, legendas e pausas. É a fonte do episódio.
