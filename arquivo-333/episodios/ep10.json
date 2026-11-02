@@ -343,7 +343,14 @@
         ]
       ],
       "fala": "Episódio onze, amanhã.",
-      "legenda": "Episódio 11 amanhã."
+      "legenda": "Episódio 11 amanhã.",
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "A Marina vai olhar pela janela ou não?",
+          "em": 0.3
+        }
+      ]
     }
   ]
 }

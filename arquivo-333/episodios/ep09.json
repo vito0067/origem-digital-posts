@@ -346,7 +346,7 @@
         ],
         [
           "trovao",
-          3.0,
+          3,
           0.9
         ]
       ],
@@ -373,7 +373,14 @@
         ]
       ],
       "fala": "Episódio dez, amanhã.",
-      "legenda": "Episódio 10 amanhã."
+      "legenda": "Episódio 10 amanhã.",
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "A Bia fica nesse quarto ou foge agora?",
+          "em": 0.3
+        }
+      ]
     }
   ]
 }

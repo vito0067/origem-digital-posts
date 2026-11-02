@@ -385,7 +385,14 @@
         ]
       ],
       "fala": "Episódio nove, amanhã.",
-      "legenda": "Episódio 9 amanhã."
+      "legenda": "Episódio 9 amanhã.",
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "A Bia entra ou volta pela escada?",
+          "em": 0.3
+        }
+      ]
     }
   ]
 }
