@@ -110,6 +110,32 @@ function bonecoNeve(c: Ctx, s: Spec) {
   comVirada(c, f, s, mb);
   return assenta(c, g, s);
 }
+/** Boleto: folha com faixa, valor e código de barras. O `some` vira a folha inteira. */
+function boleto(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), f = new THREE.Group(); g.add(f); const l = s.l ?? 5.6, a = s.a ?? 7.6, mats: any[] = [];
+  const m = (cor: string) => { const x = novoPapel(cor); mats.push(x); return x; };
+  const parte = (o: any, z: number) => { o.position.z = z; f.add(o); return o; };
+  f.add(recorte(sRet(l, a, 0.12), m("#fffdf6"), 0.07));
+  parte(recorte(sRet(l * 0.9, a * 0.17, 0.06, a * 0.78), m("#ffc400"), 0.02), 0.07);
+  const linha = (t: string, y: number, h: number, cor: string) => { const p = parte(new THREE.Mesh(new THREE.PlaneGeometry(l * 0.86, a * h), texto(t, { cor, fonte: `900 ${Math.min(150, Math.floor(620 / Math.max(3, t.length)))}px Arial` })), 0.11); p.position.y = a * y; };
+  linha("BOLETO", 0.865, 0.15, "#27324a"); linha(s.vence ?? "VENCE HOJE", 0.63, 0.15, "#27324a"); linha(s.valor ?? "R$ 89,90", 0.44, 0.15, "#19a7e0");
+  const R = sorteio(77); let x = -l * 0.42; while (x < l * 0.4) { const b = 0.04 + R() * 0.13; const q = parte(recorte(sRet(b * (l / 5.6), a * 0.22, 0, a * 0.08, x + b / 2), m("#27324a"), 0.01), 0.08); q.castShadow = false; x += b + 0.05 + R() * 0.09; }
+  comVirada(c, f, s, mats);
+  return assenta(c, g, s);
+}
+/** Galinha de papel. A crista é cinza porque o vermelho sumiu no Dia 1. */
+function galinha(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), corpo = s.cor ?? "#fffdf6";
+  g.add(recorte(sOval(0.62, 0.48, 0, 0.72), papel(corpo), 0.05));
+  const rabo = new THREE.Shape(); rabo.moveTo(-0.45, 0.8); rabo.lineTo(-0.98, 1.22); rabo.lineTo(-0.5, 0.42); rabo.closePath(); g.add(recorte(rabo, papel(corpo), 0.04));
+  const cab = recorte(sCirc(0.27, 0.48, 1.26), papel(corpo), 0.04); cab.position.z = 0.03; g.add(cab);
+  const crista = recorte(sCalombos(0.42, 0.2, 3, 5), papel("#a2a5ab"), 0.02); crista.position.set(0.48, 1.47, 0.03); g.add(crista);
+  const olho = recorte(sCirc(0.05, 0.55, 1.3), papel("#20293a"), 0.01); olho.position.z = 0.08; g.add(olho);
+  const bico = new THREE.Shape(); bico.moveTo(0.72, 1.3); bico.lineTo(0.98, 1.22); bico.lineTo(0.72, 1.14); bico.closePath(); const bc = recorte(bico, papel("#ffa62b"), 0.02); bc.position.z = 0.05; g.add(bc);
+  for (const k of [-0.16, 0.16]) { const p = recorte(sRet(0.06, 0.34, 0, 0, k), papel("#ffa62b"), 0.02); g.add(p); }
+  const bate = s.semente ?? 0; c.quadro.push((t) => { g.rotation.z = Math.sin(t * 9 + bate) * 0.05; });
+  return assenta(c, g, s);
+}
 /** Derrete: achata a peça de dentro e deixa uma poça cinza no chão. */
 function derrete(c: Ctx, s: Spec) {
   const g = new THREE.Group(), filho = monta(c, s.filho); g.add(filho); const em = s.derrete ?? 1e6, dur = s.duracao ?? 1.7;
@@ -209,7 +235,7 @@ function telhados(c: Ctx, s: Spec) {
 }
 
 // ---------------------------------------------------------------- catálogo
-const CATALOGO: Record<string, (c: Ctx, s: Spec) => any> = { pessoa, letreiro, pinguim, "boneco-neve": bonecoNeve, derrete, geladeira, banca, mesa, piso, fachada, vapor, mar, espalha, telhados };
+const CATALOGO: Record<string, (c: Ctx, s: Spec) => any> = { pessoa, letreiro, pinguim, "boneco-neve": bonecoNeve, boleto, galinha, derrete, geladeira, banca, mesa, piso, fachada, vapor, mar, espalha, telhados };
 export function monta(c: Ctx, s: Spec): any {
   if (s.peca === "grupo") {
     const g = new THREE.Group(), f = new THREE.Group(); g.add(f); const mats: any[] = [];

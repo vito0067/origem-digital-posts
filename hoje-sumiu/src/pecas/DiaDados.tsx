@@ -53,6 +53,19 @@ const Credito: React.FC<{ t: number; em: number; ate: number; d: Spec }> = ({ t,
 };
 const Regra: React.FC<{ t: number; em: number; ate: number; linhas: string[] }> = ({ t, em, ate, linhas }) => t < em || t >= ate ? null : <div style={{ position: "absolute", top: 400, width: "100%", display: "flex", justifyContent: "center" }}><div style={{ background: "#fffdf6", color: NAVY, fontFamily: LILITA, textAlign: "center", padding: "24px 44px 16px", borderRadius: 18, border: `9px solid ${NAVY}`, transform: `rotate(-3deg) scale(${volta((t - em) / 0.22)})`, boxShadow: "0 11px 0 rgba(22,35,63,.28)" }}><div style={{ fontSize: 48, color: AZUL, lineHeight: 1.1 }}>REGRA DO SEU NILO</div><div style={{ fontSize: 80, lineHeight: 1.08 }}>{linhas.map((x) => <div key={x}>{x}</div>)}</div></div></div>;
 
+// cartão de divulgação no meio do vídeo: { em, ate, titulo, sub, chamada }. A regra está em PECAS.md.
+const Divulgacao: React.FC<{ t: number; d: Spec }> = ({ t, d }) => {
+  if (t < d.em || t > d.ate + 0.2) return null;
+  const e = volta((t - d.em) / 0.3) * (t > d.ate ? 1 - sai((t - d.ate) / 0.2) : 1);
+  return <div style={{ position: "absolute", top: 420, left: 70, right: 70, display: "flex", flexDirection: "column", alignItems: "center", transform: `rotate(-2deg) scale(${e})` }}>
+    <div style={{ width: "100%", boxSizing: "border-box", background: "#fffdf6", borderRadius: 30, border: `9px solid ${NAVY}`, padding: "44px 30px 34px", fontFamily: LILITA, textAlign: "center", color: NAVY, boxShadow: "0 14px 0 rgba(22,35,63,.3)" }}>
+      <div style={{ fontSize: 132, lineHeight: 1, color: AZUL }}>{d.titulo}</div>
+      <div style={{ fontSize: 88, lineHeight: 1.1, marginTop: 14 }}>{d.sub}</div>
+    </div>
+    <div style={{ marginTop: -22, background: AMAR, color: NAVY, fontFamily: LILITA, fontSize: 80, lineHeight: 1, padding: "16px 36px 9px", borderRadius: 14, border: "7px solid #fffdf6", transform: "rotate(3deg)", boxShadow: "0 9px 0 rgba(22,35,63,.3)" }}>{d.chamada}</div>
+  </div>;
+};
+
 export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
   const f = useCurrentFrame(), t = f / 30, m = l.marcas, c = l.cenas, d = l.cena, final = c[c.length - 1];
   CENARIOS[l.dia] = (w) => { montaCena(w, [...(d.heroi?.peca ? [d.heroi.peca] : []), ...(d.pecas ?? [])]); const fim = w.extra; w.extra = (q) => { fim?.(q); if (d.calor) w.sol.scale.setScalar(1 + 0.45 * sm((q - m.onda - 0.5) / 5)); }; };
@@ -83,6 +96,7 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
       </div>}
       {d.credito && <Credito t={t} em={m.credito - 0.05} ate={c[m.iCredito].fim - 0.1} d={d.credito} />}
       {(d.etiquetas ?? []).map((e: Spec) => { if (t < e.em || t > e.ate + 0.2) return null; const p = P(e.pos); return <Etiqueta key={e.txt + e.em} txt={e.txt} x={p.x} y={p.y} t={t} em={e.em} ate={e.ate} cor={cor(e.cor) ?? AZUL} r={e.r ?? -2} />; })}
+      {d.divulgacao && <Divulgacao t={t} d={d.divulgacao} />}
       {d.contador && <Contador rot={d.contador.rot} num={d.contador.num} t={t} em={d.contador.em} ate={d.contador.ate} />}
       {m.regra < 1e5 && <Regra t={t} em={m.regra - 0.1} ate={m.anotou - 0.1} linhas={d.regra ?? ["NÃO SOME GOVERNO", "NEM PESSOA"]} />}
       {cad > 0 && <div style={{ position: "absolute", left: 90, right: 90, top: 400, transform: `translateY(${(1 - cad) * -620}px) rotate(-2deg)`, background: "#fffdf6", borderRadius: 14, padding: "30px 34px 34px 92px", boxShadow: "0 16px 0 rgba(22,35,63,.28)", backgroundImage: "repeating-linear-gradient(transparent 0 84px, #bcd8f2 84px 88px)", backgroundPositionY: "22px", minHeight: 250 }}>

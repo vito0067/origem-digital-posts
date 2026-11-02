@@ -5,18 +5,19 @@ Atualize ao fim de cada dia. O repositório é público: nada de senha, chave, t
 
 ## Onde estamos
 - **Último dia publicado:** Dia 2, o frio (01/11/2026, ~20h47).
-- **Próximo:** Dia 3. O tema é o comentário mais curtido do Reel do Dia 2.
-- **O que já sumiu:** 1. a cor vermelha; 2. o frio.
+- **Dia 3, o boleto:** pronto em 02/11/2026 (80,4 s, feito só com a biblioteca, voz Mark), para publicar às 20h no Instagram e no YouTube. Tema: "O boleto", de @elgabriel34, 9 curtidas ("Crianças", 14, vetado). Tem a divulgação do guia "Sem Câmera" no meio (33,8 s a 40,9 s). Texto em `publicacao/dia03.md`; kit do TikTok em `Desktop\Origem-Digital\hoje-sumiu-envios\celular-dia03`.
+- **Próximo:** Dia 4. O tema é o comentário mais curtido do Reel do Dia 3.
+- **O que já sumiu:** 1. a cor vermelha; 2. o frio; 3. o boleto (quando publicado).
 
 ## Regra do TikTok
 **Nunca publique nem agende no TikTok pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. A cada dia, rode `node ferramentas/kit-celular.mjs N` e diga a ele onde está a pasta. Instagram e YouTube seguem pelo computador, conferindo a conta na tela.
 
 ## Próximo passo
-1. O Vito pediu para esperar até umas 18h de 02/11/2026. Reler os votos do [Reel do Dia 2](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) com `ferramentas/votos.mjs` (passo a passo na skill) e acordar o tema com ele. **Parcial de 02/11, 8h:** "Crianças" 13 (vetado), "Bactérias" 6, "Calor" 6, "O boleto" 5. Somando comentários iguais: Bactérias 11, Boleto 11, Calor 7. Em 02/11 não foi possível agendar o aviso das 18h: quem chama é o Vito.
-2. Produzir o Dia 3 só com um arquivo de dados, usando a biblioteca (`PECAS.md`), com o crédito a quem comentou e a regra "não vale governo nem pessoa".
+1. Publicar o Dia 3 às 20h de 02/11/2026 (Instagram e YouTube, conferindo a conta na tela); o Vito posta o TikTok pelo celular. Depois, atualizar os links aqui.
+2. Dia 4: reler os votos do Reel do Dia 3 com `ferramentas/votos.mjs` (passo a passo na skill) e produzir só com `episodios/dia04.json`. Votos finais do Dia 2, lidos em 02/11 ~17h40: "Crianças" 14 (vetado), "O boleto" 9, "Calor" 7, "Bactérias" 6, "Fome" 5.
 
 ## Biblioteca de peças
-Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. Testada com fotos soltas de um exemplo, em `episodios/exemplo-dados.json`; ainda não gerou um vídeo inteiro. Os Dias 1 e 2 seguem com código próprio: 16 quadros renderizados com o código novo bateram com os vídeos publicados. **A prova final é o Dia 3.**
+Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. **O Dia 3 (02/11/2026) provou a biblioteca de ponta a ponta:** só `episodios/dia03.json`, mais as peças novas `boleto` e `galinha` e o cartão `divulgacao`. Os Dias 1 e 2 seguem com código próprio: 16 quadros renderizados com o código novo bateram com os vídeos publicados.
 
 ## Pendências
 - **Com o Vito, pelo celular:** postar o comentário da pergunta no TikTok do Dia 2; fixar esse comentário nas 3 redes.

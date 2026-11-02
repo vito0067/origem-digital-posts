@@ -32,6 +32,7 @@ Além de `id`, `dia`, `coisa`, `velocidade: 1`, `falas` e `cortes` (se precisar)
 | `cameras` | `{ em, lugar, perto }`; pode trocar `pos`, `alvo`, `fov`, `dur`, `arco`, `deriva`, `foco` |
 | `pecas` | O que entra no livro (abaixo) |
 | `etiquetas` | `{ txt, pos, em, ate, cor, r }`: `pos` é um ponto do mundo |
+| `divulgacao` | `{ em, ate, titulo, sub, chamada }`: cartão de papel no meio do vídeo (o Dia 3 usa "SEM CÂMERA", "GUIA EM PDF", "LINK NA BIO"). A fala de divulgação vai no roteiro, entre 40% e 60% do vídeo, no Mark. Escreva "línque" na `fala`, para a voz falar "link", e "link" na `legenda` |
 | `contador` | `{ rot, num, em, ate }` |
 | `tremores` | Tempos em que a câmera treme |
 | `sons` | `{ em, tipo, volume, lado }`: `virada`, `dobra`, `nhac`, `apito`, `buzina`, `pop`, `carimbo`, `clique`, `impacto`, `glitch`, `whoosh`, `subida`, `lapis` |
@@ -65,6 +66,8 @@ Terrenos livres para montar cenário: `esquerda` em `[-14, 0.13, 14.6]`, `direit
 | `mar` | Água que sobe pela página | `sobe`, `desce`, `nivel`, `cor`, `corOnda`, `filhos` |
 | `boneco-neve` | Boneco de neve | `some`, `cachecol` |
 | `pinguim` | Pinguim | `oculos` |
+| `boleto` | Folha grande com faixa, valor e código de barras; vira na onda com `some` | `l`, `a`, `vence`, `valor`, `some` |
+| `galinha` | Galinha de papel, com a crista cinza (o vermelho sumiu no Dia 1) | `cor`, `semente` |
 
 **Poses:** `normal`, `feliz`, `fala`, `comemora`, `susto`, `azedo`, `triste`, `bravo`, `mostra`, `segura`, `come`, `surfa`, `shrug`.
 

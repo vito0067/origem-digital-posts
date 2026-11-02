@@ -1,0 +1,114 @@
+{
+ "id": "hoje-sumiu-dia03",
+ "dia": 3,
+ "coisa": "o boleto",
+ "velocidade": 1,
+ "falas": [
+  { "fala": "Hoje sumiu o boleto.", "legenda": "Hoje sumiu o ~boleto.~" },
+  { "fala": "Do mundo inteiro. Para sempre.", "legenda": "Do mundo *inteiro.* Para *sempre.*", "segura": 0.2 },
+  { "fala": "Esse foi o comentário mais curtido que valia.", "legenda": "Esse foi o comentário *mais curtido* que *valia.*", "segura": 0.5 },
+  { "fala": "No começo, é festa. Nunca mais conta na porta. Nunca mais código de barras.", "legenda": "No começo, é *festa.* Nunca mais *conta* na porta. Nunca mais código de *barras.*" },
+  { "fala": "Mas a conta de luz vinha num boleto. Ninguém consegue pagar. E a empresa desliga a sua rua inteira.", "legenda": "Mas a conta de *luz* vinha num ~boleto.~ Ninguém consegue *pagar.* E a empresa *desliga* a sua rua *inteira.*", "segura": 0.4 },
+  { "fala": "Então o mercado volta a vender fiado. O caderninho cresce todo dia. Já está maior que o mercado.", "legenda": "Então o *mercado* volta a vender *fiado.* O *caderninho* cresce todo dia. Já está *maior* que o mercado.", "segura": 0.3 },
+  { "fala": "O síndico agora cobra de porta em porta. Às seis da manhã. Em voz alta.", "legenda": "O *síndico* agora cobra de porta em *porta.* Às *seis* da manhã. Em voz *alta.*", "segura": 0.3 },
+  { "fala": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no línque da bio.", "legenda": "Este vídeo foi feito só com *inteligência artificial,* sem *câmera.* Quer *aprender?* O *guia* está no *link* da *bio.*", "segura": 0.2 },
+  { "fala": "Voltando. Sem boleto, o Brasil volta para a troca. A mensalidade da escola agora custa duas galinhas.", "legenda": "Voltando. Sem ~boleto,~ o Brasil volta para a *troca.* A *mensalidade* da escola agora custa duas *galinhas.*", "segura": 0.45 },
+  { "fala": "Só uma coisa não mudou. Seu cunhado continua te devendo cinquenta reais.", "legenda": "Só uma coisa não *mudou.* Seu *cunhado* continua te *devendo* cinquenta *reais.*", "segura": 0.55 },
+  { "fala": "Mas o mais estranho é que ninguém reclama. Para todo mundo, o boleto nunca existiu.", "legenda": "Mas o mais *estranho* é que ninguém reclama. Para todo mundo, o ~boleto~ *nunca existiu.*", "segura": 0.4 },
+  { "fala": "Só o Seu Nilo lembra. A regra dele é clara: aqui não some governo nem pessoa. E ele anotou: dia três, o boleto.", "legenda": "Só o *Seu Nilo* lembra. A regra dele é clara: aqui não some *governo* nem *pessoa.* E ele anotou: *dia 3,* o ~boleto.~", "segura": 0.35 },
+  { "fala": "Amanhã, outra coisa vai sumir. E quem escolhe é você.", "legenda": "*Amanhã,* outra coisa vai sumir. E quem escolhe é *você.*" },
+  { "fala": "Comenta aqui embaixo. O comentário mais curtido some do mundo.", "legenda": "*Comenta* aqui embaixo. O comentário mais curtido *some* do mundo." }
+ ],
+ "cena": {
+  "cor": "laranja",
+  "titulo": "o boleto",
+  "sumiram": ["Dia 1: a cor vermelha", "Dia 2: o frio"],
+  "exemplos": ["as chaves", "o despertador", "a segunda-feira"],
+  "credito": { "rotulo": "O MAIS CURTIDO QUE VALIA", "conta": "@elgabriel34", "texto": "O boleto", "curtidas": 9 },
+  "divulgacao": { "em": "@7:voz-0.05", "ate": "@7:fim-0.05", "titulo": "SEM CÂMERA", "sub": "GUIA EM PDF", "chamada": "LINK NA BIO" },
+  "heroi": { "peca": { "peca": "boleto", "pos": [0, 0.2, 16], "l": 6.4, "a": 8.6, "some": "@onda", "em": -1, "sai": "@3:inicio+0.1", "modo": "cresce" } },
+  "cameras": [
+   { "em": "@3:inicio-0.35", "lugar": "praca", "pos": [1.2, 3.5, 31.5], "alvo": [1.2, 3, 17], "arco": 6, "dur": 1.25 },
+   { "em": "@4:inicio-0.35", "lugar": "esquerda" },
+   { "em": "@4:desliga-0.5", "lugar": "esquerda", "perto": true },
+   { "em": "@5:inicio-0.35", "lugar": "direita" },
+   { "em": "@5:caderninho-0.2", "lugar": "direita", "pos": [12.5, 6, 36], "alvo": [11.5, 4.6, 13], "dur": 1.6, "arco": 0 },
+   { "em": "@6:inicio-0.35", "lugar": "praca", "perto": true, "dur": 1.1 },
+   { "em": "@7:inicio-0.3", "lugar": "cidade", "dur": 1.3 },
+   { "em": "@8:inicio-0.3", "lugar": "rua", "pos": [0.3, 3, 25], "alvo": [0.3, 3, 12], "fov": 46, "foco": 0.6 },
+   { "em": "@9:inicio-0.3", "lugar": "esquerda", "pos": [-13.6, 3.4, 28], "alvo": [-14, 3, 14.6], "fov": 42, "foco": 0.7 }
+  ],
+  "pecas": [
+   { "peca": "espalha", "forma": "papel", "cor": "#fffdf6", "qtd": 34, "tam": 0.8 },
+   { "peca": "espalha", "forma": "papel", "cor": "#fff1b8", "qtd": 12, "zona": [-7, 7, 1, 9.5, 11, 21], "tam": 0.5 },
+   { "peca": "vapor", "pos": [0, 0.5, 18.5], "ativo": "@3:festa-0.3", "ate": "@4:inicio-0.05", "cor": "#ffc400", "qtd": 9, "abre": 1.3, "sobe": 7, "rx": 0.14, "ry": 0.3 },
+   { "peca": "pessoa", "pos": [-3, 0.2, 18.2], "escala": 1.6, "roupa": "#7bcf6a", "pose": "comemora", "olhar": [0.5, 0], "em": "@3:festa-0.6", "sai": "@4:inicio-0.05" },
+   { "peca": "pessoa", "pos": [0.2, 0.2, 18.8], "escala": 1.7, "roupa": "#ffd166", "pose": "comemora", "em": "@3:festa-0.45", "sai": "@4:inicio-0.05" },
+   { "peca": "pessoa", "pos": [3.3, 0.2, 18.2], "escala": 1.6, "roupa": "#b794e6", "pose": "comemora", "olhar": [-0.5, 0], "em": "@3:festa-0.3", "sai": "@4:inicio-0.05" },
+
+   { "peca": "piso", "pos": [-14, 0.13, 14.6], "parede": "#ffe9b8", "em": "@4:inicio-0.35", "sai": "@5:inicio", "filhos": [
+     { "peca": "grupo", "pos": [0, 0, -3.72], "em": "@4:desliga", "modo": "cresce", "dur": 0.14, "filhos": [ { "forma": "retangulo", "l": 13, "a": 6.4, "canto": 0.08, "cor": "#27324a", "prof": 0.02 } ] },
+     { "forma": "retangulo", "l": 0.08, "a": 1.2, "y0": 5.2, "x0": -1, "cor": "#3d4656", "prof": 0.02, "pos": [0, 0, -3.6] },
+     { "peca": "grupo", "pos": [-1, 4.7, -3.55], "some": "@4:desliga", "filhos": [ { "forma": "circulo", "r": 0.62, "cor": "#ffe14d", "prof": 0.06 } ] },
+     { "peca": "letreiro", "pos": [2.2, 3.7, -3.55], "l": 4, "a": 1.3, "texto": "CONTA DE LUZ", "cor": "#27324a" },
+     { "peca": "pessoa", "pos": [1, 0, 1.2], "escala": 1.75, "roupa": "#7bcf6a", "olhar": [-0.5, 0.2], "poses": [ { "pose": "normal" }, { "em": "@4:pagar-0.3", "pose": "shrug" }, { "em": "@4:desliga", "pose": "susto" } ] }
+    ] },
+
+   { "peca": "banca", "pos": [12, 0.13, 13], "em": "@5:inicio-0.35", "sai": "@6:inicio", "filhos": [
+     { "peca": "letreiro", "pos": [1.65, 2.75, 0.5], "l": 2.5, "a": 1, "texto": "FIADO", "cor": "#1f8f4c" },
+     { "peca": "pessoa", "pos": [0.4, 1, -0.82], "escala": 1.3, "roupa": "#ffffff", "bone": "#5cb8e4", "poses": [ { "pose": "normal" }, { "em": "@5:caderninho", "pose": "shrug" } ] },
+     { "peca": "grupo", "pos": [-2.6, 0.02, 1.4], "em": "@5:caderninho-0.1", "modo": "cresce", "dur": 2.6, "filhos": [
+       { "forma": "retangulo", "l": 4.8, "a": 7, "canto": 0.15, "cor": "#19a7e0", "prof": 0.22 },
+       { "forma": "retangulo", "l": 4.3, "a": 6.5, "canto": 0.1, "y0": 0.25, "cor": "#fffdf6", "prof": 0.03, "pos": [0, 0, 0.22] },
+       { "peca": "letreiro", "pos": [0, 5, 0.3], "l": 3.8, "a": 1.5, "texto": "FIADO", "cor": "#19a7e0", "fundo": false },
+       { "peca": "letreiro", "pos": [0, 3.4, 0.3], "l": 3.8, "a": 0.7, "texto": "SEU ZÉ: R$ 12", "cor": "#27324a", "fundo": false },
+       { "peca": "letreiro", "pos": [0, 2.5, 0.3], "l": 3.8, "a": 0.7, "texto": "DONA ANA: R$ 40", "cor": "#27324a", "fundo": false },
+       { "peca": "letreiro", "pos": [0, 1.6, 0.3], "l": 3.8, "a": 0.7, "texto": "TODO MUNDO", "cor": "#27324a", "fundo": false }
+      ] },
+     { "peca": "pessoa", "pos": [2.6, 0, 3], "escala": 1.55, "roupa": "#b794e6", "olhar": [-0.8, 0.5], "poses": [ { "pose": "fala" }, { "em": "@5:maior-0.2", "pose": "susto" } ] }
+    ] },
+
+   { "peca": "fachada", "pos": [0, 0.2, 18], "cor": "#d9c6ee", "em": "@6:inicio-0.2", "sai": "@7:inicio-0.05", "filhos": [
+     { "peca": "pessoa", "pos": [-1.7, 0, 0], "escala": 1.85, "roupa": "#6c7fa3", "calca": "#27324a", "careca": true, "olhar": [0.9, 0.15], "pose": "mostra", "segura": { "forma": "retangulo", "l": 0.7, "a": 0.9, "y0": -0.2, "cor": "#fffdf6", "prof": 0.03, "pos": [0, 0, 0.1] } },
+     { "peca": "pessoa", "pos": [1.8, 0, 0.2], "escala": 1.85, "roupa": "#bcd8f2", "calca": "#bcd8f2", "olhar": [-0.9, 0.1], "pose": "azedo" }
+    ] },
+
+   { "peca": "fachada", "pos": [0.3, 0.2, 12], "cor": "#bfe3c9", "corPorta": "#5c7f9f", "em": "@8:inicio-0.2", "sai": "@9:inicio-0.1", "filhos": [
+     { "peca": "letreiro", "pos": [0, 5.1, -2.05], "l": 4.6, "a": 1.1, "texto": "ESCOLA", "cor": "#1f8f4c" },
+     { "peca": "pessoa", "pos": [-1.5, 0, 0], "escala": 1.7, "roupa": "#d77fbb", "calca": "#55406f", "olhar": [0.8, 0], "poses": [ { "pose": "normal" }, { "em": "@8:galinhas-0.4", "pose": "mostra" } ] },
+     { "peca": "pessoa", "pos": [2.1, 0, -0.3], "escala": 1.7, "roupa": "#ffffff", "calca": "#334466", "oculos": true, "olhar": [-0.8, 0], "poses": [ { "pose": "normal" }, { "em": "@8:galinhas", "pose": "feliz" } ] },
+     { "peca": "galinha", "pos": [-0.2, 0, 0.9], "escala": 1.35, "semente": 1, "em": "@8:galinhas-0.35", "modo": "cresce", "dur": 0.3 },
+     { "peca": "galinha", "pos": [0.95, 0, 1.2], "escala": 1.35, "semente": 3, "em": "@8:galinhas-0.15", "modo": "cresce", "dur": 0.3 },
+     { "peca": "pinguim", "pos": [-2.8, 0, -0.6], "escala": 1.5, "oculos": true }
+    ] },
+
+   { "peca": "fachada", "pos": [-14, 0.13, 14.6], "cor": "#ffd9a8", "em": "@9:inicio-0.3", "sai": "@10:inicio-0.05", "filhos": [
+     { "peca": "pessoa", "pos": [-1.7, 0, 0], "escala": 1.85, "roupa": "#5cb8e4", "olhar": [0.9, 0.1], "pose": "bravo" },
+     { "peca": "pessoa", "pos": [1.8, 0, 0.1], "escala": 1.85, "roupa": "#ffb703", "calca": "#55406f", "bone": "#2ec4b6", "olhar": [-0.5, 0.2], "pose": "shrug" }
+    ] }
+  ],
+  "etiquetas": [
+   { "txt": "NUNCA MAIS CONTA!", "pos": [0.2, 5.9, 18.8], "em": "@3:conta", "ate": "@3:fim-0.2" },
+   { "txt": "APAGOU", "pos": [-13, 5.4, 15.8], "em": "@4:desliga+0.1", "ate": "@4:fim", "cor": "cinza", "r": 3 },
+   { "txt": "MAIOR QUE O MERCADO", "pos": [10, 9.4, 14.4], "em": "@5:maior", "ate": "@5:fim", "cor": "verde" },
+   { "txt": "6 DA MANHÃ", "pos": [0, 5.8, 18.2], "em": "@6:seis", "ate": "@6:alta-0.1", "cor": "ouro" },
+   { "txt": "PAGA LOGO!", "pos": [-1.7, 5.4, 18.2], "em": "@6:alta", "ate": "@6:fim", "cor": "rosa", "r": -3 },
+   { "txt": "DEVE R$ 50", "pos": [-12.2, 5.4, 14.9], "em": "@9:devendo", "ate": "@9:fim-0.1", "cor": "amarelo", "r": 3 },
+   { "txt": "NINGUÉM RECLAMA", "pos": [0, 4.9, 18], "em": "@reclama", "ate": "@10:fim-0.1" },
+   { "txt": "SEU NILO", "pos": [-0.9, 4.25, 18.5], "em": "@nilo+0.7", "ate": "@regra-0.4", "cor": "ouro" }
+  ],
+  "contador": { "rot": "A MENSALIDADE", "num": "2 GALINHAS", "em": "@8:mensalidade", "ate": "@8:fim-0.1" },
+  "sons": [
+   { "em": "@3:festa", "tipo": "pop", "volume": 0.6 },
+   { "em": "@4:desliga", "tipo": "clique", "volume": 0.9 },
+   { "em": "@4:desliga+0.05", "tipo": "impacto", "volume": 0.2 },
+   { "em": "@5:maior", "tipo": "subida", "volume": 0.25 },
+   { "em": "@6:porta", "tipo": "clique", "volume": 0.9 },
+   { "em": "@6:porta+0.22", "tipo": "clique", "volume": 0.9 },
+   { "em": "@6:porta+0.44", "tipo": "clique", "volume": 0.9 },
+   { "em": "@7:voz", "tipo": "carimbo", "volume": 0.35 },
+   { "em": "@8:galinhas", "tipo": "pop", "volume": 0.6 },
+   { "em": "@9:devendo", "tipo": "pop", "volume": 0.6 }
+  ]
+ }
+}
