@@ -71,7 +71,7 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 4. **Cena:** cada dia tem dois arquivos próprios, no molde do Dia 2: `src/DiaN.tsx` (cenário registrado em `CENARIOS[N]`, câmera e edição; ligar em `Raiz.tsx`) e `ferramentas/dias/diaNN.mjs` (marcas e efeitos). `mundo-papel.ts` guarda só o livro, a cidade e o que é de todos os dias. O que sumiu antes continua sumido: do Dia 2 em diante, o vermelho já nasce cinza. O mural ganha uma nota "DIA N" sozinho.
 5. **Testar:** `EP=<id> ESCALA=0.33 node ferramentas/render.mjs Dia fotos 0.4 5 10 ...`, montar folha com `ferramentas/folha.ps1` e OLHAR antes do vídeo inteiro.
 6. **Render:** `EP=<id> CONC=4 node ferramentas/render.mjs Dia`, cerca de 2 min. Depois conferir quadros do vídeo pronto: teste com foto solta já escondeu defeito.
-7. **Revisar** com a lista abaixo. **Publicar** com o rótulo de IA ligado, nas 3 redes. Responder comentários nas primeiras horas.
+7. **Revisar** com a lista abaixo. **Publicar** no Instagram e no YouTube, com o rótulo de IA ligado. **TikTok: nunca publique nem agende pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. Para ele, rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. Responder comentários nas primeiras horas.
 
 ## Lista de revisão
 - O 1º quadro para o dedo?
@@ -92,7 +92,7 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 - **Antes de postar:** confira a conta em cada rede, nos dois perfis do Chrome. Em 01/11/2026 o Arquivo 3:33 estava logado no perfil em uso e por pouco o vídeo não saiu lá. Sinais de conta certa: "Editar perfil" na página @hojesumiu e, no YouTube Studio, o canal Hoje Sumiu.
 - **YouTube:** espere a verificação terminar antes de publicar. Publicar antes dispara um aviso de risco de advertência.
 - **Instagram:** na tela de corte, escolha "Original", porque o padrão é quadrado. A capa com o título entra em "Selecionar do computador".
-- **TikTok:** o @ na legenda marca a conta de lá, que pode ser outra pessoa: escreva o nome sem @ e diga "no Instagram". No Dia 2, o comentário também não salvou pelo navegador. Ele fica para o celular.
+- **TikTok:** só o Vito publica, pelo celular. Na seção `Legenda TikTok` de `publicacao/diaNN.md`, escreva o nome sem @ e diga "no Instagram", porque o @ marcaria a conta de lá, que pode ser outra pessoa.
 - **TikTok (conta nova):** foto, bio e comentário não salvaram pelo navegador, sem mensagem de erro. Ao salvar o perfil, confirme o aviso de apelido na hora: ele trava a troca por 7 dias. Peça ao Vito para fazer isso pelo celular.
 - **Instagram:** a versão web não oferece fixar comentário nem editar o nome. Só pelo app.
 - **YouTube:** fixar comentário pede uma verificação única no Studio, que é o Vito quem faz.

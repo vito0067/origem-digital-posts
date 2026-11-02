@@ -7,7 +7,19 @@ Ligar o rótulo de conteúdo com IA nas 3 redes.
 
 **Quem escolheu:** "Frio", de @formulaperderpeso, com 7 curtidas no Reel do Dia 1 (conferido em 01/11/2026). "Presidentes" (9) e "Lula" (6) tiveram veto: aqui não some governo nem pessoa.
 
-## Legenda (Instagram e TikTok)
+## Aviso para o celular
+ESTE VÍDEO JÁ ESTÁ NO TIKTOK, enviado pelo computador em 01/11/2026. Se você não quiser postar de novo, use só o COMENTÁRIO abaixo.
+
+## Legenda TikTok
+Hoje sumiu o frio. Do mundo inteiro. 🥶
+
+Dia 2. O comentário mais curtido que valia foi o de formulaperderpeso, no Instagram. Aqui não some governo nem pessoa: essa é a regra do Seu Nilo.
+Amanhã some outra coisa, e quem escolhe é você. O que some amanhã? 👇
+
+Ficção criada com inteligência artificial.
+#curiosidades #animacao3d #ficcao #hojesumiu
+
+## Legenda (Instagram)
 Hoje sumiu o frio. Do mundo inteiro. 🥶
 
 Dia 2. O comentário mais curtido que valia foi o de @formulaperderpeso. Aqui não some governo nem pessoa: essa é a regra do Seu Nilo.
