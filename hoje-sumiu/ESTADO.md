@@ -12,9 +12,11 @@ Atualize ao fim de cada dia. O repositório é público: nada de senha, chave, t
 **Nunca publique nem agende no TikTok pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. A cada dia, rode `node ferramentas/kit-celular.mjs N` e diga a ele onde está a pasta. Instagram e YouTube seguem pelo computador, conferindo a conta na tela.
 
 ## Próximo passo
-1. Começar a biblioteca de peças (cenário, objeto de papel, efeito de sumir, Seu Nilo, cartão de voto). É uma das duas prioridades do Vito, e o Dia 3 já deve nascer dela. **Pronto até agora: nada; os Dias 1 e 2 ainda têm código próprio.** Conferir no vídeo pronto que eles continuam iguais.
-2. Ler os comentários do [Reel do Dia 2](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) e mostrar o tema vencedor ao Vito antes de produzir.
-3. Produzir o Dia 3 com o crédito a quem comentou e a regra "não vale governo nem pessoa".
+1. Ler os comentários do [Reel do Dia 2](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) e mostrar o tema vencedor ao Vito antes de produzir.
+2. Produzir o Dia 3 só com um arquivo de dados, usando a biblioteca (`PECAS.md`), com o crédito a quem comentou e a regra "não vale governo nem pessoa".
+
+## Biblioteca de peças
+Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. Testada com fotos soltas de um exemplo, em `episodios/exemplo-dados.json`; ainda não gerou um vídeo inteiro. Os Dias 1 e 2 seguem com código próprio: 16 quadros renderizados com o código novo bateram com os vídeos publicados. **A prova final é o Dia 3.**
 
 ## Pendências
 - **Com o Vito, pelo celular:** postar o comentário da pergunta no TikTok do Dia 2; fixar esse comentário nas 3 redes.

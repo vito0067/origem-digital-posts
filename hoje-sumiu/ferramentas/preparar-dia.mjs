@@ -35,8 +35,18 @@ for (const c of cenas) {
 const tp = (i, palavra, n = 0) => { const ach = cenas[i].palavras.filter((p) => p.w.replace(/[*~.,!?:]/g, "").toLowerCase() === palavra.toLowerCase()); if (!ach[n]) throw new Error(`palavra não achada: ${i} ${palavra}`); return ach[n].em; };
 
 // ---------- momentos da história (o vídeo e o som usam os mesmos) ----------
-const roteiroDia = await import(`./dias/dia${String(ep.dia).padStart(2, "0")}.mjs`);
-const marcas = { dia: ep.dia, ...roteiroDia.marcas({ cenas, tp }) };
+// dia com `cena` no arquivo de dados usa o roteiro padrão; os Dias 1 e 2 têm o seu próprio
+const roteiroDia = await import(ep.cena ? "./dias/padrao.mjs" : `./dias/dia${String(ep.dia).padStart(2, "0")}.mjs`);
+const marcas = { dia: ep.dia, ...roteiroDia.marcas({ cenas, tp, ep }) };
+// "@3:porta+0.2" = palavra "porta" da fala 3, mais 0,2 s. Também: @3:inicio, @3:voz, @3:fim e @onda (marca da série).
+const quando = (txt) => {
+  const r = txt.slice(1).match(/^(?:(\d+):)?([\p{L}\w]+)([+-][\d.]+)?$/u); if (!r) throw new Error("tempo inválido: " + txt);
+  const extra = Number(r[3] ?? 0); if (!r[1]) { if (marcas[r[2]] === undefined) throw new Error("marca não existe: " + txt); return marcas[r[2]] + extra; }
+  const i = Number(r[1]), c = cenas[i]; if (!c) throw new Error("fala não existe: " + txt);
+  return ({ inicio: c.inicio, voz: c.vozEm, fim: c.fim }[r[2]] ?? tp(i, r[2])) + extra;
+};
+const resolve = (x) => (typeof x === "string" && x[0] === "@" ? quando(x) : Array.isArray(x) ? x.map(resolve) : x && typeof x === "object" ? Object.fromEntries(Object.entries(x).map(([k, v]) => [k, k === "conta" ? v : resolve(v)])) : x);
+if (ep.cena) ep.cena = resolve(ep.cena);
 
 // ---------- voz ----------
 const voz = montarVoz(grav, cenas.map((c) => ({ de: c.p.de, ate: c.p.ate, em: c.vozEm - c.p.de })), duracao + 1);
@@ -74,10 +84,10 @@ const buzina = (f = 420, seg = 0.28) => { const o = oscilador("quadrada", f, seg
 const apito = () => { const seg = 0.75, o = oscilador("seno", 0, seg, { freqFn: (x) => 2850 + 170 * Math.sign(Math.sin(x * 2 * Math.PI * 30)) }); for (let i = 0; i < o.length; i++) { const x = i / TAXA; o[i] *= Math.min(1, x / 0.02) * Math.min(1, (seg - x) / 0.05) * 0.5; } return o; };
 const nhac = () => decai(filtro(ruido(0.22), "banda", 2400, 0.8), 0.07, 0.002);
 const lapis = (seg) => { const r = filtro(ruido(seg), "banda", 3800, 1.1); for (let i = 0; i < r.length; i++) { const x = i / TAXA; r[i] *= 0.35 + 0.65 * Math.abs(Math.sin(x * 21)); } return r; };
-roteiroDia.efeitos({ fx, marcas, cenas, rnd, SFX, sino, virada, dobra, buzina, apito, nhac, lapis });
+roteiroDia.efeitos({ fx, marcas, cenas, rnd, SFX, sino, virada, dobra, buzina, apito, nhac, lapis, ep });
 
 mixFinal({ duracao, voz, musica: m, efeitos: fx, fala: cenas.map((c) => [c.vozEm, c.vozEm + c.vozDur]), saida: join(RAIZ, "public", `${ep.id}.wav`), musicaDb: -12, ganhoEfeitos: 0.75 });
-writeFileSync(join(RAIZ, "public", `${ep.id}.json`), JSON.stringify({ id: ep.id, dia: ep.dia, coisa: ep.coisa, duracao, marcas, cenas: cenas.map(({ p, ...c }) => c) }, null, 1));
+writeFileSync(join(RAIZ, "public", `${ep.id}.json`), JSON.stringify({ id: ep.id, dia: ep.dia, coisa: ep.coisa, duracao, marcas, cena: ep.cena, cenas: cenas.map(({ p, ...c }) => c) }, null, 1));
 console.log("duração", duracao.toFixed(2));
 const sil = (x) => (x.toLowerCase().match(/[aeiouáàâãéêíóôõúü]+/g) ?? []).length;
 cenas.forEach((c) => console.log(c.i, c.inicio.toFixed(2), "→", c.fim.toFixed(2), (sil(c.fala) / c.vozDur).toFixed(1) + " síl/s", c.fala.slice(0, 34)));

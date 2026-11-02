@@ -6,11 +6,12 @@ import { T3 } from "./T3";
 import { T4 } from "./T4";
 import { Dia } from "./Dia";
 import { Dia2 } from "./Dia2";
+import { DiaDados } from "./pecas/DiaDados";
 import { Avatar } from "./Avatar";
 import type { Linha } from "./comum";
 const vazio: Linha = { duracao: 5, cenas: [] };
 /** Cada dia tem o seu roteiro de câmera e a sua edição. */
-const DiaDaSerie: React.FC<{ linha: any }> = ({ linha }) => (linha.dia === 2 ? <Dia2 linha={linha} /> : <Dia linha={linha} />);
+const DiaDaSerie: React.FC<{ linha: any }> = ({ linha }) => (linha.cena ? <DiaDados linha={linha} /> : linha.dia === 2 ? <Dia2 linha={linha} /> : <Dia linha={linha} />);
 const meta = ({ props }: any) => ({ durationInFrames: Math.round(props.linha.duracao * 30) });
 export const Raiz = () => (<>
   <Still id="Avatar" component={Avatar} width={1080} height={1080} />

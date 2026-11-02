@@ -1,0 +1,1052 @@
+{
+ "id": "hoje-sumiu-exemplo",
+ "dia": 3,
+ "coisa": "o frio",
+ "observacao": "Exemplo da biblioteca: não é episódio publicado. Usa a gravação do Dia 2.",
+ "velocidade": 1,
+ "falas": [
+  {
+   "fala": "Hoje sumiu o frio.",
+   "legenda": "Hoje sumiu o ~frio.~"
+  },
+  {
+   "fala": "Do mundo inteiro. Para sempre.",
+   "legenda": "Do mundo *inteiro.* Para *sempre.*",
+   "segura": 0.2
+  },
+  {
+   "fala": "Esse foi o comentário mais curtido que valia.",
+   "legenda": "Esse foi o comentário *mais curtido* que *valia.*",
+   "segura": 0.5
+  },
+  {
+   "fala": "Você pensa: que ótimo. Nunca mais blusa. Nunca mais banho gelado.",
+   "legenda": "Você pensa: que *ótimo.* Nunca mais *blusa.* Nunca mais banho *gelado.*"
+  },
+  {
+   "fala": "Mas a geladeira funciona com frio. Você abre a porta, e sai um ar quente. O leite azedou antes do almoço.",
+   "legenda": "Mas a *geladeira* funciona com ~frio.~ Você abre a porta, e sai um ar *quente.* O leite *azedou* antes do almoço.",
+   "segura": 0.4
+  },
+  {
+   "fala": "Então a sorveteria fecha. O sorvete derrete antes de chegar na casquinha.",
+   "legenda": "Então a *sorveteria* fecha. O sorvete *derrete* antes de chegar na *casquinha.*",
+   "segura": 0.3
+  },
+  {
+   "fala": "No churrasco de domingo, o refrigerante está quente. E a família inteira para de se falar.",
+   "legenda": "No *churrasco* de domingo, o refrigerante está *quente.* E a família inteira para de se *falar.*",
+   "segura": 0.3
+  },
+  {
+   "fala": "E o gelo? Sem frio, ele derrete no mundo inteiro. No polo também.",
+   "legenda": "E o *gelo?* Sem ~frio,~ ele derrete no mundo inteiro. No *polo* também."
+  },
+  {
+   "fala": "O mar sobe. A praia agora fica na sua rua.",
+   "legenda": "O *mar* sobe. A *praia* agora fica na sua *rua.*",
+   "segura": 0.5
+  },
+  {
+   "fala": "Só uma coisa não mudou. Sua mãe continua mandando você levar casaco.",
+   "legenda": "Só uma coisa não *mudou.* Sua *mãe* continua mandando você levar *casaco.*",
+   "segura": 0.55
+  },
+  {
+   "fala": "Mas o mais estranho é que ninguém reclama. Para todo mundo, o frio nunca existiu.",
+   "legenda": "Mas o mais *estranho* é que ninguém reclama. Para todo mundo, o ~frio~ *nunca existiu.*",
+   "segura": 0.4
+  },
+  {
+   "fala": "Só o Seu Nilo lembra. A regra dele é clara: aqui não some governo nem pessoa. E ele anotou: dia dois, o frio.",
+   "legenda": "Só o *Seu Nilo* lembra. A regra dele é clara: aqui não some *governo* nem *pessoa.* E ele anotou: *dia 2,* o ~frio.~",
+   "segura": 0.35
+  },
+  {
+   "fala": "Amanhã, outra coisa vai sumir. E quem escolhe é você.",
+   "legenda": "*Amanhã,* outra coisa vai sumir. E quem escolhe é *você.*"
+  },
+  {
+   "fala": "Comenta aqui embaixo. O comentário mais curtido some do mundo.",
+   "legenda": "*Comenta* aqui embaixo. O comentário mais curtido *some* do mundo."
+  }
+ ],
+ "cortes": [
+  [
+   0.04,
+   1.64
+  ],
+  [
+   1.98,
+   4.44
+  ],
+  [
+   4.7,
+   7.52
+  ],
+  [
+   7.68,
+   11.14
+  ],
+  [
+   11.3,
+   18.02
+  ],
+  [
+   18.4,
+   25.48
+  ],
+  [
+   25.62,
+   31.3
+  ],
+  [
+   31.6,
+   36.72
+  ],
+  [
+   36.92,
+   40.22
+  ],
+  [
+   40.4,
+   45
+  ],
+  [
+   45.18,
+   50.78
+  ],
+  [
+   50.96,
+   60.08
+  ],
+  [
+   60.28,
+   64.5
+  ],
+  [
+   64.7,
+   68.56
+  ]
+ ],
+ "cena": {
+  "cor": "gelo",
+  "titulo": "o frio",
+  "calor": true,
+  "sumiram": [
+   "Dia 1: a cor vermelha"
+  ],
+  "exemplos": [
+   "o boleto",
+   "as chaves",
+   "o despertador"
+  ],
+  "credito": {
+   "rotulo": "O MAIS CURTIDO QUE VALIA",
+   "conta": "@formulaperderpeso",
+   "texto": "Frio",
+   "curtidas": 7
+  },
+  "heroi": {
+   "peca": {
+    "peca": "derrete",
+    "pos": [
+     0,
+     0.2,
+     16
+    ],
+    "derrete": "@3:ótimo-0.85",
+    "filho": {
+     "peca": "boneco-neve",
+     "some": "@onda"
+    },
+    "em": -1,
+    "sai": "@4:inicio+0.1",
+    "modo": "cresce"
+   }
+  },
+  "cameras": [
+   {
+    "em": "@3:inicio-0.35",
+    "lugar": "praca",
+    "pos": [
+     1.2,
+     3.5,
+     31.5
+    ],
+    "alvo": [
+     1.2,
+     3,
+     17
+    ],
+    "arco": 6,
+    "dur": 1.25
+   },
+   {
+    "em": "@4:inicio-0.35",
+    "lugar": "esquerda"
+   },
+   {
+    "em": "@4:azedou-0.5",
+    "lugar": "esquerda",
+    "perto": true
+   },
+   {
+    "em": "@5:inicio-0.35",
+    "lugar": "direita"
+   },
+   {
+    "em": "@5:derrete-0.45",
+    "lugar": "direita",
+    "perto": true
+   },
+   {
+    "em": "@6:inicio-0.35",
+    "lugar": "praca",
+    "pos": [
+     0,
+     4,
+     35.5
+    ],
+    "alvo": [
+     0,
+     3,
+     17.6
+    ],
+    "fov": 46
+   },
+   {
+    "em": "@7:inicio-0.3",
+    "lugar": "ceu",
+    "dur": 1.2
+   },
+   {
+    "em": "@8:voz-0.3",
+    "lugar": "rua"
+   },
+   {
+    "em": "@9:inicio-0.3",
+    "lugar": "praca"
+   }
+  ],
+  "pecas": [
+   {
+    "peca": "espalha",
+    "forma": "floco",
+    "qtd": 14,
+    "zona": [
+     -7,
+     7,
+     1,
+     9.5,
+     11,
+     21
+    ],
+    "tam": 0.42
+   },
+   {
+    "peca": "espalha",
+    "forma": "floco",
+    "qtd": 26,
+    "tam": 0.7
+   },
+   {
+    "peca": "telhados",
+    "cor": "#f4fbff"
+   },
+   {
+    "peca": "pessoa",
+    "pos": [
+     2.8,
+     0.2,
+     18.2
+    ],
+    "escala": 1.6,
+    "roupa": "#ffd166",
+    "pose": "comemora",
+    "olhar": [
+     -0.5,
+     0
+    ],
+    "em": "@3:ótimo-0.75",
+    "sai": "@4:inicio-0.05"
+   },
+   {
+    "peca": "piso",
+    "pos": [
+     -14,
+     0.13,
+     14.6
+    ],
+    "parede": "#ffe9b8",
+    "em": "@4:inicio-0.35",
+    "sai": "@5:inicio",
+    "filhos": [
+     {
+      "peca": "geladeira",
+      "pos": [
+       -1.8,
+       0,
+       -1.8
+      ],
+      "abre": "@4:porta",
+      "some": "@4:porta+0.12"
+     },
+     {
+      "peca": "vapor",
+      "pos": [
+       -1.8,
+       1.3,
+       -0.4
+      ],
+      "ativo": "@4:quente-0.05"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.6,
+       0,
+       1.2
+      ],
+      "escala": 1.75,
+      "roupa": "#7bcf6a",
+      "olhar": [
+       -0.7,
+       0.1
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@4:quente",
+        "pose": "susto"
+       },
+       {
+        "em": "@4:azedou",
+        "pose": "azedo"
+       }
+      ],
+      "segura": {
+       "forma": "caixa",
+       "l": 0.42,
+       "a": 0.72,
+       "p": 0.1,
+       "cor": "#ffffff",
+       "pos": [
+        0,
+        0.2,
+        0.1
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "peca": "banca",
+    "pos": [
+     12,
+     0.13,
+     13
+    ],
+    "em": "@5:inicio-0.35",
+    "sai": "@6:inicio",
+    "filhos": [
+     {
+      "peca": "letreiro",
+      "pos": [
+       1.65,
+       2.75,
+       0.5
+      ],
+      "l": 2.5,
+      "a": 1,
+      "texto": "ABERTO",
+      "cor": "#1f8f4c",
+      "verso": "FECHADO",
+      "vira": "@5:fecha"
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       -2.4,
+       1.68,
+       0.4
+      ],
+      "some": "@5:derrete",
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 0.46,
+        "ry": 0.32,
+        "prof": 0.2,
+        "cor": "#ffc4d8"
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       -1.1,
+       1.68,
+       0.4
+      ],
+      "some": "@5:derrete+0.08",
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 0.46,
+        "ry": 0.32,
+        "prof": 0.2,
+        "cor": "#b8f0d0"
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       0.2,
+       1.68,
+       0.4
+      ],
+      "some": "@5:derrete+0.16",
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 0.46,
+        "ry": 0.32,
+        "prof": 0.2,
+        "cor": "#ffe58a"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -0.2,
+       1,
+       -0.82
+      ],
+      "escala": 1.3,
+      "roupa": "#ffffff",
+      "bone": "#5cb8e4",
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:fecha",
+        "pose": "shrug"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.7,
+       0,
+       3
+      ],
+      "escala": 1.55,
+      "roupa": "#b794e6",
+      "olhar": [
+       0.8,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "segura"
+       },
+       {
+        "em": "@5:derrete+0.4",
+        "pose": "susto"
+       }
+      ],
+      "segura": {
+       "peca": "grupo",
+       "pos": [
+        0,
+        0.1,
+        0.1
+       ],
+       "some": "@5:derrete",
+       "filhos": [
+        {
+         "forma": "poligono",
+         "pontos": [
+          [
+           -0.17,
+           0
+          ],
+          [
+           0.17,
+           0
+          ],
+          [
+           0,
+           -0.52
+          ]
+         ],
+         "cor": "#d9a056",
+         "fixa": true,
+         "prof": 0.02
+        },
+        {
+         "forma": "circulo",
+         "r": 0.21,
+         "y0": 0.2,
+         "cor": "#ffc4d8"
+        },
+        {
+         "forma": "circulo",
+         "r": 0.21,
+         "y0": 0.47,
+         "cor": "#b8f0d0"
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "peca": "mesa",
+    "pos": [
+     0,
+     0.2,
+     18
+    ],
+    "em": "@6:inicio-0.35",
+    "sai": "@7:inicio-0.1",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -3.2,
+       0,
+       -0.7
+      ],
+      "escala": 1.45,
+      "semente": 0,
+      "poses": [
+       {
+        "pose": "fala"
+       },
+       {
+        "em": "@6:família",
+        "pose": "bravo"
+       }
+      ],
+      "olhar": [
+       0.7,
+       0
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.6,
+       0,
+       -0.7
+      ],
+      "escala": 1.45,
+      "semente": 1,
+      "poses": [
+       {
+        "pose": "fala"
+       },
+       {
+        "em": "@6:família",
+        "pose": "bravo"
+       }
+      ],
+      "olhar": [
+       0.7,
+       0
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       -0.7
+      ],
+      "escala": 1.45,
+      "semente": 2,
+      "poses": [
+       {
+        "pose": "fala"
+       },
+       {
+        "em": "@6:quente",
+        "pose": "azedo"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.6,
+       0,
+       -0.7
+      ],
+      "escala": 1.45,
+      "semente": 3,
+      "poses": [
+       {
+        "pose": "fala"
+       },
+       {
+        "em": "@6:família",
+        "pose": "bravo"
+       }
+      ],
+      "olhar": [
+       -0.7,
+       0
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.2,
+       0,
+       -0.7
+      ],
+      "escala": 1.45,
+      "semente": 4,
+      "poses": [
+       {
+        "pose": "fala"
+       },
+       {
+        "em": "@6:família",
+        "pose": "bravo"
+       }
+      ],
+      "olhar": [
+       -0.7,
+       0
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       0.8,
+       1.49,
+       0.85
+      ],
+      "filhos": [
+       {
+        "forma": "retangulo",
+        "l": 0.42,
+        "a": 1.1,
+        "canto": 0.09,
+        "cor": "#6a3d22",
+        "prof": 0.1
+       },
+       {
+        "forma": "retangulo",
+        "l": 0.16,
+        "a": 0.4,
+        "y0": 1.08,
+        "canto": 0.03,
+        "cor": "#6a3d22",
+        "prof": 0.1
+       }
+      ]
+     },
+     {
+      "peca": "vapor",
+      "pos": [
+       0.8,
+       2.8,
+       0.9
+      ],
+      "cor": "#ffffff",
+      "rx": 0.07,
+      "ry": 0.2,
+      "qtd": 4,
+      "abre": 0.13,
+      "sobe": 1.3,
+      "ativo": "@6:quente-0.1"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     24,
+     -14
+    ],
+    "em": "@7:inicio-0.3",
+    "sai": "@8:voz+0.1",
+    "filhos": [
+     {
+      "forma": "morro",
+      "l": 17,
+      "a": 1.1,
+      "calombos": 10,
+      "cor": "#2ab5e6",
+      "pos": [
+       0,
+       -0.6,
+       0.12
+      ],
+      "prof": 0.06
+     },
+     {
+      "peca": "grupo",
+      "some": "@7:derrete",
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -5.5,
+          0
+         ],
+         [
+          -3.6,
+          3.2
+         ],
+         [
+          -1.8,
+          2.6
+         ],
+         [
+          0,
+          5.8
+         ],
+         [
+          2,
+          3.6
+         ],
+         [
+          3.6,
+          4.2
+         ],
+         [
+          5.5,
+          0
+         ]
+        ],
+        "cor": "#55c4ee",
+        "prof": 0.08
+       }
+      ]
+     },
+     {
+      "peca": "pinguim",
+      "pos": [
+       0,
+       5.5,
+       0.1
+      ],
+      "escala": 1.25,
+      "move": [
+       {
+        "em": "@7:derrete+0.25",
+        "dur": 1.5,
+        "pos": [
+         0,
+         0.7,
+         0.1
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "mar",
+    "sobe": "@8:voz",
+    "desce": "@9:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "em": "@8:praia-0.3",
+      "sai": "@9:inicio-0.3",
+      "modo": "cresce",
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 1.9,
+        "ry": 0.26,
+        "cor": "#ffd23f",
+        "pos": [
+         -1.15,
+         0.03,
+         11
+        ],
+        "prof": 0.03
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         -1.15,
+         0.2,
+         11.1
+        ],
+        "escala": 1.1,
+        "roupa": "#ff9f1c",
+        "calca": "#2ec4b6",
+        "pose": "surfa",
+        "olhar": [
+         0.5,
+         0.2
+        ]
+       },
+       {
+        "peca": "pinguim",
+        "pos": [
+         1,
+         0.02,
+         11.7
+        ],
+        "oculos": true
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "fachada",
+    "pos": [
+     0,
+     0.2,
+     18
+    ],
+    "em": "@9:inicio-0.2",
+    "sai": "@10:voz-0.05",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.7,
+       0,
+       0
+      ],
+      "escala": 1.85,
+      "roupa": "#d77fbb",
+      "calca": "#55406f",
+      "semente": 2,
+      "olhar": [
+       0.9,
+       0.15
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@9:mandando-0.45",
+        "pose": "mostra"
+       }
+      ],
+      "segura": {
+       "forma": "retangulo",
+       "l": 0.7,
+       "a": 0.9,
+       "y0": -0.9,
+       "cor": "#6c7fa3",
+       "prof": 0.03,
+       "pos": [
+        0,
+        0,
+        0.1
+       ]
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.8,
+       0,
+       0.2
+      ],
+      "escala": 1.85,
+      "roupa": "#ffd166",
+      "pose": "triste",
+      "olhar": [
+       -0.9,
+       0.1
+      ]
+     }
+    ]
+   }
+  ],
+  "etiquetas": [
+   {
+    "txt": "QUE ÓTIMO!",
+    "pos": [
+     2.8,
+     5.7,
+     18.2
+    ],
+    "em": "@3:ótimo",
+    "ate": "@3:fim-0.3"
+   },
+   {
+    "txt": "AR QUENTE",
+    "pos": [
+     -15.8,
+     5.2,
+     13.8
+    ],
+    "em": "@4:quente",
+    "ate": "@4:azedou-0.6",
+    "cor": "laranja"
+   },
+   {
+    "txt": "AZEDOU!",
+    "pos": [
+     -12.4,
+     5.2,
+     15.8
+    ],
+    "em": "@4:azedou+0.1",
+    "ate": "@4:fim",
+    "cor": "verde",
+    "r": 3
+   },
+   {
+    "txt": "FECHOU",
+    "pos": [
+     13.65,
+     3.9,
+     13.5
+    ],
+    "em": "@5:fecha+0.25",
+    "ate": "@5:derrete-0.5",
+    "cor": "cinza"
+   },
+   {
+    "txt": "DERRETEU",
+    "pos": [
+     10.1,
+     4.4,
+     16
+    ],
+    "em": "@5:derrete+0.55",
+    "ate": "@5:fim",
+    "cor": "cinza",
+    "r": 2
+   },
+   {
+    "txt": "NINGUÉM FALA",
+    "pos": [
+     0.6,
+     4.8,
+     18
+    ],
+    "em": "@6:família+0.3",
+    "ate": "@6:fim",
+    "cor": "cinza",
+    "r": 2
+   },
+   {
+    "txt": "POLO",
+    "pos": [
+     -3.4,
+     28,
+     -14
+    ],
+    "em": "@7:inicio+0.3",
+    "ate": "@7:derrete+0.1",
+    "cor": "gelo"
+   },
+   {
+    "txt": "PRAIA NA SUA RUA",
+    "pos": [
+     0.5,
+     5.2,
+     11
+    ],
+    "em": "@8:praia+0.2",
+    "ate": "@8:fim",
+    "cor": "amarelo"
+   },
+   {
+    "txt": "LEVA CASACO!",
+    "pos": [
+     -1.7,
+     5.3,
+     18.2
+    ],
+    "em": "@9:mandando",
+    "ate": "@9:fim-0.1",
+    "cor": "rosa",
+    "r": -3
+   },
+   {
+    "txt": "NINGUÉM RECLAMA",
+    "pos": [
+     0,
+     4.9,
+     18
+    ],
+    "em": "@reclama",
+    "ate": "@10:fim-0.1"
+   },
+   {
+    "txt": "SEU NILO",
+    "pos": [
+     -0.9,
+     4.25,
+     18.5
+    ],
+    "em": "@nilo+0.7",
+    "ate": "@regra-0.4",
+    "cor": "ouro"
+   }
+  ],
+  "contador": {
+   "rot": "O MAR SUBIU",
+   "num": "+3 METROS",
+   "em": "@8:voz+0.5",
+   "ate": "@8:praia+0.1"
+  },
+  "tremores": [
+   "@8:voz+0.35"
+  ],
+  "sons": [
+   {
+    "em": "@4:porta",
+    "tipo": "clique",
+    "volume": 0.9
+   },
+   {
+    "em": "@4:quente-0.1",
+    "tipo": "whoosh",
+    "volume": 0.4
+   },
+   {
+    "em": "@5:fecha",
+    "tipo": "carimbo",
+    "volume": 0.3
+   },
+   {
+    "em": "@6:família",
+    "tipo": "glitch",
+    "volume": 0.3
+   },
+   {
+    "em": "@8:voz",
+    "tipo": "subida",
+    "volume": 0.25
+   },
+   {
+    "em": "@8:voz+0.35",
+    "tipo": "impacto",
+    "volume": 0.2
+   },
+   {
+    "em": "@9:mandando",
+    "tipo": "pop",
+    "volume": 0.6
+   }
+  ]
+ }
+}
