@@ -27,7 +27,7 @@ Atualizado em 01/11/2026, às 21h30. Leia antes de mexer e atualize a cada rodad
 
 ## Regras novas
 - **TikTok (Vito, 01/11/2026):** nunca publique nem agende pelo computador. Para cada episódio, rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. No TikTok, só leia os números.
-- **Aposta:** todo episódio tem uma pergunta ligada à cena. Nos eps. 8 a 10, ela está na legenda e no comentário fixado; do ep. 11 em diante, também no cartão final (extra `aposta`). Só opinião: não muda a história.
+- **Aposta:** todo episódio tem uma pergunta ligada à cena. Do ep. 8 em diante, ela está na legenda, no comentário fixado e no cartão final (extra `aposta`). Em 02/11, os eps. 8 a 10 foram renderizados de novo com a aposta; no YouTube, a versão nova entra programada e a antiga fica privada, sem excluir. Só opinião: não muda a história.
 
 ## Riscos
 - **Tarefas paradas:** as tarefas do PC podem parar pedindo permissão. Em 01/11, as duas ficaram paradas das 19h15 às 20h20 e o ep. 7 só saiu no Instagram pela conversa principal. Encerrar uma rodada parada pode iniciar outra na hora: antes de publicar à mão, confira se há rodada aberta, para o episódio não sair duas vezes.
