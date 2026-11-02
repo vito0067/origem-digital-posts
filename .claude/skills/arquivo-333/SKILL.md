@@ -81,7 +81,7 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
    - 9 a 11 falas e um gancho por episódio, seguindo o arco da bíblia.
    - Quebras de clima: um personagem novo, uma prova visual, um número.
    - Termine num gancho mais forte que o do episódio anterior.
-3. **Voz (Higgsfield, cerca de 1 crédito):**
+3. **Voz (Higgsfield, cerca de 3 créditos):**
    - **Antes de gerar, leia [referencia/voz.md](referencia/voz.md) e rode `node ferramentas/revisar-voz.mjs episodios/epNN.json`** (palavra proibida: "celular" e as que o Vito apontar). Depois de gerar, diga ao Vito quais palavras de risco ficaram e peça para ele ouvir.
    - `generate_audio` com `model: "elevenlabs_v4"`, `stability: 0.4`, `similarity_boost: 0.8`.
    - `dialogue`: um turno por fala, com `voice_id` `1ad38ba4-9cc4-4f2f-9fde-b0fefdf67ae5` (Gideon, `voice_type: "preset"`).

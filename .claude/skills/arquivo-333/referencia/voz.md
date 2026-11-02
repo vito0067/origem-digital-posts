@@ -20,6 +20,8 @@ Diga ao Vito, em uma lista curta, **quais palavras vigiadas ficaram em cada epis
 |---|---|---|
 | celular | a voz põe a tônica no C ("CElular"), reclamação do Vito em 02/11/2026 | telefone (ou "o aparelho"). Na tela, nas mensagens e no `dado`, "celular" continua valendo: só a voz muda |
 
+Primeira correção feita: ep. 9, em 02/11/2026 ("Um telefone, num quarto impossível…"), voz regerada por 2,99 créditos. Gerar a voz de um episódio custa cerca de 3 créditos, não 1.
+
 ## Vigiadas (sem erro confirmado ainda)
 jornal, apagão, moletom, elevador, síndica, degraus. Se o Vito confirmar um erro, passe para a tabela de cima.
 
