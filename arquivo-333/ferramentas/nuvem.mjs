@@ -52,8 +52,19 @@ async function subirRelease(tag, titulo, anexos) {
     const nome = basename(arq), velho = (rel.assets ?? []).find((a) => a.name === nome);
     if (velho) await fetch(`${API}/releases/assets/${velho.id}`, { method: "DELETE", headers: cab() });
     const tipo = nome.endsWith(".mp4") ? "video/mp4" : nome.endsWith(".mp3") ? "audio/mpeg" : "image/jpeg";
-    const up = await fetch(`https://uploads.github.com/repos/${REPO}/releases/${rel.id}/assets?name=${encodeURIComponent(nome)}`, { method: "POST", headers: { ...cab(), "Content-Type": tipo }, body: readFileSync(arq) });
-    if (!up.ok) throw new Error(`subir ${nome}: HTTP ${up.status} ${await up.text()}`);
+    const url = `https://uploads.github.com/repos/${REPO}/releases/${rel.id}/assets?name=${encodeURIComponent(nome)}`;
+    try {
+      const up = await fetch(url, { method: "POST", headers: { ...cab(), "Content-Type": tipo }, body: readFileSync(arq) });
+      if (!up.ok) throw new Error(`subir ${nome}: HTTP ${up.status} ${await up.text()}`);
+    } catch (e) {
+      // no PC o fetch do Node às vezes não conecta em uploads.github.com (02/11/2026); o curl, com até 3 tentativas, conecta
+      if (!/fetch failed|HTTP 408|HTTP 5dd/.test(String(e.message))) throw e;
+      let ok = false;
+      for (let k = 0; k < 3 && !ok; k++) {
+        try { execFileSync("curl", ["-sS", "-m", "150", "--http1.1", "-f", "-o", process.platform === "win32" ? "NUL" : "/dev/null", "-X", "POST", "-H", `Authorization: Bearer ${process.env.GH_TOKEN}`, "-H", `Content-Type: ${tipo}`, "--data-binary", `@${arq}`, url], { stdio: "inherit" }); ok = true; } catch { /* tenta de novo */ }
+      }
+      if (!ok) throw new Error(`subir ${nome}: nem o fetch nem o curl conseguiram`);
+    }
   }
 }
 
@@ -88,6 +99,12 @@ for (const f of pendentes) {
       if (!r.ok) throw new Error(`não consegui baixar a pergunta falada: HTTP ${r.status}`);
       writeFileSync(join(RAIZ, "public", c.vozAntes.arquivo), Buffer.from(await r.arrayBuffer()));
     }
+    // 1c. a divulgação do guia no meio do episódio (avulsa), gravada à parte
+    for (const c of ep.cenas) if (c.avulsa && !existsSync(join(RAIZ, "public", c.avulsa.arquivo))) {
+      const r = await fetch(c.avulsa.url);
+      if (!r.ok) throw new Error(`não consegui baixar a divulgação falada: HTTP ${r.status}`);
+      writeFileSync(join(RAIZ, "public", c.avulsa.arquivo), Buffer.from(await r.arrayBuffer()));
+    }
     // 2. fotos 3D paradas (cenas/3d/<plano>.png) que ainda não existem
     const fotos = ep.cenas.filter((c) => c.visual.arquivo?.startsWith("cenas/3d/") && !existsSync(join(RAIZ, "public", c.visual.arquivo)))
       .map((c) => `${basename(c.visual.arquivo, ".png")}:${c.visual.fotoSeg ?? 1.5}`);
@@ -96,19 +113,26 @@ for (const f of pendentes) {
     }
     if (fotos.length) rodar("node", ["ferramentas/planos.mjs", "--grande", ...fotos]);
     // 3. som + linha do tempo, 4. vídeo
-    rodar("node", ["ferramentas/preparar-caso.mjs", caminho]);
-    rodar("node", ["ferramentas/renderizar.mjs", id]);
+    // SO_ENVIO=1: o vídeo já foi renderizado (o envio ao GitHub é que falhou); só refaz o envio e o registro
+    if (!process.env.SO_ENVIO) {
+      rodar("node", ["ferramentas/preparar-caso.mjs", caminho]);
+      rodar("node", ["ferramentas/renderizar.mjs", id]);
+    }
     const mp4 = join(SAIDA, `${id}.mp4`), leve = join(SAIDA, `${id}-upload.mp4`);
     // 5. cópia leve (o Chrome e o n8n sobem essa), capa e folha de revisão
     // taxa de vídeo pela duração, para a cópia leve ficar abaixo de ~9,5 MB (o Chrome só sobe até 10 MB)
     const durSeg = JSON.parse(readFileSync(join(RAIZ, "public", "ep", `${id}.json`), "utf8")).duracao;
     const kbps = Math.max(700, Math.min(1450, Math.floor((9.3 * 8192) / durSeg - 150)));
+    if (!process.env.SO_ENVIO) {
     rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-i", mp4, "-c:v", "libx264", "-preset", "slow", "-b:v", `${kbps}k`, "-maxrate", `${Math.round(kbps * 1.5)}k`, "-bufsize", `${kbps * 3}k`,
       "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", leve]);
+    }
     const linha = JSON.parse(readFileSync(join(RAIZ, "public", "ep", `${id}.json`), "utf8"));
     const capaEm = ep.publicar?.capaEm ?? linha.duracao * 0.5;
+    if (!process.env.SO_ENVIO) {
     rodar(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-ss", String(capaEm), "-i", mp4, "-frames:v", "1", "-q:v", "3", join(SAIDA, `${id}-capa.jpg`)]);
     folhaDeRevisao(mp4, linha.duracao, join(SAIDA, `${id}-revisao.jpg`));
+    }
     // 6. release no GitHub (substitui os arquivos se já existir)
     const tag = `arquivo-${id}`, anexos = [leve, join(SAIDA, `${id}-capa.jpg`), join(SAIDA, `${id}-revisao.jpg`), narr];
     await subirRelease(tag, `Arquivo 3:33 · ${ep.serie} · Ep. ${ep.episodio}`, anexos);

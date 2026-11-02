@@ -11,9 +11,9 @@
     "data": "2026-11-02",
     "hora": "20:00",
     "capaEm": 1.2,
-    "legenda": "O prédio tem 12 andares. A Bia filmou o 13º. 📼\n\nA Bia entra nesse quarto ou volta pela escada? 👇\n\nO Sinal, episódio 8 (o 1 está no perfil).\nEpisódio 9 amanhã, às 20h. Siga para não perder.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "legenda": "O prédio tem 12 andares. A Bia filmou o 13º. 📼\n\nA Bia entra nesse quarto ou volta pela escada? 👇\n\nO Sinal, episódio 8 (o 1 está no perfil).\nEpisódio 9 amanhã, às 20h. Siga para não perder.\n\nGuia para fazer vídeos assim: link na bio.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
     "tituloYoutube": "O prédio tem 12 andares. Ela filmou o 13º | O Sinal, Ep. 8 #shorts",
-    "descricaoYoutube": "A Bia sobe pela escada atrás do andar que só existe na planta da síndica. Ela encontra um corredor sem números, o elevador marcando 13 e, atrás de uma porta que abre sozinha, um quarto igual ao da Marina.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+    "descricaoYoutube": "A Bia sobe pela escada atrás do andar que só existe na planta da síndica. Ela encontra um corredor sem números, o elevador marcando 13 e, atrás de uma porta que abre sozinha, um quarto igual ao da Marina.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nGuia para fazer vídeos assim: link na bio.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
   },
   "cenas": [
     {
@@ -212,6 +212,28 @@
       ],
       "fala": "No grupo, chegou um vídeo. Um corredor igual ao delas. Só que nenhuma porta tinha número.",
       "legenda": "No grupo, chegou um *vídeo.* Um corredor igual ao delas. Só que nenhuma porta tinha *número.*"
+    },
+    {
+      "visual": {
+        "tipo": "divulgacao",
+        "titulo": "SEM CÂMERA",
+        "linhas": [
+          "GUIA EM PDF",
+          "LINK NA BIO"
+        ]
+      },
+      "semLegenda": true,
+      "entrada": "preto",
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [],
+      "fala": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "legenda": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "extras": [],
+      "avulsa": {
+        "arquivo": "narracao/divulgacao-guia.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261102_204022_21f29ed0-171b-4c1e-9817-e9f5054842ed.mp3"
+      }
     },
     {
       "visual": {

@@ -15,7 +15,16 @@ const ep = JSON.parse(readFileSync(process.argv[2], "utf8"));
 
 // ---------- 1. narração cortada nas falas ----------
 const gravacao = lerAudio(join(PUBLICO, ep.narracao));
-const pedacos = cortarNarracao(gravacao, ep.cenas.map((c) => c.fala));
+// cena "avulsa" (divulgação do guia no meio do episódio): a voz vem de um arquivo à parte, não da narração principal
+const avulsas = new Map();
+ep.cenas.forEach((c, i) => {
+  if (!c.avulsa) return;
+  const g = lerAudio(join(PUBLICO, c.avulsa.arquivo));
+  avulsas.set(i, { g, ...cortarNarracao(g, [c.fala])[0] });
+});
+const principais = ep.cenas.map((c, i) => i).filter((i) => !avulsas.has(i));
+const cortes = cortarNarracao(gravacao, principais.map((i) => ep.cenas[i].fala));
+const pedacos = ep.cenas.map((c, i) => avulsas.get(i) ?? cortes[principais.indexOf(i)]);
 
 // a pergunta do final, gravada à parte (cena com "vozAntes": o narrador fala a pergunta antes da fala da cena)
 const perguntas = new Map();
@@ -85,7 +94,11 @@ const quando = (c, ref) => {
   return base + (m[2] ? parseFloat(m[2]) : 0);
 };
 
-const voz = montarVoz(gravacao, cenas.map((c) => ({ de: c.pedaco.de, ate: c.pedaco.ate, em: c.vozEm - c.pedaco.de })), duracao);
+const voz = montarVoz(gravacao, cenas.filter((c) => !c.avulsa).map((c) => ({ de: c.pedaco.de, ate: c.pedaco.ate, em: c.vozEm - c.pedaco.de })), duracao);
+for (const [i, a] of avulsas) {
+  const c = cenas[i], v2 = montarVoz(a.g, [{ de: a.de, ate: a.ate, em: c.vozEm - a.de }], duracao);
+  for (let k = 0; k < voz.L.length; k++) { voz.L[k] += v2.L[k]; voz.R[k] += v2.R[k]; }
+}
 for (const [i, q] of perguntas) {
   const c = cenas[i], v2 = montarVoz(q.g, [{ de: q.de, ate: q.ate, em: c.perguntaEm - q.de }], duracao);
   for (let k = 0; k < voz.L.length; k++) { voz.L[k] += v2.L[k]; voz.R[k] += v2.R[k]; }

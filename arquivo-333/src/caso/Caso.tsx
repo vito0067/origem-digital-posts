@@ -20,7 +20,8 @@ const saida = (x: number) => 1 - Math.pow(1 - lim(x), 3);
 
 // ---------------------------------------------------------------- tipos
 export type Visual = {
-  tipo: "video" | "foto" | "fotoRecebida" | "final" | "3d";
+  tipo: "video" | "foto" | "fotoRecebida" | "final" | "3d" | "divulgacao";
+  titulo?: string; linhas?: string[]; // tipo "divulgacao": cartão de divulgação no meio do episódio
   planos?: string[]; pesos?: number[]; // tipo "3d": tomadas do motor 3D, em sequência (cortes secos)
   pb?: number[]; // tipo "3d": índices dos planos que aparecem em preto e branco
   arquivo?: string; inicio?: number; velocidade?: number; durClipe?: number;
@@ -402,6 +403,25 @@ const Final: React.FC<{ s: number; episodio: number }> = ({ s, episodio }) => {
   );
 };
 
+/** Cartão de divulgação (guia em PDF) no meio do episódio: título grande + selos que entram um a um. */
+const Divulgacao: React.FC<{ s: number; titulo: string; linhas: string[] }> = ({ s, titulo, linhas }) => {
+  const entra = (em: number) => spring({ frame: Math.round((s - em) * FPS), fps: FPS, config: { damping: 11, stiffness: 150 } });
+  const t0 = entra(0.1);
+  return (
+    <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 40%, #121826 0%, #05070C 70%)", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+      <div style={{ fontFamily: ELITE, fontSize: 38, color: "#9AA6BF", letterSpacing: 10, marginBottom: 24, opacity: lim(t0 * 2) }}>ARQUIVO 3:33 · AVISO</div>
+      <div style={{ fontFamily: ANTON, fontSize: 168, lineHeight: 1, color: COR.texto, letterSpacing: 2, transform: `scale(${0.8 + 0.2 * t0})`, opacity: lim(t0 * 2) }}>{titulo}</div>
+      {linhas.map((txt, i) => {
+        const p = entra(0.7 + i * 0.7);
+        const cor = i === 0 ? COR.vermelho : COR.amarelo;
+        return (
+          <div key={i} style={{ marginTop: 64, transform: `scale(${0.6 + 0.4 * p}) rotate(${i % 2 ? 3 : -3}deg)`, opacity: lim(p * 2), border: `6px solid ${cor}`, padding: "12px 44px", fontFamily: ANTON, fontSize: 84, color: cor, letterSpacing: 6 }}>{txt}</div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
 // ---------------------------------------------------------------- legenda, etiqueta, entradas
 /** Legenda: blocos de até 3 palavras; a falada agora fica amarela, as de medo ficam vermelhas. */
 const Legenda: React.FC<{ linha: LinhaCaso }> = ({ linha }) => {
@@ -492,6 +512,7 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
   const ext = c.extras ?? [];
   let fundo: React.ReactNode;
   if (v.tipo === "final") fundo = <Final s={s} episodio={episodio} />;
+  else if (v.tipo === "divulgacao") fundo = <Divulgacao s={s} titulo={v.titulo ?? "SEM CÂMERA"} linhas={v.linhas ?? []} />;
   else if (v.tipo === "fotoRecebida") fundo = <FotoRecebida v={v} s={s} dur={dur} />;
   else if (v.tipo === "3d") {
     const planos = v.planos ?? [], pesos = v.pesos ?? planos.map(() => 1), total = pesos.reduce((a, b) => a + b, 0);
