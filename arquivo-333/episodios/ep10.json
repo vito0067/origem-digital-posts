@@ -25,16 +25,16 @@
       },
       "extras": [
         {
-          "tipo": "textao",
-          "texto": "UM JORNAL DE 1983",
+          "tipo": "jornal",
           "em": 0,
-          "ate": 2.5
+          "pronto": true
         },
         {
-          "tipo": "visor",
+          "tipo": "textao",
+          "texto": "ELA ESTÁ NESTE JORNAL",
           "em": 0,
-          "ate": 4.5,
-          "texto": "13º · DEBAIXO DA CAMA"
+          "ate": 2.5,
+          "y": 700
         }
       ],
       "antes": 0.1,
@@ -110,12 +110,10 @@
       },
       "extras": [
         {
-          "tipo": "cartao",
-          "titulo": "JORNAL · 1983",
-          "texto": "APAGÃO DEIXA A CIDADE 3H33 NO ESCURO",
-          "em": 0.2,
-          "ate": 4,
-          "y": 330
+          "tipo": "jornal",
+          "em": 0.1,
+          "destaca": "manchete",
+          "destacaEm": 1.1
         }
       ],
       "antes": 0.12,
@@ -170,12 +168,10 @@
       },
       "extras": [
         {
-          "tipo": "cartao",
-          "titulo": "JORNAL · 1983 · PÉ DA PÁGINA",
-          "texto": "\"fotos tiradas do céu\"",
-          "em": 0.3,
-          "ate": 4.5,
-          "y": 330
+          "tipo": "jornal",
+          "em": 0.1,
+          "destaca": "pe",
+          "destacaEm": 1.2
         }
       ],
       "antes": 0.12,
@@ -263,10 +259,10 @@
       },
       "extras": [
         {
-          "tipo": "visor",
-          "em": 0,
-          "ate": 4,
-          "texto": "JORNAL · VERSO"
+          "tipo": "jornal",
+          "em": 0.1,
+          "viraEm": 0.7,
+          "foto": "cenas/3d/foto_janela.png"
         }
       ],
       "antes": 0.12,
@@ -292,6 +288,9 @@
         "planos": [
           "foto_janela",
           "rosto_medo"
+        ],
+        "pb": [
+          0
         ]
       },
       "extras": [

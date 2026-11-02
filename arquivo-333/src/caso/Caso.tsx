@@ -22,12 +22,14 @@ const saida = (x: number) => 1 - Math.pow(1 - lim(x), 3);
 export type Visual = {
   tipo: "video" | "foto" | "fotoRecebida" | "final" | "3d";
   planos?: string[]; pesos?: number[]; // tipo "3d": tomadas do motor 3D, em sequência (cortes secos)
+  pb?: number[]; // tipo "3d": índices dos planos que aparecem em preto e branco
   arquivo?: string; inicio?: number; velocidade?: number; durClipe?: number;
   zoom?: [number, number]; foco?: [number, number]; mover?: [number, number]; tremer?: number; legendaFoto?: string;
 };
 export type Extra =
   | { tipo: "cartao"; titulo: string; texto: string; em: number; ate?: number; y?: number }
-  | { tipo: "textao"; texto: string; em: number; ate: number }
+  | { tipo: "textao"; texto: string; em: number; ate: number; y?: number }
+  | { tipo: "jornal"; em: number; ate?: number; pronto?: boolean; destaca?: "manchete" | "pe"; destacaEm?: number; viraEm?: number; foto?: string }
   | { tipo: "remendo"; x: number; y: number; w: number; h: number; texto: string }
   | { tipo: "marcador"; x: number; y: number; texto: string; sub?: string; em: number }
   | { tipo: "relampago"; em: number }
@@ -106,7 +108,7 @@ const Textao: React.FC<{ e: Extract<Extra, { tipo: "textao" }>; s: number }> = (
   const n = Math.floor(lim((s - e.em) / Math.max(0.1, e.ate - e.em)) * e.texto.length + 0.999);
   const tremor = s - e.em < 0.25 ? Math.sin(s * 120) * 10 : 0;
   return (
-    <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", padding: "0 80px", transform: `translateX(${tremor}px)` }}>
+    <AbsoluteFill style={{ alignItems: "center", justifyContent: e.y === undefined ? "center" : "flex-start", padding: `${e.y ?? 0}px 80px 0`, transform: `translateX(${tremor}px)` }}>
       <div style={{ fontFamily: ANTON, fontSize: 150, lineHeight: 1.02, textAlign: "center", color: COR.texto, textTransform: "uppercase",
         textShadow: "0 0 30px rgba(255,59,59,0.85), 0 0 90px rgba(255,59,59,0.45), 0 10px 0 rgba(0,0,0,0.6)" }}>
         {e.texto.slice(0, n)}<span style={{ opacity: Math.floor(s * 4) % 2 ? 0 : 1, color: COR.vermelho }}>{n < e.texto.length ? "▌" : ""}</span>
@@ -202,6 +204,52 @@ const Planta: React.FC<{ e: Extract<Extra, { tipo: "planta" }>; s: number }> = (
         <line x1={bx - 70} y1={by0} x2={bx + bw + 70} y2={by0} stroke="#cfe0ff" strokeWidth={4} />
         {destaca && <text x={bx + bw + 24} y={by0 - 13 * ah + 38} fontFamily={ELITE} fontSize={34} fill="#ff3b3b">???</text>}
       </svg>
+    </div>
+  );
+};
+
+/** O jornal de 1983 (papel envelhecido): a capa com a manchete e o pé da página; com "viraEm", vira e mostra a foto do verso. */
+const Jornal: React.FC<{ e: Extract<Extra, { tipo: "jornal" }>; s: number }> = ({ e, s }) => {
+  if (s < e.em || (e.ate !== undefined && s > e.ate + 0.2)) return null;
+  const some = e.ate !== undefined ? lim(1 - (s - e.ate) / 0.2) : 1;
+  const m = (e.pronto ? 1 : spring({ frame: Math.round((s - e.em) * FPS), fps: FPS, config: { damping: 16, stiffness: 120, mass: 0.9 } })) * some;
+  const vira = e.viraEm === undefined ? 0 : suave((s - e.viraEm) / 0.45);
+  const verso = vira >= 0.5;
+  const W = 820, H = 880, tinta = "#1d1a15";
+  const destaque = e.destaca !== undefined && s >= (e.destacaEm ?? e.em) ? saida((s - (e.destacaEm ?? e.em)) / 0.35) : 0;
+  const caixa = e.destaca === "pe" ? { x: 70, y: 762, w: 680, h: 84 } : { x: 40, y: 150, w: 740, h: 250 };
+  const texto = (x: number, y: number, w: number, n: number) => Array.from({ length: n }, (_, k) => <rect key={k} x={x} y={y + k * 26} width={k === n - 1 ? w * 0.6 : w} height={9} fill={tinta} opacity={0.42} />);
+  return (
+    <div style={{ position: "absolute", left: (1080 - W) / 2, top: 235, width: W, height: H, perspective: 1800, opacity: lim(m * 1.4), transform: `translateY(${(1 - m) * 70}px) rotate(${-1.5 + Math.sin(s * 1.1) * 0.25}deg) scale(${0.9 + 0.1 * m})` }}>
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden", background: "linear-gradient(170deg, #e8dfc6 0%, #d8cba8 62%, #c6b58d 100%)", boxShadow: "0 30px 80px rgba(0,0,0,0.75)", transform: `rotateY(${verso ? (vira - 1) * 180 : vira * 180}deg)` }}>
+        {!verso ? (
+          <svg width={W} height={H}>
+            <text x={W / 2} y={82} textAnchor="middle" fontFamily={ELITE} fontSize={64} fill={tinta}>CRÔNICA DA NOITE</text>
+            <text x={W / 2} y={122} textAnchor="middle" fontFamily={ELITE} fontSize={28} fill={tinta} letterSpacing={3}>NOVEMBRO DE 1983 · EDIÇÃO EXTRA</text>
+            <line x1={36} y1={138} x2={W - 36} y2={138} stroke={tinta} strokeWidth={4} />
+            <text x={W / 2} y={254} textAnchor="middle" fontFamily={ANTON} fontSize={82} fill={tinta}>APAGÃO DEIXA A CIDADE</text>
+            <text x={W / 2} y={382} textAnchor="middle" fontFamily={ANTON} fontSize={112} fill={tinta}>3H33 NO ESCURO</text>
+            <rect x={44} y={424} width={360} height={310} fill="#26241f" />
+            {[0, 1, 2, 3, 4].map((k) => <rect key={k} x={70 + k * 66} y={590 - (k % 3) * 46} width={52} height={144 + (k % 3) * 46} fill="#0d0c0a" />)}
+            {texto(432, 432, 344, 12)}
+            <line x1={36} y1={752} x2={W - 36} y2={752} stroke={tinta} strokeWidth={2} />
+            <text x={W / 2} y={818} textAnchor="middle" fontFamily={ELITE} fontSize={46} fill={tinta}>"fotos tiradas do céu"</text>
+            {destaque > 0 && <rect x={caixa.x} y={caixa.y} width={caixa.w} height={caixa.h} rx={18} fill="none" stroke={COR.vermelho} strokeWidth={8} pathLength={1} strokeDasharray={1} strokeDashoffset={1 - destaque} />}
+          </svg>
+        ) : (
+          <>
+            <svg width={W} height={H} style={{ position: "absolute", inset: 0 }}>
+              {texto(44, 34, 732, 3)}
+              {texto(44, 776, 732, 3)}
+            </svg>
+            {e.foto && <div style={{ position: "absolute", left: 90, top: 118, width: W - 180, height: 560, overflow: "hidden", border: "10px solid #f2ecdb", background: "#111" }}>
+              <Img src={staticFile(e.foto)} style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(1) contrast(1.25) brightness(1.1)", transform: "scale(2.1)" }} />
+            </div>}
+            <div style={{ position: "absolute", left: 0, right: 0, top: 704, textAlign: "center", fontFamily: ELITE, fontSize: 34, color: tinta }}>Foto sem autoria · novembro de 1983</div>
+          </>
+        )}
+        <div style={{ position: "absolute", left: 0, right: 0, top: H / 2, height: 3, background: "rgba(40,30,15,0.28)" }} />
+      </div>
     </div>
   );
 };
@@ -438,8 +486,9 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
     let ini = 0, k = 0;
     while (k < planos.length - 1 && s >= ini + (pesos[k] / total) * dur) { ini += (pesos[k] / total) * dur; k++; }
     const local = s - ini, chicote = k > 0 ? 1 - saida(local / 0.2) : 0, lado = k % 2 ? -1 : 1;
+    const filtros = [v.pb?.includes(k) ? "grayscale(1) contrast(1.2)" : "", chicote > 0.01 ? `blur(${18 * chicote}px)` : ""].filter(Boolean).join(" ");
     fundo = (
-      <AbsoluteFill style={{ transform: `translateX(${lado * 160 * chicote}px) scale(${1 + 0.08 * chicote})`, filter: chicote > 0.01 ? `blur(${18 * chicote}px)` : undefined }}>
+      <AbsoluteFill style={{ transform: `translateX(${lado * 160 * chicote}px) scale(${1 + 0.08 * chicote})`, filter: filtros || undefined }}>
         <Mundo3D plano={planos[k]} s={local} dur={(pesos[k] / total) * dur} />
       </AbsoluteFill>
     );
@@ -465,6 +514,7 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
         e.tipo === "visor" ? <Visor key={i} e={e} s={s} /> :
         e.tipo === "olhoMagico" ? <OlhoMagico key={i} e={e} s={s} /> :
         e.tipo === "planta" ? <Planta key={i} e={e} s={s} /> :
+        e.tipo === "jornal" ? <Jornal key={i} e={e} s={s} /> :
         e.tipo === "grupo" ? <Grupo key={i} e={e} s={s} /> :
         e.tipo === "audio" ? <AudioMsg key={i} e={e} s={s} /> : null)}
       <Entrada tipo={c.entrada} s={s} />

@@ -156,7 +156,9 @@
 - **`audio`:** `{ de, em, dur, y? }`, bolha de áudio do WhatsApp tocando.
 - **`olhoMagico`:** `{ em, ate?, texto? }`, tudo preto com um círculo de vidro no meio (combina com o plano `olho_magico`).
 - **`planta`:** `{ em, ate?, contaEm?, contaFim?, destacaEm? }`, a planta azul do prédio. Sem `contaEm`, mostra todos os andares; com ele, conta um a um; em `destacaEm`, o 13º fica vermelho.
-- **`textao`:** `{ texto, em, ate }`, a mensagem grande letra por letra.
+- **`jornal`:** `{ em, ate?, pronto?, destaca?: "manchete"|"pe", destacaEm?, viraEm?, foto? }`, o jornal de 1983. `pronto` já entra na tela no 1º quadro; `viraEm` vira a página e mostra a `foto` (`cenas/3d/<plano>.png`) no verso.
+- **`textao`:** `{ texto, em, ate, y? }`, a mensagem grande letra por letra. Com `y`, sai do centro para não tapar o que está na tela.
+- **Preto e branco:** no visual 3D, `"pb": [0]` deixa em preto e branco os planos com esses índices.
 - **`relampago`:** `{ em }`.
 - **Visuais especiais:**
   - `fotoRecebida` (`arquivo: "cenas/3d/<plano>.png"`, que a nuvem gera sozinha, e `legendaFoto`);

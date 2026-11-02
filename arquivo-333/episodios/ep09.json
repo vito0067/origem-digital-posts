@@ -20,21 +20,24 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "quarto_igual"
+          "celular_vibra"
         ]
       },
       "extras": [
         {
+          "tipo": "dado",
+          "rotulo": "ANDAR QUE NÃO EXISTE",
+          "de": 13,
+          "ate": 13,
+          "em": -0.3,
+          "fim": 0
+        },
+        {
           "tipo": "textao",
           "texto": "ELE LÊ O PRÉDIO INTEIRO",
           "em": 0,
-          "ate": 2.5
-        },
-        {
-          "tipo": "visor",
-          "em": 0,
-          "ate": 4,
-          "texto": "13º · QUARTO · 3:33"
+          "ate": 2.5,
+          "y": 440
         }
       ],
       "antes": 0.1,

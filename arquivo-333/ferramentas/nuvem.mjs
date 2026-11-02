@@ -85,6 +85,9 @@ for (const f of pendentes) {
     // 2. fotos 3D paradas (cenas/3d/<plano>.png) que ainda não existem
     const fotos = ep.cenas.filter((c) => c.visual.arquivo?.startsWith("cenas/3d/") && !existsSync(join(RAIZ, "public", c.visual.arquivo)))
       .map((c) => `${basename(c.visual.arquivo, ".png")}:${c.visual.fotoSeg ?? 1.5}`);
+    for (const c of ep.cenas) for (const x of c.extras ?? []) {
+      if (x.foto?.startsWith("cenas/3d/") && !existsSync(join(RAIZ, "public", x.foto))) fotos.push(`${basename(x.foto, ".png")}:1.5`);
+    }
     if (fotos.length) rodar("node", ["ferramentas/planos.mjs", "--grande", ...fotos]);
     // 3. som + linha do tempo, 4. vídeo
     rodar("node", ["ferramentas/preparar-caso.mjs", caminho]);
