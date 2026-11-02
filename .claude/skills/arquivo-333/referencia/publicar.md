@@ -1,6 +1,9 @@
 # Publicar e agendar o Arquivo 3:33
 
-**Por que pelo navegador:** TikTok e YouTube só deixam um robô publicar como PRIVADO até a plataforma auditar o aplicativo. Por isso, o TikTok e o YouTube são agendados pelo Chrome, com o agendador das próprias plataformas, que publicam sozinhas às 20h mesmo com o computador desligado. O Instagram vai pela API (n8n) quando a chave existir; até lá, pelo Chrome às 20h.
+**Quem publica onde:**
+- **YouTube:** agendado pelo Chrome, porque um robô só publica como privado até a plataforma auditar o aplicativo. O agendador do YouTube publica sozinho às 20h, mesmo com o computador desligado.
+- **Instagram:** pela API (n8n) quando a chave existir; até lá, pelo Chrome às 20h.
+- **TikTok:** só o Vito, pelo celular. Em `agendados.json`, o status é "com o Vito, pelo celular".
 
 ## Antes de tudo
 - **Navegador certo:** o perfil Origem do Chrome, deviceId `241d2700-ec5d-4a9d-af45-bb1a9b3718bf` em `select_browser`, logado no Arquivo 3:33 nas 3 redes desde 01/11/2026. Os nomes "Browser 1" e "Browser 2" em `list_connected_browsers` mudam a cada conexão, então não escolha pelo nome. O deviceId `117dcc99-…` é o perfil Trabalho, com o @origem__digital.

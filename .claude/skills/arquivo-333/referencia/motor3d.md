@@ -158,6 +158,7 @@
 - **`planta`:** `{ em, ate?, contaEm?, contaFim?, destacaEm? }`, a planta azul do prédio. Sem `contaEm`, mostra todos os andares; com ele, conta um a um; em `destacaEm`, o 13º fica vermelho.
 - **`jornal`:** `{ em, ate?, pronto?, destaca?: "manchete"|"pe", destacaEm?, viraEm?, foto? }`, o jornal de 1983. `pronto` já entra na tela no 1º quadro; `viraEm` vira a página e mostra a `foto` (`cenas/3d/<plano>.png`) no verso.
 - **`textao`:** `{ texto, em, ate, y? }`, a mensagem grande letra por letra. Com `y`, sai do centro para não tapar o que está na tela.
+- **`aposta`:** `{ texto, em }`, a pergunta do episódio em amarelo. Use só no cartão final, com `em` em 0,3 e até 40 caracteres.
 - **Preto e branco:** no visual 3D, `"pb": [0]` deixa em preto e branco os planos com esses índices.
 - **`relampago`:** `{ em }`.
 - **Visuais especiais:**

@@ -14,7 +14,8 @@
    - Põe no Pages os vídeos de ontem até daqui a 10 dias (`ferramentas/pages.mjs` → `docs/arquivo/`).
 3. **Tarefa do computador "Arquivo 3:33 · agendar nas redes"** (app do Claude aberto):
    - baixa do Pages ou do release o que já foi renderizado e ainda não foi agendado;
-   - agenda no TikTok e no YouTube para as 20h da data (veja `publicar.md`);
+   - agenda no YouTube para as 20h da data (veja `publicar.md`);
+   - monta o kit do TikTok para o Vito postar pelo celular (`ferramentas/kit-celular.mjs N`); nunca publica nem agenda no TikTok;
    - anota em `publicacao/agendados.json`.
    - Com a folga, o computador pode ficar dias desligado sem perder post.
 4. **Instagram:**
@@ -30,9 +31,10 @@
   - Prefira os planos prontos.
   - Planos novos devem ficar perto dos que já funcionam (mesmas distâncias e fov).
 - **Renderizar de novo:** mude qualquer coisa no `epNN.json` (pode ser `"versao": 2`) e dê push. A Action só refaz os que mudaram (compara um hash).
+- **Só trocar a legenda, sem renderizar:** no mesmo commit, atualize o `hash` e a legenda em `publicacao/render/epNN.json` e a legenda em `render/agenda.json`. O hash são os 12 primeiros caracteres do SHA-1 do `epNN.json`.
 - **Rascunho:** `"rascunho": true` no `epNN.json` faz a Action pular o episódio.
 
 ## Conferir se está tudo andando
 - **Renderização:** `publicacao/render/agenda.json` deve ter episódios até hoje + 3.
-- **Agendamento:** `publicacao/agendados.json` deve ter TikTok e YouTube agendados até onde houver vídeo.
+- **Agendamento:** `publicacao/agendados.json` deve ter o YouTube agendado até onde houver vídeo e o TikTok como "com o Vito, pelo celular".
 - **Se a Action falhou:** leia `publicacao/render/epNN-erro.txt`, corrija o JSON ou o código e dê push.

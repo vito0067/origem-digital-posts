@@ -29,6 +29,7 @@ export type Visual = {
 export type Extra =
   | { tipo: "cartao"; titulo: string; texto: string; em: number; ate?: number; y?: number }
   | { tipo: "textao"; texto: string; em: number; ate: number; y?: number }
+  | { tipo: "aposta"; texto: string; em: number }
   | { tipo: "jornal"; em: number; ate?: number; pronto?: boolean; destaca?: "manchete" | "pe"; destacaEm?: number; viraEm?: number; foto?: string }
   | { tipo: "remendo"; x: number; y: number; w: number; h: number; texto: string }
   | { tipo: "marcador"; x: number; y: number; texto: string; sub?: string; em: number }
@@ -114,6 +115,17 @@ const Textao: React.FC<{ e: Extract<Extra, { tipo: "textao" }>; s: number }> = (
         {e.texto.slice(0, n)}<span style={{ opacity: Math.floor(s * 4) % 2 ? 0 : 1, color: COR.vermelho }}>{n < e.texto.length ? "▌" : ""}</span>
       </div>
     </AbsoluteFill>
+  );
+};
+
+/** A aposta do episódio, escrita no cartão final, entre o selo e o aviso de ficção. */
+const Aposta: React.FC<{ e: Extract<Extra, { tipo: "aposta" }>; s: number }> = ({ e, s }) => {
+  if (s < e.em) return null;
+  const entra = saida((s - e.em) / 0.25);
+  return (
+    <div style={{ position: "absolute", left: 70, right: 70, top: 1340, textAlign: "center", fontFamily: ANTON, fontSize: 74, lineHeight: 1.14, color: COR.amarelo, opacity: entra, transform: `translateY(${(1 - entra) * 24}px)` }}>
+      {e.texto}
+    </div>
   );
 };
 
@@ -515,6 +527,7 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
         e.tipo === "olhoMagico" ? <OlhoMagico key={i} e={e} s={s} /> :
         e.tipo === "planta" ? <Planta key={i} e={e} s={s} /> :
         e.tipo === "jornal" ? <Jornal key={i} e={e} s={s} /> :
+        e.tipo === "aposta" ? <Aposta key={i} e={e} s={s} /> :
         e.tipo === "grupo" ? <Grupo key={i} e={e} s={s} /> :
         e.tipo === "audio" ? <AudioMsg key={i} e={e} s={s} /> : null)}
       <Entrada tipo={c.entrada} s={s} />

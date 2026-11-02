@@ -12,6 +12,10 @@ O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena n
 
 **TikTok (regra do Vito, 01/11/2026):** nunca publique nem agende pelo computador; ele posta pelo celular. Rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. Registre em `publicacao/epNN.md` a seção "Pergunta para fixar". Onde este manual ainda falar em agendar no TikTok, vale esta regra.
 
+**Aposta para o público comentar (pedido do Vito, 01/11/2026):** todo episódio termina com uma pergunta sobre o que vai acontecer, ligada à cena ("ela abre a porta ou não?"). É só opinião: o voto não muda a história já escrita.
+- **Onde vai:** logo depois da 1ª linha da legenda (no bloco `publicar`), na seção "Pergunta para fixar" de `publicacao/epNN.md` e, do ep. 11 em diante, no cartão final, com o extra `aposta` na cena `final`.
+- **Sem alongar o fim:** o cartão continua com `segura` de no máximo 0,6 s, e a fala final segue sendo só "Episódio N, amanhã."
+
 ## Onde fica cada coisa
 O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-333/` (no PC: `Documents\Origem Digital\4-midia\posts-automaticos\arquivo-333`).
 - `episodios/epNN.json`: o episódio, com falas, cenas, sons e o bloco `publicar`. É a fonte de tudo.

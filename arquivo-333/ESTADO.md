@@ -13,6 +13,13 @@ Atualizado em 01/11/2026, às 21h30. Leia antes de mexer e atualize a cada rodad
 | Instagram | Chrome às 20h (a tarefa publica) | ep. 7 | o site não agenda | ep. 8 em 02/11, ep. 9 em 03/11, ep. 10 em 04/11 |
 | TikTok | **o Vito, pelo celular** | ep. 7 | ep. 8 (agendado antes da regra) | postar os eps. 9 e 10 com os kits |
 
+## Quando O Sinal acabar (ep. 12, 06/11)
+- **Recomendação, ainda sem a decisão do Vito:** continuar neste mesmo perfil, com uma série nova e curta, "Caso 02", de 8 a 12 episódios, começando em 07/11, sem dia vazio.
+- **Por quê:** o nome "Arquivo" já comporta vários casos, e um perfil novo perderia os seguidores conquistados.
+- **Ligação:** o ep. 12 fecha a história e anuncia o Caso 02.
+- **Filme:** o filme de O Sinal sai no YouTube depois da temporada fechada, durante o Caso 02, se o Vito confirmar o formato.
+- **Prazo:** o tema do Caso 02 precisa estar decidido até 04/11, para dar tempo de escrever a bíblia e fazer os cenários.
+
 ## Conta certa
 - **Chrome:** perfil Origem, `select_browser` com o deviceId `241d2700-ec5d-4a9d-af45-bb1a9b3718bf`. Não escolha pelo nome: "Browser 1" e "Browser 2" mudam.
 - **Contas:** Instagram e TikTok @arquivo333.0; YouTube no canal Arquivo 3:33.
@@ -20,14 +27,14 @@ Atualizado em 01/11/2026, às 21h30. Leia antes de mexer e atualize a cada rodad
 
 ## Regras novas
 - **TikTok (Vito, 01/11/2026):** nunca publique nem agende pelo computador. Para cada episódio, rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. No TikTok, só leia os números.
-- **Comentário fixado:** use a seção "Pergunta para fixar" de `publicacao/epNN.md`, sempre uma aposta ligada à cena.
+- **Aposta:** todo episódio tem uma pergunta ligada à cena. Nos eps. 8 a 10, ela está na legenda e no comentário fixado; do ep. 11 em diante, também no cartão final (extra `aposta`). Só opinião: não muda a história.
 
 ## Riscos
 - **Tarefas paradas:** as tarefas do PC podem parar pedindo permissão. Em 01/11, as duas ficaram paradas das 19h15 às 20h20 e o ep. 7 só saiu no Instagram pela conversa principal. Encerrar uma rodada parada pode iniciar outra na hora: antes de publicar à mão, confira se há rodada aberta, para o episódio não sair duas vezes.
 - **Instagram manual:** depende do PC ligado e do Chrome certo; atrasou os eps. 6 e 7. O conserto é a chave da conta no n8n (fluxo U5ZEYtmvwySTwvAj, desligado), que precisa do Vito no Meta Business Suite.
 
 ## Pendências
-- **Do Vito:** decidir se exclui o ep. 8 agendado no TikTok e posta pelo celular; postar os eps. 9 e 10 pelo celular; Meta Business Suite; verificação em 2 etapas no Google; separar o Hoje Sumiu em outro perfil do Chrome.
+- **Do Vito:** excluir o ep. 8 agendado no TikTok até 02/11 às 20h e postar pelo celular; escolher o tema do Caso 02; postar os eps. 9 e 10 pelo celular; Meta Business Suite; verificação em 2 etapas no Google; separar o Hoje Sumiu em outro perfil do Chrome.
 - **Do Claude:** vídeos relacionados e comentários fixados no YouTube; ler a retenção no YouTube Studio e registrar em `publicacao/numeros.md`; eps. 11 e 12; planejar o filme de O Sinal (só plano, sem gastar créditos até o Vito confirmar o formato).
 
 ## Números de 01/11/2026

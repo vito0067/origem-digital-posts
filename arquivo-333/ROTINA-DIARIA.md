@@ -11,7 +11,8 @@ O passo a passo completo agora fica na **skill `arquivo-333`**, no repositório 
 1. **10h (nuvem):**
    - a rotina "Arquivo 3:33 · Produção" revisa o que foi renderizado, escreve o próximo episódio (ou dois) e grava a voz;
    - depois dá push, e o GitHub renderiza.
-2. **Quando o computador estiver ligado com o app do Claude aberto:** a tarefa "Arquivo 3:33 · agendar nas redes" agenda no TikTok e no YouTube, às 20h do dia de cada episódio, tudo o que já estiver pronto.
+2. **Quando o computador estiver ligado com o app do Claude aberto:** a tarefa "Arquivo 3:33 · agendar nas redes" agenda no YouTube, às 20h do dia de cada episódio, tudo o que já estiver pronto, e deixa o kit do TikTok em `Desktop\Origem-Digital\arquivo-333-envios\celular-epNN`.
 3. **20h:**
-   - TikTok e YouTube publicam sozinhos;
-   - o Instagram sai pelo n8n (com a chave) ou pela tarefa das 19h50.
+   - o YouTube publica sozinho;
+   - o Instagram sai pelo n8n (com a chave) ou pela tarefa das 19h50;
+   - o Vito posta no TikTok pelo celular, com o kit (regra de 01/11/2026: nunca pelo computador).
