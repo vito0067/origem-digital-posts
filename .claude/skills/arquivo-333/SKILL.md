@@ -8,6 +8,10 @@ description: Produz, revisa e publica os episódios do perfil "Arquivo 3:33" (s�
 Perfil de **séries de terror em episódios**: um episódio novo **todo dia às 20h (Brasília)** no TikTok @arquivo333.0, no YouTube @arquivo333-0 e no Instagram @arquivo333.0.
 O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena nem publicação. Ele aprovou este formato em 26/10/2026 e disse que o vídeo-modelo (youtu.be/5HwmrSwNY-Y) "é ouro".
 
+**Comece por `arquivo-333/ESTADO.md`:** episódio atual, o que está agendado em cada rede, conta certa, pendências e riscos. Atualize esse arquivo a cada rodada.
+
+**TikTok (regra do Vito, 01/11/2026):** nunca publique nem agende pelo computador; ele posta pelo celular. Rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. Registre em `publicacao/epNN.md` a seção "Pergunta para fixar". Onde este manual ainda falar em agendar no TikTok, vale esta regra.
+
 ## Onde fica cada coisa
 O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-333/` (no PC: `Documents\Origem Digital\4-midia\posts-automaticos\arquivo-333`).
 - `episodios/epNN.json`: o episódio, com falas, cenas, sons e o bloco `publicar`. É a fonte de tudo.

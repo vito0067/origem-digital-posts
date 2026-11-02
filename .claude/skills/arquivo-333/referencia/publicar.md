@@ -14,6 +14,8 @@
 - **Folga:** agende tudo o que já estiver renderizado até 10 dias à frente. Quanto mais folga, menos o computador precisa estar ligado.
 
 ## TikTok (tiktok.com/tiktokstudio/upload)
+**Regra do Vito (01/11/2026): NÃO publique nem agende por aqui.** Ele posta pelo celular, com o kit de `node ferramentas/kit-celular.mjs N`. Os passos abaixo ficam só como referência.
+
 1. Ache o input de arquivo com `find` e faça `file_upload` do mp4.
 2. Feche o aviso "Veja a prévia…" (Entendi).
 3. **Descrição:**

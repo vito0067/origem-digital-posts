@@ -1,0 +1,39 @@
+# Arquivo 3:33: estado atual
+
+Atualizado em 01/11/2026, às 21h30. Leia antes de mexer e atualize a cada rodada. O repositório é público: nada de dados pessoais, senhas ou tokens.
+
+## Agora
+- **Série:** O Sinal, temporada 1. O ep. 7 saiu hoje; o ep. 8 sai em 02/11.
+- **Próximo passo:** fazer os eps. 11 (05/11) e 12 (06/11) e decidir o que vem depois de 06/11. Ainda não há série seguinte escrita.
+
+## Situação por rede
+| Rede | Como sai | No ar até | Agendado | Falta |
+|---|---|---|---|---|
+| YouTube | agendado pelo Chrome | ep. 7 | eps. 8, 9 e 10 | vídeos relacionados e comentários fixados |
+| Instagram | Chrome às 20h (a tarefa publica) | ep. 7 | o site não agenda | ep. 8 em 02/11, ep. 9 em 03/11, ep. 10 em 04/11 |
+| TikTok | **o Vito, pelo celular** | ep. 7 | ep. 8 (agendado antes da regra) | postar os eps. 9 e 10 com os kits |
+
+## Conta certa
+- **Chrome:** perfil Origem, `select_browser` com o deviceId `241d2700-ec5d-4a9d-af45-bb1a9b3718bf`. Não escolha pelo nome: "Browser 1" e "Browser 2" mudam.
+- **Contas:** Instagram e TikTok @arquivo333.0; YouTube no canal Arquivo 3:33.
+- **Risco real:** o Hoje Sumiu usa o mesmo perfil do Chrome, e o login troca durante o dia. Em 01/11, às 21h25, o Instagram e o TikTok estavam no Hoje Sumiu. Olhe a conta na tela antes de confirmar. Se for outra, não publique: registre e avise o Vito.
+
+## Regras novas
+- **TikTok (Vito, 01/11/2026):** nunca publique nem agende pelo computador. Para cada episódio, rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. No TikTok, só leia os números.
+- **Comentário fixado:** use a seção "Pergunta para fixar" de `publicacao/epNN.md`, sempre uma aposta ligada à cena.
+
+## Riscos
+- **Tarefas paradas:** as tarefas do PC podem parar pedindo permissão. Em 01/11, as duas ficaram paradas das 19h15 às 20h20 e o ep. 7 só saiu no Instagram pela conversa principal. Encerrar uma rodada parada pode iniciar outra na hora: antes de publicar à mão, confira se há rodada aberta, para o episódio não sair duas vezes.
+- **Instagram manual:** depende do PC ligado e do Chrome certo; atrasou os eps. 6 e 7. O conserto é a chave da conta no n8n (fluxo U5ZEYtmvwySTwvAj, desligado), que precisa do Vito no Meta Business Suite.
+
+## Pendências
+- **Do Vito:** decidir se exclui o ep. 8 agendado no TikTok e posta pelo celular; postar os eps. 9 e 10 pelo celular; Meta Business Suite; verificação em 2 etapas no Google; separar o Hoje Sumiu em outro perfil do Chrome.
+- **Do Claude:** vídeos relacionados e comentários fixados no YouTube; ler a retenção no YouTube Studio e registrar em `publicacao/numeros.md`; eps. 11 e 12; planejar o filme de O Sinal (só plano, sem gastar créditos até o Vito confirmar o formato).
+
+## Números de 01/11/2026
+- **Seguidores:** Instagram 86, YouTube 57, TikTok 2.
+- **O que funciona:** o ep. 2 fez 10,3 mil no Instagram, contra 556 a 1.562 dos outros. A diferença é a primeira tela: imagem forte, número e mistério.
+- **Histórico:** `publicacao/numeros.md`.
+
+## Mapa
+Manual: skill `arquivo-333` (`.claude/skills/arquivo-333/`). Registro por episódio: `publicacao/agendados.json` e `publicacao/epNN.md`. História: `series/o-sinal.md`.
