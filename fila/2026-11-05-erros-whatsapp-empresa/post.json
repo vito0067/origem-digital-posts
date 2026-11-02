@@ -1,0 +1,49 @@
+{
+  "id": "2026-11-05-erros-whatsapp-empresa",
+  "publicar_em": "2026-11-05T12:30:00-03:00",
+  "formato": "carrossel",
+  "tema": "noite",
+  "legenda": "3 erros que fazem o cliente desistir no WhatsApp da empresa.\n\nResponder só no dia seguinte, mandar resposta que não responde a pergunta e deixar a mensagem sem retorno: são situações comuns em quem atende sozinho e está sempre ocupado.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, responde em segundos, 24 horas por dia, e passa o pedido para a sua equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do post é um exemplo.\n\n#whatsappbusiness #atendimentoaocliente #pequenosnegocios #inteligenciaartificial #empreendedorismo #saopaulo",
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "WhatsApp da empresa",
+      "texto": "3 erros que fazem o cliente *desistir*",
+      "apoio": "Arraste e veja se acontece aí.",
+      "fundo": "biblioteca/noite-celular-cabeceira.jpg"
+    },
+    {
+      "tipo": "frase",
+      "etiqueta": "Erro 1",
+      "texto": "Responder só *no dia seguinte*",
+      "apoio": "Quem perguntou à noite já olhou outro lugar."
+    },
+    {
+      "tipo": "frase",
+      "etiqueta": "Erro 2",
+      "texto": "Resposta que *não responde*",
+      "apoio": "\"Já te retorno\" não diz horário nem preço."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/relogio.png",
+      "etiqueta": "Erro 3",
+      "texto": "Deixar a mensagem *sem retorno*",
+      "apoio": "Entre um atendimento e outro, ela some."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Loja Exemplo",
+      "mensagens": [
+        { "de": "cliente", "texto": "Oi! Vocês entregam no meu bairro?" },
+        { "de": "aurora", "texto": "Oi! Sou a Aurora, atendente de IA da loja. Vou passar seu pedido para a equipe confirmar a entrega com você, tudo bem?" }
+      ]
+    },
+    {
+      "tipo": "comparar",
+      "etiqueta": "A diferença",
+      "esquerda": { "titulo": "Sem a Aurora", "itens": ["Resposta no dia seguinte", "Cliente esperando"] },
+      "direita": { "titulo": "Com a Aurora", "itens": ["Resposta em segundos", "Pedido com a equipe"] }
+    }
+  ]
+}
