@@ -1,6 +1,6 @@
 # Arquivo 3:33: estado atual
 
-Atualizado em 01/11/2026, às 21h30. Leia antes de mexer e atualize a cada rodada. O repositório é público: nada de dados pessoais, senhas ou tokens.
+Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada. O repositório é público: nada de dados pessoais, senhas ou tokens.
 
 ## Agora
 - **Série:** O Sinal, temporada 1. O ep. 7 saiu hoje; o ep. 8 sai em 02/11.
@@ -9,7 +9,7 @@ Atualizado em 01/11/2026, às 21h30. Leia antes de mexer e atualize a cada rodad
 ## Situação por rede
 | Rede | Como sai | No ar até | Agendado | Falta |
 |---|---|---|---|---|
-| YouTube | agendado pelo Chrome | ep. 7 | eps. 8, 9 e 10 | vídeos relacionados e comentários fixados |
+| YouTube | agendado pelo Chrome | ep. 7 | eps. 8, 9 e 10 (versões com a aposta; as antigas ficaram privadas) | vídeos relacionados e comentários fixados |
 | Instagram | Chrome às 20h (a tarefa publica) | ep. 7 | o site não agenda | ep. 8 em 02/11, ep. 9 em 03/11, ep. 10 em 04/11 |
 | TikTok | **o Vito, pelo celular** | ep. 7 | ep. 8 (agendado antes da regra) | postar os eps. 9 e 10 com os kits |
 
@@ -30,6 +30,7 @@ Atualizado em 01/11/2026, às 21h30. Leia antes de mexer e atualize a cada rodad
 - **Aposta:** todo episódio tem uma pergunta ligada à cena. Do ep. 8 em diante, ela está na legenda, no comentário fixado e no cartão final (extra `aposta`). Em 02/11, os eps. 8 a 10 foram renderizados de novo com a aposta; no YouTube, a versão nova entra programada e a antiga fica privada, sem excluir. Só opinião: não muda a história.
 
 ## Riscos
+- **Chrome trocando de perfil:** em 02/11, a conexão do Chrome mudou várias vezes para o perfil Trabalho (`117dcc99…`) no meio de um envio. As ferramentas recusam agir fora do grupo de abas, mas refaça `select_browser` com o deviceId da Origem e confira a conta antes de cada passo; use passos curtos.
 - **Tarefas paradas:** as tarefas do PC podem parar pedindo permissão. Em 01/11, as duas ficaram paradas das 19h15 às 20h20 e o ep. 7 só saiu no Instagram pela conversa principal. Encerrar uma rodada parada pode iniciar outra na hora: antes de publicar à mão, confira se há rodada aberta, para o episódio não sair duas vezes.
 - **Instagram manual:** depende do PC ligado e do Chrome certo; atrasou os eps. 6 e 7. O conserto é a chave da conta no n8n (fluxo U5ZEYtmvwySTwvAj, desligado), que precisa do Vito no Meta Business Suite.
 
