@@ -11,7 +11,7 @@ Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada.
 |---|---|---|---|---|
 | YouTube | agendado pelo Chrome | ep. 7 | eps. 8, 9 e 10 (versões com a aposta; ep. 9 com a voz refeita; as antigas ficaram privadas) | vídeos relacionados e comentários fixados |
 | Instagram | **n8n, sozinho às 20h (ligado em 02/11)**; Chrome só se falhar | ep. 7 | o fluxo lê o `agenda.json` do Pages | provar a 1ª publicação real (ep. 8, 02/11 às 20h) na tabela `public.arquivo_instagram` |
-| TikTok | **o Vito, pelo celular** | ep. 7 | ep. 8 (agendado antes da regra) | postar os eps. 9 e 10 com os kits |
+| TikTok | **o Vito, pelo celular** (em 03/11 ele pediu e o ep. 9 saiu pelo Chrome do PC) | ep. 7 | ep. 8 (agendado antes da regra) | postar os eps. 9 e 10 com os kits |
 
 ## Quando O Sinal acabar (ep. 12, 06/11)
 - **Recomendação, ainda sem a decisão do Vito:** continuar neste mesmo perfil, com uma série nova e curta, "Caso 02", de 8 a 12 episódios, começando em 07/11, sem dia vazio.
