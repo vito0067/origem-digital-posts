@@ -5,6 +5,8 @@ Ligar o rótulo de conteúdo com IA nas 3 redes.
 
 **Quem escolheu:** "O boleto", de @elgabriel34, com 9 curtidas no Reel do Dia 2 (conferido em 02/11/2026, ~17h40). "Crianças" (14) teve veto: grupo de pessoas. "Boleto" (4) e outros iguais não somados ao crédito.
 
+**YouTube:** programado em 02/11/2026 para 20h00 (horário de Brasília), canal Hoje Sumiu: https://youtube.com/shorts/-Lzl8d7PCz4 . Enviado com a cópia leve de 7,7 MB. Instagram e TikTok ainda não.
+
 **Divulgação no meio (40% a 60%):** a voz diz "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio." e o cartão "SEM CÂMERA · GUIA EM PDF · LINK NA BIO" aparece de 33,8 s a 40,9 s. Sem promessa de dinheiro.
 
 ## Aviso para o celular

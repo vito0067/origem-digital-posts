@@ -32,7 +32,7 @@ Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion 
 - **Nunca copie a arte, os personagens ou o texto deles.** Pegamos o método de edição, não a aparência.
 
 ## Formato de cada episódio
-- **Duração:** de 62 a 75 s. Mais de 1 minuto conta para a monetização do TikTok.
+- **Duração:** de 55 a 65 s (decisão de 03/11/2026: o Dia 3, com 80 s, teve só 27% de retenção no YouTube; o Dia 4 ficou em 64,7 s). Mais de 1 minuto conta para a monetização do TikTok, então prefira 60 a 65 s. Para caber, use 13 falas curtas e uma cena nova por fala.
 - **Primeiro quadro:** a coisa do dia em destaque, com o cabeçalho e o letreiro "HOJE SUMIU + COISA". Na fala 1, o título e a coisa viram do avesso.
 - **Roteiro de 12 a 14 falas, nesta ordem:**
   1. "Hoje sumiu X." Depois "Do mundo inteiro. Para sempre."
@@ -62,7 +62,10 @@ Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion 
 Depois de "Do mundo inteiro. Para sempre.", um cartão mostra o @ de quem escreveu, o comentário e as curtidas, conferidas no dia. A voz diz que foi o mais curtido. Se houve veto, diga "o mais curtido que valia", porque outro comentário teve mais curtidas. O @ fica só na tela e na legenda, nunca na voz: nome de conta é pronúncia arriscada.
 
 ## Divulgação do guia "Sem Câmera" (pedido do Vito, 02/11/2026)
-Todo dia entra de 3 a 6 s de divulgação **no meio** do vídeo, entre 40% e 60% da duração, num corte natural (uma fala só dela, sem quebrar a história). A voz é a do Mark: "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no línque da bio." (escreva "línque" na `fala` e "link" na `legenda`). Na tela, o cartão de papel do bloco `divulgacao` (SEM CÂMERA · GUIA EM PDF · LINK NA BIO). Depois da fala, uma frase curta puxa a história de volta ("Voltando."). **Sem promessa de dinheiro.** Legenda e descrição levam "Guia para fazer vídeos assim: link na bio." O Dia 3 foi o primeiro com isso; a fala saiu com 7 s, então corte uma frase se quiser ficar dentro de 6 s.
+Todo dia entra de 3 a 6 s de divulgação **no meio** do vídeo, entre 40% e 60% da duração, num corte natural (uma fala só dela, sem quebrar a história). A voz é a do Mark: "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no línque da bio." (escreva "línque" na `fala` e "link" na `legenda`). Na tela, o cartão de papel do bloco `divulgacao` (SEM CÂMERA · GUIA EM PDF · LINK NA BIO). Depois da fala, uma frase curta puxa a história de volta ("Voltando."). **Sem promessa de dinheiro.** Legenda e descrição levam "Guia para fazer vídeos assim: link na bio." O Dia 3 foi o primeiro com isso; no Dia 4 a divulgação ocupou 27 s a 34 s de 64,7 s (42% a 53%): confira a posição depois de `preparar-dia` e, se cair fora de 40% a 60%, troque a ordem das falas e regrave a voz. A fala sai com 6 a 7 s. O link do guia (https://semcamera.vercel.app/?de=hojesumiu) fica na bio do Instagram; o vídeo só diz "link na bio".
+
+## Rotina diária (aprendida em 03/11/2026: o Dia 4 atrasou um dia)
+Todo dia, de manhã (antes das 12h), este chat precisa ser chamado: ler os votos do Reel do dia anterior, produzir e postar. **Não existe aviso automático** (o agendador foi negado em 02/11). O Vito, ou o chat Origem Digital, chama de manhã. No Instagram logado, abra o post em `/p/<código>/` (o `/reel/` rola o feed) e clique em "Ver comentários ocultos".
 
 ## Som
 Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estranha e volta no chamado. Efeitos de papel: folha virando em onda, dobra, buzina, apito, mordida, lápis.

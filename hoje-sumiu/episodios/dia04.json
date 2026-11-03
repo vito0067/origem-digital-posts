@@ -1,0 +1,1146 @@
+{
+ "id": "hoje-sumiu-dia04",
+ "dia": 4,
+ "coisa": "a energia",
+ "velocidade": 1,
+ "falas": [
+  {
+   "fala": "Hoje sumiu a energia.",
+   "legenda": "Hoje sumiu a ~energia.~"
+  },
+  {
+   "fala": "Do mundo inteiro. Para sempre.",
+   "legenda": "Do mundo *inteiro.* Para *sempre.*",
+   "segura": 0.2
+  },
+  {
+   "fala": "Esse foi o comentário mais curtido.",
+   "legenda": "Esse foi o comentário *mais curtido.*",
+   "segura": 0.5
+  },
+  {
+   "fala": "Primeiro, o celular. Ele morreu no meio da mensagem.",
+   "legenda": "Primeiro, o *celular.* Ele *morreu* no meio da *mensagem.*",
+   "segura": 0.3
+  },
+  {
+   "fala": "Depois, o semáforo. Sem luz, todo carro acha que é o primeiro.",
+   "legenda": "Depois, o *semáforo.* Sem *luz,* todo carro acha que é o *primeiro.*",
+   "segura": 0.3
+  },
+  {
+   "fala": "A novela das oito parou no beijo. A casa inteira ficou em silêncio.",
+   "legenda": "A *novela* das oito parou no *beijo.* A casa inteira ficou em *silêncio.*",
+   "segura": 0.35
+  },
+  {
+   "fala": "À noite, a cidade fica escura. E as estrelas aparecem.",
+   "legenda": "À noite, a cidade fica *escura.* E as *estrelas* aparecem.",
+   "segura": 0.4
+  },
+  {
+   "fala": "Feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no línque da bio.",
+   "legenda": "Feito só com *inteligência artificial,* sem *câmera.* Quer *aprender?* O *guia* está no *link* da *bio.*",
+   "segura": 0.2
+  },
+  {
+   "fala": "Voltando. Só uma coisa não mudou. Sua mãe continua gritando: apaga a luz!",
+   "legenda": "Voltando. Só uma coisa não *mudou.* Sua *mãe* continua *gritando:* apaga a *luz!*",
+   "segura": 0.45
+  },
+  {
+   "fala": "Mas ninguém reclama. Para todo mundo, a energia nunca existiu.",
+   "legenda": "Mas ninguém *reclama.* Para todo mundo, a ~energia~ *nunca existiu.*",
+   "segura": 0.4
+  },
+  {
+   "fala": "Só o Seu Nilo lembra. A regra dele é clara: aqui não some governo nem pessoa. E ele anotou: dia quatro, a energia.",
+   "legenda": "Só o *Seu Nilo* lembra. A regra dele é clara: aqui não some *governo* nem *pessoa.* E ele *anotou:* *dia 4,* a ~energia.~",
+   "segura": 0.35
+  },
+  {
+   "fala": "Amanhã, outra coisa vai sumir. E quem escolhe é você.",
+   "legenda": "*Amanhã,* outra coisa vai sumir. E quem escolhe é *você.*"
+  },
+  {
+   "fala": "Comenta aqui embaixo. O comentário mais curtido some do mundo.",
+   "legenda": "*Comenta* aqui embaixo. O comentário mais curtido *some* do mundo."
+  }
+ ],
+ "cena": {
+  "cor": "azul",
+  "titulo": "a energia",
+  "sumiram": [
+   "Dia 1: a cor vermelha",
+   "Dia 2: o frio",
+   "Dia 3: o boleto"
+  ],
+  "exemplos": [
+   "as filas",
+   "o guarda-chuva",
+   "a pressa"
+  ],
+  "credito": {
+   "rotulo": "O MAIS CURTIDO",
+   "conta": "@eliabebarbosadahora",
+   "texto": "Energia",
+   "curtidas": 10
+  },
+  "divulgacao": {
+   "em": "@7:voz-0.05",
+   "ate": "@7:fim-0.05",
+   "titulo": "SEM CÂMERA",
+   "sub": "GUIA EM PDF",
+   "chamada": "LINK NA BIO"
+  },
+  "heroi": {
+   "peca": {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     16
+    ],
+    "em": -1,
+    "sai": "@3:inicio+0.1",
+    "modo": "cresce",
+    "some": "@onda",
+    "filhos": [
+     {
+      "forma": "circulo",
+      "r": 3.1,
+      "y0": 4.9,
+      "cor": "#fff3a8",
+      "prof": 0.02,
+      "pos": [
+       0,
+       0,
+       -0.06
+      ]
+     },
+     {
+      "forma": "circulo",
+      "r": 2.3,
+      "y0": 4.9,
+      "cor": "#ffe14d",
+      "prof": 0.08
+     },
+     {
+      "forma": "retangulo",
+      "l": 1.7,
+      "a": 1.7,
+      "y0": 2.2,
+      "canto": 0.2,
+      "cor": "#8c98a6",
+      "prof": 0.08
+     },
+     {
+      "forma": "retangulo",
+      "l": 1.3,
+      "a": 0.55,
+      "y0": 1.8,
+      "canto": 0.1,
+      "cor": "#5c6675",
+      "prof": 0.08
+     },
+     {
+      "forma": "retangulo",
+      "l": 0.5,
+      "a": 1.6,
+      "y0": 0.2,
+      "canto": 0.05,
+      "cor": "#3d4656",
+      "prof": 0.05
+     }
+    ]
+   },
+   "camera": [
+    0.5,
+    3.4,
+    29
+   ],
+   "alvo": [
+    0,
+    6.2,
+    16
+   ]
+  },
+  "cameras": [
+   {
+    "em": "@3:inicio-0.35",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 1.1
+   },
+   {
+    "em": "@4:inicio-0.35",
+    "lugar": "semaforo"
+   },
+   {
+    "em": "@4:primeiro-0.4",
+    "lugar": "semaforo",
+    "perto": true
+   },
+   {
+    "em": "@5:inicio-0.35",
+    "lugar": "direita"
+   },
+   {
+    "em": "@5:beijo-0.45",
+    "lugar": "direita",
+    "perto": true
+   },
+   {
+    "em": "@7:inicio-0.3",
+    "lugar": "cidade",
+    "dur": 1.3
+   },
+   {
+    "em": "@6:inicio-0.3",
+    "lugar": "ceu",
+    "dur": 1.2
+   },
+   {
+    "em": "@8:inicio-0.3",
+    "lugar": "praca"
+   }
+  ],
+  "pecas": [
+   {
+    "peca": "espalha",
+    "forma": "papel",
+    "cor": "#fff3a8",
+    "qtd": 26,
+    "tam": 0.7
+   },
+   {
+    "peca": "pessoa",
+    "pos": [
+     0.3,
+     0.2,
+     18.4
+    ],
+    "escala": 1.9,
+    "roupa": "#3a86ff",
+    "olhar": [
+     0.2,
+     0
+    ],
+    "em": "@3:inicio+0.05",
+    "sai": "@4:inicio-0.05",
+    "poses": [
+     {
+      "pose": "segura"
+     },
+     {
+      "em": "@3:morreu",
+      "pose": "susto"
+     },
+     {
+      "em": "@3:mensagem",
+      "pose": "triste"
+     }
+    ],
+    "segura": {
+     "forma": "caixa",
+     "l": 0.42,
+     "a": 0.72,
+     "p": 0.1,
+     "cor": "#27324a",
+     "pos": [
+      0,
+      0.2,
+      0.1
+     ]
+    }
+   },
+   {
+    "peca": "piso",
+    "pos": [
+     12,
+     0.13,
+     13
+    ],
+    "parede": "#e3d4f7",
+    "cores": [
+     "#d7e8ee",
+     "#f6efe2"
+    ],
+    "em": "@5:inicio-0.35",
+    "sai": "@7:inicio",
+    "filhos": [
+     {
+      "forma": "retangulo",
+      "l": 4.6,
+      "a": 3.2,
+      "y0": 1.7,
+      "canto": 0.12,
+      "cor": "#27324a",
+      "prof": 0.08,
+      "pos": [
+       -1,
+       0,
+       -3.3
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       -1,
+       0,
+       -3.2
+      ],
+      "some": "@5:beijo",
+      "filhos": [
+       {
+        "forma": "retangulo",
+        "l": 4.1,
+        "a": 2.7,
+        "y0": 1.95,
+        "canto": 0.06,
+        "cor": "#ff8fb1",
+        "prof": 0.04
+       },
+       {
+        "forma": "circulo",
+        "r": 0.5,
+        "y0": 3,
+        "x0": 0,
+        "cor": "#ffffff",
+        "prof": 0.03,
+        "pos": [
+         0,
+         0,
+         0.05
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.6,
+       0,
+       0.7
+      ],
+      "escala": 1.6,
+      "semente": 5,
+      "olhar": [
+       0.4,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "feliz"
+       },
+       {
+        "em": "@5:beijo",
+        "pose": "susto"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -0.5,
+       0,
+       1
+      ],
+      "escala": 1.6,
+      "semente": 7,
+      "roupa": "#ffd166",
+      "olhar": [
+       0,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "feliz"
+       },
+       {
+        "em": "@5:beijo",
+        "pose": "bravo"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.6,
+       0,
+       0.6
+      ],
+      "escala": 1.6,
+      "semente": 3,
+      "olhar": [
+       -0.5,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "feliz"
+       },
+       {
+        "em": "@5:beijo",
+        "pose": "susto"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     24,
+     -14
+    ],
+    "em": "@6:inicio-0.3",
+    "sai": "@8:voz+0.1",
+    "filhos": [
+     {
+      "forma": "retangulo",
+      "l": 18,
+      "a": 13,
+      "y0": -3,
+      "canto": 0.1,
+      "cor": "#1d2b53",
+      "prof": 0.06
+     },
+     {
+      "peca": "grupo",
+      "em": "@6:estrelas-0.3",
+      "modo": "cresce",
+      "dur": 0.6,
+      "pos": [
+       0,
+       0,
+       0.1
+      ],
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.5
+         ],
+         [
+          0.12,
+          0.12
+         ],
+         [
+          0.5,
+          0
+         ],
+         [
+          0.12,
+          -0.12
+         ],
+         [
+          0,
+          -0.5
+         ],
+         [
+          -0.12,
+          -0.12
+         ],
+         [
+          -0.5,
+          0
+         ],
+         [
+          -0.12,
+          0.12
+         ]
+        ],
+        "cor": "#fff3a8",
+        "pos": [
+         -4.5,
+         6.5,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.4
+         ],
+         [
+          0.1,
+          0.1
+         ],
+         [
+          0.4,
+          0
+         ],
+         [
+          0.1,
+          -0.1
+         ],
+         [
+          0,
+          -0.4
+         ],
+         [
+          -0.1,
+          -0.1
+         ],
+         [
+          -0.4,
+          0
+         ],
+         [
+          -0.1,
+          0.1
+         ]
+        ],
+        "cor": "#ffffff",
+        "pos": [
+         -2.8,
+         3.2,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.55
+         ],
+         [
+          0.13,
+          0.13
+         ],
+         [
+          0.55,
+          0
+         ],
+         [
+          0.13,
+          -0.13
+         ],
+         [
+          0,
+          -0.55
+         ],
+         [
+          -0.13,
+          -0.13
+         ],
+         [
+          -0.55,
+          0
+         ],
+         [
+          -0.13,
+          0.13
+         ]
+        ],
+        "cor": "#fff3a8",
+        "pos": [
+         -1.2,
+         7.6,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.4
+         ],
+         [
+          0.1,
+          0.1
+         ],
+         [
+          0.4,
+          0
+         ],
+         [
+          0.1,
+          -0.1
+         ],
+         [
+          0,
+          -0.4
+         ],
+         [
+          -0.1,
+          -0.1
+         ],
+         [
+          -0.4,
+          0
+         ],
+         [
+          -0.1,
+          0.1
+         ]
+        ],
+        "cor": "#ffffff",
+        "pos": [
+         0.4,
+         4.8,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.5
+         ],
+         [
+          0.12,
+          0.12
+         ],
+         [
+          0.5,
+          0
+         ],
+         [
+          0.12,
+          -0.12
+         ],
+         [
+          0,
+          -0.5
+         ],
+         [
+          -0.12,
+          -0.12
+         ],
+         [
+          -0.5,
+          0
+         ],
+         [
+          -0.12,
+          0.12
+         ]
+        ],
+        "cor": "#fff3a8",
+        "pos": [
+         1.9,
+         7.2,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.4
+         ],
+         [
+          0.1,
+          0.1
+         ],
+         [
+          0.4,
+          0
+         ],
+         [
+          0.1,
+          -0.1
+         ],
+         [
+          0,
+          -0.4
+         ],
+         [
+          -0.1,
+          -0.1
+         ],
+         [
+          -0.4,
+          0
+         ],
+         [
+          -0.1,
+          0.1
+         ]
+        ],
+        "cor": "#ffffff",
+        "pos": [
+         3.4,
+         3.6,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.55
+         ],
+         [
+          0.13,
+          0.13
+         ],
+         [
+          0.55,
+          0
+         ],
+         [
+          0.13,
+          -0.13
+         ],
+         [
+          0,
+          -0.55
+         ],
+         [
+          -0.13,
+          -0.13
+         ],
+         [
+          -0.55,
+          0
+         ],
+         [
+          -0.13,
+          0.13
+         ]
+        ],
+        "cor": "#fff3a8",
+        "pos": [
+         4.6,
+         6.8,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.4
+         ],
+         [
+          0.1,
+          0.1
+         ],
+         [
+          0.4,
+          0
+         ],
+         [
+          0.1,
+          -0.1
+         ],
+         [
+          0,
+          -0.4
+         ],
+         [
+          -0.1,
+          -0.1
+         ],
+         [
+          -0.4,
+          0
+         ],
+         [
+          -0.1,
+          0.1
+         ]
+        ],
+        "cor": "#ffffff",
+        "pos": [
+         -3.6,
+         1.2,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.5
+         ],
+         [
+          0.12,
+          0.12
+         ],
+         [
+          0.5,
+          0
+         ],
+         [
+          0.12,
+          -0.12
+         ],
+         [
+          0,
+          -0.5
+         ],
+         [
+          -0.12,
+          -0.12
+         ],
+         [
+          -0.5,
+          0
+         ],
+         [
+          -0.12,
+          0.12
+         ]
+        ],
+        "cor": "#fff3a8",
+        "pos": [
+         -0.2,
+         1.6,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.4
+         ],
+         [
+          0.1,
+          0.1
+         ],
+         [
+          0.4,
+          0
+         ],
+         [
+          0.1,
+          -0.1
+         ],
+         [
+          0,
+          -0.4
+         ],
+         [
+          -0.1,
+          -0.1
+         ],
+         [
+          -0.4,
+          0
+         ],
+         [
+          -0.1,
+          0.1
+         ]
+        ],
+        "cor": "#ffffff",
+        "pos": [
+         2.6,
+         1.4,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.55
+         ],
+         [
+          0.13,
+          0.13
+         ],
+         [
+          0.55,
+          0
+         ],
+         [
+          0.13,
+          -0.13
+         ],
+         [
+          0,
+          -0.55
+         ],
+         [
+          -0.13,
+          -0.13
+         ],
+         [
+          -0.55,
+          0
+         ],
+         [
+          -0.13,
+          0.13
+         ]
+        ],
+        "cor": "#fff3a8",
+        "pos": [
+         4.2,
+         0.6,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.4
+         ],
+         [
+          0.1,
+          0.1
+         ],
+         [
+          0.4,
+          0
+         ],
+         [
+          0.1,
+          -0.1
+         ],
+         [
+          0,
+          -0.4
+         ],
+         [
+          -0.1,
+          -0.1
+         ],
+         [
+          -0.4,
+          0
+         ],
+         [
+          -0.1,
+          0.1
+         ]
+        ],
+        "cor": "#ffffff",
+        "pos": [
+         -5,
+         4.4,
+         0
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "fachada",
+    "pos": [
+     0,
+     0.2,
+     18
+    ],
+    "cor": "#ffd9a8",
+    "em": "@8:inicio-0.2",
+    "sai": "@9:voz-0.1",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.7,
+       0,
+       0
+      ],
+      "escala": 1.85,
+      "roupa": "#d77fbb",
+      "calca": "#55406f",
+      "semente": 2,
+      "olhar": [
+       0.9,
+       0.15
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@8:gritando-0.3",
+        "pose": "mostra"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.8,
+       0,
+       0.2
+      ],
+      "escala": 1.85,
+      "roupa": "#5cb8e4",
+      "olhar": [
+       -0.9,
+       0.1
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@8:gritando",
+        "pose": "azedo"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "etiquetas": [
+   {
+    "txt": "MORREU!",
+    "pos": [
+     0.3,
+     5.9,
+     18.4
+    ],
+    "em": "@3:morreu",
+    "ate": "@3:fim-0.2",
+    "cor": "cinza",
+    "r": 3
+   },
+   {
+    "txt": "SEM LUZ",
+    "pos": [
+     3.5,
+     7.4,
+     5.4
+    ],
+    "em": "@4:luz",
+    "ate": "@4:primeiro-0.1",
+    "cor": "cinza"
+   },
+   {
+    "txt": "TODO MUNDO PASSA",
+    "pos": [
+     2.2,
+     4.1,
+     5.4
+    ],
+    "em": "@4:primeiro",
+    "ate": "@4:fim",
+    "cor": "amarelo",
+    "r": 2
+   },
+   {
+    "txt": "PAROU NO BEIJO",
+    "pos": [
+     11.5,
+     6.3,
+     13.5
+    ],
+    "em": "@5:beijo+0.1",
+    "ate": "@5:silêncio-0.1",
+    "cor": "rosa"
+   },
+   {
+    "txt": "SILÊNCIO",
+    "pos": [
+     10.4,
+     4.2,
+     14.5
+    ],
+    "em": "@5:silêncio",
+    "ate": "@5:fim",
+    "cor": "cinza",
+    "r": 2
+   },
+   {
+    "txt": "SÓ ESTRELAS",
+    "pos": [
+     0,
+     27.4,
+     -13.9
+    ],
+    "em": "@6:estrelas",
+    "ate": "@6:fim",
+    "cor": "ouro"
+   },
+   {
+    "txt": "APAGA A LUZ!",
+    "pos": [
+     -1.7,
+     5.3,
+     18.2
+    ],
+    "em": "@8:gritando",
+    "ate": "@8:fim-0.1",
+    "cor": "rosa",
+    "r": -3
+   },
+   {
+    "txt": "NINGUÉM RECLAMA",
+    "pos": [
+     0,
+     4.9,
+     18
+    ],
+    "em": "@reclama",
+    "ate": "@9:fim-0.1"
+   },
+   {
+    "txt": "SEU NILO",
+    "pos": [
+     -0.9,
+     4.25,
+     18.5
+    ],
+    "em": "@nilo+0.7",
+    "ate": "@regra-0.4",
+    "cor": "ouro"
+   }
+  ],
+  "contador": {
+   "rot": "BATERIA DO CELULAR",
+   "num": "0%",
+   "em": "@3:morreu",
+   "ate": "@3:fim-0.1"
+  },
+  "sons": [
+   {
+    "em": "@3:morreu",
+    "tipo": "clique",
+    "volume": 0.9
+   },
+   {
+    "em": "@4:primeiro",
+    "tipo": "buzina",
+    "volume": 0.5
+   },
+   {
+    "em": "@5:beijo",
+    "tipo": "glitch",
+    "volume": 0.35
+   },
+   {
+    "em": "@7:voz",
+    "tipo": "carimbo",
+    "volume": 0.35
+   },
+   {
+    "em": "@6:estrelas",
+    "tipo": "pop",
+    "volume": 0.5
+   },
+   {
+    "em": "@8:gritando",
+    "tipo": "pop",
+    "volume": 0.6
+   }
+  ]
+ }
+}
