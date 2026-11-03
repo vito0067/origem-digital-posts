@@ -1,5 +1,7 @@
 # Hoje Sumiu · Dia 4: a energia
 
+**Publicado em 03/11/2026:** [Instagram](https://www.instagram.com/p/DfTEfJHRWoq/) (~20h40) e [YouTube](https://youtube.com/shorts/ekf1FDpOZag) (~20h50), com o rótulo de IA ligado. TikTok: pelo celular do Vito.
+
 **Vídeo:** `saida/enviar/hoje-sumiu-dia04.mp4` (64,7 s). **Cópia leve para enviar (cerca de 6 MB):** `Desktop\Origem-Digital\hoje-sumiu-envios\hoje-sumiu-dia04-leve.mp4`. **Capa:** `hoje-sumiu-dia04-capa.jpg`, na mesma pasta.
 Ligar o rótulo de conteúdo com IA nas 3 redes.
 

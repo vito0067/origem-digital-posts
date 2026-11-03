@@ -32,7 +32,7 @@ Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. **O Dia 3 (02/11/2026) provo
 | 1 | a cor vermelha | [Reel](https://www.instagram.com/hojesumiu/reel/DfKr3JAJIRk/) | [vídeo](https://www.tiktok.com/@hojesumiu/video/7702884621343591700) | [Short](https://www.youtube.com/shorts/3w7qQu_6wfw) |
 | 2 | o frio | [Reel](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) | [vídeo](https://www.tiktok.com/@hojesumiu/video/7703353832205503765) | [Short](https://www.youtube.com/shorts/hbJqJA46i0c) |
 | 3 | o boleto | [Reel](https://www.instagram.com/reel/DfQWi5cBJ18/) | pelo celular do Vito (link a registrar) | [Short](https://youtube.com/shorts/-Lzl8d7PCz4) |
-| 4 | a energia | no perfil @hojesumiu (link a registrar) | pelo celular do Vito | no canal Hoje Sumiu (link a registrar) |
+| 4 | a energia | [Reel](https://www.instagram.com/p/DfTEfJHRWoq/) | pelo celular do Vito (link a registrar) | [Short](https://youtube.com/shorts/ekf1FDpOZag) |
 
 ## Números
 **Dia 3, lido em 03/11/2026 ~20h20:** Instagram 44 curtidas, 13 comentários, 4 compartilhamentos. YouTube 424 views, 9 curtidas, 5 comentários; só 27,2% continuam assistindo (média de 30 s em 1:21, segundo o chat Origem Digital). O vídeo de 80 s foi longo demais.
