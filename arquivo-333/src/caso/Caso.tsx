@@ -21,7 +21,7 @@ const saida = (x: number) => 1 - Math.pow(1 - lim(x), 3);
 // ---------------------------------------------------------------- tipos
 export type Visual = {
   tipo: "video" | "foto" | "fotoRecebida" | "final" | "3d" | "divulgacao";
-  titulo?: string; linhas?: string[]; // tipo "divulgacao": cartão de divulgação no meio do episódio
+  titulo?: string; linhas?: string[]; chamada?: string; // tipo "divulgacao": cartão de divulgação no meio do episódio
   planos?: string[]; pesos?: number[]; // tipo "3d": tomadas do motor 3D, em sequência (cortes secos)
   pb?: number[]; // tipo "3d": índices dos planos que aparecem em preto e branco
   arquivo?: string; inicio?: number; velocidade?: number; durClipe?: number;
@@ -382,7 +382,7 @@ const FotoRecebida: React.FC<{ v: Visual; s: number; dur: number }> = ({ v, s, d
 };
 
 /** Cartão final datilografado: chamada para o próximo episódio + aviso de ficção. */
-const Final: React.FC<{ s: number; episodio: number }> = ({ s, episodio }) => {
+const Final: React.FC<{ s: number; episodio: number; chamada?: string }> = ({ s, episodio, chamada }) => {
   const tipo = (txt: string, em: number, vel = 22) => txt.slice(0, Math.max(0, Math.floor((s - em) * vel)));
   const piscar = Math.floor(s * 3) % 2 === 0;
   const selo = spring({ frame: Math.round((s - 0.9) * FPS), fps: FPS, config: { damping: 9, stiffness: 160 } });
@@ -393,7 +393,7 @@ const Final: React.FC<{ s: number; episodio: number }> = ({ s, episodio }) => {
         ARQUIVO <span style={{ color: COR.vermelho, textShadow: "0 0 40px rgba(255,59,59,0.8)" }}>3:33</span>
       </div>
       <div style={{ marginTop: 60, fontFamily: ELITE, fontSize: 58, color: COR.papel, minHeight: 70 }}>
-        {tipo(`Episódio ${episodio + 1} amanhã, 20h`, 0.25, 40)}<span style={{ opacity: piscar ? 1 : 0 }}>▌</span>
+        {tipo(chamada ?? `Episódio ${episodio + 1} amanhã, 20h`, 0.25, 40)}<span style={{ opacity: piscar ? 1 : 0 }}>▌</span>
       </div>
       <div style={{ marginTop: 70, transform: `scale(${0.6 + 0.4 * selo}) rotate(-4deg)`, opacity: lim(selo * 2), border: `5px solid ${COR.vermelho}`, padding: "10px 34px", fontFamily: ANTON, fontSize: 64, color: COR.vermelho, letterSpacing: 6 }}>
         SIGA PARA NÃO PERDER
@@ -511,7 +511,7 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
   const s = f / FPS, dur = c.fim - c.inicio, v = c.visual;
   const ext = c.extras ?? [];
   let fundo: React.ReactNode;
-  if (v.tipo === "final") fundo = <Final s={s} episodio={episodio} />;
+  if (v.tipo === "final") fundo = <Final s={s} episodio={episodio} chamada={v.chamada} />;
   else if (v.tipo === "divulgacao") fundo = <Divulgacao s={s} titulo={v.titulo ?? "SEM CÂMERA"} linhas={v.linhas ?? []} />;
   else if (v.tipo === "fotoRecebida") fundo = <FotoRecebida v={v} s={s} dur={dur} />;
   else if (v.tipo === "3d") {

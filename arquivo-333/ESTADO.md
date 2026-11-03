@@ -4,7 +4,7 @@ Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada.
 
 ## Agora
 - **Série:** O Sinal, temporada 1. O ep. 7 saiu hoje; o ep. 8 sai em 02/11.
-- **Próximo passo:** fazer os eps. 11 (05/11) e 12 (06/11) e decidir o que vem depois de 06/11. Ainda não há série seguinte escrita.
+- **Próximo passo:** eps. 11 (05/11) e 12 (06/11) escritos e com voz em 03/11 (a Action renderiza); agendar e decidir o que vem depois de 06/11. Ainda não há série seguinte escrita.
 
 ## Situação por rede
 | Rede | Como sai | No ar até | Agendado | Falta |

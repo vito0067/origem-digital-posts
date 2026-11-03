@@ -1,0 +1,369 @@
+{
+  "id": "o-sinal-ep12",
+  "serie": "O Sinal",
+  "episodio": 12,
+  "titulo": "3h34",
+  "narracao": "narracao/ep12.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261103_131546_65876a52-8062-4d12-b9ff-d9712145b391.mp3",
+  "voz": "Gideon (narrador), Eleven v4, estabilidade 0.4",
+  "formato": "3D desenho em código (motor3d); formato revisado, fim curto.",
+  "publicar": {
+    "data": "2026-11-06",
+    "hora": "20:00",
+    "capaEm": 1.2,
+    "legenda": "Ela olhou. E descobriu por que alguém queria ser visto. 📼\n\nVocê olharia para trás ou não? 👇\n\nO Sinal, episódio 12 (o 1 está no perfil).\nCaso 02 amanhã, às 20h. Siga para não perder.\n\nGuia para fazer vídeos assim: link na bio.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "tituloYoutube": "O que a Marina viu pela janela | O Sinal, Ep. 12 (final) #shorts",
+    "descricaoYoutube": "A Marina olha pela janela e descobre quem sempre esteve olhando. Final de O Sinal e começo de um novo caso do Arquivo 3:33.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nGuia para fazer vídeos assim: link na bio.\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "ponto_no_ar"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ALTITUDE",
+          "de": 0,
+          "ate": 36,
+          "sufixo": " m",
+          "em": 0.2,
+          "fim": 2.6
+        },
+        {
+          "tipo": "textao",
+          "texto": "ALGUÉM OLHOU DE VOLTA",
+          "em": 0,
+          "ate": 2.5,
+          "y": 820
+        }
+      ],
+      "antes": 0.1,
+      "segura": 0.25,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.8
+        ],
+        [
+          "glitch",
+          0.05,
+          0.4
+        ],
+        [
+          "impacto",
+          2.3,
+          0.7
+        ]
+      ],
+      "fala": "Ela olhou pela janela. Alguém, no ar, olhou de volta.",
+      "legenda": "Ela olhou pela *janela.* Alguém, no *ar,* olhou de volta."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_medo"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "relampago",
+          "em": 0.2
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "obturador",
+          0.2,
+          0.8
+        ],
+        [
+          "coracao",
+          2.5,
+          0.8
+        ]
+      ],
+      "fala": "Um clarão, sem som. A foto estava sendo tirada naquele instante.",
+      "legenda": "Um *clarão,* sem som. A *foto* estava sendo tirada naquele instante."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "foto_janela"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "visor",
+          "em": 0
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "vibrar",
+          0.1,
+          0.6
+        ],
+        [
+          "subida",
+          2,
+          0.5
+        ],
+        [
+          "glitch",
+          4,
+          0.4
+        ]
+      ],
+      "fala": "A foto chegou ao telefone dela. A Marina, na janela, exatamente como agora.",
+      "legenda": "A foto chegou. A *Marina,* na janela, exatamente como *agora.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "portaria_rafa"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "tranca",
+          0.5,
+          0.6
+        ],
+        [
+          "grave",
+          3,
+          0.6
+        ]
+      ],
+      "fala": "Na portaria, o Rafa viu as portas de vidro abrirem. E ninguém quis sair.",
+      "legenda": "Na portaria, o Rafa viu as *portas* abrirem. E *ninguém* quis sair."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "rosto_mensagem"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Remetente desconhecido",
+          "texto": "Obrigado por olhar.",
+          "em": 1.6,
+          "y": 520
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "notificacao2",
+          1.6,
+          0.6
+        ],
+        [
+          "subida",
+          2.6,
+          0.5
+        ],
+        [
+          "impacto",
+          3.6,
+          0.7
+        ]
+      ],
+      "fala": "Então veio a última mensagem. Obrigado por olhar.",
+      "legenda": "Então veio a última *mensagem.* Obrigado por *olhar.*"
+    },
+    {
+      "visual": {
+        "tipo": "divulgacao",
+        "titulo": "SEM CÂMERA",
+        "linhas": [
+          "GUIA EM PDF",
+          "LINK NA BIO"
+        ]
+      },
+      "semLegenda": true,
+      "entrada": "preto",
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [],
+      "fala": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "legenda": "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio.",
+      "extras": [],
+      "avulsa": {
+        "arquivo": "narracao/divulgacao-guia.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261102_204022_21f29ed0-171b-4c1e-9817-e9f5054842ed.mp3"
+      }
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "fachada_fotos"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "JANELAS OLHANDO",
+          "de": 0,
+          "ate": 56,
+          "em": 0.2,
+          "fim": 3
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "subida",
+          0.2,
+          0.5
+        ],
+        [
+          "impacto",
+          3.2,
+          0.7
+        ]
+      ],
+      "fala": "Em cada janela do prédio, alguém também olhava. Cinquenta e seis ao todo.",
+      "legenda": "Em cada *janela,* alguém também *olhava.* *56* ao todo."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "quarto_rosto"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "subida",
+          0.2,
+          0.5
+        ],
+        [
+          "coracao",
+          4,
+          0.8
+        ]
+      ],
+      "fala": "A Marina entendeu. O remetente nunca quis assustar ninguém. Queria só ser visto.",
+      "legenda": "A Marina entendeu. Ele nunca quis *assustar.* Queria só ser *visto.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "janela_costas"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0.1,
+          0.7
+        ],
+        [
+          "sino",
+          3,
+          0.4
+        ]
+      ],
+      "fala": "Às três e trinta e quatro, tudo parou. O prédio dormiu pela primeira vez em doze noites.",
+      "legenda": "Às *3h34,* tudo parou. O prédio *dormiu* pela primeira vez em 12 noites."
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "celular_vibra"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "cartao",
+          "titulo": "Remetente desconhecido",
+          "texto": "Não olhe para trás.",
+          "em": 2.8,
+          "y": 520
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.25,
+      "sons": [
+        [
+          "vibrar",
+          0.3,
+          0.7
+        ],
+        [
+          "notificacao2",
+          2.8,
+          0.6
+        ],
+        [
+          "impacto",
+          4,
+          0.9
+        ]
+      ],
+      "fala": "Do outro lado do país, às três e trinta e três. Outro telefone vibrou.",
+      "legenda": "Do outro lado do país, às *3h33.* Outro telefone *vibrou.*"
+    },
+    {
+      "visual": {
+        "tipo": "final",
+        "chamada": "Caso 02 amanhã, 20h"
+      },
+      "semLegenda": true,
+      "antes": 0.2,
+      "segura": 0.45,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "carimbo",
+          0.6,
+          0.7
+        ]
+      ],
+      "fala": "Você olharia para trás ou não? Caso dois, amanhã.",
+      "legenda": "Caso 02 amanhã.",
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "Você olharia para trás ou não?",
+          "em": 0.2
+        }
+      ]
+    }
+  ]
+}
