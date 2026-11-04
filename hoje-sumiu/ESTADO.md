@@ -15,6 +15,7 @@ Atualize ao fim de cada dia. O repositório é público: nada de senha, chave, t
 **Em regra, não publique nem agende no TikTok pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. **Exceção de 03/11/2026:** ele pediu que eu postasse o Dia 4 pelo TikTok Studio do Chrome (sem tempo), depois de entrar na conta; só faça isso de novo se ele pedir, e compare as views com as dos vídeos postados pelo celular. A cada dia, rode `node ferramentas/kit-celular.mjs N` e diga a ele onde está a pasta. Instagram e YouTube seguem pelo computador, conferindo a conta na tela.
 
 ## Próximo passo
+0. **Trava (04/11/2026):** do Dia 5 em diante a divulgação vira "Comente GUIA" (detalhes na skill). **Não publique um vídeo com "Comente GUIA" até o chat Origem Digital avisar que o fluxo de resposta está ligado.** Pode produzir antes, mas só publique depois do aviso.
 1. Dia 5: de manhã, reler os votos do Reel do Dia 4 (`ferramentas/votos.mjs`, passo a passo na skill; o Instagram logado mostra os comentários ocultos também) e produzir só com `episodios/dia05.json`. Postar o mais cedo possível, de preferência antes das 12h para pegar o dia.
 2. Votos do Dia 3, lidos em 03/11 ~20h20: "Energia" 10 (vencedor), "Fome" 5, "Escola" 3, "Seu Nilo" 3 (personagem, não vale), "Crianças" 1 (veto).
 
