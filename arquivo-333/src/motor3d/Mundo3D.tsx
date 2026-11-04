@@ -7,6 +7,7 @@ import { Cidade, Quarto } from "./cenario";
 import { Portaria } from "./portaria";
 import { Corredor } from "./corredor";
 import { Sala1201 } from "./sala1201";
+import { Vagao, Estudio, Locadora } from "./pilotos";
 import { PLANOS, type Mundo } from "./planos";
 
 type Estado = Mundo & { renderer: any; camera: any };
@@ -21,7 +22,7 @@ function mundo(): Estado {
   renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.1;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.domElement.style.width = "100%"; renderer.domElement.style.height = "100%";
-  ESTADO = { renderer, camera: new THREE.PerspectiveCamera(40, W / H, 0.03, 900), cidade: new Cidade(), quarto: new Quarto(), portaria: new Portaria(), corredor: new Corredor(), sala1201: new Sala1201() };
+  ESTADO = { renderer, camera: new THREE.PerspectiveCamera(40, W / H, 0.03, 900), cidade: new Cidade(), quarto: new Quarto(), portaria: new Portaria(), corredor: new Corredor(), sala1201: new Sala1201(), vagao: new Vagao(), estudio: new Estudio(), locadora: new Locadora() };
   return ESTADO;
 }
 
@@ -34,7 +35,7 @@ export const Mundo3D: React.FC<{ plano: string; s: number; dur: number }> = ({ p
       if (ref.current && m.renderer.domElement.parentElement !== ref.current) ref.current.appendChild(m.renderer.domElement);
       const fn = PLANOS[plano];
       if (!fn) throw new Error(`plano desconhecido: ${plano}`);
-      m.cidade.padrao(); m.quarto.padrao(); m.portaria.padrao(); m.corredor.padrao(); m.sala1201.padrao();
+      m.cidade.padrao(); m.quarto.padrao(); m.portaria.padrao(); m.corredor.padrao(); m.sala1201.padrao(); m.vagao.padrao(); m.estudio.padrao(); m.locadora.padrao();
       const t = fn(s, dur, m);
       const cam = m.camera;
       cam.fov = t.fov ?? 60; cam.position.set(...t.pos); cam.up.set(0, 1, 0); cam.lookAt(...t.alvo);

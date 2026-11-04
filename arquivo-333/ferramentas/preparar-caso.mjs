@@ -20,7 +20,8 @@ const avulsas = new Map();
 ep.cenas.forEach((c, i) => {
   if (!c.avulsa) return;
   const g = lerAudio(join(PUBLICO, c.avulsa.arquivo));
-  avulsas.set(i, { g, ...cortarNarracao(g, [c.fala])[0] });
+  const textos = c.avulsa.textos ?? [c.fala];
+  avulsas.set(i, { g, ...cortarNarracao(g, textos)[c.avulsa.indice ?? 0] });
 });
 const principais = ep.cenas.map((c, i) => i).filter((i) => !avulsas.has(i));
 const cortes = cortarNarracao(gravacao, principais.map((i) => ep.cenas[i].fala));
@@ -64,7 +65,7 @@ for (const c of cenas) {
   tempos.forEach((x, k) => {
     atual.push(x);
     const fimFrase = /[.!?,]$/.test(x.w.replace(/\*/g, ""));
-    if (atual.length >= 3 || fimFrase || k === tempos.length - 1) { blocos.push(atual); atual = []; }
+    if (atual.length >= (ep.legendaModo === "painel" ? 2 : 3) || fimFrase || k === tempos.length - 1) { blocos.push(atual); atual = []; }
   });
   c.blocos = blocos.map((b, k) => ({ palavras: b, de: b[0].em, ate: k < blocos.length - 1 ? blocos[k + 1][0].em : c.vozEm + c.vozDur + Math.min(0.5, c.fim - (c.vozEm + c.vozDur)) }));
 }
@@ -144,7 +145,7 @@ mkdirSync(pastaSaida, { recursive: true });
 mixFinal({ duracao, voz, musica: clima, efeitos, fala, saida: join(pastaSaida, `${ep.id}.wav`), musicaDb: -10, ganhoEfeitos: 0.8 });
 
 // ---------- 5. linha do tempo para o vídeo ----------
-const linha = { id: ep.id, serie: ep.serie, episodio: ep.episodio, titulo: ep.titulo, duracao, audio: `ep/${ep.id}.wav`, composicao: "Caso",
+const linha = { id: ep.id, serie: ep.serie, episodio: ep.episodio, titulo: ep.titulo, legendaModo: ep.legendaModo, etiqueta: ep.etiqueta, duracao, audio: `ep/${ep.id}.wav`, composicao: "Caso",
   cenas: cenas.map(({ pedaco, sons, ...c }) => c) };
 writeFileSync(join(pastaSaida, `${ep.id}.json`), JSON.stringify(linha, null, 1));
 console.log("duração", duracao.toFixed(2), "s");

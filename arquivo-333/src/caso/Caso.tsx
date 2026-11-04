@@ -31,6 +31,7 @@ export type Extra =
   | { tipo: "cartao"; titulo: string; texto: string; em: number; ate?: number; y?: number }
   | { tipo: "textao"; texto: string; em: number; ate: number; y?: number }
   | { tipo: "aposta"; texto: string; em: number }
+  | { tipo: "vhs"; em: number; ate?: number; data?: string }
   | { tipo: "jornal"; em: number; ate?: number; pronto?: boolean; destaca?: "manchete" | "pe"; destacaEm?: number; viraEm?: number; foto?: string }
   | { tipo: "remendo"; x: number; y: number; w: number; h: number; texto: string }
   | { tipo: "marcador"; x: number; y: number; texto: string; sub?: string; em: number }
@@ -45,7 +46,7 @@ export type Palavra = { w: string; em: number };
 export type Bloco = { palavras: Palavra[]; de: number; ate: number };
 export type CenaT = { visual: Visual; extras?: Extra[]; entrada?: "corte" | "flash" | "glitch" | "preto"; semLegenda?: boolean;
   indice: number; inicio: number; fim: number; vozEm: number; vozDur: number; legenda: string; blocos: Bloco[] };
-export type LinhaCaso = { id: string; serie: string; episodio: number; titulo: string; duracao: number; audio: string; cenas: CenaT[] };
+export type LinhaCaso = { id: string; serie: string; episodio: number; titulo: string; legendaModo?: "painel"; etiqueta?: string; duracao: number; audio: string; cenas: CenaT[] };
 
 // ---------------------------------------------------------------- câmera
 /** Quadro que move a "câmera" sobre a imagem ou o vídeo: zoom lento, deslocamento e tremor opcional. */
@@ -446,7 +447,18 @@ const Legenda: React.FC<{ linha: LinhaCaso }> = ({ linha }) => {
       <div style={{ position: "absolute", left: 80, right: 80, top: 1250, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0 22px", transform: `scale(${0.85 + 0.15 * pop})`, opacity: lim(pop * 1.5) }}>
         {b.palavras.map((p, i) => {
           const falando = t >= p.em && (i === b.palavras.length - 1 || t < b.palavras[i + 1].em);
-          const cor = destaques[c.indice][k][i] ? COR.vermelho : falando ? COR.amarelo : COR.texto;
+          const medo = destaques[c.indice][k][i];
+          const cor = medo ? COR.vermelho : falando ? COR.amarelo : COR.texto;
+          if (linha.legendaModo === "painel") {
+            // teste de legenda (04/11/2026): 2 palavras, estilo painel luminoso; a palavra de medo fica vermelha e maior
+            const led = medo ? "#FF3B3B" : falando ? "#FFB000" : "#FFD98A";
+            return (
+              <span key={i} style={{ fontFamily: "\"Courier New\", monospace", fontWeight: 900, fontSize: medo ? 128 : 96, lineHeight: 1.05, color: led, textTransform: "uppercase", letterSpacing: 6,
+                padding: "2px 16px", background: "rgba(8,6,4,0.72)", border: `3px solid ${led}55`, borderRadius: 6, textShadow: `0 0 14px ${led}, 0 0 34px ${led}99` }}>
+                {p.w.replace(/\*/g, "")}
+              </span>
+            );
+          }
           return (
             <span key={i} style={{ fontFamily: ANTON, fontSize: 90, lineHeight: 1.08, color: cor, textTransform: "uppercase", WebkitTextStroke: "8px #000", paintOrder: "stroke fill", textShadow: "0 7px 0 rgba(0,0,0,0.55)" }}>
               {p.w.replace(/\*/g, "")}
@@ -459,6 +471,22 @@ const Legenda: React.FC<{ linha: LinhaCaso }> = ({ linha }) => {
   return null;
 };
 
+/** Efeito de fita VHS leve: linhas finas, ruído que sobe devagar, leve desvio de cor e a data no canto. */
+const Vhs: React.FC<{ e: Extract<Extra, { tipo: "vhs" }>; s: number }> = ({ e, s }) => {
+  if (s < e.em || (e.ate !== undefined && s > e.ate)) return null;
+  const f = Math.round(s * 24);
+  const trilha = (f * 7) % 1920;
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <AbsoluteFill style={{ background: "repeating-linear-gradient(0deg, rgba(0,0,0,0.16) 0px, rgba(0,0,0,0.16) 2px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 6px)", mixBlendMode: "multiply" }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: trilha, height: 70, background: "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0) 100%)" }} />
+      <AbsoluteFill style={{ boxShadow: "inset 6px 0 18px rgba(255,40,90,0.18), inset -6px 0 18px rgba(40,200,255,0.18)" }} />
+      <div style={{ position: "absolute", left: 60, top: 230, fontFamily: ELITE, fontSize: 46, color: "#F2F2F2", letterSpacing: 4, textShadow: "0 0 8px rgba(255,255,255,0.6)" }}>▶ PLAY</div>
+      <div style={{ position: "absolute", right: 60, bottom: 460, fontFamily: ELITE, fontSize: 44, color: "#F2F2F2", letterSpacing: 3, textShadow: "0 0 8px rgba(255,255,255,0.6)" }}>{e.data ?? "04.11.2026  03:33"}</div>
+    </AbsoluteFill>
+  );
+};
+
 /** Etiqueta de arquivo no alto da tela. */
 const Etiqueta: React.FC<{ linha: LinhaCaso }> = ({ linha }) => {
   const f = useCurrentFrame();
@@ -469,7 +497,7 @@ const Etiqueta: React.FC<{ linha: LinhaCaso }> = ({ linha }) => {
     <div style={{ position: "absolute", top: 150, left: 0, right: 0, display: "flex", justifyContent: "center", opacity: entra }}>
       <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "10px 24px", background: "rgba(5,7,12,0.55)", borderLeft: `6px solid ${COR.vermelho}` }}>
         <span style={{ fontFamily: ELITE, fontSize: 34, color: COR.texto, letterSpacing: 3 }}>ARQUIVO 3:33</span>
-        <span style={{ fontFamily: ELITE, fontSize: 30, color: "#9AA6BF", letterSpacing: 2 }}>· {linha.serie.toUpperCase()} · EP. {linha.episodio}</span>
+        <span style={{ fontFamily: ELITE, fontSize: 30, color: "#9AA6BF", letterSpacing: 2 }}>{linha.etiqueta ?? `· ${linha.serie.toUpperCase()} · EP. ${linha.episodio}`}</span>
       </div>
     </div>
   );
@@ -549,6 +577,7 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
         e.tipo === "planta" ? <Planta key={i} e={e} s={s} /> :
         e.tipo === "jornal" ? <Jornal key={i} e={e} s={s} /> :
         e.tipo === "aposta" ? <Aposta key={i} e={e} s={s} /> :
+        e.tipo === "vhs" ? <Vhs key={i} e={e} s={s} /> :
         e.tipo === "grupo" ? <Grupo key={i} e={e} s={s} /> :
         e.tipo === "audio" ? <AudioMsg key={i} e={e} s={s} /> : null)}
       <Entrada tipo={c.entrada} s={s} />

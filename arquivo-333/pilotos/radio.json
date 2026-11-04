@@ -1,0 +1,187 @@
+{
+  "id": "piloto-radio",
+  "serie": "PILOTO",
+  "episodio": 2,
+  "titulo": "Rádio Madrugada",
+  "narracao": "narracao/piloto-radio.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_230505_333fb426-e5f1-4e34-b141-bf978f6d5196.mp3",
+  "etiqueta": "· PILOTO · RÁDIO MADRUGADA",
+  "voz": "Gideon (narrador) + Reid (ouvinte, filtro de telefone)",
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "radio_hook"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "3:33 · NO AR",
+          "em": 0,
+          "ate": 2.6,
+          "y": 520
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.8
+        ],
+        [
+          "glitch",
+          0.05,
+          0.4
+        ],
+        [
+          "impacto",
+          2.6,
+          0.7
+        ]
+      ],
+      "fala": "Às três e trinta e três, um ouvinte ligou para contar o futuro.",
+      "legenda": "Às *3h33,* um ouvinte ligou para contar o *futuro.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "radio_locutor"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "notificacao2",
+          0.1,
+          0.5
+        ]
+      ],
+      "fala": "O radialista atendeu. A voz do outro lado vinha abafada, quase um sussurro.",
+      "legenda": "O radialista atendeu. A voz do outro lado vinha abafada, quase um *sussurro.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "radio_ouve",
+          "radio_ondas"
+        ],
+        "pesos": [
+          1.5,
+          1
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ATÉ ACONTECER",
+          "de": 60,
+          "ate": 0,
+          "sufixo": " s",
+          "em": 0.3,
+          "fim": 5.2
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0.2,
+          0.5
+        ]
+      ],
+      "fala": "No próximo minuto, a luz do estúdio vai apagar. E alguém vai bater no vidro.",
+      "legenda": "No próximo minuto, a luz do estúdio vai *apagar.* E alguém vai bater no *vidro.*",
+      "avulsa": {
+        "arquivo": "narracao/piloto-radio-ouvinte.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_230512_6fd555eb-6900-49c0-849f-e3e261a78da9.mp3"
+      },
+      "vozTelefone": true
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "radio_ondas"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "coracao",
+          1.6,
+          0.8
+        ]
+      ],
+      "fala": "O radialista riu. Mas o relógio já marcava três e trinta e quatro.",
+      "legenda": "O radialista riu. Mas o relógio já marcava *3h34.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "radio_apagao"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0.3,
+          0.8
+        ],
+        [
+          "impacto",
+          2.4,
+          0.8
+        ],
+        [
+          "impacto",
+          2.8,
+          0.7
+        ]
+      ],
+      "fala": "A luz apagou. E alguém bateu no vidro.",
+      "legenda": "A luz *apagou.* E alguém bateu no *vidro.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "radio_final"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "Você atenderia a próxima ligação?",
+          "em": 0.2
+        }
+      ],
+      "antes": 0.2,
+      "segura": 0.5,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ]
+      ],
+      "fala": "Você atenderia a próxima ligação?",
+      "legenda": "Você atenderia a próxima ligação?",
+      "semLegenda": true
+    }
+  ]
+}

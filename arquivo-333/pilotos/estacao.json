@@ -1,0 +1,214 @@
+{
+  "id": "piloto-estacao",
+  "serie": "PILOTO",
+  "episodio": 1,
+  "titulo": "Próxima estação",
+  "narracao": "narracao/piloto-estacao.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_230503_ba394e52-68db-474a-8195-812797621bed.mp3",
+  "legendaModo": "painel",
+  "etiqueta": "· PILOTO · PRÓXIMA ESTAÇÃO",
+  "voz": "Gideon (narrador) + Vera (anúncio do trem, filtro de alto-falante)",
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_hook"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ESTAÇÃO",
+          "de": 12,
+          "ate": 13,
+          "em": 0.2,
+          "fim": 2.8
+        }
+      ],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0,
+          0.8
+        ],
+        [
+          "glitch",
+          0.05,
+          0.4
+        ],
+        [
+          "impacto",
+          3,
+          0.7
+        ]
+      ],
+      "fala": "O mapa da linha cinza tem doze estações. O trem parou na décima terceira.",
+      "legenda": "O mapa da linha cinza tem *12* estações. O trem parou na *13ª.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_lia"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0.2,
+          0.5
+        ]
+      ],
+      "fala": "A Lia dormiu no último trem. Quando acordou, o vagão estava vazio.",
+      "legenda": "A Lia dormiu no último trem. Quando acordou, o vagão estava *vazio.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_painel"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "glitch",
+          1.6,
+          0.4
+        ]
+      ],
+      "fala": "Próxima estação: treze.",
+      "legenda": "Próxima estação: *13.*",
+      "avulsa": {
+        "arquivo": "narracao/piloto-estacao-anuncio.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_230528_e42b38f7-694b-4114-b333-ca5950386d9b.mp3",
+        "textos": [
+          "Próxima estação: treze.",
+          "Porta aberta. Ela desce ou fica?"
+        ],
+        "indice": 0
+      },
+      "vozTelefone": true
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_mapa"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "impacto",
+          2.3,
+          0.7
+        ]
+      ],
+      "fala": "Ela procurou a estação no mapa. Não existia.",
+      "legenda": "Ela procurou a estação no mapa. Não *existia.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_janela"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0.2,
+          0.6
+        ],
+        [
+          "coracao",
+          2,
+          0.8
+        ]
+      ],
+      "fala": "Pela janela, a plataforma estava cheia. Todos olhavam para o trem.",
+      "legenda": "Pela janela, a plataforma estava cheia. Todos olhavam para o *trem.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_lia_medo"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "tranca",
+          0.3,
+          0.7
+        ],
+        [
+          "grave",
+          0.4,
+          0.8
+        ]
+      ],
+      "fala": "As portas abriram. E a plataforma inteira deu um passo à frente.",
+      "legenda": "As portas abriram. E a plataforma inteira deu um passo à *frente.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_porta"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "Ela desce ou fica?",
+          "em": 0.2
+        }
+      ],
+      "antes": 0.2,
+      "segura": 0.5,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ]
+      ],
+      "fala": "Porta aberta. Ela desce ou fica?",
+      "legenda": "Porta aberta. Ela desce ou fica?",
+      "semLegenda": true,
+      "avulsa": {
+        "arquivo": "narracao/piloto-estacao-anuncio.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_230528_e42b38f7-694b-4114-b333-ca5950386d9b.mp3",
+        "textos": [
+          "Próxima estação: treze.",
+          "Porta aberta. Ela desce ou fica?"
+        ],
+        "indice": 1
+      },
+      "vozTelefone": true
+    }
+  ]
+}

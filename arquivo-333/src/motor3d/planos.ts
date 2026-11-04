@@ -6,10 +6,11 @@ import { Portaria } from "./portaria";
 import { Corredor } from "./corredor";
 import { Sala1201 } from "./sala1201";
 import { POSES } from "./boneco";
+import { PLANOS_PILOTOS, type Vagao, type Estudio, type Locadora } from "./pilotos";
 
-export type Mundo = { cidade: Cidade; quarto: Quarto; portaria: Portaria; corredor: Corredor; sala1201: Sala1201 };
+export type Mundo = { cidade: Cidade; quarto: Quarto; portaria: Portaria; corredor: Corredor; sala1201: Sala1201; vagao: Vagao; estudio: Estudio; locadora: Locadora };
 type V3 = [number, number, number];
-export type Tomada = { cena: "cidade" | "quarto" | "portaria" | "corredor" | "sala1201"; pos: V3; alvo: V3; fov?: number; rolar?: number };
+export type Tomada = { cena: "cidade" | "quarto" | "portaria" | "corredor" | "sala1201" | "vagao" | "estudio" | "locadora"; pos: V3; alvo: V3; fov?: number; rolar?: number };
 export type Plano = (s: number, dur: number, m: Mundo) => Tomada;
 
 const lim = (x: number) => Math.max(0, Math.min(1, x));
@@ -77,6 +78,7 @@ function telaCom(m: Mundo, qual: "mensagem" | "nome" | "luz" | "grupo") {
 }
 
 export const PLANOS: Record<string, Plano> = {
+  ...PLANOS_PILOTOS,
   // ---------------- cidade
   cidade_aerea: (s, dur, m) => {
     const p = arranca(s / dur);

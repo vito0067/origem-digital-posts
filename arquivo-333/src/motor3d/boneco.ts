@@ -170,6 +170,11 @@ export const APARENCIAS: Record<string, Aparencia> = {
   bia: { pele: "#e2b48e", cabelo: "#6b2f1a", roupa: "#7a2e3a", calca: "#2b2f3a", tenis: "#f0f0f0", penteado: "coque" },
   // Seu Álvaro, do 1201: aposentado, cabelo e bigode brancos, óculos, cardigã marrom
   alvaro: { pele: "#d9a98a", cabelo: "#d6d6d6", roupa: "#6b5843", calca: "#3d3a36", tenis: "#4a3b2c", penteado: "curto", capuz: false, bigode: true, oculos: true, altura: 0.96 },
+  // Pilotos de 04/11/2026: a Lia (passageira do último trem), o locutor da rádio, a sombra que bate no vidro e o Caio da locadora
+  lia: { pele: "#b98560", cabelo: "#1b1410", roupa: "#2e6f6c", calca: "#262b38", tenis: "#e6e6e6", penteado: "chanel", capuz: false },
+  locutor: { pele: "#8f6b52", cabelo: "#2a2a2a", roupa: "#7a3b2e", calca: "#22252b", tenis: "#1a1a1d", penteado: "curto", capuz: false, oculos: true },
+  sombra: { pele: "#050505", cabelo: "#050505", roupa: "#050505", calca: "#050505", tenis: "#050505", penteado: "curto", capuz: false },
+  caio: { pele: "#e0b08c", cabelo: "#2d2118", roupa: "#b5651d", calca: "#2c3e66", tenis: "#f0f0f0", penteado: "curto", capuz: true },
   // Dona Cida, a síndica: coque grisalho, blusa verde-escura
   cida: { pele: "#b8805f", cabelo: "#8d8580", roupa: "#2f5f5a", calca: "#2a2a30", tenis: "#3a3030", penteado: "coque", capuz: false, oculos: true, altura: 0.94 },
 };
