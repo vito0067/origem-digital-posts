@@ -4,7 +4,7 @@ Atualize ao fim de cada dia. O repositório é público: nada de senha, chave, t
 **Última atualização:** 03/11/2026.
 
 ## Onde estamos
-- **Dia 5, as placas (04/11/2026):** 61 s, só com a biblioteca (`episodios/dia05.json`), voz Mark, abertura no sumiço, divulgação de 3,6 s no meio (44% a 50%) ainda com "link na bio". Tema "Placas", de @geek_toria, 6 curtidas. Texto em `publicacao/dia05.md`; kit do TikTok em `Desktop\Origem-Digital\hoje-sumiu-envios\celular-dia05`. YouTube publicado em 04/11 (~19h50): https://youtube.com/shorts/H5blm09l3PE . Instagram pendente: os dois Chromes estavam logados no Arquivo 3:33 (às ~19h35 o @hojesumiu tinha saído do Chrome); depois que o Vito entrar de novo no @hojesumiu, postar o Reel com a cópia leve e a capa.
+- **Dia 5, as placas (04/11/2026):** 61 s, só com a biblioteca (`episodios/dia05.json`), voz Mark, abertura no sumiço, divulgação de 3,6 s no meio (44% a 50%) ainda com "link na bio". Tema "Placas", de @geek_toria, 6 curtidas. Texto em `publicacao/dia05.md`; kit do TikTok em `Desktop\Origem-Digital\hoje-sumiu-envios\celular-dia05`. YouTube publicado em 04/11 (~19h50): https://youtube.com/shorts/H5blm09l3PE . Instagram publicado às ~20h10 pelo Chrome, depois que o Vito entrou de novo no @hojesumiu (às ~19h35 o Chrome estava no Arquivo 3:33): https://www.instagram.com/p/DfVjWQNO-Hu/ . TikTok: o Vito posta pelo celular.
 - **Último dia publicado:** Dia 4, a energia (03/11/2026, ~20h40 no Instagram e ~20h50 no YouTube). Atraso de um dia: o Dia 3 saiu em 02/11 e ninguém acordou esta conversa na manhã de 03/11. **Quem chama o Hoje Sumiu de manhã é o Vito (ou o chat Origem Digital): não existe aviso automático.**
 - **Dia 4, a energia:** 64,7 s, só com a biblioteca (`episodios/dia04.json`), voz Mark. Tema: "Energia", de @eliabebarbosadahora, 10 curtidas, sem veto (rótulo "O MAIS CURTIDO"). Divulgação do guia no meio (27 s a 34 s, 42% a 53%). Texto em `publicacao/dia04.md`; kit do TikTok em `Desktop\Origem-Digital\hoje-sumiu-envios\celular-dia04`.
 - **Dia 3, o boleto:** saiu em 02/11/2026 (80 s, com divulgação do guia).
@@ -35,7 +35,7 @@ Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. **O Dia 3 (02/11/2026) provo
 | 2 | o frio | [Reel](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) | [vídeo](https://www.tiktok.com/@hojesumiu/video/7703353832205503765) | [Short](https://www.youtube.com/shorts/hbJqJA46i0c) |
 | 3 | o boleto | [Reel](https://www.instagram.com/reel/DfQWi5cBJ18/) | pelo celular do Vito (link a registrar) | [Short](https://youtube.com/shorts/-Lzl8d7PCz4) |
 | 4 | a energia | [Reel](https://www.instagram.com/p/DfTEfJHRWoq/) | enviado pelo computador a pedido do Vito em 03/11/2026 (~21h30; ficou "sob análise"), link a registrar | [Short](https://youtube.com/shorts/ekf1FDpOZag) |
-| 5 | as placas | pendente (Chrome sem o @hojesumiu) | pelo celular do Vito | [Short](https://youtube.com/shorts/H5blm09l3PE) |
+| 5 | as placas | [Reel](https://www.instagram.com/p/DfVjWQNO-Hu/) | pelo celular do Vito | [Short](https://youtube.com/shorts/H5blm09l3PE) |
 
 ## Números
 **Análise do Dia 4 (lida em 04/11/2026 ~19h20, ~22 h depois da postagem), comparando com o Dia 3:**
