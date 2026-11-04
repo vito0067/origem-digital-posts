@@ -1,0 +1,106 @@
+{
+ "id": "hoje-sumiu-dia05",
+ "dia": 5,
+ "coisa": "as placas",
+ "velocidade": 1,
+ "falas": [
+  { "fala": "Hoje sumiu as placas.", "legenda": "Hoje sumiu as ~placas.~" },
+  { "fala": "Do mundo inteiro. Para sempre.", "legenda": "Do mundo *inteiro.* Para *sempre.*", "segura": 0.2 },
+  { "fala": "Esse foi o comentário mais curtido.", "legenda": "Esse foi o comentário *mais curtido.*", "segura": 0.5 },
+  { "fala": "Primeiro, as placas de trânsito. Ninguém sabe se pode virar.", "legenda": "Primeiro, as placas de *trânsito.* Ninguém sabe se *pode* virar.", "segura": 0.3 },
+  { "fala": "Depois, o nome da padaria. Todo mundo entrou na loja errada.", "legenda": "Depois, o nome da *padaria.* Todo mundo entrou na loja *errada.*", "segura": 0.3 },
+  { "fala": "No shopping, a placa de saída sumiu. Tem gente lá até hoje.", "legenda": "No *shopping,* a placa de saída *sumiu.* Tem gente lá até *hoje.*", "segura": 0.35 },
+  { "fala": "O carteiro desistiu. Entregou todas as cartas na mesma casa.", "legenda": "O *carteiro* desistiu. Entregou todas as *cartas* na *mesma* casa.", "segura": 0.35 },
+  { "fala": "Feito sem câmera. O guia está no línque da bio.", "legenda": "Feito sem *câmera.* O *guia* está no *link* da *bio.*", "segura": 0.2 },
+  { "fala": "Voltando. Só uma coisa não mudou. O vizinho continua parando na sua vaga.", "legenda": "Voltando. Só uma coisa não *mudou.* O *vizinho* continua parando na sua *vaga.*", "segura": 0.45 },
+  { "fala": "Mas ninguém reclama. Para todo mundo, as placas nunca existiram.", "legenda": "Mas ninguém *reclama.* Para todo mundo, as ~placas~ *nunca existiram.*", "segura": 0.4 },
+  { "fala": "Só o Seu Nilo lembra. A regra dele é clara: aqui não some governo nem pessoa. E ele anotou: dia cinco, as placas.", "legenda": "Só o *Seu Nilo* lembra. A regra dele é clara: aqui não some *governo* nem *pessoa.* E ele *anotou:* *dia 5,* as ~placas.~", "segura": 0.35 },
+  { "fala": "Amanhã, outra coisa vai sumir. E quem escolhe é você.", "legenda": "*Amanhã,* outra coisa vai sumir. E quem escolhe é *você.*" },
+  { "fala": "Comenta aqui embaixo. O comentário mais curtido some do mundo.", "legenda": "*Comenta* aqui embaixo. O comentário mais curtido *some* do mundo." }
+ ],
+ "cena": {
+  "cor": "azul",
+  "titulo": "as placas",
+  "sumiram": ["Dia 2: o frio", "Dia 3: o boleto", "Dia 4: a energia"],
+  "exemplos": ["os relógios", "as filas", "o sono"],
+  "credito": { "rotulo": "O MAIS CURTIDO", "conta": "@geek_toria", "texto": "Placas", "curtidas": 6 },
+  "divulgacao": { "em": "@7:voz-0.05", "ate": "@7:fim-0.05", "titulo": "SEM CÂMERA", "sub": "GUIA EM PDF", "chamada": "LINK NA BIO" },
+  "heroi": { "peca": { "peca": "grupo", "pos": [0, 0.2, 16], "em": -1, "sai": "@3:inicio+0.1", "modo": "cresce", "some": "@onda", "filhos": [
+    { "forma": "retangulo", "l": 0.5, "a": 4.4, "canto": 0.05, "cor": "#8c98a6", "prof": 0.06 },
+    { "forma": "circulo", "r": 2.4, "y0": 4.7, "cor": "#2a6fd6", "prof": 0.08 },
+    { "forma": "circulo", "r": 2.05, "y0": 4.7, "cor": "#3f86ee", "prof": 0.04, "pos": [0, 0, 0.09] },
+    { "forma": "poligono", "pontos": [[0, 1.7], [1.2, 0.3], [0.45, 0.3], [0.45, -1.2], [-0.45, -1.2], [-0.45, 0.3], [-1.2, 0.3]], "cor": "#ffffff", "prof": 0.03, "pos": [0, 4.2, 0.14] },
+    { "forma": "retangulo", "l": 0.4, "a": 3.2, "canto": 0.05, "cor": "#8c98a6", "prof": 0.06, "pos": [-3.8, 0, 0] },
+    { "forma": "poligono", "pontos": [[-0.7, 1.7], [0.7, 1.7], [1.7, 0.7], [1.7, -0.7], [0.7, -1.7], [-0.7, -1.7], [-1.7, -0.7], [-1.7, 0.7]], "cor": "#a2a5ab", "prof": 0.08, "pos": [-3.8, 4.3, 0] }
+   ] }, "camera": [0.5, 3.4, 29], "alvo": [0, 6.2, 16] },
+  "cameras": [
+   { "em": "@3:inicio-0.35", "lugar": "transito" },
+   { "em": "@4:inicio-0.35", "lugar": "esquerda" },
+   { "em": "@4:errada-0.5", "lugar": "esquerda", "perto": true },
+   { "em": "@5:inicio-0.35", "lugar": "direita" },
+   { "em": "@5:sumiu-0.45", "lugar": "direita", "perto": true },
+   { "em": "@6:inicio-0.35", "lugar": "praca", "perto": true, "dur": 1.1 },
+   { "em": "@7:inicio-0.3", "lugar": "cidade", "dur": 1.3 },
+   { "em": "@8:inicio-0.3", "pos": [0.4, 3.6, 31], "alvo": [0.2, 2.6, 12.5], "fov": 42, "deriva": [0, 0, -0.35], "foco": 0.6, "dur": 1.1, "arco": 3 }
+  ],
+  "pecas": [
+   { "peca": "espalha", "forma": "papel", "cor": "#cfe3ff", "qtd": 26, "tam": 0.7 },
+
+   { "peca": "fachada", "pos": [-14, 0.13, 14.6], "cor": "#ffe0a8", "em": "@4:inicio-0.35", "sai": "@5:inicio", "filhos": [
+     { "peca": "letreiro", "pos": [0, 5.1, -2.05], "l": 4.6, "a": 1.1, "texto": "?????", "cor": "#6b7079" },
+     { "peca": "pessoa", "pos": [-1.6, 0, 0], "escala": 1.8, "roupa": "#5cb8e4", "olhar": [0.8, 0.2], "poses": [ { "pose": "normal" }, { "em": "@4:errada", "pose": "susto" } ] },
+     { "peca": "pessoa", "pos": [1.9, 0, 0.2], "escala": 1.8, "roupa": "#ffd166", "olhar": [-0.8, 0.2], "poses": [ { "pose": "normal" }, { "em": "@4:errada", "pose": "shrug" } ] }
+    ] },
+
+   { "peca": "piso", "pos": [12, 0.13, 13], "parede": "#d9efe0", "cores": ["#e7e1f5", "#f6efe2"], "em": "@5:inicio-0.35", "sai": "@6:inicio", "filhos": [
+     { "peca": "letreiro", "pos": [0, 4.6, -3.2], "l": 3.4, "a": 1, "texto": "SAÍDA", "cor": "#1f8f4c", "sai": "@5:sumiu" },
+     { "peca": "pessoa", "pos": [-3, 0, 0.6], "escala": 1.6, "semente": 1, "olhar": [0.4, 0.2], "poses": [ { "pose": "normal" }, { "em": "@5:sumiu", "pose": "susto" } ] },
+     { "peca": "pessoa", "pos": [-1, 0, 1.2], "escala": 1.6, "semente": 4, "roupa": "#b794e6", "olhar": [0, 0.2], "poses": [ { "pose": "normal" }, { "em": "@5:sumiu", "pose": "azedo" } ] },
+     { "peca": "pessoa", "pos": [1.2, 0, 0.6], "escala": 1.6, "semente": 6, "roupa": "#ffd166", "olhar": [-0.5, 0.2], "poses": [ { "pose": "normal" }, { "em": "@5:hoje", "pose": "shrug" } ] },
+     { "peca": "pessoa", "pos": [3.2, 0, 1.1], "escala": 1.6, "semente": 2, "olhar": [-0.8, 0.2], "poses": [ { "pose": "normal" }, { "em": "@5:hoje", "pose": "triste" } ] }
+    ] },
+
+   { "peca": "fachada", "pos": [0, 0.2, 18], "cor": "#d9c6ee", "em": "@6:inicio-0.2", "sai": "@7:inicio-0.05", "filhos": [
+     { "peca": "pessoa", "pos": [-1.8, 0, 0.2], "escala": 1.85, "roupa": "#2a6fd6", "bone": "#ffd23f", "calca": "#27324a", "olhar": [0.9, 0.15],
+       "poses": [ { "pose": "mostra" }, { "em": "@6:mesma", "pose": "feliz" } ],
+       "segura": { "forma": "retangulo", "l": 0.7, "a": 0.9, "y0": -0.2, "cor": "#fffdf6", "prof": 0.03, "pos": [0, 0, 0.1] } },
+     { "peca": "grupo", "pos": [1.1, 0, 0.4], "em": "@6:cartas-0.2", "modo": "cresce", "dur": 0.4, "filhos": [
+       { "forma": "retangulo", "l": 0.9, "a": 0.15, "cor": "#fffdf6", "prof": 0.05 },
+       { "forma": "retangulo", "l": 0.9, "a": 0.15, "y0": 0.15, "cor": "#ffe9b8", "prof": 0.05 },
+       { "forma": "retangulo", "l": 0.9, "a": 0.15, "y0": 0.3, "cor": "#fffdf6", "prof": 0.05 },
+       { "forma": "retangulo", "l": 0.9, "a": 0.15, "y0": 0.45, "cor": "#bfe3ff", "prof": 0.05 }
+      ] },
+     { "peca": "pessoa", "pos": [2.2, 0, 0.1], "escala": 1.85, "roupa": "#d77fbb", "olhar": [-0.9, 0.1],
+       "poses": [ { "pose": "normal" }, { "em": "@6:mesma", "pose": "susto" } ] }
+    ] },
+
+   { "peca": "grupo", "pos": [0.5, 0.2, 12.5], "em": "@8:inicio-0.2", "sai": "@9:voz-0.1", "filhos": [
+     { "forma": "retangulo", "l": 4.2, "a": 1.1, "canto": 0.3, "cor": "#e4572e", "prof": 0.3, "y0": 0.3 },
+     { "forma": "retangulo", "l": 2.3, "a": 0.9, "canto": 0.25, "cor": "#bfe3ff", "prof": 0.25, "y0": 1.3, "pos": [-0.1, 0, 0] },
+     { "forma": "circulo", "r": 0.45, "y0": 0.25, "cor": "#27324a", "prof": 0.35, "pos": [-1.3, 0, 0.05] },
+     { "forma": "circulo", "r": 0.45, "y0": 0.25, "cor": "#27324a", "prof": 0.35, "pos": [1.3, 0, 0.05] }
+    ] },
+   { "peca": "pessoa", "pos": [-2.8, 0.2, 13], "escala": 1.7, "roupa": "#5cb8e4", "olhar": [0.9, 0.1], "em": "@8:inicio-0.1", "sai": "@9:voz-0.1",
+     "poses": [ { "pose": "normal" }, { "em": "@8:vaga-0.3", "pose": "mostra" }, { "em": "@8:vaga", "pose": "bravo" } ] }
+  ],
+  "etiquetas": [
+   { "txt": "PODE VIRAR?", "pos": [0.4, 3.2, 3], "em": "@3:pode", "ate": "@3:fim-0.2", "cor": "amarelo", "r": 2 },
+   { "txt": "LOJA ERRADA", "pos": [-15.8, 5.8, 14.6], "em": "@4:errada", "ate": "@4:fim", "cor": "rosa", "r": -2 },
+   { "txt": "SAÍDA?", "pos": [12, 5.6, 13.6], "em": "@5:sumiu+0.15", "ate": "@5:hoje-0.1", "cor": "cinza" },
+   { "txt": "ATÉ HOJE", "pos": [12.5, 4.4, 14.5], "em": "@5:hoje", "ate": "@5:fim", "cor": "amarelo", "r": 2 },
+   { "txt": "TUDO NA MESMA", "pos": [0.8, 5.9, 18.2], "em": "@6:mesma", "ate": "@6:fim-0.1", "cor": "ouro" },
+   { "txt": "É A MINHA VAGA!", "pos": [-0.4, 5, 13], "em": "@8:vaga", "ate": "@8:fim-0.1", "cor": "rosa", "r": -3 },
+   { "txt": "NINGUÉM RECLAMA", "pos": [0, 4.9, 18], "em": "@reclama", "ate": "@9:fim-0.1" },
+   { "txt": "SEU NILO", "pos": [-0.9, 4.25, 18.5], "em": "@nilo+0.7", "ate": "@regra-0.4", "cor": "ouro" }
+  ],
+  "contador": { "rot": "GENTE NO SHOPPING", "num": "AINDA LÁ", "em": "@5:hoje-0.2", "ate": "@5:fim-0.1" },
+  "sons": [
+   { "em": "@3:pode", "tipo": "buzina", "volume": 0.5 },
+   { "em": "@4:errada", "tipo": "pop", "volume": 0.5 },
+   { "em": "@5:sumiu", "tipo": "glitch", "volume": 0.35 },
+   { "em": "@6:cartas", "tipo": "pop", "volume": 0.5 },
+   { "em": "@7:voz", "tipo": "carimbo", "volume": 0.35 },
+   { "em": "@8:vaga", "tipo": "buzina", "volume": 0.5 }
+  ]
+ }
+}

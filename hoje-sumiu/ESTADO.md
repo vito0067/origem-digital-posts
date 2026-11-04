@@ -4,6 +4,7 @@ Atualize ao fim de cada dia. O repositório é público: nada de senha, chave, t
 **Última atualização:** 03/11/2026.
 
 ## Onde estamos
+- **Dia 5, as placas (04/11/2026):** 61 s, só com a biblioteca (`episodios/dia05.json`), voz Mark, abertura no sumiço, divulgação de 3,6 s no meio (44% a 50%) ainda com "link na bio". Tema "Placas", de @geek_toria, 6 curtidas. Texto em `publicacao/dia05.md`; kit do TikTok em `Desktop\Origem-Digital\hoje-sumiu-envios\celular-dia05`. YouTube publicado em 04/11 (~19h50): https://youtube.com/shorts/H5blm09l3PE . Instagram pendente: os dois Chromes estavam logados no Arquivo 3:33 (às ~19h35 o @hojesumiu tinha saído do Chrome); depois que o Vito entrar de novo no @hojesumiu, postar o Reel com a cópia leve e a capa.
 - **Último dia publicado:** Dia 4, a energia (03/11/2026, ~20h40 no Instagram e ~20h50 no YouTube). Atraso de um dia: o Dia 3 saiu em 02/11 e ninguém acordou esta conversa na manhã de 03/11. **Quem chama o Hoje Sumiu de manhã é o Vito (ou o chat Origem Digital): não existe aviso automático.**
 - **Dia 4, a energia:** 64,7 s, só com a biblioteca (`episodios/dia04.json`), voz Mark. Tema: "Energia", de @eliabebarbosadahora, 10 curtidas, sem veto (rótulo "O MAIS CURTIDO"). Divulgação do guia no meio (27 s a 34 s, 42% a 53%). Texto em `publicacao/dia04.md`; kit do TikTok em `Desktop\Origem-Digital\hoje-sumiu-envios\celular-dia04`.
 - **Dia 3, o boleto:** saiu em 02/11/2026 (80 s, com divulgação do guia).
@@ -34,8 +35,22 @@ Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. **O Dia 3 (02/11/2026) provo
 | 2 | o frio | [Reel](https://www.instagram.com/hojesumiu/reel/DfN8z-4x_o2/) | [vídeo](https://www.tiktok.com/@hojesumiu/video/7703353832205503765) | [Short](https://www.youtube.com/shorts/hbJqJA46i0c) |
 | 3 | o boleto | [Reel](https://www.instagram.com/reel/DfQWi5cBJ18/) | pelo celular do Vito (link a registrar) | [Short](https://youtube.com/shorts/-Lzl8d7PCz4) |
 | 4 | a energia | [Reel](https://www.instagram.com/p/DfTEfJHRWoq/) | enviado pelo computador a pedido do Vito em 03/11/2026 (~21h30; ficou "sob análise"), link a registrar | [Short](https://youtube.com/shorts/ekf1FDpOZag) |
+| 5 | as placas | pendente (Chrome sem o @hojesumiu) | pelo celular do Vito | [Short](https://youtube.com/shorts/H5blm09l3PE) |
 
 ## Números
+**Análise do Dia 4 (lida em 04/11/2026 ~19h20, ~22 h depois da postagem), comparando com o Dia 3:**
+| | Dia 3 (80 s) | Dia 4 (64,7 s) |
+|---|---|---|
+| YouTube, views | 409 a 424 | **1.066** |
+| YouTube, continuam assistindo | 27,2% | **48,3%** |
+| YouTube, tempo médio | 0:30 de 1:21 (37%) | 0:30 de 1:05 (46%) |
+| YouTube, inscritos | — | +3 |
+| Instagram, views (4 dias de vida no Dia 3; 22 h no Dia 4) | 1.443 | 1.160 |
+| Instagram, curtidas e comentários | 44 e 13 | 27 e 5 |
+| TikTok, views (enviado pelo computador no Dia 4) | 394 | 481 (7 curtidas, 6 comentários) |
+
+**O que funcionou:** o corte para 55 a 65 s com abertura no sumiço **dobrou as views e quase dobrou a retenção no YouTube** (96,9% das views vêm do feed de Shorts). No TikTok, enviar pelo computador não prejudicou: 481 views, mais que os dias anteriores (Dia 2, também pelo computador, 320; Dia 3, pelo celular, 394). No Instagram o Dia 4 tem menos views que o Dia 3, mas está só com 22 h de vida: compare de novo amanhã. Os comentários caíram (13 para 5): a pergunta do final continua, mas vale testar um tema mais "discutível". Votos do Dia 4: "Placas" 6 (@geek_toria), "Tristeza" 3, "carros" 3, "Água" 3 (comentários repetidos).
+
 **Queda de views com a duração (Instagram, segundo o chat Origem Digital, 03/11/2026):** Dia 1, 69 s: 2.403; Dia 2, 73 s: 1.859; Dia 3, 80 s: 1.416. Por isso, do Dia 4 em diante: 55 a 65 s, abrir no sumiço (nos primeiros 2 s), cenário novo todo dia, capa e título no estilo "HOJE SUMIU O BOLETO", divulgação do guia no meio com menos de 4 s e a pergunta final sempre. **Para comparar amanhã o Dia 4 (64,7 s, saiu às 20h40 no Instagram e ~20h50 no YouTube) com o Dia 3:** views, retenção (% que continua assistindo e tempo médio) e comentários, nas mesmas horas depois da postagem. Atenção: o Dia 4 saiu à noite e ainda com divulgação de 7 s, então a comparação não é perfeita.
 
 **Dia 3, lido em 03/11/2026 ~20h20:** Instagram 44 curtidas, 13 comentários, 4 compartilhamentos. YouTube 424 views, 9 curtidas, 5 comentários; só 27,2% continuam assistindo (média de 30 s em 1:21, segundo o chat Origem Digital). O vídeo de 80 s foi longo demais.
