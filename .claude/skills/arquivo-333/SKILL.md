@@ -27,6 +27,12 @@ O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena n
 - **Conferir:** olhe a folha de revisão (o título não pode encostar nas bordas: 168 px) e, no Pages, o tamanho do mp4 contra o local.
 - **Se o envio do render falhar no PC:** o `fetch` do Node às vezes não conecta em `uploads.github.com`. O `nuvem.mjs` agora tenta o `curl`; se ainda assim falhar, rode `SO_ENVIO=1 TODOS=1 FORCAR=epNN node ferramentas/nuvem.mjs` (só refaz o envio e o registro, sem renderizar de novo). Cuidado: o envio apaga o arquivo antigo do release antes de subir o novo; confira que `o-sinal-epNN-upload.mp4` está lá no fim.
 
+**Divulgação "Comente GUIA" (aprovada pelo Vito em 04/11/2026; vale só para os vídeos da NOVA série, depois do ep. 12):** os eps. 10, 11 e 12, já renderizados, ficam com "link na bio".
+- **Fala e cartão no meio (menos de 4 s):** "Feito sem câmera. Comente GUIA e eu te mando." Cartão: "SEM CÂMERA · COMENTE GUIA". Grave um mp3 novo (`narracao/divulgacao-comente-guia.mp3`, mesma voz Gideon, uns 0,3 a 0,4 crédito, uma vez para todos os vídeos) e troque `avulsa.arquivo/url`, a `fala`, a `legenda` e o `visual.titulo`/`linhas` do cartão (hoje o `Divulgacao` mostra título + selos; ajuste para "SEM CÂMERA" + "COMENTE GUIA").
+- **Legenda e descrição:** "Quer saber como é feito? Comente GUIA." O link do guia continua no perfil como apoio.
+- **A pergunta final continua em todo vídeo**, como a chamada principal.
+- **NÃO publique o primeiro vídeo com "Comente GUIA" até a sessão "Origem Digital" avisar** que o fluxo que responde os comentários do Instagram está no ar; senão alguém comenta e fica sem resposta.
+
 **Decisões do Vito de 03/11/2026 (valem para os próximos episódios):**
 1. **Descrição do canal e de cada vídeo no YouTube:** o canal Arquivo 3:33 ganha na descrição "Guia para fazer vídeos assim, sem câmera: https://semcamera.vercel.app/?de=arquivo" (mantendo o resto). Em todo vídeo novo, a descrição também leva a frase e o link. Confira na tela que o canal é o Arquivo 3:33 antes de salvar: o Chrome às vezes volta no perfil do Hoje Sumiu.
 2. **Abertura como a do ep. 2 (10 mil views):** o 1º quadro tem imagem estranha, um número em destaque e uma palavra em amarelo ou vermelho, antes de qualquer explicação.
