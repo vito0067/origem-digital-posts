@@ -70,9 +70,9 @@
   },
   "o-sinal-ep10": {
     "data": "2026-11-04",
-    "tiktok": "com o Vito, pelo celular",
-    "youtube": "PENDENTE: o ep. 10 ainda está agendado 04/11 20h00 na versão SEM a divulgação do guia (AXzqVed_Tiw, com a pergunta falada). O upload da versão nova (61,8 s, em saida/o-sinal-ep10-upload.mp4) bateu no limite diário de envios do YouTube em 02/11 (libera em ~24 h ou com a verificação do Vito). Subir em 03/11, programar para 04/11 20h00 e deixar o AXzqVed_Tiw e o rascunho antigo privados.",
-    "instagram": "pendente",
+    "tiktok": "com o Vito, pelo celular (kit celular-ep10 com o vídeo novo)",
+    "youtube": "PENDENTE: agendado 04/11 20h00 o vídeo antigo AXzqVed_Tiw (sem divulgação). Falta subir a versão nova (57,7 s, divulgação curta; saida/o-sinal-ep10-upload.mp4) e deixar o antigo e o rascunho privados. Bloqueio em 03/11: o Chrome estava no canal Hoje Sumiu.",
+    "instagram": "MANUAL (teste de 03/11): fora do agenda.json, o n8n não publica; o Vito posta pelo celular em 04/11 20h (kit celular-ep10) para comparar as views com a API",
     "youtubeRelacionado": "pendente",
     "nota": "refeito em 01/11: abre no jornal de 1983, que agora aparece na tela"
   }
