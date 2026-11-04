@@ -152,9 +152,9 @@ for (const f of pendentes) {
   }
 }
 
-// agenda: tudo que já está renderizado, em ordem de data (o n8n lê este arquivo para publicar no Instagram)
+// agenda: tudo que já está renderizado, em ordem de data (o n8n lê este arquivo para publicar no Instagram); "publicar.instagram": "manual" tira o episódio da agenda (o Vito posta pelo celular)
 const agenda = readdirSync(PASTA_RENDER).filter((f) => /^ep\d+\.json$/.test(f)).map((f) => JSON.parse(readFileSync(join(PASTA_RENDER, f), "utf8")))
-  .filter((r) => r.publicar?.data).sort((a, b) => a.publicar.data.localeCompare(b.publicar.data));
+  .filter((r) => r.publicar?.data && r.publicar.instagram !== "manual").sort((a, b) => a.publicar.data.localeCompare(b.publicar.data));
 writeFileSync(join(PASTA_RENDER, "agenda.json"), JSON.stringify(agenda.map((r) => ({ data: r.publicar.data, hora: r.publicar.hora ?? "20:00", id: r.id, episodio: r.episodio,
   serie: r.serie, legenda: r.publicar.legenda, video: r.video, capa: r.capa })), null, 2) + "\n");
 

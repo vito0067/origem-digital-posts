@@ -19,13 +19,23 @@ O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena n
   - **Episódio já gravado:** gere só a pergunta (barato, uns 0,3 de crédito por frase) e use `vozAntes` na cena `final`: `{ arquivo, url, textos, indice, pausa }`. O `preparar-caso` encaixa a pergunta antes da fala da cena, sem regerar a narração aprovada (foi assim nos eps. 8 a 10).
   - **Duração do cartão:** com a pergunta falada, o cartão final dura uns 5 a 6 s (antes, uns 3 s). Mantenha `segura` de no máximo 0,45 s e o episódio abaixo de 58 s.
 
-**Divulgação do guia "Sem Câmera" no meio do vídeo (pedido do Vito, 02/11/2026, por tempo limitado; ele diz quando acabar):** o Vito vende um guia em PDF e quer 3 a 6 s de divulgação no meio dos episódios.
-- **Como é:** cena `avulsa` entre os cortes, a 40%-60% do vídeo, nunca em cima de uma revelação. O narrador (Gideon, gravado à parte, arquivo `narracao/divulgacao-guia.mp3`) diz: "Este vídeo foi feito só com inteligência artificial, sem câmera. Quer aprender? O guia está no link da bio." Na tela, `visual: { tipo: "divulgacao", titulo: "SEM CÂMERA", linhas: ["GUIA EM PDF", "LINK NA BIO"] }`. Sem promessa de dinheiro.
+**Divulgação do guia "Sem Câmera" no meio do vídeo (pedido do Vito, 02/11/2026; desde 03/11 ela é CURTA e OBRIGATÓRIA em todo episódio):** o Vito vende um guia em PDF (https://semcamera.vercel.app/?de=arquivo). A divulgação tem de ter **menos de 4 s** e não pode pausar a história. Os eps. 8 e 9 saíram com a versão longa (7 s) e não se refazem.
+- **Como é:** cena `avulsa` entre os cortes, a 40%-60% do vídeo, nunca em cima de uma revelação. O narrador (Gideon, gravado à parte, arquivo `narracao/divulgacao-curta.mp3`, 0,3 crédito) diz: "Feito sem câmera. Guia no link da bio." (cena de 3,3 s). A versão longa de 02/11 (`divulgacao-guia.mp3`, 7 s) não se usa mais. Na tela, `visual: { tipo: "divulgacao", titulo: "SEM CÂMERA", linhas: ["GUIA EM PDF", "LINK NA BIO"] }`. Sem promessa de dinheiro.
 - **No JSON:** a cena leva `"avulsa": { "arquivo", "url" }`, `"semLegenda": true`, `"entrada": "preto"`, `"sons": []`, e a `fala` é o texto da frase. O `preparar-caso` tira essa cena do corte da narração principal e mixa a voz dela à parte. O `nuvem.mjs` baixa o arquivo pela `url` se faltar.
 - **Legendas:** a legenda do Instagram/TikTok e a descrição do YouTube ganham "Guia para fazer vídeos assim: link na bio." antes de "Ficção criada com inteligência artificial.".
-- **Custo e tempo:** a frase gravada custa 0,69 crédito (serve para todos os episódios). A cena dura uns 7 s, então o episódio passa de 58 s (ep. 8: 63 s). Vale enquanto o Vito pedir.
+- **Custo e tempo:** a frase curta serve para todos os episódios (já gravada). A cena dura uns 3,3 s; o episódio todo fica de **48 a 58 s** (regra de 03/11: o ep. 8 com 63 s perdeu views). Vale enquanto o Vito pedir.
 - **Conferir:** olhe a folha de revisão (o título não pode encostar nas bordas: 168 px) e, no Pages, o tamanho do mp4 contra o local.
 - **Se o envio do render falhar no PC:** o `fetch` do Node às vezes não conecta em `uploads.github.com`. O `nuvem.mjs` agora tenta o `curl`; se ainda assim falhar, rode `SO_ENVIO=1 TODOS=1 FORCAR=epNN node ferramentas/nuvem.mjs` (só refaz o envio e o registro, sem renderizar de novo). Cuidado: o envio apaga o arquivo antigo do release antes de subir o novo; confira que `o-sinal-epNN-upload.mp4` está lá no fim.
+
+**Decisões do Vito de 03/11/2026 (valem para os próximos episódios):**
+1. **Descrição do canal e de cada vídeo no YouTube:** o canal Arquivo 3:33 ganha na descrição "Guia para fazer vídeos assim, sem câmera: https://semcamera.vercel.app/?de=arquivo" (mantendo o resto). Em todo vídeo novo, a descrição também leva a frase e o link. Confira na tela que o canal é o Arquivo 3:33 antes de salvar: o Chrome às vezes volta no perfil do Hoje Sumiu.
+2. **Abertura como a do ep. 2 (10 mil views):** o 1º quadro tem imagem estranha, um número em destaque e uma palavra em amarelo ou vermelho, antes de qualquer explicação.
+3. **Sempre a pergunta final** para o público, falada e escrita.
+4. **Duração de 48 a 58 s.**
+5. **Teste de legenda (só na próxima série, um episódio de cada vez):** 2 palavras por vez, a palavra de medo em vermelho e maior. Compare com o formato atual e registre em `publicacao/numeros.md`.
+6. **Instagram pela API (n8n) x à mão:** o ep. 8 fez 559 views em 1 dia no Instagram, contra 1,4 a 1,6 mil dos eps. 4 a 7 (no YouTube, 1 mil, igual); o ep. 9 começou com 3 views. Pode ser a divulgação, os 63 s ou a publicação pelo n8n. Teste: o ep. 10 sai à mão, pelo celular do Vito (`"publicar": { "instagram": "manual" }` no JSON tira o episódio do `agenda.json` e o n8n não publica). Compare as views do ep. 10 com as do ep. 9 e registre.
+7. **Ep. 1 no Instagram** não está fixado (a bio diz que está): só dá pelo celular; avise o Vito.
+8. **A próxima história (Caso 02) ainda não foi decidida:** não comece sem o Vito.
 
 ## Onde fica cada coisa
 O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-333/` (no PC: `Documents\Origem Digital\4-midia\posts-automaticos\arquivo-333`).

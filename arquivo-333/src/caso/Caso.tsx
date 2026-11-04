@@ -406,13 +406,13 @@ const Final: React.FC<{ s: number; episodio: number; chamada?: string }> = ({ s,
 /** Cartão de divulgação (guia em PDF) no meio do episódio: título grande + selos que entram um a um. */
 const Divulgacao: React.FC<{ s: number; titulo: string; linhas: string[] }> = ({ s, titulo, linhas }) => {
   const entra = (em: number) => spring({ frame: Math.round((s - em) * FPS), fps: FPS, config: { damping: 11, stiffness: 150 } });
-  const t0 = entra(0.1);
+  const t0 = entra(0.05);
   return (
     <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 40%, #121826 0%, #05070C 70%)", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
       <div style={{ fontFamily: ELITE, fontSize: 38, color: "#9AA6BF", letterSpacing: 10, marginBottom: 24, opacity: lim(t0 * 2) }}>ARQUIVO 3:33 · AVISO</div>
       <div style={{ fontFamily: ANTON, fontSize: 168, lineHeight: 1, color: COR.texto, letterSpacing: 2, transform: `scale(${0.8 + 0.2 * t0})`, opacity: lim(t0 * 2) }}>{titulo}</div>
       {linhas.map((txt, i) => {
-        const p = entra(0.7 + i * 0.7);
+        const p = entra(0.35 + i * 0.4);
         const cor = i === 0 ? COR.vermelho : COR.amarelo;
         return (
           <div key={i} style={{ marginTop: 64, transform: `scale(${0.6 + 0.4 * p}) rotate(${i % 2 ? 3 : -3}deg)`, opacity: lim(p * 2), border: `6px solid ${cor}`, padding: "12px 44px", fontFamily: ANTON, fontSize: 84, color: cor, letterSpacing: 6 }}>{txt}</div>
