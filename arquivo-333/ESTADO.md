@@ -6,6 +6,8 @@ Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada.
 - **Série:** O Sinal, temporada 1. O ep. 7 saiu hoje; o ep. 8 sai em 02/11.
 - **Próximo passo:** eps. 11 (05/11) e 12 (06/11) escritos e com voz em 03/11 (a Action renderiza); agendar e decidir o que vem depois de 06/11. Ainda não há série seguinte escrita.
 
+- **04/11 (rotina de produção):** eps. 11 e 12 revisados na folha, sem problema. Último episódio escrito: ep. 12 (06/11). **Caso 02 NÃO foi escrito**: a regra de 03/11 (item 8) manda esperar o tema do Vito; sem ele 07/11 fica sem episódio. Nenhum crédito Higgsfield usado.
+
 ## Situação por rede
 | Rede | Como sai | No ar até | Agendado | Falta |
 |---|---|---|---|---|
