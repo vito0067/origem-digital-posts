@@ -1,5 +1,5 @@
 # Hoje Sumiu · Dia 5: as placas
-n**Publicado em 04/11/2026:** [YouTube](https://youtube.com/shorts/H5blm09l3PE) (~19h50) e [Instagram](https://www.instagram.com/p/DfVjWQNO-Hu/) (~20h10). TikTok: pelo celular do Vito.
+**Publicado em 04/11/2026:** [YouTube](https://youtube.com/shorts/H5blm09l3PE) (~19h50) e [Instagram](https://www.instagram.com/p/DfVjWQNO-Hu/) (~20h10). TikTok: pelo celular do Vito.
 
 **Vídeo:** `saida/enviar/hoje-sumiu-dia05.mp4` (61 s). **Cópia leve para enviar (cerca de 5,5 MB):** `Desktop\Origem-Digital\hoje-sumiu-envios\hoje-sumiu-dia05-leve.mp4`. **Capa:** `hoje-sumiu-dia05-capa.jpg`, na mesma pasta.
 Ligar o rótulo de conteúdo com IA nas 3 redes.
