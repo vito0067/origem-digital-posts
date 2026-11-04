@@ -12,7 +12,7 @@ Atualize ao fim de cada dia. O repositório é público: nada de senha, chave, t
 - **Tamanho:** o Dia 3, com 80 s, teve retenção fraca no YouTube. Fique entre 55 e 65 s.
 
 ## Regra do TikTok
-**Nunca publique nem agende no TikTok pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. A cada dia, rode `node ferramentas/kit-celular.mjs N` e diga a ele onde está a pasta. Instagram e YouTube seguem pelo computador, conferindo a conta na tela.
+**Em regra, não publique nem agende no TikTok pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. **Exceção de 03/11/2026:** ele pediu que eu postasse o Dia 4 pelo TikTok Studio do Chrome (sem tempo), depois de entrar na conta; só faça isso de novo se ele pedir, e compare as views com as dos vídeos postados pelo celular. A cada dia, rode `node ferramentas/kit-celular.mjs N` e diga a ele onde está a pasta. Instagram e YouTube seguem pelo computador, conferindo a conta na tela.
 
 ## Próximo passo
 1. Dia 5: de manhã, reler os votos do Reel do Dia 4 (`ferramentas/votos.mjs`, passo a passo na skill; o Instagram logado mostra os comentários ocultos também) e produzir só com `episodios/dia05.json`. Postar o mais cedo possível, de preferência antes das 12h para pegar o dia.
@@ -35,6 +35,8 @@ Pronta desde 01/11/2026: `src/pecas/` e `PECAS.md`. **O Dia 3 (02/11/2026) provo
 | 4 | a energia | [Reel](https://www.instagram.com/p/DfTEfJHRWoq/) | enviado pelo computador a pedido do Vito em 03/11/2026 (~21h30; ficou "sob análise"), link a registrar | [Short](https://youtube.com/shorts/ekf1FDpOZag) |
 
 ## Números
+**Queda de views com a duração (Instagram, segundo o chat Origem Digital, 03/11/2026):** Dia 1, 69 s: 2.403; Dia 2, 73 s: 1.859; Dia 3, 80 s: 1.416. Por isso, do Dia 4 em diante: 55 a 65 s, abrir no sumiço (nos primeiros 2 s), cenário novo todo dia, capa e título no estilo "HOJE SUMIU O BOLETO", divulgação do guia no meio com menos de 4 s e a pergunta final sempre. **Para comparar amanhã o Dia 4 (64,7 s, saiu às 20h40 no Instagram e ~20h50 no YouTube) com o Dia 3:** views, retenção (% que continua assistindo e tempo médio) e comentários, nas mesmas horas depois da postagem. Atenção: o Dia 4 saiu à noite e ainda com divulgação de 7 s, então a comparação não é perfeita.
+
 **Dia 3, lido em 03/11/2026 ~20h20:** Instagram 44 curtidas, 13 comentários, 4 compartilhamentos. YouTube 424 views, 9 curtidas, 5 comentários; só 27,2% continuam assistindo (média de 30 s em 1:21, segundo o chat Origem Digital). O vídeo de 80 s foi longo demais.
 
 **Dia 2, lido em 02/11/2026 ~8h, só no Instagram:** 67 curtidas e 22 comentários em 11 horas.

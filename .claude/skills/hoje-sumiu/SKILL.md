@@ -34,6 +34,7 @@ Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion 
 ## Formato de cada episódio
 - **Duração:** de 55 a 65 s (decisão de 03/11/2026: o Dia 3, com 80 s, teve só 27% de retenção no YouTube; o Dia 4 ficou em 64,7 s). Mais de 1 minuto conta para a monetização do TikTok, então prefira 60 a 65 s. Para caber, use 13 falas curtas e uma cena nova por fala.
 - **Primeiro quadro:** a coisa do dia em destaque, com o cabeçalho e o letreiro "HOJE SUMIU + COISA". Na fala 1, o título e a coisa viram do avesso.
+- **Mudanças aprovadas pelo Vito em 03/11/2026 (valem do Dia 4 em diante):** (1) 55 a 65 s, porque as views caem junto com a duração: Dias 1 a 3 tiveram 69, 73 e 80 s e 2.403, 1.859 e 1.416 views no Instagram; (2) abrir no momento do sumiço, com a coisa virando do avesso nos primeiros 2 s (fala 1 curtíssima: "Hoje sumiu X."), e só depois o contexto; (3) cada dia com um cenário diferente dos anteriores, usando as peças da biblioteca; (4) capa e título no estilo "HOJE SUMIU O BOLETO" (capa = quadro de 0,5 s do vídeo, com o letreiro); (5) divulgação do guia obrigatória no meio (40% a 60%) e **com menos de 4 s**: use "Feito só com inteligência artificial, sem câmera. O guia está no línque da bio." (o Dia 4 saiu com 7 s); (6) a pergunta final falada e escrita, sempre, porque o voto do dia seguinte depende dela.
 - **Roteiro de 12 a 14 falas, nesta ordem:**
   1. "Hoje sumiu X." Depois "Do mundo inteiro. Para sempre."
   2. Consequência real e concreta, em cadeia: cada fala cria o próximo problema ("você pensa que… mas…").
