@@ -1,7 +1,8 @@
 {
   "_regra": "Só publique/agende o que está true aqui. O Vito aprova no chat (design do vídeo); quem ouviu o 'aprovado' registra true com a data. Criado em 05/11/2026.",
   "o-sinal-ep11": {
-    "aprovado": false
+    "aprovado": true,
+    "quando": "2026-11-05 (Vito, no chat, versão com closes de meio corpo)"
   },
   "o-sinal-ep12": {
     "aprovado": false
