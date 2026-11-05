@@ -1,0 +1,49 @@
+{
+  "id": "2026-11-08-oficina-segunda-cedo",
+  "publicar_em": "2026-11-08T19:00:00-03:00",
+  "formato": "reel",
+  "tema": "noite",
+  "legenda": "Domingo à noite, alguém pergunta se a oficina abre cedo na segunda.\n\nO carro está dando problema, a pessoa abre o WhatsApp da oficina e fica esperando uma resposta que só vem de manhã.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, se apresenta, responde em segundos, 24 horas por dia, e passa o pedido para a sua equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#oficinamecanica #oficina #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": { "clima": "calmo" },
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "Domingo · noite",
+      "texto": "A oficina *abre cedo* na segunda?",
+      "apoio": "Alguém quer saber agora.",
+      "fundo": "biblioteca/noite-cidade-janela.mp4",
+      "artefatos": ["biblioteca/objetos/lua.png", "biblioteca/objetos/sino.png"],
+      "fala": "Domingo à noite. Alguém quer saber se a oficina abre cedo na segunda."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Oficina Exemplo",
+      "mensagens": [
+        { "de": "cliente", "texto": "Boa noite! Vocês abrem cedo amanhã?" },
+        { "de": "aurora", "texto": "Boa noite! Sou a Aurora, atendente de IA da oficina. Vou passar seu pedido para a equipe confirmar o horário com você, tudo bem?" }
+      ],
+      "fala": "A mensagem chega. A Aurora, atendente de inteligência artificial, se apresenta, responde e passa o pedido para a sua equipe."
+    },
+    {
+      "tipo": "palavras",
+      "titulo": "A Aurora",
+      "palavras": ["Responde.", "Explica.", "*Encaminha.*"]
+    },
+    {
+      "tipo": "numero",
+      "valor": 24,
+      "de": 24,
+      "sufixo": "h",
+      "texto": "por dia, também no *domingo à noite*.",
+      "fala": "Vinte e quatro horas por dia. Também no domingo à noite."
+    },
+    {
+      "tipo": "frase",
+      "texto": "A segunda começa com o pedido *já esperando*.",
+      "fundo": "biblioteca/noite-oficina.jpg",
+      "fala": "A segunda começa com o pedido já esperando por você."
+    }
+  ],
+  "narracao": { "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261105_121240_9c379168-922b-4b45-8863-df06bf92db14.mp3" },
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio."
+}
