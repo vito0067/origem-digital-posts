@@ -10,6 +10,21 @@ O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena n
 
 **Comece por `arquivo-333/ESTADO.md`:** episódio atual, o que está agendado em cada rede, conta certa, pendências e riscos. Atualize esse arquivo a cada rodada.
 
+**DECISÕES DO VITO DE 05/11/2026 (valem sobre qualquer trecho abaixo que diga outra coisa):**
+1. **APROVAÇÃO ANTES DE PUBLICAR, TODO DIA.** Antes de publicar ou agendar qualquer episódio, mande o vídeo pronto no chat do Vito (SendUserFile) e espere ele aprovar o design. **Sem aprovação, não publica.** Quando ele aprovar, registre `true` em `publicacao/aprovados.json` (id do episódio). As tarefas agendadas só publicam o que está lá como `true`. Motivo: o Dia 5 do Hoje Sumiu saiu fraco e ele só viu depois.
+2. **O Instagram NÃO sai mais pelo n8n.** O fluxo "Arquivo 3:33 - Publicar Instagram" (U5ZEYtmvwySTwvAj) foi DESLIGADO em 05/11 (o Vito acha que o post por robô derruba o alcance: IG ~1.500 → 450 → 150 → 140). O Instagram sai **pelo Chrome**, às 20h, conferindo a conta na tela (arquivo333.0), com o rótulo de IA ligado e depois da aprovação do item 1. O deviceId certo do Chrome está abaixo; se o canal/conta for outro (ex.: Hoje Sumiu), não publique e avise.
+3. **"Comente GUIA" no lugar de "link na bio"**, desde os eps. 11 e 12 (só a legenda) e em todos os vídeos novos (fala curta no meio + cartão "SEM CÂMERA · COMENTE GUIA"). Legenda: "Quer saber como é feito? Comente GUIA." Um fluxo no Instagram responde os comentários.
+4. **Hoje Sumiu fica de fora:** nada disto vale para lá até a sessão da Origem avisar.
+
+**PRÓXIMA SÉRIE ESCOLHIDA PELO VITO (05/11/2026): "Próxima estação" (o metrô; a Lia, o último trem da linha cinza).** Base: o piloto de 04/11 (`arquivo-333/pilotos/estacao.json`). Correções pedidas, valem também para os episódios futuros do Arquivo:
+- **Closes mais afastados e expressões variadas:** nada de close apertado com a cara de surpresa (boca aberta) sempre igual. Câmera em meio corpo, cabeça inteira com folga. A expressão muda com a fala: medo, desconfiança, alívio, choro contido, determinação.
+- **Mapa da linha:** close no mapa, sem as argolas na frente, com a estação 13 (que não existe) bem legível.
+- **Plataforma vista da janela:** pessoas com os **bonecos 3D do nosso estilo** (os do motor, com expressões), não silhuetas; **sem a coluna do vagão no meio da janela**: a janela mostra a plataforma limpa.
+- **Gancho forte no 1º segundo:** imagem estranha + número em destaque; nunca abrir em vagão vazio e escuro.
+- **Pergunta final com voto, falada e escrita:** "Comente 1 se ela desce, ou 2 se ela fica." **O voto decide o próximo episódio** (como o Hoje Sumiu): cada episódio é escrito DEPOIS de ler os votos do anterior, com uns 2 caminhos possíveis no arco da bíblia (`series/proxima-estacao.md`).
+- **Mantém:** legenda estilo painel (2 palavras, medo em vermelho e maior), contador de estação, segunda voz do anúncio (Vera; o Vito vai ouvir e confirmar).
+- **Antes de começar a série:** o Vito aprova um piloto refeito de ~30 s com essas correções.
+
 **TikTok (regra do Vito, 01/11/2026):** nunca publique nem agende pelo computador; ele posta pelo celular. Rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. Registre em `publicacao/epNN.md` a seção "Pergunta para fixar". Onde este manual ainda falar em agendar no TikTok, vale esta regra.
 
 **Aposta para o público comentar (pedido do Vito, 01/11/2026):** todo episódio termina com uma pergunta sobre o que vai acontecer, ligada à cena ("ela abre a porta ou não?"). É só opinião: o voto não muda a história já escrita.
@@ -39,7 +54,7 @@ O Vito (dono) deu **liberdade total**: não peça aprovação de roteiro, cena n
 3. **Sempre a pergunta final** para o público, falada e escrita.
 4. **Duração de 48 a 58 s.**
 5. **Teste de legenda (só na próxima série, um episódio de cada vez):** 2 palavras por vez, a palavra de medo em vermelho e maior. Compare com o formato atual e registre em `publicacao/numeros.md`.
-6. **Instagram pela API (n8n) x à mão:** o ep. 8 fez 559 views em 1 dia no Instagram, contra 1,4 a 1,6 mil dos eps. 4 a 7 (no YouTube, 1 mil, igual); o ep. 9 começou com 3 views. Pode ser a divulgação, os 63 s ou a publicação pelo n8n. Teste: o ep. 10 sai à mão, pelo celular do Vito (`"publicar": { "instagram": "manual" }` no JSON tira o episódio do `agenda.json` e o n8n não publica). Compare as views do ep. 10 com as do ep. 9 e registre.
+6. **(Substituído em 05/11: o n8n foi desligado, veja as decisões do topo.) Instagram pela API (n8n) x à mão:** o ep. 8 fez 559 views em 1 dia no Instagram, contra 1,4 a 1,6 mil dos eps. 4 a 7 (no YouTube, 1 mil, igual); o ep. 9 começou com 3 views. Pode ser a divulgação, os 63 s ou a publicação pelo n8n. Teste: o ep. 10 sai à mão, pelo celular do Vito (`"publicar": { "instagram": "manual" }` no JSON tira o episódio do `agenda.json` e o n8n não publica). Compare as views do ep. 10 com as do ep. 9 e registre.
 7. **Ep. 1 no Instagram** não está fixado (a bio diz que está): só dá pelo celular; avise o Vito.
 8. **A próxima história (Caso 02) ainda não foi decidida:** não comece sem o Vito.
 

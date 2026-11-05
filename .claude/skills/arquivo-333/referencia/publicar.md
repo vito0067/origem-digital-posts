@@ -2,7 +2,7 @@
 
 **Quem publica onde:**
 - **YouTube:** agendado pelo Chrome, porque um robô só publica como privado até a plataforma auditar o aplicativo. O agendador do YouTube publica sozinho às 20h, mesmo com o computador desligado.
-- **Instagram:** automático pelo n8n desde 02/11/2026 (veja a seção Instagram abaixo). Não publique pelo Chrome sem antes conferir que o fluxo falhou.
+- **Instagram:** desde 05/11/2026 o n8n está DESLIGADO: o Instagram sai pelo Chrome às 20h (conta arquivo333.0 conferida na tela), e só depois da aprovação do Vito (`publicacao/aprovados.json`). Ignore o que a seção Instagram abaixo diz sobre publicação automática.
 - **TikTok:** só o Vito, pelo celular. Em `agendados.json`, o status é "com o Vito, pelo celular".
 
 ## Antes de tudo
@@ -58,7 +58,7 @@
   - fixe um comentário que puxa resposta: "Quem você acha que é o remetente? 👀 Episódio N+1 sai amanhã às 20h, e a série completa está na playlist." Comentário conta muito no algoritmo, e pergunta gera comentário.
 
 ## Instagram (instagram.com, conta de CRIADOR desde 26/10/2026)
-- **Automático (desde 02/11/2026):** o fluxo do n8n "Arquivo 3:33 - Publicar Instagram" (U5ZEYtmvwySTwvAj) está LIGADO e publica todo dia às 20h o episódio do `agenda.json`, com a credencial "Instagram — token arquivo333".
+- **(Desligado em 05/11/2026, não vale mais)** Automático (desde 02/11/2026): o fluxo do n8n "Arquivo 3:33 - Publicar Instagram" (U5ZEYtmvwySTwvAj) está LIGADO e publica todo dia às 20h o episódio do `agenda.json`, com a credencial "Instagram — token arquivo333".
   - **Onde lê:** `https://vito0067.github.io/origem-digital-posts/arquivo/agenda.json` e o vídeo e a capa do Pages (`o-sinal-epNN.mp4`). Antes das 20h, confira que o mp4 do Pages é a versão certa (compare o tamanho com a cópia leve do release).
   - **Não publique pelo Chrome**, para o episódio não sair duas vezes. A tarefa das 19h50 já checa se o fluxo está ativo.
   - **Conferir depois das 20h10:** a tabela `public.arquivo_instagram` (status `publicado`, com o link) e o `agendados.json`. Se falhar, o fluxo avisa o Vito no WhatsApp; só então vale publicar pelo Chrome, depois de conferir no perfil que o episódio não saiu.

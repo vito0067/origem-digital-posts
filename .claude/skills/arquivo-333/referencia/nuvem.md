@@ -19,7 +19,7 @@
    - anota em `publicacao/agendados.json`.
    - Com a folga, o computador pode ficar dias desligado sem perder post.
 4. **Instagram:**
-   - **n8n "Arquivo 3:33 - Publicar Instagram":** todo dia às 20h lê `https://vito0067.github.io/origem-digital-posts/arquivo/agenda.json` e publica o Reel do dia, com rótulo de IA e legenda.
+   - **(DESLIGADO em 05/11/2026; o Instagram sai pelo Chrome) n8n "Arquivo 3:33 - Publicar Instagram":** todo dia às 20h lê `https://vito0067.github.io/origem-digital-posts/arquivo/agenda.json` e publica o Reel do dia, com rótulo de IA e legenda.
    - **Ligado desde 02/11/2026**, com a credencial "Instagram — token arquivo333" (vence em ~60 dias: renovar até ~01/01/2027). A tarefa das 19h50 não publica pelo Chrome se o fluxo estiver ativo.
    - O vídeo tem que estar certo no Pages antes das 20h: ele vem do release pelo `pages.mjs`, que roda a cada push em `arquivo-333/episodios/`.
 
