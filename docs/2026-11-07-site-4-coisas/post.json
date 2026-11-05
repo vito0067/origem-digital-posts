@@ -1,0 +1,77 @@
+{
+  "id": "2026-11-07-site-4-coisas",
+  "publicar_em": "2026-11-07T10:30:00-03:00",
+  "formato": "carrossel",
+  "tema": "gelo",
+  "legenda": "4 coisas que o site da sua empresa precisa ter.\n\nQuando alguém procura o seu negócio no celular, quer achar rápido o horário, o endereço e um jeito fácil de falar com você. Se precisa procurar demais, volta para a busca.\n\nA Origem Digital faz sites profissionais para pequenas empresas, com a primeira versão em até 15 dias úteis.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\n#sitepequenaempresa #marketingdigital #pequenosnegocios #whatsappbusiness #presencadigital #empreendedorismo #saopaulo",
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "Site da empresa",
+      "texto": "4 coisas que o seu site *precisa ter*",
+      "apoio": "Arraste e confira o seu.",
+      "fundo": "biblioteca/dia-mesa-trabalho.jpg"
+    },
+    {
+      "tipo": "site",
+      "etiqueta": "1",
+      "texto": "Botão de *WhatsApp* à vista",
+      "paineis": [
+        "Botão de WhatsApp",
+        "Fale agora"
+      ]
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/relogio.png",
+      "etiqueta": "2",
+      "texto": "Horário e *endereço* sem procurar",
+      "apoio": "Quem pesquisa no celular quer a resposta na hora."
+    },
+    {
+      "tipo": "frase",
+      "etiqueta": "3",
+      "texto": "Fotos *reais* do seu trabalho",
+      "apoio": "Mostra quem você é antes da primeira conversa.",
+      "fundo": "biblioteca/dia-salao.jpg"
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/raio.png",
+      "etiqueta": "4",
+      "texto": "Abre *rápido* no celular",
+      "apoio": "Página leve, letra grande, fácil de tocar."
+    },
+    {
+      "tipo": "comparar",
+      "etiqueta": "O resultado",
+      "esquerda": {
+        "titulo": "Site confuso",
+        "itens": [
+          "Cliente procura contato",
+          "Volta para a busca"
+        ]
+      },
+      "direita": {
+        "titulo": "Site claro",
+        "itens": [
+          "Contato à vista",
+          "Fala com você"
+        ]
+      }
+    }
+  ],
+  "midias": [
+    "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-1.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-2.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-3.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-4.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-5.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-6.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-7.jpg"
+  ],
+  "capa": "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/slide-1.jpg",
+  "previa": "https://vito0067.github.io/origem-digital-posts/2026-11-07-site-4-coisas/",
+  "hash": "0d5cac528b0abd70",
+  "renderizado_em": "2026-11-05T12:14:17.727Z"
+}
