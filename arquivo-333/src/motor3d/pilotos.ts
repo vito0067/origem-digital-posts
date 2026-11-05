@@ -29,7 +29,7 @@ const cromo = () => mat("#c4c9d0", { metalness: 0.9, roughness: 0.25 });
 // ================================================================ vagão de metrô
 export class Vagao {
   cena: any; lia: Boneco; segmentos: any[] = []; luzes: any[] = []; argolas: any[] = [];
-  lampadasExt: { m: any; z0: number; lado: number }[] = []; tunelDireito: any; plat: any; silhuetas: any[] = [];
+  lampadasExt: { m: any; z0: number; lado: number }[] = []; tunelDireito: any; plat: any; postes: any[] = []; gente: { b: Boneco; x0: number }[] = [];
   telaPainel: HTMLCanvasElement; texPainel: any; telaMapa: HTMLCanvasElement; texMapa: any;
   portas: any[] = []; fundoPorta: any; luzPorta: any; luzPlat: any;
   static W = 2.7; static L = 12; static H = 2.35;
@@ -56,20 +56,20 @@ export class Vagao {
       const x = lado * (W / 2 + 0.05);
       const b = caixa(0.1, 0.95, L, parede); b.position.set(x, 0.475, 0); cena.add(b);
       const t = caixa(0.1, 0.27, L, parede); t.position.set(x, H - 0.135, 0); cena.add(t);
-      for (const z of [-5.9, -5, -3, -1, 1, 3, 5, 5.9]) { const pl = caixa(0.1, 1.13, z === 5.9 || z === -5.9 ? 0.2 : 0.3, parede); pl.position.set(x, 1.515, z); cena.add(pl); }
+      for (const z of [-5.9, 5.9]) { const pl = caixa(0.1, 1.13, z === 5.9 || z === -5.9 ? 0.2 : 0.3, parede); pl.position.set(x, 1.515, z); cena.add(pl); }
       for (const z of [-4, 0, 4]) {
         const s = caixa(0.5, 0.08, 3.2, banco, 0.02); s.position.set(lado * (W / 2 - 0.26), 0.46, z); cena.add(s);
         const bs = caixa(0.46, 0.4, 3.2, baseBanco); bs.position.set(lado * (W / 2 - 0.26), 0.2, z); cena.add(bs);
         const enc = caixa(0.06, 0.42, 3.2, banco, 0.02); enc.position.set(lado * (W / 2 - 0.05), 0.83, z); cena.add(enc);
       }
       // barra de cima e argolas
-      const barraTeto = barra([lado * 0.55, H - 0.18, -L / 2 + 0.3], [lado * 0.55, H - 0.18, L / 2 - 0.3], 0.02, cromo()); cena.add(barraTeto);
+      const barraTeto = barra([lado * 0.55, H - 0.18, -L / 2 + 0.3], [lado * 0.55, H - 0.18, L / 2 - 0.3], 0.02, cromo()); cena.add(barraTeto); this.postes.push(barraTeto);
       for (let k = 0; k < 12; k++) {
         const g = new THREE.Group(); g.position.set(lado * 0.55, H - 0.18, -5.2 + k * 0.95); cena.add(g);
         const a = new THREE.Mesh(new THREE.TorusGeometry(0.07, 0.013, 8, 20), mat("#d9d9d9", { metalness: 0.4, roughness: 0.5 })); a.position.y = -0.2; g.add(a);
         const fio = cilindro(0.008, 0.14, mat("#d9d9d9")); fio.position.y = -0.07; g.add(fio); this.argolas.push(g);
       }
-      for (const z of [-4, -2, 0, 2, 4]) { const p = cilindro(0.025, H, cromo()); p.position.set(lado * 0.55, H / 2, z); cena.add(p); }
+      for (const z of [-4, -2, 0, 2, 4]) { const p = cilindro(0.025, H, cromo()); p.position.set(lado * 0.55, H / 2, z); cena.add(p); this.postes.push(p); }
     }
     // fundo do vagão: porta de passagem, painel de destino e mapa da linha
     const fundo = caixa(W, H, 0.1, mat("#9aa1aa")); fundo.position.set(0, H / 2, -L / 2 - 0.05); cena.add(fundo);
@@ -79,9 +79,9 @@ export class Vagao {
     this.telaPainel = tela(512, 128); this.texPainel = textura(this.telaPainel);
     const mp = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.3), emissivo(this.texPainel)); mp.position.set(0.62, 2.05, -L / 2 + 0.07); cena.add(mp);
     const fp = caixa(1.26, 0.34, 0.04, mat("#101216")); fp.position.set(0.62, 2.05, -L / 2 + 0.03); cena.add(fp);
-    this.telaMapa = tela(560, 120); this.texMapa = textura(this.telaMapa);
-    const mm = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 0.3), emissivo(this.texMapa)); mm.position.set(-0.65, 2.05, -L / 2 + 0.07); cena.add(mm);
-    const fm = caixa(1.46, 0.34, 0.04, mat("#101216")); fm.position.set(-0.65, 2.05, -L / 2 + 0.03); cena.add(fm);
+    this.telaMapa = tela(256, 560); this.texMapa = textura(this.telaMapa);
+    const mm = new THREE.Mesh(new THREE.PlaneGeometry(0.7, 1.5), emissivo(this.texMapa)); mm.position.set(-0.98, 1.1, -L / 2 + 0.07); cena.add(mm);
+    const fm = caixa(0.76, 1.56, 0.04, mat("#101216")); fm.position.set(-0.98, 1.1, -L / 2 + 0.03); cena.add(fm);
     this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
     // lá fora: túnel com lampadas passando e, quando o trem para, a plataforma da estação 13 com as silhuetas
     const tunel = (lado: number) => { const t = caixa(0.2, 4, 44, mat("#06080c")); t.position.set(lado * (W / 2 + 2.6), 1.5, 0); cena.add(t); return t; };
@@ -101,13 +101,13 @@ export class Vagao {
       g.fillStyle = "#fff"; g.font = "bold 38px Arial"; g.textAlign = "center"; g.fillText("ESTAÇÃO", 256, 50); g.font = "bold 130px Arial"; g.fillText("13", 256, 168);
       const s = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 0.59), emissivo(textura(c))); s.position.set(px + 3.33, 2.2, z); s.rotation.y = -Math.PI / 2; this.plat.add(s);
     }
-    const sombra = mat("#07080b", { roughness: 1 }), r = sorteio(7);
-    for (let k = 0; k < 9; k++) {
-      const g = new THREE.Group(); g.position.set(px + 1.0 + r() * 1.3, 0, -4.8 + k * 1.2 + r() * 0.5);
-      const c = new THREE.Mesh(new THREE.CapsuleGeometry(0.16, 0.72, 6, 14), sombra); c.position.y = 0.72; g.add(c);
-      const h = new THREE.Mesh(new THREE.SphereGeometry(0.17, 18, 14), sombra); h.position.y = 1.52; g.add(h);
-      this.plat.add(g); this.silhuetas.push(g);
-    }
+    const elenco = ["bia", "rafa", "alvaro", "cida", "marina", "caio", "locutor", "bia", "rafa", "alvaro"];
+    elenco.forEach((nome, k) => {
+      const b = new Boneco(APARENCIAS[nome]), x0 = px + 1.0 + (k % 3) * 0.5, z = -4.6 + k * 1.0 + (k % 2 ? 0.2 : -0.1);
+      b.raiz.position.set(x0, 0, z); b.raiz.rotation.set(0, -Math.PI / 2, 0);
+      b.posar({ ...POSES.em_pe(k), olhos: 1.25, sobrancelha: [0.6, 0, -0.5][k % 3], boca: "neutra", cabeca: [0, 0, 0] });
+      this.plat.add(b.raiz); this.gente.push({ b, x0 });
+    });
     this.lia = new Boneco(APARENCIAS.lia); cena.add(this.lia.raiz);
     this.padrao();
   }
@@ -120,20 +120,28 @@ export class Vagao {
     g.font = "bold 78px 'Courier New', monospace"; g.fillText(linha2, 256, 86);
     this.texPainel.needsUpdate = true;
   }
-  /** Mapa da linha cinza: 12 estações. `extra` (0 a 1) acende uma 13ª que não está no mapa. */
+  /** Mapa vertical da linha cinza: 12 estações. `extra` (0 a 1) acende a 13ª, que não está no mapa. */
   mapaTexto(extra: number) {
     const g = this.telaMapa.getContext("2d")!;
-    g.fillStyle = "#14171c"; g.fillRect(0, 0, 560, 120);
-    g.fillStyle = "#9aa3ad"; g.font = "bold 22px Arial"; g.textAlign = "left"; g.fillText("LINHA CINZA", 18, 26);
-    g.strokeStyle = "#9aa3ad"; g.lineWidth = 8; g.beginPath(); g.moveTo(24, 70); g.lineTo(430, 70); g.stroke();
-    for (let k = 0; k < 12; k++) { const x = 24 + k * (406 / 11); g.fillStyle = "#14171c"; g.beginPath(); g.arc(x, 70, 11, 0, Math.PI * 2); g.fill(); g.strokeStyle = "#e8edf2"; g.lineWidth = 4; g.stroke(); g.fillStyle = "#cfd6de"; g.font = "bold 16px Arial"; g.textAlign = "center"; g.fillText(String(k + 1), x, 100); }
+    g.fillStyle = "#14171c"; g.fillRect(0, 0, 256, 560);
+    g.fillStyle = "#9aa3ad"; g.font = "bold 26px Arial"; g.textAlign = "center"; g.fillText("LINHA CINZA", 128, 42);
+    g.strokeStyle = "#9aa3ad"; g.lineWidth = 10; g.beginPath(); g.moveTo(80, 84); g.lineTo(80, 420); g.stroke();
+    for (let k = 0; k < 12; k++) {
+      const y = 84 + k * (336 / 11); g.fillStyle = "#14171c"; g.beginPath(); g.arc(80, y, 13, 0, Math.PI * 2); g.fill(); g.strokeStyle = "#e8edf2"; g.lineWidth = 5; g.stroke();
+      g.fillStyle = "#cfd6de"; g.font = "bold 22px Arial"; g.textAlign = "left"; g.fillText(String(k + 1), 112, y + 8);
+    }
     if (extra > 0) {
-      g.strokeStyle = `rgba(255,59,59,${extra})`; g.setLineDash([8, 8]); g.lineWidth = 6; g.beginPath(); g.moveTo(436, 70); g.lineTo(510, 70); g.stroke(); g.setLineDash([]);
-      g.fillStyle = `rgba(255,59,59,${extra})`; g.shadowColor = "#ff3b3b"; g.shadowBlur = 18 * extra; g.beginPath(); g.arc(520, 70, 16, 0, Math.PI * 2); g.fill();
-      g.fillStyle = `rgba(255,255,255,${extra})`; g.shadowBlur = 0; g.font = "bold 20px Arial"; g.textAlign = "center"; g.fillText("13", 520, 76);
+      g.strokeStyle = `rgba(255,59,59,${extra})`; g.setLineDash([10, 10]); g.lineWidth = 8; g.beginPath(); g.moveTo(80, 432); g.lineTo(80, 486); g.stroke(); g.setLineDash([]);
+      g.fillStyle = `rgba(255,59,59,${extra})`; g.shadowColor = "#ff3b3b"; g.shadowBlur = 26 * extra; g.beginPath(); g.arc(80, 510, 28, 0, Math.PI * 2); g.fill();
+      g.fillStyle = `rgba(255,255,255,${extra})`; g.shadowBlur = 0; g.font = "bold 30px Arial"; g.textAlign = "center"; g.fillText("13", 80, 521);
+      g.fillStyle = `rgba(255,120,120,${extra})`; g.font = "bold 20px Arial"; g.textAlign = "left"; g.fillText("fora do mapa", 118, 516);
     }
     this.texMapa.needsUpdate = true;
   }
+  /** Mostra ou esconde barras, postes e argolas (para os closes sem nada na frente). */
+  limpa(visivel: boolean) { for (const o of [...this.postes, ...this.argolas]) o.visible = visivel; }
+  /** A gente da plataforma dá um passo em direção ao trem (p de 0 a 1). */
+  passo(p: number) { for (const { b, x0 } of this.gente) b.raiz.position.x = x0 - 0.45 * p; }
   /** `offset`: quanto o trem andou (metros); `plat`: 0 = túnel, 1 = parado na plataforma. */
   mover(offset: number, plat: number) {
     for (const { m, z0, lado } of this.lampadasExt) {
@@ -158,7 +166,7 @@ export class Vagao {
     this.argolas.forEach((g, i) => { g.rotation.z = Math.sin(t * 1.6 + i) * 0.04; g.rotation.x = Math.sin(t * 1.2 + i * 0.7) * 0.03; });
   }
   padrao() {
-    this.lia.raiz.visible = false; this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
+    this.lia.raiz.visible = false; this.limpa(true); this.passo(0); this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
   }
 }
 
@@ -166,7 +174,7 @@ export class Vagao {
 const LIA_BANCO = (t: number, extra: Pose = {}): Pose => ({ respira: t, cabeca: [14, 0, 0], tronco: [6, 0, 0], pernaE: [-88, 0, 4], pernaD: [-88, 0, -4], joelhoE: 88, joelhoD: 88,
   bracoE: [-30, 0, -6], bracoD: [-30, 0, 6], cotoveloE: 75, cotoveloD: 75, ...extra });
 function liaSenta(m: Mundo, pose: Pose) {
-  const l = m.vagao.lia; l.raiz.visible = true; l.raiz.position.set(-1.12, -0.03, 0.5); l.raiz.rotation.set(0, Math.PI / 2, 0); l.posar(pose);
+  const l = m.vagao.lia; l.raiz.visible = true; l.raiz.position.set(-1.12, -0.03, 0.5); l.raiz.rotation.set(0, Math.PI / 2 - 0.5, 0); l.posar(pose);
 }
 function cab(b: Boneco): V3 { const v = new THREE.Vector3(); b.cabeca.getWorldPosition(v); return [v.x, v.y, v.z]; }
 
@@ -379,47 +387,52 @@ const ANDA = (s: number) => 4.5 * s; // o trem anda ~4,5 m/s antes de parar
 
 export const PLANOS_PILOTOS: Record<string, Plano> = {
   // ---------------- piloto 1: Próxima estação
-  vagao_hook: (s, dur, m) => {
+  vagao_plataforma: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao;
-    liaSenta(m, LIA_BANCO(s, { cabeca: [24, 8, 5], olhos: 0.25 }));
-    v.mover(ANDA(s) * 2.2, suave((s - 0.6) / 1.8)); v.painelTexto("ESTAÇÃO", "13"); v.mapaTexto(0); v.atualizar(s, 0.6);
-    return { cena: "vagao", pos: mix([0.25, 1.38, 5.4], [0.2, 1.42, 3.0], p), alvo: [0.1, 1.45, -6], fov: 66, rolar: Math.sin(s * 5) * 0.004 };
+    v.mover(0, 1); v.limpa(false); v.passo(0); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.5);
+    return { cena: "vagao", pos: mix([-0.9, 1.3, 0.0], [-0.5, 1.3, 0.3], p), alvo: [2.8, 1.55, 0.4], fov: 56 };
   },
   vagao_lia: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao;
-    liaSenta(m, LIA_BANCO(s, { cabeca: [20 - 20 * p, 8 - 8 * p, 4 - 4 * p], olhos: 0.25 + 1.1 * p, sobrancelha: p, boca: p > 0.7 ? "medo" : "neutra" }));
-    v.mover(ANDA(s) * 2.2, 0); v.atualizar(s, 0.5);
+    liaSenta(m, LIA_BANCO(s, { cabeca: [20 - 20 * p, 10 - 10 * p, 5 - 5 * p], olhos: 0.25 + 0.6 * p, sobrancelha: -0.7 * p, boca: "neutra" }));
+    v.mover(ANDA(s) * 2.2, 0); v.limpa(false); v.atualizar(s, 0.5);
     const c = cab(v.lia);
-    return { cena: "vagao", pos: mix([c[0] + 2.1, c[1] - 0.12, c[2] + 0.8], [c[0] + 1.7, c[1] - 0.1, c[2] + 0.6], p), alvo: [c[0], c[1] - 0.04, c[2]], fov: 38 };
-  },
-  vagao_lia_medo: (s, dur, m) => {
-    const p = suave(s / dur), v = m.vagao;
-    liaSenta(m, LIA_BANCO(s, { olhos: 1.45, sobrancelha: 1, boca: "medo", cabeca: [0, 0, 0] }));
-    v.mover(0, 1); v.atualizar(s, 0.9);
-    const c = cab(v.lia);
-    return { cena: "vagao", pos: mix([c[0] + 2.1, c[1] - 0.12, c[2] + 0.8], [c[0] + 1.5, c[1] - 0.08, c[2] + 0.5], p), alvo: [c[0], c[1] - 0.04, c[2]], fov: 38 };
+    return { cena: "vagao", pos: mix([c[0] + 1.4, c[1] + 0.1, c[2] + 2.6], [c[0] + 1.2, c[1] + 0.05, c[2] + 2.25], p), alvo: [c[0] - 0.05, c[1] - 0.15, c[2]], fov: 38 };
   },
   vagao_painel: (s, dur, m) => {
-    const v = m.vagao; liaSenta(m, LIA_BANCO(s, { olhos: 1.3, sobrancelha: 1, cabeca: [-4, 40, 0] }));
-    v.painelTexto("PRÓXIMA ESTAÇÃO", s > dur * 0.35 ? "13" : "12", s > dur * 0.35 ? "#ff3b3b" : "#ffb000"); v.mover(ANDA(s) * 2.2, 0); v.atualizar(s, 0.8);
-    return { cena: "vagao", pos: mix([0.2, 1.6, 4.4], [0.3, 1.8, 2.7], suave(s / dur)), alvo: [0.62, 2.05, -6], fov: 24 };
+    const v = m.vagao; v.mover(ANDA(s) * 2.2, 0); v.limpa(false);
+    v.painelTexto("PRÓXIMA ESTAÇÃO", s > dur * 0.35 ? "13" : "12", s > dur * 0.35 ? "#ff3b3b" : "#ffb000"); v.atualizar(s, 0.8);
+    return { cena: "vagao", pos: mix([0.6, 1.75, -3.9], [0.62, 1.85, -4.3], suave(s / dur)), alvo: [0.62, 2.05, -6], fov: 58 };
   },
   vagao_mapa: (s, dur, m) => {
-    const v = m.vagao; liaSenta(m, LIA_BANCO(s, { olhos: 1.3, sobrancelha: 1 }));
-    v.mapaTexto(suave((s - 0.9) / 0.8)); v.painelTexto("PRÓXIMA ESTAÇÃO", "13", "#ff3b3b"); v.mover(ANDA(s) * 2.2, 0); v.atualizar(s, 0.8);
-    return { cena: "vagao", pos: mix([-0.2, 1.6, 4.4], [-0.3, 1.8, 2.7], suave(s / dur)), alvo: [-0.65, 2.05, -6], fov: 24 };
+    const p = suave(s / dur), v = m.vagao;
+    v.mapaTexto(suave((s - dur * 0.5) / 0.8)); v.mover(ANDA(s) * 2.2, 0); v.limpa(false); v.atualizar(s, 0.8);
+    return { cena: "vagao", pos: [-0.95, 1.3 - 0.5 * p, -4.3], alvo: [-0.98, 1.55 - 0.85 * p, -6], fov: 44 };
+  },
+  vagao_lia_choro: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    liaSenta(m, LIA_BANCO(s, { cabeca: [24 + 4 * p, -6, -3], olhos: 0.75, sobrancelha: 1, boca: "triste" }));
+    v.mover(ANDA(s) * 2.2, 0); v.limpa(false); v.atualizar(s, 0.6);
+    const c = cab(v.lia);
+    return { cena: "vagao", pos: mix([c[0] + 1.5, c[1] + 0.1, c[2] + 2.5], [c[0] + 1.3, c[1] + 0.05, c[2] + 2.2], p), alvo: [c[0] - 0.05, c[1] - 0.2, c[2]], fov: 38 };
   },
   vagao_janela: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao;
-    liaSenta(m, LIA_BANCO(s, { olhos: 1.4, sobrancelha: 1, boca: "medo", cabeca: [4, -50, 0] }));
-    v.mover(ANDA(s) * 0.5, 1); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.9);
-    return { cena: "vagao", pos: mix([-0.95, 1.15, 0.2], [-0.8, 1.2, 0.3], p), alvo: [2.6, 1.25, 1.4], fov: 62 };
+    v.mover(0, 1); v.limpa(false); v.passo(0); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.9);
+    return { cena: "vagao", pos: mix([-0.3, 1.45, 0.2], [0.2, 1.5, 0.45], p), alvo: [2.9, 1.5, 0.9], fov: 40 };
   },
   vagao_porta: (s, dur, m) => {
     const p = suave(s / (dur * 0.7)), v = m.vagao, l = v.lia;
-    l.raiz.visible = true; l.raiz.position.set(0, 0, -1.4); l.raiz.rotation.set(0, Math.PI, 0); l.posar({ ...POSES.em_pe(s), cabeca: [0, 0, 0] });
-    v.mover(0, 1); v.porta(p); v.painelTexto("PORTAS ABERTAS", "13", "#ff3b3b"); v.atualizar(s, 0.9);
+    l.raiz.visible = true; l.raiz.position.set(0, 0, -1.2); l.raiz.rotation.set(0, Math.PI, 0); l.posar({ ...POSES.em_pe(s), cabeca: [0, 0, 0] });
+    v.mover(0, 1); v.limpa(false); v.porta(p); v.passo(suave(s / dur)); v.painelTexto("PORTAS ABERTAS", "13", "#ff3b3b"); v.atualizar(s, 0.9);
     return { cena: "vagao", pos: mix([0.3, 1.2, 3.8], [0.1, 1.25, 2.1], suave(s / dur)), alvo: [0, 1.1, -6], fov: 58 };
+  },
+  vagao_lia_det: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, l = v.lia;
+    l.raiz.visible = true; l.raiz.position.set(0, 0, -1.6); l.raiz.rotation.set(0, Math.PI, 0);
+    l.posar({ ...POSES.em_pe(s), olhos: 1.0, sobrancelha: -1, boca: "neutra", cabeca: [-6, 0, 0] });
+    v.mover(0, 1); v.limpa(false); v.porta(1); v.passo(1); v.atualizar(s, 0.9);
+    return { cena: "vagao", pos: mix([0.0, 1.25, -4.4], [0.0, 1.2, -3.9], p), alvo: [0, 1.05, -1.6], fov: 40 };
   },
 
   // ---------------- piloto 2: Rádio Madrugada
