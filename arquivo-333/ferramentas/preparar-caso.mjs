@@ -121,7 +121,17 @@ for (let i = 0; i < sub.length; i++) sub[i] *= 0.4 * (0.75 + 0.25 * Math.sin(i /
 clima.soma(sub, 0, 0.55);
 const clusters = [[40, 41, 47], [40, 46, 47], [39, 40, 46]];
 for (let k = 0; k * 7 < duracao + 1; k++) clima.soma(pad(clusters[k % clusters.length], 9, { brilho: 380, ataque: 3 }), k * 7, 0.5);
-clima.soma(SFX.chuva(duracao + 1), 0, 0.06, -0.3); clima.soma(SFX.chuva(duracao + 1), 0, 0.06, 0.3);
+if (ep.ambiente === "metro") {
+  // vagão em movimento: ronco grave que oscila e, quando o trem para (cena "paradaNaCena"), o ronco cai e entra o chiado do ar
+  const parada = ep.paradaNaCena !== undefined ? cenas[ep.paradaNaCena].inicio : 1e9;
+  const ronco = filtro(ruido(duracao + 1), "passa-baixa", 180, 0.7), N2 = ronco.length;
+  for (let i = 0; i < N2; i++) { const x = i / TAXA; ronco[i] *= (0.88 + 0.12 * Math.sin(x * 2.1)) * (x < parada ? 1 : Math.max(0.15, 1 - (x - parada) / 0.9)); }
+  clima.soma(ronco, 0, 0.34);
+  clima.soma(filtro(ruido(duracao + 1), "banda", 420, 0.9).map((v, i) => v * (i / TAXA < parada ? 0.5 : 0.08)), 0, 0.05, 0.2);
+  if (parada < duracao) clima.soma(decai(filtro(ruido(2.4), "passa-alta", 3200, 0.7), 0.7, 0.05), parada - 0.1, 0.22);
+} else {
+  clima.soma(SFX.chuva(duracao + 1), 0, 0.06, -0.3); clima.soma(SFX.chuva(duracao + 1), 0, 0.06, 0.3);
+}
 reverb(clima, { sala: 0.92, amortece: 0.45, mistura: 0.4 });
 // o clima some no cartão final e volta só com o sino
 const ultima = cenas[cenas.length - 1];
@@ -132,6 +142,12 @@ for (const c of cenas) for (const [nome, ref = 0, vol = 0.8, pan = 0] of c.sons 
   const som = EF[nome];
   if (!som) throw new Error(`efeito desconhecido: ${nome}`);
   efeitos.soma(som(), quando(c, ref), vol, pan);
+}
+if (ep.ambiente === "metro") {
+  // batida dupla das rodas nos trilhos, só enquanto o trem anda
+  const paradaT = ep.paradaNaCena !== undefined ? cenas[ep.paradaNaCena].inicio : 1e9;
+  const tac = () => decai(filtro(ruido(0.07), "banda", 2400, 1.3), 0.013, 0.0004);
+  for (let x = 0.2; x < Math.min(duracao, paradaT); x += 0.56) { efeitos.soma(tac(), x, 0.2); efeitos.soma(tac(), x + 0.11, 0.14); efeitos.soma(decai(oscilador("seno", 62, 0.2, { fase: 0 }), 0.08, 0.002), x, 0.12); }
 }
 // batimento que acelera nas duas cenas antes do final
 const alvo = cenas.slice(-3, -1);

@@ -17,7 +17,7 @@ export type Pose = {
   pernaE?: [number, number, number]; pernaD?: [number, number, number];
   joelhoE?: number; joelhoD?: number;
   olhos?: number;        // 1 = normal, 1.4 = arregalados, 0.2 = quase fechados
-  boca?: "neutra" | "aberta" | "medo" | "triste";
+  boca?: "neutra" | "aberta" | "medo" | "triste" | "sorriso";
   sobrancelha?: number;  // -1 brava, 0 neutra, 1 preocupada
   respira?: number;      // tempo, para o peito subir e descer
 };
@@ -140,9 +140,9 @@ export class Boneco {
     this.sobE.rotation.z = Math.PI / 2 + sb * 0.35; this.sobD.rotation.z = Math.PI / 2 - sb * 0.35;
     this.sobE.position.y = this.sobD.position.y = 0.13 + Math.max(0, sb) * 0.02 + (o > 1.1 ? 0.02 : 0);
     const b = p.boca ?? "neutra";
-    this.boca.visible = b === "neutra" || b === "triste";
-    this.boca.rotation.z = 0; this.boca.scale.set(1, b === "neutra" ? 0.25 : 1, 1);
-    this.boca.position.y = b === "triste" ? -0.15 : -0.12;
+    this.boca.visible = b === "neutra" || b === "triste" || b === "sorriso";
+    this.boca.rotation.z = b === "sorriso" ? Math.PI : 0; this.boca.scale.set(b === "sorriso" ? 1.7 : 1, b === "neutra" ? 0.25 : 1, 1);
+    this.boca.position.y = b === "triste" ? -0.15 : b === "sorriso" ? -0.1 : -0.12;
     this.bocaAberta.visible = b === "aberta" || b === "medo";
     this.bocaAberta.scale.set(b === "medo" ? 0.8 : 0.9, b === "medo" ? 1.6 : 1.1, 0.4);
     const r = p.respira ?? 0;

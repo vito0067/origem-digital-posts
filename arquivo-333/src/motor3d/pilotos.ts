@@ -29,15 +29,16 @@ const cromo = () => mat("#c4c9d0", { metalness: 0.9, roughness: 0.25 });
 // ================================================================ vagão de metrô
 export class Vagao {
   cena: any; lia: Boneco; segmentos: any[] = []; luzes: any[] = []; argolas: any[] = [];
-  lampadasExt: { m: any; z0: number; lado: number }[] = []; tunelDireito: any; plat: any; postes: any[] = []; gente: { b: Boneco; x0: number }[] = [];
+  lampadasExt: { m: any; z0: number; lado: number }[] = []; tunelDireito: any; plat: any; postes: any[] = []; gente: { b: Boneco; x0: number; k: number; tilt: number }[] = [];
+  estPass: { g: any; c: HTMLCanvasElement; placa: any }[] = []; estNum = 0; luzPlat2: any; tubosPlat: { m: any; k: number }[] = [];
   telaPainel: HTMLCanvasElement; texPainel: any; telaMapa: HTMLCanvasElement; texMapa: any;
   portas: any[] = []; fundoPorta: any; luzPorta: any; luzPlat: any;
   static W = 2.7; static L = 12; static H = 2.35;
 
   constructor() {
-    const cena = new THREE.Scene(); this.cena = cena; cena.background = new THREE.Color("#030508");
+    const cena = new THREE.Scene(); this.cena = cena; cena.background = new THREE.Color("#030508"); cena.fog = new THREE.FogExp2("#04070a", 0.014);
     const { W, L, H } = Vagao;
-    cena.add(new THREE.HemisphereLight("#9fb4cc", "#1c2028", 0.55));
+    cena.add(new THREE.HemisphereLight("#7f93ad", "#14171c", 0.2));
     const piso = caixa(W, 0.06, L, mat("#2f333b", { roughness: 0.5 })); piso.position.y = -0.03; cena.add(piso);
     for (const x of [-0.62, 0.62]) { const f = caixa(0.05, 0.01, L, mat("#d9b53a")); f.position.set(x, 0.005, 0); cena.add(f); }
     const teto = caixa(W, 0.08, L, mat("#d4d8dd")); teto.position.y = H; cena.add(teto);
@@ -45,10 +46,10 @@ export class Vagao {
     for (let k = 0; k < 5; k++) {
       const z = -4.8 + k * 2.4;
       for (const x of [-0.45, 0.45]) {
-        const m = new THREE.MeshBasicMaterial({ color: "#e8f3ff", toneMapped: false });
+        const m = new THREE.MeshBasicMaterial({ color: "#aebdd0", toneMapped: false });
         const l = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.03, 1.7), m); l.position.set(x, H - 0.05, z); cena.add(l); this.segmentos.push({ m, k });
       }
-      const p = new THREE.PointLight("#cfe6ff", 2.6, 6, 1.4); p.position.set(0, H - 0.3, z); cena.add(p); this.luzes.push(p);
+      const p = new THREE.PointLight("#bcd4ee", 1.5, 6, 1.4); p.position.set(0, H - 0.3, z); cena.add(p); this.luzes.push(p);
     }
     // paredes: base, faixa de cima e pilares entre as janelas (os vãos mostram a plataforma ou o túnel)
     const parede = mat("#aeb4bb"), banco = mat("#52627a"), baseBanco = mat("#1b1f27");
@@ -90,31 +91,73 @@ export class Vagao {
       const m = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 0.55), new THREE.MeshBasicMaterial({ color: "#ffe9b0", toneMapped: false }));
       m.position.set(lado * (W / 2 + 2.4), 2.0, 0); cena.add(m); this.lampadasExt.push({ m, z0: -7 + k * 1.4 + (lado > 0 ? 0.5 : 0), lado });
     }
+    this.estPass = [-1, 1].map((lado) => {
+      const g = new THREE.Group(), c = tela(512, 200);
+      const luz = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1.7, 9), new THREE.MeshBasicMaterial({ color: "#e6f6ff", toneMapped: false })); luz.position.set(lado * (W / 2 + 2.2), 1.0, 0); g.add(luz);
+      const placa = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 0.59), emissivo(textura(c))); placa.position.set(lado * (W / 2 + 2.05), 2.0, 0); placa.rotation.y = lado > 0 ? -Math.PI / 2 : Math.PI / 2; g.add(placa);
+      g.visible = false; cena.add(g); return { g, c, placa };
+    });
     this.plat = new THREE.Group(); cena.add(this.plat);
     const px = W / 2;
-    const chao = caixa(3.0, 0.5, 44, mat("#8d8f94")); chao.position.set(px + 1.8, -0.26, 0); this.plat.add(chao);
-    const borda = caixa(0.08, 0.01, 44, mat("#e6c23a")); borda.position.set(px + 0.38, 0.005, 0); this.plat.add(borda);
-    const azulejo = caixa(0.1, 3.4, 44, mat("#e6e9ee", { roughness: 0.4 })); azulejo.position.set(px + 3.4, 1.6, 0); this.plat.add(azulejo);
-    this.luzPlat = new THREE.PointLight("#e9f6ff", 9, 9, 1.3); this.luzPlat.position.set(px + 1.6, 2.4, 0); this.plat.add(this.luzPlat);
-    for (const z of [-4.2, 0.2, 4.4]) {
-      const c = tela(512, 200), g = c.getContext("2d")!; g.fillStyle = "#4a5058"; g.fillRect(0, 0, 512, 200);
-      g.fillStyle = "#fff"; g.font = "bold 38px Arial"; g.textAlign = "center"; g.fillText("ESTAÇÃO", 256, 50); g.font = "bold 130px Arial"; g.fillText("13", 256, 168);
-      const s = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 0.59), emissivo(textura(c))); s.position.set(px + 3.33, 2.2, z); s.rotation.y = -Math.PI / 2; this.plat.add(s);
+    const chao = caixa(3.0, 0.5, 44, mat("#4d5054")); chao.position.set(px + 1.8, -0.26, 0); this.plat.add(chao);
+    const borda = caixa(0.14, 0.012, 44, mat("#b9961f")); borda.position.set(px + 0.42, 0.006, 0); this.plat.add(borda);
+    for (let k = 0; k < 40; k++) { const t = caixa(0.14, 0.01, 0.6, mat("#7a6216")); t.position.set(px + 0.42, 0.012, -21 + k * 1.1); this.plat.add(t); }
+    const azulejo = caixa(0.1, 3.4, 44, new THREE.MeshStandardMaterial({ map: this.texturaAzulejo(), roughness: 0.55 })); azulejo.position.set(px + 3.4, 1.6, 0); this.plat.add(azulejo);
+    const tetoP = caixa(3.6, 0.1, 44, mat("#101214")); tetoP.position.set(px + 1.8, 3.25, 0); this.plat.add(tetoP);
+    this.luzPlat = new THREE.PointLight("#a8e8c8", 9, 11, 1.3); this.luzPlat.position.set(px + 1.6, 2.6, 0.5); this.plat.add(this.luzPlat);
+    this.luzPlat2 = new THREE.PointLight("#ff2a2a", 2.2, 7, 1.6); this.luzPlat2.position.set(px + 2.6, 1.2, -4.5); this.plat.add(this.luzPlat2);
+    for (let k = 0; k < 6; k++) { const m = new THREE.MeshBasicMaterial({ color: "#bfe9d6", toneMapped: false }); const t = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.05, 1.5), m); t.position.set(px + 1.8, 3.15, -9 + k * 3.6); this.plat.add(t); this.tubosPlat.push({ m, k }); }
+    // colunas, bancos, relógio parado em 3:33, cartazes e as placas vermelhas da estação 13
+    for (const z of [-7.5, -2.4, 3.2, 8]) { const c = caixa(0.42, 3.2, 0.42, mat("#2f3438")); c.position.set(px + 2.55, 1.6, z); this.plat.add(c); }
+    for (const z of [-5, 5.6]) {
+      const bk = caixa(0.5, 0.07, 1.7, mat("#2b2d30")); bk.position.set(px + 3.05, 0.45, z); this.plat.add(bk);
+      for (const dz of [-0.7, 0.7]) { const pe = caixa(0.4, 0.4, 0.08, mat("#1b1c1e")); pe.position.set(px + 3.05, 0.2, z + dz); this.plat.add(pe); }
     }
-    const elenco = ["bia", "rafa", "alvaro", "cida", "marina", "caio", "locutor", "bia", "rafa", "alvaro"];
-    elenco.forEach((nome, k) => {
-      const b = new Boneco(APARENCIAS[nome]), x0 = px + 1.0 + (k % 3) * 0.5, z = -4.6 + k * 1.0 + (k % 2 ? 0.2 : -0.1);
-      b.raiz.position.set(x0, 0, z); b.raiz.rotation.set(0, -Math.PI / 2, 0);
-      b.posar({ ...POSES.em_pe(k), olhos: 1.25, sobrancelha: [0.6, 0, -0.5][k % 3], boca: "neutra", cabeca: [0, 0, 0] });
-      this.plat.add(b.raiz); this.gente.push({ b, x0 });
+    const rc = tela(256, 256), gr = rc.getContext("2d")!; gr.fillStyle = "#e9e6dd"; gr.beginPath(); gr.arc(128, 128, 124, 0, Math.PI * 2); gr.fill(); gr.strokeStyle = "#111"; gr.lineWidth = 8; gr.stroke();
+    for (let k = 0; k < 12; k++) { const a = (k / 12) * Math.PI * 2; gr.beginPath(); gr.moveTo(128 + Math.sin(a) * 104, 128 - Math.cos(a) * 104); gr.lineTo(128 + Math.sin(a) * 118, 128 - Math.cos(a) * 118); gr.lineWidth = 5; gr.stroke(); }
+    gr.lineCap = "round"; gr.lineWidth = 9; gr.beginPath(); gr.moveTo(128, 128); gr.lineTo(128 + Math.sin(Math.PI * 1.55) * 60, 128 - Math.cos(Math.PI * 1.55) * 60); gr.stroke(); // hora (perto do 3)
+    gr.lineWidth = 6; gr.beginPath(); gr.moveTo(128, 128); gr.lineTo(128 + Math.sin(Math.PI * 1.1) * 92, 128 - Math.cos(Math.PI * 1.1) * 92); gr.stroke();
+    const relogio = new THREE.Mesh(new THREE.CircleGeometry(0.34, 40), emissivo(textura(rc))); relogio.position.set(px + 2.33, 2.4, -2.4); relogio.rotation.y = -Math.PI / 2; this.plat.add(relogio);
+    ["NÃO DESÇA", "ELES ESPERAM", "VOCÊ JÁ ESTEVE AQUI"].forEach((txt, k) => {
+      const c = tela(256, 400), g = c.getContext("2d")!; g.fillStyle = "#17110f"; g.fillRect(0, 0, 256, 400);
+      g.fillStyle = "#2a1c18"; g.beginPath(); g.ellipse(128, 130, 46, 56, 0, 0, Math.PI * 2); g.fill(); g.fillRect(70, 180, 116, 120);
+      g.fillStyle = "#b8281e"; g.font = "bold 34px Arial"; g.textAlign = "center"; txt.split(" ").forEach((w, i, a) => g.fillText(w, 128, 330 + (i - (a.length - 1) / 2) * 40));
+      const p = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 1.25), emissivo(textura(c))); p.position.set(px + 3.33, 1.5, [-6.2, -0.9, 4.4][k]); p.rotation.y = -Math.PI / 2; this.plat.add(p);
+    });
+    for (const z of [-4.2, 0.2, 4.4]) {
+      const c = tela(512, 200), g = c.getContext("2d")!; g.fillStyle = "#1a0c0c"; g.fillRect(0, 0, 512, 200);
+      g.fillStyle = "#ff4a3a"; g.shadowColor = "#ff3b2b"; g.shadowBlur = 30; g.textAlign = "center"; g.font = "bold 38px Arial"; g.fillText("ESTAÇÃO", 256, 50); g.font = "bold 130px Arial"; g.fillText("13", 256, 168);
+      const sg = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 0.59), emissivo(textura(c))); sg.position.set(px + 3.33, 2.2, z); sg.rotation.y = -Math.PI / 2; this.plat.add(sg);
+    }
+    // a gente da plataforma: pálida, parada, olhando o trem, cabeça torta; alguns sorriem demais, um é alto demais
+    const pal = (pele: string, roupa: string, cabelo: string, extra: Record<string, unknown> = {}) => ({ pele, cabelo, roupa, calca: "#16181c", tenis: "#0e0e10", penteado: "curto" as const, capuz: false, ...extra });
+    const elenco = [pal("#c4cbd0", "#2c3138", "#15110e"), pal("#adb5ba", "#3a2f33", "#0f0f10", { penteado: "chanel" }), pal("#d1d6da", "#26303a", "#2a2a2a", { oculos: true }), pal("#b5bcc1", "#33392f", "#1a1411", { penteado: "coque" }), pal("#c9cfd3", "#40343a", "#0d0d0d"),
+      pal("#a9b1b6", "#2a2f35", "#2f2f2f", { altura: 1.38 }), pal("#bfc6ca", "#352c30", "#111111", { penteado: "chanel" }), pal("#cdd2d6", "#2d3338", "#1b1b1b", { oculos: true }), pal("#b0b8bd", "#38343a", "#0e0e0e"), pal("#c1c8cc", "#2b3036", "#141010", { penteado: "coque" })];
+    elenco.forEach((ap, k) => {
+      const bn = new Boneco(ap as any), x0 = px + 0.95 + (k % 3) * 0.55, z = -4.6 + k * 1.0 + (k % 2 ? 0.2 : -0.1), tilt = (k % 2 ? 1 : -1) * (5 + (k % 4) * 3);
+      bn.raiz.position.set(x0, 0, z); bn.raiz.rotation.set(0, -Math.PI / 2, 0);
+      bn.posar({ ...POSES.em_pe(k), olhos: 1.5, sobrancelha: [-0.3, 0.8, -0.7][k % 3], boca: k % 3 === 0 ? "sorriso" : "neutra", cabeca: [0, 0, tilt] });
+      this.plat.add(bn.raiz); this.gente.push({ b: bn, x0, k, tilt });
     });
     this.lia = new Boneco(APARENCIAS.lia); cena.add(this.lia.raiz);
     this.padrao();
   }
 
+  private texturaAzulejo() {
+    const c = tela(256, 512), g = c.getContext("2d")!, r = sorteio(21);
+    g.fillStyle = "#46544f"; g.fillRect(0, 0, 256, 512);
+    for (let y = 0; y < 16; y++) for (let x = 0; x < 8; x++) { const v = 78 + Math.floor(r() * 26); g.fillStyle = `rgb(${v - 10},${v + 8},${v})`; g.fillRect(x * 32 + 1, y * 32 + 1, 30, 30); }
+    for (let k = 0; k < 40; k++) { g.fillStyle = `rgba(10,8,6,${0.08 + r() * 0.2})`; g.fillRect(r() * 256, r() * 300, 4 + r() * 10, 40 + r() * 200); }
+    g.fillStyle = "rgba(90,20,16,0.5)"; for (let k = 0; k < 6; k++) { g.fillRect(40 + r() * 170, 100 + r() * 200, 3, 30 + r() * 90); }
+    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(10, 2); return t;
+  }
+  private desenhaEst(c: HTMLCanvasElement, placa: any, n: number) {
+    const g = c.getContext("2d")!; g.fillStyle = "#3a4048"; g.fillRect(0, 0, 512, 200); g.fillStyle = "#fff"; g.textAlign = "center"; g.font = "bold 36px Arial"; g.fillText("ESTAÇÃO", 256, 48); g.font = "bold 130px Arial"; g.fillText(String(n), 256, 168);
+    placa.material.map.needsUpdate = true;
+  }
   painelTexto(linha1: string, linha2: string, cor = "#ffb000") {
     const g = this.telaPainel.getContext("2d")!;
-    g.fillStyle = "#120a02"; g.fillRect(0, 0, 512, 128);
+    g.fillStyle = "#120a02"; g.fillRect(0, 0, 512, 128); g.strokeStyle = cor + "99"; g.lineWidth = 4; g.strokeRect(5, 5, 502, 118);
     g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = cor; g.shadowColor = cor; g.shadowBlur = 14;
     g.font = "bold 34px 'Courier New', monospace"; g.fillText(linha1, 256, 28);
     g.font = "bold 78px 'Courier New', monospace"; g.fillText(linha2, 256, 86);
@@ -143,7 +186,10 @@ export class Vagao {
   /** A gente da plataforma dá um passo em direção ao trem (p de 0 a 1). */
   passo(p: number) { for (const { b, x0 } of this.gente) b.raiz.position.x = x0 - 0.45 * p; }
   /** `offset`: quanto o trem andou (metros); `plat`: 0 = túnel, 1 = parado na plataforma. */
-  mover(offset: number, plat: number) {
+  mover(offset: number, plat: number, est = 0) {
+    const ativa = est > 0 && plat <= 0.001;
+    for (const e of this.estPass) { e.g.visible = ativa; if (ativa) { e.g.position.z = offset - 25; if (this.estNum !== est) this.desenhaEst(e.c, e.placa, est); } }
+    if (ativa) this.estNum = est;
     for (const { m, z0, lado } of this.lampadasExt) {
       m.position.z = (((z0 - offset) % 14) + 14) % 14 - 7;
       m.visible = !(lado > 0 && plat > 0.001);
@@ -157,12 +203,16 @@ export class Vagao {
   }
   /** Luzes do teto: `queda` 0 normal, 1 apagadas; o pisca é uma função do tempo. */
   atualizar(t: number, pisca = 0.5) {
-    const baixo = Math.sin(t * 23) > 0.55 && Math.sin(t * 3.1 + 1) > 1 - 2 * pisca;
+    const baixo = Math.sin(t * 23) > 0.3 && Math.sin(t * 3.1 + 1) > 1 - 2 * pisca;
     for (let k = 0; k < 5; k++) {
-      const apaga = (k === 2 && baixo) || (k === 3 && Math.sin(t * 17 + 2) > 0.8 && pisca > 0.3);
-      this.luzes[k].intensity = apaga ? 0.2 : 2.6;
-      for (const s of this.segmentos.filter((x) => x.k === k)) s.m.color.set(apaga ? "#3a3f48" : "#e8f3ff");
+      const apaga = (k === 2 && baixo) || (k === 3 && Math.sin(t * 17 + 2) > 0.7 && pisca > 0.3) || (k === 1 && Math.sin(t * 13 + 4) > 0.88);
+      this.luzes[k].intensity = apaga ? 0.08 : 1.5;
+      for (const s of this.segmentos.filter((x) => x.k === k)) s.m.color.set(apaga ? "#3a3f48" : "#aebdd0");
     }
+    for (const g of this.gente) { g.b.raiz.rotation.y = -Math.PI / 2 + Math.sin(t * 0.6 + g.k) * 0.06; g.b.cabeca.rotation.z = ((g.tilt + Math.sin(t * 0.8 + g.k * 1.7) * 3) * Math.PI) / 180; }
+    const piscaP = Math.sin(t * 19 + 1) > 0.6 && Math.sin(t * 2.3) > 0.2;
+    this.luzPlat.intensity = piscaP ? 2 : 9;
+    for (const x of this.tubosPlat) x.m.color.set(x.k === 2 && piscaP ? "#26302c" : "#bfe9d6");
     this.argolas.forEach((g, i) => { g.rotation.z = Math.sin(t * 1.6 + i) * 0.04; g.rotation.x = Math.sin(t * 1.2 + i * 0.7) * 0.03; });
   }
   padrao() {
@@ -389,18 +439,18 @@ export const PLANOS_PILOTOS: Record<string, Plano> = {
   // ---------------- piloto 1: Próxima estação
   vagao_plataforma: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao;
-    v.mover(0, 1); v.limpa(false); v.passo(0); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.5);
-    return { cena: "vagao", pos: mix([-0.9, 1.3, 0.0], [-0.5, 1.3, 0.3], p), alvo: [2.8, 1.55, 0.4], fov: 56 };
+    v.mover(0, 1); v.limpa(true); v.passo(0); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.5);
+    return { cena: "vagao", pos: mix([-1.05, 1.25, 1.0], [-0.8, 1.3, 1.0], p), alvo: [2.8, 1.45, 0.9], fov: 74, rolar: 0.05 - 0.03 * p };
   },
   vagao_lia: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao;
     liaSenta(m, LIA_BANCO(s, { cabeca: [20 - 20 * p, 10 - 10 * p, 5 - 5 * p], olhos: 0.25 + 0.6 * p, sobrancelha: -0.7 * p, boca: "neutra" }));
-    v.mover(ANDA(s) * 2.2, 0); v.limpa(false); v.atualizar(s, 0.5);
+    v.mover(ANDA(s) * 2.2, 0, 11); v.limpa(true); v.atualizar(s, 0.5);
     const c = cab(v.lia);
     return { cena: "vagao", pos: mix([c[0] + 1.4, c[1] + 0.1, c[2] + 2.6], [c[0] + 1.2, c[1] + 0.05, c[2] + 2.25], p), alvo: [c[0] - 0.05, c[1] - 0.15, c[2]], fov: 38 };
   },
   vagao_painel: (s, dur, m) => {
-    const v = m.vagao; v.mover(ANDA(s) * 2.2, 0); v.limpa(false);
+    const v = m.vagao; v.mover(ANDA(s) * 2.2, 0, 12); v.limpa(false);
     v.painelTexto("PRÓXIMA ESTAÇÃO", s > dur * 0.35 ? "13" : "12", s > dur * 0.35 ? "#ff3b3b" : "#ffb000"); v.atualizar(s, 0.8);
     return { cena: "vagao", pos: mix([0.6, 1.75, -3.9], [0.62, 1.85, -4.3], suave(s / dur)), alvo: [0.62, 2.05, -6], fov: 58 };
   },
@@ -412,26 +462,26 @@ export const PLANOS_PILOTOS: Record<string, Plano> = {
   vagao_lia_choro: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao;
     liaSenta(m, LIA_BANCO(s, { cabeca: [24 + 4 * p, -6, -3], olhos: 0.75, sobrancelha: 1, boca: "triste" }));
-    v.mover(ANDA(s) * 2.2, 0); v.limpa(false); v.atualizar(s, 0.6);
+    v.mover(ANDA(s) * 2.2, 0); v.limpa(true); v.atualizar(s, 0.6);
     const c = cab(v.lia);
     return { cena: "vagao", pos: mix([c[0] + 1.5, c[1] + 0.1, c[2] + 2.5], [c[0] + 1.3, c[1] + 0.05, c[2] + 2.2], p), alvo: [c[0] - 0.05, c[1] - 0.2, c[2]], fov: 38 };
   },
   vagao_janela: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao;
-    v.mover(0, 1); v.limpa(false); v.passo(0); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.9);
-    return { cena: "vagao", pos: mix([-0.3, 1.45, 0.2], [0.2, 1.5, 0.45], p), alvo: [2.9, 1.5, 0.9], fov: 40 };
+    v.mover(0, 1); v.limpa(true); v.passo(0); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.9);
+    return { cena: "vagao", pos: mix([-0.2, 1.05, 1.0], [0.25, 1.15, 1.0], p), alvo: [2.9, 1.65, 1.1], fov: 42, rolar: -0.04 };
   },
   vagao_porta: (s, dur, m) => {
     const p = suave(s / (dur * 0.7)), v = m.vagao, l = v.lia;
     l.raiz.visible = true; l.raiz.position.set(0, 0, -1.2); l.raiz.rotation.set(0, Math.PI, 0); l.posar({ ...POSES.em_pe(s), cabeca: [0, 0, 0] });
-    v.mover(0, 1); v.limpa(false); v.porta(p); v.passo(suave(s / dur)); v.painelTexto("PORTAS ABERTAS", "13", "#ff3b3b"); v.atualizar(s, 0.9);
+    v.mover(0, 1); v.limpa(true); v.porta(p); v.passo(suave(s / dur)); v.painelTexto("PORTAS ABERTAS", "13", "#ff3b3b"); v.atualizar(s, 0.9);
     return { cena: "vagao", pos: mix([0.3, 1.2, 3.8], [0.1, 1.25, 2.1], suave(s / dur)), alvo: [0, 1.1, -6], fov: 58 };
   },
   vagao_lia_det: (s, dur, m) => {
     const p = suave(s / dur), v = m.vagao, l = v.lia;
     l.raiz.visible = true; l.raiz.position.set(0, 0, -1.6); l.raiz.rotation.set(0, Math.PI, 0);
     l.posar({ ...POSES.em_pe(s), olhos: 1.0, sobrancelha: -1, boca: "neutra", cabeca: [-6, 0, 0] });
-    v.mover(0, 1); v.limpa(false); v.porta(1); v.passo(1); v.atualizar(s, 0.9);
+    v.mover(0, 1); v.limpa(true); v.porta(1); v.passo(1); v.atualizar(s, 0.9);
     return { cena: "vagao", pos: mix([0.0, 1.25, -4.4], [0.0, 1.2, -3.9], p), alvo: [0, 1.05, -1.6], fov: 40 };
   },
 

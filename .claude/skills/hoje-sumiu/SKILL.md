@@ -46,7 +46,14 @@ Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion 
 - **Câmera:** um voo só, sem corte seco. A cada 2 a 4 s, algo muda. Em todo plano com personagem, a cabeça fica por volta de y = 750 px, acima da legenda.
 - **Cabeçalho fixo:** "DIA N" + "N COISAS SUMIRAM · SÓ 1 PESSOA LEMBRA".
 - **Legenda-adesivo:** até 3 palavras, palavra entra quando é dita, em y ≈ 1205 (fora da área dos botões das redes). Azul nas palavras fortes; a coisa que sumiu fica cinza depois da virada.
-- **Fim:** "O QUE SOME AMANHÃ?" com 3 comentários de exemplo (avisar que são exemplo), "Ficção criada com IA" e "COMENTA AQUI ⬇".
+- **Fim:** "O QUE SOME AMANHÃ?" com as 5 opções de voto legíveis (ver a seção "Voto com 5 opções" abaixo), "Ficção criada com IA" e "COMENTA AQUI ⬇".
+
+## Voto com 5 opções (pedido do Vito, 05/11/2026, vale do próximo vídeo)
+- **Pergunta final:** o narrador fala "Comente 1 para X, 2 para Y, 3 para Z, 4 para W ou 5 para K" e o cartão final mostra as 5 opções, legíveis, com número em destaque.
+- **Escolha as 5 opções antes de publicar.** Temas bem abrangentes, para o público se envolver: algo do cotidiano, da natureza, da tecnologia, da comida e da memória/afeto. Nada de governo, pessoa, marca, religião, doença ou criança (as mesmas regras de "Proibido").
+- **Contagem:** a opção mais comentada vence. Conte os comentários que escolhem cada número (não as curtidas do comentário). Se um número não pega, conte pela palavra-chave da opção. Comentário que vota em mais de uma opção não conta. Mostre a contagem ao Vito antes de produzir o dia seguinte.
+- **Aprovação antes de publicar:** mostre o vídeo pronto no chat do Vito e espere o "aprovado". Sem aprovação, não publica.
+- **Abertura:** o sumiço tem que aparecer nos primeiros 3 segundos. Vídeos mais curtos (o alvo continua 55 a 65 s, mas corte o que não ajuda a história).
 
 ## Voz (a primeira queixa do Vito foi aqui)
 - **Modelo:** `elevenlabs_v4`, voz Mark `27c04473-84a9-4b60-a41f-c8e8458bd4f1` (`voice_type: "preset"`), estabilidade 0.5, similaridade 0.75, um turno por fala, e `"velocidade": 1` no episódio: sem aceleração. O Vito escolheu essa voz em 01/11/2026 por ser natural e tranquila. A Gideon, do Dia 1, parecia demais com o Arquivo 3:33: não volte a usar.
@@ -62,8 +69,10 @@ Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion 
 ## Crédito de quem escolheu (pedido do Vito, 01/11/2026)
 Depois de "Do mundo inteiro. Para sempre.", um cartão mostra o @ de quem escreveu, o comentário e as curtidas, conferidas no dia. A voz diz que foi o mais curtido. Se houve veto, diga "o mais curtido que valia", porque outro comentário teve mais curtidas. O @ fica só na tela e na legenda, nunca na voz: nome de conta é pronúncia arriscada.
 
-## "Comente GUIA" (mudança aprovada pelo Vito em 04/11/2026, vale do Dia 5 em diante)
-A divulgação do meio do vídeo troca "link na bio" por **"Comente GUIA"**. Fala (menos de 4 s, Mark): "Feito sem câmera. Comente GUIA e eu te mando." Cartão (`divulgacao`): `titulo` "SEM CÂMERA", `sub` "COMENTE GUIA", sem `chamada` de link. Legenda e descrição: "Quer saber como é feito? Comente GUIA." e, como apoio, "link na bio" (o link fica no perfil). A pergunta final de voto continua em todos os vídeos e é a chamada principal: são duas chamadas diferentes, a de votar e a de comentar GUIA. O Dia 4 já está no ar com "link na bio" e não muda.
+## "Comente GUIA" (mudança aprovada pelo Vito em 04/11/2026; **AINDA NÃO USAR**, ver a trava de 05/11/2026)
+**Trava de 05/11/2026:** o aviso de comentários do Instagram estava desligado na Meta. O chat Origem Digital ligou e vai testar com o Vito. Até a mensagem "liberado" vir do chat Origem Digital: **nada de "Comente GUIA" e nada de "link na bio"** na fala, no cartão, na legenda nem na descrição. Não há divulgação do guia nos vídeos até lá, salvo se o Vito disser o contrário. Quando o aviso chegar, volte a esta seção.
+
+A divulgação do meio do vídeo troca "link na bio" por **"Comente GUIA"** (quando liberado). Fala (menos de 4 s, Mark): "Feito sem câmera. Comente GUIA e eu te mando." Cartão (`divulgacao`): `titulo` "SEM CÂMERA", `sub` "COMENTE GUIA", sem `chamada` de link. Legenda e descrição: "Quer saber como é feito? Comente GUIA." e, como apoio, "link na bio" (o link fica no perfil). A pergunta final de voto continua em todos os vídeos e é a chamada principal: são duas chamadas diferentes, a de votar e a de comentar GUIA. O Dia 4 já está no ar com "link na bio" e não muda.
 **Trava:** o chat Origem Digital está montando o fluxo que responde os comentários "GUIA" no Instagram (resposta pública e mensagem privada com o link da lista de espera). **Não publique nenhum vídeo com "Comente GUIA" antes de o chat Origem Digital avisar que o fluxo está ligado**, senão quem comentar fica sem resposta. Também não prometa nada a quem comentar até lá.
 
 ## Divulgação do guia "Sem Câmera" (pedido do Vito, 02/11/2026; o texto "link na bio" vale até o Dia 4)
@@ -82,7 +91,7 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 4. **Cena:** o bloco `cena` no próprio `episodios/diaNN.json`, com as peças da biblioteca: leia `hoje-sumiu/PECAS.md` e copie de `episodios/exemplo-dados.json`. Não crie `DiaN.tsx` nem código novo por dia; se faltar uma peça, acrescente em `src/pecas/objetos.ts`. O que sumiu antes continua sumido: o vermelho já nasce cinza e o mural ganha uma nota "DIA N" sozinho. Dias 1 e 2 têm código próprio: não mexa. O Dia 3 provou a biblioteca de ponta a ponta (roteiro, voz, cena, render e kit). Se `render.mjs` der erro de rede ao carregar fonte, rode de novo.
 5. **Testar:** `EP=<id> ESCALA=0.33 node ferramentas/render.mjs Dia fotos 0.4 5 10 ...`, montar folha com `ferramentas/folha.ps1` e OLHAR antes do vídeo inteiro.
 6. **Render:** `EP=<id> CONC=4 node ferramentas/render.mjs Dia`, cerca de 2 min. Depois conferir quadros do vídeo pronto: teste com foto solta já escondeu defeito.
-7. **Revisar** com a lista abaixo. **Publicar** no Instagram e no YouTube, com o rótulo de IA ligado. **TikTok: nunca publique nem agende pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. Para ele, rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. Responder comentários nas primeiras horas.
+7. **Revisar** com a lista abaixo. **Aprovação:** mostrar o vídeo pronto ao Vito no chat dele e esperar o "aprovado" (vale até para o Dia 5). **Publicar** no YouTube e no Instagram, com o rótulo de IA ligado. **Instagram NÃO por robô:** publicar pelo Chrome do Vito, como o Arquivo 3:33 faz; o fluxo do n8n derruba o alcance e não é usado para o Hoje Sumiu. **TikTok: nunca publique nem agende pelo computador.** O Vito notou que os vídeos enviados assim chegam a poucas pessoas e posta pelo celular. Para ele, rode `node ferramentas/kit-celular.mjs N` e diga onde está a pasta. Responder comentários nas primeiras horas.
 
 ## Lista de revisão
 - O 1º quadro para o dedo?

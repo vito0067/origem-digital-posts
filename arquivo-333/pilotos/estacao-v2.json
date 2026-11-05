@@ -2,7 +2,7 @@
   "id": "piloto-estacao",
   "serie": "PILOTO",
   "episodio": 1,
-  "titulo": "Próxima estação (v2)",
+  "titulo": "Próxima estação (v3)",
   "narracao": "narracao/piloto-estacao.mp3",
   "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_230503_ba394e52-68db-474a-8195-812797621bed.mp3",
   "legendaModo": "painel",
@@ -214,5 +214,7 @@
       },
       "vozTelefone": true
     }
-  ]
+  ],
+  "ambiente": "metro",
+  "paradaNaCena": 4
 }
