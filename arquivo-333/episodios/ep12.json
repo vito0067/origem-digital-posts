@@ -11,7 +11,7 @@
     "data": "2026-11-06",
     "hora": "20:00",
     "capaEm": 1.2,
-    "legenda": "Ela olhou. E descobriu por que alguém queria ser visto. 📼\n\nVocê olharia para trás ou não? 👇\n\nO Sinal, episódio 12 (o 1 está no perfil).\nCaso 02 amanhã, às 20h. Siga para não perder.\n\nQuer saber como é feito? Comente GUIA.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
+    "legenda": "Ela olhou. E descobriu por que alguém queria ser visto. 📼\n\nVocê olharia para trás? Comente 1 se sim, 2 se não. 👇\n\nO Sinal, episódio 12 (o 1 está no perfil).\nCaso 02 amanhã, às 20h. Siga para não perder.\n\nQuer saber como é feito? Comente GUIA.\n\nFicção criada com inteligência artificial.\n#suspense #terror #misterio #serie #animacao3d #historiasdeterror",
     "tituloYoutube": "O que a Marina viu pela janela | O Sinal, Ep. 12 (final) #shorts",
     "descricaoYoutube": "A Marina olha pela janela e descobre quem sempre esteve olhando. Final de O Sinal e começo de um novo caso do Arquivo 3:33.\n\nO Sinal é uma série de suspense do Arquivo 3:33. Episódio novo todo dia às 20h.\nGuia para fazer vídeos assim, sem câmera: https://semcamera.vercel.app/?de=arquivo\nFicção criada com inteligência artificial.\n\n#suspense #terror #misterio #animacao3d #shorts"
   },
@@ -196,8 +196,7 @@
         "tipo": "divulgacao",
         "titulo": "SEM CÂMERA",
         "linhas": [
-          "GUIA EM PDF",
-          "LINK NA BIO"
+          "COMENTE GUIA"
         ]
       },
       "semLegenda": true,
@@ -205,12 +204,12 @@
       "antes": 0.1,
       "segura": 0.2,
       "sons": [],
-      "fala": "Feito sem câmera. Guia no link da bio.",
-      "legenda": "Feito sem câmera. Guia no link da bio.",
+      "fala": "Feito sem câmera. Comente GUIA e eu te mando.",
+      "legenda": "Feito sem câmera. Comente GUIA e eu te mando.",
       "extras": [],
       "avulsa": {
-        "arquivo": "narracao/divulgacao-curta.mp3",
-        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_000510_9484d32f-e2dc-41c2-971a-6eecae8c1ad0.mp3"
+        "arquivo": "narracao/divulgacao-comente-guia.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261106_194737_8dbd1243-7edb-49a0-8d76-76ff53334c5c.mp3"
       }
     },
     {
@@ -251,7 +250,7 @@
       "visual": {
         "tipo": "3d",
         "planos": [
-          "quarto_rosto"
+          "rosto_alivio"
         ]
       },
       "extras": [],
@@ -355,15 +354,20 @@
           0.7
         ]
       ],
-      "fala": "Você olharia para trás ou não? Caso dois, amanhã.",
+      "fala": "Você olharia para trás? Comente um se sim, ou dois se não. Caso dois, amanhã.",
       "legenda": "Caso 02 amanhã.",
       "extras": [
         {
           "tipo": "aposta",
-          "texto": "Você olharia para trás ou não?",
+          "texto": "Você olharia para trás? Comente 1 se sim, 2 se não.",
           "em": 0.2
         }
-      ]
+      ],
+      "avulsa": {
+        "arquivo": "narracao/ep12-final-voto.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261106_194748_b738a04a-a1b9-465e-9b98-7dc4190a0957.mp3"
+      },
+      "falaNaGravacao": "Você olharia para trás ou não? Caso dois, amanhã."
     }
   ]
 }

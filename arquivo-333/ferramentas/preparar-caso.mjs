@@ -15,6 +15,8 @@ const ep = JSON.parse(readFileSync(process.argv[2], "utf8"));
 
 // ---------- 1. narração cortada nas falas ----------
 const gravacao = lerAudio(join(PUBLICO, ep.narracao));
+// "narracaoCorteEm" (segundos): apaga o que vem depois, para a gravação principal não trazer uma fala que foi regravada à parte
+if (ep.narracaoCorteEm) { const n0 = Math.round(ep.narracaoCorteEm * TAXA); for (let i = n0; i < gravacao.L.length; i++) { gravacao.L[i] = 0; gravacao.R[i] = 0; } }
 // cena "avulsa" (divulgação do guia no meio do episódio): a voz vem de um arquivo à parte, não da narração principal
 const avulsas = new Map();
 ep.cenas.forEach((c, i) => {
@@ -23,8 +25,8 @@ ep.cenas.forEach((c, i) => {
   const textos = c.avulsa.textos ?? [c.fala];
   avulsas.set(i, { g, ...cortarNarracao(g, textos)[c.avulsa.indice ?? 0] });
 });
-const principais = ep.cenas.map((c, i) => i).filter((i) => !avulsas.has(i));
-const cortes = cortarNarracao(gravacao, principais.map((i) => ep.cenas[i].fala));
+const principais = ep.cenas.map((c, i) => i).filter((i) => !avulsas.has(i) || ep.cenas[i].falaNaGravacao);
+const cortes = cortarNarracao(gravacao, principais.map((i) => ep.cenas[i].falaNaGravacao ?? ep.cenas[i].fala));
 const pedacos = ep.cenas.map((c, i) => avulsas.get(i) ?? cortes[principais.indexOf(i)]);
 
 // a pergunta do final, gravada à parte (cena com "vozAntes": o narrador fala a pergunta antes da fala da cena)

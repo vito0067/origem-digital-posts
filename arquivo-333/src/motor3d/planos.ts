@@ -364,10 +364,16 @@ export const PLANOS: Record<string, Plano> = {
   },
   rosto_mensagem: (s, dur, m) => {
     const p = suave(s / dur);
-    marinaNoQuarto(m, s, "sentada_celular", { olhos: 1.1, sobrancelha: 0.9, cabeca: [14, 0, -6 * p] }); telaCom(m, "mensagem");
+    marinaNoQuarto(m, s, "sentada_celular", { olhos: 0.95, sobrancelha: 0.6, boca: "triste", cabeca: [14, 0, -6 * p] }); telaCom(m, "mensagem");
     m.quarto.atualizar(s); luzClose(m);
-    // câmera DENTRO do quarto (z > -2,38): do lado de fora, a divisória do meio da janela (x = 0) tampava metade da tela
-    const c = cabeca(m); return { cena: "quarto", pos: mix([c[0] - 0.6, c[1] + 0.05, c[2] - 0.92], [c[0] - 0.48, c[1] + 0.05, c[2] - 0.88], p), alvo: [c[0], c[1] - 0.06, c[2]], fov: 72 };
+    return { cena: "quarto", ...camMeio(m, p), fov: 32 };
+  },
+  /** Compreensão e determinação (queixo erguido, sobrancelha firme), em meio corpo, de leve contra-plongée. */
+  rosto_alivio: (s, dur, m) => {
+    const p = suave(s / dur);
+    marinaNoQuarto(m, s, "sentada_celular", { olhos: 0.8, sobrancelha: -0.5, boca: "neutra", cabeca: [-4, 0, 2] }); telaCom(m, "luz");
+    m.quarto.atualizar(s); luzClose(m);
+    return { cena: "quarto", ...camMeio(m, p, 1, 0.18), fov: 32 };
   },
   ombro_celular: (s, dur, m) => {
     const p = suave(s / dur);
