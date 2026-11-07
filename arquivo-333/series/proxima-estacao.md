@@ -42,8 +42,11 @@ Cada episódio abre 2 caminhos, e os caminhos **se reencontram** no fim de cada 
 ### Bloco 4 (eps. 10 a 12): "A última estação"
 - A 13ª estação revela o que é: a linha cinza do futuro da cidade. Final com 2 finais possíveis, decidido pelo voto do ep. 11 (fica no trem para sempre / desce e fecha a linha).
 
-## Episódio 1 (piloto aprovado em 05/11/2026?)
-Roteiro do piloto v2 (falas do narrador, 5 linhas) em `pilotos/estacao-v2.json`. Versão aprovada pelo Vito vira o ep. 1 oficial.
+## Episódio 1 (07/11/2026): "A 13ª estação" (`episodios/pe01.json`, id `proxima-estacao-ep01`)
+O Vito decidiu em 07/11 que o piloto vira o ep. 1 oficial, refeito para assustar mais (Caso 02). ~52 s.
+- Roteiro (Gideon): "Às três e trinta e três, o último trem parou numa estação que não existe." / "A Lia tinha dormido no caminho. Quando acordou, o vagão estava vazio." / (Vera) "Próxima estação: treze." / "Ela procurou no mapa. A linha cinza só tem doze estações." / divulgação GUIA / "Então o trem parou. E o barulho parou junto." / "Pela janela, a plataforma estava cheia. Todos olhavam para ela." / "No relógio da parede, três e trinta e três. O ponteiro não se mexia." / "As portas abriram sozinhas." / "E todos, ao mesmo tempo, deram um passo para a frente." / "A porta não ia ficar aberta para sempre." / (Vera) "Porta aberta. Comente um se ela desce, ou dois se ela fica."
+- Fatos que o ep. 2 precisa respeitar: o relógio da plataforma parado em 3h33; as portas abertas; a plataforma deu UM passo para a frente (rostos agora retos, luz vermelha); a Lia está em pé no corredor, olhando a porta; luzes do vagão quase todas apagadas.
+- Planos novos no motor (`pilotos.ts`, prefixo `pe_`): gancho no rosto colado na janela (olhos vazios, cabeça que estala no fim), Lia em meio corpo (`liaMeio`), luzes apagando uma a uma, relógio 3h33, o passo com tremor e luz vermelha. Sons novos: freio, passo, portaMetro, respira; `silencio: true` na cena tira o clima.
 
 ## Para decidir com o Vito
 - Quando começa (data do ep. 1) e se o ep. 1 já é o piloto.

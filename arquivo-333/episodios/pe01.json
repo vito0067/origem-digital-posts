@@ -1,0 +1,351 @@
+{
+  "id": "proxima-estacao-ep01",
+  "serie": "Próxima estação",
+  "episodio": 1,
+  "titulo": "A 13ª estação",
+  "narracao": "narracao/proxima-estacao-ep01.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261107_211704_22a99561-34fe-4f58-a8d9-b1d5730ee4c1.mp3",
+  "legendaModo": "painel",
+  "etiqueta": "· CASO 02 · PRÓXIMA ESTAÇÃO · EP. 1",
+  "voz": "Gideon (narrador, Eleven v4, estabilidade 0.4) + Vera (anúncio do trem, filtro de alto-falante; gravações do piloto)",
+  "formato": "3D desenho em código (motor3d, cenário do vagão); Caso 02, ep. 1 com voto",
+  "ambiente": "metro",
+  "paradaNaCena": 5,
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_gancho"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "dado",
+          "rotulo": "ESTAÇÃO",
+          "de": 12,
+          "ate": 13,
+          "em": 0.05,
+          "fim": 0.7
+        }
+      ],
+      "antes": 0.05,
+      "segura": 0.35,
+      "sons": [
+        [
+          "glitch",
+          0,
+          0.6
+        ],
+        [
+          "grave",
+          0,
+          0.8
+        ],
+        [
+          "impacto",
+          "fim-0.85",
+          0.9
+        ]
+      ],
+      "fala": "Às três e trinta e três, o último trem parou numa estação que não existe.",
+      "legenda": "Às 3h33, o último trem parou numa estação que não *existe.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_lia"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "grave",
+          0.2,
+          0.4
+        ]
+      ],
+      "fala": "A Lia tinha dormido no caminho. Quando acordou, o vagão estava vazio.",
+      "legenda": "A Lia tinha dormido no caminho. Quando acordou, o vagão estava *vazio.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_painel"
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.35,
+      "sons": [
+        [
+          "sino",
+          0.05,
+          0.5
+        ],
+        [
+          "glitch",
+          "fimvoz-0.4",
+          0.5
+        ]
+      ],
+      "fala": "Próxima estação: treze.",
+      "legenda": "Próxima estação: *13.*",
+      "avulsa": {
+        "arquivo": "narracao/piloto-estacao-anuncio.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261104_230528_e42b38f7-694b-4114-b333-ca5950386d9b.mp3",
+        "textos": [
+          "Próxima estação: treze.",
+          "Porta aberta. Ela desce ou fica?"
+        ],
+        "indice": 0
+      },
+      "vozTelefone": true
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "vagao_mapa",
+          "pe_lia_desconfia"
+        ],
+        "pesos": [
+          1.5,
+          1
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 0.3,
+      "sons": [
+        [
+          "impacto",
+          "fimvoz-0.2",
+          0.6
+        ]
+      ],
+      "fala": "Ela procurou no mapa. A linha cinza só tem doze estações.",
+      "legenda": "Ela procurou no mapa. A linha cinza só tem *12* estações."
+    },
+    {
+      "visual": {
+        "tipo": "divulgacao",
+        "titulo": "SEM CÂMERA",
+        "linhas": [
+          "COMENTE GUIA"
+        ]
+      },
+      "semLegenda": true,
+      "entrada": "preto",
+      "antes": 0.1,
+      "segura": 0.2,
+      "sons": [],
+      "extras": [],
+      "fala": "Feito sem câmera. Comente GUIA e eu te mando.",
+      "legenda": "Feito sem câmera. Comente GUIA e eu te mando.",
+      "avulsa": {
+        "arquivo": "narracao/divulgacao-comente-guia.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261106_194737_8dbd1243-7edb-49a0-8d76-76ff53334c5c.mp3"
+      }
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_parou"
+        ]
+      },
+      "extras": [],
+      "antes": 0.25,
+      "segura": 1.1,
+      "sons": [
+        [
+          "freio",
+          0,
+          0.7
+        ],
+        [
+          "grave",
+          "fimvoz",
+          0.7
+        ]
+      ],
+      "fala": "Então o trem parou. E o barulho parou junto.",
+      "legenda": "Então o trem parou. E o barulho parou *junto.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_janela",
+          "pe_lia_medo"
+        ],
+        "pesos": [
+          1.4,
+          1
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.4,
+      "silencio": true,
+      "sons": [
+        [
+          "respira",
+          "fimvoz-0.2",
+          0.5
+        ]
+      ],
+      "fala": "Pela janela, a plataforma estava cheia. Todos olhavam para ela.",
+      "legenda": "Pela janela, a plataforma estava cheia. Todos olhavam para *ela.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_relogio"
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.5,
+      "silencio": true,
+      "sons": [
+        [
+          "tique",
+          0.1,
+          0.6
+        ],
+        [
+          "tique",
+          1.1,
+          0.5
+        ]
+      ],
+      "fala": "No relógio da parede, três e trinta e três. O ponteiro não se mexia.",
+      "legenda": "No relógio da parede, 3h33. O ponteiro não se *mexia.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_porta"
+        ]
+      },
+      "extras": [],
+      "antes": 0.1,
+      "segura": 0.4,
+      "silencio": true,
+      "sons": [
+        [
+          "portaMetro",
+          0,
+          0.8
+        ]
+      ],
+      "fala": "As portas abriram sozinhas.",
+      "legenda": "As portas abriram *sozinhas.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_passo"
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 1,
+      "sons": [
+        [
+          "passo",
+          "fim-1.55",
+          1
+        ],
+        [
+          "impacto",
+          "fim-1.55",
+          0.9
+        ],
+        [
+          "glitch",
+          "fim-1.5",
+          0.5
+        ]
+      ],
+      "fala": "E todos, ao mesmo tempo, deram um passo para a frente.",
+      "legenda": "E todos, ao mesmo tempo, deram um passo para a *frente.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_lia_det"
+        ]
+      },
+      "extras": [],
+      "antes": 0.15,
+      "segura": 0.35,
+      "sons": [
+        [
+          "respira",
+          0,
+          0.45
+        ]
+      ],
+      "fala": "A porta não ia ficar aberta para sempre.",
+      "legenda": "A porta não ia ficar aberta para *sempre.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "pe_final"
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "Comente 1 se ela desce, ou 2 se ela fica.",
+          "em": 0.2
+        }
+      ],
+      "antes": 0.2,
+      "segura": 0.9,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ]
+      ],
+      "fala": "Porta aberta. Comente um se ela desce, ou dois se ela fica.",
+      "legenda": "Porta aberta. Comente 1 se ela desce, ou 2 se ela fica.",
+      "semLegenda": true,
+      "avulsa": {
+        "arquivo": "narracao/piloto-estacao-voto.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261105_220708_7a14e8b6-99d8-48b2-b7b3-c7b65dccd467.mp3",
+        "textos": [
+          "Porta aberta. Comente um se ela desce, ou dois se ela fica."
+        ],
+        "indice": 0
+      },
+      "vozTelefone": true
+    }
+  ],
+  "publicar": {
+    "instagram": "manual",
+    "data": "2026-11-07",
+    "hora": "20:00",
+    "capaEm": 1,
+    "legenda": "O mapa tem 12 estações. O trem parou na 13ª. 🚇\n\nEla desce ou fica? Comente 1 se ela desce, 2 se ela fica. 👇\nO mais votado decide o episódio 2.\n\nPróxima estação, episódio 1 (Caso 02 do Arquivo 3:33).\nQuer saber como é feito? Comente GUIA.\n\nFicção criada com inteligência artificial.\n#terror #suspense #misterio #metro #animacao3d #historiasdeterror",
+    "tituloYoutube": "O trem parou numa estação que não existe | Próxima estação, Ep. 1 #shorts",
+    "descricaoYoutube": "Às 3h33, o último trem da linha cinza para numa 13ª estação que não está no mapa. A Lia precisa decidir: descer ou ficar. Comente 1 se ela desce, 2 se ela fica. O mais votado decide o episódio 2.\n\nPróxima estação é o Caso 02 do Arquivo 3:33, uma série de terror em que você decide o próximo episódio.\nGuia para fazer vídeos assim, sem câmera: https://semcamera.vercel.app/?de=arquivo\nFicção criada com inteligência artificial.\n\n#terror #suspense #misterio #animacao3d #shorts",
+    "comentario": "Votação aberta: 1 = ela desce, 2 = ela fica. O mais votado decide o episódio 2. 👇",
+    "tituloYoutubeB": "A 13ª estação não está no mapa | Próxima estação, Ep. 1 #shorts"
+  }
+}

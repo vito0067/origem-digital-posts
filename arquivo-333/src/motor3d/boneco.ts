@@ -20,6 +20,7 @@ export type Pose = {
   boca?: "neutra" | "aberta" | "medo" | "triste" | "sorriso";
   sobrancelha?: number;  // -1 brava, 0 neutra, 1 preocupada
   respira?: number;      // tempo, para o peito subir e descer
+  vazio?: boolean;       // olhos sem brilho, ovais e fundos (a gente da 13ª estação)
 };
 
 const mat = (cor: string, extra: Record<string, unknown> = {}) => new THREE.MeshStandardMaterial({ color: cor, roughness: 0.75, metalness: 0, ...extra });
@@ -135,7 +136,8 @@ export class Boneco {
     this.joelhoE.rotation.set(rad(p.joelhoE ?? 0), 0, 0); this.joelhoD.rotation.set(rad(p.joelhoD ?? 0), 0, 0);
     const o = p.olhos ?? 1;
     for (const olho of [this.olhoE, this.olhoD]) olho.scale.set(0.85 * (0.85 + 0.15 * o), 1.15 * o, 0.5);
-    for (const b of [this.brilhoE, this.brilhoD]) b.scale.setScalar(Math.min(1.3, o));
+    for (const b of [this.brilhoE, this.brilhoD]) { b.scale.setScalar(Math.min(1.3, o)); b.visible = !p.vazio; }
+    if (p.vazio) for (const olho of [this.olhoE, this.olhoD]) olho.scale.set(0.95, 1.55 * o, 0.5);
     const sb = p.sobrancelha ?? 0;
     this.sobE.rotation.z = Math.PI / 2 + sb * 0.35; this.sobD.rotation.z = Math.PI / 2 - sb * 0.35;
     this.sobE.position.y = this.sobD.position.y = 0.13 + Math.max(0, sb) * 0.02 + (o > 1.1 ? 0.02 : 0);

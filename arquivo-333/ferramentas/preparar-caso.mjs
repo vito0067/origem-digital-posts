@@ -86,6 +86,15 @@ const EF = {
   sino: () => sino(81, 2.5, 0.5),
   // trava magnética das portas fechando: estalo metálico + baque grave
   tranca: () => mistura([[SFX.carimbo(), 0, 0.9], [decai(filtro(ruido(0.12), "banda", 5200, 3), 0.02, 0.0005), 0.01, 0.8], [EF_grave(), 0.02, 0.7]], 1.2),
+  // freio do metrô: chiado agudo que desce + ronco que morre
+  freio: () => { const seg = 1.8, q = filtro(ruido(seg), "banda", (x) => 3400 - 1600 * (x / seg), 6); const o = oscilador("seno", 0, seg, { freqFn: (x) => 2100 - 700 * (x / seg) }); for (let i = 0; i < q.length; i++) { const x = i / q.length; q[i] = (q[i] * 0.7 + o[i] * 0.12) * Math.sin(Math.PI * Math.min(1, x * 1.3)) ; } return q; },
+  // a plataforma inteira dá um passo: vários pés batendo quase juntos + arrasto
+  passo: () => { const partes = []; for (let k = 0; k < 9; k++) partes.push([decai(oscilador("seno", 0, 0.5, { fase: 0, freqFn: (x) => 55 + 70 * Math.exp(-x * 30) }), 0.12, 0.001), 0.012 * k + (k % 3) * 0.01, 0.55], [decai(filtro(ruido(0.2), "banda", 900 + k * 90, 1.2), 0.05, 0.001), 0.012 * k, 0.4]);
+    partes.push([decai(filtro(ruido(0.6), "passa-baixa", 1400), 0.25, 0.002), 0.03, 0.5]); return mistura(partes, 1.2); },
+  // porta pneumática: sopro de ar + trilho
+  portaMetro: () => { const ar = filtro(ruido(1.0), "passa-alta", 2500, 0.7); for (let i = 0; i < ar.length; i++) { const x = i / ar.length; ar[i] *= Math.min(1, x * 12) * Math.exp(-x * 3); } return mistura([[ar, 0, 0.8], [decai(filtro(ruido(0.5), "banda", 600, 1), 0.2, 0.001), 0.15, 0.6], [SFX.carimbo(), 0.62, 0.5]], 1.3); },
+  // respiração curta e trêmula (inspira, solta)
+  respira: () => { const seg = 1.6, r = filtro(ruido(seg), "banda", 1300, 0.9); for (let i = 0; i < r.length; i++) { const x = i / TAXA; const ins = x < 0.7 ? Math.sin(Math.PI * x / 0.7) : 0, sai = x > 0.8 ? Math.sin(Math.PI * Math.min(1, (x - 0.8) / 0.8)) * 0.8 : 0; r[i] *= (ins + sai) * (0.85 + 0.15 * Math.sin(x * 40)); } return r; },
   // começo de áudio de WhatsApp
   audio: () => SFX.clique(),
 };
@@ -138,6 +147,9 @@ reverb(clima, { sala: 0.92, amortece: 0.45, mistura: 0.4 });
 // o clima some no cartão final e volta só com o sino
 const ultima = cenas[cenas.length - 1];
 clima.volume((x) => (x < ultima.inicio - 0.3 ? 1 : Math.max(0.15, 1 - (x - (ultima.inicio - 0.3)) / 0.4)));
+// "silencio" na cena: o clima quase some (o susto seguinte vem do nada)
+const silencios = cenas.filter((c) => c.silencio).map((c) => [c.inicio, c.fim]);
+if (silencios.length) clima.volume((x) => { let v = 1; for (const [a, b] of silencios) { const d = Math.min(x - a, b - x); if (d > 0) v = Math.min(v, Math.max(0.12, 1 - d / 0.35)); } return v; });
 
 const efeitos = new Faixa(duracao + 3);
 for (const c of cenas) for (const [nome, ref = 0, vol = 0.8, pan = 0] of c.sons ?? []) {

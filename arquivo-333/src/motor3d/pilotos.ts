@@ -33,6 +33,7 @@ export class Vagao {
   estPass: { g: any; c: HTMLCanvasElement; placa: any }[] = []; estNum = 0; luzPlat2: any; tubosPlat: { m: any; k: number }[] = [];
   telaPainel: HTMLCanvasElement; texPainel: any; telaMapa: HTMLCanvasElement; texMapa: any;
   portas: any[] = []; fundoPorta: any; luzPorta: any; luzPlat: any;
+  luzLia: any; perto!: Boneco; apagadas = 0; retos = 0; ponteiroSeg: any;
   static W = 2.7; static L = 12; static H = 2.35;
 
   constructor() {
@@ -115,9 +116,12 @@ export class Vagao {
     }
     const rc = tela(256, 256), gr = rc.getContext("2d")!; gr.fillStyle = "#e9e6dd"; gr.beginPath(); gr.arc(128, 128, 124, 0, Math.PI * 2); gr.fill(); gr.strokeStyle = "#111"; gr.lineWidth = 8; gr.stroke();
     for (let k = 0; k < 12; k++) { const a = (k / 12) * Math.PI * 2; gr.beginPath(); gr.moveTo(128 + Math.sin(a) * 104, 128 - Math.cos(a) * 104); gr.lineTo(128 + Math.sin(a) * 118, 128 - Math.cos(a) * 118); gr.lineWidth = 5; gr.stroke(); }
-    gr.lineCap = "round"; gr.lineWidth = 9; gr.beginPath(); gr.moveTo(128, 128); gr.lineTo(128 + Math.sin(Math.PI * 1.55) * 60, 128 - Math.cos(Math.PI * 1.55) * 60); gr.stroke(); // hora (perto do 3)
+    gr.lineCap = "round"; gr.lineWidth = 9; gr.beginPath(); gr.moveTo(128, 128); gr.lineTo(128 + Math.sin(Math.PI * 0.592) * 60, 128 - Math.cos(Math.PI * 0.592) * 60); gr.stroke(); // hora (3h33)
     gr.lineWidth = 6; gr.beginPath(); gr.moveTo(128, 128); gr.lineTo(128 + Math.sin(Math.PI * 1.1) * 92, 128 - Math.cos(Math.PI * 1.1) * 92); gr.stroke();
     const relogio = new THREE.Mesh(new THREE.CircleGeometry(0.34, 40), emissivo(textura(rc))); relogio.position.set(px + 2.33, 2.4, -2.4); relogio.rotation.y = -Math.PI / 2; this.plat.add(relogio);
+    // ponteiro dos segundos (vermelho, 3D, gira no eixo x da parede)
+    this.ponteiroSeg = new THREE.Group(); this.ponteiroSeg.position.set(px + 2.31, 2.4, -2.4); this.plat.add(this.ponteiroSeg);
+    const ps = new THREE.Mesh(new THREE.BoxGeometry(0.006, 0.3, 0.012), new THREE.MeshBasicMaterial({ color: "#d1201a", toneMapped: false })); ps.position.y = 0.11; this.ponteiroSeg.add(ps);
     ["NÃO DESÇA", "ELES ESPERAM", "VOCÊ JÁ ESTEVE AQUI"].forEach((txt, k) => {
       const c = tela(256, 400), g = c.getContext("2d")!; g.fillStyle = "#17110f"; g.fillRect(0, 0, 256, 400);
       g.fillStyle = "#2a1c18"; g.beginPath(); g.ellipse(128, 130, 46, 56, 0, 0, Math.PI * 2); g.fill(); g.fillRect(70, 180, 116, 120);
@@ -136,10 +140,15 @@ export class Vagao {
     elenco.forEach((ap, k) => {
       const bn = new Boneco(ap as any), x0 = px + 0.95 + (k % 3) * 0.55, z = -4.6 + k * 1.0 + (k % 2 ? 0.2 : -0.1), tilt = (k % 2 ? 1 : -1) * (5 + (k % 4) * 3);
       bn.raiz.position.set(x0, 0, z); bn.raiz.rotation.set(0, -Math.PI / 2, 0);
-      bn.posar({ ...POSES.em_pe(k), olhos: 1.5, sobrancelha: [-0.3, 0.8, -0.7][k % 3], boca: k % 3 === 0 ? "sorriso" : "neutra", cabeca: [0, 0, tilt] });
+      bn.posar({ ...POSES.em_pe(k), olhos: 1.25, vazio: true, sobrancelha: [-0.2, 0.3, -0.5][k % 3], boca: "neutra", cabeca: [0, 0, tilt] });
       this.plat.add(bn.raiz); this.gente.push({ b: bn, x0, k, tilt });
     });
+    // o rosto colado na janela (gancho do ep. 1): um deles bem perto do vidro, cabeça torta
+    this.perto = new Boneco(pal("#c9d0d4", "#23282e", "#0d0d0d", { penteado: "chanel" }) as any);
+    this.perto.raiz.position.set(px + 0.42, 0, 0.9); this.perto.raiz.rotation.set(0, -Math.PI / 2, 0); this.perto.raiz.visible = false; this.plat.add(this.perto.raiz);
     this.lia = new Boneco(APARENCIAS.lia); cena.add(this.lia.raiz);
+    // luz fraca e quente só para o rosto da Lia não sumir quando as luzes do teto apagam
+    this.luzLia = new THREE.PointLight("#ffd9b0", 0, 3.2, 1.6); cena.add(this.luzLia);
     this.padrao();
   }
 
@@ -184,7 +193,7 @@ export class Vagao {
   /** Mostra ou esconde barras, postes e argolas (para os closes sem nada na frente). */
   limpa(visivel: boolean) { for (const o of [...this.postes, ...this.argolas]) o.visible = visivel; }
   /** A gente da plataforma dá um passo em direção ao trem (p de 0 a 1). */
-  passo(p: number) { for (const { b, x0 } of this.gente) b.raiz.position.x = x0 - 0.45 * p; }
+  passo(p: number) { for (const { b, x0 } of this.gente) b.raiz.position.x = x0 - 0.6 * p; }
   /** `offset`: quanto o trem andou (metros); `plat`: 0 = túnel, 1 = parado na plataforma. */
   mover(offset: number, plat: number, est = 0) {
     const ativa = est > 0 && plat <= 0.001;
@@ -205,18 +214,18 @@ export class Vagao {
   atualizar(t: number, pisca = 0.5) {
     const baixo = Math.sin(t * 23) > 0.3 && Math.sin(t * 3.1 + 1) > 1 - 2 * pisca;
     for (let k = 0; k < 5; k++) {
-      const apaga = (k === 2 && baixo) || (k === 3 && Math.sin(t * 17 + 2) > 0.7 && pisca > 0.3) || (k === 1 && Math.sin(t * 13 + 4) > 0.88);
+      const apaga = k < this.apagadas || (k === 2 && baixo) || (k === 3 && Math.sin(t * 17 + 2) > 0.7 && pisca > 0.3) || (k === 1 && Math.sin(t * 13 + 4) > 0.88);
       this.luzes[k].intensity = apaga ? 0.08 : 1.5;
       for (const s of this.segmentos.filter((x) => x.k === k)) s.m.color.set(apaga ? "#3a3f48" : "#aebdd0");
     }
-    for (const g of this.gente) { g.b.raiz.rotation.y = -Math.PI / 2 + Math.sin(t * 0.6 + g.k) * 0.06; g.b.cabeca.rotation.z = ((g.tilt + Math.sin(t * 0.8 + g.k * 1.7) * 3) * Math.PI) / 180; }
+    for (const g of this.gente) { g.b.raiz.rotation.y = -Math.PI / 2 + Math.sin(t * 0.6 + g.k) * 0.06; g.b.cabeca.rotation.z = (((g.tilt + Math.sin(t * 0.8 + g.k * 1.7) * 3) * (1 - this.retos)) * Math.PI) / 180; if (this.retos > 0) g.b.raiz.rotation.y = -Math.PI / 2; }
     const piscaP = Math.sin(t * 19 + 1) > 0.6 && Math.sin(t * 2.3) > 0.2;
     this.luzPlat.intensity = piscaP ? 2 : 9;
     for (const x of this.tubosPlat) x.m.color.set(x.k === 2 && piscaP ? "#26302c" : "#bfe9d6");
     this.argolas.forEach((g, i) => { g.rotation.z = Math.sin(t * 1.6 + i) * 0.04; g.rotation.x = Math.sin(t * 1.2 + i * 0.7) * 0.03; });
   }
   padrao() {
-    this.lia.raiz.visible = false; this.limpa(true); this.passo(0); this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
+    this.lia.raiz.visible = false; this.perto.raiz.visible = false; this.apagadas = 0; this.retos = 0; this.luzLia.intensity = 0; this.ponteiroSeg.rotation.x = 0; this.luzPlat2.intensity = 2.2; this.luzPlat2.position.set(Vagao.W / 2 + 2.6, 1.2, -4.5); this.limpa(true); this.passo(0); this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
   }
 }
 
@@ -227,6 +236,14 @@ function liaSenta(m: Mundo, pose: Pose) {
   const l = m.vagao.lia; l.raiz.visible = true; l.raiz.position.set(-1.12, -0.03, 0.5); l.raiz.rotation.set(0, Math.PI / 2 - 0.5, 0); l.posar(pose);
 }
 function cab(b: Boneco): V3 { const v = new THREE.Vector3(); b.cabeca.getWorldPosition(v); return [v.x, v.y, v.z]; }
+/** Luz quente no rosto da Lia (para não sumir no escuro). frente: 1 = lado da janela (sentada), -1 = olhando o fundo do vagão. */
+function luzRosto(m: Mundo, i: number, frente = 1) { const c = cab(m.vagao.lia), L = m.vagao.luzLia; L.intensity = i; L.position.set(c[0] + (frente > 0 ? 0.7 : 0.2), c[1] + 0.35, c[2] + (frente > 0 ? 0.5 : -0.8)); }
+/** Lia sentada em meio corpo: câmera a ~3,4 m, cabeça inteira com folga em cima, nada cortado na borda. */
+function liaMeio(m: Mundo, p: number, desce = 0): { cena: "vagao"; pos: V3; alvo: V3; fov: number } {
+  luzRosto(m, Math.max(m.vagao.luzLia.intensity, 0.8));
+  const c = cab(m.vagao.lia), x = Math.min(1.15, c[0] + 2.25 - 0.15 * p);
+  return { cena: "vagao", pos: [x, c[1] + 0.12 - desce * 0.3, c[2] + 2.6 - 0.2 * p], alvo: [c[0] + 0.05, c[1] - 0.3, c[2]], fov: 46 };
+}
 
 // ================================================================ estúdio de rádio
 export class Estudio {
@@ -483,6 +500,81 @@ export const PLANOS_PILOTOS: Record<string, Plano> = {
     l.posar({ ...POSES.em_pe(s), olhos: 1.0, sobrancelha: -1, boca: "neutra", cabeca: [-6, 0, 0] });
     v.mover(0, 1); v.limpa(true); v.porta(1); v.passo(1); v.atualizar(s, 0.9);
     return { cena: "vagao", pos: mix([0.0, 1.25, -4.4], [0.0, 1.2, -3.9], p), alvo: [0, 1.05, -1.6], fov: 40 };
+  },
+
+  // ---------------- Próxima estação, ep. 1 (07/11/2026): gancho no rosto, closes de meio corpo, luzes apagando, o passo
+  pe_gancho: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, f = v.perto, snap = lim((s - (dur - 0.85)) / 0.12);
+    v.mover(0, 1); v.limpa(true); v.passo(0); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.7);
+    f.raiz.visible = true; f.raiz.position.x = Vagao.W / 2 + 0.42 - 0.08 * snap;
+    f.posar({ ...POSES.em_pe(s), olhos: 1.3, vazio: true, sobrancelha: 0, boca: "neutra", cabeca: [4 * snap, 0, -16 - 6 * p + 16 * snap] });
+    v.luzLia.intensity = 2.2; v.luzLia.position.set(Vagao.W / 2 - 0.2, 2.0, 1.1);
+    return { cena: "vagao", pos: mix([-1.25, 1.05, 0.95], [-0.2, 1.12, 0.92], p), alvo: [Vagao.W / 2 + 0.42, 1.68, 0.9], fov: 58 - 6 * p, rolar: 0.03 * (1 - p) };
+  },
+  pe_lia: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    const pisc = Math.abs(s - dur * 0.45) < 0.08 ? 0.1 : 1, olha = s > dur * 0.5 ? Math.sin((s - dur * 0.5) * 4.2) * 28 * suave((s - dur * 0.5) / 0.4) : 0;
+    liaSenta(m, LIA_BANCO(s, { cabeca: [22 - 26 * p, 12 - 12 * p + olha, 6 - 6 * p], olhos: (0.2 + 1.1 * p) * pisc, sobrancelha: 0.9 * p, boca: p > 0.75 ? "aberta" : "neutra" }));
+    v.mover(ANDA(s) * 2.2, 0, 11); v.limpa(true); v.atualizar(s, 0.3); luzRosto(m, 1.5);
+    return liaMeio(m, p);
+  },
+  pe_lia_desconfia: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    liaSenta(m, LIA_BANCO(s, { cabeca: [-6 - 6 * p, 22 * p, 0], tronco: [2 - 6 * p, 0, 0], olhos: 0.85 + 0.5 * p, sobrancelha: -0.6 + 1.5 * p, boca: p > 0.6 ? "triste" : "neutra" }));
+    v.mover(ANDA(s) * 2.2, 0); v.limpa(true); v.atualizar(s, 0.6);
+    return liaMeio(m, p);
+  },
+  pe_parou: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, chega = suave(s / (dur * 0.4));
+    liaSenta(m, { ...POSES.sentada_olhando_cima(s), olhos: 1.35, sobrancelha: 1, boca: "neutra" });
+    v.mover(ANDA(s) * 2.2 * (1 - chega), chega); v.limpa(true); v.passo(0);
+    v.apagadas = s < dur * 0.4 ? 0 : Math.min(4, 1 + Math.floor((s - dur * 0.4) / (dur * 0.12)));
+    v.atualizar(s, 0.2); v.painelTexto("ESTAÇÃO", "13", "#ff3b3b");
+    luzRosto(m, 0.9);
+    return { cena: "vagao", pos: mix([0.35, 1.75, 5.5], [0.3, 1.7, 5.0], p), alvo: [-0.3, 1.0, -3], fov: 58 };
+  },
+  pe_janela: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    v.mover(0, 1); v.limpa(true); v.passo(0); v.apagadas = 3; v.painelTexto("ESTAÇÃO", "13", "#ff3b3b"); v.atualizar(s, 0.9);
+    return { cena: "vagao", pos: mix([-1.3, 1.2, 1.6], [-0.9, 1.25, 1.4], p), alvo: [2.9, 1.55, 0.2], fov: 64, rolar: -0.03 };
+  },
+  pe_lia_medo: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    liaSenta(m, LIA_BANCO(s, { cabeca: [-2, -14 - 8 * p, 3], tronco: [-4, 0, 0], olhos: 1.05 + 0.45 * p, sobrancelha: 0.4 + 0.6 * p, boca: p > 0.7 ? "medo" : p > 0.35 ? "aberta" : "neutra" }));
+    v.mover(0, 1); v.limpa(true); v.apagadas = 3; v.atualizar(s, 0.9); luzRosto(m, 1.2);
+    return liaMeio(m, p, 0.2);
+  },
+  pe_relogio: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    v.mover(0, 1); v.limpa(false); v.passo(0); v.apagadas = 3; v.atualizar(s, 0.9);
+    // dois tiques e trava: o ponteiro tenta passar do 33 e treme no mesmo lugar
+    const tiq = s < 0.1 ? 0 : s < 1.1 ? 1 : 2, trava = s > 1.1 ? Math.sin(s * 47) * 0.035 * Math.max(0, Math.sin(s * 2.3)) : 0;
+    v.ponteiroSeg.rotation.x = -(tiq * 6 * Math.PI) / 180 - trava;
+    return { cena: "vagao", pos: mix([0.75, 1.8, -2.3], [1.05, 1.88, -2.38], p), alvo: [Vagao.W / 2 + 2.33, 2.42, -2.4], fov: 26 };
+  },
+  pe_porta: (s, dur, m) => {
+    const p = suave(s / (dur * 0.6)), v = m.vagao, l = v.lia;
+    l.raiz.visible = true; l.raiz.position.set(0, 0, -1.2); l.raiz.rotation.set(0, Math.PI, 0); l.posar({ ...POSES.em_pe(s), cabeca: [0, 0, 0] });
+    v.mover(0, 1); v.limpa(true); v.porta(p); v.passo(0); v.apagadas = 2; v.painelTexto("PORTAS ABERTAS", "13", "#ff3b3b"); v.atualizar(s, 0.9);
+    return { cena: "vagao", pos: mix([0.3, 1.25, 3.8], [0.15, 1.25, 2.4], suave(s / dur)), alvo: [0, 1.1, -6], fov: 58 };
+  },
+  pe_passo: (s, dur, m) => {
+    const v = m.vagao, t0 = dur - 1.55, k = suave((s - t0) / 0.22), treme = s > t0 && s < t0 + 0.5 ? Math.sin(s * 60) * 0.025 * (1 - (s - t0) / 0.5) : 0;
+    v.mover(0, 1); v.limpa(true); v.apagadas = 3; v.retos = k; v.passo(k); v.atualizar(s, 0.9);
+    v.luzPlat2.position.set(Vagao.W / 2 + 0.7, 2.3, 0.6); v.luzPlat2.intensity = 3 + 14 * k;
+    return { cena: "vagao", pos: mix([-0.9, 1.0, 1.3], [-0.55, 1.02, 1.2], suave(s / dur)), alvo: [2.9, 1.75 + treme, 0.6], fov: 56, rolar: treme };
+  },
+  pe_lia_det: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, l = v.lia;
+    l.raiz.visible = true; l.raiz.position.set(0, 0, -1.6); l.raiz.rotation.set(0, Math.PI, 0);
+    l.posar({ ...POSES.em_pe(s), olhos: 1.05, sobrancelha: -0.7 + 0.4 * p, boca: "neutra", cabeca: [-5, 8 * p, 0] });
+    v.mover(0, 1); v.limpa(true); v.porta(1); v.passo(1); v.retos = 1; v.apagadas = 3; v.atualizar(s, 0.9); luzRosto(m, 1.3, -1);
+    return { cena: "vagao", pos: mix([0.15, 1.3, -4.7], [0.1, 1.3, -4.3], p), alvo: [0, 1.28, -1.6], fov: 50 };
+  },
+  pe_final: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    v.mover(0, 1); v.limpa(true); v.passo(1); v.retos = 1; v.apagadas = 4; v.atualizar(s, 0.9); v.luzPlat2.position.set(Vagao.W / 2 + 0.7, 2.3, 0.6); v.luzPlat2.intensity = 12;
+    return { cena: "vagao", pos: mix([-0.9, 1.0, 1.0], [-0.3, 1.05, 0.8], p), alvo: [2.6, 1.78, 0.6], fov: 54 };
   },
 
   // ---------------- piloto 2: Rádio Madrugada
