@@ -44,6 +44,7 @@ export function efeitos({ fx, marcas, cenas, rnd, SFX, sino, virada, dobra, buzi
   fx.soma(lapis(1.5), marcas.anotou + 0.1, 0.4);
   // final
   fx.soma(SFX.subida(1.2), marcas.interrogacao - 0.8, 0.22); fx.soma(dobra(), marcas.interrogacao + 0.1, 0.9); fx.soma(SFX.carimbo(), marcas.comenta + 0.05, 0.4);
-  [0.6, 1.05, 1.5].forEach((d) => fx.soma(SFX.pop(), marcas.comenta + d, 0.55));
+  if (cena.opcoes) cena.opcoes.forEach((o) => fx.soma(SFX.pop(), o.em, 0.5)); // cada opção de voto entra com um pop
+  else [0.6, 1.05, 1.5].forEach((d) => fx.soma(SFX.pop(), marcas.comenta + d, 0.55));
   fx.soma(SFX.sucesso(), marcas.fim - 1.5, 0.3);
 }

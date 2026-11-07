@@ -66,9 +66,71 @@ const Divulgacao: React.FC<{ t: number; d: Spec }> = ({ t, d }) => {
   </div>;
 };
 
+// ícones de papel das opções de voto (viewBox 100x100)
+const ICONES: Record<string, React.ReactNode> = {
+  chuva: <g><circle cx="34" cy="44" r="19" fill="#a9bdd6" /><circle cx="56" cy="36" r="24" fill="#b9cbe2" /><circle cx="76" cy="48" r="16" fill="#a9bdd6" /><rect x="22" y="46" width="66" height="18" rx="9" fill="#a9bdd6" /><path d="M34 70 q8 11 0 17 q-8 -6 0 -17z" fill="#3f86ee" /><path d="M54 74 q8 11 0 17 q-8 -6 0 -17z" fill="#3f86ee" /><path d="M74 70 q8 11 0 17 q-8 -6 0 -17z" fill="#3f86ee" /></g>,
+  queijo: <g><circle cx="44" cy="56" r="30" fill="#e8a53a" /><circle cx="44" cy="56" r="25" fill="#f4bf55" /><circle cx="33" cy="48" r="4" fill="#e29a2c" /><circle cx="52" cy="62" r="5" fill="#e29a2c" /><circle cx="46" cy="44" r="3" fill="#e29a2c" /><circle cx="64" cy="34" r="18" fill="#e8a53a" /><circle cx="64" cy="34" r="14" fill="#f4bf55" /><circle cx="60" cy="31" r="3" fill="#e29a2c" /></g>,
+  despertador: <g><circle cx="26" cy="22" r="12" fill="#ffd23f" /><circle cx="74" cy="22" r="12" fill="#ffd23f" /><circle cx="50" cy="56" r="34" fill="#3ec1a8" /><circle cx="50" cy="56" r="26" fill="#fffdf6" /><path d="M50 56 V38 M50 56 L62 64" stroke="#16233f" strokeWidth="6" strokeLinecap="round" fill="none" /><path d="M32 90 l-6 8 M68 90 l6 8" stroke="#16233f" strokeWidth="6" strokeLinecap="round" /></g>,
+  fotos: <g transform="rotate(-8 50 50)"><rect x="12" y="20" width="76" height="62" rx="5" fill="#fffdf6" stroke="#cdbf9c" strokeWidth="4" /><rect x="20" y="28" width="60" height="42" fill="#dcc08f" /><circle cx="64" cy="40" r="7" fill="#f3e3bd" /><path d="M20 70 L38 46 L52 62 L62 52 L80 70 Z" fill="#9b7b4a" /></g>,
+  aviao: <g transform="rotate(-20 50 50)"><path d="M10 52 Q50 44 90 50 Q50 58 10 52z" fill="#fffdf6" stroke="#8c98a6" strokeWidth="3" /><path d="M44 50 L28 22 L40 22 L62 50z" fill="#3f86ee" /><path d="M44 52 L28 80 L40 80 L62 52z" fill="#3f86ee" /><path d="M14 51 L8 38 L16 38 L24 50z" fill="#3f86ee" /></g>,
+  predio: <g><rect x="18" y="20" width="36" height="72" rx="3" fill="#f4bf55" /><rect x="50" y="38" width="32" height="54" rx="3" fill="#5cb8e4" />{[0, 1, 2, 3, 4].map((i) => <g key={i}><rect x="25" y={28 + i * 12} width="8" height="7" fill="#fffdf6" /><rect x="39" y={28 + i * 12} width="8" height="7" fill="#fffdf6" /></g>)}{[0, 1, 2].map((i) => <rect key={i} x="57" y={46 + i * 13} width="18" height="7" fill="#fffdf6" />)}</g>,
+  sombra: <g><ellipse cx="50" cy="90" rx="38" ry="7" fill="rgba(22,35,63,.28)" /><rect x="44" y="58" width="12" height="32" rx="3" fill="#7a5230" /><circle cx="50" cy="36" r="26" fill="#4cae5c" /><circle cx="30" cy="52" r="17" fill="#3f9a4f" /><circle cx="70" cy="52" r="17" fill="#3f9a4f" /></g>,
+};
+// cartão final com várias opções de voto: { opcoes: [{ n, txt, icone, em }] }. O narrador fala "Comente o número" e cada linha entra na palavra dela.
+const Opcoes: React.FC<{ t: number; d: Spec; em: number }> = ({ t, d, em }) => {
+  const R = [-1.6, 1.2, -1, 1.5, -1.3];
+  return <div style={{ position: "absolute", top: 342, left: 56, right: 56, display: "flex", flexDirection: "column", gap: 14 }}>
+    <div style={{ textAlign: "center", fontFamily: LILITA, fontSize: 108, lineHeight: 0.98, color: NAVY, ...adesivo(18, 9), transform: `rotate(-2deg) scale(${volta((t - em) / 0.28)})`, marginBottom: 10 }}>O QUE SOME <span style={{ color: AZUL }}>AMANHÃ?</span></div>
+    {(d.opcoes as Spec[]).map((o, i) => {
+      if (t < o.em) return null;
+      const e = volta((t - o.em) / 0.28);
+      return <div key={o.n} style={{ display: "flex", alignItems: "center", gap: 20, height: 106, boxSizing: "border-box", background: "#fffdf6", borderRadius: 30, padding: "0 26px 0 12px", fontFamily: LILITA, color: NAVY, boxShadow: "0 9px 0 rgba(22,35,63,.28)", transform: `rotate(${R[i % 5]}deg) scale(${e})` }}>
+        <span style={{ width: 82, height: 82, borderRadius: 82, background: AMAR, border: `6px solid ${NAVY}`, boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 58, paddingTop: 5 }}>{o.n}</span>
+        <span style={{ flex: 1, fontSize: 64, lineHeight: 1, paddingTop: 5 }}>{String(o.txt).toUpperCase()}</span>
+        <svg width={90} height={90} viewBox="0 0 100 100">{ICONES[o.icone]}</svg>
+      </div>;
+    })}
+  </div>;
+};
+
+// ---------------------------------------------------------------- aberturas (Dia 8 em diante)
+// `abertura: { tipo, linhas: [..], ate }`: o gancho do primeiro segundo, antes da onda. Cada dia usa um tipo
+// diferente do dia anterior. Banco: manchete, alarme, contagem, pergunta, iris (o catálogo está em PECAS.md).
+const Abertura: React.FC<{ t: number; d: Spec; ate: number }> = ({ t, d, ate }) => {
+  if (t > ate + 0.25) return null;
+  const sai2 = t > ate ? 1 - sai((t - ate) / 0.25) : 1, L: string[] = d.linhas ?? [], k = volta(t / 0.22);
+  if (d.tipo === "manchete") return <div style={{ position: "absolute", top: 400, left: 50, right: 50, opacity: sai2, transform: `rotate(${-4 + 4 * k}deg) scale(${0.4 + 0.6 * k})`, background: "#f6f1e4", border: `8px solid ${NAVY}`, borderRadius: 10, padding: "18px 30px 26px", fontFamily: LILITA, color: NAVY, textAlign: "center", boxShadow: "0 16px 0 rgba(22,35,63,.3)" }}>
+    <div style={{ fontSize: 46, borderBottom: `6px double ${NAVY}`, paddingBottom: 8, letterSpacing: 4 }}>EDIÇÃO EXTRA · DIA {d.dia}</div>
+    {L.map((x, i) => <div key={i} style={{ fontSize: i ? 66 : 120, lineHeight: 1.02, marginTop: 12, color: i ? "#5a6170" : NAVY, opacity: lim((t - 0.25 - i * 0.35) * 5) }}>{x}</div>)}
+  </div>;
+  if (d.tipo === "alarme") { const pisca = Math.floor(t * 6) % 2; return <>
+    <AbsoluteFill style={{ boxShadow: `inset 0 0 ${pisca ? 160 : 90}px rgba(255,90,40,${0.55 * sai2})` }} />
+    <div style={{ position: "absolute", top: 1170, left: 60, right: 60, opacity: sai2, transform: `scale(${k})`, display: "flex", flexDirection: "column", alignItems: "center", gap: 18, fontFamily: LILITA }}>
+      <div style={{ background: pisca ? "#ff5a3c" : AMAR, color: NAVY, fontSize: 64, padding: "12px 34px 6px", borderRadius: 14, border: "7px solid #fffdf6", transform: "rotate(-2deg)" }}>⚠ ALERTA</div>
+      {L.map((x, i) => <div key={i} style={{ fontSize: i ? 72 : 104, lineHeight: 1.02, color: NAVY, textAlign: "center", ...adesivo(18, 9), opacity: lim((t - 0.2 - i * 0.4) * 5), transform: `scale(${volta((t - 0.2 - i * 0.4) / 0.2)})` }}>{x}</div>)}
+    </div></>; }
+  if (d.tipo === "contagem") { const n = Math.max(1, 3 - Math.floor(t / (ate / 3))); return <div style={{ position: "absolute", top: 380, width: "100%", textAlign: "center", fontFamily: LILITA, opacity: sai2, color: NAVY }}>
+    <div style={{ fontSize: 330, lineHeight: 1, ...adesivo(24, 12), transform: `scale(${volta(((t % (ate / 3)) / (ate / 3)) * 3)})` }}>{n}</div>
+    {L.map((x, i) => <div key={i} style={{ fontSize: 70, ...adesivo(16, 8) }}>{x}</div>)}
+  </div>; }
+  if (d.tipo === "pergunta") { const txt = L.join(" "), n = Math.floor(lim(t / (ate * 0.8)) * txt.length); return <div style={{ position: "absolute", top: 430, left: 80, right: 80, opacity: sai2, transform: "rotate(-2deg)", background: "#fffdf6", borderRadius: 14, padding: "30px 36px", fontFamily: CAVEAT, fontSize: 96, lineHeight: 1.05, color: "#23304f", boxShadow: "0 14px 0 rgba(22,35,63,.28)" }}>{txt.slice(0, n)}<span style={{ opacity: Math.floor(t * 4) % 2 }}>|</span></div>; }
+  if (d.tipo === "iris") { const r = 1500 * (1 - sm(t / ate)) + 330; return <><AbsoluteFill style={{ background: `radial-gradient(circle at 50% 46%, transparent ${r}px, ${NAVY} ${r + 4}px)`, opacity: sai2 }} />
+    <div style={{ position: "absolute", top: 1380, width: "100%", textAlign: "center", fontFamily: LILITA, fontSize: 80, color: "#fff", opacity: sai2 * lim((t - 0.3) * 4) }}>{L[0]}</div></>; }
+  return null;
+};
+// transições à mão (o Remotion 4.0.300 não tem light-leaks): { em, tipo: "flash" | "luz" | "pisca", dur }
+const Transicoes: React.FC<{ t: number; lista: Spec[] }> = ({ t, lista }) => <>{lista.map((x, i) => {
+  const q = (t - x.em) / (x.dur ?? 0.5); if (q < 0 || q > 1) return null;
+  if (x.tipo === "flash") return <AbsoluteFill key={i} style={{ background: "#fffdf6", opacity: Math.pow(1 - q, 2) }} />;
+  if (x.tipo === "pisca") return <AbsoluteFill key={i} style={{ background: NAVY, opacity: q < 0.5 ? 1 : 2 - 2 * q }} />;
+  return <AbsoluteFill key={i} style={{ background: `linear-gradient(${110 + q * 40}deg, transparent ${q * 120 - 40}%, rgba(255,200,110,.75) ${q * 120 - 15}%, rgba(255,240,200,.85) ${q * 120}%, transparent ${q * 120 + 25}%)`, mixBlendMode: "screen", opacity: Math.sin(q * Math.PI) }} />;
+})}</>;
+
 export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
   const f = useCurrentFrame(), t = f / 30, m = l.marcas, c = l.cenas, d = l.cena, final = c[c.length - 1];
-  CENARIOS[l.dia] = (w) => { montaCena(w, [...(d.heroi?.peca ? [d.heroi.peca] : []), ...(d.pecas ?? [])]); const fim = w.extra; w.extra = (q) => { fim?.(q); if (d.calor) w.sol.scale.setScalar(1 + 0.45 * sm((q - m.onda - 0.5) / 5)); }; };
+  CENARIOS[l.dia] = (w) => { montaCena(w, [...(d.heroi?.peca ? [d.heroi.peca] : []), ...(d.pecas ?? [])]); const fim = w.extra; w.extra = (q) => { fim?.(q); if (d.calor) w.sol.scale.setScalar(1 + 0.45 * sm((q - m.onda - 0.5) / 5));
+    // `somemCarros`: os carros do trânsito do fundo encolhem em onda nesse tempo e não voltam (dia em que os veículos somem)
+    if (d.somemCarros !== undefined) w.carros.forEach((c: any, i: number) => { const k = 1 - sm((q - d.somemCarros - (i % 13) * 0.08) / 0.35); if (k < 1) { c.raiz.scale.multiplyScalar(Math.max(0.002, k)); c.raiz.visible = c.raiz.visible && k > 0.01; } }); }; };
   const T = useMemo(() => tomadas(l), [l]);
   const cam = camBase(T, t);
   for (const [e, a] of [[m.onda, 0.12], [m.regra, 0.06], [m.interrogacao, 0.14], ...(d.tremores ?? []).map((x: number) => [x, 0.1])] as [number, number][]) { const q = t - e; if (q > 0 && q < 0.55) { const A = a * Math.exp(-q * 8); cam.pos[0] += Math.sin(t * 71) * A; cam.pos[1] += Math.cos(t * 63) * A; cam.fov -= A * 16; } }
@@ -85,6 +147,7 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
       <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent)", maskImage: "linear-gradient(to bottom, black 20%, transparent)", opacity: cam.foco }} />
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to top, black 20%, transparent)", maskImage: "linear-gradient(to top, black 20%, transparent)", opacity: cam.foco }} />
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 46%, transparent 58%, rgba(70,40,10,.2) 100%)" }} />
+      {(d.noite ?? []).map((n: Spec, i: number) => { const k = sm((t - n.em) / 0.5) * (1 - sm((t - n.ate) / 0.5)); return k > 0 ? <AbsoluteFill key={"n" + i} style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(30,40,110,.35), rgba(12,18,60,.78))", opacity: k * (n.forca ?? 0.8) }} /> : null; })}
       {calor > 0 && <AbsoluteFill style={{ background: "radial-gradient(ellipse at 70% 10%, rgba(255,150,40,.9), rgba(255,130,30,.45) 70%)", opacity: calor }} />}
       <div style={{ position: "absolute", top: 138, width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, fontFamily: LILITA }}>
         <div style={{ background: AMAR, color: NAVY, fontSize: 84, lineHeight: 1, padding: "12px 42px 6px", borderRadius: 12, transform: "rotate(-2deg)", boxShadow: "0 8px 0 rgba(22,35,63,.3)", border: "7px solid #fffdf6" }}>DIA {l.dia}</div>
@@ -97,7 +160,9 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
       {d.credito && <Credito t={t} em={m.credito - 0.05} ate={c[m.iCredito].fim - 0.1} d={d.credito} />}
       {(d.etiquetas ?? []).map((e: Spec) => { if (t < e.em || t > e.ate + 0.2) return null; const p = P(e.pos); return <Etiqueta key={e.txt + e.em} txt={e.txt} x={p.x} y={p.y} t={t} em={e.em} ate={e.ate} cor={cor(e.cor) ?? AZUL} r={e.r ?? -2} />; })}
       {d.divulgacao && <Divulgacao t={t} d={d.divulgacao} />}
-      {d.contador && <Contador rot={d.contador.rot} num={d.contador.num} t={t} em={d.contador.em} ate={d.contador.ate} />}
+      {([] as Spec[]).concat(d.contador ?? [], d.contadores ?? []).map((k: Spec, i: number) => <Contador key={"c" + i} rot={k.rot} num={k.de !== undefined ? Math.round(k.de + (k.para - k.de) * sm((t - k.em - 0.2) / (k.conta ?? 1.5))).toLocaleString("pt-BR") + (k.suf ?? "") : k.num} t={t} em={k.em} ate={k.ate} />)}
+      {d.abertura && <Abertura t={t} d={{ dia: l.dia, ...d.abertura }} ate={d.abertura.ate ?? m.onda - 0.1} />}
+      <Transicoes t={t} lista={d.transicoes ?? []} />
       {m.regra < 1e5 && <Regra t={t} em={m.regra - 0.1} ate={m.anotou - 0.1} linhas={d.regra ?? ["NÃO SOME GOVERNO", "NEM PESSOA"]} />}
       {cad > 0 && <div style={{ position: "absolute", left: 90, right: 90, top: 400, transform: `translateY(${(1 - cad) * -620}px) rotate(-2deg)`, background: "#fffdf6", borderRadius: 14, padding: "30px 34px 34px 92px", boxShadow: "0 16px 0 rgba(22,35,63,.28)", backgroundImage: "repeating-linear-gradient(transparent 0 84px, #bcd8f2 84px 88px)", backgroundPositionY: "22px", minHeight: 250 }}>
         <div style={{ position: "absolute", left: 56, top: 0, bottom: 0, width: 5, background: "#f2b8c6" }} />
@@ -106,15 +171,16 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
         <div style={{ fontFamily: CAVEAT, fontSize: 104, lineHeight: "88px", color: "#23304f" }}>{atual.slice(0, nCad)}<span style={{ opacity: nCad < atual.length ? 1 : 0, color: "#7a7f8a" }}>|</span></div>
       </div>}
       {t >= m.interrogacao - 0.1 && !fimCard && <div style={{ position: "absolute", top: 390, width: "100%", textAlign: "center", fontFamily: LILITA, fontSize: 118, lineHeight: 1.02, color: NAVY, ...adesivo(20, 10), transform: `rotate(-2deg) scale(${volta((t - m.interrogacao + 0.1) / 0.3)})` }}>AMANHÃ SOME<br />OUTRA COISA</div>}
-      {fimCard && <div style={{ position: "absolute", top: 360, left: 60, right: 60, display: "flex", flexDirection: "column", gap: 20 }}>
+      {fimCard && d.opcoes && <Opcoes t={t} d={d} em={m.comenta} />}
+      {fimCard && !d.opcoes && <div style={{ position: "absolute", top: 360, left: 60, right: 60, display: "flex", flexDirection: "column", gap: 20 }}>
         <div style={{ textAlign: "center", fontFamily: LILITA, fontSize: 124, lineHeight: 1, color: NAVY, ...adesivo(20, 10), transform: `rotate(-2deg) scale(${volta((t - m.comenta) / 0.28)})` }}>O QUE SOME<br /><span style={{ color: AZUL }}>AMANHÃ?</span></div>
         <div style={{ height: 8 }} />
         {((d.exemplos ?? ["o boleto", "as chaves", "o despertador"]) as string[]).map((x, i) => <Comentario key={x} txt={x} t={t} em={m.comenta + 0.55 + i * 0.45} r={[-2, 1.5, -1][i % 3]} />)}
         <div style={{ alignSelf: "center", fontFamily: LILITA, fontSize: 30, color: "#fff", background: "rgba(22,35,63,.82)", padding: "7px 18px 5px", borderRadius: 10, opacity: lim((t - m.comenta - 1.6) * 4) }}>COMENTÁRIOS DE EXEMPLO · FICÇÃO CRIADA COM IA</div>
       </div>}
-      {fimCard && t > ate - 0.1 && <div style={{ position: "absolute", top: 1085, width: "100%", display: "flex", flexDirection: "column", alignItems: "center", fontFamily: LILITA, fontSize: 96, color: NAVY, transform: `scale(${volta((t - ate + 0.1) / 0.25)})` }}>
-        <div style={{ ...adesivo(18, 8) }}>COMENTA AQUI</div>
-        <svg width={170} height={170} viewBox="0 0 100 100" style={{ marginTop: 4, transform: `translateY(${Math.sin(t * 7) * 16}px)`, filter: "drop-shadow(0 7px 0 rgba(22,35,63,.4))" }}><path d="M36 8 H64 V50 H86 L50 94 L14 50 H36 Z" fill={AZUL} stroke="#fff" strokeWidth={7} strokeLinejoin="round" /></svg>
+      {fimCard && t > ate - 0.1 && <div style={{ position: "absolute", top: d.opcoes ? 1205 : 1085, width: "100%", display: "flex", flexDirection: "column", alignItems: "center", fontFamily: LILITA, fontSize: d.opcoes ? 84 : 96, color: NAVY, transform: `scale(${volta((t - ate + 0.1) / 0.25)})` }}>
+        <div style={{ ...adesivo(18, 8) }}>{d.opcoes ? "COMENTE O NÚMERO" : "COMENTA AQUI"}</div>
+        <svg width={d.opcoes ? 120 : 170} height={d.opcoes ? 120 : 170} viewBox="0 0 100 100" style={{ marginTop: 4, transform: `translateY(${Math.sin(t * 7) * 16}px)`, filter: "drop-shadow(0 7px 0 rgba(22,35,63,.4))" }}><path d="M36 8 H64 V50 H86 L50 94 L14 50 H36 Z" fill={AZUL} stroke="#fff" strokeWidth={7} strokeLinejoin="round" /></svg>
       </div>}
       <Legenda l={l} t={t} onda={m.onda} escondida={t < c[1].inicio || t > ate - 0.1} corAntes={corDia} />
       <Audio src={staticFile(`${l.id}.wav`)} />

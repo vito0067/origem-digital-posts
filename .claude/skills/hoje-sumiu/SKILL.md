@@ -48,6 +48,26 @@ Pasta `Documents\Origem Digital\4-midia\posts-automaticos\hoje-sumiu` (Remotion 
 - **Legenda-adesivo:** até 3 palavras, palavra entra quando é dita, em y ≈ 1205 (fora da área dos botões das redes). Azul nas palavras fortes; a coisa que sumiu fica cinza depois da virada.
 - **Fim:** "O QUE SOME AMANHÃ?" com as 5 opções de voto legíveis (ver a seção "Voto com 5 opções" abaixo), "Ficção criada com IA" e "COMENTA AQUI ⬇".
 
+## Coerência do mundo (erro do Dia 7, apontado pelo Vito em 07/11/2026)
+O que sumiu NÃO pode aparecer em nenhum quadro depois da onda, nem no fundo. O livro tem coisas fixas (trânsito com carros, semáforo, placa PARE, gente, nuvens, sol): antes de renderizar, confira se a coisa do dia está entre elas e tire-a. Para veículos, use `"somemCarros": "@onda"` na `cena`. Ao revisar os quadros, olhe o FUNDO inteiro, não só a cena da frente.
+
+## Como o tema do dia é escolhido (regra de 06/11/2026, depois do erro do Dia 6)
+Decide o comentário **mais curtido** do Reel do dia anterior, **sem reinterpretar a categoria** (no Dia 6 o mais curtido era "Veículos" e o Wi-Fi foi escolhido por engano como "tecnologia"). Releia a lista inteira antes de escolher e, na dúvida, pergunte ao Vito. Se errar, o vídeo seguinte assume o erro em uma fala curta ("Ontem eu errei... Hoje eu conserto") e dá o crédito certo. **"Comente GUIA" está liberado desde 06/11/2026** (resposta pública e mensagem no Direct testadas): fala "Quer saber como é feito? Comente guia.", cartão `COMENTE GUIA` e a mesma frase na legenda; sem promessa de dinheiro.
+
+## Análise dos Dias 1 a 6 (06/11/2026; views do Instagram e do YouTube)
+- Instagram: D1 2.472 (69 s), D2 1.939 (73 s), D3 1.501 (80 s), D4 1.276 (65 s), D5 1.567 (61 s), D6 1.596 (61 s, 20 h). Cai com a duração e volta ao cortar para 55 a 65 s com abertura no sumiço.
+- YouTube: D3 (80 s) 447 views contra 1.2 a 1.4 mil dos demais; D6 960 em 20 h.
+- Comentários: o Reel do Dia 6 teve 15; quase todos de uma palavra, texto livre ("Veículos", "Futebol"). Ninguém usou o número da opção: o público prefere escrever. Por isso o final agora diz "um número OU escreva a sua ideia".
+- O que um comentário simples ("VEÍCULOSSSS") mostra: temas do dia a dia e de coisas que andam, comida e jogo rendem comentário; tecnologia abstrata rendeu pouco.
+- Aplicar: sumiço nos 3 primeiros segundos, 55 a 62 s, uma cena nova a cada fala, divulgação no meio, final que pede comentário. Retenção e salvamentos por Reel não foram lidos (precisa abrir "Ver insights" de cada Reel).
+
+## Lições do Dia 6 (reprovado pelo Vito em 05/11/2026; valem sempre)
+- **Legenda sincronizada com a voz, palavra por palavra.** Gere a voz FALA POR FALA (`generate_audio_batch`, uma fala por pedido; se der limite de taxa, reenvie as que falharam), junte com `ffmpeg` (concat com 1 s de silêncio entre as falas) em `public/<id>.mp3` e tire os `cortes` dos trechos de voz separados por pausas de 0,8 s. O `preparar-dia.mjs` agora distribui as palavras só pelo tempo de voz, casando frases com trechos. Confira que cada fala fica entre 3,5 e 5,5 sílabas/s.
+- **Nunca esqueça a divulgação do guia/e-book Sem Câmera:** é um dos motivos dos vídeos. Enquanto "Comente GUIA" estiver travado, use "Feito sem câmera. O guia está no línque da bio." (3,6 s, entre 38% e 60%) e a linha "Guia para fazer vídeos assim: link na bio." na legenda e na descrição.
+- **A voz fala "Um," sozinho como ruído.** Escreva "Comente um para a chuva, dois para ..." em frase corrida, e peça que o Vito ouça.
+- **Animação:** nada parado. Pessoas entram andando (`move`), a bolinha de carregando gira (`gira`), peças sobem em sequência. Enquadre as pessoas nos ±2,5 m do centro do terreno (a tela vertical enxerga só ±3 m).
+- **Pergunte ao Vito durante a produção** e confira o saldo de créditos (`balance`) antes de gerar voz.
+
 ## Voto com 5 opções (pedido do Vito, 05/11/2026, vale do próximo vídeo)
 - **Pergunta final:** o narrador fala "Comente 1 para X, 2 para Y, 3 para Z, 4 para W ou 5 para K" e o cartão final mostra as 5 opções, legíveis, com número em destaque.
 - **Escolha as 5 opções antes de publicar.** Temas bem abrangentes, para o público se envolver: algo do cotidiano, da natureza, da tecnologia, da comida e da memória/afeto. Nada de governo, pessoa, marca, religião, doença ou criança (as mesmas regras de "Proibido").
@@ -117,3 +137,11 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 - **Instagram:** a versão web não oferece fixar comentário nem editar o nome. Só pelo app.
 - **YouTube:** fixar comentário pede uma verificação única no Studio, que é o Vito quem faz.
 - **Envio:** a ferramenta aceita até 10 MB. Use uma cópia leve em `Desktop\Origem-Digital\hoje-sumiu-envios`.
+
+## Salto de qualidade do Dia 8 (07/11/2026, pedido do Vito)
+- **Efeito dominó:** 5 a 6 consequências em ordem crescente de gravidade e com prazo ("primeira noite", "em três dias", "em uma semana", "em um mês", "no fim"), cada uma com cenário e animação próprios. Estimativa nunca vira número inventado.
+- **Edição:** 2 câmeras por fala (corte seco com `dur: 0.01` ou voo), transições à mão (`luz`, `pisca`, `flash`), `tremores` e `flash` no clímax. Remotion fica em 4.0.300.
+- **Abertura e música:** cada dia usa um tipo de `abertura` e uma receita de `trilha` diferentes do dia anterior (bancos em PECAS.md e `ferramentas/trilhas.mjs`). Dia 8: alarme + noturna.
+- **Roteiro do Dia 8 em diante:** gerado por script (falas, cortes e cena); a voz sai fala por fala e é unida com 1 s de silêncio; os cortes vêm da energia de cada janela. 14 falas ≈ 3,5 créditos.
+- **Divulgação 40% a 60%:** se cair antes, troque a ordem das falas (reordene `falas` e `cortes` juntos, sem regravar).
+- **Conferir com /watch antes de mostrar:** `WATCH_GEMINI_MODEL=gemini-2.5-flash` (o padrão travou). Dia 8: 8,0 → 8,5 → 9,0. Ele reclamou de "casas caindo" no dominó: gente precisa aparecer na metáfora (`dominos` com `gente`).

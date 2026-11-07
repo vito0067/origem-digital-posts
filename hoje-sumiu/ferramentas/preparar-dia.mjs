@@ -5,7 +5,8 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { lerAudio, montarVoz, mixFinal } from "../../arquivo-333/ferramentas/mixagem.mjs";
-import { cortarNarracao } from "../../arquivo-333/ferramentas/narracao.mjs";
+import { cortarNarracao, trechosDeFala } from "../../arquivo-333/ferramentas/narracao.mjs";
+import { compor } from "./trilhas.mjs";
 import { TAXA, Faixa, SFX, pad, pluck, bumbo, chimbal, reverb, sino, filtro, ruido, decai, oscilador, nota } from "../../arquivo-333/ferramentas/sintetizador.mjs";
 
 const RAIZ = fileURLToPath(new URL("..", import.meta.url));
@@ -27,9 +28,38 @@ const cenas = falas.map((f, i) => {
 });
 const duracao = t + 0.1;
 const peso = (w) => { const l = w.replace(/[*~.,!?:]/g, ""); const g = l.toLowerCase().match(/[aeiouáàâãéêíóôõúü]+/g); return Math.max(1, g ? g.length : 1) + (/[.!?]\W*$/.test(w) ? 2 : /[,:]\W*$/.test(w) ? 1 : 0) + (/\d/.test(l) ? 2 : 0); };
+// Sincronia da legenda (regra do Vito, 05/11/2026: a legenda tem que acompanhar a voz): as palavras são
+// distribuídas só pelo tempo em que há voz de verdade, pulando as pausas. Se o número de trechos de voz
+// da fala bate com o número de frases (separadas por . , : ! ?), cada frase entra exatamente no seu trecho.
+const fimFrase = (w) => /[.,:!?]\W*$/.test(w.replace(/[*~]/g, ""));
+const silabas = (w) => { const g = w.replace(/[*~.,!?:]/g, "").toLowerCase().match(/[aeiouáàâãéêíóôõúü]+/g); return Math.max(1, g ? g.length : 1) + (/\d/.test(w) ? 2 : 0); };
+const trechosDaFala = (c) => {
+  const nf = c.legenda.split(/\s+/).filter(fimFrase).length;
+  let ult = null;
+  for (const pm of [0.12, 0.16, 0.2, 0.25, 0.3, 0.1]) {
+    const s = trechosDeFala(grav, { pausaMin: pm }).map((x) => ({ de: Math.max(x.de, c.p.de), ate: Math.min(x.ate, c.p.ate) })).filter((x) => x.ate - x.de > 0.05);
+    ult = s; if (s.length === nf) return { seg: s, casa: true };
+  }
+  return { seg: ult, casa: false };
+};
 for (const c of cenas) {
-  const ps = c.legenda.split(/\s+/), pe = ps.map(peso), tot = pe.reduce((a, b) => a + b, 0); let ac = 0;
-  c.palavras = ps.map((w, k) => { const em = c.vozEm + (ac / tot) * c.vozDur; ac += pe[k]; return { w, em }; });
+  const ps = c.legenda.split(/\s+/), { seg, casa } = trechosDaFala(c);
+  const real = (x) => c.vozEm + (x - c.p.de) - 0.03; // tempo da gravação -> tempo do vídeo
+  c.palavras = [];
+  if (casa) {
+    let k = 0;
+    for (const x of seg) {
+      let fim = k; while (fim < ps.length - 1 && !fimFrase(ps[fim])) fim++;
+      const grupo = ps.slice(k, fim + 1), tot = grupo.reduce((a, w) => a + silabas(w), 0); let ac = 0;
+      for (const w of grupo) { c.palavras.push({ w, em: real(x.de + (ac / tot) * (x.ate - x.de)) }); ac += silabas(w); }
+      k = fim + 1;
+    }
+  } else {
+    const voz = seg.reduce((a, x) => a + (x.ate - x.de), 0), tot = ps.reduce((a, w) => a + silabas(w), 0); let ac = 0;
+    const noTempo = (f) => { let r = f * voz; for (const x of seg) { const d = x.ate - x.de; if (r <= d) return x.de + r; r -= d; } return seg.at(-1).ate; };
+    c.palavras = ps.map((w) => { const em = real(noTempo(ac / tot)); ac += silabas(w); return { w, em }; });
+  }
+  console.log(c.i, casa ? "frases=trechos" : "proporcional", seg.length, "trechos");
 }
 /** Momento em que uma palavra é dita na fala i (n = qual ocorrência). */
 const tp = (i, palavra, n = 0) => { const ach = cenas[i].palavras.filter((p) => p.w.replace(/[*~.,!?:]/g, "").toLowerCase() === palavra.toLowerCase()); if (!ach[n]) throw new Error(`palavra não achada: ${i} ${palavra}`); return ach[n].em; };
@@ -57,7 +87,8 @@ const ACORDES = [[60, 64, 67], [65, 69, 72], [57, 60, 64], [67, 71, 74]], BAIXOS
 const TRISTE = [[57, 60, 64], [53, 57, 60], [50, 53, 57], [52, 55, 59]], BAIXOS_T = [45, 41, 38, 40];
 const MELODIA = [[0, 12], [1, 16], [1.5, 19], [2.5, 16], [3, 12], [4, 14], [5, 17], [5.5, 21], [6.5, 17], [7, 14]];
 const pizz = (n, seg = 0.45) => decai(filtro(pluck(n, seg, 0.75), "passa-alta", 140), seg * 0.4, 0.001);
-for (let c = 0; c * cp < duracao + 1; c++) {
+if (ep.cena?.trilha) compor(m, { ...ep.cena.trilha, duracao, marcas });
+else for (let c = 0; c * cp < duracao + 1; c++) {
   const ini = c * cp, triste = ini >= marcas.silencio - 0.1 && ini < marcas.amanha - 0.1, final = ini >= marcas.amanha - 0.1;
   const a = (triste ? TRISTE : ACORDES)[c % 4], bx = (triste ? BAIXOS_T : BAIXOS)[c % 4];
   if (triste) { // quase nada: o clima fica estranho

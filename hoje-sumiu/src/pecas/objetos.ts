@@ -31,6 +31,10 @@ function assenta(c: Ctx, g: any, s: Spec) {
   V(s.pos, g, "position"); V(s.rot, g, "rotation");
   if (s.escala) { if (Array.isArray(s.escala)) g.scale.set(...s.escala); else g.scale.setScalar(s.escala); }
   if (s.em !== undefined || s.sai !== undefined) c.w.pop(g, s.em ?? -1, s.modo ?? "dobra", s.dur ?? 0.45, s.sai);
+  // gira: a peça roda sem parar no próprio plano (voltas por segundo), como a bolinha de carregando
+  if (s.gira) { const r0 = g.rotation.z; c.quadro.push((t) => { g.rotation.z = r0 - t * s.gira * Math.PI * 2; }); }
+  // balanca: { em, ate, amp }: a peça cambaleia (gente tonta, sem dormir); para sozinha depois de `ate`
+  if (s.balanca) { const b = s.balanca, r0 = g.rotation.z; c.quadro.push((t) => { const k = sm((t - (b.em ?? -1)) / 0.4) * (1 - sm((t - (b.ate ?? 1e6)) / 0.4)); g.rotation.z = r0 + Math.sin(t * 3.1) * (b.amp ?? 0.12) * k; }); }
   // movimentos: [{ em, dur, pos }]: a peça anda do lugar atual até o novo
   if (s.move) { const base = g.position.clone(); c.quadro.push((t) => { let a = base.clone(); for (const m of s.move) { const b = new THREE.Vector3(...m.pos); a.lerp(b, sm((t - m.em) / (m.dur ?? 0.5))); } g.position.copy(a); }); }
   return g;
@@ -234,8 +238,64 @@ function telhados(c: Ctx, s: Spec) {
   return g;
 }
 
+// ---------------------------------------------------------------- peças do Dia 8 em diante
+/** Cama de papel com travesseiro e coberta. `filhos` deitam ou sentam em cima (y ~ 1.3). */
+function cama(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), l = s.l ?? 5;
+  const base = caixa(l, 0.9, 2.6, papel(s.corBase ?? "#b07a4f")); base.position.y = 0.45; g.add(base);
+  const cab = recorte(sRet(0.3, 2.6, 0.1), papel(s.corBase ?? "#b07a4f"), 2.6); cab.position.set(-l / 2 + 0.15, 0, -1.3); g.add(cab);
+  const col = caixa(l - 0.2, 0.35, 2.5, papel("#fffdf6")); col.position.set(0, 1.08, 0); g.add(col);
+  const tr = caixa(1.1, 0.4, 1.8, papel("#ffffff")); tr.position.set(-l / 2 + 0.9, 1.45, 0); g.add(tr);
+  const cob = caixa(l * 0.62, 0.22, 2.62, papel(s.cor ?? "#5c7cfa")); cob.position.set(l * 0.17, 1.32, 0); g.add(cob);
+  for (const k of s.filhos ?? []) g.add(monta(c, k));
+  return assenta(c, g, { modo: "cresce", ...s });
+}
+/** Fila de dominós que cai em sequência a partir de `cai`, um a cada `passo` s. `qtd`, `vao`, `l`, `a`, `cores`. */
+function dominos(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), n = s.qtd ?? 10, vao = s.vao ?? 1.1, l = s.l ?? 0.9, a = s.a ?? 2.2, cai = s.cai ?? 1e6, passo = s.passo ?? 0.12, cores = s.cores ?? ["#fffdf6", "#ffd23f"];
+  for (let i = 0; i < n; i++) {
+    const p = new THREE.Group(); p.position.set(i * vao, 0, 0); g.add(p);
+    const peca = caixa(0.32, a, l, papel(cores[i % cores.length])); peca.position.y = a / 2; p.add(peca);
+    for (const y of [a * 0.3, a * 0.7]) { const pt = caixa(0.34, 0.08, l * 0.5, papel("#27324a")); pt.position.y = y; p.add(pt); }
+    // gente: uma pessoa de papel colada na frente de cada peça, que cai junto (gente caindo como dominó)
+    if (s.gente) p.add(monta(c, { peca: "pessoa", pos: [0, 0, l / 2 + 0.25], escala: s.gente, semente: 30 + i, poses: [{ pose: "normal" }, { em: cai + i * passo * 0.8 - 0.4, pose: "susto" }] }));
+    const t0 = cai + i * passo * (s.acelera ? Math.pow(0.93, i) : 1);
+    c.quadro.push((t) => { p.rotation.z = -sm((t - t0) / 0.28) * 1.35; });
+  }
+  return assenta(c, g, { modo: "cresce", ...s });
+}
+/** Gráfico de barras de papel. As barras caem de `de` para `para` (alturas) em sequência a partir de `cai`. */
+function grafico(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), de: number[] = s.de ?? [3, 4, 4.5, 5, 5.6], para: number[] = s.para ?? [2.6, 2, 1.3, 0.8, 0.3], cai = s.cai ?? 1e6;
+  const fundo = recorte(sRet(de.length * 1.3 + 1, 7, 0.2), papel("#fffdf6"), 0.06); fundo.position.z = -0.4; g.add(fundo);
+  de.forEach((h0, i) => {
+    const b = new THREE.Group(); b.position.set(-((de.length - 1) * 1.3) / 2 + i * 1.3, 0.5, 0); g.add(b);
+    const m = novoPapel(s.cor ?? "#2fd46b"); const bar = caixa(0.9, 1, 0.4, m); bar.position.y = 0.5; b.add(bar);
+    c.quadro.push((t) => { const k = sm((t - cai - i * (s.passo ?? 0.25)) / (s.dur ?? 0.7)), h = h0 + (para[i] - h0) * k; b.scale.y = Math.max(0.05, h); m.color.set(k > 0.5 ? s.corDepois ?? "#ef5a5a" : s.cor ?? "#2fd46b"); });
+  });
+  return assenta(c, g, { modo: "cresce", ...s });
+}
+/** Relógio de papel. Os ponteiros giram rápido entre `corre` e `para` (o tempo passando). */
+function relogio(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), r = s.r ?? 2;
+  g.add(recorte(sCirc(r + 0.25, 0, r + 0.25), papel(s.cor ?? "#3ec1a8"), 0.12));
+  const face = recorte(sCirc(r, 0, r + 0.25), papel("#fffdf6"), 0.04); face.position.z = 0.12; g.add(face);
+  for (let i = 0; i < 12; i++) { const a = (i / 12) * Math.PI * 2, mk = caixa(0.12, 0.35, 0.03, papel("#27324a")); mk.position.set(Math.sin(a) * r * 0.82, r + 0.25 + Math.cos(a) * r * 0.82, 0.18); mk.rotation.z = -a; g.add(mk); }
+  const mh = (len: number, w: number) => { const h = new THREE.Group(); h.position.set(0, r + 0.25, 0.2); const b = caixa(w, len, 0.04, papel("#27324a")); b.position.y = len / 2; h.add(b); g.add(h); return h; };
+  const horas = mh(r * 0.5, 0.18), min = mh(r * 0.78, 0.12), a0 = s.hora ?? 3;
+  const corre = s.corre ?? 1e6, para = s.para ?? 1e6, voltas = s.voltas ?? 6;
+  c.quadro.push((t) => { const k = sm((t - corre) / Math.max(0.2, para - corre)), v = k * voltas; min.rotation.z = -v * Math.PI * 2; horas.rotation.z = -((a0 + v) / 12) * Math.PI * 2; });
+  return assenta(c, g, s);
+}
+/** Lua crescente de papel que pode subir no céu (`move`). */
+function lua(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), r = s.r ?? 2, f = new THREE.Shape(); f.absarc(0, 0, r, 0, Math.PI * 2, false); const furo = new THREE.Path(); furo.absarc(r * 0.45, r * 0.25, r * 0.85, 0, Math.PI * 2, true); f.holes.push(furo);
+  g.add(recorte(f, papel(s.cor ?? "#ffe9a8"), 0.1));
+  return assenta(c, g, s);
+}
+
 // ---------------------------------------------------------------- catálogo
-const CATALOGO: Record<string, (c: Ctx, s: Spec) => any> = { pessoa, letreiro, pinguim, "boneco-neve": bonecoNeve, boleto, galinha, derrete, geladeira, banca, mesa, piso, fachada, vapor, mar, espalha, telhados };
+const CATALOGO: Record<string, (c: Ctx, s: Spec) => any> = { pessoa, letreiro, pinguim, "boneco-neve": bonecoNeve, boleto, galinha, derrete, geladeira, banca, mesa, piso, fachada, vapor, mar, espalha, telhados, cama, dominos, grafico, relogio, lua };
 export function monta(c: Ctx, s: Spec): any {
   if (s.peca === "grupo") {
     const g = new THREE.Group(), f = new THREE.Group(); g.add(f); const mats: any[] = [];

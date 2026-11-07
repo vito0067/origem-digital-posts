@@ -1,0 +1,1276 @@
+{
+ "id": "hoje-sumiu-dia08",
+ "dia": 8,
+ "coisa": "o sono",
+ "velocidade": 1,
+ "falas": [
+  {
+   "fala": "Hoje sumiu o sono.",
+   "legenda": "Hoje sumiu o ~sono.~"
+  },
+  {
+   "fala": "Ninguém mais dorme. Nunca mais.",
+   "legenda": "Ninguém mais *dorme.* Nunca *mais.*",
+   "segura": 0.15
+  },
+  {
+   "fala": "Pedido de vocês, nos comentários.",
+   "legenda": "Pedido de *vocês,* nos *comentários.*",
+   "segura": 0.3
+  },
+  {
+   "fala": "Primeira noite: três da manhã, e a cidade acordada.",
+   "legenda": "Primeira *noite:* três da *manhã,* e a cidade *acordada.*",
+   "segura": 0.15
+  },
+  {
+   "fala": "Um dia sem dormir, e o corpo fica como se tivesse bebido.",
+   "legenda": "Um *dia* sem dormir, e o corpo fica como se tivesse *bebido.*",
+   "segura": 0.15
+  },
+  {
+   "fala": "Em três dias, o café esgota no mundo.",
+   "legenda": "Em três *dias,* o café *esgota* no mundo.",
+   "segura": 0.15
+  },
+  {
+   "fala": "Em uma semana, os acidentes disparam. Os hospitais lotam.",
+   "legenda": "Em uma *semana,* os acidentes *disparam.* Os hospitais *lotam.*",
+   "segura": 0.15
+  },
+  {
+   "fala": "Feito sem câmera. Comente guia e eu te mando.",
+   "legenda": "Feito sem *câmera.* Comente *GUIA* e eu te mando.",
+   "segura": 0.15
+  },
+  {
+   "fala": "Em um mês, a economia despenca.",
+   "legenda": "Em um *mês,* a economia *despenca.*",
+   "segura": 0.15
+  },
+  {
+   "fala": "No fim, oito bilhões de pessoas caem, como dominó.",
+   "legenda": "No *fim,* oito *bilhões* de pessoas caem, como *dominó.*",
+   "segura": 0.45
+  },
+  {
+   "fala": "Mas ninguém reclama. Para todo mundo, o sono nunca existiu.",
+   "legenda": "Mas ninguém *reclama.* Para todo mundo, o ~sono~ *nunca existiu.*",
+   "segura": 0.3
+  },
+  {
+   "fala": "Só o Seu Nilo lembra. E ele anotou: dia oito, o sono.",
+   "legenda": "Só o *Seu Nilo* lembra. E ele *anotou:* *dia 8,* o ~sono.~",
+   "segura": 0.25
+  },
+  {
+   "fala": "Amanhã, outra coisa vai sumir.",
+   "legenda": "*Amanhã,* outra coisa vai *sumir.*"
+  },
+  {
+   "fala": "Comente um para o aeroporto, dois para os apartamentos, três para a chuva, quatro para o pão de queijo, ou cinco para as fotos antigas.",
+   "legenda": "Comente *1* para o *aeroporto,* *2* para os *apartamentos,* *3* para a *chuva,* *4* para o pão de *queijo,* ou *5* para as *fotos* antigas."
+  }
+ ],
+ "cortes": [
+  [
+   0.08,
+   1.79
+  ],
+  [
+   3.16,
+   5.91
+  ],
+  [
+   7.17,
+   9.44
+  ],
+  [
+   10.67,
+   14.26
+  ],
+  [
+   15.46,
+   19.47
+  ],
+  [
+   20.66,
+   23.38
+  ],
+  [
+   29,
+   33.38
+  ],
+  [
+   24.67,
+   27.72
+  ],
+  [
+   34.58,
+   36.98
+  ],
+  [
+   38.35,
+   42.37
+  ],
+  [
+   43.64,
+   47.79
+  ],
+  [
+   49.01,
+   53.57
+  ],
+  [
+   54.75,
+   56.98
+  ],
+  [
+   58.23,
+   68.03
+  ]
+ ],
+ "cena": {
+  "cor": "#5c7cfa",
+  "titulo": "o sono",
+  "sumiram": [
+   "Dia 5: as placas",
+   "Dia 6: o Wi-Fi",
+   "Dia 7: os veículos"
+  ],
+  "abertura": {
+   "tipo": "alarme",
+   "linhas": [
+    "8 BILHÕES DE PESSOAS",
+    "NINGUÉM MAIS DORME"
+   ],
+   "ate": "@1:inicio-0.05"
+  },
+  "trilha": {
+   "nome": "noturna",
+   "constroi": [
+    "@3:voz",
+    "@4:voz",
+    "@5:voz",
+    "@6:voz",
+    "@8:voz"
+   ],
+   "climax": "@9:caem"
+  },
+  "credito": {
+   "rotulo": "O MAIS CURTIDO",
+   "conta": "@offlineporumtempo_",
+   "texto": "Sono",
+   "curtidas": 12
+  },
+  "divulgacao": {
+   "em": "@7:voz-0.05",
+   "ate": "@7:fim-0.05",
+   "titulo": "SEM CÂMERA",
+   "sub": "COMENTE GUIA",
+   "chamada": "GUIA EM PDF"
+  },
+  "opcoes": [
+   {
+    "n": 1,
+    "txt": "o aeroporto",
+    "icone": "aviao",
+    "em": "@13:1-0.05"
+   },
+   {
+    "n": 2,
+    "txt": "os apartamentos",
+    "icone": "predio",
+    "em": "@13:2-0.05"
+   },
+   {
+    "n": 3,
+    "txt": "a chuva",
+    "icone": "chuva",
+    "em": "@13:3-0.05"
+   },
+   {
+    "n": 4,
+    "txt": "o pão de queijo",
+    "icone": "queijo",
+    "em": "@13:4-0.05"
+   },
+   {
+    "n": 5,
+    "txt": "as fotos antigas",
+    "icone": "fotos",
+    "em": "@13:5-0.05"
+   }
+  ],
+  "heroi": {
+   "peca": {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     15
+    ],
+    "em": -1,
+    "sai": "@1:fim-0.2",
+    "modo": "cresce",
+    "some": "@onda",
+    "filhos": [
+     {
+      "peca": "cama",
+      "l": 5.6,
+      "cor": "#5c7cfa",
+      "filhos": [
+       {
+        "peca": "pessoa",
+        "pos": [
+         0.9,
+         1.45,
+         0.2
+        ],
+        "rot": [
+         0,
+         0,
+         1.5707963267948966
+        ],
+        "escala": 1.3,
+        "roupa": "#ffd166",
+        "semente": 4,
+        "pose": "normal"
+       }
+      ]
+     },
+     {
+      "peca": "letreiro",
+      "texto": "Z",
+      "fundo": false,
+      "l": 1.2,
+      "a": 1.2,
+      "cor": "#27324a",
+      "pos": [
+       0.5,
+       3.4,
+       17.2
+      ],
+      "move": [
+       {
+        "em": 0,
+        "dur": 2.2,
+        "pos": [
+         1.3,
+         5.8,
+         17.2
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "letreiro",
+      "texto": "Z",
+      "fundo": false,
+      "l": 1.2,
+      "a": 1.2,
+      "cor": "#27324a",
+      "pos": [
+       1.6,
+       4.4,
+       17.2
+      ],
+      "move": [
+       {
+        "em": 0.3,
+        "dur": 2.2,
+        "pos": [
+         2.4000000000000004,
+         6.800000000000001,
+         17.2
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "letreiro",
+      "texto": "Z",
+      "fundo": false,
+      "l": 1.2,
+      "a": 1.2,
+      "cor": "#27324a",
+      "pos": [
+       2.7,
+       5.4,
+       17.2
+      ],
+      "move": [
+       {
+        "em": 0.6,
+        "dur": 2.2,
+        "pos": [
+         3.5,
+         7.800000000000001,
+         17.2
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "camera": [
+    0.6,
+    5.2,
+    27
+   ],
+   "alvo": [
+    0.4,
+    1.4,
+    15
+   ]
+  },
+  "noite": [
+   {
+    "em": "@1:nunca-0.2",
+    "ate": "@1:fim",
+    "forca": 0.55
+   },
+   {
+    "em": "@3:inicio-0.3",
+    "ate": "@3:fim",
+    "forca": 0.8
+   }
+  ],
+  "cameras": [
+   {
+    "em": "@1:nunca-0.15",
+    "lugar": "ceu",
+    "dur": 0.01
+   },
+   {
+    "em": "@2:inicio",
+    "lugar": "cidade",
+    "perto": true,
+    "dur": 0.9
+   },
+   {
+    "em": "@3:inicio-0.35",
+    "lugar": "esquerda"
+   },
+   {
+    "em": "@3:manhã-0.3",
+    "pos": [
+     -12.6,
+     4.6,
+     27.5
+    ],
+    "alvo": [
+     -14,
+     2.6,
+     14.6
+    ],
+    "fov": 44,
+    "deriva": [
+     0.3,
+     0,
+     -0.4
+    ],
+    "foco": 0.75,
+    "dur": 0.01
+   },
+   {
+    "em": "@4:inicio-0.35",
+    "lugar": "direita",
+    "perto": true,
+    "dur": 0.01
+   },
+   {
+    "em": "@4:corpo-0.3",
+    "pos": [
+     16,
+     3.8,
+     26
+    ],
+    "alvo": [
+     11.8,
+     2.8,
+     13
+    ],
+    "fov": 40,
+    "deriva": [
+     -0.6,
+     0.1,
+     -0.3
+    ],
+    "foco": 0.75,
+    "dur": 0.6,
+    "arco": 2
+   },
+   {
+    "em": "@5:inicio-0.35",
+    "lugar": "praca"
+   },
+   {
+    "em": "@5:esgota-0.35",
+    "pos": [
+     0.3,
+     9.5,
+     35
+    ],
+    "alvo": [
+     0,
+     4,
+     17
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.3
+    ],
+    "foco": 0.75,
+    "dur": 0.01
+   },
+   {
+    "em": "@7:inicio-0.3",
+    "lugar": "cidade",
+    "dur": 1.3
+   },
+   {
+    "em": "@6:inicio-0.35",
+    "lugar": "transito",
+    "dur": 0.01
+   },
+   {
+    "em": "@6:hospitais-0.45",
+    "pos": [
+     12.4,
+     5.5,
+     34
+    ],
+    "alvo": [
+     12,
+     3.6,
+     12
+    ],
+    "fov": 44,
+    "deriva": [
+     0,
+     0,
+     -0.4
+    ],
+    "foco": 0.6,
+    "dur": 0.6
+   },
+   {
+    "em": "@8:inicio-0.3",
+    "pos": [
+     -14,
+     5,
+     33
+    ],
+    "alvo": [
+     -14,
+     3.6,
+     13.5
+    ],
+    "fov": 44,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.6,
+    "dur": 0.01
+   },
+   {
+    "em": "@9:inicio-0.3",
+    "pos": [
+     -27,
+     13,
+     27
+    ],
+    "alvo": [
+     -12,
+     1.5,
+     9
+    ],
+    "fov": 44,
+    "deriva": [
+     0,
+     0,
+     0
+    ],
+    "foco": 0.4,
+    "dur": 0.01
+   },
+   {
+    "em": "@9:caem-0.2",
+    "pos": [
+     25,
+     15,
+     29
+    ],
+    "alvo": [
+     13,
+     1,
+     9
+    ],
+    "fov": 46,
+    "deriva": [
+     0,
+     0.6,
+     -2
+    ],
+    "foco": 0.4,
+    "dur": 2,
+    "arco": 4
+   }
+  ],
+  "pecas": [
+   {
+    "peca": "espalha",
+    "forma": "papel",
+    "cor": "#cfd8ff",
+    "qtd": 26,
+    "tam": 0.7
+   },
+   {
+    "peca": "lua",
+    "pos": [
+     -6,
+     22,
+     -13
+    ],
+    "r": 2.6,
+    "em": "@1:voz",
+    "move": [
+     {
+      "em": "@1:voz",
+      "dur": 1.8,
+      "pos": [
+       -3,
+       28,
+       -13
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "cama",
+    "pos": [
+     -14,
+     0.13,
+     14.6
+    ],
+    "l": 6,
+    "cor": "#5cb8e4",
+    "em": "@3:inicio-0.35",
+    "sai": "@4:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.2,
+       1.3,
+       0.5
+      ],
+      "escala": 1.4,
+      "roupa": "#b794e6",
+      "semente": 3,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:manhã",
+        "pose": "susto"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1,
+       1.3,
+       0.5
+      ],
+      "escala": 1.4,
+      "roupa": "#45c46b",
+      "semente": 6,
+      "poses": [
+       {
+        "pose": "azedo"
+       },
+       {
+        "em": "@3:acordada",
+        "pose": "susto"
+       }
+      ]
+     },
+     {
+      "peca": "relogio",
+      "pos": [
+       3.6,
+       2.6,
+       -1.2
+      ],
+      "r": 1.2,
+      "hora": 3,
+      "cor": "#ff9f1c"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     12,
+     0.13,
+     13
+    ],
+    "em": "@4:inicio-0.35",
+    "sai": "@5:inicio",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.4,
+       0,
+       1
+      ],
+      "escala": 1.7,
+      "roupa": "#ff9f1c",
+      "semente": 2,
+      "pose": "azedo",
+      "balanca": {
+       "em": "@4:voz",
+       "amp": 0.16
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       1
+      ],
+      "escala": 1.7,
+      "roupa": "#5cb8e4",
+      "semente": 7,
+      "pose": "shrug",
+      "balanca": {
+       "em": "@4:dormir",
+       "amp": 0.2
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.4,
+       0,
+       1
+      ],
+      "escala": 1.7,
+      "roupa": "#f28aa5",
+      "semente": 1,
+      "pose": "triste",
+      "balanca": {
+       "em": "@4:corpo",
+       "amp": 0.14
+      }
+     }
+    ]
+   },
+   {
+    "peca": "banca",
+    "pos": [
+     0,
+     0.2,
+     17
+    ],
+    "cor": "#8a5a3c",
+    "corBalcao": "#ffe0a8",
+    "em": "@5:inicio-0.35",
+    "sai": "@7:inicio-0.05",
+    "filhos": [
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       5.8,
+       -0.6
+      ],
+      "l": 5,
+      "a": 1.2,
+      "texto": "CAFÉ",
+      "verso": "ESGOTADO",
+      "corVerso": "#c2341a",
+      "vira": "@5:esgota-0.05"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       -1.4
+      ],
+      "escala": 1.7,
+      "roupa": "#ffffff",
+      "semente": 5,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:esgota",
+        "pose": "shrug"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.2,
+       0,
+       2.8
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 10,
+      "olhar": [
+       -0.4,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:esgota+0.1",
+        "pose": "triste"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -0.19999999999999996,
+       0,
+       2.8
+      ],
+      "escala": 1.6,
+      "roupa": "#3a86ff",
+      "semente": 11,
+      "olhar": [
+       -0.4,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:esgota+0.1",
+        "pose": "susto"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.8,
+       0,
+       2.8
+      ],
+      "escala": 1.6,
+      "roupa": "#2ec4b6",
+      "semente": 12,
+      "olhar": [
+       -0.4,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:esgota+0.1",
+        "pose": "triste"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.8,
+       0,
+       2.8
+      ],
+      "escala": 1.6,
+      "roupa": "#b794e6",
+      "semente": 13,
+      "olhar": [
+       -0.4,
+       0.3
+      ],
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:esgota+0.1",
+        "pose": "susto"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "fachada",
+    "pos": [
+     12,
+     0.13,
+     13
+    ],
+    "l": 10,
+    "cor": "#e8f1f6",
+    "corPorta": "#5cb8e4",
+    "em": "@6:inicio-0.35",
+    "sai": "@8:inicio",
+    "filhos": [
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       5.2,
+       -2
+      ],
+      "l": 5.4,
+      "a": 1.2,
+      "texto": "HOSPITAL",
+      "verso": "LOTADO",
+      "corVerso": "#c2341a",
+      "cor": "#1f8f4c",
+      "vira": "@6:lotam-0.05"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -4,
+       0,
+       0.2
+      ],
+      "escala": 1.55,
+      "roupa": "#ffb703",
+      "semente": 20,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:lotam",
+        "pose": "susto"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.2,
+       0,
+       0.2
+      ],
+      "escala": 1.55,
+      "roupa": "#3a86ff",
+      "semente": 21,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:lotam",
+        "pose": "triste"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -0.4,
+       0,
+       0.2
+      ],
+      "escala": 1.55,
+      "roupa": "#2ec4b6",
+      "semente": 22,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:lotam",
+        "pose": "susto"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.4,
+       0,
+       0.2
+      ],
+      "escala": 1.55,
+      "roupa": "#b794e6",
+      "semente": 23,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:lotam",
+        "pose": "triste"
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.2,
+       0,
+       0.2
+      ],
+      "escala": 1.55,
+      "roupa": "#ff9f1c",
+      "semente": 24,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:lotam",
+        "pose": "susto"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "grafico",
+    "pos": [
+     -14,
+     0.13,
+     13.5
+    ],
+    "escala": 0.95,
+    "cai": "@8:economia-0.2",
+    "em": "@8:inicio-0.35",
+    "sai": "@9:inicio"
+   },
+   {
+    "peca": "dominos",
+    "pos": [
+     -21,
+     0.13,
+     9
+    ],
+    "qtd": 26,
+    "vao": 1.65,
+    "a": 3.4,
+    "l": 1.4,
+    "cai": "@9:caem-0.25",
+    "passo": 0.085,
+    "acelera": true,
+    "gente": 1.15,
+    "cores": [
+     "#fffdf6",
+     "#ffd23f",
+     "#f28aa5",
+     "#5cb8e4"
+    ],
+    "em": "@9:inicio-0.3",
+    "sai": "@10:inicio",
+    "modo": "sobe"
+   }
+  ],
+  "etiquetas": [
+   {
+    "txt": "03:00 · TODOS ACORDADOS",
+    "pos": [
+     -14,
+     7.4,
+     14.6
+    ],
+    "em": "@3:manhã",
+    "ate": "@3:fim-0.1",
+    "cor": "rosa",
+    "r": -2
+   },
+   {
+    "txt": "COMO SE TIVESSE BEBIDO",
+    "pos": [
+     12,
+     5.4,
+     14
+    ],
+    "em": "@4:bebido-0.3",
+    "ate": "@4:fim-0.1",
+    "cor": "amarelo",
+    "r": 2
+   },
+   {
+    "txt": "+ ACIDENTES",
+    "pos": [
+     2,
+     4,
+     4
+    ],
+    "em": "@6:disparam-0.2",
+    "ate": "@6:hospitais-0.5",
+    "cor": "rosa",
+    "r": -3
+   },
+   {
+    "txt": "ECONOMIA ↓",
+    "pos": [
+     -14,
+     8.4,
+     13.5
+    ],
+    "em": "@8:despenca-0.2",
+    "ate": "@8:fim-0.1",
+    "cor": "rosa",
+    "r": -2
+   },
+   {
+    "txt": "8 BILHÕES",
+    "pos": [
+     6,
+     6.5,
+     9
+    ],
+    "em": "@9:bilhões-0.1",
+    "ate": "@9:fim-0.1",
+    "cor": "ouro",
+    "r": 2
+   },
+   {
+    "txt": "NINGUÉM RECLAMA",
+    "pos": [
+     0,
+     4.9,
+     18
+    ],
+    "em": "@reclama",
+    "ate": "@10:fim-0.1"
+   },
+   {
+    "txt": "SEU NILO",
+    "pos": [
+     -0.9,
+     4.25,
+     18.5
+    ],
+    "em": "@nilo+0.7",
+    "ate": "@11:anotou-0.2",
+    "cor": "ouro"
+   }
+  ],
+  "contadores": [
+   {
+    "rot": "ESTOQUE DE CAFÉ",
+    "de": 100,
+    "para": 0,
+    "suf": "%",
+    "conta": 1.2,
+    "em": "@5:voz",
+    "ate": "@5:fim-0.1"
+   }
+  ],
+  "tremores": [
+   "@6:disparam",
+   "@9:caem+0.6",
+   "@9:caem+1.4"
+  ],
+  "transicoes": [
+   {
+    "em": "@3:inicio-0.3",
+    "tipo": "luz",
+    "dur": 0.7
+   },
+   {
+    "em": "@7:inicio-0.3",
+    "tipo": "pisca",
+    "dur": 0.3
+   },
+   {
+    "em": "@8:inicio-0.3",
+    "tipo": "luz",
+    "dur": 0.6
+   },
+   {
+    "em": "@9:caem",
+    "tipo": "flash",
+    "dur": 0.45
+   }
+  ],
+  "sons": [
+   {
+    "em": "@3:manhã",
+    "tipo": "apito",
+    "volume": 0.25
+   },
+   {
+    "em": "@4:bebido",
+    "tipo": "glitch",
+    "volume": 0.25
+   },
+   {
+    "em": "@5:esgota",
+    "tipo": "carimbo",
+    "volume": 0.45
+   },
+   {
+    "em": "@6:disparam",
+    "tipo": "buzina",
+    "volume": 0.45
+   },
+   {
+    "em": "@6:lotam",
+    "tipo": "carimbo",
+    "volume": 0.45
+   },
+   {
+    "em": "@8:despenca",
+    "tipo": "whoosh",
+    "volume": 0.4
+   },
+   {
+    "em": "@9:caem-0.04999999999999999",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.035",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.116",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.192",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.265",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.335",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.4",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.463",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.522",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.579",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.632",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.683",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.7310000000000001",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.7769999999999999",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.821",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.8620000000000001",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.9019999999999999",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.9390000000000001",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+0.9750000000000001",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+1.008",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+1.041",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+1.071",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+1.1",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+1.127",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+1.154",
+    "tipo": "clique",
+    "volume": 0.5
+   },
+   {
+    "em": "@9:caem+1.178",
+    "tipo": "clique",
+    "volume": 0.5
+   }
+  ]
+ }
+}

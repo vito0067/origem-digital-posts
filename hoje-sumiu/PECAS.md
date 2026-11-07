@@ -33,7 +33,12 @@ Além de `id`, `dia`, `coisa`, `velocidade: 1`, `falas` e `cortes` (se precisar)
 | `pecas` | O que entra no livro (abaixo) |
 | `etiquetas` | `{ txt, pos, em, ate, cor, r }`: `pos` é um ponto do mundo |
 | `divulgacao` | `{ em, ate, titulo, sub, chamada }`: cartão de papel no meio do vídeo (o Dia 3 usa "SEM CÂMERA", "GUIA EM PDF", "LINK NA BIO"). A fala de divulgação vai no roteiro, entre 40% e 60% do vídeo, no Mark. Escreva "línque" na `fala`, para a voz falar "link", e "link" na `legenda` |
-| `contador` | `{ rot, num, em, ate }` |
+| `opcoes` | `[{ n, txt, icone, em }]`: cartão final com várias opções de voto (Dia 6 em diante: 5). Ícones: `chuva`, `queijo`, `despertador`, `fotos`, `sombra` (outros: acrescente em `ICONES` de `DiaDados.tsx`). `em` = `@N:palavra-0.1` da palavra de cada opção na última fala. Substitui `exemplos`; o rodapé vira "COMENTE O NÚMERO" |
+| `contador` / `contadores` | `{ rot, num, em, ate }`; com `de`, `para`, `suf`, `conta` o número corre (ex.: estoque 100% → 0%) |
+| `abertura` | `{ tipo, linhas, ate }`: gancho do 1º segundo. Banco: `manchete` (jornal "edição extra"), `alarme` (alerta piscando, Dia 8), `contagem` (3, 2, 1), `pergunta` (caderno escrevendo), `iris` (círculo fechando). **Não repita o tipo do dia anterior.** |
+| `trilha` | `{ nome, constroi: [tempos], climax }`: música em `ferramentas/trilhas.mjs`. Receitas: `noturna` (ré menor, 84 BPM, Dia 8), `marcha` (lá menor, 128 BPM), `misterio` (tons inteiros, 76 BPM). Ganha uma camada em cada `constroi`, silêncio de 1,1 s antes do `climax`, impacto no clímax. Alterne a receita todo dia. Sem `trilha`, toca o pizzicato antigo |
+| `noite` | `[{ em, ate, forca }]`: escurece a tela (cenas de noite) |
+| `transicoes` | `[{ em, tipo, dur }]`: `luz` (vazamento de luz à mão), `pisca` (corte no escuro), `flash` (clarão do clímax) |
 | `tremores` | Tempos em que a câmera treme |
 | `sons` | `{ em, tipo, volume, lado }`: `virada`, `dobra`, `nhac`, `apito`, `buzina`, `pop`, `carimbo`, `clique`, `impacto`, `glitch`, `whoosh`, `subida`, `lapis` |
 
@@ -68,6 +73,15 @@ Terrenos livres para montar cenário: `esquerda` em `[-14, 0.13, 14.6]`, `direit
 | `pinguim` | Pinguim | `oculos` |
 | `boleto` | Folha grande com faixa, valor e código de barras; vira na onda com `some` | `l`, `a`, `vence`, `valor`, `some` |
 | `galinha` | Galinha de papel, com a crista cinza (o vermelho sumiu no Dia 1) | `cor`, `semente` |
+| `cama` | Cama com travesseiro e coberta; `filhos` em cima (y ~1,3) | `l`, `cor`, `corBase`, `filhos` |
+| `dominos` | Fila que cai em sequência (o efeito dominó, clímax do Dia 8). `gente: escala` cola uma pessoa em cada peça | `qtd`, `vao`, `l`, `a`, `cai`, `passo`, `acelera`, `cores`, `gente` |
+| `grafico` | Barras que caem de `de` para `para` e ficam vermelhas (economia, estoque) | `de`, `para`, `cai`, `passo`, `dur`, `cor`, `corDepois` |
+| `relogio` | Relógio de parede; ponteiros correm entre `corre` e `para` | `r`, `hora`, `cor`, `corre`, `para`, `voltas` |
+| `lua` | Lua crescente | `r`, `cor` |
+
+Todo campo de peça aceita também `balanca: { em, ate, amp }` (cambaleia, gente tonta).
+
+**Efeito dominó (Dia 8 em diante):** 5 a 6 consequências em gravidade crescente e com prazo ("primeira noite", "em três dias", "em uma semana", "em um mês", "no fim"), cada uma com seu cenário e animação própria, 2 câmeras por fala (corte seco `dur: 0.01` ou voo), e o clímax grande com `tremores`, `flash` e o `climax` da trilha. Estimativa nunca vira número inventado.
 
 **Poses:** `normal`, `feliz`, `fala`, `comemora`, `susto`, `azedo`, `triste`, `bravo`, `mostra`, `segura`, `come`, `surfa`, `shrug`.
 
