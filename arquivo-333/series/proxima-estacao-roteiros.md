@@ -1,5 +1,6 @@
 # Próxima estação: roteiros dos eps. 2 a 7 (rascunho para o Vito aprovar)
 
+**APROVADO pelo Vito em 08/11/2026** ("o rumo está muito bom, cria suspense"). Pedido dele: **voz própria para a Lia** quando ela fala no microfone (ver ep. 7). Use pouco: só nas falas marcadas "Lia (voz própria)". Antes de gravar, teste 3 vozes femininas baratas (MiniMax ~0,15; ElevenLabs ~0,23) com o /watch e deixe o Vito ouvir: jovem, cansada, voz baixa, quase sussurro.
 Escrito em 07/11/2026 (só texto: nada renderizado, nenhum crédito gasto). Complementa a bíblia `proxima-estacao.md`; se houver conflito, vale a bíblia. O ep. 1 já está pronto (`episodios/pe01.json`).
 
 ## Como funciona (2 roteiros por vídeo)
@@ -172,7 +173,8 @@ Termina com a Lia em pé no corredor, porta aberta, plataforma deu UM passo à f
 ## Ep. 7 · "Três e trinta e quatro" (bloco 3 "O relógio"; voto 1 no ep. 6: ela fala)
 **Gancho:** relógio da cabine mudando de 3:33 para 3:34, em destaque.
 **Fala:**
-1. Gideon: "A Lia falou no microfone. Tem alguém aí?"
+1. Gideon: "A Lia apertou o botão do microfone."
+1b. **Lia (voz própria, baixa, trêmula, com eco de alto-falante):** "Tem alguém aí?"
 2. Gideon: "A voz dela saiu em todas as estações ao mesmo tempo."
 3. Gideon: "Na plataforma treze, um homem de capa de chuva ouviu. E correu para o trem."
 4. Gideon: "O relógio mudou. Três e trinta e quatro."
@@ -194,6 +196,7 @@ Termina com a Lia em pé no corredor, porta aberta, plataforma deu UM passo à f
 5. *(guia, meio)* "Feito sem câmera. Comente GUIA e eu te mando."
 6. Vera: "Passageiro a bordo: um a menos. Dois a menos."
 7. Gideon: "Quando a luz do último banco apagou, só restava ela."
+7b. **Lia (voz própria, saindo do alto-falante, sem ela abrir a boca):** "Tem alguém aí?" *(a frase que, no outro caminho, ela disse no microfone: aqui ela nunca falou. É o susto do episódio.)*
 8. Gideon: "E o trem começou a acelerar."
 9. Vera: "Última passageira. Comente um se ela corre para a frente do trem, ou dois se ela fica na cabine."
 **Voto:** 1 corre para a frente / 2 fica na cabine.

@@ -2,6 +2,8 @@
 
 Escolhida pelo Vito em 05/11/2026. Base: o piloto de 04/11 (`pilotos/estacao-v2.json`). **Cada episódio termina com um voto ("Comente 1 se ela desce, ou 2 se ela fica."), e o voto decide o próximo episódio.** O episódio seguinte só é escrito DEPOIS de ler os votos do anterior.
 
+> **Roteiros dos eps. 2 a 7 aprovados pelo Vito em 08/11/2026:** `series/proxima-estacao-roteiros.md` (2 roteiros por episódio, escolhidos pelo voto; a bíblia continua mandando). **Lia ganha voz própria só nas falas marcadas "Lia (voz própria)" no ep. 7** (voto 1: ela diz no microfone "Tem alguém aí?"; voto 2: a mesma frase sai do alto-falante sem ela falar); testar 3 vozes femininas baratas (MiniMax ~0,15; ElevenLabs ~0,23) com o /watch e o Vito escolhe de ouvido. **Variar o susto:** o relógio 3h33 não pode aparecer em todo episódio; trocar algumas aparições por outro sinal estranho.
+
 ## Regras do mundo (nunca quebrar)
 - **A linha cinza** tem 12 estações no mapa. Às 3h33 do último trem, o trem para numa **13ª estação que não está no mapa**.
 - **A 13ª estação nunca é a mesma:** o painel diz "13", mas o lugar muda. Cada vez que a Lia desce, vê algo que já viu (ou vai ver) na vida dela.
