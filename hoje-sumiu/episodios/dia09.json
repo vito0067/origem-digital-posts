@@ -1,0 +1,931 @@
+{
+ "id": "hoje-sumiu-dia09",
+ "dia": 9,
+ "coisa": "os apartamentos",
+ "velocidade": 1,
+ "falas": [
+  {
+   "fala": "Hoje sumiu os apartamentos.",
+   "legenda": "Hoje sumiu os ~apartamentos.~"
+  },
+  {
+   "fala": "Do mundo inteiro. Para sempre.",
+   "legenda": "Do mundo inteiro. Para *sempre.*"
+  },
+  {
+   "fala": "Vocês decidiram que fosse apartamento.",
+   "legenda": "*Vocês* decidiram que fosse *apartamento.*"
+  },
+  {
+   "fala": "Primeira noite: ninguém tem onde dormir.",
+   "legenda": "Primeira noite: ninguém tem onde *dormir.*"
+  },
+  {
+   "fala": "O porteiro perde o emprego.",
+   "legenda": "O *porteiro* perde o *emprego.*"
+  },
+  {
+   "fala": "O vizinho de cima também some. Ninguém sente falta.",
+   "legenda": "O vizinho de cima também *some.* Ninguém *sente falta.*"
+  },
+  {
+   "fala": "Em uma semana, as praças viram acampamento.",
+   "legenda": "Em uma semana, as *praças* viram *acampamento.*"
+  },
+  {
+   "fala": "Em duas semanas, as imobiliárias fecham.",
+   "legenda": "Em duas semanas, as *imobiliárias* fecham."
+  },
+  {
+   "fala": "Feito sem câmera. Comente GUIA.",
+   "legenda": "*Feito* sem *câmera.* Comente *GUIA.*"
+  },
+  {
+   "fala": "Em um mês, os contratos somem.",
+   "legenda": "Em um mês, os *contratos* somem."
+  },
+  {
+   "fala": "Em dois meses, a construção para.",
+   "legenda": "Em dois meses, a *construção* para."
+  },
+  {
+   "fala": "No fim, só sobra céu.",
+   "legenda": "No fim, só sobra *céu.*"
+  },
+  {
+   "fala": "Mas ninguém reclama. Para todo mundo, nunca existiram.",
+   "legenda": "Mas ninguém reclama. Para todo mundo, *nunca existiram.*"
+  },
+  {
+   "fala": "Só o Seu Nilo lembra. Ele anotou.",
+   "legenda": "Só o *Seu Nilo* lembra. Ele *anotou.*"
+  },
+  {
+   "fala": "Amanhã, outra coisa vai sumir.",
+   "legenda": "Amanhã, outra coisa vai *sumir.*"
+  },
+  {
+   "fala": "Comente um para o chuveiro quente, dois para os cachorros, três para a praia, quatro para os aniversários, ou cinco para as janelas.",
+   "legenda": "Comente *1* para o *chuveiro quente,* *2* para os *cachorros,* *3* para a *praia,* *4* para os *aniversários,* ou *5* para as *janelas.*"
+  }
+ ],
+ "cortes": [
+  [
+   0,
+   2.24
+  ],
+  [
+   2.79,
+   5.61
+  ],
+  [
+   6.16,
+   8.72
+  ],
+  [
+   9.27,
+   12.25
+  ],
+  [
+   12.8,
+   14.97
+  ],
+  [
+   15.52,
+   19.36
+  ],
+  [
+   19.91,
+   23.12
+  ],
+  [
+   23.67,
+   26.72
+  ],
+  [
+   27.27,
+   29.91
+  ],
+  [
+   30.46,
+   33.02
+  ],
+  [
+   33.57,
+   36.05
+  ],
+  [
+   36.6,
+   38.77
+  ],
+  [
+   39.32,
+   43.5
+  ],
+  [
+   44.05,
+   46.87
+  ],
+  [
+   47.42,
+   49.9
+  ],
+  [
+   50.45,
+   59.67
+  ]
+ ],
+ "cena": {
+  "cor": "#f28aa5",
+  "titulo": "os apartamentos",
+  "semCarros": true,
+  "somemPredios": "@onda",
+  "sumiram": [
+   "Dia 6: o Wi-Fi",
+   "Dia 7: os veículos",
+   "Dia 8: o sono"
+  ],
+  "abertura": {
+   "tipo": "iris",
+   "linhas": [
+    "Hoje sumiram os apartamentos"
+   ],
+   "ate": "@1:inicio-0.05"
+  },
+  "trilha": {
+   "nome": "marcha",
+   "constroi": [
+    "@3:voz",
+    "@5:voz",
+    "@6:voz",
+    "@8:voz",
+    "@10:voz"
+   ],
+   "climax": "@11:inicio"
+  },
+  "credito": {
+   "rotulo": "VOCÊS DECIDIRAM",
+   "conta": "OS VOTOS DE VOCÊS",
+   "texto": "Apartamento"
+  },
+  "divulgacao": {
+   "em": "@8:voz-0.05",
+   "ate": "@8:fim-0.05",
+   "titulo": "SEM CÂMERA",
+   "sub": "COMENTE GUIA",
+   "chamada": "GUIA EM PDF"
+  },
+  "opcoes": [
+   {
+    "n": 1,
+    "txt": "o chuveiro quente",
+    "icone": "chuva",
+    "em": "@15:1-0.05"
+   },
+   {
+    "n": 2,
+    "txt": "os cachorros",
+    "em": "@15:2-0.05"
+   },
+   {
+    "n": 3,
+    "txt": "a praia",
+    "em": "@15:3-0.05"
+   },
+   {
+    "n": 4,
+    "txt": "os aniversários",
+    "em": "@15:4-0.05"
+   },
+   {
+    "n": 5,
+    "txt": "as janelas",
+    "em": "@15:5-0.05"
+   }
+  ],
+  "cameras": [
+   {
+    "em": "@0:inicio-0.35",
+    "lugar": "cidade"
+   },
+   {
+    "em": "@1:inicio-0.2",
+    "lugar": "cidade",
+    "perto": true,
+    "dur": 0.9
+   },
+   {
+    "em": "@1:sempre-0.3",
+    "lugar": "ceu",
+    "dur": 0.01
+   },
+   {
+    "em": "@2:inicio-0.2",
+    "lugar": "praca",
+    "dur": 0.7
+   },
+   {
+    "em": "@2:fosse-0.3",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 0.8
+   },
+   {
+    "em": "@3:inicio-0.35",
+    "lugar": "esquerda"
+   },
+   {
+    "em": "@3:onde-0.2",
+    "lugar": "esquerda",
+    "perto": true,
+    "dur": 0.7
+   },
+   {
+    "em": "@4:inicio-0.35",
+    "lugar": "direita",
+    "perto": true,
+    "dur": 0.9
+   },
+   {
+    "em": "@4:emprego-0.35",
+    "lugar": "direita",
+    "dur": 0.9
+   },
+   {
+    "em": "@5:inicio-0.35",
+    "pos": [
+     -7,
+     3.2,
+     21
+    ],
+    "alvo": [
+     -6,
+     2.2,
+     9
+    ],
+    "fov": 44,
+    "deriva": [
+     0.4,
+     0,
+     -0.4
+    ],
+    "foco": 0.6,
+    "dur": 0.01
+   },
+   {
+    "em": "@5:ninguém-0.3",
+    "lugar": "rua",
+    "dur": 0.9
+   },
+   {
+    "em": "@6:inicio-0.35",
+    "lugar": "praca"
+   },
+   {
+    "em": "@6:acampamento-0.45",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 0.9
+   },
+   {
+    "em": "@7:inicio-0.35",
+    "lugar": "direita"
+   },
+   {
+    "em": "@7:fecham-0.5",
+    "lugar": "direita",
+    "perto": true,
+    "dur": 0.8
+   },
+   {
+    "em": "@8:inicio-0.3",
+    "lugar": "cidade",
+    "perto": true,
+    "dur": 1
+   },
+   {
+    "em": "@8:comente-0.3",
+    "lugar": "rua",
+    "perto": true,
+    "dur": 0.01
+   },
+   {
+    "em": "@9:inicio-0.35",
+    "lugar": "esquerda",
+    "perto": true
+   },
+   {
+    "em": "@9:contratos-0.3",
+    "lugar": "esquerda",
+    "dur": 0.9
+   },
+   {
+    "em": "@10:inicio-0.35",
+    "lugar": "cidade"
+   },
+   {
+    "em": "@10:para-0.4",
+    "pos": [
+     0,
+     5.5,
+     27
+    ],
+    "alvo": [
+     0,
+     4.6,
+     15
+    ],
+    "fov": 42,
+    "deriva": [
+     0,
+     0,
+     -0.3
+    ],
+    "foco": 0.6,
+    "dur": 0.6
+   },
+   {
+    "em": "@11:inicio-0.3",
+    "pos": [
+     0,
+     15,
+     35
+    ],
+    "alvo": [
+     0,
+     6,
+     10
+    ],
+    "fov": 44,
+    "deriva": [
+     0,
+     0,
+     -0.4
+    ],
+    "foco": 0.6,
+    "dur": 1.6,
+    "arco": 2
+   },
+   {
+    "em": "@11:sobra-0.4",
+    "lugar": "ceu",
+    "dur": 0.8
+   },
+   {
+    "em": "@12:inicio-0.35",
+    "lugar": "praca"
+   },
+   {
+    "em": "@12:todo-0.2",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 0.8
+   },
+   {
+    "em": "@14:inicio-0.35",
+    "lugar": "cidade",
+    "dur": 1
+   }
+  ],
+  "pecas": [
+   {
+    "peca": "cama",
+    "pos": [
+     -14,
+     0.13,
+     14.6
+    ],
+    "l": 6,
+    "cor": "#5cb8e4",
+    "em": "@3:inicio-0.35",
+    "sai": "@6:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.2,
+       0,
+       0.5
+      ],
+      "escala": 1.6,
+      "roupa": "#b794e6",
+      "semente": 3,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:dormir",
+        "pose": "susto"
+       }
+      ],
+      "balanca": {
+       "em": "@3:dormir",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1,
+       0,
+       0.5
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 6,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:dormir",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@3:dormir",
+       "amp": 0.08
+      }
+     }
+    ]
+   },
+   {
+    "peca": "fachada",
+    "pos": [
+     12,
+     0.13,
+     13
+    ],
+    "l": 6,
+    "cor": "#e8f1f6",
+    "corPorta": "#5cb8e4",
+    "em": "@4:inicio-0.35",
+    "sai": "@5:fim",
+    "filhos": [
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       5.2,
+       -2
+      ],
+      "l": 4.6,
+      "a": 1.1,
+      "texto": "PORTARIA",
+      "verso": "FECHADA",
+      "corVerso": "#c2341a",
+      "cor": "#1f3b73",
+      "vira": "@4:emprego"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.4,
+       0,
+       1.6
+      ],
+      "escala": 1.6,
+      "roupa": "#1f3b73",
+      "semente": 8,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@4:emprego",
+        "pose": "triste"
+       }
+      ],
+      "balanca": {
+       "em": "@4:emprego",
+       "amp": 0.08
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     -6,
+     0.13,
+     9
+    ],
+    "em": "@5:inicio-0.35",
+    "some": "@5:some",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 11,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:inicio",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@5:inicio",
+       "amp": 0.08
+      }
+     }
+    ]
+   },
+   {
+    "peca": "banca",
+    "pos": [
+     -5,
+     0.2,
+     17
+    ],
+    "cor": "#ff8fa3",
+    "corBalcao": "#ffe0a8",
+    "em": "@6:inicio-0.35",
+    "sai": "@7:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       -1.4
+      ],
+      "escala": 1.6,
+      "roupa": "#ffd166",
+      "semente": 5,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:acampamento",
+        "pose": "triste"
+       }
+      ],
+      "balanca": {
+       "em": "@6:acampamento",
+       "amp": 0.08
+      }
+     }
+    ]
+   },
+   {
+    "peca": "banca",
+    "pos": [
+     5,
+     0.2,
+     17
+    ],
+    "cor": "#8fd3ff",
+    "corBalcao": "#ffe0a8",
+    "em": "@6:inicio-0.2",
+    "sai": "@7:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       -1.4
+      ],
+      "escala": 1.6,
+      "roupa": "#b794e6",
+      "semente": 9,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:acampamento",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@6:acampamento",
+       "amp": 0.08
+      }
+     }
+    ]
+   },
+   {
+    "peca": "fachada",
+    "pos": [
+     12,
+     0.13,
+     13
+    ],
+    "l": 6,
+    "cor": "#e8f1f6",
+    "corPorta": "#f2c94c",
+    "em": "@7:inicio-0.35",
+    "sai": "@10:inicio",
+    "filhos": [
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       5.2,
+       -2
+      ],
+      "l": 4.6,
+      "a": 1.1,
+      "texto": "IMÓVEIS",
+      "verso": "FECHADO",
+      "corVerso": "#c2341a",
+      "cor": "#1f8f4c",
+      "vira": "@7:fecham"
+     }
+    ]
+   },
+   {
+    "peca": "espalha",
+    "forma": "papel",
+    "cor": "#fff8e7",
+    "qtd": 28,
+    "tam": 0.7,
+    "atraso": "@9:inicio",
+    "dura": 2
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     -12.4,
+     0.13,
+     13.5
+    ],
+    "em": "@9:inicio-0.35",
+    "sai": "@10:inicio",
+    "filhos": [
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       5.4,
+       0
+      ],
+      "l": 5,
+      "a": 1.2,
+      "texto": "CONTRATO",
+      "verso": "SUMIU",
+      "corVerso": "#c2341a",
+      "cor": "#27324a",
+      "vira": "@9:somem"
+     }
+    ]
+   },
+   {
+    "peca": "relogio",
+    "pos": [
+     0,
+     4.6,
+     15
+    ],
+    "r": 1.8,
+    "hora": 12,
+    "cor": "#ff9f1c",
+    "em": "@10:inicio-0.3",
+    "corre": "@10:inicio",
+    "para": "@10:para",
+    "sai": "@11:inicio"
+   },
+   {
+    "peca": "lua",
+    "pos": [
+     -6,
+     22,
+     -13
+    ],
+    "r": 2.6,
+    "em": "@11:inicio"
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17
+    ],
+    "em": "@12:inicio-0.35",
+    "sai": "@14:inicio",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 12,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#2ec4b6",
+      "semente": 13,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 14,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#3a86ff",
+      "semente": 15,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     }
+    ]
+   }
+  ],
+  "etiquetas": [
+   {
+    "txt": "SEM CASA",
+    "pos": [
+     -14,
+     7.4,
+     14.6
+    ],
+    "em": "@3:dormir",
+    "ate": "@4:fim-0.1",
+    "cor": "rosa",
+    "r": -2
+   },
+   {
+    "txt": "EMPREGO SUMIU",
+    "pos": [
+     10.4,
+     8,
+     13
+    ],
+    "em": "@4:emprego-0.3",
+    "ate": "@4:fim+0.15",
+    "cor": "amarelo",
+    "r": 2
+   },
+   {
+    "txt": "ACAMPAMENTO",
+    "pos": [
+     0,
+     5.6,
+     18
+    ],
+    "em": "@6:acampamento-0.3",
+    "ate": "@7:inicio",
+    "cor": "amarelo",
+    "r": -2
+   },
+   {
+    "txt": "CONTRATOS SUMIRAM",
+    "pos": [
+     -12.4,
+     7.6,
+     13.5
+    ],
+    "em": "@9:somem-0.2",
+    "ate": "@10:inicio-0.1",
+    "cor": "rosa",
+    "r": -2
+   },
+   {
+    "txt": "SEM OBRA",
+    "pos": [
+     10,
+     6.5,
+     12
+    ],
+    "em": "@10:para-0.3",
+    "ate": "@11:inicio",
+    "cor": "ouro",
+    "r": 2
+   },
+   {
+    "txt": "NINGUÉM RECLAMA",
+    "pos": [
+     0,
+     4.9,
+     18
+    ],
+    "em": "@reclama",
+    "ate": "@13:inicio-0.1"
+   },
+   {
+    "txt": "SEU NILO",
+    "pos": [
+     -0.9,
+     4.25,
+     18.5
+    ],
+    "em": "@nilo+0.7",
+    "ate": "@13:anotou-0.2",
+    "cor": "ouro"
+   }
+  ],
+  "noite": [
+   {
+    "em": "@3:inicio-0.2",
+    "ate": "@4:fim",
+    "forca": 0.5
+   }
+  ],
+  "transicoes": [
+   {
+    "em": "@4:inicio-0.2",
+    "tipo": "luz",
+    "dur": 0.6
+   },
+   {
+    "em": "@9:inicio-0.2",
+    "tipo": "luz",
+    "dur": 0.6
+   },
+   {
+    "em": "@11:inicio-0.2",
+    "tipo": "flash",
+    "dur": 0.6
+   }
+  ],
+  "tremores": [
+   "@11:inicio"
+  ]
+ }
+}

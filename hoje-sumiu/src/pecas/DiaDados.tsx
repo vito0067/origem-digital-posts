@@ -47,7 +47,7 @@ const Credito: React.FC<{ t: number; em: number; ate: number; d: Spec }> = ({ t,
     <div style={{ width: "100%", boxSizing: "border-box", background: "#fffdf6", borderRadius: 30, padding: "30px 34px 24px", fontFamily: LILITA, color: NAVY, boxShadow: "0 12px 0 rgba(22,35,63,.3)" }}>
       <div style={{ fontSize: 55, lineHeight: 1.05, color: AZUL }}>{d.conta}</div>
       <div style={{ fontSize: d.texto.length > 12 ? 96 : 150, lineHeight: 1.1 }}>{d.texto}</div>
-      <div style={{ fontSize: 58, lineHeight: 1 }}>♥ {d.curtidas} curtidas</div>
+      {d.curtidas != null && <div style={{ fontSize: 58, lineHeight: 1 }}>♥ {d.curtidas} curtidas</div>}
     </div>
   </div>;
 };
@@ -133,6 +133,8 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
     // `somemCarros`: os carros do trânsito do fundo encolhem em onda nesse tempo e não voltam (dia em que os veículos somem)
     // `semCarros`: os veículos já sumiram em um dia anterior (Dia 7): nenhum carro, caminhão ou giroflex aparece em lugar nenhum
     if (d.semCarros) { w.carros.forEach((c: any) => { c.raiz.visible = false; }); if (w.caminhao) w.caminhao.visible = false; if (w.giroflex) w.giroflex.visible = false; }
+    // `somemPredios`: os prédios do fundo (os apartamentos) dobram como papel em onda e somem; ordem: do centro para as bordas
+    if (d.somemPredios !== undefined) w.tetos.forEach((p: any) => { const dt = d.somemPredios + Math.hypot(p.x, p.z + 6) * 0.05, k = 1 - sm((q - dt) / 0.5); p.g.scale.y = k >= 1 ? 1 : Math.max(0.02, Math.cos((1 - k) * Math.PI / 2)); p.g.visible = k > 0.02; });
     if (d.somemCarros !== undefined) w.carros.forEach((c: any, i: number) => { const k = 1 - sm((q - d.somemCarros - (i % 13) * 0.08) / 0.35); if (k < 1) { c.raiz.scale.multiplyScalar(Math.max(0.002, k)); c.raiz.visible = c.raiz.visible && k > 0.01; } }); }; };
   const T = useMemo(() => tomadas(l), [l]);
   const cam = camBase(T, t);
