@@ -18,3 +18,7 @@
 
 ### Verificação em 07/11/2026 (Arquivo): CONFIRMADO
 Os reels `DfYKX33oHPE` (ep. 11), `DfcWkv6I-2a` (ep. 12) e `DfdL6AOoXP0` (Caso 02 ep. 1) aparecem com player 600x600 (quadrado, topo e laterais cortados). O reel `DfTAweGiFSc` (n8n) aparece vertical. Causa: no fluxo do Chrome usei Criar > Postar e avancei a etapa de corte sem escolher 9:16/Original (o padrão é quadrado). Nada foi apagado. Passo certo anotado na skill e no ESTADO. Decisão pendente do Vito: apagar e republicar os três (perde curtidas e comentários).
+
+
+### RESOLVIDO em 08/11/2026
+O Vito autorizou apagar e republicar. Os 3 reels quadrados foram apagados e republicados na vertical (links em agendados.json). No Instagram web não há item Reel no menu Criar: é Criar > Postar, e na etapa Cortar o ícone de proporção (canto inferior esquerdo) tem Original, 1:1, 9:16 e 16:9; o padrão é 1:1 e tem de ser trocado para 9:16 (dois cliques, esperar o vídeo carregar). Curtidas e comentários dos antigos foram perdidos.
