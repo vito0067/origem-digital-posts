@@ -34,8 +34,8 @@
    "segura": 0.15
   },
   {
-   "fala": "Em uma semana, os acidentes disparam. Os hospitais lotam.",
-   "legenda": "Em uma *semana,* os acidentes *disparam.* Os hospitais *lotam.*",
+   "fala": "Em uma semana, ninguém lembra de nada. Os hospitais lotam.",
+   "legenda": "Em uma *semana,* ninguém lembra de *nada.* Os hospitais *lotam.*",
    "segura": 0.15
   },
   {
@@ -98,41 +98,42 @@
    23.38
   ],
   [
-   29,
-   33.38
+   28.99,
+   33.29
   ],
   [
    24.67,
    27.72
   ],
   [
-   34.58,
-   36.98
+   34.5,
+   36.9
   ],
   [
-   38.35,
-   42.37
+   38.28,
+   42.29
   ],
   [
-   43.64,
-   47.79
+   43.56,
+   47.71
   ],
   [
-   49.01,
-   53.57
+   48.93,
+   53.49
   ],
   [
-   54.75,
-   56.98
+   54.67,
+   56.9
   ],
   [
-   58.23,
-   68.03
+   58.15,
+   67.95
   ]
  ],
  "cena": {
   "cor": "#5c7cfa",
   "titulo": "o sono",
+  "semCarros": true,
   "sumiram": [
    "Dia 5: as placas",
    "Dia 6: o Wi-Fi",
@@ -174,7 +175,7 @@
    {
     "n": 1,
     "txt": "o aeroporto",
-    "icone": "aviao",
+    "icone": "mala",
     "em": "@13:1-0.05"
    },
    {
@@ -433,7 +434,7 @@
    },
    {
     "em": "@6:inicio-0.35",
-    "lugar": "transito",
+    "lugar": "praca",
     "dur": 0.01
    },
    {
@@ -687,7 +688,7 @@
     "cor": "#8a5a3c",
     "corBalcao": "#ffe0a8",
     "em": "@5:inicio-0.35",
-    "sai": "@7:inicio-0.05",
+    "sai": "@6:inicio-0.05",
     "filhos": [
      {
       "peca": "letreiro",
@@ -822,6 +823,139 @@
     ]
    },
    {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     18
+    ],
+    "em": "@6:inicio-0.35",
+    "sai": "@6:hospitais-0.1",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -3.2,
+       0,
+       0
+      ],
+      "escala": 1.65,
+      "roupa": "#ffb703",
+      "semente": 12,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:inicio",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@6:inicio",
+       "ate": "@6:hospitais-0.2",
+       "amp": 0.07
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       0
+      ],
+      "escala": 1.65,
+      "roupa": "#b794e6",
+      "semente": 14,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:inicio+0.3",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@6:inicio+0.3",
+       "ate": "@6:hospitais-0.2",
+       "amp": 0.07
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.2,
+       0,
+       0
+      ],
+      "escala": 1.65,
+      "roupa": "#45c46b",
+      "semente": 15,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:inicio+0.6",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@6:inicio+0.6",
+       "ate": "@6:hospitais-0.2",
+       "amp": 0.07
+      }
+     },
+     {
+      "peca": "letreiro",
+      "texto": "?",
+      "fundo": false,
+      "l": 1.5,
+      "a": 1.5,
+      "cor": "#27324a",
+      "pos": [
+       -3.2,
+       5.6,
+       0.3
+      ],
+      "em": "@6:inicio+0.2",
+      "modo": "cresce"
+     },
+     {
+      "peca": "letreiro",
+      "texto": "?",
+      "fundo": false,
+      "l": 1.5,
+      "a": 1.5,
+      "cor": "#27324a",
+      "pos": [
+       0,
+       5.9,
+       0.3
+      ],
+      "em": "@6:inicio+0.5",
+      "modo": "cresce"
+     },
+     {
+      "peca": "letreiro",
+      "texto": "?",
+      "fundo": false,
+      "l": 1.5,
+      "a": 1.5,
+      "cor": "#27324a",
+      "pos": [
+       3.2,
+       5.6,
+       0.3
+      ],
+      "em": "@6:inicio+0.8",
+      "modo": "cresce"
+     }
+    ]
+   },
+   {
     "peca": "fachada",
     "pos": [
      12,
@@ -831,7 +965,7 @@
     "l": 10,
     "cor": "#e8f1f6",
     "corPorta": "#5cb8e4",
-    "em": "@6:inicio-0.35",
+    "em": "@6:hospitais-0.8",
     "sai": "@8:inicio",
     "filhos": [
      {
@@ -1015,13 +1149,13 @@
     "r": 2
    },
    {
-    "txt": "+ ACIDENTES",
+    "txt": "NINGUÉM LEMBRA",
     "pos": [
-     2,
-     4,
-     4
+     0,
+     5.6,
+     18
     ],
-    "em": "@6:disparam-0.2",
+    "em": "@6:nada-0.4",
     "ate": "@6:hospitais-0.5",
     "cor": "rosa",
     "r": -3
@@ -1084,7 +1218,7 @@
    }
   ],
   "tremores": [
-   "@6:disparam",
+   "@6:nada",
    "@9:caem+0.6",
    "@9:caem+1.4"
   ],
@@ -1127,9 +1261,9 @@
     "volume": 0.45
    },
    {
-    "em": "@6:disparam",
-    "tipo": "buzina",
-    "volume": 0.45
+    "em": "@6:nada",
+    "tipo": "glitch",
+    "volume": 0.3
    },
    {
     "em": "@6:lotam",
