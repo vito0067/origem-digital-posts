@@ -34,6 +34,7 @@ export class Vagao {
   telaPainel: HTMLCanvasElement; texPainel: any; telaMapa: HTMLCanvasElement; texMapa: any;
   portas: any[] = []; fundoPorta: any; luzPorta: any; luzPlat: any;
   luzLia: any; perto!: Boneco; apagadas = 0; retos = 0; ponteiroSeg: any;
+  fila: Boneco[] = []; cabine!: any; luzCabine: any; vidroTela!: HTMLCanvasElement; vidroTex: any; painelCab!: HTMLCanvasElement; painelCabTex: any; frestaPorta: any; pesFresta: any[] = []; leds: any[] = []; placaCab: any; mesaCab: any[] = [];
   static W = 2.7; static L = 12; static H = 2.35;
 
   constructor() {
@@ -147,11 +148,79 @@ export class Vagao {
     this.perto = new Boneco(pal("#c9d0d4", "#23282e", "#0d0d0d", { penteado: "chanel" }) as any);
     this.perto.raiz.position.set(px + 0.42, 0, 0.9); this.perto.raiz.rotation.set(0, -Math.PI / 2, 0); this.perto.raiz.visible = false; this.plat.add(this.perto.raiz);
     this.lia = new Boneco(APARENCIAS.lia); cena.add(this.lia.raiz);
+    this.montaCabine(cena, pal);
     // luz fraca e quente só para o rosto da Lia não sumir quando as luzes do teto apagam
     this.luzLia = new THREE.PointLight("#ffd9b0", 0, 3.2, 1.6); cena.add(this.luzLia);
     this.padrao();
   }
 
+  /** Fila de gente pálida que entra no vagão pelo fundo (ep. 2) e a cabine do maquinista, atrás da parede do fundo. */
+  private montaCabine(cena: any, pal: (p: string, r: string, c: string, e?: Record<string, unknown>) => any) {
+    const { L } = Vagao;
+    const cores = ["#c4cbd0", "#adb5ba", "#d1d6da", "#b5bcc1", "#c9cfd3", "#a9b1b6", "#bfc6ca", "#cdd2d6"];
+    for (let k = 0; k < 8; k++) {
+      const b = new Boneco(pal(cores[k], ["#2c3138", "#3a2f33", "#26303a", "#33392f"][k % 4], "#121212", { penteado: (["curto", "chanel", "coque", "curto"] as const)[k % 4], oculos: k === 2 || k === 5, altura: k === 5 ? 1.32 : 1 }) as any);
+      b.raiz.visible = false; cena.add(b.raiz); this.fila.push(b); this.sombraPe(b);
+    }
+    this.sombraPe(this.lia); this.sombraPe(this.perto); for (const g of this.gente) this.sombraPe(g.b);
+    const z0 = -L / 2 - 0.12, z1 = z0 - 3.0, g = new THREE.Group(); this.cabine = g; g.visible = false; cena.add(g);
+    const parede = mat("#2a2f36", { roughness: 0.7 }), cw = 1.5;
+    const chao = caixa(2 * cw, 0.06, 3.0, mat("#1b1e24", { roughness: 0.4 })); chao.position.set(0, -0.03, (z0 + z1) / 2); g.add(chao);
+    const teto = caixa(2 * cw, 0.08, 3.0, mat("#15181d")); teto.position.set(0, 2.3, (z0 + z1) / 2); g.add(teto);
+    for (const x of [-cw, cw]) { const p = caixa(0.08, 2.3, 3.0, parede); p.position.set(x, 1.15, (z0 + z1) / 2); g.add(p); }
+    const porta = caixa(1.1, 2.0, 0.06, mat("#7a8591", { metalness: 0.1, roughness: 0.55 })); porta.position.set(0, 1.0, z0 - 0.02); g.add(porta);
+    this.frestaPorta = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 0.1), new THREE.MeshBasicMaterial({ color: "#dff0ff", toneMapped: false, side: THREE.DoubleSide })); this.frestaPorta.position.set(0, 0.05, z0 - 0.2); g.add(this.frestaPorta);
+    for (const dx of [-0.25, 0.25]) { const pe = caixa(0.2, 0.1, 0.02, new THREE.MeshBasicMaterial({ color: "#000" })); pe.position.set(dx, 0.05, z0 - 0.19); g.add(pe); this.pesFresta.push(pe); }
+    this.vidroTela = tela(1024, 512); this.vidroTex = textura(this.vidroTela); this.desenhaVidro(0);
+    const vidro = new THREE.Mesh(new THREE.PlaneGeometry(2 * cw - 0.1, 1.45), emissivo(this.vidroTex)); vidro.position.set(0, 1.35, z1 + 0.04); g.add(vidro);
+    const moldura = caixa(2 * cw, 2.3, 0.08, mat("#101216")); moldura.position.set(0, 1.15, z1 - 0.03); g.add(moldura);
+    const mesa = caixa(2.2, 0.62, 0.7, mat("#23272e", { roughness: 0.5 })); mesa.position.set(0, 0.32, z1 + 0.5); g.add(mesa); this.mesaCab.push(mesa);
+    const inc = caixa(2.2, 0.06, 0.5, mat("#2d323a")); inc.position.set(0, 0.7, z1 + 0.5); inc.rotation.x = -0.32; g.add(inc); this.mesaCab.push(inc);
+    const cores2 = ["#27e07a", "#ffb000", "#ff3b3b", "#27e07a", "#4aa8ff", "#ffb000", "#27e07a", "#ff3b3b"];
+    for (let k = 0; k < 16; k++) { const led = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.02, 0.07), new THREE.MeshBasicMaterial({ color: cores2[k % 8], toneMapped: false })); led.position.set(-0.9 + (k % 8) * 0.26, 0.74 + Math.floor(k / 8) * 0.06, z1 + 0.62 + Math.floor(k / 8) * 0.12); led.rotation.x = -0.32; g.add(led); this.leds.push(led); this.mesaCab.push(led); }
+    this.painelCab = tela(512, 160); this.painelCabTex = textura(this.painelCab); this.painelCabinePainel("MAQUINISTA", "AUSENTE");
+    const pn = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 0.28), emissivo(this.painelCabTex)); pn.position.set(0, 1.22, z1 + 0.25); pn.rotation.x = -0.18; g.add(pn);
+    const alav = cilindro(0.025, 0.28, mat("#c4c9d0", { metalness: 0.8, roughness: 0.3 })); alav.position.set(0.55, 0.88, z1 + 0.7); alav.rotation.z = -0.5; g.add(alav);
+    const bola = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 10), new THREE.MeshBasicMaterial({ color: "#d1201a", toneMapped: false })); bola.position.set(0.62, 1.01, z1 + 0.7); g.add(bola);
+    const banco = caixa(0.55, 0.12, 0.5, mat("#3a3128")); banco.position.set(1.0, 0.5, z1 + 1.35); g.add(banco);
+    const enc = caixa(0.55, 0.7, 0.1, mat("#3a3128")); enc.position.set(1.0, 0.9, z1 + 1.6); g.add(enc);
+    this.luzCabine = new THREE.PointLight("#8fffd0", 0, 4.5, 1.5); this.luzCabine.position.set(0, 1.9, (z0 + z1) / 2); g.add(this.luzCabine);
+    const pc = tela(256, 64), gg = pc.getContext("2d")!; gg.fillStyle = "#c7cbd1"; gg.fillRect(0, 0, 256, 64); gg.fillStyle = "#16181c"; gg.font = "bold 30px Arial"; gg.textAlign = "center"; gg.textBaseline = "middle"; gg.fillText("MAQUINISTA", 128, 34);
+    this.placaCab = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 0.155), emissivo(textura(pc))); this.placaCab.position.set(0, 2.12, -L / 2 + 0.02); cena.add(this.placaCab);
+  }
+  /** Mancha de sombra de contato sob um boneco (círculo suave no chão). */
+  private sombraPe(b: Boneco) {
+    const c = tela(128, 128), g = c.getContext("2d")!, gr = g.createRadialGradient(64, 64, 4, 64, 64, 62); gr.addColorStop(0, "rgba(0,0,0,0.75)"); gr.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = gr; g.fillRect(0, 0, 128, 128);
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(0.85, 0.85), new THREE.MeshBasicMaterial({ map: textura(c), transparent: true, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.y = 0.014; b.raiz.add(m);
+  }
+  desenhaVidro(n: number) {
+    const g = this.vidroTela.getContext("2d")!, r = sorteio(7);
+    g.fillStyle = "#04080b"; g.fillRect(0, 0, 1024, 512);
+    const gl = g.createRadialGradient(512, 250, 6, 512, 250, 300); gl.addColorStop(0, "rgba(120,170,160,0.35)"); gl.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = gl; g.fillRect(0, 0, 1024, 512);
+    g.strokeStyle = "rgba(60,80,80,0.5)"; g.lineWidth = 3; for (let k = 0; k < 8; k++) { g.beginPath(); g.moveTo(512 + (k - 3.5) * 30, 250); g.lineTo(512 + (k - 3.5) * 190, 512); g.stroke(); }
+    const mao = (x: number, y: number, a: number, e: number) => {
+      g.save(); g.translate(x, y); g.rotate(a); g.scale(e, e); g.fillStyle = "rgba(225,232,236,0.62)";
+      g.beginPath(); g.ellipse(0, 0, 26, 32, 0, 0, Math.PI * 2); g.fill();
+      for (const [dx, ang, len] of [[-20, -0.35, 44], [-8, -0.12, 54], [6, 0.05, 56], [19, 0.22, 48], [32, 0.95, 32]] as const) { g.save(); g.translate(dx, -22); g.rotate(ang); g.beginPath(); g.ellipse(0, -len / 2, 6.5, len / 2, 0, 0, Math.PI * 2); g.fill(); g.restore(); }
+      g.fillRect(-9, 26, 18, 20); g.fillStyle = "rgba(225,232,236,0.22)"; g.fillRect(-4, 40, 8, 60 + 40 * r()); g.restore();
+    };
+    const q = Math.max(0, Math.min(26, Math.round(n)));
+    for (let k = 0; k < q; k++) mao(60 + r() * 900, 70 + r() * 360, (r() - 0.5) * 0.7, 0.8 + r() * 0.7);
+    this.vidroTex.needsUpdate = true;
+  }
+  painelCabinePainel(l1: string, l2: string, cor = "#ff3b3b") {
+    const g = this.painelCab.getContext("2d")!; g.fillStyle = "#0b0505"; g.fillRect(0, 0, 512, 160); g.strokeStyle = cor + "aa"; g.lineWidth = 4; g.strokeRect(5, 5, 502, 150);
+    g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = cor; g.shadowColor = cor; g.shadowBlur = 14; g.font = "bold 40px 'Courier New', monospace"; g.fillText(l1, 256, 50); g.font = "bold 62px 'Courier New', monospace"; g.fillText(l2, 256, 112); this.painelCabTex.needsUpdate = true;
+  }
+  /** A fila entra pelo fundo do vagão e vem pelo corredor (p de 0 a 1; z0 = onde a primeira pessoa começa). */
+  filaAnda(p: number, t: number, z0 = 8.2, alcance = 9) {
+    this.fila.forEach((b, k) => {
+      const z = z0 - p * alcance + k * 1.05, andando = p > 0 && p < 1;
+      b.raiz.visible = z < 9.5 && z > -5.6; b.raiz.position.set(((k % 2) ? 0.42 : -0.42) + Math.sin(t * 1.1 + k) * 0.02, 0, z); b.raiz.rotation.set(0, Math.PI + (k % 2 ? 0.04 : -0.04), 0);
+      const w = Math.sin(t * 3.6 + k * 0.9) * (andando ? 14 : 0);
+      b.posar({ respira: t, olhos: 1.3, vazio: true, sobrancelha: [-0.2, 0.4, -0.5][k % 3], boca: "neutra", cabeca: [0, 0, (k % 2 ? 1 : -1) * (6 + (k % 3) * 3)], pernaE: [w, 0, 0], pernaD: [-w, 0, 0], joelhoE: Math.max(0, -w) * 1.2, joelhoD: Math.max(0, w) * 1.2, bracoE: [-w * 0.4, 0, 6], bracoD: [w * 0.4, 0, -6] });
+    });
+  }
   private texturaAzulejo() {
     const c = tela(256, 512), g = c.getContext("2d")!, r = sorteio(21);
     g.fillStyle = "#46544f"; g.fillRect(0, 0, 256, 512);
@@ -225,7 +294,7 @@ export class Vagao {
     this.argolas.forEach((g, i) => { g.rotation.z = Math.sin(t * 1.6 + i) * 0.04; g.rotation.x = Math.sin(t * 1.2 + i * 0.7) * 0.03; });
   }
   padrao() {
-    this.lia.raiz.visible = false; this.perto.raiz.visible = false; this.apagadas = 0; this.retos = 0; this.luzLia.intensity = 0; this.ponteiroSeg.rotation.x = 0; this.luzPlat2.intensity = 2.2; this.luzPlat2.position.set(Vagao.W / 2 + 2.6, 1.2, -4.5); this.limpa(true); this.passo(0); this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
+    this.lia.raiz.visible = false; this.perto.raiz.visible = false; this.apagadas = 0; this.retos = 0; this.luzLia.intensity = 0; this.ponteiroSeg.rotation.x = 0; this.fila.forEach((b) => (b.raiz.visible = false)); this.cabine.visible = false; this.luzCabine.intensity = 0; for (const o of this.mesaCab) o.visible = true; this.placaCab.visible = false; this.luzPlat2.intensity = 2.2; this.luzPlat2.position.set(Vagao.W / 2 + 2.6, 1.2, -4.5); this.limpa(true); this.passo(0); this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
   }
 }
 
@@ -238,6 +307,8 @@ function liaSenta(m: Mundo, pose: Pose) {
 function cab(b: Boneco): V3 { const v = new THREE.Vector3(); b.cabeca.getWorldPosition(v); return [v.x, v.y, v.z]; }
 /** Luz quente no rosto da Lia (para não sumir no escuro). frente: 1 = lado da janela (sentada), -1 = olhando o fundo do vagão. */
 function luzRosto(m: Mundo, i: number, frente = 1) { const c = cab(m.vagao.lia), L = m.vagao.luzLia; L.intensity = i; L.position.set(c[0] + (frente > 0 ? 0.7 : 0.2), c[1] + 0.35, c[2] + (frente > 0 ? 0.5 : -0.8)); }
+/** Dentro da cabine: apaga as luzes do vagão (a parede não as bloqueia) e acende a luz verde do painel. */
+function cabineLuz(m: Mundo, i: number) { for (const l of m.vagao.luzes) l.intensity = 0; m.vagao.luzCabine.intensity = i; m.vagao.luzLia.intensity = 0; }
 /** Lia sentada em meio corpo: câmera a ~3,4 m, cabeça inteira com folga em cima, nada cortado na borda. */
 function liaMeio(m: Mundo, p: number, desce = 0): { cena: "vagao"; pos: V3; alvo: V3; fov: number } {
   luzRosto(m, Math.max(m.vagao.luzLia.intensity, 0.8));
@@ -575,6 +646,88 @@ export const PLANOS_PILOTOS: Record<string, Plano> = {
     const p = suave(s / dur), v = m.vagao;
     v.mover(0, 1); v.limpa(true); v.passo(1); v.retos = 1; v.apagadas = 4; v.atualizar(s, 0.9); v.luzPlat2.position.set(Vagao.W / 2 + 0.7, 2.3, 0.6); v.luzPlat2.intensity = 12;
     return { cena: "vagao", pos: mix([-0.9, 1.0, 1.0], [-0.3, 1.05, 0.8], p), alvo: [2.6, 1.78, 0.6], fov: 54 };
+  },
+
+  // ---------------- Próxima estação, ep. 2 (09/11/2026): "A cabine" (caminho alternativo depois do empate)
+  p2_hook: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, l = v.lia;
+    v.mover(0, 0); v.limpa(true); v.apagadas = 1; v.atualizar(s, 0.8); v.filaAnda(0.56 + 0.16 * p, s);
+    l.raiz.visible = true; l.raiz.position.set(0.0, 0, 0.1 - 1.4 * p); l.raiz.rotation.set(0, Math.PI, 0);
+    l.posar({ ...POSES.andando(s * 2.1), tronco: [10, 0, 0], cabeca: [2, 0, 0], olhos: 1.5, sobrancelha: 1, boca: "medo" });
+    v.luzLia.intensity = 1.5; v.luzLia.position.set(0.3, 2.0, l.raiz.position.z - 1.0);
+    return { cena: "vagao", pos: mix([0.0, 1.15, -3.0], [0.05, 1.3, -3.5], p), alvo: [0, 1.35, 2.0], fov: 58 - 6 * p, rolar: 0.05 * (1 - p) };
+  },
+  p2_corre_lado: (s, dur, m) => {
+    const p = s / dur, v = m.vagao, l = v.lia, z = 3.0 - 5.2 * p;
+    v.mover(0, 1); v.limpa(false); v.passo(0); v.apagadas = 1; v.atualizar(s, 0.8);
+    l.raiz.visible = true; l.raiz.position.set(0.6, 0, z); l.raiz.rotation.set(0, Math.PI, 0);
+    l.posar({ ...POSES.andando(s * 2.4), tronco: [12, 0, 0], olhos: 1.4, sobrancelha: 1, boca: "medo" });
+    v.luzLia.intensity = 1.6; v.luzLia.position.set(-0.5, 1.9, z + 0.5);
+    return { cena: "vagao", pos: [-1.18, 1.0, z + 0.7], alvo: [0.55, 1.0, z - 0.2], fov: 66 };
+  },
+  p2_corre_tras: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, l = v.lia, z = 1.5 - 5.9 * p;
+    v.mover(0, 0); v.limpa(true); v.apagadas = 2; v.atualizar(s, 0.9); v.placaCab.visible = true; v.filaAnda(0.45 + 0.15 * p, s); v.luzPorta.intensity = 7;
+    l.raiz.visible = true; l.raiz.position.set(0.05, 0, z); l.raiz.rotation.set(0, Math.PI, 0);
+    l.posar({ ...POSES.andando(s * 2.4), tronco: [12, 0, 0] }); v.luzLia.intensity = 1.6; v.luzLia.position.set(0, 2.1, z + 1.6);
+    return { cena: "vagao", pos: [0.0, 1.55 - 0.2 * p, z + 2.6 - 0.5 * p], alvo: [0, 1.15, -6.0], fov: 62 - 6 * p, rolar: -0.03 + 0.06 * p };
+  },
+  p2_entra: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao;
+    v.mover(0, 1); v.limpa(true); v.apagadas = 2; v.atualizar(s, 0.9); v.filaAnda(0.32 + 0.62 * p, s, 8.2, 9);
+    return { cena: "vagao", pos: [0.0, 1.15, -3.4 - 0.8 * p], alvo: [0, 1.5, 3.0], fov: 52 - 4 * p, rolar: 0.02 };
+  },
+  p2_painel: (s, dur, m) => {
+    const v = m.vagao; v.mover(0, 1); v.limpa(false); v.apagadas = 3; v.atualizar(s, 0.9);
+    v.painelTexto("EMBARQUE", s > dur * 0.3 ? "LIVRE" : "----", "#ff3b3b");
+    return { cena: "vagao", pos: mix([0.58, 1.8, -3.5], [0.62, 1.9, -4.5], suave(s / dur)), alvo: [0.62, 2.05, -6], fov: 56 };
+  },
+  p2_porta_cab: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, l = v.lia, z = -0.6 - 4.2 * p;
+    v.mover(0, 0); v.limpa(true); v.apagadas = 1; v.atualizar(s, 0.9); v.placaCab.visible = true; v.luzPorta.intensity = 8; v.luzLia.intensity = 1.6; v.luzLia.position.set(0, 2.1, z + 1.6);
+    l.raiz.visible = true; l.raiz.position.set(0.05, 0, z); l.raiz.rotation.set(0, Math.PI, 0); l.posar({ ...POSES.andando(s * 1.8), cabeca: [0, -10 * Math.sin(s * 1.2), 0] });
+    return { cena: "vagao", pos: mix([0.2, 1.6, 2.2], [0.05, 1.45, -2.2], p), alvo: [0, 1.5, -6.0], fov: 54 - 8 * p };
+  },
+  p2_cabine_vidro: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, l = v.lia;
+    cabineLuz(m, 3.5); v.cabine.visible = true; v.desenhaVidro(Math.floor(4 + 22 * p));
+    l.raiz.visible = true; l.raiz.position.set(-0.7, 0, -7.7); l.raiz.rotation.set(0, Math.PI, 0); l.posar({ ...POSES.em_pe(s), olhos: 1.2, cabeca: [-4, 6 * Math.sin(s), 0] });
+    return { cena: "vagao", pos: mix([0.15, 1.45, -6.35], [0.0, 1.4, -7.05], p), alvo: [0, 1.4, -9.2], fov: 50 - 6 * p };
+  },
+  p2_cabine_lia: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao, l = v.lia;
+    cabineLuz(m, 3.0); v.cabine.visible = true; v.desenhaVidro(26);
+    const olha = Math.sin(s * 1.4) * 0.5;
+    l.raiz.visible = true; l.raiz.position.set(0.05, 0, -6.55); l.raiz.rotation.set(0, Math.PI + olha * 0.25, 0);
+    l.posar({ ...POSES.em_pe(s), cabeca: [-2, olha * 12, 0], olhos: 1.35 + 0.15 * p, sobrancelha: 1, boca: p > 0.5 ? "medo" : "neutra" });
+    v.luzLia.intensity = 2.4; v.luzLia.position.set(-0.4, 2.0, -8.3);
+    return { cena: "vagao", pos: mix([-0.1, 1.38, -9.02], [0.0, 1.4, -8.8], p), alvo: [0.05, 1.3, -6.55], fov: 54 - 4 * p };
+  },
+  p2_bate: (s, dur, m) => {
+    const v = m.vagao, l = v.lia, t0 = dur - 2.3;
+    let k = 0; for (const t of [t0, t0 + 0.6, t0 + 1.2]) if (s > t) k += Math.exp(-(s - t) * 9); const bat = Math.min(1.2, k);
+    cabineLuz(m, 2.6 - 1.6 * bat); v.cabine.visible = true; v.desenhaVidro(26);
+    v.frestaPorta.visible = true; for (const pe of v.pesFresta) pe.visible = s > 0.8; for (const o of v.mesaCab) o.visible = false;
+    l.raiz.visible = true; l.raiz.position.set(-0.85, 0, -7.15); l.raiz.rotation.set(0, 0, 0);
+    l.posar({ ...POSES.em_pe(s), tronco: [-4 * bat, 0, 0], cabeca: [-3, 0, 0], olhos: 1.45, sobrancelha: 1, boca: "medo", bracoE: [-20, 0, 12], bracoD: [-20, 0, -12] });
+    v.luzLia.intensity = 1.4; v.luzLia.position.set(0.3, 1.9, -8.8);
+    const sh = (Math.sin(s * 71) * 0.02 + Math.sin(s * 53) * 0.015) * bat;
+    return { cena: "vagao", pos: mix([0.0, 1.7, -8.9], [0.0, 1.6, -8.5], suave(s / dur)), alvo: [0.0 + sh, 0.95 + sh, -6.15], fov: 66, rolar: sh * 1.4 };
+  },
+  p2_final_painel: (s, dur, m) => {
+    const v = m.vagao, p = suave(s / dur);
+    cabineLuz(m, 3.2); v.cabine.visible = true; v.desenhaVidro(26);
+    v.painelCabinePainel("MAQUINISTA", Math.sin(s * 9) > 0.7 ? "" : "AUSENTE");
+    return { cena: "vagao", pos: mix([0.25, 1.4, -7.4], [0.02, 1.3, -7.9], p), alvo: [0, 1.2, -8.85], fov: 40 };
+  },
+  p2_final_lia: (s, dur, m) => {
+    const v = m.vagao, l = v.lia, p = suave(s / dur);
+    cabineLuz(m, 3.0); v.cabine.visible = true; v.desenhaVidro(26); v.frestaPorta.visible = true; for (const pe of v.pesFresta) pe.visible = true;
+    v.painelCabinePainel("MAQUINISTA", "AUSENTE");
+    l.raiz.visible = true; l.raiz.position.set(-0.05, 0, -8.35); l.raiz.rotation.set(0, Math.PI - 0.3, 0);
+    l.posar({ ...POSES.em_pe(s), cabeca: [4, -12 + 10 * p, 0], olhos: 1.25, sobrancelha: 0.5 - 1.2 * p, boca: "neutra", bracoE: [-70 - 15 * p, 0, 18], cotoveloE: 20 });
+    v.luzLia.intensity = 2.2; v.luzLia.position.set(-0.6, 1.9, -7.2);
+    return { cena: "vagao", pos: mix([-1.0, 1.8, -6.25], [-0.7, 1.75, -6.45], p), alvo: [0.1, 1.2, -8.6], fov: 56 };
   },
 
   // ---------------- piloto 2: Rádio Madrugada

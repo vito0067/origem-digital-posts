@@ -5,7 +5,9 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { lerAudio, montarVoz, mixFinal } from "./mixagem.mjs";
+import { execFileSync } from "node:child_process";
+import { renameSync } from "node:fs";
+import { lerAudio, montarVoz, mixFinal, ffmpeg } from "./mixagem.mjs";
 import { cortarNarracao } from "./narracao.mjs";
 import { TAXA, Faixa, SFX, pad, oscilador, decai, ruido, filtro, reverb, sino } from "./sintetizador.mjs";
 
@@ -95,6 +97,8 @@ const EF = {
   portaMetro: () => { const ar = filtro(ruido(1.0), "passa-alta", 2500, 0.7); for (let i = 0; i < ar.length; i++) { const x = i / ar.length; ar[i] *= Math.min(1, x * 12) * Math.exp(-x * 3); } return mistura([[ar, 0, 0.8], [decai(filtro(ruido(0.5), "banda", 600, 1), 0.2, 0.001), 0.15, 0.6], [SFX.carimbo(), 0.62, 0.5]], 1.3); },
   // respiração curta e trêmula (inspira, solta)
   respira: () => { const seg = 1.6, r = filtro(ruido(seg), "banda", 1300, 0.9); for (let i = 0; i < r.length; i++) { const x = i / TAXA; const ins = x < 0.7 ? Math.sin(Math.PI * x / 0.7) : 0, sai = x > 0.8 ? Math.sin(Math.PI * Math.min(1, (x - 0.8) / 0.8)) * 0.8 : 0; r[i] *= (ins + sai) * (0.85 + 0.15 * Math.sin(x * 40)); } return r; },
+  // batida na porta de metal (do outro lado): baque grave + estalo seco de nós de dedo
+  bate: () => mistura([[decai(oscilador("seno", 0, 0.35, { fase: 0, freqFn: (x) => 70 + 110 * Math.exp(-x * 40) }), 0.1, 0.001), 0, 1.0], [decai(filtro(ruido(0.2), "banda", 750, 2), 0.035, 0.0008), 0.004, 0.9], [decai(filtro(ruido(0.5), "passa-baixa", 500), 0.18, 0.002), 0.01, 0.5]], 0.6),
   // começo de áudio de WhatsApp
   audio: () => SFX.clique(),
 };
@@ -173,6 +177,13 @@ if (alvo.length === 2) {
 const pastaSaida = join(PUBLICO, "ep");
 mkdirSync(pastaSaida, { recursive: true });
 mixFinal({ duracao, voz, musica: clima, efeitos, fala, saida: join(pastaSaida, `${ep.id}.wav`), musicaDb: -10, ganhoEfeitos: 0.8 });
+// som no nível de plataforma: normaliza o volume final do episódio (ex.: -14 LUFS) com limitador de pico
+if (ep.lufs) {
+  const wav = join(pastaSaida, `${ep.id}.wav`), tmp = join(pastaSaida, `${ep.id}.norm.wav`);
+  const lido = execFileSync(ffmpeg, ["-hide_banner", "-nostats", "-i", wav, "-af", `loudnorm=I=${ep.lufs}:TP=-1.5:LRA=9:print_format=summary`, "-f", "null", "-"], { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).toString();
+  execFileSync(ffmpeg, ["-hide_banner", "-loglevel", "error", "-y", "-i", wav, "-af", `loudnorm=I=${ep.lufs}:TP=-1.5:LRA=9`, "-ar", String(TAXA), "-c:a", "pcm_s16le", tmp]);
+  renameSync(tmp, wav); console.log("som normalizado em", ep.lufs, "LUFS");
+}
 
 // ---------- 5. linha do tempo para o vídeo ----------
 const linha = { id: ep.id, serie: ep.serie, episodio: ep.episodio, titulo: ep.titulo, legendaModo: ep.legendaModo, etiqueta: ep.etiqueta, duracao, audio: `ep/${ep.id}.wav`, composicao: "Caso",

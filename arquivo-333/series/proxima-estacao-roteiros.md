@@ -218,3 +218,13 @@ Termina com a Lia em pé no corredor, porta aberta, plataforma deu UM passo à f
 1. Aprovar o rumo (o losango e as pontes) e o tom (sem explicar demais, a Vera narra a Lia em tempo real no ep. 6).
 2. Se algum nome ou objeto não agrada (bolsa azul, casaco bege, capa de chuva).
 3. Se quer renderizar os dois roteiros de cada episódio de antemão (custa o dobro de voz, cerca de 3 créditos a mais por episódio), ou só o vencedor depois da contagem.
+
+
+---
+
+## Ep. 2 · "A cabine" (CAMINHO ALTERNATIVO: o voto do ep. 1 empatou 1 a 1; escrito e produzido em 09/11/2026)
+O Vito mandou escrever outro caminho e justificar o empate na própria fala. A fala de abertura diz que os votos empataram e que "eu escolhi o caminho que sobrou" (única vez em que o narrador usa a primeira pessoa).
+**Fala:** Gideon: "Os votos empataram. Então eu escolhi o caminho que sobrou." / "A Lia não desceu. E não ficou parada. Correu pelo corredor, em direção à frente do trem." / "Atrás dela, a plataforma inteira entrou no vagão. Sem fazer nenhum barulho." / Vera: "Embarque autorizado." / (guia) / Gideon: "No fim do último vagão, uma porta de metal. Cabine do maquinista." / "Ela entrou e trancou a porta. A cabine estava vazia. No vidro da frente, marcas de mãos. Todas por dentro." / "Do lado de fora, os passos pararam. E alguém bateu. Três vezes." / Vera: "Maquinista ausente. Comente um se ela assume o comando, ou dois se ela abre a porta."
+**Voto:** 1 assume o comando / 2 abre a porta.
+**Fatos para o ep. 3 (ponte nova, 5 s):** a plataforma inteira está DENTRO do trem; a Lia está trancada na cabine (vazia, painel "MAQUINISTA AUSENTE", marcas de mãos por dentro do vidro); alguém bateu três vezes. Pontes: *assumiu o comando* → "A Lia puxou a alavanca. O trem obedeceu a ela... e andou devagar demais."; *abriu a porta* → "A Lia abriu a porta. Não havia ninguém. Só o corredor, e todos os assentos ocupados." Depois a gancho do ep. 3 (painel com LIA) segue igual.
+**Sinal estranho novo (em vez do relógio 3h33):** marcas de mãos por dentro do vidro; o relógio não aparece neste episódio.
