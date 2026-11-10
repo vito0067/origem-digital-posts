@@ -151,6 +151,13 @@ O código está no repositório `vito0067/origem-digital-posts`, pasta `arquivo-
 8. **Publicar ou agendar:** [referencia/publicar.md](referencia/publicar.md).
 9. **Registrar:** `publicacao/epNN.md`, `publicacao/agendados.json` e a lista de episódios da bíblia. Depois commit e push.
 
+## Padrão de qualidade (aprovado pelo Vito em 09/11/2026; vale para todo episódio)
+Fonte: `4-midia\referencias\PADRAO-DE-QUALIDADE-VIDEOS.md`. Medir antes de mostrar ao Vito com `4-midia\referencias\ferramentas\medir-episodios.py`.
+1. **Câmera sempre em movimento, algo novo a cada 2 a 3 s** (cena puxa a cena; meta: movimento médio acima de 5 e menos de 20% do tempo quase parado; A cabine: 6,5 e 18%).
+2. **Entrada rápida:** gancho forte no 1º quadro e **primeiro corte em até 2 s** (A cabine cortou em 4,4 s: encurtar a 1ª cena nos próximos).
+3. **Som:** silêncio curto antes do momento forte (campo `silencio: true` da cena), efeito no quadro exato (`sons` com tempo `voz+x`/`fim-x`), **volume final -14 LUFS** (campo `lufs: -14` no JSON do episódio; o preparar-caso normaliza com loudnorm; A cabine mediu -14,7: conferir de novo no medidor).
+Também valem: sombra de contato nos bonecos (já no motor), e para recursos de episódio no vagão/cabine ver `src/motor3d/pilotos.ts` (planos `p2_*`, `pe_*`).
+
 ## Lista de revisão (todo episódio)
 - **Abertura:** o 1º quadro prende (imagem forte e legenda já na tela)? Nada de preto, cidade parada ou rosto escuro.
 - **Câmera:**
