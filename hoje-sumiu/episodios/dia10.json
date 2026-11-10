@@ -1,0 +1,2396 @@
+{
+ "id": "hoje-sumiu-dia10",
+ "dia": 10,
+ "coisa": "o chuveiro quente",
+ "velocidade": 1,
+ "falas": [
+  {
+   "fala": "Hoje sumiu o chuveiro quente.",
+   "legenda": "Hoje sumiu o ~chuveiro~ ~quente.~"
+  },
+  {
+   "fala": "Do mundo inteiro. Para sempre.",
+   "legenda": "Do mundo inteiro. Para *sempre.*"
+  },
+  {
+   "fala": "Vocês votaram nas janelas. Mas sem casas, janela não faz sentido.",
+   "legenda": "Vocês votaram nas *janelas.* Mas sem *casas,* janela não faz sentido."
+  },
+  {
+   "fala": "Foi erro meu dar essa opção. Então vale o segundo mais votado.",
+   "legenda": "Foi *erro* meu dar essa opção. Então vale o *segundo* mais votado."
+  },
+  {
+   "fala": "Primeira manhã: o banho vira fila na fonte.",
+   "legenda": "Primeira manhã: o *banho* vira *fila* na fonte."
+  },
+  {
+   "fala": "Ninguém canta mais no banho.",
+   "legenda": "Ninguém *canta* mais no *banho.*"
+  },
+  {
+   "fala": "O sabonete vira enfeite.",
+   "legenda": "O *sabonete* vira *enfeite.*"
+  },
+  {
+   "fala": "Feito sem câmera. Comente GUIA.",
+   "legenda": "*Feito* sem *câmera.* Comente *GUIA.*"
+  },
+  {
+   "fala": "Em uma semana, o cabelo vira o assunto.",
+   "legenda": "Em uma semana, o *cabelo* vira o assunto."
+  },
+  {
+   "fala": "Em um mês, os patos da fonte reclamam da fila.",
+   "legenda": "Em um mês, os *patos* da fonte reclamam da fila."
+  },
+  {
+   "fala": "Em três meses, todo mundo inventa um chapéu.",
+   "legenda": "Em três meses, todo mundo inventa um *chapéu.*"
+  },
+  {
+   "fala": "No fim, o rio vira o chuveiro da cidade inteira.",
+   "legenda": "No fim, o *rio* vira o chuveiro da cidade inteira."
+  },
+  {
+   "fala": "Mas ninguém reclama. Para todo mundo, o chuveiro quente nunca existiu.",
+   "legenda": "Mas ninguém reclama. Para todo mundo, o chuveiro quente *nunca existiu.*"
+  },
+  {
+   "fala": "Só o Seu Nilo lembra. Ele anotou.",
+   "legenda": "Só o *Seu Nilo* lembra. Ele *anotou.*"
+  },
+  {
+   "fala": "Amanhã, outra coisa vai sumir.",
+   "legenda": "Amanhã, outra coisa vai *sumir.*"
+  },
+  {
+   "fala": "Quem escolhe é você. Comente o que some amanhã. O mais curtido decide.",
+   "legenda": "Quem escolhe é *você.* Comente o que some amanhã. O mais *curtido* decide."
+  }
+ ],
+ "cortes": [
+  [
+   0,
+   2.17
+  ],
+  [
+   2.72,
+   5.54
+  ],
+  [
+   6.09,
+   11.39
+  ],
+  [
+   11.94,
+   16.35
+  ],
+  [
+   16.9,
+   20.35
+  ],
+  [
+   20.9,
+   22.83
+  ],
+  [
+   23.38,
+   25.47
+  ],
+  [
+   26.02,
+   28.66
+  ],
+  [
+   29.21,
+   32.19
+  ],
+  [
+   32.74,
+   36.42
+  ],
+  [
+   36.97,
+   40.18
+  ],
+  [
+   40.73,
+   44.57
+  ],
+  [
+   45.12,
+   49.85
+  ],
+  [
+   50.4,
+   53.22
+  ],
+  [
+   53.77,
+   56.25
+  ],
+  [
+   56.8,
+   62.18
+  ]
+ ],
+ "cena": {
+  "cor": "#5cb8e4",
+  "titulo": "o chuveiro quente",
+  "semCarros": true,
+  "somemPredios": -10,
+  "lufs": -14,
+  "sumiram": [
+   "Dia 7: os veículos",
+   "Dia 8: o sono",
+   "Dia 9: os apartamentos"
+  ],
+  "abertura": {
+   "tipo": "carimbo",
+   "linhas": [],
+   "ate": "@1:inicio-0.05"
+  },
+  "trilha": {
+   "nome": "misterio",
+   "constroi": [
+    "@3:voz",
+    "@5:voz",
+    "@8:voz",
+    "@9:voz",
+    "@10:voz"
+   ],
+   "climax": "@11:inicio"
+  },
+  "credito": {
+   "rotulo": "VOCÊS VOTARAM",
+   "conta": "OS VOTOS DE VOCÊS",
+   "texto": "Janelas"
+  },
+  "divulgacao": {
+   "em": "@7:voz-0.05",
+   "ate": "@7:fim-0.05",
+   "titulo": "SEM CÂMERA",
+   "sub": "COMENTE GUIA",
+   "chamada": "LINK NA BIO"
+  },
+  "exemplos": [
+   "as nuvens",
+   "os espelhos",
+   "a cor azul"
+  ],
+  "heroi": {
+   "peca": {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     15.5
+    ],
+    "em": -1,
+    "sai": "@1:fim-0.2",
+    "modo": "cresce",
+    "some": "@onda",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       -3.6,
+       0,
+       0
+      ],
+      "filhos": [
+       {
+        "forma": "caixa",
+        "l": 0.14,
+        "a": 3.6,
+        "p": 0.14,
+        "cor": "#8d99ae",
+        "pos": [
+         0,
+         1.8,
+         0
+        ],
+        "sombra": {
+         "rx": 0.5,
+         "rz": 0.2
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 1,
+        "a": 0.12,
+        "p": 0.12,
+        "cor": "#8d99ae",
+        "pos": [
+         0.5,
+         3.6,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.42,
+        "ry": 0.13,
+        "cor": "#c8d3e0",
+        "pos": [
+         1,
+         3.45,
+         0
+        ]
+       },
+       {
+        "peca": "agua",
+        "pos": [
+         1,
+         3.35,
+         0
+        ],
+        "queda": 3.3,
+        "ativo": -1,
+        "ate": "@onda"
+       },
+       {
+        "peca": "vapor",
+        "pos": [
+         1,
+         0.1,
+         0
+        ],
+        "sobe": 2.6,
+        "qtd": 4,
+        "rx": 0.08,
+        "ry": 0.32,
+        "cor": "#ffffff",
+        "abre": 0.22,
+        "ate": "@onda"
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         1,
+         0,
+         0.2
+        ],
+        "escala": 1.6,
+        "roupa": "#ffb703",
+        "semente": 21,
+        "poses": [
+         {
+          "pose": "feliz"
+         },
+         {
+          "em": "@onda",
+          "pose": "azedo"
+         }
+        ],
+        "balanca": {
+         "em": "@onda",
+         "amp": 0.08
+        }
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       -0.3,
+       0,
+       0
+      ],
+      "filhos": [
+       {
+        "forma": "caixa",
+        "l": 0.14,
+        "a": 3.6,
+        "p": 0.14,
+        "cor": "#8d99ae",
+        "pos": [
+         0,
+         1.8,
+         0
+        ],
+        "sombra": {
+         "rx": 0.5,
+         "rz": 0.2
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 1,
+        "a": 0.12,
+        "p": 0.12,
+        "cor": "#8d99ae",
+        "pos": [
+         0.5,
+         3.6,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.42,
+        "ry": 0.13,
+        "cor": "#c8d3e0",
+        "pos": [
+         1,
+         3.45,
+         0
+        ]
+       },
+       {
+        "peca": "agua",
+        "pos": [
+         1,
+         3.35,
+         0
+        ],
+        "queda": 3.3,
+        "ativo": -1,
+        "ate": "@onda"
+       },
+       {
+        "peca": "vapor",
+        "pos": [
+         1,
+         0.1,
+         0
+        ],
+        "sobe": 2.6,
+        "qtd": 4,
+        "rx": 0.08,
+        "ry": 0.32,
+        "cor": "#ffffff",
+        "abre": 0.22,
+        "ate": "@onda"
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         1,
+         0,
+         0.2
+        ],
+        "escala": 1.6,
+        "roupa": "#2ec4b6",
+        "semente": 22,
+        "poses": [
+         {
+          "pose": "feliz"
+         },
+         {
+          "em": "@onda",
+          "pose": "azedo"
+         }
+        ],
+        "balanca": {
+         "em": "@onda",
+         "amp": 0.08
+        }
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       3,
+       0,
+       0
+      ],
+      "filhos": [
+       {
+        "forma": "caixa",
+        "l": 0.14,
+        "a": 3.6,
+        "p": 0.14,
+        "cor": "#8d99ae",
+        "pos": [
+         0,
+         1.8,
+         0
+        ],
+        "sombra": {
+         "rx": 0.5,
+         "rz": 0.2
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 1,
+        "a": 0.12,
+        "p": 0.12,
+        "cor": "#8d99ae",
+        "pos": [
+         0.5,
+         3.6,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.42,
+        "ry": 0.13,
+        "cor": "#c8d3e0",
+        "pos": [
+         1,
+         3.45,
+         0
+        ]
+       },
+       {
+        "peca": "agua",
+        "pos": [
+         1,
+         3.35,
+         0
+        ],
+        "queda": 3.3,
+        "ativo": -1,
+        "ate": "@onda"
+       },
+       {
+        "peca": "vapor",
+        "pos": [
+         1,
+         0.1,
+         0
+        ],
+        "sobe": 2.6,
+        "qtd": 4,
+        "rx": 0.08,
+        "ry": 0.32,
+        "cor": "#ffffff",
+        "abre": 0.22,
+        "ate": "@onda"
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         1,
+         0,
+         0.2
+        ],
+        "escala": 1.6,
+        "roupa": "#b794e6",
+        "semente": 23,
+        "poses": [
+         {
+          "pose": "feliz"
+         },
+         {
+          "em": "@onda",
+          "pose": "azedo"
+         }
+        ],
+        "balanca": {
+         "em": "@onda",
+         "amp": 0.08
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "camera": [
+    0.4,
+    4.4,
+    28
+   ],
+   "alvo": [
+    0,
+    2.6,
+    15.5
+   ]
+  },
+  "cameras": [
+   {
+    "em": "@1:inicio-0.2",
+    "lugar": "cidade",
+    "perto": true,
+    "dur": 0.9
+   },
+   {
+    "em": "@1:sempre-0.3",
+    "lugar": "ceu",
+    "dur": 0.01
+   },
+   {
+    "em": "@2:inicio-0.2",
+    "lugar": "praca",
+    "dur": 0.7
+   },
+   {
+    "em": "@2:janelas-0.3",
+    "lugar": "direita",
+    "dur": 0.7
+   },
+   {
+    "em": "@2:casas-0.3",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 0.8
+   },
+   {
+    "em": "@2:sentido-0.3",
+    "pos": [
+     -3,
+     3.4,
+     27
+    ],
+    "alvo": [
+     0,
+     3,
+     18
+    ],
+    "fov": 36,
+    "deriva": [
+     0.6,
+     0,
+     -0.4
+    ],
+    "foco": 0.7,
+    "dur": 0.7
+   },
+   {
+    "em": "@3:inicio-0.2",
+    "pos": [
+     0,
+     5.5,
+     31
+    ],
+    "alvo": [
+     0,
+     4.6,
+     17.5
+    ],
+    "fov": 42,
+    "deriva": [
+     0.5,
+     0,
+     -0.5
+    ],
+    "foco": 0.6,
+    "dur": 0.8
+   },
+   {
+    "em": "@3:segundo-0.3",
+    "pos": [
+     2.5,
+     3.2,
+     26
+    ],
+    "alvo": [
+     0,
+     3.2,
+     17.5
+    ],
+    "fov": 36,
+    "deriva": [
+     -0.4,
+     0,
+     -0.4
+    ],
+    "foco": 0.7,
+    "dur": 0.7
+   },
+   {
+    "em": "@4:inicio-0.3",
+    "lugar": "praca",
+    "dur": 0.9
+   },
+   {
+    "em": "@4:fila-0.4",
+    "pos": [
+     -9,
+     2.4,
+     28
+    ],
+    "alvo": [
+     -2,
+     2.2,
+     18
+    ],
+    "fov": 44,
+    "deriva": [
+     0.8,
+     0,
+     -0.3
+    ],
+    "foco": 0.6,
+    "dur": 1
+   },
+   {
+    "em": "@5:inicio-0.3",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 0.8
+   },
+   {
+    "em": "@5:mais-0.4",
+    "pos": [
+     3.6,
+     2.6,
+     27
+    ],
+    "alvo": [
+     3.4,
+     2.6,
+     20.9
+    ],
+    "fov": 36,
+    "deriva": [
+     0,
+     0,
+     -0.3
+    ],
+    "foco": 0.7,
+    "dur": 0.5
+   },
+   {
+    "em": "@6:inicio-0.3",
+    "pos": [
+     -5.2,
+     3.2,
+     28
+    ],
+    "alvo": [
+     -3.4,
+     2,
+     18.5
+    ],
+    "fov": 40,
+    "deriva": [
+     0.3,
+     0,
+     -0.4
+    ],
+    "foco": 0.7,
+    "dur": 0.8
+   },
+   {
+    "em": "@6:enfeite-0.3",
+    "pos": [
+     -3.4,
+     2.6,
+     24
+    ],
+    "alvo": [
+     -3.4,
+     2.2,
+     18.5
+    ],
+    "fov": 34,
+    "deriva": [
+     0,
+     0,
+     -0.3
+    ],
+    "foco": 0.8,
+    "dur": 0.6
+   },
+   {
+    "em": "@7:inicio-0.3",
+    "lugar": "cidade",
+    "perto": true,
+    "dur": 1
+   },
+   {
+    "em": "@7:comente-0.3",
+    "lugar": "rua",
+    "perto": true,
+    "dur": 0.01
+   },
+   {
+    "em": "@8:inicio-0.3",
+    "lugar": "praca",
+    "dur": 0.9
+   },
+   {
+    "em": "@8:cabelo-0.4",
+    "pos": [
+     0,
+     4.6,
+     27
+    ],
+    "alvo": [
+     0,
+     3,
+     19.5
+    ],
+    "fov": 38,
+    "deriva": [
+     0.4,
+     0,
+     -0.4
+    ],
+    "foco": 0.7,
+    "dur": 0.7
+   },
+   {
+    "em": "@9:inicio-0.3",
+    "pos": [
+     4,
+     4,
+     29
+    ],
+    "alvo": [
+     0,
+     2.5,
+     19
+    ],
+    "fov": 42,
+    "deriva": [
+     -0.5,
+     0,
+     -0.4
+    ],
+    "foco": 0.6,
+    "dur": 0.8
+   },
+   {
+    "em": "@9:patos-0.3",
+    "pos": [
+     0.5,
+     2.4,
+     25.5
+    ],
+    "alvo": [
+     0,
+     2.2,
+     20.5
+    ],
+    "fov": 34,
+    "deriva": [
+     0,
+     0,
+     -0.3
+    ],
+    "foco": 0.8,
+    "dur": 0.6
+   },
+   {
+    "em": "@9:fila-0.3",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 0.7
+   },
+   {
+    "em": "@10:inicio-0.3",
+    "lugar": "praca",
+    "dur": 0.8
+   },
+   {
+    "em": "@10:chapéu-0.4",
+    "pos": [
+     -2,
+     3.4,
+     26
+    ],
+    "alvo": [
+     0,
+     3.4,
+     20
+    ],
+    "fov": 38,
+    "deriva": [
+     0.6,
+     0,
+     -0.3
+    ],
+    "foco": 0.7,
+    "dur": 0.7
+   },
+   {
+    "em": "@11:inicio-0.3",
+    "pos": [
+     0,
+     15,
+     38
+    ],
+    "alvo": [
+     0,
+     1,
+     19
+    ],
+    "fov": 44,
+    "deriva": [
+     0,
+     0,
+     -0.4
+    ],
+    "foco": 0.6,
+    "dur": 1.6,
+    "arco": 2
+   },
+   {
+    "em": "@11:fim-0.5",
+    "lugar": "ceu",
+    "dur": 0.8
+   },
+   {
+    "em": "@12:inicio-0.35",
+    "lugar": "praca"
+   },
+   {
+    "em": "@12:todo-0.2",
+    "lugar": "praca",
+    "perto": true,
+    "dur": 0.8
+   },
+   {
+    "em": "@14:inicio-0.35",
+    "lugar": "cidade",
+    "dur": 1
+   }
+  ],
+  "pecas": [
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@3:inicio-0.35",
+    "sai": "@4:inicio",
+    "filhos": [
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       5.2,
+       0
+      ],
+      "l": 4.4,
+      "a": 1.1,
+      "texto": "JANELAS",
+      "verso": "SEM CASAS",
+      "corVerso": "#27324a",
+      "cor": "#1f6fd1",
+      "vira": "@3:erro"
+     },
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       3.4,
+       0.2
+      ],
+      "l": 6.2,
+      "a": 1.3,
+      "texto": "CHUVEIRO QUENTE",
+      "cor": "#27324a",
+      "fundo": "#fff6e0",
+      "em": "@3:segundo-0.15",
+      "modo": "sobe"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@4:inicio-0.35",
+    "sai": "@10:inicio",
+    "filhos": [
+     {
+      "forma": "caixa",
+      "l": 4.2,
+      "a": 0.5,
+      "p": 4.2,
+      "cor": "#b8c4d4",
+      "pos": [
+       0,
+       0.25,
+       0
+      ],
+      "sombra": {
+       "rx": 2.5,
+       "rz": 1.6,
+       "pos": [
+        0.2,
+        -0.2,
+        0.2
+       ]
+      }
+     },
+     {
+      "forma": "caixa",
+      "l": 3.7,
+      "a": 0.12,
+      "p": 3.7,
+      "cor": "#7fd3ff",
+      "pos": [
+       0,
+       0.52,
+       0
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 0.5,
+      "a": 1.7,
+      "p": 0.5,
+      "cor": "#b8c4d4",
+      "pos": [
+       0,
+       0.9,
+       0
+      ]
+     },
+     {
+      "peca": "agua",
+      "pos": [
+       0,
+       2.2,
+       0
+      ],
+      "queda": 1.6,
+      "abre": 0.2,
+      "qtd": 9
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@4:inicio-0.35",
+    "sai": "@6:inicio-0.1",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -9.5,
+       0,
+       3.6
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 30,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:inicio",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:inicio",
+       "amp": 0.08
+      },
+      "move": [
+       {
+        "em": "@4:inicio",
+        "dur": 2.6,
+        "pos": [
+         -3.2,
+         0,
+         3.6
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -11,
+       0,
+       3.6
+      ],
+      "escala": 1.6,
+      "roupa": "#3a86ff",
+      "semente": 31,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:inicio",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:inicio",
+       "amp": 0.08
+      },
+      "move": [
+       {
+        "em": "@4:inicio",
+        "dur": 2.75,
+        "pos": [
+         -4.550000000000001,
+         0,
+         3.6
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -12.5,
+       0,
+       3.6
+      ],
+      "escala": 1.6,
+      "roupa": "#2ec4b6",
+      "semente": 32,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:inicio",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:inicio",
+       "amp": 0.08
+      },
+      "move": [
+       {
+        "em": "@4:inicio",
+        "dur": 2.9,
+        "pos": [
+         -5.9,
+         0,
+         3.6
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -14,
+       0,
+       3.6
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 33,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:inicio",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:inicio",
+       "amp": 0.08
+      },
+      "move": [
+       {
+        "em": "@4:inicio",
+        "dur": 3.05,
+        "pos": [
+         -7.250000000000001,
+         0,
+         3.6
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -15.5,
+       0,
+       3.6
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 34,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:inicio",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:inicio",
+       "amp": 0.08
+      },
+      "move": [
+       {
+        "em": "@4:inicio",
+        "dur": 3.2,
+        "pos": [
+         -8.600000000000001,
+         0,
+         3.6
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@5:inicio-0.35",
+    "sai": "@6:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.4,
+       0,
+       3.4
+      ],
+      "escala": 1.6,
+      "roupa": "#b794e6",
+      "semente": 40,
+      "poses": [
+       {
+        "pose": "fala"
+       },
+       {
+        "em": "@5:mais",
+        "pose": "triste"
+       }
+      ],
+      "balanca": {
+       "em": "@5:mais",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "letreiro",
+      "pos": [
+       3.4,
+       4.4,
+       3.4
+      ],
+      "l": 1.4,
+      "a": 1.4,
+      "texto": "♪",
+      "verso": "✕",
+      "cor": "#1f6fd1",
+      "corVerso": "#27324a",
+      "fundo": false,
+      "vira": "@5:mais"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     -3.4,
+     0.2,
+     18.5
+    ],
+    "em": "@6:inicio-0.35",
+    "sai": "@7:inicio",
+    "filhos": [
+     {
+      "forma": "caixa",
+      "l": 1.3,
+      "a": 1.6,
+      "p": 1.3,
+      "cor": "#e8e1d4",
+      "pos": [
+       0,
+       0.8,
+       0
+      ],
+      "sombra": {
+       "rx": 1,
+       "rz": 0.6
+      }
+     },
+     {
+      "forma": "caixa",
+      "l": 0.9,
+      "a": 0.5,
+      "p": 0.6,
+      "cor": "#ffb3d1",
+      "pos": [
+       0,
+       1.85,
+       0
+      ]
+     },
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       3.2,
+       0
+      ],
+      "l": 3.2,
+      "a": 0.9,
+      "texto": "ENFEITE",
+      "cor": "#27324a",
+      "fundo": "#fff6e0",
+      "em": "@6:enfeite-0.2",
+      "modo": "sobe"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@8:inicio-0.35",
+    "sai": "@9:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.6,
+       0,
+       2.6
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 50,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@8:cabelo",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@8:cabelo",
+       "amp": 0.08
+      },
+      "cabelo": "#7a4a1c"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       2.2
+      ],
+      "escala": 1.6,
+      "roupa": "#3a86ff",
+      "semente": 51,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@8:cabelo",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@8:cabelo",
+       "amp": 0.08
+      },
+      "cabelo": "#c9a27e"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.6,
+       0,
+       2.6
+      ],
+      "escala": 1.6,
+      "roupa": "#2ec4b6",
+      "semente": 52,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@8:cabelo",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@8:cabelo",
+       "amp": 0.08
+      },
+      "cabelo": "#17110c"
+     },
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       4.6,
+       2.2
+      ],
+      "l": 2.6,
+      "a": 0.8,
+      "texto": "CABELO?",
+      "cor": "#27324a",
+      "fundo": "#fff6e0",
+      "em": "@8:cabelo-0.15",
+      "modo": "sobe"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@9:inicio-0.3",
+    "sai": "@10:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       -1,
+       0.1,
+       3.2
+      ],
+      "balanca": {
+       "em": "@9:patos",
+       "amp": 0.12
+      },
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 0.55,
+        "ry": 0.36,
+        "cor": "#ffd23f",
+        "pos": [
+         0,
+         0.4,
+         0
+        ],
+        "sombra": {
+         "rx": 0.55,
+         "rz": 0.22
+        }
+       },
+       {
+        "forma": "circulo",
+        "r": 0.24,
+        "cor": "#ffd23f",
+        "pos": [
+         0.5,
+         0.85,
+         0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.1
+         ],
+         [
+          0.34,
+          0
+         ],
+         [
+          0,
+          -0.1
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0.72,
+         0.83,
+         0.04
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.05,
+        "cor": "#27324a",
+        "pos": [
+         0.56,
+         0.9,
+         0.05
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       1.1,
+       0.1,
+       3.4
+      ],
+      "balanca": {
+       "em": "@9:patos",
+       "amp": 0.12
+      },
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 0.55,
+        "ry": 0.36,
+        "cor": "#ffd23f",
+        "pos": [
+         0,
+         0.4,
+         0
+        ],
+        "sombra": {
+         "rx": 0.55,
+         "rz": 0.22
+        }
+       },
+       {
+        "forma": "circulo",
+        "r": 0.24,
+        "cor": "#ffd23f",
+        "pos": [
+         0.5,
+         0.85,
+         0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.1
+         ],
+         [
+          0.34,
+          0
+         ],
+         [
+          0,
+          -0.1
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0.72,
+         0.83,
+         0.04
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.05,
+        "cor": "#27324a",
+        "pos": [
+         0.56,
+         0.9,
+         0.05
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       0.1,
+       0.1,
+       4.4
+      ],
+      "balanca": {
+       "em": "@9:patos",
+       "amp": 0.12
+      },
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 0.55,
+        "ry": 0.36,
+        "cor": "#ffd23f",
+        "pos": [
+         0,
+         0.4,
+         0
+        ],
+        "sombra": {
+         "rx": 0.55,
+         "rz": 0.22
+        }
+       },
+       {
+        "forma": "circulo",
+        "r": 0.24,
+        "cor": "#ffd23f",
+        "pos": [
+         0.5,
+         0.85,
+         0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          0.1
+         ],
+         [
+          0.34,
+          0
+         ],
+         [
+          0,
+          -0.1
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0.72,
+         0.83,
+         0.04
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.05,
+        "cor": "#27324a",
+        "pos": [
+         0.56,
+         0.9,
+         0.05
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "letreiro",
+      "pos": [
+       0,
+       3.9,
+       3.6
+      ],
+      "l": 2.6,
+      "a": 0.9,
+      "texto": "QUÁ!",
+      "cor": "#27324a",
+      "fundo": "#fff6e0",
+      "em": "@9:patos-0.1",
+      "modo": "sobe"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@10:inicio-0.35",
+    "sai": "@11:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -4.4,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 60,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@10:chapéu",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@10:chapéu",
+       "amp": 0.08
+      },
+      "bone": "#ff9f1c"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.2,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#3a86ff",
+      "semente": 61,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@10:chapéu",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@10:chapéu",
+       "amp": 0.08
+      },
+      "bone": "#b794e6"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#2ec4b6",
+      "semente": 62,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@10:chapéu",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@10:chapéu",
+       "amp": 0.08
+      },
+      "bone": "#ffd23f"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.2,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 63,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@10:chapéu",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@10:chapéu",
+       "amp": 0.08
+      },
+      "bone": "#45c46b"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       4.4,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 64,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@10:chapéu",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@10:chapéu",
+       "amp": 0.08
+      },
+      "bone": "#3a86ff"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     18.5
+    ],
+    "em": "@11:inicio-0.35",
+    "sai": "@12:inicio",
+    "filhos": [
+     {
+      "forma": "retangulo",
+      "l": 24,
+      "a": 4.2,
+      "cor": "#5cb8e4",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       0,
+       0.06,
+       1.6
+      ],
+      "canto": 0.3
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -9,
+       0,
+       1.2
+      ],
+      "escala": 1.45,
+      "roupa": "#ffb703",
+      "semente": 70,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.4,
+        "pos": [
+         -9,
+         0,
+         1.2
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -7.35,
+       0,
+       2.1
+      ],
+      "escala": 1.45,
+      "roupa": "#3a86ff",
+      "semente": 71,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "comemora"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.5999999999999999,
+        "pos": [
+         -7.35,
+         0,
+         2.1
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -5.7,
+       0,
+       3
+      ],
+      "escala": 1.45,
+      "roupa": "#2ec4b6",
+      "semente": 72,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.7999999999999998,
+        "pos": [
+         -5.7,
+         0,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -4.050000000000001,
+       0,
+       1.2
+      ],
+      "escala": 1.45,
+      "roupa": "#f28aa5",
+      "semente": 73,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "comemora"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 2,
+        "pos": [
+         -4.050000000000001,
+         0,
+         1.2
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.4000000000000004,
+       0,
+       2.1
+      ],
+      "escala": 1.45,
+      "roupa": "#45c46b",
+      "semente": 74,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.4,
+        "pos": [
+         -2.4000000000000004,
+         0,
+         2.1
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -0.75,
+       0,
+       3
+      ],
+      "escala": 1.45,
+      "roupa": "#b794e6",
+      "semente": 75,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "comemora"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.5999999999999999,
+        "pos": [
+         -0.75,
+         0,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0.8999999999999986,
+       0,
+       1.2
+      ],
+      "escala": 1.45,
+      "roupa": "#ffb703",
+      "semente": 76,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.7999999999999998,
+        "pos": [
+         0.8999999999999986,
+         0,
+         1.2
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.549999999999999,
+       0,
+       2.1
+      ],
+      "escala": 1.45,
+      "roupa": "#3a86ff",
+      "semente": 77,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "comemora"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 2,
+        "pos": [
+         2.549999999999999,
+         0,
+         2.1
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       4.199999999999999,
+       0,
+       3
+      ],
+      "escala": 1.45,
+      "roupa": "#2ec4b6",
+      "semente": 78,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.4,
+        "pos": [
+         4.199999999999999,
+         0,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       5.85,
+       0,
+       1.2
+      ],
+      "escala": 1.45,
+      "roupa": "#f28aa5",
+      "semente": 79,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "comemora"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.5999999999999999,
+        "pos": [
+         5.85,
+         0,
+         1.2
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       7.5,
+       0,
+       2.1
+      ],
+      "escala": 1.45,
+      "roupa": "#45c46b",
+      "semente": 80,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 1.7999999999999998,
+        "pos": [
+         7.5,
+         0,
+         2.1
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       9.149999999999999,
+       0,
+       3
+      ],
+      "escala": 1.45,
+      "roupa": "#b794e6",
+      "semente": 81,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@11:inicio",
+        "pose": "comemora"
+       }
+      ],
+      "balanca": {
+       "em": "@11:inicio",
+       "amp": 0.1
+      },
+      "move": [
+       {
+        "em": "@11:inicio",
+        "dur": 2,
+        "pos": [
+         9.149999999999999,
+         0,
+         3
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@12:inicio-0.35",
+    "sai": "@14:inicio",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 12,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#2ec4b6",
+      "semente": 13,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 14,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#3a86ff",
+      "semente": 15,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.08
+      }
+     }
+    ]
+   }
+  ],
+  "etiquetas": [
+   {
+    "txt": "SEM CASAS = SEM JANELAS",
+    "pos": [
+     0,
+     7.6,
+     18
+    ],
+    "em": "@3:erro-0.1",
+    "ate": "@3:segundo",
+    "cor": "rosa",
+    "r": -2
+   },
+   {
+    "txt": "FILA NA FONTE",
+    "pos": [
+     -6,
+     5.2,
+     19
+    ],
+    "em": "@4:fila-0.2",
+    "ate": "@5:inicio",
+    "cor": "amarelo",
+    "r": -2
+   },
+   {
+    "txt": "SEM MÚSICA",
+    "pos": [
+     3.4,
+     6,
+     21
+    ],
+    "em": "@5:mais-0.3",
+    "ate": "@6:inicio",
+    "cor": "rosa",
+    "r": 2
+   },
+   {
+    "txt": "CABELO EM ALERTA",
+    "pos": [
+     0,
+     7,
+     20
+    ],
+    "em": "@8:cabelo",
+    "ate": "@9:inicio",
+    "cor": "ouro",
+    "r": -2
+   },
+   {
+    "txt": "QUÁ!",
+    "pos": [
+     0,
+     5.4,
+     22
+    ],
+    "em": "@9:patos",
+    "ate": "@10:inicio-0.2",
+    "cor": "amarelo",
+    "r": 2
+   },
+   {
+    "txt": "NINGUÉM RECLAMA",
+    "pos": [
+     0,
+     4.9,
+     18
+    ],
+    "em": "@reclama",
+    "ate": "@13:inicio-0.1"
+   },
+   {
+    "txt": "SEU NILO",
+    "pos": [
+     -0.9,
+     4.25,
+     18.5
+    ],
+    "em": "@nilo+0.7",
+    "ate": "@13:anotou-0.2",
+    "cor": "ouro"
+   }
+  ],
+  "transicoes": [
+   {
+    "em": "@3:inicio-0.2",
+    "tipo": "luz",
+    "dur": 0.6
+   },
+   {
+    "em": "@9:inicio-0.2",
+    "tipo": "luz",
+    "dur": 0.6
+   },
+   {
+    "em": "@11:inicio-0.2",
+    "tipo": "flash",
+    "dur": 0.6
+   }
+  ],
+  "tremores": [
+   "@11:inicio"
+  ]
+ }
+}

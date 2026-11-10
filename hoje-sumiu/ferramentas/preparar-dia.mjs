@@ -1,7 +1,8 @@
 // Prepara um episódio do Hoje Sumiu: acelera a voz, corta nas falas, cronometra as palavras, marca os momentos
 // da história e mixa voz + música composta em código + efeitos de papel em public/<id>.wav.
 // Uso: node ferramentas/preparar-dia.mjs episodios/dia01.json
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, renameSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { lerAudio, montarVoz, mixFinal } from "../../arquivo-333/ferramentas/mixagem.mjs";
@@ -118,6 +119,12 @@ const lapis = (seg) => { const r = filtro(ruido(seg), "banda", 3800, 1.1); for (
 roteiroDia.efeitos({ fx, marcas, cenas, rnd, SFX, sino, virada, dobra, buzina, apito, nhac, lapis, ep });
 
 mixFinal({ duracao, voz, musica: m, efeitos: fx, fala: cenas.map((c) => [c.vozEm, c.vozEm + c.vozDur]), saida: join(RAIZ, "public", `${ep.id}.wav`), musicaDb: -12, ganhoEfeitos: 0.75 });
+// `cena.lufs` (ex.: -14): normaliza a mixagem final para esse volume (padrão das redes), com limite de pico em -1,5 dB
+if (ep.cena?.lufs) {
+  const FF = join(RAIZ, "..", "node_modules", "@remotion", "compositor-win32-x64-msvc", "ffmpeg.exe"), wav = join(RAIZ, "public", `${ep.id}.wav`), tmp = join(RAIZ, "public", `${ep.id}.norm.wav`);
+  execFileSync(FF, ["-y", "-loglevel", "error", "-i", wav, "-af", `loudnorm=I=${ep.cena.lufs}:TP=-1.5:LRA=11`, "-ar", "44100", "-c:a", "pcm_s16le", tmp]);
+  renameSync(tmp, wav);
+}
 writeFileSync(join(RAIZ, "public", `${ep.id}.json`), JSON.stringify({ id: ep.id, dia: ep.dia, coisa: ep.coisa, duracao, marcas, cena: ep.cena, cenas: cenas.map(({ p, ...c }) => c) }, null, 1));
 console.log("duração", duracao.toFixed(2));
 const sil = (x) => (x.toLowerCase().match(/[aeiouáàâãéêíóôõúü]+/g) ?? []).length;

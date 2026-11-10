@@ -27,8 +27,15 @@ const emPose = (lista: { em?: number; pose: string; olhar?: [number, number] }[]
 
 // ---------------------------------------------------------------- comum a toda peça
 const V = (v: number[] | undefined, g: any, campo: "position" | "rotation") => { if (v) g[campo].set(v[0] ?? 0, v[1] ?? 0, v[2] ?? 0); };
+/** Sombra de contato: elipse mole e escura no chão, embaixo da peça (luz de cima, como no livro de papel). */
+function sombraChao(g: any, rx: number, rz: number, op = 0.28, pos?: number[]) {
+  const sh = new THREE.Mesh(new THREE.CircleGeometry(1, 28), new THREE.MeshBasicMaterial({ color: 0x1c2b4d, transparent: true, opacity: op, depthWrite: false }));
+  sh.rotation.x = -Math.PI / 2; sh.scale.set(rx, rz, 1); sh.position.set(pos?.[0] ?? 0.1, pos?.[1] ?? 0.035, pos?.[2] ?? 0.05); sh.renderOrder = -1; sh.castShadow = false; sh.receiveShadow = false; g.add(sh);
+}
 function assenta(c: Ctx, g: any, s: Spec) {
   V(s.pos, g, "position"); V(s.rot, g, "rotation");
+  // sombra: { rx, rz, op, pos }: sombra de contato no chão (toda pessoa já ganha uma sozinha)
+  if (s.sombra && typeof s.sombra === "object") sombraChao(g, s.sombra.rx ?? 1, s.sombra.rz ?? 0.5, s.sombra.op ?? 0.28, s.sombra.pos);
   if (s.escala) { if (Array.isArray(s.escala)) g.scale.set(...s.escala); else g.scale.setScalar(s.escala); }
   if (s.em !== undefined || s.sai !== undefined) c.w.pop(g, s.em ?? -1, s.modo ?? "dobra", s.dur ?? 0.45, s.sai);
   // gira: a peça roda sem parar no próprio plano (voltas por segundo), como a bolinha de carregando
@@ -82,6 +89,7 @@ function pessoa(c: Ctx, s: Spec) {
   let item: any = null; if (s.segura) { item = monta(c, s.segura); f.maoD.add(item); }
   let leva: any = null; if (s.leva) { leva = monta(c, s.leva); f.maoE.add(leva); }
   c.quadro.push((t) => { if (!f.raiz.visible) return; const a = emPose(poses, t), arg = POSES[a.pose](t + n); f.posar({ olhar: a.olhar ?? s.olhar ?? [0, 0], ...arg }); if (item) item.rotation.z = -(arg.brD ?? 0); if (leva) leva.rotation.z = -(arg.brE ?? 0); });
+  if (s.sombra !== false) sombraChao(f.raiz, 0.62, 0.26, 0.3);
   return assenta(c, f.raiz, { escala: 1.5, ...s });
 }
 
@@ -214,6 +222,13 @@ function mar(c: Ctx, s: Spec) {
   return g;
 }
 /** Muita coisa pequena pela cidade: flocos, folhas, bilhetes. Viram em onda e somem (`dura` depois da onda). */
+/** Água caindo sem parar (chuveiro, fonte): gotas azuis que descem de `queda` até 0 entre `ativo` e `ate`. */
+function agua(c: Ctx, s: Spec) {
+  const g = new THREE.Group(), n = s.qtd ?? 9, queda = s.queda ?? 3, em = s.ativo ?? -1, ate = s.ate ?? 1e6;
+  const it: any[] = []; for (let i = 0; i < n; i++) { const a = recorte(sOval(0.055, 0.15), papel(s.cor ?? (i % 2 ? "#7fd3ff" : "#b8e8ff")), 0.02); g.add(a); it.push(a); }
+  c.quadro.push((t) => it.forEach((a, i) => { const q = (t * 1.7 + i * 0.37) % 1; a.visible = t > em && t < ate; a.position.set(((i % 5) - 2) * (s.abre ?? 0.2) + Math.sin(i * 2.3) * 0.05, queda * (1 - q), 0); a.scale.setScalar(0.8 + 0.3 * q); }));
+  return assenta(c, g, s);
+}
 function espalha(c: Ctx, s: Spec) {
   const g = new THREE.Group(), [x0, x1, y0, y1, z0, z1] = s.zona ?? [-24, 24, 4, 24, -16, 18], e0 = s.tam ?? 0.7;
   for (let i = 0; i < (s.qtd ?? 20); i++) {
@@ -295,7 +310,7 @@ function lua(c: Ctx, s: Spec) {
 }
 
 // ---------------------------------------------------------------- catálogo
-const CATALOGO: Record<string, (c: Ctx, s: Spec) => any> = { pessoa, letreiro, pinguim, "boneco-neve": bonecoNeve, boleto, galinha, derrete, geladeira, banca, mesa, piso, fachada, vapor, mar, espalha, telhados, cama, dominos, grafico, relogio, lua };
+const CATALOGO: Record<string, (c: Ctx, s: Spec) => any> = { pessoa, letreiro, pinguim, "boneco-neve": bonecoNeve, boleto, galinha, derrete, geladeira, banca, mesa, piso, fachada, vapor, agua, mar, espalha, telhados, cama, dominos, grafico, relogio, lua };
 export function monta(c: Ctx, s: Spec): any {
   if (s.peca === "grupo") {
     const g = new THREE.Group(), f = new THREE.Group(); g.add(f); const mats: any[] = [];

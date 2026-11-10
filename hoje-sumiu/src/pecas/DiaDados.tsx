@@ -115,6 +115,17 @@ const Abertura: React.FC<{ t: number; d: Spec; ate: number }> = ({ t, d, ate }) 
     {L.map((x, i) => <div key={i} style={{ fontSize: 70, ...adesivo(16, 8) }}>{x}</div>)}
   </div>; }
   if (d.tipo === "pergunta") { const txt = L.join(" "), n = Math.floor(lim(t / (ate * 0.8)) * txt.length); return <div style={{ position: "absolute", top: 430, left: 80, right: 80, opacity: sai2, transform: "rotate(-2deg)", background: "#fffdf6", borderRadius: 14, padding: "30px 36px", fontFamily: CAVEAT, fontSize: 96, lineHeight: 1.05, color: "#23304f", boxShadow: "0 14px 0 rgba(22,35,63,.28)" }}>{txt.slice(0, n)}<span style={{ opacity: Math.floor(t * 4) % 2 }}>|</span></div>; }
+  // carimbo (Dia 10): um carimbo azul bate na tela com tremida e clarão, e embaixo vem a coisa que sumiu
+  if (d.tipo === "carimbo") {
+    const k = lim(t / 0.16), pancada = t > 0.16 && t < 0.6 ? Math.sin((t - 0.16) * 70) * (1 - (t - 0.16) / 0.44) * 16 : 0;
+    const esc = t < 0.16 ? 2.8 - 1.8 * k : 1 + Math.max(0, 0.06 - (t - 0.16) * 0.3), flash = t > 0.14 && t < 0.36 ? 0.7 * (1 - (t - 0.14) / 0.22) : 0;
+    return <>
+      <AbsoluteFill style={{ background: "#fffdf6", opacity: flash * sai2 }} />
+      <div style={{ position: "absolute", top: 380 + pancada, left: 50, right: 50, opacity: sai2 * lim(t * 12), transform: `translateX(${pancada * 0.6}px) rotate(-7deg) scale(${esc})`, textAlign: "center", fontFamily: LILITA }}>
+        <div style={{ display: "inline-block", color: "#fff", background: AZUL, border: "14px solid #fffdf6", borderRadius: 18, padding: "6px 54px 0", fontSize: 250, lineHeight: 1.05, boxShadow: "0 18px 0 rgba(22,35,63,.35)" }}>SUMIU</div>
+        {L.map((x, i) => <div key={i} style={{ fontSize: 88, lineHeight: 1.05, marginTop: 26, color: NAVY, ...adesivo(16, 8), opacity: lim((t - 0.35 - i * 0.25) * 6) }}>{x}</div>)}
+      </div></>;
+  }
   if (d.tipo === "iris") { const r = 1500 * (1 - sm(t / ate)) + 330; return <><AbsoluteFill style={{ background: `radial-gradient(circle at 50% 46%, transparent ${r}px, ${NAVY} ${r + 4}px)`, opacity: sai2 }} />
     <div style={{ position: "absolute", top: 1380, width: "100%", textAlign: "center", fontFamily: LILITA, fontSize: 80, color: "#fff", opacity: sai2 * lim((t - 0.3) * 4) }}>{L[0]}</div></>; }
   return null;
