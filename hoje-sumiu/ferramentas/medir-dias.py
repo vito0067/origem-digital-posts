@@ -12,7 +12,7 @@ os.makedirs(OUT, exist_ok=True)
 VIEWS = {1: 2537, 2: 2000, 3: 1501, 4: 1276, 5: 1567, 6: 1596}
 ARQ = {1: "hoje-sumiu-dia01-upload.mp4", 2: "hoje-sumiu-dia02-upload.mp4", 3: "hoje-sumiu-dia03-upload.mp4", 4: "hoje-sumiu-dia04-leve.mp4",
        5: "hoje-sumiu-dia05-leve.mp4", 6: "hoje-sumiu-dia06-upload.mp4", 7: "hoje-sumiu-dia07-upload.mp4", 8: "hoje-sumiu-dia08-upload.mp4",
-       9: "hoje-sumiu-dia09-upload.mp4", 10: "hoje-sumiu-dia10-upload.mp4"}
+       9: "hoje-sumiu-dia09-upload.mp4", 10: "hoje-sumiu-dia10-upload.mp4", 11: "hoje-sumiu-dia11-upload.mp4"}
 EPS = {f"dia{n:02d}": (a, VIEWS.get(n)) for n, a in ARQ.items()}
 
 def rodar(args):
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         w = csv.DictWriter(f, fieldnames=list(todas[0].keys()), delimiter=";")
         w.writeheader()
         w.writerows(todas)
-    for nome in ("dia01", "dia09", "dia10"):
+    for nome in ("dia01", "dia10", "dia11"):
         if nome in alvos:
             mosaico(nome, EPS[nome][0])
     print("FIM")
