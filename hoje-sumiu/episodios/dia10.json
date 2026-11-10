@@ -58,7 +58,8 @@
   },
   {
    "fala": "Só o Seu Nilo lembra. Ele anotou.",
-   "legenda": "Só o *Seu Nilo* lembra. Ele *anotou.*"
+   "legenda": "Só o *Seu Nilo* lembra. Ele *anotou.*",
+   "segura": 1.4
   },
   {
    "fala": "Amanhã, outra coisa vai sumir.",
@@ -142,9 +143,9 @@
   "somemPredios": -10,
   "lufs": -14,
   "sumiram": [
-   "Dia 7: os veículos",
+   "Dia 7: veículos",
    "Dia 8: o sono",
-   "Dia 9: os apartamentos"
+   "Dia 9: apartamentos"
   ],
   "abertura": {
    "tipo": "carimbo",
@@ -649,16 +650,16 @@
    {
     "em": "@6:inicio-0.3",
     "pos": [
-     -5.2,
-     3.2,
+     -3.6,
+     3,
      28
     ],
     "alvo": [
-     -3.4,
-     2,
-     18.5
+     -1,
+     1.8,
+     18.7
     ],
-    "fov": 40,
+    "fov": 42,
     "deriva": [
      0.3,
      0,
@@ -670,16 +671,16 @@
    {
     "em": "@6:enfeite-0.3",
     "pos": [
-     -3.4,
-     2.6,
-     24
+     -0.2,
+     1.9,
+     26
     ],
     "alvo": [
-     -3.4,
-     2.2,
-     18.5
+     -0.6,
+     1.4,
+     18.7
     ],
-    "fov": 34,
+    "fov": 38,
     "deriva": [
      0,
      0,
@@ -729,16 +730,16 @@
    {
     "em": "@9:inicio-0.3",
     "pos": [
-     4,
-     4,
-     29
+     3.2,
+     2.8,
+     28
     ],
     "alvo": [
      0,
-     2.5,
-     19
+     1,
+     18.4
     ],
-    "fov": 42,
+    "fov": 44,
     "deriva": [
      -0.5,
      0,
@@ -750,20 +751,20 @@
    {
     "em": "@9:patos-0.3",
     "pos": [
-     0.5,
-     2.4,
-     25.5
+     0.3,
+     2.2,
+     28.5
     ],
     "alvo": [
      0,
-     2.2,
-     20.5
+     0.9,
+     18.6
     ],
-    "fov": 34,
+    "fov": 40,
     "deriva": [
      0,
      0,
-     -0.3
+     -0.5
     ],
     "foco": 0.8,
     "dur": 0.6
@@ -844,48 +845,6 @@
    }
   ],
   "pecas": [
-   {
-    "peca": "grupo",
-    "pos": [
-     0,
-     0.2,
-     17.5
-    ],
-    "em": "@3:inicio-0.35",
-    "sai": "@4:inicio",
-    "filhos": [
-     {
-      "peca": "letreiro",
-      "pos": [
-       0,
-       5.2,
-       0
-      ],
-      "l": 4.4,
-      "a": 1.1,
-      "texto": "JANELAS",
-      "verso": "SEM CASAS",
-      "corVerso": "#27324a",
-      "cor": "#1f6fd1",
-      "vira": "@3:erro"
-     },
-     {
-      "peca": "letreiro",
-      "pos": [
-       0,
-       3.4,
-       0.2
-      ],
-      "l": 6.2,
-      "a": 1.3,
-      "texto": "CHUVEIRO QUENTE",
-      "cor": "#27324a",
-      "fundo": "#fff6e0",
-      "em": "@3:segundo-0.15",
-      "modo": "sobe"
-     }
-    ]
-   },
    {
     "peca": "grupo",
     "pos": [
@@ -1196,7 +1155,7 @@
    {
     "peca": "grupo",
     "pos": [
-     -3.4,
+     -1.2,
      0.2,
      18.5
     ],
@@ -1205,46 +1164,55 @@
     "filhos": [
      {
       "forma": "caixa",
-      "l": 1.3,
-      "a": 1.6,
-      "p": 1.3,
+      "l": 0.9,
+      "a": 1.1,
+      "p": 0.9,
       "cor": "#e8e1d4",
       "pos": [
        0,
-       0.8,
+       0.55,
        0
       ],
       "sombra": {
-       "rx": 1,
-       "rz": 0.6
+       "rx": 0.8,
+       "rz": 0.45
       }
      },
      {
       "forma": "caixa",
-      "l": 0.9,
-      "a": 0.5,
-      "p": 0.6,
+      "l": 0.8,
+      "a": 0.4,
+      "p": 0.5,
       "cor": "#ffb3d1",
       "pos": [
        0,
-       1.85,
+       1.3,
        0
       ]
      },
      {
-      "peca": "letreiro",
+      "peca": "pessoa",
       "pos": [
+       1.5,
        0,
-       3.2,
-       0
+       0.6
       ],
-      "l": 3.2,
-      "a": 0.9,
-      "texto": "ENFEITE",
-      "cor": "#27324a",
-      "fundo": "#fff6e0",
-      "em": "@6:enfeite-0.2",
-      "modo": "sobe"
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 55,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:enfeite",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@6:enfeite",
+       "amp": 0.08
+      }
      }
     ]
    },
@@ -1332,21 +1300,6 @@
        "amp": 0.08
       },
       "cabelo": "#17110c"
-     },
-     {
-      "peca": "letreiro",
-      "pos": [
-       0,
-       4.6,
-       2.2
-      ],
-      "l": 2.6,
-      "a": 0.8,
-      "texto": "CABELO?",
-      "cor": "#27324a",
-      "fundo": "#fff6e0",
-      "em": "@8:cabelo-0.15",
-      "modo": "sobe"
      }
     ]
    },
@@ -1363,10 +1316,11 @@
      {
       "peca": "grupo",
       "pos": [
-       -1,
-       0.1,
-       3.2
+       -1.15,
+       0.62,
+       0.5
       ],
+      "escala": 1,
       "balanca": {
        "em": "@9:patos",
        "amp": 0.12
@@ -1435,10 +1389,11 @@
      {
       "peca": "grupo",
       "pos": [
-       1.1,
-       0.1,
-       3.4
+       1.2,
+       0.62,
+       0.3
       ],
+      "escala": 1,
       "balanca": {
        "em": "@9:patos",
        "amp": 0.12
@@ -1507,10 +1462,11 @@
      {
       "peca": "grupo",
       "pos": [
-       0.1,
-       0.1,
-       4.4
+       0.05,
+       0.62,
+       1.5
       ],
+      "escala": 1,
       "balanca": {
        "em": "@9:patos",
        "amp": 0.12
@@ -1575,21 +1531,6 @@
         ]
        }
       ]
-     },
-     {
-      "peca": "letreiro",
-      "pos": [
-       0,
-       3.9,
-       3.6
-      ],
-      "l": 2.6,
-      "a": 0.9,
-      "texto": "QUÁ!",
-      "cor": "#27324a",
-      "fundo": "#fff6e0",
-      "em": "@9:patos-0.1",
-      "modo": "sobe"
      }
     ]
    },
@@ -2187,7 +2128,7 @@
      17.5
     ],
     "em": "@12:inicio-0.35",
-    "sai": "@14:inicio",
+    "sai": "@13:inicio-0.25",
     "modo": "cresce",
     "filhos": [
      {
@@ -2289,67 +2230,95 @@
     ]
    }
   ],
-  "etiquetas": [
+  "selos": [
    {
-    "txt": "SEM CASAS = SEM JANELAS",
-    "pos": [
-     0,
-     7.6,
-     18
-    ],
-    "em": "@3:erro-0.1",
-    "ate": "@3:segundo",
-    "cor": "rosa",
+    "txt": "JANELAS",
+    "em": "@2:janelas-0.1",
+    "ate": "@2:casas-0.05",
+    "topo": 900,
+    "cor": "#1f6fd1",
     "r": -2
    },
    {
+    "txt": "SEM CASAS = SEM JANELAS",
+    "em": "@2:casas-0.05",
+    "ate": "@2:fim",
+    "topo": 900,
+    "tam": 84,
+    "cor": "#27324a",
+    "fundo": "#d7dbe3",
+    "r": 1.5
+   },
+   {
+    "txt": "FOI ERRO MEU",
+    "em": "@3:erro-0.1",
+    "ate": "@3:segundo-0.1",
+    "topo": 900,
+    "cor": "#27324a",
+    "fundo": "#ffd23f",
+    "r": -1.5
+   },
+   {
+    "txt": "CHUVEIRO QUENTE",
+    "em": "@3:segundo-0.1",
+    "ate": "@3:fim",
+    "topo": 900,
+    "tam": 92,
+    "cor": "#ffffff",
+    "fundo": "#1f6fd1",
+    "borda": "#fffdf6",
+    "r": 1.5
+   },
+   {
     "txt": "FILA NA FONTE",
-    "pos": [
-     -6,
-     5.2,
-     19
-    ],
-    "em": "@4:fila-0.2",
+    "em": "@4:fila-0.15",
     "ate": "@5:inicio",
-    "cor": "amarelo",
+    "cor": "#27324a",
+    "fundo": "#ffd23f",
     "r": -2
    },
    {
     "txt": "SEM MÚSICA",
-    "pos": [
-     3.4,
-     6,
-     21
-    ],
-    "em": "@5:mais-0.3",
+    "em": "@5:mais-0.2",
     "ate": "@6:inicio",
-    "cor": "rosa",
+    "cor": "#27324a",
+    "fundo": "#ffd1e0",
     "r": 2
    },
    {
-    "txt": "CABELO EM ALERTA",
-    "pos": [
-     0,
-     7,
-     20
-    ],
-    "em": "@8:cabelo",
-    "ate": "@9:inicio",
-    "cor": "ouro",
+    "txt": "ENFEITE",
+    "em": "@6:enfeite-0.15",
+    "ate": "@7:inicio",
+    "cor": "#27324a",
+    "fundo": "#ffe9b3",
     "r": -2
    },
    {
-    "txt": "QUÁ!",
-    "pos": [
-     0,
-     5.4,
-     22
-    ],
-    "em": "@9:patos",
-    "ate": "@10:inicio-0.2",
-    "cor": "amarelo",
+    "txt": "CABELO?",
+    "em": "@8:cabelo-0.15",
+    "ate": "@9:inicio",
+    "cor": "#27324a",
+    "fundo": "#ffe9b3",
     "r": 2
    },
+   {
+    "txt": "QUÁ!",
+    "em": "@9:patos-0.1",
+    "ate": "@10:inicio",
+    "cor": "#27324a",
+    "fundo": "#ffd23f",
+    "r": -3
+   },
+   {
+    "txt": "CHAPÉU NOVO",
+    "em": "@10:chapéu-0.1",
+    "ate": "@11:inicio",
+    "cor": "#27324a",
+    "fundo": "#d6f5e0",
+    "r": 2
+   }
+  ],
+  "etiquetas": [
    {
     "txt": "NINGUÉM RECLAMA",
     "pos": [
@@ -2358,7 +2327,7 @@
      18
     ],
     "em": "@reclama",
-    "ate": "@13:inicio-0.1"
+    "ate": "@13:inicio-0.3"
    },
    {
     "txt": "SEU NILO",

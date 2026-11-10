@@ -130,6 +130,15 @@ const Abertura: React.FC<{ t: number; d: Spec; ate: number }> = ({ t, d, ate }) 
     <div style={{ position: "absolute", top: 1380, width: "100%", textAlign: "center", fontFamily: LILITA, fontSize: 80, color: "#fff", opacity: sai2 * lim((t - 0.3) * 4) }}>{L[0]}</div></>; }
   return null;
 };
+// selos (Dia 10): cartões de papel FIXOS na tela, que nunca saem do enquadramento (ao contrário de letreiros e etiquetas no mundo):
+// `selos: [{ txt, em, ate, topo?, tam?, cor?, fundo?, borda?, r? }]`
+const Selo: React.FC<{ t: number; s: Spec }> = ({ t, s }) => {
+  if (t < s.em || t > s.ate + 0.2) return null;
+  const e = volta((t - s.em) / 0.25) * (t > s.ate ? 1 - sai((t - s.ate) / 0.2) : 1);
+  return <div style={{ position: "absolute", top: s.topo ?? 380, left: 0, right: 0, display: "flex", justifyContent: "center", transform: `scale(${e}) rotate(${s.r ?? -2}deg)` }}>
+    <div style={{ maxWidth: 940, textAlign: "center", fontFamily: LILITA, fontSize: s.tam ?? 100, lineHeight: 1.02, color: s.cor ?? NAVY, background: s.fundo ?? "#fffdf6", border: `8px solid ${s.borda ?? NAVY}`, borderRadius: 26, padding: "16px 38px 10px", boxShadow: "0 12px 0 rgba(22,35,63,.3)" }}>{s.txt}</div>
+  </div>;
+};
 // transições à mão (o Remotion 4.0.300 não tem light-leaks): { em, tipo: "flash" | "luz" | "pisca", dur }
 const Transicoes: React.FC<{ t: number; lista: Spec[] }> = ({ t, lista }) => <>{lista.map((x, i) => {
   const q = (t - x.em) / (x.dur ?? 0.5); if (q < 0 || q > 1) return null;
@@ -174,6 +183,7 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
         <div style={{ fontSize: (d.titulo ?? l.coisa).length > 9 ? 130 : 190, lineHeight: 1.04, color: t < m.onda + 0.15 ? corDia : CINZA, ...adesivo(26, 12), transform: `rotate(2deg) perspective(900px) rotateX(${flipV * 360}deg)` }}>{(d.titulo ?? l.coisa).toUpperCase()}</div>
       </div>}
       {d.credito && <Credito t={t} em={m.credito - 0.05} ate={c[m.iCredito].fim - 0.1} d={d.credito} />}
+      {(d.selos ?? []).map((s: Spec, i: number) => <Selo key={i} t={t} s={s} />)}
       {(d.etiquetas ?? []).map((e: Spec) => { if (t < e.em || t > e.ate + 0.2) return null; const p = P(e.pos); return <Etiqueta key={e.txt + e.em} txt={e.txt} x={p.x} y={p.y} t={t} em={e.em} ate={e.ate} cor={cor(e.cor) ?? AZUL} r={e.r ?? -2} />; })}
       {d.divulgacao && <Divulgacao t={t} d={d.divulgacao} />}
       {([] as Spec[]).concat(d.contador ?? [], d.contadores ?? []).map((k: Spec, i: number) => <Contador key={"c" + i} rot={k.rot} num={k.de !== undefined ? Math.round(k.de + (k.para - k.de) * sm((t - k.em - 0.2) / (k.conta ?? 1.5))).toLocaleString("pt-BR") + (k.suf ?? "") : k.num} t={t} em={k.em} ate={k.ate} />)}
