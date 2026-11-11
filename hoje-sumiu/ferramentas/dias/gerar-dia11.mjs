@@ -44,7 +44,7 @@ const cortes = DUR.map((d) => { const c = [Math.round(ini * 100) / 100, Math.rou
 
 // ---------- cena ----------
 const AZ = "#5cb8e4";
-const pessoa = (x, z, roupa, sem, pose, extra = {}) => ({ peca: "pessoa", pos: [x, 0, z], escala: 1.6, roupa, semente: sem, poses: [{ pose: "normal" }, { em: pose.em, pose: pose.pose }], balanca: { em: pose.em, amp: pose.amp ?? 0.08 }, ...extra });
+const pessoa = (x, z, roupa, sem, pose, extra = {}) => ({ peca: "pessoa", pos: [x, 0, z], escala: 1.6, roupa, semente: sem, poses: [{ pose: "normal" }, { em: pose.em, pose: pose.pose }], balanca: { em: pose.em, amp: pose.amp ?? 0.04 }, ...extra });
 const ROUPAS = ["#ffb703", "#3a86ff", "#2ec4b6", "#f28aa5", "#45c46b", "#b794e6"];
 
 // espelho de pé: moldura dourada, vidro azul-claro com brilho, base cinza e sombra de contato; a pessoa se olha nele
@@ -133,6 +133,7 @@ const cena = {
   semCarros: true,
   somemPredios: -10, // os apartamentos já sumiram no Dia 9: nenhum prédio desde o primeiro quadro
   lufs: -14,
+  visual: "livro",
   sumiram: ["Dia 8: o sono", "Dia 9: apartamentos", "Dia 10: o chuveiro"], // curtas: no caderno a linha não quebra
   abertura: { tipo: "iris", linhas: ["Hoje sumiram os espelhos"], ate: "@0:fim-0.6" },
   trilha: { nome: "noturna", constroi: ["@3:voz", "@5:voz", "@7:voz", "@9:voz", "@10:voz"], climax: "@11:inicio" },
@@ -141,35 +142,21 @@ const cena = {
   exemplos: ["a cor azul", "o sol", "as nuvens"],
   heroi,
   // 2 a 3 planos por fala; o 1º corte seco é em ~2 s (@1:inicio-0.35); zoom (fov) diferente em cada plano
+  // câmera calma (pedido do Vito, 10/11): UM voo suave por fala, sem corte seco e sem troca no meio da fala
   cameras: [
-    { em: "@1:inicio-0.5", lugar: "cidade", perto: true, dur: 0.01 },
-    { em: "@1:sempre-0.3", lugar: "ceu", dur: 0.7 },
-    { em: "@2:inicio-0.2", lugar: "praca", dur: 0.7 },
-    { em: "@2:curtido-0.3", pos: [-1.5, 3.2, 28], alvo: [0, 3, 17.5], fov: 38, deriva: [0.5, 0, -0.4], foco: 0.7, dur: 0.7 },
-    { em: "@2:espelhos-0.3", lugar: "praca", perto: true, dur: 0.8 },
-    { em: "@3:inicio-0.3", pos: [0, 4.6, 31], alvo: [0, 3.2, 17.5], fov: 42, deriva: [0.5, 0, -0.5], foco: 0.6, dur: 0.8 },
-    { em: "@3:como-0.3", pos: [-2.2, 3.0, 26], alvo: [0, 2.9, 18], fov: 36, deriva: [0.4, 0, -0.4], foco: 0.7, dur: 0.7 },
-    { em: "@4:inicio-0.3", pos: [3, 3.0, 29], alvo: [0, 1.8, 18], fov: 42, deriva: [-0.5, 0, -0.4], foco: 0.6, dur: 0.7 },
-    { em: "@4:escuro-0.4", pos: [-0.6, 2.2, 25], alvo: [0, 1.8, 18], fov: 36, deriva: [0, 0, -0.3], foco: 0.8, dur: 0.6 },
-    { em: "@5:inicio-0.3", pos: [-3, 3.0, 29], alvo: [0, 2.0, 18], fov: 42, deriva: [0.5, 0, -0.4], foco: 0.6, dur: 0.7 },
-    { em: "@5:dente-0.4", pos: [0.4, 2.2, 25], alvo: [-1, 1.8, 18.2], fov: 36, deriva: [0, 0, -0.3], foco: 0.8, dur: 0.6 },
-    { em: "@6:inicio-0.3", lugar: "praca", dur: 0.8 },
-    { em: "@6:maquiagem-0.3", pos: [2, 3.0, 27], alvo: [0, 2.8, 19.7], fov: 38, deriva: [-0.5, 0, -0.4], foco: 0.7, dur: 0.7 },
-    { em: "@6:arte-0.3", lugar: "praca", perto: true, dur: 0.7 },
-    { em: "@7:inicio-0.3", pos: [2.5, 3.4, 29], alvo: [0, 1.8, 19.5], fov: 42, deriva: [-0.4, 0, -0.4], foco: 0.6, dur: 0.8 },
-    { em: "@7:graça-0.4", pos: [0.3, 2.0, 25.5], alvo: [0, 1.7, 19.8], fov: 38, deriva: [0, 0, -0.3], foco: 0.8, dur: 0.6 },
-    { em: "@8:inicio-0.3", lugar: "cidade", perto: true, dur: 1.0 },
-    { em: "@8:comente-0.3", lugar: "rua", perto: true, dur: 0.01 },
-    { em: "@9:inicio-0.3", lugar: "praca", dur: 0.8 },
-    { em: "@9:espelho-0.4", lugar: "praca", perto: true, dur: 0.7 },
-    { em: "@10:inicio-0.3", pos: [0, 12, 36], alvo: [0, 1, 19], fov: 46, deriva: [0, 0, -0.4], foco: 0.6, dur: 0.9 },
-    { em: "@10:espelho-0.4", pos: [1, 2.6, 28], alvo: [0, 1, 19.5], fov: 40, deriva: [-0.4, 0, -0.3], foco: 0.8, dur: 0.7 },
-    { em: "@10:cidade-0.3", lugar: "cidade", perto: true, dur: 0.9 },
-    { em: "@11:inicio-0.3", pos: [0, 15, 38], alvo: [0, 1, 19], fov: 44, deriva: [0, 0, -0.4], foco: 0.6, dur: 1.6, arco: 2 },
-    { em: "@11:some-0.5", lugar: "ceu", dur: 0.8 },
-    { em: "@12:inicio-0.35", lugar: "praca" },
-    { em: "@12:todo-0.2", lugar: "praca", perto: true, dur: 0.8 },
-    { em: "@14:inicio-0.35", lugar: "cidade", dur: 1.0 },
+    { em: "@1:inicio-0.3", lugar: "cidade", perto: true, dur: 1.6 },
+    { em: "@2:inicio-0.3", lugar: "praca", dur: 1.4 },
+    { em: "@3:inicio-0.3", pos: [0, 4.0, 33], alvo: [0, 3.0, 18], fov: 40, deriva: [0.25, 0, -0.5], foco: 0.5, dur: 1.3 },
+    { em: "@4:inicio-0.3", pos: [1.2, 3.4, 31.5], alvo: [0.6, 2.2, 18], fov: 40, deriva: [-0.2, 0, -0.5], foco: 0.5, dur: 1.3 },
+    { em: "@5:inicio-0.3", pos: [-1.2, 3.4, 31.5], alvo: [-0.3, 2.2, 18], fov: 40, deriva: [0.2, 0, -0.5], foco: 0.5, dur: 1.3 },
+    { em: "@6:inicio-0.3", pos: [0, 3.8, 33], alvo: [0, 3.0, 19.8], fov: 40, deriva: [0.2, 0, -0.5], foco: 0.5, dur: 1.3 },
+    { em: "@7:inicio-0.3", pos: [0.6, 3.0, 31], alvo: [0, 1.9, 19.8], fov: 40, deriva: [-0.2, 0, -0.5], foco: 0.5, dur: 1.3 },
+    { em: "@8:inicio-0.3", lugar: "cidade", perto: true, dur: 1.5 },
+    { em: "@9:inicio-0.3", pos: [0, 3.8, 33], alvo: [0, 3.0, 19.8], fov: 40, deriva: [0.2, 0, -0.5], foco: 0.5, dur: 1.4 },
+    { em: "@10:inicio-0.3", pos: [0, 9, 35], alvo: [0, 1.2, 19.5], fov: 42, deriva: [0, -0.3, -0.7], foco: 0.4, dur: 1.5 },
+    { em: "@11:inicio-0.3", pos: [0, 15, 38], alvo: [0, 1, 19], fov: 44, deriva: [0, 0.2, -0.4], foco: 0.4, dur: 1.8, arco: 2 },
+    { em: "@12:inicio-0.35", lugar: "praca", dur: 1.4 },
+    { em: "@14:inicio-0.35", lugar: "cidade", dur: 1.4 },
   ],
   pecas,
   // selos fixos na tela (nunca cortam)
@@ -197,7 +184,7 @@ const cena = {
     { em: "@10:espelho", tipo: "subida", volume: 0.7 },
     { em: "@11:some", tipo: "glitch", volume: 0.9 },
   ],
-  transicoes: [{ em: "@3:inicio-0.2", tipo: "luz", dur: 0.6 }, { em: "@9:inicio-0.2", tipo: "luz", dur: 0.6 }, { em: "@11:inicio-0.2", tipo: "flash", dur: 0.6 }],
+  transicoes: [{ em: "@11:inicio-0.2", tipo: "flash", dur: 0.6 }],
   tremores: ["@11:some"],
 };
 

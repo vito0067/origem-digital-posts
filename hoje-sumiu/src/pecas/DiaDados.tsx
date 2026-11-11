@@ -168,7 +168,10 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
   const coisas = (n: number) => `${n} COISA${n === 1 ? "" : "S"} SUMI${n === 1 ? "U" : "RAM"} · SÓ 1 PESSOA LEMBRA`;
   return (
     <AbsoluteFill style={{ background: "#f5e3c8", overflow: "hidden" }}>
-      <Cena3D t={t} c={cam} m={m} k={f} />
+      {/* visual "livro" (Dia 11 v2): cores mais vivas e quentes, luz de sol vindo de cima à esquerda e bordas escurecidas, como um livro iluminado na mesa */}
+      <AbsoluteFill style={d.visual === "livro" ? { filter: "saturate(1.28) contrast(1.08) brightness(1.03)" } : undefined}><Cena3D t={t} c={cam} m={m} k={f} /></AbsoluteFill>
+      {d.visual === "livro" && <AbsoluteFill style={{ background: "linear-gradient(155deg, rgba(255,214,130,.34) 0%, rgba(255,214,130,0) 42%, rgba(40,30,90,.20) 100%)", mixBlendMode: "soft-light" }} />}
+      {d.visual === "livro" && <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 44%, transparent 52%, rgba(40,22,8,.36) 100%)" }} />}
       <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent)", maskImage: "linear-gradient(to bottom, black 20%, transparent)", opacity: cam.foco }} />
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to top, black 20%, transparent)", maskImage: "linear-gradient(to top, black 20%, transparent)", opacity: cam.foco }} />
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 46%, transparent 58%, rgba(70,40,10,.2) 100%)" }} />
