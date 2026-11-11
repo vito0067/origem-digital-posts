@@ -189,6 +189,7 @@ node ../fabrica/fabrica.mjs arquivo-333 proxima-estacao-ep03                tudo
 | medir | `medir-ab.py` em `testes/medidas/<id>`; falha se LUFS fora de -14 ± 0,5, parado ≥ 20%, movimento ≤ 5 ou duração fora de 45–60 s |
 | quadros | um quadro no meio de cada plano + folha em `testes/quadros/<id>-folha.jpg` (revisar contra a lista abaixo) |
 | kit | `Desktop\Origem-Digital\arquivo-333-envios\celular-<id>`: vídeo -14 LUFS, capa (`publicar.capaEm`) e `texto-para-copiar.txt` |
+**Fila:** a fábrica roda um perfil por vez e espera a vez sozinha (até 3 h; `--sem-fila` fura). A fila só protege o que roda pela fábrica, então faça render e quadros por ela (`--de render`, `--ate quadros`), não chamando `renderizar.mjs`/`quadros.mjs` direto.
 **Sem etapa publicar:** Instagram e YouTube saem pelo Chrome na conversa, só depois do "aprovado" do Vito; TikTok só pelo celular dele (kit). Relatório de cada rodada: `posts-automaticos\fabrica\registros\arquivo-333-<episodio>-relatorio.md`.
 
 ## Lista de revisão (todo episódio)
