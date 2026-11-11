@@ -7,6 +7,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { renameSync } from "node:fs";
+import { volumeTrilha, conferirSom } from "../../motor-v2/index.mjs";
 import { lerAudio, montarVoz, mixFinal, ffmpeg } from "./mixagem.mjs";
 import { cortarNarracao } from "./narracao.mjs";
 import { TAXA, Faixa, SFX, pad, oscilador, decai, ruido, filtro, reverb, sino } from "./sintetizador.mjs";
@@ -154,6 +155,18 @@ clima.volume((x) => (x < ultima.inicio - 0.3 ? 1 : Math.max(0.15, 1 - (x - (ulti
 // "silencio" na cena: o clima quase some (o susto seguinte vem do nada)
 const silencios = cenas.filter((c) => c.silencio).map((c) => [c.inicio, c.fim]);
 if (silencios.length) clima.volume((x) => { let v = 1; for (const [a, b] of silencios) { const d = Math.min(x - a, b - x); if (d > 0) v = Math.min(v, Math.max(0.12, 1 - d / 0.35)); } return v; });
+
+// motor v2: a trilha silencia sozinha antes do impacto forte e volta crescendo (ep.trilhaV2.sons = efeitos que contam como impacto)
+if (ep.trilhaV2) {
+  const fortes = new Set(ep.trilhaV2.sons ?? ["bate", "tranca"]); let imp = [];
+  for (const c of cenas) for (const [nome, ref = 0] of c.sons ?? []) if (fortes.has(nome)) imp.push(quando(c, ref));
+  imp.sort((a, b) => a - b); imp = imp.filter((t, i) => i === 0 || t - imp[i - 1] > 1.5);   // batidas em sequência contam como um impacto só
+  const vol = volumeTrilha(imp.map((em) => ({ em, silencio: 0.4, volta: 1.2 })), 1);
+  clima.volume((x) => vol(x));
+  console.log("trilha silencia antes dos impactos em", imp.map((t) => t.toFixed(2)).join(", "), "s");
+  const av = conferirSom(imp.map((em) => ({ em, silencio: 0.4 })), cenas.filter((c) => c.vozDur).map((c) => ({ de: c.vozEm, ate: c.vozEm + c.vozDur })));
+  if (av.length) console.log("avisos do som: " + av.join(" | "));
+}
 
 const efeitos = new Faixa(duracao + 3);
 for (const c of cenas) for (const [nome, ref = 0, vol = 0.8, pan = 0] of c.sons ?? []) {

@@ -15,6 +15,6 @@ const composition = await selectComposition({ serveUrl, id: linha.composicao ?? 
 const pasta = join(RAIZ, "testes", "quadros");
 mkdirSync(pasta, { recursive: true });
 for (const t of tempos) {
-  await renderStill({ serveUrl, composition, inputProps, frame: Math.round(parseFloat(t) * 30), output: join(pasta, `${id}-${t}.jpg`), imageFormat: "jpeg", jpegQuality: 75, scale: 0.4, chromiumOptions: CHROMIUM });
+  await renderStill({ serveUrl, composition, inputProps, frame: Math.round(parseFloat(t) * 30), output: join(pasta, `${id}-${t}.jpg`), imageFormat: "jpeg", jpegQuality: 75, scale: 0.4, timeoutInMilliseconds: 180000, chromiumOptions: CHROMIUM });
 }
 console.log("quadros em", pasta);

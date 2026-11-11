@@ -20,7 +20,7 @@ if (modo === "fotos") {
   }
   console.log("fotos ok");
 } else {
-  await renderMedia({ serveUrl, composition, inputProps, codec: "h264", crf: 18, audioBitrate: "192k", chromiumOptions: CHROMIUM, concurrency: Number(process.env.CONC ?? 4), outputLocation: join(RAIZ, "saida", `${id}.mp4`),
+  await renderMedia({ serveUrl, composition, inputProps, codec: "h264", crf: 18, audioBitrate: "192k", timeoutInMilliseconds: 180000, chromiumOptions: CHROMIUM, concurrency: Number(process.env.CONC ?? 4), outputLocation: join(RAIZ, "saida", `${id}.mp4`),
     onProgress: ({ progress }) => { if (Math.round(progress * 100) % 10 === 0) process.stdout.write(`\r${Math.round(progress * 100)}%`); } });
   console.log("\nvídeo ok:", join(RAIZ, "saida", `${id}.mp4`));
 }

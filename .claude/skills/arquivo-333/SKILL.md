@@ -158,6 +158,18 @@ Fonte: `4-midia\referencias\PADRAO-DE-QUALIDADE-VIDEOS.md`. Medir antes de mostr
 3. **Som:** silêncio curto antes do momento forte (campo `silencio: true` da cena), efeito no quadro exato (`sons` com tempo `voz+x`/`fim-x`), **volume final -14 LUFS** (campo `lufs: -14` no JSON do episódio; o preparar-caso normaliza com loudnorm; A cabine mediu -14,7: conferir de novo no medidor).
 Também valem: sombra de contato nos bonecos (já no motor), e para recursos de episódio no vagão/cabine ver `src/motor3d/pilotos.ts` (planos `p2_*`, `pe_*`).
 
+## Motor 3D v2 (adotado em 11/11/2026, depois do teste com "A cabine")
+Base comum em `posts-automaticos\motor-v2` (LEIA-ME lá). Neste perfil: câmera perfil **"padrao"** (nunca para) e clima **"noite-fria" ajustado** (abaixo).
+- **Câmera:** `src/motor3d/camv2.mjs`. Cada plano novo é `"v2/<nome>": { base, a, b, var, entrada?, tremor?, pulsos? }`: `base` = plano antigo (`pilotos.ts`) que arruma o cenário e dá o enquadramento; `a`–`b` = fatia da cena; `var` = variação do enquadramento (`gira` rad em volta do alvo, `dist` ×, `sobe` m, `fov` graus). O `Mundo3D` passa isso pelo `sequencia()` do motor (piso de movimento, respiro, `giro`/`mergulho`, tremor). No JSON, `planos: ["v2/..."]` e `pesos` = fatias (b − a) × peso antigo.
+  - **Não use câmera em posição absoluta** dentro do vagão/cabine: no teste ela entrou na cabeça da Lia e atrás da porta. Parta do enquadramento do plano antigo e varie pouco (gira ≤ 0,25, dist ≥ 0,8; câmera baixa demais escurece a fila).
+  - Parta toda cena de mais de 3 s em 2–3 planos `v2/` com fatias; o 1º plano do gancho termina antes de 2 s.
+- **Ritmo antes de renderizar:** `node ferramentas/conferir-ritmo-v2.mjs <id>` (usa `conferirRitmo`: 1º corte, novidade a cada 3 s). O cartão "Comente GUIA" (3,7 s) dá aviso: aceito.
+- **Luz:** `montarLuz` com `NOITE_FRIA_VAGAO` em `Mundo3D.tsx` (**sem sombra**, luz fraca): o vagão é fechado, o recorte quente forte deixava a cabine verde bege e a sombra deixava cada quadro 5x mais lento. Serve para o **pulso** de luz no susto (`pulsos` no plano, em segundos da cena).
+- **Trilha:** `"trilhaV2": { "sons": ["bate", "tranca"] }` no JSON → o preparar-caso usa `volumeTrilha()` (trilha some 0,4 s antes do impacto e volta) e avisa com `conferirSom()`.
+- **Som final:** depois do render, `node ../motor-v2/normalizar-som.mjs saida/<id>.mp4` → `<id>-14lufs.mp4` (este é o arquivo a postar).
+- **Medir:** `python ferramentas/medir-ab.py <pasta> nome=arquivo.mp4 ...` (mesma régua do medir-episodios.py + mosaico). O detector do ffmpeg NÃO vê corte entre dois planos do mesmo cenário com o "chicote" (diz 4,4 s); confira o 1º corte pelo `conferir-ritmo-v2` ou pelos quadros.
+- Resultado do teste (mesma narração de "A cabine"): movimento 6,5 → 8,4; parado 17,7% → 7,1%; 1º corte de câmera 4,4 → 1,8 s; som -14,7 → -14,0 LUFS; render 1 min 38 s. Arquivos: `arquivo-333/testes/motor-v2/`.
+
 ## Lista de revisão (todo episódio)
 - **Abertura:** o 1º quadro prende (imagem forte e legenda já na tela)? Nada de preto, cidade parada ou rosto escuro.
 - **Câmera:**

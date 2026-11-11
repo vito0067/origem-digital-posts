@@ -62,3 +62,8 @@ Atualizado em 02/11/2026, às 09h. Leia antes de mexer e atualize a cada rodada.
 
 ## Mapa
 Manual: skill `arquivo-333` (`.claude/skills/arquivo-333/`). Registro por episódio: `publicacao/agendados.json` e `publicacao/epNN.md`. História: `series/o-sinal.md`.
+
+## 11/11/2026: motor 3D v2 ligado (teste, NÃO publicado)
+- Pedido do Vito (via chat da Origem Digital): refazer o último episódio com o motor v2 e comparar. Teste `episodios/pe02v2.json` (id `proxima-estacao-ep02-v2teste`), mesma narração de "A cabine", 24 planos `v2/` (`src/motor3d/camv2.mjs`), luz "noite-fria" ajustada (sem sombra, só pulso no susto), trilha que silencia antes das batidas, som normalizado com `normalizar-som.mjs`.
+- Medidas (original → teste): movimento 6,52 → 8,41; parado 17,7% → 7,1%; 1º corte de câmera 4,4 → 1,8 s (o detector do ffmpeg diz 4,4 nos dois, ver skill); LUFS -14,7 → -14,0; LRA 4,4 → 4,1. Mosaicos em `testes/motor-v2/`, vídeo em Desktop\Origem-Digital\arquivo-333-envios\teste-motor-v2.
+- Adotado para os próximos episódios (skill, seção "Motor 3D v2"). Falta o Vito assistir o teste. O ep. 3 continua esperando a leitura dos votos do ep. 2.

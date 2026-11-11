@@ -9,6 +9,16 @@ import { Corredor } from "./corredor";
 import { Sala1201 } from "./sala1201";
 import { Vagao, Estudio, Locadora } from "./pilotos";
 import { PLANOS, type Mundo } from "./planos";
+// @ts-ignore  motor v2 (motor-v2/): câmera com emendas, luz de cinema, pulso de luz
+import { sequencia, prepararRenderizador, montarLuz, CLIMAS } from "../../../motor-v2/index.mjs";
+// @ts-ignore
+import { CAM_V2, variar } from "./camv2.mjs";
+let LUZ_V2: any = null;
+// "noite-fria" ajustada para este perfil (11/11/2026): o vagão é fechado (a lua não entra pelo teto), então sem sombra,
+// luz principal fraca e o recorte quente de trás; fundo e neblina continuam os do vagão. Sombra também deixava o quadro 5x mais lento.
+const NOITE_FRIA_VAGAO = { ...CLIMAS["noite-fria"], fundo: null, neblina: null, semSombra: true,
+  principal: ["#9db7ff", 0.4, [-6, 9, 4]], preenche: ["#1a2440", 0.2], recorte: ["#ffb070", 0.35, [3, 4, -6]] };
+// (recorte quente forte deixava a cabine verde bege: aqui a luz do motor serve quase só para o pulso no susto)
 
 type Estado = Mundo & { renderer: any; camera: any };
 let ESTADO: Estado | null = null;
@@ -33,13 +43,26 @@ export const Mundo3D: React.FC<{ plano: string; s: number; dur: number }> = ({ p
     try {
       const m = mundo();
       if (ref.current && m.renderer.domElement.parentElement !== ref.current) ref.current.appendChild(m.renderer.domElement);
-      const fn = PLANOS[plano];
+      const v2 = CAM_V2[plano] as any;
+      const fn = PLANOS[v2 ? v2.base : plano];
       if (!fn) throw new Error(`plano desconhecido: ${plano}`);
       m.cidade.padrao(); m.quarto.padrao(); m.portaria.padrao(); m.corredor.padrao(); m.sala1201.padrao(); m.vagao.padrao(); m.estudio.padrao(); m.locadora.padrao();
-      const t = fn(s, dur, m);
+      // motor v2: o plano antigo arruma o cenário no tempo da cena inteira; a câmera e a luz vêm do motor v2
+      const dCena = v2 ? dur / (v2.b - v2.a) : dur, sCena = v2 ? v2.a * dCena + s : s;
+      const t = fn(sCena, dCena, m);
       const cam = m.camera;
-      cam.fov = t.fov ?? 60; cam.position.set(...t.pos); cam.up.set(0, 1, 0); cam.lookAt(...t.alvo);
-      if (t.rolar) cam.rotateZ(t.rolar);
+      if (v2) {
+        if (!LUZ_V2) { prepararRenderizador(THREE, m.renderer, 1.1, true); LUZ_V2 = montarLuz(THREE, m.vagao.cena, NOITE_FRIA_VAGAO, { alvo: [0, 1, -3] }); }
+        const desde = ((v2.pulsos ? v2.pulsos(dCena) : []) as number[]).map((tk) => sCena - tk).filter((x) => x >= 0);
+        LUZ_V2.pulso(desde.length ? Math.min(...desde) : -1);
+        const plano = (u: number, d: number) => variar(t, v2.var, u / d);
+        const c = sequencia([{ inicio: 0, fim: dur, plano, entrada: v2.entrada, tremor: v2.tremor }])(s);
+        cam.fov = c.fov; cam.position.set(...(c.pos as [number, number, number])); cam.up.set(0, 1, 0); cam.lookAt(...(c.alvo as [number, number, number]));
+        if (c.rolar) cam.rotateZ(c.rolar);
+      } else {
+        cam.fov = t.fov ?? 60; cam.position.set(...t.pos); cam.up.set(0, 1, 0); cam.lookAt(...t.alvo);
+        if (t.rolar) cam.rotateZ(t.rolar);
+      }
       cam.updateProjectionMatrix();
       m.renderer.render(m[t.cena].cena, cam);
     } finally {
