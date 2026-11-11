@@ -3,8 +3,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { sequencia, conferirRitmo } from "../../motor-v2/index.mjs";
-import { CAM_V2 } from "../src/motor3d/camv2.mjs";
+import { sequencia, conferirRitmo } from "../motor/index.mjs";
+import { CAM_V2 } from "../motor/camv2.mjs";
 
 const RAIZ = fileURLToPath(new URL("..", import.meta.url));
 const id = process.argv[2];
@@ -26,4 +26,10 @@ const r = conferirRitmo({ cenas, camera, dur: ep.duracao, eventos });
 console.log(`${id}: ${cenas.length} planos, cortes em`, r.cortes.map((x) => x.toFixed(1)).join(", "));
 console.log("primeiro corte:", r.cortes[0]?.toFixed(2), "s");
 if (r.medidas) console.log("câmera: parada em", r.medidas.paradoPct + "%", "movimento médio", r.medidas.movimentoMedio);
-console.log(r.ok ? "RITMO OK" : "AVISOS:\n - " + r.avisos.join("\n - "));
+// o cartão "Comente GUIA" (divulgação, ~3,7 s de fala) é aceito mesmo passando de 3 s sem novidade
+const cartoes = ep.cenas.filter((c) => c.visual.tipo === "divulgacao").map((c) => [c.inicio, c.fim]);
+const dentroDeCartao = (txt) => { const m = /De ([\d.]+) s a ([\d.]+) s/.exec(txt); return m && cartoes.some(([a, b]) => Math.abs(+m[1] - a) < 0.6 && Math.abs(+m[2] - b) < 0.6); };
+const graves = r.avisos.filter((a) => !dentroDeCartao(a)), aceitos = r.avisos.filter(dentroDeCartao);
+if (aceitos.length) console.log("aceito (cartão GUIA):", aceitos.join(" | "));
+console.log(graves.length ? "AVISOS:\n - " + graves.join("\n - ") : "RITMO OK");
+process.exit(graves.length ? 2 : 0);

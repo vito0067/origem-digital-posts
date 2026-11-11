@@ -9,10 +9,10 @@ import { Corredor } from "./corredor";
 import { Sala1201 } from "./sala1201";
 import { Vagao, Estudio, Locadora } from "./pilotos";
 import { PLANOS, type Mundo } from "./planos";
-// @ts-ignore  motor v2 (motor-v2/): câmera com emendas, luz de cinema, pulso de luz
-import { sequencia, prepararRenderizador, montarLuz, CLIMAS } from "../../../motor-v2/index.mjs";
+// @ts-ignore  motor do Arquivo (arquivo-333/motor, cópia própria da base motor-v2): câmera com emendas, luz de cinema, pulso de luz
+import { sequencia, prepararRenderizador, montarLuz, CLIMAS } from "../../motor/index.mjs";
 // @ts-ignore
-import { CAM_V2, variar } from "./camv2.mjs";
+import { CAM_V2, variar } from "../../motor/camv2.mjs";
 let LUZ_V2: any = null;
 // "noite-fria" ajustada para este perfil (11/11/2026): o vagão é fechado (a lua não entra pelo teto), então sem sombra,
 // luz principal fraca e o recorte quente de trás; fundo e neblina continuam os do vagão. Sombra também deixava o quadro 5x mais lento.
@@ -54,7 +54,7 @@ export const Mundo3D: React.FC<{ plano: string; s: number; dur: number }> = ({ p
       if (v2) {
         if (!LUZ_V2) { prepararRenderizador(THREE, m.renderer, 1.1, true); LUZ_V2 = montarLuz(THREE, m.vagao.cena, NOITE_FRIA_VAGAO, { alvo: [0, 1, -3] }); }
         const desde = ((v2.pulsos ? v2.pulsos(dCena) : []) as number[]).map((tk) => sCena - tk).filter((x) => x >= 0);
-        LUZ_V2.pulso(desde.length ? Math.min(...desde) : -1);
+        LUZ_V2.pulso(desde.length ? Math.min(...desde) : -1, v2.forca ?? 1);
         const plano = (u: number, d: number) => variar(t, v2.var, u / d);
         const c = sequencia([{ inicio: 0, fim: dur, plano, entrada: v2.entrada, tremor: v2.tremor }])(s);
         cam.fov = c.fov; cam.position.set(...(c.pos as [number, number, number])); cam.up.set(0, 1, 0); cam.lookAt(...(c.alvo as [number, number, number]));

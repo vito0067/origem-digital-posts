@@ -3,9 +3,10 @@
 // (assim o cenário anda no tempo certo quando uma cena é partida em vários planos de câmera).
 // var = variação do enquadramento antigo ao longo do plano: gira (rad, em volta do alvo), dist (multiplica a distância), sobe (m), fov (graus a somar).
 // O motor v2 soma o piso de movimento, o respiro, a emenda (entrada) e o tremor; pulsos = segundos (na cena inteira) do pulso de luz.
+// seco = corte seco (sem o chicote borrado do Caso.tsx): usado no 1º corte, para ele ser visto (e medido) antes de 2 s. forca = força do pulso de luz (1 = padrão).
 // Ritmo-alvo (padrão de qualidade 09/11): primeiro corte em até 2 s, algo novo a cada 3 s no máximo, câmera nunca parada.
 // Ajuste deste perfil (11/11/2026): câmeras partem do enquadramento antigo (as absolutas entravam na cabeça da Lia e atrás da porta da cabine).
-import { arranca, mix } from "../../../motor-v2/index.mjs";
+import { arranca, mix } from "./index.mjs";
 
 const faixa = (f, p, d0) => (f ? mix(f[0], f[1], p) : d0);
 /** Transforma a câmera do plano antigo segundo a variação, no ponto p (0..1) do plano. */
@@ -18,8 +19,8 @@ export function variar(c, v = {}, p = 0) {
 
 export const CAM_V2 = {
   // ---- cena 0: gancho (4,4 s) em 3 planos: 1,8 + 1,5 + 1,1 s
-  "v2/hook_a": { base: "p2_hook", a: 0, b: 0.4, var: { dist: [1.3, 1.0], fov: [6, 0] }, pulsos: () => [0.02] },
-  "v2/hook_b": { base: "p2_hook", a: 0.4, b: 0.75, var: { gira: [0.22, 0.14], sobe: [-0.15, -0.1] } },
+  "v2/hook_a": { base: "p2_hook", a: 0, b: 0.4, var: { dist: [1.3, 1.0], fov: [6, 0] }, pulsos: () => [0.02], forca: 1.5 },
+  "v2/hook_b": { base: "p2_hook", a: 0.4, b: 0.75, var: { gira: [0.3, 0.2], sobe: [-0.2, -0.12] }, seco: true },
   "v2/hook_c": { base: "p2_hook", a: 0.75, b: 1, var: { dist: [1.05, 1.0], sobe: [-0.3, -0.25], fov: [10, 8] }, entrada: "giro" },
   // ---- cena 1: corre (6,3 s): lado 0,6 + 0,4 e atrás 0,55 + 0,55
   "v2/lado_a": { base: "p2_corre_lado", a: 0, b: 0.6, var: { dist: [1.0, 0.9], fov: [0, 4] } },
@@ -43,7 +44,7 @@ export const CAM_V2 = {
   // ---- cena 7: as batidas (7,4 s, silêncio): 0,3 + 0,3 + 0,4; batidas em (duração - 2,3), (-1,7), (-1,1)
   "v2/bate_a": { base: "p2_bate", a: 0, b: 0.3, var: { sobe: [0.1, 0.0] } },
   "v2/bate_b": { base: "p2_bate", a: 0.3, b: 0.6, var: { sobe: [-1.15, -1.2], dist: [0.75, 0.7] } },
-  "v2/bate_c": { base: "p2_bate", a: 0.6, b: 1, var: { dist: [1.05, 0.85] }, tremor: 1.0, pulsos: (d) => [d - 2.3, d - 1.7, d - 1.1] },
+  "v2/bate_c": { base: "p2_bate", a: 0.6, b: 1, var: { dist: [1.05, 0.85] }, tremor: 1.0, pulsos: (d) => [d - 2.3, d - 1.7, d - 1.1], forca: 2.5 },
   // ---- cena 8: final (7,2 s): painel 0,35 + Lia 0,325 + 0,325
   "v2/final_painel": { base: "p2_final_painel", a: 0, b: 1, var: { dist: [1.1, 0.95] }, pulsos: () => [0.1] },
   "v2/final_lia_a": { base: "p2_final_lia", a: 0, b: 0.5, var: { gira: [-0.1, 0.0] } },

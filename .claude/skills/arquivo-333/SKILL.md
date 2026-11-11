@@ -158,17 +158,38 @@ Fonte: `4-midia\referencias\PADRAO-DE-QUALIDADE-VIDEOS.md`. Medir antes de mostr
 3. **Som:** silêncio curto antes do momento forte (campo `silencio: true` da cena), efeito no quadro exato (`sons` com tempo `voz+x`/`fim-x`), **volume final -14 LUFS** (campo `lufs: -14` no JSON do episódio; o preparar-caso normaliza com loudnorm; A cabine mediu -14,7: conferir de novo no medidor).
 Também valem: sombra de contato nos bonecos (já no motor), e para recursos de episódio no vagão/cabine ver `src/motor3d/pilotos.ts` (planos `p2_*`, `pe_*`).
 
-## Motor 3D v2 (adotado em 11/11/2026, depois do teste com "A cabine")
-Base comum em `posts-automaticos\motor-v2` (LEIA-ME lá). Neste perfil: câmera perfil **"padrao"** (nunca para) e clima **"noite-fria" ajustado** (abaixo).
-- **Câmera:** `src/motor3d/camv2.mjs`. Cada plano novo é `"v2/<nome>": { base, a, b, var, entrada?, tremor?, pulsos? }`: `base` = plano antigo (`pilotos.ts`) que arruma o cenário e dá o enquadramento; `a`–`b` = fatia da cena; `var` = variação do enquadramento (`gira` rad em volta do alvo, `dist` ×, `sobe` m, `fov` graus). O `Mundo3D` passa isso pelo `sequencia()` do motor (piso de movimento, respiro, `giro`/`mergulho`, tremor). No JSON, `planos: ["v2/..."]` e `pesos` = fatias (b − a) × peso antigo.
+## Motor do Arquivo (adotado em 11/11/2026, depois do teste com "A cabine")
+**O Arquivo tem o motor DELE em `arquivo-333\motor`** (decisão do Vito em 11/11: um motor por perfil; "o motor 3D combinou muito com o Arquivo, eu manteria, pode mudar pequenas coisas"). Foi copiado da base `posts-automaticos\motor-v2`, que ficou congelada: mude aqui, não lá, e não importe nada de `motor-v2`. Câmera perfil **"padrao"** (nunca para) e clima **"noite-fria" ajustado** (abaixo).
+- **Câmera:** `motor/camv2.mjs`. Cada plano novo é `"v2/<nome>": { base, a, b, var, entrada?, tremor?, pulsos? }`: `base` = plano antigo (`pilotos.ts`) que arruma o cenário e dá o enquadramento; `a`–`b` = fatia da cena; `var` = variação do enquadramento (`gira` rad em volta do alvo, `dist` ×, `sobe` m, `fov` graus). O `Mundo3D` passa isso pelo `sequencia()` do motor (piso de movimento, respiro, `giro`/`mergulho`, tremor). No JSON, `planos: ["v2/..."]` e `pesos` = fatias (b − a) × peso antigo.
   - **Não use câmera em posição absoluta** dentro do vagão/cabine: no teste ela entrou na cabeça da Lia e atrás da porta. Parta do enquadramento do plano antigo e varie pouco (gira ≤ 0,25, dist ≥ 0,8; câmera baixa demais escurece a fila).
   - Parta toda cena de mais de 3 s em 2–3 planos `v2/` com fatias; o 1º plano do gancho termina antes de 2 s.
 - **Ritmo antes de renderizar:** `node ferramentas/conferir-ritmo-v2.mjs <id>` (usa `conferirRitmo`: 1º corte, novidade a cada 3 s). O cartão "Comente GUIA" (3,7 s) dá aviso: aceito.
 - **Luz:** `montarLuz` com `NOITE_FRIA_VAGAO` em `Mundo3D.tsx` (**sem sombra**, luz fraca): o vagão é fechado, o recorte quente forte deixava a cabine verde bege e a sombra deixava cada quadro 5x mais lento. Serve para o **pulso** de luz no susto (`pulsos` no plano, em segundos da cena).
 - **Trilha:** `"trilhaV2": { "sons": ["bate", "tranca"] }` no JSON → o preparar-caso usa `volumeTrilha()` (trilha some 0,4 s antes do impacto e volta) e avisa com `conferirSom()`.
-- **Som final:** depois do render, `node ../motor-v2/normalizar-som.mjs saida/<id>.mp4` → `<id>-14lufs.mp4` (este é o arquivo a postar).
+- **Som final:** depois do render, `node motor/normalizar-som.mjs saida/<id>.mp4` → `<id>-14lufs.mp4` (este é o arquivo a postar).
+- **Mudanças pequenas feitas no motor do Arquivo (11/11, decisão minha, Vito deixou a criação comigo):**
+  - `seco: true` no plano = corte seco, sem o "chicote" borrado do `Caso.tsx`. Usado no 1º corte do gancho, para ele ser visto (e medido) antes de 2 s (com ele o medidor passou a ver o 1º corte em 1,8 s; antes dizia 4,4); os outros cortes dentro da cena seguem com o chicote, que é a marca do perfil.
+  - `forca` no plano = força do pulso de luz (1 = padrão). Batidas na porta: 2,5 (com a luz fraca do vagão, o pulso 1 quase não aparecia); entrada do gancho: 1,5.
 - **Medir:** `python ferramentas/medir-ab.py <pasta> nome=arquivo.mp4 ...` (mesma régua do medir-episodios.py + mosaico). O detector do ffmpeg NÃO vê corte entre dois planos do mesmo cenário com o "chicote" (diz 4,4 s); confira o 1º corte pelo `conferir-ritmo-v2` ou pelos quadros.
 - Resultado do teste (mesma narração de "A cabine"): movimento 6,5 → 8,4; parado 17,7% → 7,1%; 1º corte de câmera 4,4 → 1,8 s; som -14,7 → -14,0 LUFS; render 1 min 38 s. Arquivos: `arquivo-333/testes/motor-v2/`.
+
+## Fábrica de episódios (desde 11/11/2026)
+Ficha: `arquivo-333\fabrica.json`; cada etapa chama `node ferramentas/etapa.mjs <etapa> <episodio>` (`<episodio>` = **o id**, ex. `proxima-estacao-ep03`: com o nome do JSON as etapas rodam, mas a fábrica não acha o vídeo no fim). Rodar de `arquivo-333`:
+```
+node ../fabrica/fabrica.mjs arquivo-333 proxima-estacao-ep03 --simular      mostra o que rodaria
+node ../fabrica/fabrica.mjs arquivo-333 proxima-estacao-ep03 --ate ritmo    roteiro, voz, ritmo e para
+node ../fabrica/fabrica.mjs arquivo-333 proxima-estacao-ep03                tudo, menos publicar
+```
+| Etapa | O que faz no Arquivo |
+|---|---|
+| roteiro | confere voto falado + cartão de voto, "Comente GUIA" no meio e na legenda, aviso de IA, planos `v2/` existentes, gancho com 2+ planos; avisa duração estimada fora de 48–58 s |
+| voz | só confere se a narração existe (gerar voz custa crédito: pela conversa, Gideon, até 5 créditos) |
+| ritmo | `preparar-caso` (linha do tempo e som) + `conferir-ritmo-v2` (falha se o 1º corte passar de 2 s ou faltar novidade; o cartão GUIA é aceito) |
+| render / som | `renderizar.mjs` (até 3 tentativas: o navegador do render às vezes demora mais de 25 s para abrir, sobretudo com outro perfil renderizando) e `motor/normalizar-som.mjs` → `saida/<id>-14lufs.mp4` |
+| medir | `medir-ab.py` em `testes/medidas/<id>`; falha se LUFS fora de -14 ± 0,5, parado ≥ 20%, movimento ≤ 5 ou duração fora de 45–60 s |
+| quadros | um quadro no meio de cada plano + folha em `testes/quadros/<id>-folha.jpg` (revisar contra a lista abaixo) |
+| kit | `Desktop\Origem-Digital\arquivo-333-envios\celular-<id>`: vídeo -14 LUFS, capa (`publicar.capaEm`) e `texto-para-copiar.txt` |
+**Sem etapa publicar:** Instagram e YouTube saem pelo Chrome na conversa, só depois do "aprovado" do Vito; TikTok só pelo celular dele (kit). Relatório de cada rodada: `posts-automaticos\fabrica\registros\arquivo-333-<episodio>-relatorio.md`.
 
 ## Lista de revisão (todo episódio)
 - **Abertura:** o 1º quadro prende (imagem forte e legenda já na tela)? Nada de preto, cidade parada ou rosto escuro.

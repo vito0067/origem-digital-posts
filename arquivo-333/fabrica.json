@@ -1,0 +1,15 @@
+{
+  "perfil": "arquivo-333",
+  "saida": "saida/{episodio}-14lufs.mp4",
+  "nota": "{episodio} = o id do episódio (ex.: proxima-estacao-ep03), para a fábrica achar saida/<id>-14lufs.mp4; o nome do JSON (pe03) também roda as etapas, mas a fábrica não acha o vídeo. Publicar não tem comando: o Instagram e o YouTube saem pelo Chrome na conversa, só com o 'aprovado' do Vito; TikTok só pelo celular dele (etapa kit).",
+  "etapas": {
+    "roteiro": { "comando": "node ferramentas/etapa.mjs roteiro {episodio}" },
+    "voz":     { "comando": "node ferramentas/etapa.mjs voz {episodio}" },
+    "ritmo":   { "comando": "node ferramentas/etapa.mjs ritmo {episodio}", "tempo_max_min": 10 },
+    "render":  { "comando": "node ferramentas/etapa.mjs render {episodio}", "tempo_max_min": 60 },
+    "som":     { "comando": "node ferramentas/etapa.mjs som {episodio}", "tempo_max_min": 5 },
+    "medir":   { "comando": "node ferramentas/etapa.mjs medir {episodio}", "tempo_max_min": 15 },
+    "quadros": { "comando": "node ferramentas/etapa.mjs quadros {episodio}", "tempo_max_min": 20 },
+    "kit":     { "comando": "node ferramentas/etapa.mjs kit {episodio}", "tempo_max_min": 5 }
+  }
+}

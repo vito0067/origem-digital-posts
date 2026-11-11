@@ -7,7 +7,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { renameSync } from "node:fs";
-import { volumeTrilha, conferirSom } from "../../motor-v2/index.mjs";
+import { volumeTrilha, conferirSom } from "../motor/index.mjs";
 import { lerAudio, montarVoz, mixFinal, ffmpeg } from "./mixagem.mjs";
 import { cortarNarracao } from "./narracao.mjs";
 import { TAXA, Faixa, SFX, pad, oscilador, decai, ruido, filtro, reverb, sino } from "./sintetizador.mjs";

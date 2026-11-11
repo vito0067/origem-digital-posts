@@ -7,6 +7,8 @@ import { loadFont as carregarAnton } from "@remotion/google-fonts/Anton";
 import { loadFont as carregarInter } from "@remotion/google-fonts/Inter";
 import { FPS, q } from "../serie/tempo";
 import { Mundo3D } from "../motor3d/Mundo3D";
+// @ts-ignore  planos do motor do Arquivo (seco = corte seco, sem o chicote)
+import { CAM_V2 } from "../../motor/camv2.mjs";
 
 export const ELITE = carregarElite("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
 export const ANTON = carregarAnton("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
@@ -546,7 +548,7 @@ const Cena: React.FC<{ c: CenaT; episodio: number }> = ({ c, episodio }) => {
     const planos = v.planos ?? [], pesos = v.pesos ?? planos.map(() => 1), total = pesos.reduce((a, b) => a + b, 0);
     let ini = 0, k = 0;
     while (k < planos.length - 1 && s >= ini + (pesos[k] / total) * dur) { ini += (pesos[k] / total) * dur; k++; }
-    const local = s - ini, chicote = k > 0 ? 1 - saida(local / 0.2) : 0, lado = k % 2 ? -1 : 1;
+    const local = s - ini, chicote = k > 0 && !(CAM_V2 as any)[planos[k]]?.seco ? 1 - saida(local / 0.2) : 0, lado = k % 2 ? -1 : 1;
     const filtros = [v.pb?.includes(k) ? "grayscale(1) contrast(1.2)" : "", chicote > 0.01 ? `blur(${18 * chicote}px)` : ""].filter(Boolean).join(" ");
     fundo = (
       <AbsoluteFill style={{ transform: `translateX(${lado * 160 * chicote}px) scale(${1 + 0.08 * chicote})`, filter: filtros || undefined }}>

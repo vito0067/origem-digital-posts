@@ -67,3 +67,10 @@ Manual: skill `arquivo-333` (`.claude/skills/arquivo-333/`). Registro por episó
 - Pedido do Vito (via chat da Origem Digital): refazer o último episódio com o motor v2 e comparar. Teste `episodios/pe02v2.json` (id `proxima-estacao-ep02-v2teste`), mesma narração de "A cabine", 24 planos `v2/` (`src/motor3d/camv2.mjs`), luz "noite-fria" ajustada (sem sombra, só pulso no susto), trilha que silencia antes das batidas, som normalizado com `normalizar-som.mjs`.
 - Medidas (original → teste): movimento 6,52 → 8,41; parado 17,7% → 7,1%; 1º corte de câmera 4,4 → 1,8 s (o detector do ffmpeg diz 4,4 nos dois, ver skill); LUFS -14,7 → -14,0; LRA 4,4 → 4,1. Mosaicos em `testes/motor-v2/`, vídeo em Desktop\Origem-Digital\arquivo-333-envios\teste-motor-v2.
 - Adotado para os próximos episódios (skill, seção "Motor 3D v2"). Falta o Vito assistir o teste. O ep. 3 continua esperando a leitura dos votos do ep. 2.
+
+## 11/11/2026 (noite): motor próprio e fábrica
+- Pedido do Vito: um motor por perfil ("o motor 3D combinou muito com o Arquivo, eu manteria"). O Arquivo agora usa `arquivo-333/motor` (cópia da base `motor-v2`, que ficou congelada); nada importa mais de `motor-v2`.
+- Mudanças pequenas: 1º corte do gancho seco (o medidor agora vê 1,8 s), pulso de luz mais forte nas batidas (forca 2,5).
+- Ligado à fábrica: `fabrica.json` + `ferramentas/etapa.mjs`. Rodada completa com o teste (`proxima-estacao-ep02-v2teste`): todas as etapas passaram (movimento 8,41, parado 6,9%, -14 LUFS, 50,2 s). Usar o id do episódio na fábrica.
+- Rotina conferida depois da troca: quadros do O Sinal (ep. 2) e do Caso 02 (ep. 2) renderizam; o render da nuvem (`nuvem.mjs`) só pega `epNN.json` e faz checkout completo, então enxerga `arquivo-333/motor`.
+- O navegador do render às vezes não abre em 25 s (aconteceu 3 vezes hoje, com Ilha Zero e Hoje Sumiu renderizando): render e quadros tentam até 3 vezes.
