@@ -1,0 +1,13 @@
+{
+  "perfil": "hoje-sumiu",
+  "saida": "saida/hoje-sumiu-{episodio}.mp4",
+  "etapas": {
+    "roteiro": { "comando": "node ferramentas/etapa.mjs roteiro {episodio}" },
+    "voz": { "comando": "node ferramentas/etapa.mjs voz {episodio}", "tempo_max_min": 10 },
+    "ritmo": { "comando": "node ferramentas/etapa.mjs ritmo {episodio}" },
+    "render": { "comando": "node ferramentas/etapa.mjs render {episodio}", "tempo_max_min": 60 },
+    "som": { "comando": "node ferramentas/etapa.mjs som {episodio}" },
+    "medir": { "comando": "node ferramentas/etapa.mjs medir {episodio}", "tempo_max_min": 10 },
+    "kit": { "comando": "node ferramentas/etapa.mjs kit {episodio}" }
+  }
+}

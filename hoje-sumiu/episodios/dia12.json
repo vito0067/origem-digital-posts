@@ -1,0 +1,2325 @@
+{
+ "id": "hoje-sumiu-dia12",
+ "dia": 12,
+ "coisa": "a cor azul",
+ "velocidade": 1,
+ "falas": [
+  {
+   "fala": "Hoje sumiu a cor azul.",
+   "legenda": "Hoje sumiu a cor ~azul.~"
+  },
+  {
+   "fala": "Do mundo inteiro. Para sempre.",
+   "legenda": "Do mundo inteiro. Para *sempre.*"
+  },
+  {
+   "fala": "O comentário mais curtido foi a cor azul.",
+   "legenda": "O comentário mais *curtido* foi a cor *azul.*"
+  },
+  {
+   "fala": "Primeira manhã: o céu amanhece cinza.",
+   "legenda": "Primeira manhã: o *céu* amanhece *cinza.*"
+  },
+  {
+   "fala": "Ninguém sabe se vai chover.",
+   "legenda": "Ninguém sabe se vai *chover.*"
+  },
+  {
+   "fala": "O mar perde a graça.",
+   "legenda": "O *mar* perde a *graça.*"
+  },
+  {
+   "fala": "Em uma semana, a caneta azul vira só caneta.",
+   "legenda": "Em uma semana, a *caneta* azul vira só *caneta.*"
+  },
+  {
+   "fala": "Em duas semanas, o pintor não consegue mais fazer verde.",
+   "legenda": "Em duas semanas, o *pintor* não consegue mais fazer *verde.*"
+  },
+  {
+   "fala": "Feito sem câmera. Comente GUIA.",
+   "legenda": "*Feito* sem *câmera.* Comente *GUIA.*"
+  },
+  {
+   "fala": "Em um mês, toda calça azul vira calça cinza.",
+   "legenda": "Em um mês, toda *calça* azul vira calça *cinza.*"
+  },
+  {
+   "fala": "Em três meses, a arara azul vira só arara.",
+   "legenda": "Em três meses, a *arara* azul vira só *arara.*"
+  },
+  {
+   "fala": "No fim, ninguém mais diz que está tudo azul.",
+   "legenda": "No fim, ninguém mais diz que está *tudo* *azul.*"
+  },
+  {
+   "fala": "Mas ninguém reclama. Para todo mundo, azul nunca existiu.",
+   "legenda": "Mas ninguém reclama. Para todo mundo, azul *nunca existiu.*"
+  },
+  {
+   "fala": "Só o Seu Nilo lembra. Ele anotou.",
+   "legenda": "Só o *Seu Nilo* lembra. Ele *anotou.*",
+   "segura": 1.4
+  },
+  {
+   "fala": "Amanhã, outra coisa vai sumir.",
+   "legenda": "Amanhã, outra coisa vai *sumir.*"
+  },
+  {
+   "fala": "Quem escolhe é você. Comente o que some amanhã. O mais curtido decide.",
+   "legenda": "Quem escolhe é *você.* Comente o que some amanhã. O mais *curtido* decide."
+  }
+ ],
+ "cortes": [
+  [
+   0,
+   2.01
+  ],
+  [
+   2.56,
+   5.38
+  ],
+  [
+   5.93,
+   8.75
+  ],
+  [
+   9.3,
+   12.43
+  ],
+  [
+   12.98,
+   14.99
+  ],
+  [
+   15.54,
+   17.55
+  ],
+  [
+   18.1,
+   21.62
+  ],
+  [
+   22.17,
+   26.27
+  ],
+  [
+   26.82,
+   29.46
+  ],
+  [
+   30.01,
+   33.53
+  ],
+  [
+   34.08,
+   37.68
+  ],
+  [
+   38.23,
+   41.52
+  ],
+  [
+   42.07,
+   46.48
+  ],
+  [
+   47.03,
+   49.85
+  ],
+  [
+   50.4,
+   52.88
+  ],
+  [
+   53.43,
+   58.81
+  ]
+ ],
+ "cena": {
+  "cor": "#2f7dff",
+  "titulo": "a cor azul",
+  "motor": "livro",
+  "luzMotor": true,
+  "visual": "livro",
+  "semAzul": "@onda",
+  "semCarros": true,
+  "somemPredios": -10,
+  "lufs": -14,
+  "sumiram": [
+   "Dia 10: o chuveiro",
+   "Dia 11: os espelhos"
+  ],
+  "trilha": {
+   "nome": "misterio",
+   "constroi": [
+    "@3:voz",
+    "@5:voz",
+    "@7:voz",
+    "@9:voz",
+    "@10:voz"
+   ],
+   "climax": "@11:inicio"
+  },
+  "impactos": [
+   {
+    "em": "@onda",
+    "silencio": 0.5,
+    "volta": 0.4
+   },
+   {
+    "em": "@11:azul",
+    "silencio": 0.5,
+    "volta": 0.5
+   }
+  ],
+  "credito": {
+   "rotulo": "O MAIS CURTIDO",
+   "conta": "@yhago._cassiano",
+   "texto": "A cor azul",
+   "curtidas": 10
+  },
+  "divulgacao": {
+   "em": "@8:voz-0.05",
+   "ate": "@8:fim-0.05",
+   "titulo": "SEM CÂMERA",
+   "sub": "COMENTE GUIA",
+   "chamada": "LINK NA BIO"
+  },
+  "exemplos": [
+   "o sol",
+   "as nuvens",
+   "o mosquito"
+  ],
+  "heroi": {
+   "peca": {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     15.5
+    ],
+    "em": -1,
+    "sai": "@1:fim-0.2",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       -2.5,
+       0,
+       0
+      ],
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 0.95,
+        "ry": 1.15,
+        "cor": "#2f7dff",
+        "pos": [
+         0,
+         3,
+         0
+        ],
+        "sombra": {
+         "rx": 0.8,
+         "rz": 0.3,
+         "pos": [
+          0,
+          -2.96,
+          0.2
+         ]
+        }
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -0.16,
+          0
+         ],
+         [
+          0.16,
+          0
+         ],
+         [
+          0,
+          0.22
+         ]
+        ],
+        "cor": "#2f7dff",
+        "pos": [
+         0,
+         1.72,
+         0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -0.1,
+          -0.5
+         ],
+         [
+          0.06,
+          -0.5
+         ],
+         [
+          0.3,
+          0.45
+         ],
+         [
+          0.14,
+          0.45
+         ]
+        ],
+        "cor": "#ffffff",
+        "pos": [
+         -0.35,
+         3.25,
+         0.06
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 0.05,
+        "a": 1.3,
+        "p": 0.05,
+        "cor": "#8d99ae",
+        "pos": [
+         0,
+         1.1,
+         0
+        ]
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         0.2,
+         0,
+         0.9
+        ],
+        "escala": 1.35,
+        "roupa": "#ffb703",
+        "semente": 21,
+        "poses": [
+         {
+          "pose": "feliz"
+         },
+         {
+          "em": "@onda",
+          "pose": "susto"
+         }
+        ],
+        "balanca": {
+         "em": "@onda",
+         "amp": 0.04
+        }
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       0,
+       0,
+       0
+      ],
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0,
+          1.25
+         ],
+         [
+          0.9,
+          0.15
+         ],
+         [
+          0,
+          -1.25
+         ],
+         [
+          -0.9,
+          0.15
+         ]
+        ],
+        "cor": "#5cb8e4",
+        "pos": [
+         0,
+         3,
+         0
+        ],
+        "sombra": {
+         "rx": 0.7,
+         "rz": 0.28,
+         "pos": [
+          0,
+          -2.96,
+          0.2
+         ]
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 0.06,
+        "a": 2.5,
+        "p": 0.03,
+        "cor": "#ffffff",
+        "pos": [
+         0,
+         3,
+         0.05
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 1.8,
+        "a": 0.06,
+        "p": 0.03,
+        "cor": "#ffffff",
+        "pos": [
+         0,
+         3.15,
+         0.05
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 0.05,
+        "a": 1.5,
+        "p": 0.05,
+        "cor": "#8d99ae",
+        "pos": [
+         0,
+         1,
+         0
+        ]
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         0,
+         0,
+         0.9
+        ],
+        "escala": 1.35,
+        "roupa": "#f28aa5",
+        "semente": 22,
+        "poses": [
+         {
+          "pose": "feliz"
+         },
+         {
+          "em": "@onda",
+          "pose": "susto"
+         }
+        ],
+        "balanca": {
+         "em": "@onda",
+         "amp": 0.04
+        }
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       2.5,
+       0,
+       0
+      ],
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -1.25,
+          0
+         ],
+         [
+          -0.95,
+          0.55
+         ],
+         [
+          -0.4,
+          0.92
+         ],
+         [
+          0,
+          1
+         ],
+         [
+          0.4,
+          0.92
+         ],
+         [
+          0.95,
+          0.55
+         ],
+         [
+          1.25,
+          0
+         ]
+        ],
+        "cor": "#2f7dff",
+        "pos": [
+         0,
+         2.9,
+         0
+        ],
+        "sombra": {
+         "rx": 1,
+         "rz": 0.32,
+         "pos": [
+          0,
+          -2.86,
+          0.2
+         ]
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 0.09,
+        "a": 2.9,
+        "p": 0.09,
+        "cor": "#8d99ae",
+        "pos": [
+         0,
+         1.45,
+         -0.02
+        ]
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         -0.2,
+         0,
+         0.9
+        ],
+        "escala": 1.35,
+        "roupa": "#45c46b",
+        "semente": 23,
+        "poses": [
+         {
+          "pose": "feliz"
+         },
+         {
+          "em": "@onda",
+          "pose": "susto"
+         }
+        ],
+        "balanca": {
+         "em": "@onda",
+         "amp": 0.04
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "camera": [
+    0,
+    3.6,
+    30.5
+   ],
+   "alvo": [
+    0,
+    2.4,
+    15.5
+   ]
+  },
+  "cameras": [
+   {
+    "em": "@1:inicio-0.3",
+    "lugar": "cidade",
+    "perto": true
+   },
+   {
+    "em": "@2:inicio-0.3",
+    "lugar": "praca"
+   },
+   {
+    "em": "@3:inicio-0.3",
+    "pos": [
+     0,
+     3,
+     34
+    ],
+    "alvo": [
+     0,
+     5.2,
+     18
+    ],
+    "fov": 44,
+    "deriva": [
+     0,
+     0.1,
+     -0.4
+    ],
+    "foco": 0.3
+   },
+   {
+    "em": "@4:inicio-0.3",
+    "pos": [
+     0.8,
+     4.2,
+     33
+    ],
+    "alvo": [
+     0.24,
+     3,
+     18.6
+    ],
+    "fov": 40,
+    "deriva": [
+     -0.096,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@5:inicio-0.3",
+    "pos": [
+     0,
+     9,
+     36
+    ],
+    "alvo": [
+     0,
+     1.2,
+     20.5
+    ],
+    "fov": 42,
+    "deriva": [
+     0,
+     -0.2,
+     -0.5
+    ],
+    "foco": 0.4
+   },
+   {
+    "em": "@6:inicio-0.3",
+    "pos": [
+     0,
+     3.9,
+     33.5
+    ],
+    "alvo": [
+     0,
+     2.9,
+     18.6
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@7:inicio-0.3",
+    "pos": [
+     0.2,
+     3.9,
+     33.5
+    ],
+    "alvo": [
+     0.2,
+     2.9,
+     18.6
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@8:inicio-0.3",
+    "lugar": "cidade",
+    "perto": true
+   },
+   {
+    "em": "@9:inicio-0.3",
+    "pos": [
+     0,
+     2.2,
+     37.5
+    ],
+    "alvo": [
+     0,
+     0.5,
+     19.8
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.4
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@10:inicio-0.3",
+    "pos": [
+     0.4,
+     3.4,
+     30.5
+    ],
+    "alvo": [
+     0,
+     2.4,
+     19.8
+    ],
+    "fov": 40,
+    "deriva": [
+     -0.2,
+     0,
+     -0.4
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@11:inicio-0.3",
+    "pos": [
+     0,
+     3.8,
+     33
+    ],
+    "alvo": [
+     0,
+     3,
+     19.8
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@12:inicio-0.35",
+    "lugar": "praca"
+   },
+   {
+    "em": "@14:inicio-0.35",
+    "lugar": "cidade"
+   }
+  ],
+  "pecas": [
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@3:inicio-0.35",
+    "sai": "@4:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.2,
+       0,
+       2.6
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 31,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:cinza",
+        "pose": "susto"
+       }
+      ],
+      "balanca": {
+       "em": "@3:cinza",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       2.2
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 32,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:céu",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@3:céu",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.2,
+       0,
+       2.6
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 33,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:cinza",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@3:cinza",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@4:inicio-0.35",
+    "sai": "@5:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       -2.3,
+       0,
+       2.3
+      ],
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -1,
+          0
+         ],
+         [
+          -0.75,
+          0.45
+         ],
+         [
+          -0.3,
+          0.72
+         ],
+         [
+          0,
+          0.78
+         ],
+         [
+          0.3,
+          0.72
+         ],
+         [
+          0.75,
+          0.45
+         ],
+         [
+          1,
+          0
+         ]
+        ],
+        "cor": "#ffd23f",
+        "pos": [
+         0.25,
+         3.25,
+         0.2
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 0.07,
+        "a": 1.6,
+        "p": 0.07,
+        "cor": "#59616f",
+        "pos": [
+         0.25,
+         2.5,
+         0.18
+        ]
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         0,
+         0,
+         0
+        ],
+        "escala": 1.6,
+        "roupa": "#ff9f1c",
+        "semente": 41,
+        "poses": [
+         {
+          "pose": "normal"
+         },
+         {
+          "em": "@4:chover",
+          "pose": "shrug"
+         }
+        ],
+        "balanca": {
+         "em": "@4:chover",
+         "amp": 0.04
+        }
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       0,
+       0,
+       2.3
+      ],
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -1,
+          0
+         ],
+         [
+          -0.75,
+          0.45
+         ],
+         [
+          -0.3,
+          0.72
+         ],
+         [
+          0,
+          0.78
+         ],
+         [
+          0.3,
+          0.72
+         ],
+         [
+          0.75,
+          0.45
+         ],
+         [
+          1,
+          0
+         ]
+        ],
+        "cor": "#f28aa5",
+        "pos": [
+         0.25,
+         3.25,
+         0.2
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 0.07,
+        "a": 1.6,
+        "p": 0.07,
+        "cor": "#59616f",
+        "pos": [
+         0.25,
+         2.5,
+         0.18
+        ]
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         0,
+         0,
+         0
+        ],
+        "escala": 1.6,
+        "roupa": "#45c46b",
+        "semente": 42,
+        "poses": [
+         {
+          "pose": "normal"
+         },
+         {
+          "em": "@4:chover",
+          "pose": "shrug"
+         }
+        ],
+        "balanca": {
+         "em": "@4:chover",
+         "amp": 0.04
+        }
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       2.3,
+       0,
+       2.3
+      ],
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -1,
+          0
+         ],
+         [
+          -0.75,
+          0.45
+         ],
+         [
+          -0.3,
+          0.72
+         ],
+         [
+          0,
+          0.78
+         ],
+         [
+          0.3,
+          0.72
+         ],
+         [
+          0.75,
+          0.45
+         ],
+         [
+          1,
+          0
+         ]
+        ],
+        "cor": "#45c46b",
+        "pos": [
+         0.25,
+         3.25,
+         0.2
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 0.07,
+        "a": 1.6,
+        "p": 0.07,
+        "cor": "#59616f",
+        "pos": [
+         0.25,
+         2.5,
+         0.18
+        ]
+       },
+       {
+        "peca": "pessoa",
+        "pos": [
+         0,
+         0,
+         0
+        ],
+        "escala": 1.6,
+        "roupa": "#ffb703",
+        "semente": 43,
+        "poses": [
+         {
+          "pose": "normal"
+         },
+         {
+          "em": "@4:chover",
+          "pose": "shrug"
+         }
+        ],
+        "balanca": {
+         "em": "@4:chover",
+         "amp": 0.04
+        }
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     18.5
+    ],
+    "em": "@5:inicio-0.35",
+    "sai": "@6:inicio",
+    "filhos": [
+     {
+      "forma": "retangulo",
+      "l": 24,
+      "a": 2.4,
+      "cor": "#ffe9a8",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       0,
+       0.05,
+       -0.4
+      ],
+      "canto": 0.3
+     },
+     {
+      "forma": "retangulo",
+      "l": 24,
+      "a": 4.2,
+      "cor": "#8fd6ff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       0,
+       0.06,
+       2.6
+      ],
+      "canto": 0.3
+     },
+     {
+      "forma": "retangulo",
+      "l": 24,
+      "a": 1.6,
+      "cor": "#ffe9a8",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       0,
+       0.07,
+       5.4
+      ],
+      "canto": 0.3
+     },
+     {
+      "forma": "circulo",
+      "r": 0.45,
+      "cor": "#ff9f1c",
+      "pos": [
+       -1.6,
+       0.5,
+       5.2
+      ]
+     },
+     {
+      "forma": "circulo",
+      "r": 0.2,
+      "cor": "#ffffff",
+      "pos": [
+       -1.6,
+       0.6,
+       5.25
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       -6,
+       0.09,
+       1.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       -4,
+       0.09,
+       2.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       -2,
+       0.09,
+       3.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       0,
+       0.09,
+       1.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       2,
+       0.09,
+       2.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       4,
+       0.09,
+       3.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       6,
+       0.09,
+       1.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       -5,
+       0.09,
+       2.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       -1,
+       0.09,
+       3.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.8,
+      "ry": 0.13,
+      "cor": "#ffffff",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       3,
+       0.09,
+       1.2
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -5.5,
+       0,
+       -0.3
+      ],
+      "escala": 1.45,
+      "roupa": "#ffb703",
+      "semente": 50,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:graça",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:graça",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -3.3,
+       0,
+       0.10000000000000003
+      ],
+      "escala": 1.45,
+      "roupa": "#f28aa5",
+      "semente": 51,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:graça",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:graça",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.0999999999999996,
+       0,
+       -0.3
+      ],
+      "escala": 1.45,
+      "roupa": "#45c46b",
+      "semente": 52,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:graça",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:graça",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.1000000000000005,
+       0,
+       0.10000000000000003
+      ],
+      "escala": 1.45,
+      "roupa": "#ff9f1c",
+      "semente": 53,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:graça",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:graça",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.3000000000000007,
+       0,
+       -0.3
+      ],
+      "escala": 1.45,
+      "roupa": "#ffd23f",
+      "semente": 54,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:graça",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:graça",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       5.5,
+       0,
+       0.10000000000000003
+      ],
+      "escala": 1.45,
+      "roupa": "#b794e6",
+      "semente": 55,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:graça",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@5:graça",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@6:inicio-0.35",
+    "sai": "@7:inicio",
+    "filhos": [
+     {
+      "forma": "caixa",
+      "l": 0.5,
+      "a": 2.9,
+      "p": 0.5,
+      "cor": "#2f7dff",
+      "pos": [
+       -0.9,
+       2.05,
+       0
+      ],
+      "rot": [
+       0,
+       0,
+       -0.1
+      ],
+      "sombra": {
+       "rx": 0.7,
+       "rz": 0.3,
+       "pos": [
+        0.15,
+        -2,
+        0.2
+       ]
+      }
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        -0.25,
+        0.5
+       ],
+       [
+        0.25,
+        0.5
+       ],
+       [
+        0,
+        0
+       ]
+      ],
+      "cor": "#e8e8e8",
+      "pos": [
+       -1.08,
+       0.12,
+       0.26
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 0.56,
+      "a": 0.5,
+      "p": 0.56,
+      "cor": "#1f5fd0",
+      "pos": [
+       -0.74,
+       3.7,
+       0
+      ],
+      "rot": [
+       0,
+       0,
+       -0.1
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 0.1,
+      "a": 1.1,
+      "p": 0.1,
+      "cor": "#ffffff",
+      "pos": [
+       -0.52,
+       3,
+       0.3
+      ],
+      "rot": [
+       0,
+       0,
+       -0.1
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1,
+       0,
+       0.9
+      ],
+      "escala": 1.6,
+      "roupa": "#ffd23f",
+      "semente": 61,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:só",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@6:só",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@7:inicio-0.35",
+    "sai": "@8:inicio",
+    "filhos": [
+     {
+      "forma": "retangulo",
+      "l": 1.9,
+      "a": 2.2,
+      "cor": "#ffffff",
+      "pos": [
+       -1.7,
+       1.6,
+       0
+      ],
+      "canto": 0.06,
+      "sombra": {
+       "rx": 1,
+       "rz": 0.3,
+       "pos": [
+        0,
+        -1.56,
+        0.2
+       ]
+      }
+     },
+     {
+      "forma": "caixa",
+      "l": 0.12,
+      "a": 1.6,
+      "p": 0.12,
+      "cor": "#8a5a3c",
+      "pos": [
+       -1.7,
+       0.8,
+       -0.12
+      ]
+     },
+     {
+      "forma": "circulo",
+      "r": 0.45,
+      "cor": "#ffd23f",
+      "pos": [
+       -2,
+       3.1,
+       0.07
+      ]
+     },
+     {
+      "forma": "circulo",
+      "r": 0.45,
+      "cor": "#2f7dff",
+      "pos": [
+       -1.4,
+       2.5,
+       0.09
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 1.9,
+      "a": 1.5,
+      "p": 0.8,
+      "cor": "#b98a57",
+      "pos": [
+       0.25,
+       0.75,
+       1
+      ],
+      "sombra": {
+       "rx": 1.2,
+       "rz": 0.4,
+       "pos": [
+        0,
+        -0.72,
+        0.1
+       ]
+      }
+     },
+     {
+      "forma": "caixa",
+      "l": 0.6,
+      "a": 0.6,
+      "p": 0.6,
+      "cor": "#ffd23f",
+      "pos": [
+       -0.2,
+       1.8,
+       1
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 0.6,
+      "a": 0.6,
+      "p": 0.6,
+      "cor": "#2f7dff",
+      "pos": [
+       0.7,
+       1.8,
+       1
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2,
+       0,
+       0.4
+      ],
+      "escala": 1.6,
+      "roupa": "#ffffff",
+      "semente": 71,
+      "poses": [
+       {
+        "pose": "mostra"
+       },
+       {
+        "em": "@7:verde",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@7:verde",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@9:inicio-0.35",
+    "sai": "@10:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.2,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 91,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@9:cinza",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@9:cinza",
+       "amp": 0.04
+      },
+      "calca": "#2f7dff"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       2
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 92,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@9:cinza",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@9:cinza",
+       "amp": 0.04
+      },
+      "calca": "#1f5fd0"
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.2,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 93,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@9:cinza",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@9:cinza",
+       "amp": 0.04
+      },
+      "calca": "#2f7dff"
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     19.8
+    ],
+    "em": "@10:inicio-0.35",
+    "sai": "@11:inicio",
+    "filhos": [
+     {
+      "forma": "caixa",
+      "l": 0.14,
+      "a": 1.5,
+      "p": 0.14,
+      "cor": "#8a5a3c",
+      "pos": [
+       0,
+       0.75,
+       0
+      ],
+      "sombra": {
+       "rx": 0.9,
+       "rz": 0.3,
+       "pos": [
+        0,
+        -0.72,
+        0.15
+       ]
+      }
+     },
+     {
+      "forma": "caixa",
+      "l": 2,
+      "a": 0.14,
+      "p": 0.14,
+      "cor": "#8a5a3c",
+      "pos": [
+       0,
+       1.5,
+       0
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.2,
+      "ry": 0.95,
+      "cor": "#1f5fd0",
+      "rot": [
+       0,
+       0,
+       0.25
+      ],
+      "pos": [
+       -0.35,
+       0.95,
+       0.04
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.5,
+      "ry": 0.82,
+      "cor": "#2f7dff",
+      "pos": [
+       0,
+       2.25,
+       0.1
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.3,
+      "ry": 0.62,
+      "cor": "#1f5fd0",
+      "rot": [
+       0,
+       0,
+       0.3
+      ],
+      "pos": [
+       -0.2,
+       2.15,
+       0.16
+      ]
+     },
+     {
+      "forma": "circulo",
+      "r": 0.42,
+      "cor": "#2f7dff",
+      "pos": [
+       0.12,
+       3.15,
+       0.14
+      ]
+     },
+     {
+      "forma": "circulo",
+      "r": 0.2,
+      "cor": "#ffd23f",
+      "pos": [
+       0.26,
+       3.12,
+       0.2
+      ]
+     },
+     {
+      "forma": "circulo",
+      "r": 0.07,
+      "cor": "#27324a",
+      "pos": [
+       0.28,
+       3.16,
+       0.24
+      ]
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.2
+       ],
+       [
+        0.42,
+        0.02
+       ],
+       [
+        0.12,
+        -0.26
+       ],
+       [
+        0,
+        -0.1
+       ]
+      ],
+      "cor": "#3a3e47",
+      "pos": [
+       0.45,
+       3.02,
+       0.2
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.07,
+      "ry": 0.14,
+      "cor": "#ffd23f",
+      "pos": [
+       -0.14,
+       1.62,
+       0.18
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.07,
+      "ry": 0.14,
+      "cor": "#ffd23f",
+      "pos": [
+       0.14,
+       1.62,
+       0.18
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@11:inicio-0.35",
+    "sai": "@12:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.6,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#ff9f1c",
+      "semente": 111,
+      "poses": [
+       {
+        "pose": "feliz"
+       },
+       {
+        "em": "@11:azul",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@11:azul",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -0.9,
+       0,
+       2.2
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 112,
+      "poses": [
+       {
+        "pose": "mostra"
+       },
+       {
+        "em": "@11:azul",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@11:azul",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0.9,
+       0,
+       2.2
+      ],
+      "escala": 1.6,
+      "roupa": "#ffd23f",
+      "semente": 113,
+      "poses": [
+       {
+        "pose": "feliz"
+       },
+       {
+        "em": "@11:azul",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@11:azul",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.6,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 114,
+      "poses": [
+       {
+        "pose": "mostra"
+       },
+       {
+        "em": "@11:azul",
+        "pose": "azedo"
+       }
+      ],
+      "balanca": {
+       "em": "@11:azul",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@12:inicio-0.35",
+    "sai": "@13:inicio-0.25",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 12,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 13,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#ff9f1c",
+      "semente": 14,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 15,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     }
+    ]
+   }
+  ],
+  "selos": [
+   {
+    "txt": "CÉU CINZA",
+    "em": "@3:cinza-0.1",
+    "ate": "@4:inicio",
+    "cor": "#27324a",
+    "fundo": "#e8e8e8",
+    "r": -2
+   },
+   {
+    "txt": "VAI CHOVER?",
+    "em": "@4:chover-0.15",
+    "ate": "@5:inicio",
+    "cor": "#27324a",
+    "fundo": "#ffd23f",
+    "r": 2
+   },
+   {
+    "txt": "MAR SEM GRAÇA",
+    "em": "@5:graça-0.15",
+    "ate": "@6:inicio",
+    "cor": "#27324a",
+    "fundo": "#ffe9b3",
+    "r": -2
+   },
+   {
+    "txt": "SÓ CANETA",
+    "em": "@6:só-0.1",
+    "ate": "@7:inicio",
+    "cor": "#27324a",
+    "fundo": "#ffd1e0",
+    "r": 2
+   },
+   {
+    "txt": "CADÊ O VERDE?",
+    "em": "@7:verde-0.15",
+    "ate": "@8:inicio",
+    "cor": "#27324a",
+    "fundo": "#d6f5e0",
+    "r": -2
+   },
+   {
+    "txt": "CALÇA CINZA",
+    "em": "@9:cinza-0.1",
+    "ate": "@10:inicio",
+    "cor": "#27324a",
+    "fundo": "#e8e8e8",
+    "r": 2
+   },
+   {
+    "txt": "SÓ ARARA",
+    "em": "@10:só-0.1",
+    "ate": "@11:inicio",
+    "cor": "#27324a",
+    "fundo": "#ffd23f",
+    "r": -2
+   },
+   {
+    "txt": "TUDO... CINZA?",
+    "em": "@11:azul-0.1",
+    "ate": "@12:inicio",
+    "cor": "#ffffff",
+    "fundo": "#3a3e47",
+    "borda": "#fffdf6",
+    "r": 2
+   }
+  ],
+  "etiquetas": [
+   {
+    "txt": "NINGUÉM RECLAMA",
+    "pos": [
+     0,
+     4.9,
+     18
+    ],
+    "em": "@reclama",
+    "ate": "@13:inicio-0.3"
+   },
+   {
+    "txt": "SEU NILO",
+    "pos": [
+     -0.9,
+     4.25,
+     18.5
+    ],
+    "em": "@nilo+0.7",
+    "ate": "@13:anotou-0.2",
+    "cor": "ouro"
+   }
+  ],
+  "sons": [
+   {
+    "em": "@2:inicio",
+    "tipo": "carimbo",
+    "volume": 0.9
+   },
+   {
+    "em": "@3:cinza",
+    "tipo": "virada",
+    "volume": 0.8
+   },
+   {
+    "em": "@4:chover",
+    "tipo": "pop",
+    "volume": 0.8
+   },
+   {
+    "em": "@5:graça",
+    "tipo": "virada",
+    "volume": 0.7
+   },
+   {
+    "em": "@6:só",
+    "tipo": "pop",
+    "volume": 0.8
+   },
+   {
+    "em": "@7:verde",
+    "tipo": "nhac",
+    "volume": 0.7
+   },
+   {
+    "em": "@9:cinza",
+    "tipo": "pop",
+    "volume": 0.8
+   },
+   {
+    "em": "@10:só",
+    "tipo": "virada",
+    "volume": 0.8
+   },
+   {
+    "em": "@11:azul",
+    "tipo": "glitch",
+    "volume": 0.9
+   }
+  ],
+  "transicoes": [],
+  "tremores": [
+   "@11:azul"
+  ]
+ }
+}

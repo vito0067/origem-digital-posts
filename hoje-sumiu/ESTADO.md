@@ -90,3 +90,19 @@ Mark, sem aceleração. Detalhes na skill `hoje-sumiu`.
 
 ## Rumo
 Vídeo longo não é para este perfil agora. Cada dia precisa ser de fato diferente, porque conteúdo repetitivo pode barrar a monetização no YouTube.
+
+## 11/11/2026 · Motor do Hoje Sumiu (pasta `motor`) e fábrica
+- Vito: um motor por perfil; o motor 3D v2 não combinou com o Hoje Sumiu. Criado `hoje-sumiu\motor` (independente da `motor-v2`).
+- `cena.motor: "livro"`: câmera de leitor (um enquadramento por fala, aproximação lenta), troca de cena virando a página, peças em stop motion (2 em 2 quadros), legenda em tira de papel com marca-texto, luz "papel-quente" (`luzMotor: true`, voto do Vito para o Dia 12 em diante), silêncio de 0,5 s antes do sumiço, comentários do cartão final espaçados.
+- Teste: `episodios/dia11-livro.json` → `saida/hoje-sumiu-dia11-livro.mp4`. NÃO publicado; aguarda o Vito. O dia sai no jeito atual até ele aprovar.
+- Fábrica: `fabrica.json` + `ferramentas/etapa.mjs`; simulação passa (`node ../fabrica/fabrica.mjs hoje-sumiu dia11-livro --simular`).
+- Não feito: sumiço com silhueta recortada; mola nova das peças. Nada enviado ao GitHub (motor-v2 e motor ainda fora do repositório).
+
+## 11/11/2026 · Dia 12: a cor azul (PUBLICADO nas 3 redes)
+- Tema: "A cor azul" (Instagram, @yhago._cassiano, 10 curtidas; somando as redes 26 curtidas em 8 comentários contra 16 de "As nuvens"). TikTok do Dia 11 sem comentários.
+- Primeiro dia no motor "livro" (aprovado pelo Vito em 11/11): câmera de leitor, página virando, legenda em tira de papel, luz do motor. Efeito novo `semAzul: "@onda"`: filtro que deixa cinza todo azul da tela (céu, água, roupa, letras). **Do Dia 13 em diante use `semAzul: -10`** (o azul já sumiu) e não use azul como destaque.
+- Links: YouTube https://youtube.com/shorts/BJJ_56bwRNk · Instagram https://www.instagram.com/reel/DfnqNZROd7H/ · TikTok pelo Studio.
+- Medidas: 56,9 s, movimento 6,44, 13,4% parado, -13,9 LUFS. /watch 9,5. Voz: 11 falas novas (~2,8 créditos), 5 reaproveitadas.
+- Números em 11/11: YouTube 61 inscritos, Shorts de 1,1 a 1,4 mil views, retenção Dia 5 89% e Dia 8 88% (os outros 46% a 68%); Instagram 63 seguidores, Reels de 0,9 a 2,6 mil; TikTok ~520 por vídeo.
+- Pendências: Vito fixar o comentário (texto em publicacao/dia12.md). O 1º quadro (1/30 s) sai sem o letreiro porque o Dia 12 não usou `abertura`: no Dia 13, garantir o título no quadro 0. Sumiço com silhueta e mola nova continuam por fazer.
+- Já sumiu: cor vermelha, frio, boleto, energia, placas, Wi-Fi, veículos, sono, apartamentos e casas, chuveiro quente, espelhos, cor azul.

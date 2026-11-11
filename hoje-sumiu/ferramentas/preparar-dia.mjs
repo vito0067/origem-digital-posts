@@ -104,6 +104,8 @@ else for (let c = 0; c * cp < duracao + 1; c++) {
   for (let k = 0; k < 4; k++) { if (k % 2 === 0) m.soma(bumbo(0.55), ini + k * b, 0.5); m.soma(chimbal(), ini + (k + 0.5) * b, 0.16); if (final && k % 2 === 1) m.soma(chimbal(true), ini + k * b, 0.1); }
 }
 reverb(m, { sala: 0.5, amortece: 0.5, mistura: 0.16 });
+// motor v2 (`cena.motor: "v2"`): a trilha silencia sozinha antes de cada impacto de `cena.impactos` e volta depois
+if (ep.cena?.motor === "v2" && ep.cena.impactos?.length) { const { volumeTrilha } = await import("./motor/index.mjs"); const v = volumeTrilha(ep.cena.impactos, 1); m.volume(v); }
 // a música acaba junto com o vídeo, num acorde
 m.volume((x) => (x > duracao - 0.5 ? Math.max(0, (duracao + 0.1 - x) / 0.6) : 1));
 

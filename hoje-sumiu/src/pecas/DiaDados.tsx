@@ -6,6 +6,9 @@ import * as THREE from "three";
 import { sm } from "../mundo-papel";
 import { AMAR, AZUL, CAVEAT, CENARIOS, CINZA, Cena3D, Comentario, Contador, Etiqueta, LILITA, Legenda, LinhaDia, NAVY, Tomada, V, adesivo, camBase, lim, sai, volta } from "../Dia";
 import { Spec, montaCena } from "./objetos";
+// motor 3D v2 (só quando o episódio tem `cena.motor: "v2"`): câmera calma, luz "papel-quente" e pulso de luz no impacto
+import { cameraV2 } from "../../motor/camera-calma.mjs";
+import { CLIMAS, montarLuz } from "../../motor/index.mjs";
 
 const CORES: Record<string, string> = { azul: AZUL, cinza: CINZA, amarelo: "#ffc400", verde: "#2fd46b", laranja: "#ff9f1c", gelo: "#19a7e0", rosa: "#d77fbb", ouro: AMAR };
 const cor = (c?: string) => (c ? CORES[c] ?? c : undefined);
@@ -147,9 +150,26 @@ const Transicoes: React.FC<{ t: number; lista: Spec[] }> = ({ t, lista }) => <>{
   return <AbsoluteFill key={i} style={{ background: `linear-gradient(${110 + q * 40}deg, transparent ${q * 120 - 40}%, rgba(255,200,110,.75) ${q * 120 - 15}%, rgba(255,240,200,.85) ${q * 120}%, transparent ${q * 120 + 25}%)`, mixBlendMode: "screen", opacity: Math.sin(q * Math.PI) }} />;
 })}</>;
 
+// virada de página (motor "livro"): uma folha maior que a tela atravessa da direita para a esquerda em 0,56 s.
+// No instante `em` ela cobre a tela inteira: é ali, escondida, que a cena troca. A borda da frente tem a sombra da dobra.
+const Pagina: React.FC<{ t: number; em: number }> = ({ t, em }) => {
+  const q = (t - em + 0.28) / 0.56; if (q <= 0 || q >= 1) return null;
+  const p = q < 0.5 ? 0.5 * Math.pow(q * 2, 1.6) : 1 - 0.5 * Math.pow((1 - q) * 2, 1.6), x = 1080 - p * (1080 + 1500), curva = Math.sin(Math.PI * q);
+  return <AbsoluteFill style={{ pointerEvents: "none" }}>
+    <div style={{ position: "absolute", top: -60, bottom: -60, left: x - 90, width: 90, background: "linear-gradient(90deg, rgba(60,35,10,0), rgba(60,35,10,.28))" }} />
+    <div style={{ position: "absolute", top: -60, bottom: -60, left: x, width: 1500, transform: `skewY(${(-2.2 * curva).toFixed(2)}deg)`, background: "linear-gradient(90deg, #d9c39a 0%, #f3e4c6 5%, #fbf3e0 16%, #f7ead0 60%, #efdcb8 92%, #cdb489 100%)", boxShadow: "30px 0 60px rgba(60,35,10,.30)" }}>
+      {[0, 1, 2, 3, 4, 5, 6].map((k) => <div key={k} style={{ position: "absolute", left: 150, right: 130, top: 330 + k * 210, height: 7, borderRadius: 7, background: "rgba(120,90,50,.13)" }} />)}
+    </div>
+  </AbsoluteFill>;
+};
 export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
   const f = useCurrentFrame(), t = f / 30, m = l.marcas, c = l.cenas, d = l.cena, final = c[c.length - 1];
-  CENARIOS[l.dia] = (w) => { montaCena(w, [...(d.heroi?.peca ? [d.heroi.peca] : []), ...(d.pecas ?? [])]); const fim = w.extra; w.extra = (q) => { fim?.(q); if (d.calor) w.sol.scale.setScalar(1 + 0.45 * sm((q - m.onda - 0.5) / 5));
+  CENARIOS[l.dia] = (w) => { montaCena(w, [...(d.heroi?.peca ? [d.heroi.peca] : []), ...(d.pecas ?? [])]);
+    // motor v2 + `luzMotor: true` (a luz é opção à parte: deixa o livro ~14% mais escuro e contrastado; aguarda o voto do Vito): troca as três luzes do livro pelo jogo de luz "papel-quente". Ajuste deste perfil: a luz fica 3,5x mais longe
+    // (o livro tem ~100 unidades; na distância padrão do motor metade do cenário ficaria atrás da luz, sem sombra) e a neblina do livro é mantida.
+    let luz: any = null;
+    if ((d.motor === "v2" || d.motor === "livro") && d.luzMotor) { const nb = w.cena.fog, fundo = w.cena.background; [...w.cena.children].filter((o: any) => o.isLight).forEach((o: any) => w.cena.remove(o)); const k = CLIMAS["papel-quente"] as any; luz = montarLuz(THREE, w.cena, { ...k, principal: [k.principal[0], k.principal[1], [24.5, 42, 21]], recorte: [k.recorte[0], k.recorte[1], [-21, 17.5, -24.5]], ...(d.luz ?? {}) }, { alcance: 50, alvo: [0, 0, -2], mapa: 4096 }); if (!d.luz?.neblina) w.cena.fog = nb; if (!d.luz?.fundo) w.cena.background = fundo; }
+    const fim = w.extra; w.extra = (q) => { fim?.(q); if (luz) { let ult = -99; for (const i of d.impactos ?? []) if (i.em <= q && i.em > ult) ult = i.em; luz.pulso(q - ult, 0.5); } if (d.calor) w.sol.scale.setScalar(1 + 0.45 * sm((q - m.onda - 0.5) / 5));
     // `somemCarros`: os carros do trânsito do fundo encolhem em onda nesse tempo e não voltam (dia em que os veículos somem)
     // `semCarros`: os veículos já sumiram em um dia anterior (Dia 7): nenhum carro, caminhão ou giroflex aparece em lugar nenhum
     if (d.semCarros) { w.carros.forEach((c: any) => { c.raiz.visible = false; }); if (w.caminhao) w.caminhao.visible = false; if (w.giroflex) w.giroflex.visible = false; }
@@ -157,21 +177,39 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
     if (d.somemPredios !== undefined) w.tetos.forEach((p: any) => { const dt = d.somemPredios + Math.hypot(p.x, p.z + 6) * 0.05, k = 1 - sm((q - dt) / 0.5); p.g.scale.y = k >= 1 ? 1 : Math.max(0.02, Math.cos((1 - k) * Math.PI / 2)); p.g.visible = k > 0.02; });
     if (d.somemCarros !== undefined) w.carros.forEach((c: any, i: number) => { const k = 1 - sm((q - d.somemCarros - (i % 13) * 0.08) / 0.35); if (k < 1) { c.raiz.scale.multiplyScalar(Math.max(0.002, k)); c.raiz.visible = c.raiz.visible && k > 0.01; } }); }; };
   const T = useMemo(() => tomadas(l), [l]);
-  const cam = camBase(T, t);
+  const V2 = useMemo(() => (d.motor === "v2" || d.motor === "livro" ? cameraV2(l) : null), [l]);
+  // motor "livro": a troca de plano é VIRAR A PÁGINA (não corte seco) e as peças andam de dois em dois quadros (stop motion)
+  const viras: number[] = d.motor === "livro" && V2 ? V2.viradas : [];
+  const tStop = d.motor === "livro" ? Math.floor(f / 2) * 2 / 30 : t;
+  const cam: any = V2 ? (() => { const k = V2.camera(t); return { pos: [...k.pos], alvo: k.alvo, fov: k.fov, foco: V2.foco(t), arrasto: 0 }; })() : camBase(T, t);
   for (const [e, a] of [[m.onda, 0.12], [m.regra, 0.06], [m.interrogacao, 0.14], ...(d.tremores ?? []).map((x: number) => [x, 0.1])] as [number, number][]) { const q = t - e; if (q > 0 && q < 0.55) { const A = a * Math.exp(-q * 8); cam.pos[0] += Math.sin(t * 71) * A; cam.pos[1] += Math.cos(t * 63) * A; cam.fov -= A * 16; } }
   const P = (v: V) => { const k = new THREE.PerspectiveCamera(cam.fov, 1080 / 1920, 0.1, 900); k.position.set(...cam.pos); k.lookAt(...cam.alvo); k.updateMatrixWorld(); k.updateProjectionMatrix(); const q = new THREE.Vector3(...v).project(k); return { x: (q.x + 1) * 540, y: (1 - q.y) * 960 }; };
   const virou = t >= m.onda + 0.15, gancho = t < m.onda + 0.55 ? (t < m.onda + 0.3 ? 1 : 1 - sai((t - m.onda - 0.3) / 0.25)) : 0, flipV = sm((t - m.onda) / 0.3);
   const corDia = cor(d.cor) ?? AZUL, calor = d.calor ? 0.16 * sm((t - m.onda - 0.5) / 5) * (t > c[m.iVirada].inicio ? 0.6 : 1) : 0;
   const cad = sai((t - m.anotou + 0.15) / 0.3) * (t > c[m.iChamado].inicio ? 1 - sai((t - c[m.iChamado].inicio) / 0.2) : 1);
   const atual = `Dia ${l.dia}: ${l.coisa}`, nCad = Math.floor(lim((t - m.anotou) / 1.2) * atual.length + 0.001), antes: string[] = (d.sumiram ?? []).slice(-2);
+  const semAzul: number = d.semAzul === undefined ? 0 : sm((t - d.semAzul) / 0.5);
   const fimCard = t >= m.comenta - 0.05, ate = final.vozEm + final.vozDur;
   const coisas = (n: number) => `${n} COISA${n === 1 ? "" : "S"} SUMI${n === 1 ? "U" : "RAM"} · SÓ 1 PESSOA LEMBRA`;
   return (
-    <AbsoluteFill style={{ background: "#f5e3c8", overflow: "hidden" }}>
+    <AbsoluteFill style={{ background: "#f5e3c8", overflow: "hidden", ...(semAzul > 0 ? { filter: "url(#sem-azul)" } : {}) }}>
+      {/* `semAzul` (Dia 12, a cor azul sumiu): tudo o que é azul na tela inteira (céu, água, roupa, letra) vira cinza. Número = quando some; negativo = já sumiu antes do vídeo.
+          O filtro mede o quanto cada ponto é azul (azul acima do vermelho e do verde) e troca só esses pontos pela versão cinza. */}
+      {semAzul > 0 && <svg width="0" height="0" style={{ position: "absolute" }}><filter id="sem-azul" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+        <feColorMatrix in="SourceGraphic" type="matrix" values="0.30 0.59 0.11 0 0.03  0.30 0.59 0.11 0 0.03  0.30 0.59 0.11 0 0.03  0 0 0 1 0" result="cinza" />
+        <feColorMatrix in="SourceGraphic" type="matrix" values={`0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  ${-7 * semAzul} 0 ${7 * semAzul} 0 ${-0.25 * semAzul}`} result="m1" />
+        <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 -7 7 0 1.0" result="m2" />
+        <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  -8 8 0 0 0.7" result="m3" />{/* roxo e rosa têm mais vermelho que verde: ficam de fora */}
+        <feComposite in="m1" in2="m2" operator="in" result="m12" />
+        <feComposite in="m12" in2="m3" operator="in" result="mascara" />
+        <feComposite in="cinza" in2="mascara" operator="in" result="cinzaSo" />
+        <feComposite in="cinzaSo" in2="SourceGraphic" operator="over" />
+      </filter></svg>}
       {/* visual "livro" (Dia 11 v2): cores mais vivas e quentes, luz de sol vindo de cima à esquerda e bordas escurecidas, como um livro iluminado na mesa */}
-      <AbsoluteFill style={d.visual === "livro" ? { filter: "saturate(1.28) contrast(1.08) brightness(1.03)" } : undefined}><Cena3D t={t} c={cam} m={m} k={f} /></AbsoluteFill>
+      <AbsoluteFill style={d.visual === "livro" ? { filter: "saturate(1.28) contrast(1.08) brightness(1.03)" } : undefined}><Cena3D t={tStop} c={cam} m={m} k={f} /></AbsoluteFill>
       {d.visual === "livro" && <AbsoluteFill style={{ background: "linear-gradient(155deg, rgba(255,214,130,.34) 0%, rgba(255,214,130,0) 42%, rgba(40,30,90,.20) 100%)", mixBlendMode: "soft-light" }} />}
       {d.visual === "livro" && <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 44%, transparent 52%, rgba(40,22,8,.36) 100%)" }} />}
+      {viras.map((ini: number, i: number) => <Pagina key={i} t={t} em={ini} />)}
       <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent)", maskImage: "linear-gradient(to bottom, black 20%, transparent)", opacity: cam.foco }} />
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to top, black 20%, transparent)", maskImage: "linear-gradient(to top, black 20%, transparent)", opacity: cam.foco }} />
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 46%, transparent 58%, rgba(70,40,10,.2) 100%)" }} />
@@ -204,14 +242,14 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
       {fimCard && !d.opcoes && <div style={{ position: "absolute", top: 360, left: 60, right: 60, display: "flex", flexDirection: "column", gap: 20 }}>
         <div style={{ textAlign: "center", fontFamily: LILITA, fontSize: 124, lineHeight: 1, color: NAVY, ...adesivo(20, 10), transform: `rotate(-2deg) scale(${volta((t - m.comenta) / 0.28)})` }}>O QUE SOME<br /><span style={{ color: AZUL }}>AMANHÃ?</span></div>
         <div style={{ height: 8 }} />
-        {((d.exemplos ?? ["o boleto", "as chaves", "o despertador"]) as string[]).map((x, i) => <Comentario key={x} txt={x} t={t} em={m.comenta + 0.55 + i * 0.45} r={[-2, 1.5, -1][i % 3]} />)}
+        {((d.exemplos ?? ["o boleto", "as chaves", "o despertador"]) as string[]).map((x, i) => <Comentario key={x} txt={x} t={t} em={m.comenta + 0.55 + i * (d.motor === "livro" ? 1.3 : 0.45)} r={[-2, 1.5, -1][i % 3]} />)}
         <div style={{ alignSelf: "center", fontFamily: LILITA, fontSize: 30, color: "#fff", background: "rgba(22,35,63,.82)", padding: "7px 18px 5px", borderRadius: 10, opacity: lim((t - m.comenta - 1.6) * 4) }}>COMENTÁRIOS DE EXEMPLO · FICÇÃO CRIADA COM IA</div>
       </div>}
       {fimCard && t > ate - 0.1 && <div style={{ position: "absolute", top: d.opcoes ? 1205 : 1085, width: "100%", display: "flex", flexDirection: "column", alignItems: "center", fontFamily: LILITA, fontSize: d.opcoes ? 84 : 96, color: NAVY, transform: `scale(${volta((t - ate + 0.1) / 0.25)})` }}>
         <div style={{ ...adesivo(18, 8) }}>{d.opcoes ? "COMENTE O NÚMERO" : "COMENTA AQUI"}</div>
         <svg width={d.opcoes ? 120 : 170} height={d.opcoes ? 120 : 170} viewBox="0 0 100 100" style={{ marginTop: 4, transform: `translateY(${Math.sin(t * 7) * 16}px)`, filter: "drop-shadow(0 7px 0 rgba(22,35,63,.4))" }}><path d="M36 8 H64 V50 H86 L50 94 L14 50 H36 Z" fill={AZUL} stroke="#fff" strokeWidth={7} strokeLinejoin="round" /></svg>
       </div>}
-      <Legenda l={l} t={t} onda={m.onda} escondida={t < c[1].inicio || t > ate - 0.1} corAntes={corDia} />
+      <Legenda l={l} t={t} onda={m.onda} escondida={t < c[1].inicio || t > ate - 0.1} corAntes={corDia} papel={d.motor === "livro"} />
       <Audio src={staticFile(`${l.id}.wav`)} />
     </AbsoluteFill>
   );

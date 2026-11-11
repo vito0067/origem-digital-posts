@@ -107,9 +107,17 @@ export const Contador: React.FC<{ rot: string; num: string; t: number; em: numbe
   return <div style={{ position: "absolute", top: 365, width: "100%", display: "flex", justifyContent: "center" }}><div style={{ background: NAVY, color: "#fff", fontFamily: LILITA, textAlign: "center", padding: "16px 46px 12px", borderRadius: 22, transform: `rotate(1.5deg) scale(${e})`, boxShadow: "0 10px 0 rgba(22,35,63,.3)", border: "7px solid #fffdf6" }}><div style={{ fontSize: 40, opacity: 0.86, letterSpacing: 1 }}>{rot}</div><div style={{ fontSize: 112, lineHeight: 1, color: AMAR }}>{num}</div></div></div>;
 };
 function blocos(p: Palavra[]) { const b: Palavra[][] = []; let a: Palavra[] = []; p.forEach((x, k) => { a.push(x); const fim = /[.!?,:]\W*$/.test(x.w.replace(/[*~]/g, "")); if (a.length >= 3 || fim || k === p.length - 1) { b.push(a); a = []; } }); return b; }
-export const Legenda: React.FC<{ l: LinhaDia; t: number; onda: number; escondida: boolean; corAntes?: string }> = ({ l, t, onda, escondida, corAntes = VERM }) => {
+export const Legenda: React.FC<{ l: LinhaDia; t: number; onda: number; escondida: boolean; corAntes?: string; papel?: boolean }> = ({ l, t, onda, escondida, corAntes = VERM, papel }) => {
   const c = l.cenas.find((x) => t >= x.inicio && t < x.fim); if (!c || escondida) return null;
   const bl = blocos(c.palavras); let at = bl[0]; for (const b of bl) if (t >= b[0].em) at = b;
+  // legenda do motor "livro": tira de papel na zona segura; a palavra-chave ganha marca-texto. As palavras entram uma a uma, já no lugar.
+  if (papel) { const e0 = volta((t - at[0].em) / 0.22);
+    return <div style={{ position: "absolute", left: 60, right: 60, top: 1215, display: "flex", justifyContent: "center" }}>
+      <div style={{ background: "linear-gradient(180deg, #fffdf6, #f6ecd6)", padding: "20px 36px 12px", borderRadius: 8, transform: `rotate(-1.2deg) scale(${e0})`, boxShadow: "0 10px 0 rgba(60,35,10,.22), 0 22px 30px rgba(60,35,10,.25)", textAlign: "center", fontFamily: LILITA, fontSize: 88, lineHeight: 1.14, color: NAVY, textTransform: "uppercase", maxWidth: 960 }}>
+        {at.map((x, i) => { const dita = t >= x.em, w = x.w.replace(/[*~]/g, ""), esp = x.w.includes("~"), forte = x.w.includes("*"), g = lim((t - x.em) / 0.18), tinta = esp ? (t < onda + 0.1 ? corAntes : "#d9d9d9") : "#ffe45c";
+          return <span key={i + w} style={{ display: "inline-block", margin: "0 11px", padding: "0 8px", opacity: dita ? 1 : 0, transform: `translateY(${dita ? (1 - volta((t - x.em) / 0.18)) * 16 : 0}px)`, color: esp && t >= onda + 0.1 ? CINZA : NAVY, backgroundImage: forte || esp ? `linear-gradient(${tinta}, ${tinta})` : undefined, backgroundRepeat: "no-repeat", backgroundPosition: "0 78%", backgroundSize: `${g * 100}% 46%`, borderRadius: 6 }}>{w}</span>; })}
+      </div>
+    </div>; }
   return <div style={{ position: "absolute", left: 30, right: 30, top: 1205, textAlign: "center", fontFamily: LILITA, fontSize: 104, lineHeight: 1.08, color: NAVY, textTransform: "uppercase" }}>
     {at.map((x, i) => {
       const dita = t >= x.em, e = dita ? volta((t - x.em) / 0.16) : 0, w = x.w.replace(/[*~]/g, ""), esp = x.w.includes("~"), forte = x.w.includes("*");
