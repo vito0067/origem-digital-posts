@@ -83,3 +83,10 @@ Manual: skill `arquivo-333` (`.claude/skills/arquivo-333/`). Registro por episó
 - /watch: 8,5 na 1ª rodada (cabeça cortada no fim dos planos: corrigido), 6,8 na 2ª ("pouco medo"): acrescentei a segunda mão no vidro e o passageiro pálido no plano final. Não rodei /watch de novo depois disso.
 - Links: Instagram /reel/DfnwWJLIUjy/, YouTube shorts/rwEm9WDRoCE, TikTok video/7707074764220681493. Kit: DesktopOrigem-Digitalarquivo-333-envioscelular-proxima-estacao-ep03.
 - Próximo: ler os votos (1 desce / 2 puxa o freio) e fazer o ep. 4 com a ponte de `series/proxima-estacao-roteiros.md`.
+
+## 12/11/2026: para o ep. 4 (recado da coordenação, a pedido do Vito)
+1. **Antes de roteirizar:** abrir o YouTube Studio do canal do Arquivo (se estiver aberto no Chrome) e anotar, por vídeo, visualizações e "continuaram assistindo"; guardar em `C:\Users\User\Documents\estudio\numeros\`.
+2. **Testar UMA mudança no primeiro segundo** (o susto ou a imagem mais forte já no quadro zero; primeira frase com a consequência) e comparar o número depois. No ep. 3 o quadro zero foi "VOTOS 8 × 0" + a mão na alavanca.
+3. **Regra nova do Vito:** o que a voz cita aparece na tela com a cara do que é.
+4. Fábrica agora em `C:\Users\User\Documents\estudio\fabrica` (o endereço antigo segue como atalho); porta do perfil em `C:\Users\User\Documents\arquivo-333`. O Hoje Sumiu importa daqui `mixagem.mjs`, `narracao.mjs`, `sintetizador.mjs` e o boneco: não renomear nem mudar a assinatura sem avisar.
+5. Publicar continua exigindo o "aprovado" do Vito neste chat.
