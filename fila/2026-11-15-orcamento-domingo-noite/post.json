@@ -1,0 +1,20 @@
+{
+  "id": "2026-11-15-orcamento-domingo-noite",
+  "publicar_em": "2026-11-15T19:00:00-03:00",
+  "formato": "reel",
+  "tema": "noite",
+  "legenda": "Domingo à noite chega um pedido de orçamento.\n\nQuem pede orçamento quer resposta logo. Se ninguém responde até segunda, a pessoa pode já ter chamado outro profissional.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, se apresenta, responde em segundos, 24 horas por dia, e passa o pedido para a sua equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#orcamento #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": { "clima": "calmo" },
+  "cenas": [
+    { "tipo": "frase", "etiqueta": "Domingo · 21h", "texto": "Chegou um *pedido de orçamento.*", "fundo": "biblioteca/noite-maos-celular.mp4", "artefatos": ["biblioteca/objetos/lua.png", "biblioteca/objetos/balao-conversa.png"], "fala": "Domingo à noite, e chega um pedido de orçamento." },
+    { "tipo": "conversa", "nome": "Serviços Exemplo", "mensagens": [
+      { "de": "cliente", "texto": "Boa noite! Quanto custa para trocar o chuveiro?" },
+      { "de": "aurora", "texto": "Boa noite! Sou a Aurora, atendente de IA. Anotei seu pedido e a equipe retorna com o orçamento na segunda de manhã." }
+    ], "fala": "A Aurora, atendente de inteligência artificial, se apresenta, responde em segundos e passa o pedido para a equipe." },
+    { "tipo": "palavras", "palavras": ["Responde.", "Anota.", "*Encaminha.*"] },
+    { "tipo": "numero", "valor": 24, "de": 24, "sufixo": "h", "texto": "por dia, até no *domingo à noite*.", "fala": "Vinte e quatro horas por dia. Até no domingo à noite." },
+    { "tipo": "frase", "texto": "Segunda cedo, *a equipe já sabe* o que fazer.", "fundo": "biblioteca/noite-cidade-janela.mp4", "fala": "Segunda cedo, a sua equipe já sabe o que fazer." }
+  ],
+  "narracao": { "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261112_121626_215e77a4-00e5-44a2-8ed4-a4c6ad3a9e6e.mp3" },
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio."
+}
