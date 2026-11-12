@@ -228,3 +228,14 @@ O Vito mandou escrever outro caminho e justificar o empate na própria fala. A f
 **Voto:** 1 assume o comando / 2 abre a porta.
 **Fatos para o ep. 3 (ponte nova, 5 s):** a plataforma inteira está DENTRO do trem; a Lia está trancada na cabine (vazia, painel "MAQUINISTA AUSENTE", marcas de mãos por dentro do vidro); alguém bateu três vezes. Pontes: *assumiu o comando* → "A Lia puxou a alavanca. O trem obedeceu a ela... e andou devagar demais."; *abriu a porta* → "A Lia abriu a porta. Não havia ninguém. Só o corredor, e todos os assentos ocupados." Depois a gancho do ep. 3 (painel com LIA) segue igual.
 **Sinal estranho novo (em vez do relógio 3h33):** marcas de mãos por dentro do vidro; o relógio não aparece neste episódio.
+
+
+---
+
+## Ep. 3 · "Estação Lia" (PRODUZIDO e publicado em 11/11/2026; voto do ep. 2: 8 a 0 para "assume o comando")
+Adaptação do ep. 3 "Próxima estação: Lia" para o caminho da cabine. Gancho pelo voto ("VOTOS 8 × 0" na tela, mão na alavanca).
+**Fala:** Gideon: "Oito votos a zero. Vocês mandaram a Lia assumir o comando." / "Ela puxou a alavanca. O trem obedeceu. E andou devagar demais." / Vera: "Próxima estação: Lia." / Gideon: "Na tela da cabine, o nome dela. Em vermelho." / (guia) / "A Lia encostou a mão numa das marcas do vidro. Era do tamanho exato da mão dela." / "Atrás dela, a maçaneta começou a girar." / "E o trem começou a frear sozinho. Lá na frente, uma plataforma vazia. Com o nome dela na placa." / Vera: "Estação Lia. Comente um se ela desce, ou dois se ela puxa o freio."
+**Voto:** 1 desce na estação Lia / 2 puxa o freio.
+**Sustos novos (sem relógio):** a marca do vidro do tamanho da mão dela; uma segunda mão acende ao lado, do lado de fora; a maçaneta gira; no plano final, um passageiro pálido está DENTRO da cabine, atrás dela (ela ainda não viu).
+**Fatos para o ep. 4:** a Lia está na cabine, no comando; o trem parou sozinho na plataforma "ESTAÇÃO LIA" (vazia); a porta da cabine foi destrancada por fora (maçaneta girou) e há um passageiro pálido dentro da cabine; a plataforma inteira continua dentro do trem.
+**Pontes para o ep. 4:** *desce* → "A Lia desceu na estação com o nome dela. Atrás, a porta da cabine fechou sozinha." (segue "A mulher do banco"); *puxa o freio* → "A Lia puxou o freio. O trem não se mexeu. Quem se mexeu foi quem estava atrás dela." (adaptar "Cabine": ela já está na cabine; o uniforme antigo pode ser o do passageiro pálido).

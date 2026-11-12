@@ -88,6 +88,9 @@ const EF = {
   grave: () => { const s = oscilador("seno", 0, 2.4, { fase: 0, freqFn: (x) => 34 + 40 * Math.exp(-x * 6) }); decai(s, 0.8, 0.002); for (let i = 0; i < s.length; i++) s[i] = Math.tanh(s[i] * 1.8); return s; },
   sino: () => sino(81, 2.5, 0.5),
   // trava magnética das portas fechando: estalo metálico + baque grave
+  // ep. 3: toque da mão no vidro (grave) e tranco da maçaneta: nomes próprios para a trilha silenciar antes só deles
+  toque: () => EF.grave(),
+  tranco: () => EF.tranca(),
   tranca: () => mistura([[SFX.carimbo(), 0, 0.9], [decai(filtro(ruido(0.12), "banda", 5200, 3), 0.02, 0.0005), 0.01, 0.8], [EF_grave(), 0.02, 0.7]], 1.2),
   // freio do metrô: chiado agudo que desce + ronco que morre
   freio: () => { const seg = 1.8, q = filtro(ruido(seg), "banda", (x) => 3400 - 1600 * (x / seg), 6); const o = oscilador("seno", 0, seg, { freqFn: (x) => 2100 - 700 * (x / seg) }); for (let i = 0; i < q.length; i++) { const x = i / q.length; q[i] = (q[i] * 0.7 + o[i] * 0.12) * Math.sin(Math.PI * Math.min(1, x * 1.3)) ; } return q; },

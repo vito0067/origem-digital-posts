@@ -34,7 +34,7 @@ export class Vagao {
   telaPainel: HTMLCanvasElement; texPainel: any; telaMapa: HTMLCanvasElement; texMapa: any;
   portas: any[] = []; fundoPorta: any; luzPorta: any; luzPlat: any;
   luzLia: any; perto!: Boneco; apagadas = 0; retos = 0; ponteiroSeg: any;
-  fila: Boneco[] = []; cabine!: any; luzCabine: any; vidroTela!: HTMLCanvasElement; vidroTex: any; painelCab!: HTMLCanvasElement; painelCabTex: any; frestaPorta: any; pesFresta: any[] = []; leds: any[] = []; placaCab: any; mesaCab: any[] = [];
+  alavG!: any; macaneta!: any; maoLia!: any; luzVulto!: any; fila: Boneco[] = []; cabine!: any; luzCabine: any; vidroTela!: HTMLCanvasElement; vidroTex: any; painelCab!: HTMLCanvasElement; painelCabTex: any; frestaPorta: any; pesFresta: any[] = []; leds: any[] = []; placaCab: any; mesaCab: any[] = [];
   static W = 2.7; static L = 12; static H = 2.35;
 
   constructor() {
@@ -180,10 +180,27 @@ export class Vagao {
     for (let k = 0; k < 16; k++) { const led = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.02, 0.07), new THREE.MeshBasicMaterial({ color: cores2[k % 8], toneMapped: false })); led.position.set(-0.9 + (k % 8) * 0.26, 0.74 + Math.floor(k / 8) * 0.06, z1 + 0.62 + Math.floor(k / 8) * 0.12); led.rotation.x = -0.32; g.add(led); this.leds.push(led); this.mesaCab.push(led); }
     this.painelCab = tela(512, 160); this.painelCabTex = textura(this.painelCab); this.painelCabinePainel("MAQUINISTA", "AUSENTE");
     const pn = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 0.28), emissivo(this.painelCabTex)); pn.position.set(0, 1.22, z1 + 0.25); pn.rotation.x = -0.18; g.add(pn);
-    const alav = cilindro(0.025, 0.28, mat("#c4c9d0", { metalness: 0.8, roughness: 0.3 })); alav.position.set(0.55, 0.88, z1 + 0.7); alav.rotation.z = -0.5; g.add(alav);
-    const bola = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 10), new THREE.MeshBasicMaterial({ color: "#d1201a", toneMapped: false })); bola.position.set(0.62, 1.01, z1 + 0.7); g.add(bola);
+    const alavG = new THREE.Group(); alavG.position.set(0.5, 0.75, z1 + 0.7); alavG.rotation.z = -0.5; g.add(alavG); this.alavG = alavG;
+    const alav = cilindro(0.025, 0.28, mat("#c4c9d0", { metalness: 0.8, roughness: 0.3 })); alav.position.set(0, 0.14, 0); alavG.add(alav);
+    const bola = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 10), new THREE.MeshBasicMaterial({ color: "#d1201a", toneMapped: false })); bola.position.set(0, 0.3, 0); alavG.add(bola);
+    // maçaneta da porta da cabine (do lado de dentro): gira no ep. 3
+    const mac = new THREE.Group(); mac.position.set(0.4, 1.02, z0 - 0.07); g.add(mac); this.macaneta = mac;
+    const metalM = mat("#eef1f5", { metalness: 0.35, roughness: 0.25, emissive: "#3a4a48" });
+    const baseM = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.045, 0.03, 16), metalM); baseM.rotation.x = Math.PI / 2; mac.add(baseM);
+    const barra = caixa(0.2, 0.04, 0.04, metalM); barra.position.set(-0.09, 0, -0.035); mac.add(barra);
+    const espelho = caixa(0.1, 0.3, 0.012, mat("#15191d", { roughness: 0.5 })); espelho.position.set(0.4, 0.98, z0 - 0.056); g.add(espelho);
+    const fech = new THREE.Mesh(new THREE.CircleGeometry(0.013, 12), new THREE.MeshBasicMaterial({ color: "#000" })); fech.position.set(0.4, 0.9, z0 - 0.064); fech.rotation.y = Math.PI; g.add(fech);
+    // mão da Lia, solta (para o close no vidro): mesmas medidas da marca desenhada em desenhaVidro (0,00283 m por ponto x 1,15)
+    const K = 0.00283 * 1.15, pele = mat("#b98560", { roughness: 0.6, emissive: "#6a4630" }), mao = new THREE.Group(); mao.visible = false; g.add(mao); this.maoLia = mao;
+    const palma = new THREE.Mesh(new THREE.SphereGeometry(1, 18, 14), pele); palma.scale.set(26 * K, 32 * K, 0.028); mao.add(palma);
+    for (const [dx, ang, len] of [[-20, -0.35, 44], [-8, -0.12, 54], [6, 0.05, 56], [19, 0.22, 48], [32, 0.95, 32]] as const) {
+      const d = new THREE.Mesh(new THREE.CapsuleGeometry(6.5 * K, (len - 13) * K, 6, 10), pele); d.position.set(dx * K + Math.sin(ang) * (len / 2) * K, 22 * K + Math.cos(ang) * (len / 2) * K, 0); d.rotation.z = -ang; d.scale.z = 0.8; mao.add(d);
+    }
+    const manga = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.062, 0.6, 14), mat("#2e6f6c", { roughness: 0.8 })); manga.position.set(0.02, -0.33, 0.14); manga.rotation.x = -0.42; mao.add(manga);
+    const pulso = new THREE.Mesh(new THREE.CylinderGeometry(0.034, 0.04, 0.09, 12), pele); pulso.position.set(0, -0.1, 0.02); pulso.rotation.x = -0.25; mao.add(pulso);
     const banco = caixa(0.55, 0.12, 0.5, mat("#3a3128")); banco.position.set(1.0, 0.5, z1 + 1.35); g.add(banco);
     const enc = caixa(0.55, 0.7, 0.1, mat("#3a3128")); enc.position.set(1.0, 0.9, z1 + 1.6); g.add(enc);
+    this.luzVulto = new THREE.PointLight("#cfe0ff", 0, 1.7, 1.4); this.luzVulto.position.set(0.5, 1.8, z0 - 0.75); g.add(this.luzVulto);
     this.luzCabine = new THREE.PointLight("#8fffd0", 0, 4.5, 1.5); this.luzCabine.position.set(0, 1.9, (z0 + z1) / 2); g.add(this.luzCabine);
     const pc = tela(256, 64), gg = pc.getContext("2d")!; gg.fillStyle = "#c7cbd1"; gg.fillRect(0, 0, 256, 64); gg.fillStyle = "#16181c"; gg.font = "bold 30px Arial"; gg.textAlign = "center"; gg.textBaseline = "middle"; gg.fillText("MAQUINISTA", 128, 34);
     this.placaCab = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 0.155), emissivo(textura(pc))); this.placaCab.position.set(0, 2.12, -L / 2 + 0.02); cena.add(this.placaCab);
@@ -193,24 +210,45 @@ export class Vagao {
     const c = tela(128, 128), g = c.getContext("2d")!, gr = g.createRadialGradient(64, 64, 4, 64, 64, 62); gr.addColorStop(0, "rgba(0,0,0,0.75)"); gr.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = gr; g.fillRect(0, 0, 128, 128);
     const m = new THREE.Mesh(new THREE.PlaneGeometry(0.85, 0.85), new THREE.MeshBasicMaterial({ map: textura(c), transparent: true, depthWrite: false })); m.rotation.x = -Math.PI / 2; m.position.y = 0.014; b.raiz.add(m);
   }
-  desenhaVidro(n: number) {
+  desenhaVidro(n: number, o: { tunel?: number; placa?: number; destaque?: number; outra?: number } = {}) {
     const g = this.vidroTela.getContext("2d")!, r = sorteio(7);
     g.fillStyle = "#04080b"; g.fillRect(0, 0, 1024, 512);
     const gl = g.createRadialGradient(512, 250, 6, 512, 250, 300); gl.addColorStop(0, "rgba(120,170,160,0.35)"); gl.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = gl; g.fillRect(0, 0, 1024, 512);
     g.strokeStyle = "rgba(60,80,80,0.5)"; g.lineWidth = 3; for (let k = 0; k < 8; k++) { g.beginPath(); g.moveTo(512 + (k - 3.5) * 30, 250); g.lineTo(512 + (k - 3.5) * 190, 512); g.stroke(); }
-    const mao = (x: number, y: number, a: number, e: number) => {
-      g.save(); g.translate(x, y); g.rotate(a); g.scale(e, e); g.fillStyle = "rgba(225,232,236,0.62)";
+    if (o.tunel !== undefined) {
+      // túnel passando devagar: lâmpadas dos dois lados e dormentes saindo do ponto de fuga
+      for (let k = 0; k < 7; k++) {
+        const fr = (((o.tunel * 0.22 + k / 7) % 1) + 1) % 1, q2 = fr * fr;
+        g.fillStyle = `rgba(190,225,255,${0.25 + 0.6 * q2})`;
+        for (const lado of [-1, 1]) { g.beginPath(); g.ellipse(512 + lado * (46 + 470 * q2), 232 - 150 * q2, 2 + 9 * q2, 3 + 14 * q2, 0, 0, Math.PI * 2); g.fill(); }
+        g.strokeStyle = `rgba(120,150,150,${0.15 + 0.5 * q2})`; g.lineWidth = 2 + 8 * q2; g.beginPath(); g.moveTo(512 - (30 + 300 * q2), 256 + 250 * q2); g.lineTo(512 + (30 + 300 * q2), 256 + 250 * q2); g.stroke();
+      }
+    }
+    if (o.placa && o.placa > 0) {
+      // plataforma chegando pela direita, com a placa da estação: "LIA"
+      const e2 = 0.1 + 0.9 * o.placa, cx = 512 + 215 * e2, cy = 236 - 40 * e2, w = 330 * e2, h = 150 * e2;
+      const lz = g.createRadialGradient(cx, cy, 4, cx, cy, 380 * e2); lz.addColorStop(0, `rgba(190,233,214,${0.5 * o.placa})`); lz.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = lz; g.fillRect(0, 0, 1024, 512);
+      g.fillStyle = "rgba(70,84,79,0.9)"; g.beginPath(); g.moveTo(524, 262); g.lineTo(1024, 262 + 70 * e2); g.lineTo(1024, 262 + 230 * e2); g.lineTo(524, 266); g.fill();
+      g.strokeStyle = "#d9b53a"; g.lineWidth = 2 + 5 * e2; g.beginPath(); g.moveTo(524, 264); g.lineTo(1024, 262 + 72 * e2); g.stroke();
+      g.fillStyle = "#39414a"; g.fillRect(cx - w / 2, cy - h / 2, w, h); g.strokeStyle = "#cfd6de"; g.lineWidth = 1 + 3 * e2; g.strokeRect(cx - w / 2, cy - h / 2, w, h);
+      g.fillStyle = "#e8edf2"; g.textAlign = "center"; g.textBaseline = "middle"; g.font = `bold ${Math.round(26 * e2)}px Arial`; g.fillText("ESTAÇÃO", cx, cy - h * 0.3);
+      g.fillStyle = "#ffffff"; g.font = `bold ${Math.round(92 * e2)}px Arial`; g.fillText("LIA", cx, cy + h * 0.14);
+    }
+    const mao = (x: number, y: number, a: number, e: number, forte = 0) => {
+      g.save(); g.translate(x, y); g.rotate(a); g.scale(e, e); g.fillStyle = `rgba(225,232,236,${0.62 + 0.38 * forte})`; if (forte > 0) { g.shadowColor = "#9fffe0"; g.shadowBlur = 38 * forte; }
       g.beginPath(); g.ellipse(0, 0, 26, 32, 0, 0, Math.PI * 2); g.fill();
       for (const [dx, ang, len] of [[-20, -0.35, 44], [-8, -0.12, 54], [6, 0.05, 56], [19, 0.22, 48], [32, 0.95, 32]] as const) { g.save(); g.translate(dx, -22); g.rotate(ang); g.beginPath(); g.ellipse(0, -len / 2, 6.5, len / 2, 0, 0, Math.PI * 2); g.fill(); g.restore(); }
       g.fillRect(-9, 26, 18, 20); g.fillStyle = "rgba(225,232,236,0.22)"; g.fillRect(-4, 40, 8, 60 + 40 * r()); g.restore();
     };
     const q = Math.max(0, Math.min(26, Math.round(n)));
-    for (let k = 0; k < q; k++) mao(60 + r() * 900, 70 + r() * 360, (r() - 0.5) * 0.7, 0.8 + r() * 0.7);
+    for (let k = 0; k < q; k++) { const x = 60 + r() * 900, y = 70 + r() * 360, a = (r() - 0.5) * 0.7, e = 0.8 + r() * 0.7; if (o.destaque !== undefined && (Math.hypot(x - 640, y - 255) < 135 || Math.hypot(x - 548, y - 170) < 150)) continue; if (o.placa && x > 560 && x < 940 && y > 110 && y < 330) continue; mao(x, y, a, e); }
+    if (o.destaque !== undefined) mao(640, 255, 0, 1.15, o.destaque);
+    if (o.outra && o.outra > 0) { g.globalAlpha = Math.min(1, o.outra); mao(548, 170, -0.25, 1.2, 1); g.globalAlpha = 1; }
     this.vidroTex.needsUpdate = true;
   }
   painelCabinePainel(l1: string, l2: string, cor = "#ff3b3b") {
     const g = this.painelCab.getContext("2d")!; g.fillStyle = "#0b0505"; g.fillRect(0, 0, 512, 160); g.strokeStyle = cor + "aa"; g.lineWidth = 4; g.strokeRect(5, 5, 502, 150);
-    g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = cor; g.shadowColor = cor; g.shadowBlur = 14; g.font = "bold 40px 'Courier New', monospace"; g.fillText(l1, 256, 50); g.font = "bold 62px 'Courier New', monospace"; g.fillText(l2, 256, 112); this.painelCabTex.needsUpdate = true;
+    g.textAlign = "center"; g.textBaseline = "middle"; g.fillStyle = cor; g.shadowColor = cor; g.shadowBlur = 14; g.font = `bold ${l1.length > 11 ? 30 : 40}px 'Courier New', monospace`; g.fillText(l1, 256, 50); g.font = "bold 62px 'Courier New', monospace"; g.fillText(l2, 256, 112); this.painelCabTex.needsUpdate = true;
   }
   /** A fila entra pelo fundo do vagão e vem pelo corredor (p de 0 a 1; z0 = onde a primeira pessoa começa). */
   filaAnda(p: number, t: number, z0 = 8.2, alcance = 9) {
@@ -294,7 +332,7 @@ export class Vagao {
     this.argolas.forEach((g, i) => { g.rotation.z = Math.sin(t * 1.6 + i) * 0.04; g.rotation.x = Math.sin(t * 1.2 + i * 0.7) * 0.03; });
   }
   padrao() {
-    this.lia.raiz.visible = false; this.perto.raiz.visible = false; this.apagadas = 0; this.retos = 0; this.luzLia.intensity = 0; this.ponteiroSeg.rotation.x = 0; this.fila.forEach((b) => (b.raiz.visible = false)); this.cabine.visible = false; this.luzCabine.intensity = 0; for (const o of this.mesaCab) o.visible = true; this.placaCab.visible = false; this.luzPlat2.intensity = 2.2; this.luzPlat2.position.set(Vagao.W / 2 + 2.6, 1.2, -4.5); this.limpa(true); this.passo(0); this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
+    this.lia.raiz.visible = false; this.perto.raiz.visible = false; this.apagadas = 0; this.retos = 0; this.luzLia.intensity = 0; this.ponteiroSeg.rotation.x = 0; this.fila.forEach((b) => (b.raiz.visible = false)); this.cabine.visible = false; this.luzCabine.intensity = 0; this.alavG.rotation.set(0, 0, -0.5); this.macaneta.rotation.set(0, 0, 0); this.maoLia.visible = false; this.maoLia.scale.setScalar(1); this.luzVulto.intensity = 0; this.frestaPorta.visible = false; for (const pe of this.pesFresta) pe.visible = false; for (const o of this.mesaCab) o.visible = true; this.placaCab.visible = false; this.luzPlat2.intensity = 2.2; this.luzPlat2.position.set(Vagao.W / 2 + 2.6, 1.2, -4.5); this.limpa(true); this.passo(0); this.mover(0, 0); this.porta(0); this.painelTexto("PRÓXIMA ESTAÇÃO", "12"); this.mapaTexto(0);
   }
 }
 
@@ -315,6 +353,29 @@ function liaMeio(m: Mundo, p: number, desce = 0): { cena: "vagao"; pos: V3; alvo
   const c = cab(m.vagao.lia), x = Math.min(1.15, c[0] + 2.25 - 0.15 * p);
   return { cena: "vagao", pos: [x, c[1] + 0.12 - desce * 0.3, c[2] + 2.6 - 0.2 * p], alvo: [c[0] + 0.05, c[1] - 0.3, c[2]], fov: 46 };
 }
+
+// ---- ep. 3: ajudantes da cabine
+const lim3 = (x: number) => Math.max(0, Math.min(1, x));
+function cab3(m: Mundo, s: number, o: { n?: number; tunel?: number; placa?: number; destaque?: number; outra?: number; luz?: number } = {}) {
+  const v = m.vagao; cabineLuz(m, o.luz ?? 3.0); v.cabine.visible = true; v.painelCabinePainel("PRÓXIMA ESTAÇÃO", "LIA"); v.desenhaVidro(o.n ?? 26, { tunel: o.tunel, placa: o.placa, destaque: o.destaque, outra: o.outra });
+}
+/** Lia de pé no comando (vista de trás ou de lado), mão na alavanca; k = quanto a alavanca foi puxada. */
+function liaComando(m: Mundo, s: number, k: number, inclina = 0, cabecaY = 0, x = 0.22) {
+  const v = m.vagao, l = v.lia; v.alavG.rotation.set(0.6 - 1.2 * k, 0, 0);
+  l.raiz.visible = true; l.raiz.position.set(x, 0, -8.02); l.raiz.rotation.set(0, Math.PI - 0.2 * Math.sign(x), 0);
+  l.posar({ ...POSES.em_pe(s), tronco: [4 + 5 * k + inclina, 0, 0], cabeca: [4, cabecaY, 0], olhos: 1.15, sobrancelha: -0.8, boca: "neutra", bracoE: [-58 - 26 * k, 0, 16], cotoveloE: 24 - 14 * k });
+  v.luzLia.intensity = 2.0; v.luzLia.position.set(x - 0.5 * Math.sign(x), 1.9, -7.4);
+}
+/** Lia de frente (a câmera fica junto do vidro, olhando para trás): meio corpo, a porta da cabine ao fundo. */
+function liaFrente(m: Mundo, s: number, pose: Pose, x = 0.22) {
+  const v = m.vagao, l = v.lia; l.raiz.visible = true; l.raiz.position.set(x, 0, -6.8); l.raiz.rotation.set(0, Math.PI, 0);
+  l.posar({ ...POSES.em_pe(s), ...pose }); v.luzLia.intensity = 2.3; v.luzLia.position.set(x - 0.5, 1.95, -7.9);
+}
+function camFrente(m: Mundo, p: number, sobe = 0, x = 0.22, dx = 0): { cena: "vagao"; pos: V3; alvo: V3; fov: number } {
+  return { cena: "vagao", pos: mix([x - 0.3, 1.34 + sobe, -9.02], [x - 0.12, 1.36 + sobe, -8.92], p), alvo: [x + dx, 1.27, -6.8], fov: 54 };
+}
+/** A maçaneta treme, desce devagar e solta num tranco. */
+const giroMac = (s: number) => -(0.12 * Math.max(0, Math.sin(s * 9)) * lim3(s / 0.5) + 1.0 * suave((s - 0.7) / 1.6));
 
 // ================================================================ estúdio de rádio
 export class Estudio {
@@ -728,6 +789,88 @@ export const PLANOS_PILOTOS: Record<string, Plano> = {
     l.posar({ ...POSES.em_pe(s), cabeca: [4, -12 + 10 * p, 0], olhos: 1.25, sobrancelha: 0.5 - 1.2 * p, boca: "neutra", bracoE: [-70 - 15 * p, 0, 18], cotoveloE: 20 });
     v.luzLia.intensity = 2.2; v.luzLia.position.set(-0.6, 1.9, -7.2);
     return { cena: "vagao", pos: mix([-1.0, 1.8, -6.25], [-0.7, 1.75, -6.45], p), alvo: [0.1, 1.2, -8.6], fov: 56 };
+  },
+
+  // ---------------- Próxima estação, ep. 3 (11/11/2026): "Estação Lia" (voto 8 a 0: ela assume o comando)
+  p3_alavanca: (s, dur, m) => {
+    const k = suave((s - 0.25) / 0.35);
+    cab3(m, s, { tunel: k > 0 ? Math.max(0, s - 0.45) * 0.9 : 0 }); liaComando(m, s, k);
+    { const v = m.vagao, th = 0.6 - 1.2 * k, z1 = -Vagao.L / 2 - 0.12 - 3.0; v.lia.raiz.position.set(0.5, 0, -7.45); v.lia.raiz.rotation.set(0, Math.PI, 0); v.lia.posar({ ...POSES.em_pe(s), tronco: [8 + 6 * k, 0, 0], cabeca: [8, 0, 0] });
+      v.maoLia.visible = true; v.maoLia.position.set(0.5, 0.75 + 0.35 * Math.cos(th), z1 + 0.7 + 0.35 * Math.sin(th) + 0.02); v.maoLia.rotation.set(-Math.PI / 2 + 0.45, 0.35, 0); v.maoLia.scale.setScalar(0.8); }
+    m.vagao.painelCabinePainel("MAQUINISTA", k < 0.5 ? "AUSENTE" : (Math.sin(s * 30) > 0.2 || s > 0.95 ? "LIA" : ""));
+    return { cena: "vagao", pos: mix([1.2, 1.5, -7.62], [1.08, 1.42, -7.76], suave(s / dur)), alvo: [0.5, 1.02, -8.42], fov: 42 };
+  },
+  p3_tunel: (s, dur, m) => {
+    const p = suave(s / dur); cab3(m, s, { tunel: 1.2 + s * 0.42 }); liaComando(m, s, 1, 0, 0, -0.28); m.vagao.painelCabinePainel("MAQUINISTA", "LIA");
+    return { cena: "vagao", pos: mix([0.95, 1.8, -6.3], [0.7, 1.74, -6.5], p), alvo: [0.12, 1.22, -8.9], fov: 56 };
+  },
+  p3_lia_comando: (s, dur, m) => {
+    const p = s / dur, d = lim3((p - 0.6) / 0.3); cab3(m, s, { tunel: 2 + s * 0.4 });
+    liaFrente(m, s, { olhos: 1.05 + 0.35 * d, sobrancelha: -0.85 + 1.6 * d, boca: d > 0.6 ? "medo" : "neutra", cabeca: [2 - 4 * d, 10 * Math.sin(s * 1.3) * d, 0] });
+    return camFrente(m, suave(p));
+  },
+  p3_painel: (s, dur, m) => {
+    const v = m.vagao; cab3(m, s, { tunel: 3 + s * 0.4, luz: 2.4 }); v.lia.raiz.visible = false;
+    v.painelCabinePainel("PRÓXIMA ESTAÇÃO", s < dur * 0.28 ? (Math.sin(s * 40) > 0 ? "---" : "") : "LIA");
+    return { cena: "vagao", pos: mix([0.28, 1.42, -7.35], [0.04, 1.3, -7.85], suave(s / dur)), alvo: [0, 1.2, -8.85], fov: 40 };
+  },
+  p3_painel2: (s, dur, m) => {
+    const v = m.vagao; cab3(m, s, { tunel: 4 + s * 0.4, luz: 1.6 + 0.8 * Math.sin(s * 5) }); v.lia.raiz.visible = false;
+    v.painelCabinePainel("PRÓXIMA ESTAÇÃO", Math.sin(s * 7) > -0.75 ? "LIA" : "");
+    return { cena: "vagao", pos: mix([-0.3, 1.34, -7.45], [-0.12, 1.3, -7.7], suave(s / dur)), alvo: [0, 1.21, -8.85], fov: 40 };
+  },
+  p3_lia_tela: (s, dur, m) => {
+    const p = suave(s / dur); cab3(m, s, { tunel: 5 + s * 0.4 });
+    liaFrente(m, s, { olhos: 1.25 + 0.25 * p, sobrancelha: 1, boca: p > 0.4 ? "medo" : "neutra", cabeca: [10 - 6 * p, 0, 0], tronco: [-3 * p, 0, 0] });
+    return camFrente(m, p);
+  },
+  p3_mao: (s, dur, m) => {
+    const v = m.vagao, t = suave(s / (dur * 0.5)), toque = lim3((s - dur * 0.5) / 0.25), z1 = -Vagao.L / 2 - 0.12 - 3.0;
+    const outra = s > dur * 0.5 + 1.1 ? 1 : 0;
+    cab3(m, s, { tunel: 6 + s * 0.4, destaque: toque > 0 ? 1 : 0.35 + 0.2 * Math.sin(s * 5), outra, luz: 2.2 + 1.2 * toque + (outra ? 1.5 * Math.exp(-(s - dur * 0.5 - 1.1) * 6) : 0) }); v.lia.raiz.visible = false;
+    v.maoLia.visible = true; v.maoLia.position.set(0.3625 + 0.05 * (1 - t), 1.3528 - 0.08 * (1 - t), z1 + 0.075 + 0.5 * (1 - t)); v.maoLia.rotation.set(0.25 * (1 - t), 0, 0.12 * (1 - t));
+    return { cena: "vagao", pos: mix([0.95, 1.52, -8.15], [0.78, 1.44, -8.3], suave(s / dur)), alvo: [0.34, 1.35, -9.08], fov: 40 };
+  },
+  p3_lia_mao: (s, dur, m) => {
+    const p = suave(s / dur); cab3(m, s, { tunel: 7 + s * 0.4, destaque: 1, outra: 1 });
+    liaFrente(m, s, { olhos: 1.5, sobrancelha: 1, boca: "medo", cabeca: [-4, -8, 0], bracoE: [-96, 0, 14], cotoveloE: 6, tronco: [5, 0, 0] });
+    return camFrente(m, p, 0.12);
+  },
+  p3_macaneta: (s, dur, m) => {
+    const v = m.vagao; cab3(m, s, { tunel: 8 + s * 0.4, luz: 2.6 }); v.lia.raiz.visible = false;
+    v.frestaPorta.visible = true; for (const pe of v.pesFresta) pe.visible = true;
+    v.macaneta.rotation.z = giroMac(s);
+    return { cena: "vagao", pos: mix([0.0, 1.2, -7.25], [0.12, 1.14, -6.95], suave(s / dur)), alvo: [0.36, 1.02, -6.19], fov: 38 };
+  },
+  p3_lia_macaneta: (s, dur, m) => {
+    const v = m.vagao, p = suave(s / dur); cab3(m, s, { tunel: 9 + s * 0.4 });
+    v.frestaPorta.visible = true; for (const pe of v.pesFresta) pe.visible = true; v.macaneta.rotation.z = giroMac(s + 1.2);
+    { const g = suave((s - dur * 0.35) / 0.3); liaFrente(m, s, { olhos: 1.6, sobrancelha: 1, boca: "medo", cabeca: [0, 12 * p + 62 * g, 0], tronco: [0, 34 * g, 0], bracoE: [-20 * g, 0, 14], bracoD: [-20 * g, 0, -14] }, -0.38); }
+    return camFrente(m, p, 0, -0.38, 0.22);
+  },
+  p3_freia: (s, dur, m) => {
+    const p = s / dur, v = m.vagao; cab3(m, s, { n: 14, tunel: 10 + 2.2 * (p - p * p * 0.42) * dur * 0.4, placa: 0.55 * suave(p), luz: 2.8 }); liaComando(m, s, 1, 10, 0, -0.28); v.painelCabinePainel("PRÓXIMA ESTAÇÃO", "LIA");
+    return { cena: "vagao", pos: mix([0.95, 1.78, -6.35], [0.7, 1.7, -6.75], suave(p)), alvo: [0.2, 1.24, -8.9], fov: 54 };
+  },
+  p3_lia_freia: (s, dur, m) => {
+    const p = suave(s / dur), tr = Math.sin(s * 37) * 0.6; cab3(m, s, { n: 14, tunel: 12, placa: 0.6 });
+    liaFrente(m, s, { olhos: 1.65, sobrancelha: 1, boca: "medo", cabeca: [-10 + tr * 2, 0, tr * 2], tronco: [16 - 12 * p, 0, 0], bracoE: [-60, 0, 20], bracoD: [-60, 0, -20], cotoveloE: 30, cotoveloD: 30 });
+    return camFrente(m, p);
+  },
+  p3_placa: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao; cab3(m, s, { n: 12, tunel: 12.6 + 0.25 * p, placa: 0.55 + 0.45 * p, luz: 2.2 }); v.lia.raiz.visible = false; v.painelCabinePainel("ESTAÇÃO", "LIA");
+    return { cena: "vagao", pos: mix([-0.1, 1.5, -7.5], [0.2, 1.42, -8.05], p), alvo: [0.55, 1.33, -9.08], fov: 46 };
+  },
+  p3_final: (s, dur, m) => {
+    const p = suave(s / dur), v = m.vagao; cab3(m, s, { n: 12, tunel: 12.85, placa: 1, luz: 2.6 }); liaComando(m, s, 1, 0, 14 - 10 * p, -0.28); v.painelCabinePainel("ESTAÇÃO", "LIA");
+    return { cena: "vagao", pos: mix([0.95, 1.8, -6.3], [0.72, 1.72, -6.55], p), alvo: [0.2, 1.24, -8.9], fov: 54 };
+  },
+  p3_final_lia: (s, dur, m) => {
+    const v = m.vagao, p = suave(s / dur); cab3(m, s, { n: 12, tunel: 12.85, placa: 1 });
+    v.frestaPorta.visible = true; for (const pe of v.pesFresta) pe.visible = true; v.macaneta.rotation.z = -1.1;
+    liaFrente(m, s, { olhos: 1.3 + 0.15 * Math.sin(s * 2), sobrancelha: 1 - 0.6 * p, boca: "neutra", cabeca: [0, -14 * Math.sin(s * 1.2), 0] }, -0.38);
+    { const b = v.fila[1]; b.raiz.visible = true; b.raiz.position.set(0.42, 0, -6.42); b.raiz.rotation.set(0, Math.PI + 0.12, 0); b.posar({ respira: s, olhos: 1.45, vazio: true, sobrancelha: -0.2, boca: "neutra", cabeca: [4, 0, 16 + 2 * Math.sin(s * 0.9)], bracoE: [0, 0, 5], bracoD: [0, 0, -5] }); v.luzVulto.intensity = 2.6 * (Math.sin(s * 23) > -0.85 ? 1 : 0.25); }
+    return camFrente(m, p, 0, -0.38, 0.22);
   },
 
   // ---------------- piloto 2: Rádio Madrugada

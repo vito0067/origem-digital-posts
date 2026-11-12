@@ -49,4 +49,34 @@ export const CAM_V2 = {
   "v2/final_painel": { base: "p2_final_painel", a: 0, b: 1, var: { dist: [1.1, 0.95] }, pulsos: () => [0.1] },
   "v2/final_lia_a": { base: "p2_final_lia", a: 0, b: 0.5, var: { gira: [-0.1, 0.0] } },
   "v2/final_lia_b": { base: "p2_final_lia", a: 0.5, b: 1, var: { dist: [0.97, 0.92], sobe: [0.05, 0.0] } },
+  // ================= Próxima estação, ep. 3 "Estação Lia" (11/11/2026)
+  // cena 0: gancho "Oito votos a zero..." (alavanca 1ª imagem; corte seco antes de 2 s)
+  "v2/e3_hook_a": { base: "p3_alavanca", a: 0, b: 0.38, var: { dist: [1.12, 0.96] }, piso: 0.8, pulsos: () => [0.42], forca: 2.2 },
+  "v2/e3_hook_b": { base: "p3_lia_comando", a: 0.38, b: 0.7, var: { dist: [1.1, 0.95], gira: [0.06, -0.04] }, piso: 1, seco: true },
+  "v2/e3_hook_c": { base: "p3_tunel", a: 0.7, b: 1, var: { gira: [-0.08, 0.0], dist: [1.05, 0.97] }, entrada: "mergulho" },
+  // cena 1: "Ela puxou a alavanca. O trem obedeceu. E andou devagar demais."
+  "v2/e3_alav": { base: "p3_alavanca", a: 0, b: 0.34, var: { sobe: [0.2, 0.12], dist: [0.85, 0.75] }, pulsos: () => [0.42], forca: 1.5 },
+  "v2/e3_tunel": { base: "p3_tunel", a: 0.34, b: 0.68, var: { dist: [1.0, 0.9], sobe: [-0.1, -0.15] } },
+  "v2/e3_devagar": { base: "p3_lia_comando", a: 0.68, b: 1, var: { dist: [1.06, 0.94], gira: [-0.05, 0.05] }, piso: 1 },
+  // cena 2: Vera "Próxima estação: Lia."
+  "v2/e3_painel": { base: "p3_painel", a: 0, b: 1, var: { dist: [1.12, 0.95] }, pulsos: (d) => [d * 0.28], forca: 2 },
+  // cena 3: "Na tela da cabine, o nome dela. Em vermelho."
+  "v2/e3_painel2": { base: "p3_painel2", a: 0, b: 0.45, var: { dist: [1.1, 0.95] } },
+  "v2/e3_lia_tela": { base: "p3_lia_tela", a: 0.45, b: 1, var: { dist: [1.08, 0.94] }, piso: 1 },
+  // cena 5: a mão na marca do vidro
+  "v2/e3_mao_a": { base: "p3_mao", a: 0, b: 0.36, var: { dist: [1.25, 1.1], gira: [0.12, 0.05] } },
+  "v2/e3_mao_b": { base: "p3_mao", a: 0.36, b: 0.68, var: { dist: [1.3, 1.2], gira: [-0.08, -0.14], fov: [24, 27] }, pulsos: (d) => [d * 0.5, d * 0.5 + 1.1], forca: 2.5 },
+  "v2/e3_lia_mao": { base: "p3_lia_mao", a: 0.68, b: 1, var: { dist: [1.1, 0.94], gira: [0.06, -0.03] }, piso: 1 },
+  // cena 6: a maçaneta
+  "v2/e3_macaneta": { base: "p3_macaneta", a: 0, b: 0.52, var: { dist: [1.35, 0.8], gira: [0.15, -0.05] } },
+  "v2/e3_lia_macaneta": { base: "p3_lia_macaneta", a: 0.52, b: 1, var: { dist: [1.04, 0.96] }, piso: 1, pulsos: () => [0.0], forca: 1.5 },
+  // cena 7: o trem freia sozinho; a plataforma e a placa
+  "v2/e3_freia": { base: "p3_freia", a: 0, b: 0.32, var: { dist: [1.0, 0.92] }, tremor: 1.2 },
+  "v2/e3_lia_freia": { base: "p3_lia_freia", a: 0.32, b: 0.58, var: { dist: [1.04, 0.96] }, piso: 1, tremor: 1.0 },
+  "v2/e3_placa_a": { base: "p3_placa", a: 0.58, b: 0.8, var: { dist: [1.1, 1.0] }, tremor: 0.5 },
+  "v2/e3_placa_b": { base: "p3_placa", a: 0.8, b: 1, var: { dist: [0.9, 0.78], gira: [0.06, 0.0] }, pulsos: (d) => [d * 0.82], forca: 2 },
+  // cena 8: final (Vera + voto)
+  "v2/e3_final_a": { base: "p3_final", a: 0, b: 0.36, var: { dist: [1.05, 0.97] } },
+  "v2/e3_final_b": { base: "p3_final_lia", a: 0.36, b: 0.7, var: { dist: [1.08, 0.95] }, piso: 1, seco: true, pulsos: (d) => [d * 0.36], forca: 1.5 },
+  "v2/e3_final_c": { base: "p3_final", a: 0.7, b: 1, var: { gira: [0.1, 0.02], dist: [0.95, 0.88] } },
 };

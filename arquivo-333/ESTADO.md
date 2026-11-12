@@ -74,3 +74,11 @@ Manual: skill `arquivo-333` (`.claude/skills/arquivo-333/`). Registro por episó
 - Ligado à fábrica: `fabrica.json` + `ferramentas/etapa.mjs`. Rodada completa com o teste (`proxima-estacao-ep02-v2teste`): todas as etapas passaram (movimento 8,41, parado 6,9%, -14 LUFS, 50,2 s). Usar o id do episódio na fábrica.
 - Rotina conferida depois da troca: quadros do O Sinal (ep. 2) e do Caso 02 (ep. 2) renderizam; o render da nuvem (`nuvem.mjs`) só pega `epNN.json` e faz checkout completo, então enxerga `arquivo-333/motor`.
 - O navegador do render às vezes não abre em 25 s (aconteceu 3 vezes hoje, com Ilha Zero e Hoje Sumiu renderizando): render e quadros tentam até 3 vezes.
+
+
+## 11/11/2026 (noite): Caso 02 ep. 3 "Estação Lia" PUBLICADO nas 3 redes
+- Votos do ep. 2: 8 a 0 para "assume o comando" (`publicacao/votos.md`). O Vito autorizou no chat produzir e publicar nas três redes (TikTok pelo Chrome, só nesta vez) e pediu comentário nos 3 vídeos (ele fixa).
+- Feito pela fábrica com o motor do Arquivo: 48,3 s, 1º corte 1,8 s, movimento 5,24, parado 6,5%, -13,9 LUFS. Voz 2,30 créditos (Gideon 1,84 + Vera 0,46).
+- /watch: 8,5 na 1ª rodada (cabeça cortada no fim dos planos: corrigido), 6,8 na 2ª ("pouco medo"): acrescentei a segunda mão no vidro e o passageiro pálido no plano final. Não rodei /watch de novo depois disso.
+- Links: Instagram /reel/DfnwWJLIUjy/, YouTube shorts/rwEm9WDRoCE, TikTok video/7707074764220681493. Kit: DesktopOrigem-Digitalarquivo-333-envioscelular-proxima-estacao-ep03.
+- Próximo: ler os votos (1 desce / 2 puxa o freio) e fazer o ep. 4 com a ponte de `series/proxima-estacao-roteiros.md`.

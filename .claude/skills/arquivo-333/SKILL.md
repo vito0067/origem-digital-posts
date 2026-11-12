@@ -221,3 +221,11 @@ host=github.com
 - **Upload pelo Chrome:**
   - só aceita arquivos das pastas da sessão (use `Desktop\Origem-Digital\arquivo-333-envios\`);
   - até 10 MB por arquivo.
+
+## Lições do Caso 02, ep. 3 (11/11/2026)
+- **Cabine, peças novas** (`pilotos.ts`): `alavG` (alavanca que gira), `macaneta` (com espelho e fechadura), `maoLia` (mão solta para closes; mesmas medidas da marca do vidro), `luzVulto`, `desenhaVidro(n, { tunel, placa, destaque, outra })` (túnel andando, placa "ESTAÇÃO LIA" chegando, marca em destaque, segunda mão). Ajudantes: `cab3`, `liaComando`, `liaFrente` + `camFrente` (Lia de frente em meio corpo, a 2,2 m, alvo y 1,27, fov 54: com menos que isso a cabeça corta), `giroMac`. Planos `p3_*`; câmeras `v2/e3_*`.
+- **Piso de movimento do Arquivo = 1,8** (`PISO_ARQUIVO` em `Mundo3D.tsx`): com 1 o episódio mediu 4,88 de movimento. Nos planos da Lia de frente use `piso: 1` e `dist` até 0,94, senão a aproximação corta a cabeça no fim do plano.
+- **Duração:** o Gideon fala ~2,2 palavras/s; 100 palavras deram 43,7 s. O que faltar se ganha com `segura` nas cenas de silêncio (mão no vidro 1,7 s; maçaneta 2,2 s), não com mais fala.
+- **Medo:** o /watch reclamou de "pouco medo" quando só havia estranheza. O que resolveu: um susto que APARECE (segunda mão acendendo no vidro, com `bate` + `glitch` no mesmo quadro) e um vulto pálido dentro do quadro no plano final, junto do voto.
+- **Sons com nome próprio para a trilha silenciar:** `toque` e `tranco` (apelidos de `grave` e `tranca`) em `trilhaV2.sons`, para o silêncio não cair no gancho.
+- **Gancho pelo voto:** "VOTOS 8 × 0" + a mão na alavanca no 1º quadro, e a fala "Vocês mandaram...". Legenda do Instagram: 1ª linha = o pedido de voto (skill ig-caption), 5 hashtags no máximo, sem link.

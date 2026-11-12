@@ -1,0 +1,427 @@
+{
+  "id": "proxima-estacao-ep03",
+  "serie": "Próxima estação",
+  "episodio": 3,
+  "titulo": "Estação Lia",
+  "narracao": "narracao/proxima-estacao-ep03-narr.mp3",
+  "narracaoUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261111_233948_9b957d83-a658-4f4f-935a-dc356325a087.mp3",
+  "legendaModo": "painel",
+  "etiqueta": "· CASO 02 · PRÓXIMA ESTAÇÃO · EP. 3",
+  "voz": "Gideon (narrador, Eleven v4, estabilidade 0.4) + Vera (anúncio do trem, filtro de alto-falante)",
+  "formato": "3D desenho em código com o motor do Arquivo (arquivo-333/motor): voto 8 a 0, ela assume o comando",
+  "ambiente": "metro",
+  "paradaNaCena": 8,
+  "lufs": -14,
+  "trilhaV2": {
+    "sons": [
+      "toque",
+      "tranco",
+      "freio"
+    ]
+  },
+  "cenas": [
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_hook_a",
+          "v2/e3_hook_b",
+          "v2/e3_hook_c"
+        ],
+        "pesos": [
+          0.38,
+          0.32,
+          0.3
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "textao",
+          "texto": "VOTOS 8 × 0",
+          "em": 0.05,
+          "ate": 1.6,
+          "y": 250
+        }
+      ],
+      "antes": 0.05,
+      "segura": 0.25,
+      "sons": [
+        [
+          "glitch",
+          0,
+          0.7
+        ],
+        [
+          "grave",
+          0,
+          0.9
+        ],
+        [
+          "tranca",
+          0.3,
+          0.9
+        ],
+        [
+          "impacto",
+          0.42,
+          1
+        ],
+        [
+          "whoosh",
+          1.7,
+          0.4
+        ]
+      ],
+      "fala": "Oito votos a zero. Vocês mandaram a Lia assumir o comando.",
+      "legenda": "Oito votos a *zero.* Vocês mandaram a Lia assumir o *comando.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_alav",
+          "v2/e3_tunel",
+          "v2/e3_devagar"
+        ],
+        "pesos": [
+          0.34,
+          0.34,
+          0.32
+        ]
+      },
+      "extras": [],
+      "antes": 0.1,
+      "segura": 0.45,
+      "sons": [
+        [
+          "tranca",
+          0.3,
+          0.7
+        ],
+        [
+          "grave",
+          "voz+1.4",
+          0.5
+        ],
+        [
+          "coracao",
+          "fimvoz-1.2",
+          0.7
+        ],
+        [
+          "coracao",
+          "fimvoz-0.3",
+          0.75
+        ]
+      ],
+      "fala": "Ela puxou a alavanca. O trem obedeceu. E andou devagar demais.",
+      "legenda": "Ela puxou a alavanca. O trem obedeceu. E andou devagar *demais.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_painel"
+        ],
+        "pesos": [
+          1
+        ]
+      },
+      "extras": [],
+      "antes": 0.1,
+      "segura": 0.35,
+      "sons": [
+        [
+          "sino",
+          0.05,
+          0.5
+        ],
+        [
+          "glitch",
+          "fimvoz-0.4",
+          0.5
+        ]
+      ],
+      "fala": "Próxima estação: Lia.",
+      "legenda": "Próxima estação: *Lia.*",
+      "avulsa": {
+        "arquivo": "narracao/proxima-estacao-ep03-vera.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261111_233950_189616dd-b59a-4f64-94de-c5e585806097.mp3",
+        "textos": [
+          "Próxima estação: Lia.",
+          "Estação Lia. Comente um se ela desce, ou dois se ela puxa o freio."
+        ],
+        "indice": 0
+      },
+      "vozTelefone": true
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_painel2",
+          "v2/e3_lia_tela"
+        ],
+        "pesos": [
+          0.45,
+          0.55
+        ]
+      },
+      "extras": [],
+      "antes": 0.1,
+      "segura": 0.6,
+      "sons": [
+        [
+          "grave",
+          0.15,
+          0.6
+        ],
+        [
+          "respira",
+          "fimvoz-0.8",
+          0.4
+        ]
+      ],
+      "fala": "Na tela da cabine, o nome dela. Em vermelho.",
+      "legenda": "Na tela da cabine, o nome *dela.* Em *vermelho.*"
+    },
+    {
+      "visual": {
+        "tipo": "divulgacao",
+        "titulo": "SEM CÂMERA",
+        "linhas": [
+          "COMENTE GUIA"
+        ]
+      },
+      "semLegenda": true,
+      "entrada": "preto",
+      "antes": 0.1,
+      "segura": 0.2,
+      "sons": [],
+      "extras": [],
+      "fala": "Feito sem câmera. Comente GUIA e eu te mando.",
+      "legenda": "Feito sem câmera. Comente GUIA e eu te mando.",
+      "avulsa": {
+        "arquivo": "narracao/divulgacao-comente-guia.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261106_194737_8dbd1243-7edb-49a0-8d76-76ff53334c5c.mp3"
+      }
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_mao_a",
+          "v2/e3_mao_b",
+          "v2/e3_lia_mao"
+        ],
+        "pesos": [
+          0.36,
+          0.32,
+          0.32
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 1.7,
+      "silencio": true,
+      "sons": [
+        [
+          "toque",
+          4.1,
+          1
+        ],
+        [
+          "bate",
+          5.2,
+          1
+        ],
+        [
+          "glitch",
+          5.2,
+          0.6
+        ],
+        [
+          "respira",
+          "fim-1.3",
+          0.5
+        ],
+        [
+          "coracao",
+          "fim-0.9",
+          0.7
+        ],
+        [
+          "coracao",
+          "fim-0.2",
+          0.75
+        ]
+      ],
+      "fala": "A Lia encostou a mão numa das marcas do vidro. Era do tamanho exato da mão dela.",
+      "legenda": "A Lia encostou a mão numa das marcas do vidro. Era do tamanho *exato* da mão *dela.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_macaneta",
+          "v2/e3_lia_macaneta"
+        ],
+        "pesos": [
+          0.52,
+          0.48
+        ]
+      },
+      "extras": [],
+      "antes": 0.12,
+      "segura": 2.2,
+      "silencio": true,
+      "sons": [
+        [
+          "tranca",
+          0.5,
+          0.4
+        ],
+        [
+          "tranca",
+          1.2,
+          0.5
+        ],
+        [
+          "tranca",
+          1.9,
+          0.55
+        ],
+        [
+          "tranco",
+          "fim-1.5",
+          1
+        ],
+        [
+          "coracao",
+          "fim-1.0",
+          0.8
+        ],
+        [
+          "coracao",
+          "fim-0.4",
+          0.85
+        ]
+      ],
+      "fala": "Atrás dela, a maçaneta começou a girar.",
+      "legenda": "Atrás dela, a maçaneta começou a *girar.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_freia",
+          "v2/e3_lia_freia",
+          "v2/e3_placa_a",
+          "v2/e3_placa_b"
+        ],
+        "pesos": [
+          0.32,
+          0.26,
+          0.22,
+          0.2
+        ]
+      },
+      "extras": [],
+      "antes": 0.1,
+      "segura": 0.9,
+      "sons": [
+        [
+          "freio",
+          0.1,
+          1
+        ],
+        [
+          "freio",
+          1.5,
+          0.8
+        ],
+        [
+          "impacto",
+          0.15,
+          0.7
+        ],
+        [
+          "grave",
+          "voz+2.6",
+          0.6
+        ],
+        [
+          "impacto",
+          "fim-1.2",
+          0.8
+        ]
+      ],
+      "fala": "E o trem começou a frear sozinho. Lá na frente, uma plataforma vazia. Com o nome dela na placa.",
+      "legenda": "E o trem começou a frear *sozinho.* Lá na frente, uma plataforma vazia. Com o nome dela na *placa.*"
+    },
+    {
+      "visual": {
+        "tipo": "3d",
+        "planos": [
+          "v2/e3_final_a",
+          "v2/e3_final_b",
+          "v2/e3_final_c"
+        ],
+        "pesos": [
+          0.36,
+          0.34,
+          0.3
+        ]
+      },
+      "extras": [
+        {
+          "tipo": "aposta",
+          "texto": "Comente 1 se ela desce, ou 2 se ela puxa o freio.",
+          "em": 0.2
+        }
+      ],
+      "antes": 0.2,
+      "segura": 1.8,
+      "sons": [
+        [
+          "sino",
+          0.1,
+          0.5
+        ],
+        [
+          "grave",
+          2.78,
+          0.8
+        ],
+        [
+          "glitch",
+          2.78,
+          0.55
+        ]
+      ],
+      "fala": "Estação Lia. Comente um se ela desce, ou dois se ela puxa o freio.",
+      "legenda": "Estação Lia. Comente 1 se ela desce, ou 2 se ela puxa o freio.",
+      "semLegenda": true,
+      "avulsa": {
+        "arquivo": "narracao/proxima-estacao-ep03-vera.mp3",
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261111_233950_189616dd-b59a-4f64-94de-c5e585806097.mp3",
+        "textos": [
+          "Próxima estação: Lia.",
+          "Estação Lia. Comente um se ela desce, ou dois se ela puxa o freio."
+        ],
+        "indice": 1
+      },
+      "vozTelefone": true
+    }
+  ],
+  "publicar": {
+    "instagram": "manual",
+    "data": "2026-11-11",
+    "hora": "20:00",
+    "capaEm": 1,
+    "legenda": "Comente 1 se ela desce na estação com o nome dela, 2 se ela puxa o freio. O mais votado decide o episódio 4. 👇\n\nOntem foram 8 votos a 0: vocês mandaram a Lia assumir o comando do último trem. Ela puxou a alavanca. O trem obedeceu. E a próxima estação apareceu na tela com o nome dela.\n\nPróxima estação é uma série de terror em animação 3D em que os comentários decidem a história. Este é o episódio 3 do Caso 02 do Arquivo 3:33.\n\nQuer saber como é feito, sem câmera? Comente GUIA.\n\nFicção criada com inteligência artificial.\n#terror #historiasdeterror #suspense #metro #animacao3d",
+    "comentario": "Votação aberta: 1 = ela desce na estação com o nome dela, 2 = ela puxa o freio. O mais votado decide o episódio 4. 👇",
+    "tituloYoutube": "8 votos a 0: ela assumiu o trem e a próxima estação tem o nome dela | Próxima estação, Ep. 3 #shorts",
+    "descricaoYoutube": "Vocês votaram: 8 a 0 para a Lia assumir o comando. Ela puxou a alavanca, o trem obedeceu, e a próxima estação apareceu na tela com o nome dela. Comente 1 se ela desce, 2 se ela puxa o freio. O mais votado decide o episódio 4.\n\nPróxima estação é o Caso 02 do Arquivo 3:33, uma série de terror em que você decide o próximo episódio.\nGuia para fazer vídeos assim, sem câmera: https://semcamera.vercel.app/?de=arquivo\nFicção criada com inteligência artificial.\n\n#terror #suspense #misterio #animacao3d #shorts"
+  }
+}

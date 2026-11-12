@@ -76,3 +76,10 @@
 
 ## Depois de publicar ou agendar
 Anote em `publicacao/agendados.json` (rede, "agendado DD/MM HHhMM" ou "publicado …" com link) e em `publicacao/epNN.md`. Depois commit e push.
+
+## Lições da publicação de 11/11/2026 (Caso 02, ep. 3)
+- **Arquivo de envio:** o `file_upload` do Chrome aceita até 10 MB. Faça a cópia leve antes: `ffmpeg -i <id>-14lufs.mp4 -c:v libx264 -preset slow -b:v 1350k -maxrate 2000k -bufsize 4000k -c:a copy -movflags +faststart <id>-upload.mp4` (48 s ≈ 9 MB, som continua em -14 LUFS).
+- **Instagram:** as coordenadas do menu de corte mudam com o tamanho da janela (cliquei 16:9 sem querer). Use `find` → botão "9:16 Ícone de corte em formato retrato" e clique pelo `ref`. O interruptor de IA: confira `aria-checked` por JavaScript. O comentário sai com Enter, mas só aparece depois de recarregar a página.
+- **YouTube:** depois de digitar o título, a sugestão de hashtag segura o foco e a descrição cai DENTRO do título ("O título é muito longo", botão Avançar desligado). Digite o título sem `#shorts` no fim, foque a descrição com `#description-textarea #textbox` e confira os dois campos por JavaScript antes de avançar.
+- **TikTok:** o botão "Editar" ao lado do vídeo abre o EDITOR DE VÍDEO (cancele); a capa é pelo clique na miniatura "Editar capa" → entrada de arquivo "Carregar capa" → Salvar. Para comentar: abra a aba "Comentários" da página do vídeo, clique no campo e digite (não use `execCommand`: derruba o painel); envie pelo botão vermelho.
+- O Vito fixa os comentários; a gente só comenta nos três.

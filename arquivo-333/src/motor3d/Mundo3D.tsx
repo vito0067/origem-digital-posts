@@ -14,6 +14,8 @@ import { sequencia, prepararRenderizador, montarLuz, CLIMAS } from "../../motor/
 // @ts-ignore
 import { CAM_V2, variar } from "../../motor/camv2.mjs";
 let LUZ_V2: any = null;
+// piso de movimento do Arquivo: 1,8x o da base (com 1 o ep. 3 mediu 4,88 de movimento; a meta é acima de 5)
+const PISO_ARQUIVO = 1.8;
 // "noite-fria" ajustada para este perfil (11/11/2026): o vagão é fechado (a lua não entra pelo teto), então sem sombra,
 // luz principal fraca e o recorte quente de trás; fundo e neblina continuam os do vagão. Sombra também deixava o quadro 5x mais lento.
 const NOITE_FRIA_VAGAO = { ...CLIMAS["noite-fria"], fundo: null, neblina: null, semSombra: true,
@@ -56,7 +58,7 @@ export const Mundo3D: React.FC<{ plano: string; s: number; dur: number }> = ({ p
         const desde = ((v2.pulsos ? v2.pulsos(dCena) : []) as number[]).map((tk) => sCena - tk).filter((x) => x >= 0);
         LUZ_V2.pulso(desde.length ? Math.min(...desde) : -1, v2.forca ?? 1);
         const plano = (u: number, d: number) => variar(t, v2.var, u / d);
-        const c = sequencia([{ inicio: 0, fim: dur, plano, entrada: v2.entrada, tremor: v2.tremor }])(s);
+        const c = sequencia([{ inicio: 0, fim: dur, plano, entrada: v2.entrada, tremor: v2.tremor, piso: v2.piso ?? PISO_ARQUIVO }])(s);
         cam.fov = c.fov; cam.position.set(...(c.pos as [number, number, number])); cam.up.set(0, 1, 0); cam.lookAt(...(c.alvo as [number, number, number]));
         if (c.rolar) cam.rotateZ(c.rolar);
       } else {
