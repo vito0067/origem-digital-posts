@@ -5,10 +5,10 @@ import { readFileSync, writeFileSync, renameSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { lerAudio, montarVoz, mixFinal } from "../../arquivo-333/ferramentas/mixagem.mjs";
-import { cortarNarracao, trechosDeFala } from "../../arquivo-333/ferramentas/narracao.mjs";
+import { lerAudio, montarVoz, mixFinal } from "./som/mixagem.mjs";
+import { cortarNarracao, trechosDeFala } from "./som/narracao.mjs";
 import { compor } from "./trilhas.mjs";
-import { TAXA, Faixa, SFX, pad, pluck, bumbo, chimbal, reverb, sino, filtro, ruido, decai, oscilador, nota } from "../../arquivo-333/ferramentas/sintetizador.mjs";
+import { TAXA, Faixa, SFX, pad, pluck, bumbo, chimbal, reverb, sino, filtro, ruido, decai, oscilador, nota } from "./som/sintetizador.mjs";
 
 const RAIZ = fileURLToPath(new URL("..", import.meta.url));
 const ep = JSON.parse(readFileSync(join(RAIZ, process.argv[2]), "utf8"));
@@ -105,7 +105,7 @@ else for (let c = 0; c * cp < duracao + 1; c++) {
 }
 reverb(m, { sala: 0.5, amortece: 0.5, mistura: 0.16 });
 // motor v2 (`cena.motor: "v2"`): a trilha silencia sozinha antes de cada impacto de `cena.impactos` e volta depois
-if (ep.cena?.motor === "v2" && ep.cena.impactos?.length) { const { volumeTrilha } = await import("./motor/index.mjs"); const v = volumeTrilha(ep.cena.impactos, 1); m.volume(v); }
+if ((ep.cena?.motor === "v2" || ep.cena?.motor === "livro") && ep.cena.impactos?.length) { const { volumeTrilha } = await import("../motor/index.mjs"); const v = volumeTrilha(ep.cena.impactos, 1); m.volume(v); }
 // a música acaba junto com o vídeo, num acorde
 m.volume((x) => (x > duracao - 0.5 ? Math.max(0, (duracao + 0.1 - x) / 0.6) : 1));
 
@@ -123,7 +123,7 @@ roteiroDia.efeitos({ fx, marcas, cenas, rnd, SFX, sino, virada, dobra, buzina, a
 mixFinal({ duracao, voz, musica: m, efeitos: fx, fala: cenas.map((c) => [c.vozEm, c.vozEm + c.vozDur]), saida: join(RAIZ, "public", `${ep.id}.wav`), musicaDb: -12, ganhoEfeitos: 0.75 });
 // `cena.lufs` (ex.: -14): normaliza a mixagem final para esse volume (padrão das redes), com limite de pico em -1,5 dB
 if (ep.cena?.lufs) {
-  const FF = join(RAIZ, "..", "node_modules", "@remotion", "compositor-win32-x64-msvc", "ffmpeg.exe"), wav = join(RAIZ, "public", `${ep.id}.wav`), tmp = join(RAIZ, "public", `${ep.id}.norm.wav`);
+  const FF = join(RAIZ, "node_modules", "@remotion", "compositor-win32-x64-msvc", "ffmpeg.exe"), wav = join(RAIZ, "public", `${ep.id}.wav`), tmp = join(RAIZ, "public", `${ep.id}.norm.wav`);
   execFileSync(FF, ["-y", "-loglevel", "error", "-i", wav, "-af", `loudnorm=I=${ep.cena.lufs}:TP=-1.5:LRA=11`, "-ar", "44100", "-c:a", "pcm_s16le", tmp]);
   renameSync(tmp, wav);
 }

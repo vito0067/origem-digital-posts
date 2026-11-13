@@ -7,7 +7,7 @@ export const marcas = ({ cenas, tp, ep }) => {
   const tem = (i, p) => cenas[i].palavras.some((x) => x.w.replace(/[*~.,!?:]/g, "").toLowerCase() === p);
   return {
     iVirada, iNilo, iChamado, iComenta, iCredito,
-    onda: tp(0, ultima) + 0.5,
+    onda: typeof ep.cena.onda === "number" ? ep.cena.onda : tp(0, ultima) + 0.5, // `cena.onda` (Dia 13): a coisa vira no segundo zero, antes de a voz dizer o nome
     placaSobe: -1, placaVira: -99, trava: NUNCA, // a placa cinza e o sinal sem vermelho já vêm do Dia 1
     credito: iCredito >= 0 ? cenas[iCredito].vozEm : NUNCA,
     silencio: cenas[iVirada].vozEm,

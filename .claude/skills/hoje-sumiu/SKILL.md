@@ -131,7 +131,8 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 ## Limites das contas pelo navegador (31/10/2026)
 - **Antes de postar:** confira a conta em cada rede, nos dois perfis do Chrome. Em 01/11/2026 o Arquivo 3:33 estava logado no perfil em uso e por pouco o vídeo não saiu lá. Sinais de conta certa: "Editar perfil" na página @hojesumiu e, no YouTube Studio, o canal Hoje Sumiu.
 - **YouTube:** espere a verificação terminar antes de publicar. Publicar antes dispara um aviso de risco de advertência.
-- **Instagram:** na tela de corte, escolha "Original", porque o padrão é quadrado. A capa com o título entra em "Selecionar do computador".
+- **Instagram:** na tela de corte, escolha "Original" (9:16), porque o padrão é QUADRADO. A capa com o título entra em "Selecionar do computador".
+- **ERRO REPETIDO (07/11/2026), vale para os 3 perfis:** o Hoje Sumiu e o Arquivo 3:33 publicaram reels em QUADRADO (corte padrão), e o Vito teve de corrigir na hora e republicar. Antes de clicar em "Compartilhar", confira: (1) a pré-visualização ocupa a tela inteira na vertical; (2) o ícone de corte está em "Original"; (3) depois de publicar, abra o reel e veja se o player é vertical. Se saiu quadrado, avise o Vito na hora (não apague sozinho).
 - **TikTok:** só o Vito publica, pelo celular. Na seção `Legenda TikTok` de `publicacao/diaNN.md`, escreva o nome sem @ e diga "no Instagram", porque o @ marcaria a conta de lá, que pode ser outra pessoa.
 - **TikTok (conta nova):** foto, bio e comentário não salvaram pelo navegador, sem mensagem de erro. Ao salvar o perfil, confirme o aviso de apelido na hora: ele trava a troca por 7 dias. Peça ao Vito para fazer isso pelo celular.
 - **Instagram:** a versão web não oferece fixar comentário nem editar o nome. Só pelo app.
@@ -145,3 +146,82 @@ Música em código (108 BPM, pizzicato) que se reduz a quase nada na virada estr
 - **Roteiro do Dia 8 em diante:** gerado por script (falas, cortes e cena); a voz sai fala por fala e é unida com 1 s de silêncio; os cortes vêm da energia de cada janela. 14 falas ≈ 3,5 créditos.
 - **Divulgação 40% a 60%:** se cair antes, troque a ordem das falas (reordene `falas` e `cortes` juntos, sem regravar).
 - **Conferir com /watch antes de mostrar:** `WATCH_GEMINI_MODEL=gemini-2.5-flash` (o padrão travou). Dia 8: 8,0 → 8,5 → 9,0. Ele reclamou de "casas caindo" no dominó: gente precisa aparecer na metáfora (`dominos` com `gente`).
+
+## Salto de qualidade do Dia 9 (08/11/2026, pedido do Vito)
+- **Animação sem travada:** o Vito notou trechos parados no v1. Meça com `ferramentas/travadas.py video.mp4 pasta-temp` (diferença quadro a quadro, precisa do Pillow); meta: nenhum plano de câmera parado por mais de ~1,5 s. Use 2 câmeras por fala (voo ou corte), `deriva` em toda câmera e `balanca` em toda `pessoa`. Troque a transição `pisca` (corte no escuro, parece defeito) por `luz`.
+- **Confira os quadros do vídeo pronto** para letreiros e etiquetas cortados pela borda do enquadramento (o Gemini não pega isso). Posições x das etiquetas precisam cair dentro da câmera da fala.
+- **Prédios:** `somemPredios: "@onda"` na `cena` faz os prédios do fundo dobrarem e sumirem em onda (use quando o tema são prédios, casas ou apartamentos), como o `somemCarros` faz com os carros.
+- **Crédito sem @ fixo** (vários comentários decidiram): `credito` com `rotulo` "VOCÊS DECIDIRAM", `conta`, `texto` e `curtidas: null` (a linha de curtidas some). A voz diz "Vocês decidiram que fosse X".
+- **Mais consequências no mesmo tempo:** pausa de 0,6 s entre falas (em vez de 1 s) e falas de 2 a 3 s; o corte de cada fala vem da duração do clipe. 16 falas couberam em 56,5 s.
+- **Upload leve:** 720p abaixo de 10 MB (`-crf 29 -maxrate 1300k`); a capa é o quadro de 0,5 s do vídeo.
+
+## Dia 10 (09/11/2026): regras novas do Vito e melhorias do motor
+- **Coerência do mundo (regra do Vito, 09/11/2026):** o que já sumiu nunca aparece, e o tema novo tem que fazer sentido no mundo que sobrou. As janelas venceram a votação do Dia 9, mas sem apartamentos e casas não faziam sentido: o vídeo explicou ("foi erro meu dar essa opção") e usou o segundo mais votado (chuveiro quente). Confira o mural (`sumiram`) antes de escrever o roteiro; nada de luz, carro, casa, janela, sono, Wi-Fi, placa, boleto, frio ou vermelho nas cenas e nas consequências.
+- **Do Dia 11 em diante não há opções nossas no fim:** a pergunta é aberta ("comente o que some amanhã, o mais curtido decide"). Sem `opcoes` no `cena`, o cartão final mostra 3 `exemplos` (use exemplos que ainda existam no mundo). Se o mais curtido não fizer sentido, use o seguinte e explique.
+- **Nenhum prédio desde o 1º quadro** depois do Dia 9: `somemPredios: -10` (número negativo = já sumiu antes do vídeo).
+- **Melhorias novas:** abertura `carimbo` (carimbo azul bate com tremida e clarão; `linhas` pode ficar vazio), sombra de contato automática em toda `pessoa` (`sombra: false` desliga; `sombra: { rx, rz, op, pos }` em qualquer peça), peça `agua` (gotas caindo entre `ativo` e `ate`, para chuveiro e fonte), `cena.lufs: -14` normaliza a mixagem final (o Dia 10 saiu em -14,3 LUFS), e clipes de voz iguais de dias anteriores podem ser reaproveitados (economiza crédito).
+- **Câmera:** 2 a 3 planos por fala, cada um com fov (zoom) diferente; mede-se com `travadas.py`. Dia 10: nenhum trecho parado acima de 2 s, exceto o cartão final.
+- **Divulgação do guia:** "Feito sem câmera. Comente GUIA." e cartão com "LINK NA BIO"; sem preço dentro do vídeo.
+
+## Enquadramento do Dia 10 (09/11/2026, correções do Vito): nada de texto cortado
+- **Letreiros e etiquetas colocados NO MUNDO cortam fácil** (a tela vertical mostra só uns 3,5 m na horizontal e cada plano de câmera muda isso): "CHUVEIRO QUENTE", "FILA NA FONTE", "ENFEITE" e "CABELO?" saíram cortados ou atrás do cabeçalho. Para texto que precisa ser lido, use `selos` no `cena` (cartões de papel FIXOS na tela: `{ txt, em, ate, topo, tam, cor, fundo, borda, r }`; `topo` 380 acima da cabeça, 900 embaixo do cartão dos votos). Deixe `etiquetas` só para NINGUÉM RECLAMA e SEU NILO, que já têm posição testada.
+- **Antes de renderizar o vídeo inteiro, tire fotos nos planos de cada fala** (`render.mjs Dia fotos t1 t2 ...`) e olhe cada letreiro, peça e cabeça no enquadramento real, não só o plano geral. Peças pequenas (patos, sabonete) pedem câmera mais longe do que parece (para 3 patos de 1,2 m de largura use ~11 m de distância).
+- **Seu Nilo:** nada pode ficar na frente dele nem na mesma profundidade (a multidão da fala "ninguém reclama" tem que sair antes: `sai: "@13:inicio-0.25"`), e a fala dele precisa de `segura: 1.4` para o caderno terminar de escrever. As linhas `sumiram` precisam ser curtas ("Dia 9: apartamentos") para não quebrar.
+- **Publicação pelo computador a pedido do Vito:** no Dia 10 ele pediu que o TikTok também fosse pelo Chrome (TikTok Studio: carregar, legenda, "Exibir mais", ligar "Conteúdo gerado por IA", Publicar). Sem esse pedido explícito, TikTok continua só pelo celular dele.
+
+## Padrão de qualidade aprovado pelo Vito (09/11/2026, vale para todos os perfis)
+Fonte: `4-midia\referencias\PADRAO-DE-QUALIDADE-VIDEOS.md`. Cada perfil mantém o estilo; no Hoje Sumiu (papel pop-up) as 3 melhorias são:
+1. **Câmera sempre em movimento, algo novo a cada 2 a 3 s.** Meta medida: movimento médio acima de 5 e menos de 20% do tempo quase parado. No papel: 2 a 3 planos por fala (voo ou corte), `deriva` em toda câmera, `balanca` em toda pessoa, uma peça que sobe, selo ou personagem entrando por fala; uma cena puxa a outra (voo entre planos, não cena parada).
+2. **Entrada rápida:** gancho forte no 1º quadro e primeiro corte em até 2 s. A abertura (`carimbo`, `iris` etc.) tem que acabar em até ~1,9 s (`ate: "@0:fim-0.2"` ou menos); no Dia 10 o primeiro corte saiu em 2,27 s, então encurte.
+3. **Som:** silêncio curto antes do momento forte (a trilha já deixa 1,1 s antes do `climax`), efeito no quadro exato (`sons` com tempo `@N:palavra`) e **-14 LUFS** (`cena.lufs: -14`; variação de volume menor que 4 LU).
+- **Medir antes de mostrar ao Vito (sem custo):** `python ferramentas\medir-dias.py dia10` (ffmpeg do pip imageio-ffmpeg; gera `saida\medicao\medidas.csv` e mosaico de 60 quadros) e `ferramentas\travadas.py` (quadros parados). Dia 10 (09/11): movimento 9,06 e 12,8% parado (o melhor dos 10 dias; Dia 8 7,2 e 19,8%; Dia 9 7,3 e 23,7%; Dia 1 a 7 entre 5,1 e 8,3 e 5% a 23%), -14,3 LUFS (Dias 1 a 9 entre -12,0 e -14,1), primeiro corte em 2,27 s. Compare com o episódio anterior, não com um número mágico.
+
+## Dia 11 (10/11/2026): votos pelo mais curtido e novidades
+- **Contar os votos:** ler os comentários do episódio anterior nas 3 redes (YouTube pelo Chrome clicando no ícone de comentários do Short; TikTok pelo perfil, abrindo o vídeo mais recente; Instagram pelo Chrome logado, porque sem login só aparecem alguns). "Guia" é pedido do guia, não voto. Vale o MAIS CURTIDO; some as curtidas da mesma ideia nas redes só como desempate e para o relatório. Personagem da série (Seu Nilo) não some.
+- **Crédito:** `credito: { rotulo: "O MAIS CURTIDO", conta: "@autor", texto, curtidas }` (o @ só na tela; na legenda diga "de uma pessoa no YouTube", porque o @ marcaria outra conta no Instagram).
+- **Pessoa colorida:** `pele` aceita qualquer cor (maquiagem "arte moderna" com pele rosa, azul e verde). Espelho, cadeira, dente e pavão são montados só com `forma` (ver `ferramentas/dias/gerar-dia11.mjs`); `sons: [{ em, tipo, volume }]` põe efeito no quadro exato (carimbo, nhac, pop, virada, subida, glitch).
+- **Entrada rápida:** `abertura.ate` em `@0:fim-0.6` e primeiro corte seco de câmera em `@1:inicio-0.5` (primeiro corte medido: 1,87 s). O título do 1º quadro vem de `cena.titulo` (legível no quadro 0).
+- **Repasse de autorização:** quando o Vito autoriza publicar sem o "aprovado" através de outro chat, produza tudo e deixe pronto, mas peça a confirmação neste chat antes de publicar.
+
+## Câmera calma e visual "livro" (10/11/2026, o Vito rejeitou a câmera agitada)
+- **A regra de câmera do padrão de qualidade NÃO vale para o Hoje Sumiu.** O Vito disse que a câmera trocando a cada 2 a 3 s "não combina" com o perfil e que não gostava do design. Use UM voo suave por fala (`dur` 1,3 a 1,8, sem `dur: 0.01`, sem segunda câmera no meio da fala), câmera a z ~31 a 33 para as cenas na praça (a ~28 as pessoas enchem a tela), `balanca` com `amp` 0.04.
+- **`visual: "livro"` no `cena`:** cores mais vivas e quentes (saturação 1,28), luz de sol na diagonal e bordas escurecidas. A novidade na tela vem das peças que sobem e dos `selos`, não da câmera.
+- Continuam valendo: entrada rápida, som no quadro, -14 LUFS, selos fixos, coerência do mundo. Dia 11 publicado assim: movimento 6,82 e 11,6% parado.
+- Ele publicou sem ver a reformulação: antes do dia seguinte, pergunte o que achou e ofereça mostruário de visual se ainda não gostar.
+
+## Motor do Hoje Sumiu (11/11/2026): pasta `hoje-sumiu\motor`
+Decisão do Vito em 11/11/2026: um motor por perfil. Ele disse que o motor 3D v2 "não combinou nada com o Hoje Sumiu". A pasta `posts-automaticos\motor-v2` é só base congelada; o motor daqui é independente dela (câmera, ritmo, luz, som e normalização copiados; nada de chicote, mergulho, giro nem piso de movimento).
+- Liga com `cena.motor: "livro"` no episódio. A ideia central é o LIVRO, não a câmera:
+  - Câmera de leitor (`motor/camera-calma.mjs`): um enquadramento firme por fala, com aproximação contínua na metade da velocidade antiga. Sem voo entre planos.
+  - Troca de cena = VIRAR A PÁGINA: uma folha atravessa a tela em 0,56 s e esconde a troca (componente `Pagina` em `DiaDados.tsx`). Não usar `transicoes` de clarão no livro.
+  - Peças em stop motion: o mundo anda de dois em dois quadros; câmera e textos continuam lisos.
+  - Legenda em tira de papel na zona segura, palavra por palavra, com marca-texto amarelo na palavra-chave (`*palavra*`) (`Legenda papel` em `Dia.tsx`).
+  - Luz do motor ("papel-quente"): `cena.luzMotor: true`. Voto do Vito em 11/11/2026: usar do Dia 12 em diante. Deixa o livro mais escuro e contrastado.
+  - Silêncio de 0,5 s na trilha antes do sumiço: `cena.impactos: [{ em: "@onda", silencio: 0.5, volta: 0.4 }, { em: "@N:palavra", silencio: 0.5 }]`. O conferidor avisa "fala invade o silêncio": é esperado, só a música cala.
+  - Cartão final: os comentários de exemplo entram a cada 1,3 s, para não ficar mais de 4 s sem novidade.
+- Ritmo: medido pelo que entra na tela (peça, selo, página) a cada 4 s no máximo, não pela câmera. `node ferramentas/conferir-ritmo.mjs hoje-sumiu-diaNN` antes de renderizar.
+- Ainda NÃO feito no motor (ideias da direção que ficaram para depois): sumiço deixando o buraco com a silhueta; mola nova nas peças (elas já sobem com o "volta" antigo).
+- Fábrica de episódios: `hoje-sumiuabrica.json` + `ferramentas/etapa.mjs` (roteiro, voz, ritmo, render, som, medir, kit). `node ../fabrica/fabrica.mjs hoje-sumiu dia12 --simular`. O episódio se chama `diaNN`. A etapa `voz` NÃO gera voz (crédito só com o Vito sabendo): confere o mp3 e roda o preparar-dia. A etapa `medir` já tira a folha de 60 quadros. Não há comando de publicar: publicação é manual, com o "aprovado" do Vito no chat.
+- Teste: `episodios/dia11-livro.json` (Dia 11 refeito, não publicado). O dia sai no jeito atual até o Vito aprovar o teste.
+- A pasta `motor-v2` e este motor ainda não estão no GitHub. Renderizar com outro perfil renderizando dá "Timed out": a etapa render tenta 5 vezes.
+- Fila da fábrica (11/11/2026): dois perfis renderizando juntos derrubam o navegador do Remotion. Renderizar SEMPRE pela fábrica (`node ../fabrica/fabrica.mjs hoje-sumiu diaNN`), que espera a vez sozinha (até 3 h; `--sem-fila` fura). Render direto pelo `render.mjs` não entra na fila.
+
+## Dia 12 (11/11/2026): a cor azul, primeiro dia no motor "livro"
+- O Vito aprovou o visual do teste ("o dia 12 sai com o visual novo igual ao do teste") e autorizou publicar nas TRÊS redes pelo Chrome nesse dia. Sem pedido igual, TikTok volta a ser pelo celular e publicar exige o "aprovado".
+- **`semAzul`** no `cena`: filtro na tela inteira que troca por cinza tudo o que é azul (céu, água, roupa, letreiro). `"@onda"` no dia do sumiço; **`-10` do Dia 13 em diante**. Roxo, rosa e verde não mudam. Não use azul como cor de destaque (selos, roupas) nos próximos dias: vira cinza.
+- Gerador: `ferramentas/dias/gerar-dia12.mjs` (balão, pipa, guarda-sol, guarda-chuva, mar com areia, caneta, tela e baldes do pintor, arara no poleiro, tudo com `forma`). `calca` muda a cor da calça da pessoa.
+- Enquadramento no motor livro: a tira da legenda fica em ~63% da altura e cobre o que estiver no chão perto da câmera. Para mostrar pernas ou objetos no chão, câmera longe e olhando baixo (`pos [0, 2.2, 37.5]`, `alvo [0, 0.5, 19.8]`); objeto pequeno vai em cima de uma mesa (`caixa` de 1,5 de altura).
+- Sem `abertura`, o quadro 0 sai sem o letreiro (ele entra em ~0,2 s). Para capa use o quadro de 1,0 s; no próximo dia, garanta o título no quadro 0.
+- Navegador: o Chrome do Hoje Sumiu é o "Browser 3" (`list_connected_browsers` + `select_browser`); o "Browser 2" estava no canal de outro perfil. A seleção pode voltar sozinha: confira o canal antes de enviar. No Instagram, o campo de arquivo certo é o ÚLTIMO da lista (o do meio troca a foto do perfil).
+- Voz: o serviço recusa mais de 2 pedidos por vez (429): mande de 2 em 2.
+- Números lidos em 11/11: todo Short fica em 1,1 a 1,4 mil views (95,9% do feed); retenção alta (Dias 5 e 8, ~88%) não trouxe mais views. O Instagram é onde o público comenta (22 comentários no Dia 11); TikTok, quase nada.
+
+## Dia 13 (12/11/2026): o sol, primeiro teste do "segundo zero"
+- O Vito autorizou neste chat produzir e publicar nas TRÊS redes pelo Chrome sem pedir aprovação, e arrumar bio, comentários e legendas para alcançar mais gente e vender o e-book.
+- **Teste do dia (raio-x do YouTube, uma mudança por episódio):** `cena.onda: 0.7` faz a coisa virar do avesso no segundo zero, antes de a voz dizer o nome; no motor livro o título já está inteiro no quadro 0 (sem a animação de entrada). `heroi.ate` (tempo) diz quando sai o plano do herói (antes saía em `onda + 0,2`). Comparar "continuaram assistindo" com os Dias 11 (53,2%) e 12 (52,5%). Os testes 2 (primeira frase com consequência) e 3 (guia no fim) continuam na fila; o 3 só com o ok do Vito, porque a regra dele é sempre divulgar o guia.
+- **Novas opções no `cena`:** `semSol` (o sol de papel do céu encolhe e não volta; negativo = já sumiu), `semPlacas: true` (esconde a placa PARE: as placas sumiram no Dia 5; ela ainda aparecia até o Dia 12) e, no visual livro, `noite: [{ em, ate, forca }]` agora escurece só o mundo 3D (filtro de brilho), deixando cabeçalho, selos e legenda claros. Use `forca` ~0,85.
+- **Do Dia 14 em diante:** `semSol: -10`, `semAzul: -10`, `semPlacas: true`, e o mundo é NOITE desde o 1º quadro (sem sol a luz não volta). O que ainda ilumina: fogo, estrelas. A lua apagou junto.
+- **Silêncio antes do sumiço** agora vale no livro (`preparar-dia.mjs` aceitava só o motor "v2" e importava de um caminho errado).
+- Voz: o `generate_audio_batch` do `elevenlabs_v4` quer `dialogue: [{ text, voice_type: "preset", voice_id }]`, `stability` e `similarity_boost` (não `voice_id`/`similarity` soltos).
+- Navegador: o Chrome do Hoje Sumiu agora se chama "Browser 2" (mesmo deviceId `241d2700…`). A seleção volta sozinha para o "Browser 1" a cada poucas ações (outra conversa usando o Chrome): chame `select_browser` antes de cada lote e confira a conta.
+- Bios atualizadas em 12/11: Instagram ("🎬 Ficção com IA, sem câmera. Aprenda no link ⬇") e descrição do canal no YouTube (termos "E se o sol sumisse?", "curiosidades", convite para inscrever e link do guia).

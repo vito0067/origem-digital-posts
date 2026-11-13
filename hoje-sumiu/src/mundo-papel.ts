@@ -237,7 +237,7 @@ export class MundoPapel {
     this.pop(g, 0, "sobe", 0.2);
   }
   private placa() {
-    const g = new THREE.Group(); g.position.set(-3.7, 0.2, 7.2); this.cena.add(g);
+    const g = new THREE.Group(); g.position.set(-3.7, 0.2, 7.2); this.cena.add(g); (this as any).placaG = g; // `cena.semPlacas` esconde (as placas sumiram no Dia 5)
     const po = recorte(sRet(0.18, 2.5), papel("#6d7581"), 0.06); po.position.z = -0.03; g.add(po);
     const f = new THREE.Group(); f.position.y = 3; g.add(f); const m = novoPapel(VERM);
     const o = recorte(sOct(1.15), m, 0.08); o.position.z = -0.04; f.add(o); const in2 = recorte(sOct(1.0), m, 0.012); in2.position.z = 0.05; f.add(in2);

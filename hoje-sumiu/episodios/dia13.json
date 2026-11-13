@@ -1,0 +1,3929 @@
+{
+ "id": "hoje-sumiu-dia13",
+ "dia": 13,
+ "coisa": "o sol",
+ "velocidade": 1,
+ "falas": [
+  {
+   "fala": "Hoje sumiu o sol.",
+   "legenda": "Hoje sumiu o ~sol.~"
+  },
+  {
+   "fala": "Do mundo inteiro. Para sempre.",
+   "legenda": "Do mundo inteiro. Para *sempre.*"
+  },
+  {
+   "fala": "O comentário mais curtido foi o sol.",
+   "legenda": "O comentário mais *curtido* foi o *sol.*"
+  },
+  {
+   "fala": "Por oito minutos, ninguém percebe.",
+   "legenda": "Por *8* minutos, ninguém *percebe.*"
+  },
+  {
+   "fala": "É o tempo que a luz do sol leva para chegar.",
+   "legenda": "É o tempo que a *luz* do sol leva para *chegar.*"
+  },
+  {
+   "fala": "Aí o céu apaga.",
+   "legenda": "Aí o céu *apaga.*"
+  },
+  {
+   "fala": "A lua apaga junto. Ela só brilhava com a luz do sol.",
+   "legenda": "A *lua* apaga junto. Ela só brilhava com a luz do *sol.*"
+  },
+  {
+   "fala": "Em uma semana, as flores param de abrir.",
+   "legenda": "Em uma semana, as *flores* param de *abrir.*"
+  },
+  {
+   "fala": "Feito sem câmera. Comente GUIA.",
+   "legenda": "*Feito* sem *câmera.* Comente *GUIA.*"
+  },
+  {
+   "fala": "E nem dá para acender a luz. A energia sumiu no dia quatro.",
+   "legenda": "E nem dá para acender a *luz.* A *energia* sumiu no Dia *4.*"
+  },
+  {
+   "fala": "Pelo menos ninguém sente frio. O frio sumiu no dia dois.",
+   "legenda": "Pelo menos ninguém sente *frio.* O frio sumiu no Dia *2.*"
+  },
+  {
+   "fala": "No fim, o mundo vira uma noite que não acaba.",
+   "legenda": "No fim, o mundo vira uma *noite* que não *acaba.*"
+  },
+  {
+   "fala": "Mas ninguém reclama. Para todo mundo, o sol nunca existiu.",
+   "legenda": "Mas ninguém reclama. Para todo mundo, o sol *nunca existiu.*"
+  },
+  {
+   "fala": "Só o Seu Nilo lembra. Ele anotou.",
+   "legenda": "Só o *Seu Nilo* lembra. Ele *anotou.*",
+   "segura": 1.4
+  },
+  {
+   "fala": "Amanhã, outra coisa vai sumir.",
+   "legenda": "Amanhã, outra coisa vai *sumir.*"
+  },
+  {
+   "fala": "Quem escolhe é você. Comente o que some amanhã. O mais curtido decide.",
+   "legenda": "Quem escolhe é *você.* Comente o que some amanhã. O mais *curtido* decide."
+  }
+ ],
+ "cortes": [
+  [
+   0,
+   1.85
+  ],
+  [
+   2.4,
+   5.22
+  ],
+  [
+   5.77,
+   8.41
+  ],
+  [
+   8.96,
+   11.7
+  ],
+  [
+   12.25,
+   15.07
+  ],
+  [
+   15.62,
+   17.31
+  ],
+  [
+   17.86,
+   22.35
+  ],
+  [
+   22.9,
+   25.88
+  ],
+  [
+   26.43,
+   29.07
+  ],
+  [
+   29.62,
+   33.87
+  ],
+  [
+   34.42,
+   38.75
+  ],
+  [
+   39.3,
+   42.75
+  ],
+  [
+   43.3,
+   47.79
+  ],
+  [
+   48.34,
+   51.16
+  ],
+  [
+   51.71,
+   54.19
+  ],
+  [
+   54.74,
+   60.12
+  ]
+ ],
+ "cena": {
+  "cor": "#ffc21a",
+  "titulo": "o sol",
+  "onda": 0.7,
+  "motor": "livro",
+  "luzMotor": true,
+  "visual": "livro",
+  "semAzul": -10,
+  "semSol": "@onda",
+  "semCarros": true,
+  "semPlacas": true,
+  "somemPredios": -10,
+  "lufs": -14,
+  "noite": [
+   {
+    "em": "@5:apaga-0.2",
+    "ate": 999,
+    "forca": 0.85
+   }
+  ],
+  "sumiram": [
+   "Dia 11: os espelhos",
+   "Dia 12: a cor azul"
+  ],
+  "trilha": {
+   "nome": "noturna",
+   "constroi": [
+    "@3:voz",
+    "@5:voz",
+    "@7:voz",
+    "@9:voz",
+    "@11:voz"
+   ],
+   "climax": "@12:inicio"
+  },
+  "impactos": [
+   {
+    "em": "@onda",
+    "silencio": 0.5,
+    "volta": 0.4
+   },
+   {
+    "em": "@5:apaga",
+    "silencio": 0.5,
+    "volta": 0.5
+   }
+  ],
+  "credito": {
+   "rotulo": "O MAIS CURTIDO",
+   "conta": "@yhago._cassiano",
+   "texto": "O sol",
+   "curtidas": 14
+  },
+  "divulgacao": {
+   "em": "@8:voz-0.05",
+   "ate": "@8:fim-0.05",
+   "titulo": "SEM CÂMERA",
+   "sub": "COMENTE GUIA",
+   "chamada": "LINK NA BIO"
+  },
+  "exemplos": [
+   "as nuvens",
+   "o mosquito",
+   "o chocolate"
+  ],
+  "heroi": {
+   "peca": {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     15.5
+    ],
+    "em": -1,
+    "sai": "@1:fim-0.2",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       0,
+       2.55,
+       -1.2
+      ],
+      "some": "@onda",
+      "sai": "@onda+1.1",
+      "filhos": [
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          1.4249999999999998,
+          0.33
+         ],
+         [
+          2.4000000000000004,
+          0
+         ],
+         [
+          1.4249999999999998,
+          -0.33
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          1.069086200392825,
+          0.9982883832488646
+         ],
+         [
+          2.078460969082653,
+          1.2
+         ],
+         [
+          1.399086200392825,
+          0.426711616751135
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0.4267116167511353,
+          1.3990862003928248
+         ],
+         [
+          1.2000000000000004,
+          2.078460969082653
+         ],
+         [
+          0.9982883832488647,
+          1.0690862003928248
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -0.3299999999999999,
+          1.4249999999999998
+         ],
+         [
+          1.469576158976824e-16,
+          2.4000000000000004
+         ],
+         [
+          0.3300000000000001,
+          1.4249999999999998
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -0.9982883832488644,
+          1.069086200392825
+         ],
+         [
+          -1.1999999999999997,
+          2.078460969082653
+         ],
+         [
+          -0.4267116167511348,
+          1.399086200392825
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -1.399086200392825,
+          0.426711616751135
+         ],
+         [
+          -2.078460969082653,
+          1.2
+         ],
+         [
+          -1.069086200392825,
+          0.9982883832488646
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -1.4249999999999998,
+          -0.32999999999999985
+         ],
+         [
+          -2.4000000000000004,
+          2.939152317953648e-16
+         ],
+         [
+          -1.4249999999999998,
+          0.3300000000000002
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -1.0690862003928248,
+          -0.9982883832488647
+         ],
+         [
+          -2.078460969082653,
+          -1.2000000000000004
+         ],
+         [
+          -1.3990862003928248,
+          -0.4267116167511353
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -0.42671161675113584,
+          -1.399086200392825
+         ],
+         [
+          -1.2000000000000013,
+          -2.0784609690826525
+         ],
+         [
+          -0.9982883832488654,
+          -1.0690862003928245
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0.32999999999999974,
+          -1.4249999999999998
+         ],
+         [
+          -4.408728476930472e-16,
+          -2.4000000000000004
+         ],
+         [
+          -0.3300000000000003,
+          -1.4249999999999998
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          0.9982883832488647,
+          -1.0690862003928248
+         ],
+         [
+          1.2000000000000004,
+          -2.078460969082653
+         ],
+         [
+          0.4267116167511353,
+          -1.3990862003928248
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          1.3990862003928246,
+          -0.4267116167511359
+         ],
+         [
+          2.0784609690826525,
+          -1.2000000000000013
+         ],
+         [
+          1.0690862003928245,
+          -0.9982883832488653
+         ]
+        ],
+        "cor": "#ff9f1c",
+        "pos": [
+         0,
+         0,
+         -0.02
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 1.5,
+        "cor": "#ffc21a",
+        "pos": [
+         0,
+         0,
+         0
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 1.17,
+        "cor": "#ffd84d",
+        "pos": [
+         0,
+         0,
+         0.02
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.135,
+        "cor": "#3a2a1a",
+        "pos": [
+         -0.44999999999999996,
+         0.22499999999999998,
+         0.04
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.135,
+        "cor": "#3a2a1a",
+        "pos": [
+         0.44999999999999996,
+         0.22499999999999998,
+         0.04
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.44999999999999996,
+        "ry": 0.18,
+        "cor": "#e2683c",
+        "pos": [
+         0,
+         -0.375,
+         0.04
+        ]
+       }
+      ]
+     },
+     {
+      "forma": "retangulo",
+      "l": 2.2,
+      "a": 1,
+      "cor": "#ff7a7a",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       -2.4,
+       0.04,
+       1.6
+      ],
+      "canto": 0.1
+     },
+     {
+      "forma": "retangulo",
+      "l": 2.2,
+      "a": 1,
+      "cor": "#ffd23f",
+      "rot": [
+       -1.5707963267948966,
+       0,
+       0
+      ],
+      "pos": [
+       2.4,
+       0.04,
+       1.6
+      ],
+      "canto": 0.1
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.4,
+       0,
+       1.4
+      ],
+      "escala": 1.35,
+      "roupa": "#ff9f1c",
+      "semente": 21,
+      "poses": [
+       {
+        "pose": "feliz"
+       },
+       {
+        "em": "@onda",
+        "pose": "susto"
+       }
+      ],
+      "balanca": {
+       "em": "@onda",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.4,
+       0,
+       1.4
+      ],
+      "escala": 1.35,
+      "roupa": "#45c46b",
+      "semente": 22,
+      "poses": [
+       {
+        "pose": "feliz"
+       },
+       {
+        "em": "@onda",
+        "pose": "susto"
+       }
+      ],
+      "balanca": {
+       "em": "@onda",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   "camera": [
+    0,
+    3.4,
+    31
+   ],
+   "alvo": [
+    0,
+    3.2,
+    15.5
+   ],
+   "ate": "@1:inicio-0.3"
+  },
+  "cameras": [
+   {
+    "em": "@1:inicio-0.3",
+    "lugar": "cidade",
+    "perto": true
+   },
+   {
+    "em": "@2:inicio-0.3",
+    "lugar": "praca"
+   },
+   {
+    "em": "@3:inicio-0.3",
+    "pos": [
+     0,
+     3.6,
+     33.5
+    ],
+    "alvo": [
+     0,
+     3,
+     18.4
+    ],
+    "fov": 41,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@4:inicio-0.3",
+    "pos": [
+     0.4,
+     3.8,
+     33
+    ],
+    "alvo": [
+     0.2,
+     3.2,
+     18
+    ],
+    "fov": 42,
+    "deriva": [
+     -0.2,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@5:inicio-0.3",
+    "pos": [
+     0,
+     3,
+     34
+    ],
+    "alvo": [
+     0,
+     5.2,
+     18
+    ],
+    "fov": 44,
+    "deriva": [
+     0,
+     0.1,
+     -0.4
+    ],
+    "foco": 0.3
+   },
+   {
+    "em": "@6:inicio-0.3",
+    "pos": [
+     0,
+     3.6,
+     32.5
+    ],
+    "alvo": [
+     0,
+     3.2,
+     18
+    ],
+    "fov": 42,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@7:inicio-0.3",
+    "pos": [
+     0,
+     3,
+     30.5
+    ],
+    "alvo": [
+     0,
+     1.9,
+     18.6
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@8:inicio-0.3",
+    "lugar": "cidade",
+    "perto": true
+   },
+   {
+    "em": "@9:inicio-0.3",
+    "pos": [
+     0.3,
+     3.3,
+     33
+    ],
+    "alvo": [
+     0.3,
+     2.6,
+     17.5
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.4
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@10:inicio-0.3",
+    "pos": [
+     0,
+     3,
+     34
+    ],
+    "alvo": [
+     0,
+     1.6,
+     18.6
+    ],
+    "fov": 40,
+    "deriva": [
+     0,
+     0,
+     -0.5
+    ],
+    "foco": 0.5
+   },
+   {
+    "em": "@11:inicio-0.3",
+    "lugar": "cidade"
+   },
+   {
+    "em": "@12:inicio-0.35",
+    "lugar": "praca"
+   },
+   {
+    "em": "@14:inicio-0.35",
+    "lugar": "cidade"
+   }
+  ],
+  "pecas": [
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@3:inicio-0.35",
+    "sai": "@4:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       0,
+       3.3,
+       -0.6
+      ],
+      "filhos": [
+       {
+        "forma": "circulo",
+        "r": 1.15,
+        "cor": "#fffdf6",
+        "pos": [
+         0,
+         0,
+         0
+        ],
+        "sombra": false
+       },
+       {
+        "forma": "circulo",
+        "r": 1.15,
+        "cor": "#e2683c",
+        "pos": [
+         0,
+         0,
+         -0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 1.02,
+        "cor": "#fffdf6",
+        "pos": [
+         0,
+         0,
+         0.01
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         0,
+         0.85,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         0.42499999999999993,
+         0.7361215932167728,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         0.7361215932167728,
+         0.4250000000000001,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         0.85,
+         5.204748896376251e-17,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         0.7361215932167728,
+         -0.4249999999999998,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         0.42499999999999993,
+         -0.7361215932167728,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         1.0409497792752501e-16,
+         -0.85,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         -0.4250000000000001,
+         -0.7361215932167728,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         -0.7361215932167727,
+         -0.4250000000000004,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         -0.85,
+         -1.5614246689128752e-16,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         -0.7361215932167728,
+         0.4250000000000001,
+         0.03
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.06,
+        "cor": "#3a3e47",
+        "pos": [
+         -0.4250000000000004,
+         0.7361215932167726,
+         0.03
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 0.09,
+        "a": 0.75,
+        "p": 0.04,
+        "cor": "#3a3e47",
+        "rot": [
+         0,
+         0,
+         2.0943951023931953
+        ],
+        "pos": [
+         -0.32,
+         -0.185,
+         0.05
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 0.12,
+        "a": 0.5,
+        "p": 0.04,
+        "cor": "#e2683c",
+        "pos": [
+         0,
+         0.25,
+         0.06
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.1,
+        "cor": "#3a3e47",
+        "pos": [
+         0,
+         0,
+         0.07
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.4,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 31,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:percebe",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@3:percebe",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       2
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 32,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:minutos",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@3:minutos",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.4,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 33,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@3:percebe",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@3:percebe",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@4:inicio-0.35",
+    "sai": "@5:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       -7,
+       3.6,
+       0.4
+      ],
+      "em": "@4:inicio+0",
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 1.1,
+        "ry": 0.16,
+        "cor": "#fff1a8",
+        "pos": [
+         0,
+         0,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.5,
+        "ry": 0.1,
+        "cor": "#ffffff",
+        "pos": [
+         0.4,
+         0,
+         0.02
+        ]
+       }
+      ],
+      "move": [
+       {
+        "em": "@4:inicio+0",
+        "dur": 2.2,
+        "pos": [
+         3.5,
+         3.6,
+         0.4
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       -7,
+       2.6,
+       0.4
+      ],
+      "em": "@4:inicio+0.35",
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 1.1,
+        "ry": 0.16,
+        "cor": "#fff1a8",
+        "pos": [
+         0,
+         0,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.5,
+        "ry": 0.1,
+        "cor": "#ffffff",
+        "pos": [
+         0.4,
+         0,
+         0.02
+        ]
+       }
+      ],
+      "move": [
+       {
+        "em": "@4:inicio+0.35",
+        "dur": 2.2,
+        "pos": [
+         3.5,
+         2.6,
+         0.4
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       -7,
+       4.6,
+       0.4
+      ],
+      "em": "@4:inicio+0.7",
+      "filhos": [
+       {
+        "forma": "oval",
+        "rx": 1.1,
+        "ry": 0.16,
+        "cor": "#fff1a8",
+        "pos": [
+         0,
+         0,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.5,
+        "ry": 0.1,
+        "cor": "#ffffff",
+        "pos": [
+         0.4,
+         0,
+         0.02
+        ]
+       }
+      ],
+      "move": [
+       {
+        "em": "@4:inicio+0.7",
+        "dur": 2.2,
+        "pos": [
+         3.5,
+         4.6,
+         0.4
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.4,
+       0,
+       2.2
+      ],
+      "escala": 1.6,
+      "roupa": "#ffd23f",
+      "semente": 41,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@4:chegar",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@4:chegar",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@5:inicio-0.35",
+    "sai": "@6:inicio",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.2,
+       0,
+       2.6
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 51,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:apaga",
+        "pose": "susto"
+       }
+      ],
+      "balanca": {
+       "em": "@5:apaga",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       0,
+       0,
+       2.2
+      ],
+      "escala": 1.6,
+      "roupa": "#ff9f1c",
+      "semente": 52,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:céu",
+        "pose": "mostra"
+       }
+      ],
+      "balanca": {
+       "em": "@5:céu",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.2,
+       0,
+       2.6
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 53,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@5:apaga",
+        "pose": "susto"
+       }
+      ],
+      "balanca": {
+       "em": "@5:apaga",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@6:inicio-0.35",
+    "sai": "@7:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       0,
+       4,
+       -0.5
+      ],
+      "some": "@6:junto",
+      "filhos": [
+       {
+        "forma": "circulo",
+        "r": 1.5,
+        "cor": "#fff6d8",
+        "pos": [
+         0,
+         0,
+         0
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.32,
+        "cor": "#efe2b8",
+        "pos": [
+         -0.5,
+         0.4,
+         0.02
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.22,
+        "cor": "#efe2b8",
+        "pos": [
+         0.55,
+         -0.2,
+         0.02
+        ]
+       },
+       {
+        "forma": "circulo",
+        "r": 0.16,
+        "cor": "#efe2b8",
+        "pos": [
+         0.05,
+         -0.75,
+         0.02
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.3,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#b794e6",
+      "semente": 61,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:junto",
+        "pose": "susto"
+       }
+      ],
+      "balanca": {
+       "em": "@6:junto",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.3,
+       0,
+       2.4
+      ],
+      "escala": 1.6,
+      "roupa": "#ffd23f",
+      "semente": 62,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@6:junto",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@6:junto",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@7:inicio-0.35",
+    "sai": "@8:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       -2.2,
+       0,
+       1.2
+      ],
+      "filhos": [
+       {
+        "forma": "caixa",
+        "l": 0.9,
+        "a": 0.8,
+        "p": 0.9,
+        "cor": "#c8693a",
+        "pos": [
+         0,
+         0.4,
+         0
+        ],
+        "sombra": {
+         "rx": 0.6,
+         "rz": 0.25,
+         "pos": [
+          0,
+          -0.38,
+          0.1
+         ]
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 0.1,
+        "a": 1.7,
+        "p": 0.1,
+        "cor": "#3f9a4f",
+        "pos": [
+         0,
+         1.6,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.35,
+        "ry": 0.14,
+        "cor": "#4cae5c",
+        "rot": [
+         0,
+         0,
+         0.5
+        ],
+        "pos": [
+         0.3,
+         1.4,
+         0.02
+        ]
+       },
+       {
+        "peca": "grupo",
+        "pos": [
+         0,
+         2.6,
+         0.05
+        ],
+        "some": "@7:abrir+0.00",
+        "filhos": [
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#f28aa5",
+          "pos": [
+           0.38,
+           0,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#f28aa5",
+          "pos": [
+           0.19000000000000006,
+           0.32908965343808666,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#f28aa5",
+          "pos": [
+           -0.18999999999999992,
+           0.3290896534380867,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#f28aa5",
+          "pos": [
+           -0.38,
+           4.6536578367599424e-17,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#f28aa5",
+          "pos": [
+           -0.19000000000000017,
+           -0.3290896534380866,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#f28aa5",
+          "pos": [
+           0.19000000000000006,
+           -0.32908965343808666,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.26,
+          "cor": "#ffd23f",
+          "pos": [
+           0,
+           0,
+           0.03
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       0,
+       0,
+       1.2
+      ],
+      "filhos": [
+       {
+        "forma": "caixa",
+        "l": 0.9,
+        "a": 0.8,
+        "p": 0.9,
+        "cor": "#c8693a",
+        "pos": [
+         0,
+         0.4,
+         0
+        ],
+        "sombra": {
+         "rx": 0.6,
+         "rz": 0.25,
+         "pos": [
+          0,
+          -0.38,
+          0.1
+         ]
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 0.1,
+        "a": 1.7,
+        "p": 0.1,
+        "cor": "#3f9a4f",
+        "pos": [
+         0,
+         1.6,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.35,
+        "ry": 0.14,
+        "cor": "#4cae5c",
+        "rot": [
+         0,
+         0,
+         0.5
+        ],
+        "pos": [
+         0.3,
+         1.4,
+         0.02
+        ]
+       },
+       {
+        "peca": "grupo",
+        "pos": [
+         0,
+         2.6,
+         0.05
+        ],
+        "some": "@7:abrir+0.15",
+        "filhos": [
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#ff9f1c",
+          "pos": [
+           0.38,
+           0,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#ff9f1c",
+          "pos": [
+           0.19000000000000006,
+           0.32908965343808666,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#ff9f1c",
+          "pos": [
+           -0.18999999999999992,
+           0.3290896534380867,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#ff9f1c",
+          "pos": [
+           -0.38,
+           4.6536578367599424e-17,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#ff9f1c",
+          "pos": [
+           -0.19000000000000017,
+           -0.3290896534380866,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#ff9f1c",
+          "pos": [
+           0.19000000000000006,
+           -0.32908965343808666,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.26,
+          "cor": "#ffd23f",
+          "pos": [
+           0,
+           0,
+           0.03
+          ]
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "grupo",
+      "pos": [
+       2.2,
+       0,
+       1.2
+      ],
+      "filhos": [
+       {
+        "forma": "caixa",
+        "l": 0.9,
+        "a": 0.8,
+        "p": 0.9,
+        "cor": "#c8693a",
+        "pos": [
+         0,
+         0.4,
+         0
+        ],
+        "sombra": {
+         "rx": 0.6,
+         "rz": 0.25,
+         "pos": [
+          0,
+          -0.38,
+          0.1
+         ]
+        }
+       },
+       {
+        "forma": "caixa",
+        "l": 0.1,
+        "a": 1.7,
+        "p": 0.1,
+        "cor": "#3f9a4f",
+        "pos": [
+         0,
+         1.6,
+         0
+        ]
+       },
+       {
+        "forma": "oval",
+        "rx": 0.35,
+        "ry": 0.14,
+        "cor": "#4cae5c",
+        "rot": [
+         0,
+         0,
+         0.5
+        ],
+        "pos": [
+         0.3,
+         1.4,
+         0.02
+        ]
+       },
+       {
+        "peca": "grupo",
+        "pos": [
+         0,
+         2.6,
+         0.05
+        ],
+        "some": "@7:abrir+0.30",
+        "filhos": [
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#b794e6",
+          "pos": [
+           0.38,
+           0,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#b794e6",
+          "pos": [
+           0.19000000000000006,
+           0.32908965343808666,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#b794e6",
+          "pos": [
+           -0.18999999999999992,
+           0.3290896534380867,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#b794e6",
+          "pos": [
+           -0.38,
+           4.6536578367599424e-17,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#b794e6",
+          "pos": [
+           -0.19000000000000017,
+           -0.3290896534380866,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.32,
+          "cor": "#b794e6",
+          "pos": [
+           0.19000000000000006,
+           -0.32908965343808666,
+           0
+          ]
+         },
+         {
+          "forma": "circulo",
+          "r": 0.26,
+          "cor": "#ffd23f",
+          "pos": [
+           0,
+           0,
+           0.03
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@9:inicio-0.35",
+    "sai": "@10:inicio",
+    "filhos": [
+     {
+      "forma": "caixa",
+      "l": 0.1,
+      "a": 3.4,
+      "p": 0.1,
+      "cor": "#59616f",
+      "pos": [
+       -1.6,
+       1.7,
+       0
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 1.6,
+      "a": 0.1,
+      "p": 0.1,
+      "cor": "#59616f",
+      "pos": [
+       -0.85,
+       3.4,
+       0
+      ]
+     },
+     {
+      "forma": "oval",
+      "rx": 0.42,
+      "ry": 0.55,
+      "cor": "#d9d6cc",
+      "pos": [
+       -0.1,
+       2.8,
+       0.05
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 0.36,
+      "a": 0.3,
+      "p": 0.3,
+      "cor": "#8d99ae",
+      "pos": [
+       -0.1,
+       3.3,
+       0.05
+      ]
+     },
+     {
+      "forma": "caixa",
+      "l": 0.8,
+      "a": 1.1,
+      "p": 0.12,
+      "cor": "#fffdf6",
+      "pos": [
+       1.3,
+       2.4,
+       0.2
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "caixa",
+      "l": 0.22,
+      "a": 0.4,
+      "p": 0.12,
+      "cor": "#c9c4b8",
+      "pos": [
+       1.3,
+       2.5,
+       0.3
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.2,
+       0,
+       -0.6
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 91,
+      "poses": [
+       {
+        "pose": "mostra"
+       },
+       {
+        "em": "@9:energia",
+        "pose": "shrug"
+       }
+      ],
+      "balanca": {
+       "em": "@9:energia",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@10:inicio-0.35",
+    "sai": "@11:inicio",
+    "filhos": [
+     {
+      "peca": "grupo",
+      "pos": [
+       0,
+       0,
+       1.4
+      ],
+      "filhos": [
+       {
+        "forma": "caixa",
+        "l": 1.6,
+        "a": 0.22,
+        "p": 0.22,
+        "cor": "#7a5230",
+        "rot": [
+         0,
+         0.5,
+         0
+        ],
+        "pos": [
+         0,
+         0.15,
+         0
+        ]
+       },
+       {
+        "forma": "caixa",
+        "l": 1.6,
+        "a": 0.22,
+        "p": 0.22,
+        "cor": "#6a4528",
+        "rot": [
+         0,
+         -0.5,
+         0
+        ],
+        "pos": [
+         0,
+         0.2,
+         0
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -0.6,
+          0
+         ],
+         [
+          0.6,
+          0
+         ],
+         [
+          0.15,
+          1.6
+         ],
+         [
+          0,
+          0.9
+         ],
+         [
+          -0.2,
+          1.4
+         ]
+        ],
+        "cor": "#ff7a1a",
+        "pos": [
+         0,
+         0.3,
+         0.1
+        ]
+       },
+       {
+        "forma": "poligono",
+        "pontos": [
+         [
+          -0.35,
+          0
+         ],
+         [
+          0.35,
+          0
+         ],
+         [
+          0.05,
+          1.1
+         ]
+        ],
+        "cor": "#ffd23f",
+        "pos": [
+         0,
+         0.3,
+         0.15
+        ]
+       }
+      ]
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -2.4,
+       0,
+       1.6
+      ],
+      "escala": 1.6,
+      "roupa": "#ff9f1c",
+      "semente": 101,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@10:frio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@10:frio",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       2.4,
+       0,
+       1.6
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 102,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@10:frio",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@10:frio",
+       "amp": 0.04
+      }
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0,
+     -8
+    ],
+    "em": "@11:inicio-0.35",
+    "sai": "@12:inicio",
+    "filhos": [
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -32,
+       20,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       5,
+       25,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -22,
+       30,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       15,
+       35,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -12,
+       40,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       25,
+       21,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -2,
+       26,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -29,
+       31,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       8,
+       36,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -19,
+       41,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       18,
+       22,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -9,
+       27,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       28,
+       32,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       1,
+       37,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -26,
+       42,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       11,
+       23,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -16,
+       28,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       21,
+       33,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -6,
+       38,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       31,
+       43,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       4,
+       24,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -23,
+       29,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       14,
+       34,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -13,
+       39,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       24,
+       20,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -3,
+       25,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -30,
+       30,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       7,
+       35,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -20,
+       40,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       17,
+       21,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.078
+       ],
+       [
+        0.245,
+        0.245
+       ],
+       [
+        1.078,
+        0
+       ],
+       [
+        0.245,
+        -0.245
+       ],
+       [
+        0,
+        -1.078
+       ],
+       [
+        -0.245,
+        -0.245
+       ],
+       [
+        -1.078,
+        0
+       ],
+       [
+        -0.245,
+        0.245
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -10,
+       26,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.8140000000000001
+       ],
+       [
+        0.185,
+        0.185
+       ],
+       [
+        0.8140000000000001,
+        0
+       ],
+       [
+        0.185,
+        -0.185
+       ],
+       [
+        0,
+        -0.8140000000000001
+       ],
+       [
+        -0.185,
+        -0.185
+       ],
+       [
+        -0.8140000000000001,
+        0
+       ],
+       [
+        -0.185,
+        0.185
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       27,
+       31,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        0.55
+       ],
+       [
+        0.125,
+        0.125
+       ],
+       [
+        0.55,
+        0
+       ],
+       [
+        0.125,
+        -0.125
+       ],
+       [
+        0,
+        -0.55
+       ],
+       [
+        -0.125,
+        -0.125
+       ],
+       [
+        -0.55,
+        0
+       ],
+       [
+        -0.125,
+        0.125
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       0,
+       36,
+       0
+      ],
+      "sombra": false
+     },
+     {
+      "forma": "poligono",
+      "pontos": [
+       [
+        0,
+        1.342
+       ],
+       [
+        0.305,
+        0.305
+       ],
+       [
+        1.342,
+        0
+       ],
+       [
+        0.305,
+        -0.305
+       ],
+       [
+        0,
+        -1.342
+       ],
+       [
+        -0.305,
+        -0.305
+       ],
+       [
+        -1.342,
+        0
+       ],
+       [
+        -0.305,
+        0.305
+       ]
+      ],
+      "cor": "#fff6c8",
+      "pos": [
+       -27,
+       41,
+       0
+      ],
+      "sombra": false
+     }
+    ]
+   },
+   {
+    "peca": "grupo",
+    "pos": [
+     0,
+     0.2,
+     17.5
+    ],
+    "em": "@12:inicio-0.35",
+    "sai": "@13:inicio-0.25",
+    "modo": "cresce",
+    "filhos": [
+     {
+      "peca": "pessoa",
+      "pos": [
+       -3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#ffb703",
+      "semente": 12,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       -1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#45c46b",
+      "semente": 13,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       1.1,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#ff9f1c",
+      "semente": 14,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     },
+     {
+      "peca": "pessoa",
+      "pos": [
+       3.2,
+       0,
+       0
+      ],
+      "escala": 1.6,
+      "roupa": "#f28aa5",
+      "semente": 15,
+      "poses": [
+       {
+        "pose": "normal"
+       },
+       {
+        "em": "@12:reclama",
+        "pose": "feliz"
+       }
+      ],
+      "balanca": {
+       "em": "@12:reclama",
+       "amp": 0.04
+      }
+     }
+    ]
+   }
+  ],
+  "selos": [
+   {
+    "txt": "8 MINUTOS",
+    "em": "@3:minutos-0.1",
+    "ate": "@4:inicio",
+    "cor": "#3a2a1a",
+    "fundo": "#ffd23f",
+    "r": -2
+   },
+   {
+    "txt": "A LUZ AINDA ESTÁ VINDO",
+    "em": "@4:luz-0.1",
+    "ate": "@5:inicio",
+    "tam": 84,
+    "cor": "#3a2a1a",
+    "fundo": "#fff1a8",
+    "r": 2
+   },
+   {
+    "txt": "APAGOU",
+    "em": "@5:apaga-0.05",
+    "ate": "@6:inicio",
+    "cor": "#ffffff",
+    "fundo": "#3a3e47",
+    "borda": "#fffdf6",
+    "r": -2
+   },
+   {
+    "txt": "LUA APAGADA",
+    "em": "@6:junto-0.1",
+    "ate": "@7:inicio",
+    "cor": "#3a2a1a",
+    "fundo": "#fff6d8",
+    "r": 2
+   },
+   {
+    "txt": "FLORES FECHADAS",
+    "em": "@7:flores-0.1",
+    "ate": "@8:inicio",
+    "cor": "#3a2a1a",
+    "fundo": "#ffd1e0",
+    "r": -2
+   },
+   {
+    "txt": "SEM ENERGIA DESDE O DIA 4",
+    "em": "@9:energia-0.1",
+    "ate": "@10:inicio",
+    "tam": 80,
+    "cor": "#3a2a1a",
+    "fundo": "#ffe9b3",
+    "r": 2
+   },
+   {
+    "txt": "SEM FRIO DESDE O DIA 2",
+    "em": "@10:frio-0.1",
+    "ate": "@11:inicio",
+    "tam": 84,
+    "cor": "#3a2a1a",
+    "fundo": "#ffd8a8",
+    "r": -2
+   },
+   {
+    "txt": "NOITE SEM FIM",
+    "em": "@11:noite-0.1",
+    "ate": "@12:inicio",
+    "cor": "#ffffff",
+    "fundo": "#3a3e47",
+    "borda": "#fffdf6",
+    "r": 2
+   }
+  ],
+  "etiquetas": [
+   {
+    "txt": "NINGUÉM RECLAMA",
+    "pos": [
+     0,
+     4.9,
+     18
+    ],
+    "em": "@reclama",
+    "ate": "@13:inicio-0.3"
+   },
+   {
+    "txt": "SEU NILO",
+    "pos": [
+     -0.9,
+     4.25,
+     18.5
+    ],
+    "em": "@nilo+0.7",
+    "ate": "@13:anotou-0.2",
+    "cor": "ouro"
+   }
+  ],
+  "sons": [
+   {
+    "em": "@2:inicio",
+    "tipo": "carimbo",
+    "volume": 0.9
+   },
+   {
+    "em": "@3:minutos",
+    "tipo": "clique",
+    "volume": 0.8
+   },
+   {
+    "em": "@4:luz",
+    "tipo": "whoosh",
+    "volume": 0.6
+   },
+   {
+    "em": "@5:apaga",
+    "tipo": "impacto",
+    "volume": 0.9
+   },
+   {
+    "em": "@6:junto",
+    "tipo": "virada",
+    "volume": 0.8
+   },
+   {
+    "em": "@7:abrir",
+    "tipo": "virada",
+    "volume": 0.7
+   },
+   {
+    "em": "@9:luz",
+    "tipo": "clique",
+    "volume": 0.9
+   },
+   {
+    "em": "@10:frio",
+    "tipo": "pop",
+    "volume": 0.8
+   },
+   {
+    "em": "@11:noite",
+    "tipo": "subida",
+    "volume": 0.6
+   }
+  ],
+  "transicoes": [],
+  "tremores": [
+   "@5:apaga"
+  ]
+ }
+}

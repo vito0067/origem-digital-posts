@@ -23,7 +23,7 @@ export function tomadas(l) {
   const c = l.cenas, m = l.marcas, h = l.cena.heroi ?? {};
   const T = [
     { t: 0, dur: 0.01, pos: h.camera ?? [0.5, 3.4, 29], alvo: h.alvo ?? [0, 7.2, 16], fov: 44, deriva: [0.1, 0.02, -0.5], foco: 0.45 },
-    { t: m.onda + 0.2, dur: 2.05, pos: [10, 34, 88], alvo: [0, 12, -6], fov: 44, deriva: [-0.4, 0.1, -0.7], foco: 0.15 },
+    { t: h.ate ?? m.onda + 0.2, dur: 2.05, pos: [10, 34, 88], alvo: [0, 12, -6], fov: 44, deriva: [-0.4, 0.1, -0.7], foco: 0.15 },
   ];
   for (const k of l.cena.cameras ?? []) { const lg = LUGARES[k.lugar]; if (k.lugar && !lg) throw new Error("lugar desconhecido: " + k.lugar); const b = lg ? (k.perto ? lg.perto : lg.geral) : {}; T.push({ dur: k.perto ? 0.6 : 1.1, arco: k.perto ? 0 : 3, ...b, ...k, t: k.em }); }
   T.push(

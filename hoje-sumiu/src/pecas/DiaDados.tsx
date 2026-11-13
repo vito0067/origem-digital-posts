@@ -170,6 +170,9 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
     let luz: any = null;
     if ((d.motor === "v2" || d.motor === "livro") && d.luzMotor) { const nb = w.cena.fog, fundo = w.cena.background; [...w.cena.children].filter((o: any) => o.isLight).forEach((o: any) => w.cena.remove(o)); const k = CLIMAS["papel-quente"] as any; luz = montarLuz(THREE, w.cena, { ...k, principal: [k.principal[0], k.principal[1], [24.5, 42, 21]], recorte: [k.recorte[0], k.recorte[1], [-21, 17.5, -24.5]], ...(d.luz ?? {}) }, { alcance: 50, alvo: [0, 0, -2], mapa: 4096 }); if (!d.luz?.neblina) w.cena.fog = nb; if (!d.luz?.fundo) w.cena.background = fundo; }
     const fim = w.extra; w.extra = (q) => { fim?.(q); if (luz) { let ult = -99; for (const i of d.impactos ?? []) if (i.em <= q && i.em > ult) ult = i.em; luz.pulso(q - ult, 0.5); } if (d.calor) w.sol.scale.setScalar(1 + 0.45 * sm((q - m.onda - 0.5) / 5));
+    // `semSol` (Dia 13, o sol sumiu): o sol de papel do céu encolhe nesse tempo e não volta (negativo = já sumiu antes do vídeo)
+    if (d.semPlacas && w.placaG) w.placaG.visible = false; // as placas sumiram no Dia 5: a placa PARE não aparece mais
+    if (d.semSol !== undefined) { const k = sm((q - d.semSol) / 0.4); w.sol.scale.setScalar(Math.max(0.001, 1 - k)); w.sol.visible = k < 0.99; }
     // `somemCarros`: os carros do trânsito do fundo encolhem em onda nesse tempo e não voltam (dia em que os veículos somem)
     // `semCarros`: os veículos já sumiram em um dia anterior (Dia 7): nenhum carro, caminhão ou giroflex aparece em lugar nenhum
     if (d.semCarros) { w.carros.forEach((c: any) => { c.raiz.visible = false; }); if (w.caminhao) w.caminhao.visible = false; if (w.giroflex) w.giroflex.visible = false; }
@@ -189,6 +192,8 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
   const cad = sai((t - m.anotou + 0.15) / 0.3) * (t > c[m.iChamado].inicio ? 1 - sai((t - c[m.iChamado].inicio) / 0.2) : 1);
   const atual = `Dia ${l.dia}: ${l.coisa}`, nCad = Math.floor(lim((t - m.anotou) / 1.2) * atual.length + 0.001), antes: string[] = (d.sumiram ?? []).slice(-2);
   const semAzul: number = d.semAzul === undefined ? 0 : sm((t - d.semAzul) / 0.5);
+  // visual "livro" + `noite` (Dia 13, o sol sumiu): escurece só o mundo 3D; cabeçalho, selos e legenda continuam claros
+  const escuro: number = d.visual === "livro" ? Math.max(0, ...(d.noite ?? []).map((n: Spec) => sm((t - n.em) / 0.5) * (1 - sm((t - n.ate) / 0.5)) * (n.forca ?? 0.8))) : 0;
   const fimCard = t >= m.comenta - 0.05, ate = final.vozEm + final.vozDur;
   const coisas = (n: number) => `${n} COISA${n === 1 ? "" : "S"} SUMI${n === 1 ? "U" : "RAM"} · SÓ 1 PESSOA LEMBRA`;
   return (
@@ -206,20 +211,20 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
         <feComposite in="cinzaSo" in2="SourceGraphic" operator="over" />
       </filter></svg>}
       {/* visual "livro" (Dia 11 v2): cores mais vivas e quentes, luz de sol vindo de cima à esquerda e bordas escurecidas, como um livro iluminado na mesa */}
-      <AbsoluteFill style={d.visual === "livro" ? { filter: "saturate(1.28) contrast(1.08) brightness(1.03)" } : undefined}><Cena3D t={tStop} c={cam} m={m} k={f} /></AbsoluteFill>
+      <AbsoluteFill style={d.visual === "livro" ? { filter: `saturate(${1.28 - 0.5 * escuro}) contrast(1.08) brightness(${1.03 - 0.62 * escuro})` } : undefined}><Cena3D t={tStop} c={cam} m={m} k={f} /></AbsoluteFill>
       {d.visual === "livro" && <AbsoluteFill style={{ background: "linear-gradient(155deg, rgba(255,214,130,.34) 0%, rgba(255,214,130,0) 42%, rgba(40,30,90,.20) 100%)", mixBlendMode: "soft-light" }} />}
       {d.visual === "livro" && <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 44%, transparent 52%, rgba(40,22,8,.36) 100%)" }} />}
       {viras.map((ini: number, i: number) => <Pagina key={i} t={t} em={ini} />)}
       <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent)", maskImage: "linear-gradient(to bottom, black 20%, transparent)", opacity: cam.foco }} />
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 520, backdropFilter: "blur(7px)", WebkitMaskImage: "linear-gradient(to top, black 20%, transparent)", maskImage: "linear-gradient(to top, black 20%, transparent)", opacity: cam.foco }} />
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 46%, transparent 58%, rgba(70,40,10,.2) 100%)" }} />
-      {(d.noite ?? []).map((n: Spec, i: number) => { const k = sm((t - n.em) / 0.5) * (1 - sm((t - n.ate) / 0.5)); return k > 0 ? <AbsoluteFill key={"n" + i} style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(30,40,110,.35), rgba(12,18,60,.78))", opacity: k * (n.forca ?? 0.8) }} /> : null; })}
+      {d.visual !== "livro" && (d.noite ?? []).map((n: Spec, i: number) => { const k = sm((t - n.em) / 0.5) * (1 - sm((t - n.ate) / 0.5)); return k > 0 ? <AbsoluteFill key={"n" + i} style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(30,40,110,.35), rgba(12,18,60,.78))", opacity: k * (n.forca ?? 0.8) }} /> : null; })}
       {calor > 0 && <AbsoluteFill style={{ background: "radial-gradient(ellipse at 70% 10%, rgba(255,150,40,.9), rgba(255,130,30,.45) 70%)", opacity: calor }} />}
       <div style={{ position: "absolute", top: 138, width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 6, fontFamily: LILITA }}>
         <div style={{ background: AMAR, color: NAVY, fontSize: 84, lineHeight: 1, padding: "12px 42px 6px", borderRadius: 12, transform: "rotate(-2deg)", boxShadow: "0 8px 0 rgba(22,35,63,.3)", border: "7px solid #fffdf6" }}>DIA {l.dia}</div>
         <div style={{ background: "#fffdf6", color: NAVY, fontSize: 38, lineHeight: 1, padding: "11px 24px 8px", borderRadius: 10, transform: "rotate(1deg)", boxShadow: "0 6px 0 rgba(22,35,63,.25)" }}>{coisas(virou ? l.dia : l.dia - 1)}</div>
       </div>
-      {gancho > 0 && <div style={{ position: "absolute", top: 440, width: "100%", textAlign: "center", fontFamily: LILITA, opacity: gancho, transform: `scale(${volta(t / 0.3)})` }}>
+      {gancho > 0 && <div style={{ position: "absolute", top: 440, width: "100%", textAlign: "center", fontFamily: LILITA, opacity: gancho, transform: `scale(${d.motor === "livro" ? 1 : volta(t / 0.3)})` /* livro: o título já está inteiro no quadro 0 (capa e primeiro segundo) */ }}>
         <div style={{ fontSize: 118, color: NAVY, lineHeight: 1, ...adesivo(20, 10), transform: "rotate(-3deg)" }}>HOJE SUMIU</div>
         <div style={{ fontSize: (d.titulo ?? l.coisa).length > 9 ? 130 : 190, lineHeight: 1.04, color: t < m.onda + 0.15 ? corDia : CINZA, ...adesivo(26, 12), transform: `rotate(2deg) perspective(900px) rotateX(${flipV * 360}deg)` }}>{(d.titulo ?? l.coisa).toUpperCase()}</div>
       </div>}

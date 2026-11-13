@@ -106,3 +106,13 @@ Vídeo longo não é para este perfil agora. Cada dia precisa ser de fato difere
 - Números em 11/11: YouTube 61 inscritos, Shorts de 1,1 a 1,4 mil views, retenção Dia 5 89% e Dia 8 88% (os outros 46% a 68%); Instagram 63 seguidores, Reels de 0,9 a 2,6 mil; TikTok ~520 por vídeo.
 - Pendências: Vito fixar o comentário (texto em publicacao/dia12.md). O 1º quadro (1/30 s) sai sem o letreiro porque o Dia 12 não usou `abertura`: no Dia 13, garantir o título no quadro 0. Sumiço com silhueta e mola nova continuam por fazer.
 - Já sumiu: cor vermelha, frio, boleto, energia, placas, Wi-Fi, veículos, sono, apartamentos e casas, chuveiro quente, espelhos, cor azul.
+
+## 12/11/2026 · Dia 13: o sol (PUBLICADO nas 3 redes)
+- Tema: "O sol" (Instagram, @yhago._cassiano, 14 curtidas; o mais curtido das 3 redes). "As casas" (7) já tinha sumido; Seu Nilo não some.
+- Teste do dia (raio-x do YouTube): o sol vira do avesso no segundo zero (`cena.onda: 0.7`) e o título está inteiro no quadro 0. Comparar "continuaram assistindo" com Dia 11 (53,2%) e Dia 12 (52,5%); meta acima de 60%.
+- Links: YouTube https://youtube.com/shorts/F5Si40lrWOs · Instagram https://www.instagram.com/reel/DfqVhL2B-AP/ · TikTok https://www.tiktok.com/@hojesumiu/video/7707446670769933620
+- Medidas: 58,3 s, movimento 7,44, 27,7% parado, -13,9 LUFS, primeiro corte 0,73 s. Gemini 9/10. Voz: 11 falas novas, 5 reaproveitadas do Dia 12.
+- Bios: Instagram e descrição do canal no YouTube reescritas para chamar para o guia. TikTok: bio não mexida (pelo navegador não salva); comentário do voto também não salvou lá.
+- Pendências: Vito postar e fixar o comentário do voto no TikTok e fixar o do Instagram (texto em publicacao/dia13.md). Ler a retenção do Dia 13 no YouTube amanhã.
+- Do Dia 14 em diante: `semSol: -10`, `semAzul: -10`, `semPlacas: true` e noite desde o 1º quadro.
+- Já sumiu: cor vermelha, frio, boleto, energia, placas, Wi-Fi, veículos, sono, apartamentos e casas, chuveiro quente, espelhos, cor azul, sol.
