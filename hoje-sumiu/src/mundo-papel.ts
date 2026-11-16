@@ -163,7 +163,7 @@ export class MundoPapel {
     for (let i = 0; i < 9; i++) {
       const g = new THREE.Group(), w = 5 + R() * 6, x = R() * 44 - 22, y = 17 + R() * 21, z = -21 + R() * 14;
       const nv = recorte(sCalombos(w, 1.6 + R() * 1, 5, 90 + i), papel("#ffffff"), 0.06); g.add(nv); const n2 = recorte(sCalombos(w * 0.7, 1 + R() * 0.7, 4, 120 + i), papel("#eef7fb"), 0.05); n2.position.set(R() - 0.5, 0, 0.08); g.add(n2);
-      g.position.set(x, y, z); c.add(g); this.nuvens.push({ g, x, y, f: 0.3 + R() * 0.4, fase: R() * 6 });
+      g.position.set(x, y, z); c.add(g); this.nuvens.push({ g, x, y, f: 0.3 + R() * 0.4, fase: R() * 6 }); ((this as any).nuvensCeu ??= []).push(g); // `cena.semNuvens` faz só estas (as nuvens brancas) sumirem
     }
     // balões vermelhos
     for (const [x, y, z, e] of [[-13, 23, -12, 1.2], [8, 29, -16, 1], [-22, 30, -18, 0.9]] as const) {

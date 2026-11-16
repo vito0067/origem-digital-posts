@@ -116,3 +116,12 @@ Vídeo longo não é para este perfil agora. Cada dia precisa ser de fato difere
 - Pendências: Vito postar e fixar o comentário do voto no TikTok e fixar o do Instagram (texto em publicacao/dia13.md). Ler a retenção do Dia 13 no YouTube amanhã.
 - Do Dia 14 em diante: `semSol: -10`, `semAzul: -10`, `semPlacas: true` e noite desde o 1º quadro.
 - Já sumiu: cor vermelha, frio, boleto, energia, placas, Wi-Fi, veículos, sono, apartamentos e casas, chuveiro quente, espelhos, cor azul, sol.
+
+## 16/11/2026 · Dia 14: as nuvens (PUBLICADO no YouTube e no Instagram; TikTok pelo celular do Vito)
+- Pedido repassado pela sessão Origem Digital: o Hoje Sumiu não publicava desde 12/11 (4 dias). O Vito aprovou neste chat e autorizou as 3 redes. Links: YouTube https://youtube.com/shorts/G1AS5HoY0Dg · Instagram https://www.instagram.com/reel/Df0kv0EsMAi/ · TikTok: não saiu (o Chrome estava deslogado do TikTok); kit pronto em hoje-sumiu-envios\celular-dia14. Pendências do Vito: postar o vídeo e o comentário no TikTok, fixar o comentário do Instagram (e do TikTok).
+- Votos do Dia 13 (lidos em 16/11, só leitura): Instagram "As nuvens" @luisambandoni 7 curtidas (vencedor), "O Tio Nilo" 5 (personagem, não some), "Celular" 4, "As casas" 2+1 (já sumiram); YouTube "Os semáforo" 5, "A gravidade" 3, "O tato" 2; TikTok 0. Atenção: "as nuvens" era um dos exemplos do cartão final do Dia 13.
+- Teste do dia: a 1ª fala é a consequência ("Sem nuvens, nunca mais cai uma gota de chuva") e o anúncio vem na fala 2; continua o teste do Dia 13 (a coisa vira do avesso no segundo zero, título no quadro 0). Comparar a retenção do Dia 13 e do Dia 14 no YouTube.
+- Vídeo: 61,9 s, movimento 7,7, 26,8% parado, -13,9 LUFS; primeiro corte medido em 3,6 s (a virada das nuvens em 0,8 s é pequena para o medidor). Gemini 9,5. Mundo: noite desde o 1º quadro, sem sol, sem azul, sem placas, sem as nuvens do céu.
+- Novidades de código: `cena.semNuvens` (as 9 nuvens brancas do céu somem; "@onda" ou negativo), noite `em: -1` do primeiro quadro, `etapa.mjs roteiro` aceita "Hoje sumiu/sumiram" na fala 0 ou 1. Geradores: `ferramentas/dias/gerar-dia14.mjs`.
+- Arquivos: `saida/hoje-sumiu-dia14.mp4`; cópia leve e capa em `Desktop\Origem-Digital\hoje-sumiu-envios\hoje-sumiu-dia14*`; textos em `publicacao/dia14.md`.
+- Já sumiu: cor vermelha, frio, boleto, energia, placas, Wi-Fi, veículos, sono, apartamentos e casas, chuveiro quente, espelhos, cor azul, sol, nuvens.

@@ -225,3 +225,10 @@ Decisão do Vito em 11/11/2026: um motor por perfil. Ele disse que o motor 3D v2
 - Voz: o `generate_audio_batch` do `elevenlabs_v4` quer `dialogue: [{ text, voice_type: "preset", voice_id }]`, `stability` e `similarity_boost` (não `voice_id`/`similarity` soltos).
 - Navegador: o Chrome do Hoje Sumiu agora se chama "Browser 2" (mesmo deviceId `241d2700…`). A seleção volta sozinha para o "Browser 1" a cada poucas ações (outra conversa usando o Chrome): chame `select_browser` antes de cada lote e confira a conta.
 - Bios atualizadas em 12/11: Instagram ("🎬 Ficção com IA, sem câmera. Aprenda no link ⬇") e descrição do canal no YouTube (termos "E se o sol sumisse?", "curiosidades", convite para inscrever e link do guia).
+
+## Dia 14 (16/11/2026): as nuvens
+- Teste do dia: a PRIMEIRA fala é a consequência ("Sem nuvens, nunca mais cai uma gota de chuva") e o anúncio "Hoje sumiram..." vem na fala 1 (`etapa.mjs roteiro` aceita nas falas 0 ou 1). Segue valendo `cena.onda` cedo (a coisa vira no segundo zero) e o título no quadro 0. Comparar a retenção do Dia 13 e do Dia 14 no YouTube.
+- Novas opções do `cena`: `semNuvens` (as 9 nuvens brancas do céu somem; "@onda" ou negativo = já sumiram), `noite: [{ em: -1, ate: 999, forca: 0.8 }]` (noite desde o 1º quadro). Cor do `cena.cor` precisa contrastar com o adesivo branco do título (`#6f7f8e`, não claro).
+- `retangulo` nasce pela BASE (y0 = 0): para centrar numa altura, ponha `pos.y` = centro menos a/2. `letreiro` é centrado.
+- Fábrica/render: se outro perfil estiver renderizando (fila), as fotos de teste dão "Timed out ... browser": repita em laço até passar.
+- Publicação: o Chrome conectado pode ser outro perfil. Antes de postar, confira a conta: no Instagram, o "Trocar de conta" da barra lateral troca para @hojesumiu sem senha (a conta fica salva); o TikTok pode estar deslogado (eu não digito senha: o Vito entra ou posta pelo celular). A legenda do reel não salva na publicação pelo computador: depois de publicar, abra "⋯ > Editar" e digite de novo. Os IDs dos navegadores mudam (Browser 1/2): liste antes e confira a conta na tela.
