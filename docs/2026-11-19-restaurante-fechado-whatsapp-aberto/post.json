@@ -1,0 +1,81 @@
+{
+  "id": "2026-11-19-restaurante-fechado-whatsapp-aberto",
+  "publicar_em": "2026-11-19T12:30:00-03:00",
+  "formato": "carrossel",
+  "tema": "noite",
+  "legenda": "Cozinha fechada. WhatsApp aberto.\n\nDepois que o restaurante fecha, as perguntas continuam chegando: horário, cardápio, reserva, endereço. Se ninguém responde, o cliente pode escolher outro lugar.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, se apresenta, responde em segundos, 24 horas por dia, e passa o recado para a sua equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do post é um exemplo.\n\n#restaurante #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "Restaurante",
+      "texto": "Cozinha fechada. *WhatsApp aberto.*",
+      "apoio": "4 perguntas que chegam depois do expediente.",
+      "fundo": "biblioteca/noite-restaurante.jpg"
+    },
+    {
+      "tipo": "frase",
+      "etiqueta": "Pergunta 1",
+      "texto": "\"Até que horas *abre*?\"",
+      "apoio": "O horário está no Google, mas muita gente pergunta mesmo assim."
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/calendario.png",
+      "etiqueta": "Pergunta 2",
+      "texto": "\"Dá para *reservar* sábado?\"",
+      "apoio": "Quem quer reservar quer saber já."
+    },
+    {
+      "tipo": "frase",
+      "etiqueta": "Perguntas 3 e 4",
+      "texto": "\"Tem *cardápio*?\" \"Como chego aí?\"",
+      "apoio": "Perguntas simples, que não podem esperar até de manhã.",
+      "fundo": "biblioteca/noite-cidade-janela.jpg"
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Restaurante Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Boa noite! Vocês abrem no domingo?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Boa noite! Sou a Aurora, atendente de IA do restaurante. Vou avisar a equipe, que confirma o horário com você, tudo bem?"
+        }
+      ]
+    },
+    {
+      "tipo": "comparar",
+      "etiqueta": "A diferença",
+      "esquerda": {
+        "titulo": "Sem a Aurora",
+        "itens": [
+          "Pergunta esperando",
+          "Resposta só no dia seguinte"
+        ]
+      },
+      "direita": {
+        "titulo": "Com a Aurora",
+        "itens": [
+          "Resposta em segundos",
+          "Equipe avisada"
+        ]
+      }
+    }
+  ],
+  "midias": [
+    "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-1.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-2.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-3.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-4.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-5.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-6.jpg",
+    "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-7.jpg"
+  ],
+  "capa": "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/slide-1.jpg",
+  "previa": "https://vito0067.github.io/origem-digital-posts/2026-11-19-restaurante-fechado-whatsapp-aberto/",
+  "hash": "5ad4b3a829062ec6",
+  "renderizado_em": "2026-11-16T12:14:23.396Z"
+}
