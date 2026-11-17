@@ -1,8 +1,8 @@
 # Hoje Sumiu · Dia 14: as nuvens
-**Status (16/11/2026, ~21h): PUBLICADO no YouTube e no Instagram, com o "aprovado" do Vito neste chat.** O Hoje Sumiu não publicava desde 12/11 (4 dias).
+**Status (16/11/2026, ~21h): PUBLICADO nas 3 redes, com o "aprovado" do Vito neste chat.** O Hoje Sumiu não publicava desde 12/11 (4 dias).
 - YouTube: https://youtube.com/shorts/G1AS5HoY0Dg (público, rótulo de IA, verificação sem problemas; comentário do voto FIXADO).
 - Instagram: https://www.instagram.com/reel/Df0kv0EsMAi/ (vertical 720x1280 conferido, rótulo de IA; a legenda não salvou na publicação e entrou pela edição do post; comentário do voto postado, fixar só pelo app).
-- TikTok: NÃO publicado. O Chrome conectado estava com o TikTok deslogado (tela de entrar) e eu não digito senha. O Vito publica pelo celular com o kit `hoje-sumiu-envios\celular-dia14` (vídeo, capa e texto-para-copiar).
+- TikTok: https://www.tiktok.com/@hojesumiu/video/7708927005537897748 (pelo Studio, no Chrome da Origem Digital, que já estava logado no @hojesumiu; rótulo de IA ligado à mão, o padrão vem desligado). O primeiro Chrome conectado era outro perfil, deslogado do TikTok e logado no Instagram como origem__digital. O comentário do voto não foi postado no TikTok (pelo navegador não salva): o Vito posta e fixa pelo celular.
 
 **Teste do dia (uma mudança por episódio, raio-x do YouTube de 12/11):** a PRIMEIRA FALA é a consequência ("Sem nuvens, nunca mais cai uma gota de chuva"), não o anúncio; o anúncio "Hoje sumiram as nuvens" vem na fala seguinte. O sol/nuvens já viram do avesso no segundo zero e o título está no quadro 0 (teste do Dia 13). Comparar "continuaram assistindo" do Dia 14 com o Dia 13.
 
