@@ -29,7 +29,7 @@ export function tomadas(l) {
   T.push(
     { t: c[m.iVirada].inicio - 0.15, dur: 1.6, pos: [0, 4.2, 31], alvo: [0, 4.2, -2], fov: 50, deriva: [0, 0.12, 0.25], arco: 3, foco: 0.35 },
     { t: m.nilo, dur: 0.85, pos: [0.7, 3.3, 31.2], alvo: [0.05, 2.7, 18], fov: 44, deriva: [-0.1, 0, -0.3], foco: 0.5 },
-    { t: c[m.iChamado].inicio - 0.25, dur: 1.9, pos: [0, 30, 90], alvo: [0, 16, -8], fov: 44, deriva: [0, -0.05, -0.8], foco: 0.1 },
+    ...(l.cena.semVooChamado ? [] : [{ t: c[m.iChamado].inicio - 0.25, dur: 1.9, pos: [0, 30, 90], alvo: [0, 16, -8], fov: 44, deriva: [0, -0.05, -0.8], foco: 0.1 }]), // `cena.semVooChamado` (Dia 15): a câmera fica no Seu Nilo e no caderno durante o chamado
     { t: m.comenta - 0.2, dur: 1.2, pos: [0, 26, 74], alvo: [0, 18, -8], fov: 44, deriva: [0, 0, -0.3], foco: 0.05 },
   );
   return T.sort((a, b) => a.t - b.t);

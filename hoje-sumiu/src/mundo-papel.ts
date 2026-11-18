@@ -46,13 +46,15 @@ function sMorango(e = 1) { const s = new THREE.Shape(); s.moveTo(0, -0.62 * e); 
 export function texto(txt: string, { cor = "#ffffff", fonte = "900 170px Arial", w = 512, h = 256 } = {}) { const c = document.createElement("canvas"); c.width = w; c.height = h; const g = c.getContext("2d")!; g.fillStyle = cor; g.font = fonte; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(txt, w / 2, h / 2 + 8); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return new THREE.MeshBasicMaterial({ map: t, transparent: true, toneMapped: false }); }
 
 // ---------------------------------------------------------------- fantoche de papel
+/** Chaves globais do mundo, ligadas pelo episódio antes de montar a cena (Dia 15: os tênis sumiram, todo mundo anda descalço). */
+export const CONFIG = { descalco: false };
 type Pose = { brE?: number; brD?: number; cab?: number; pulo?: number; anda?: number; olho?: number; boca?: string; olhar?: [number, number]; sobr?: number; incl?: number };
 export class Fantoche {
   raiz: any; corpo: any; cabeca: any; brE: any; brD: any; pnE: any; pnD: any; olhos: any[] = []; pup: any[] = []; sob: any[] = []; bocas: Record<string, any> = {}; maoD: any; maoE: any;
   constructor(a: { pele: string; roupa: string; calca: string; cabelo: string; sapato?: string; oculos?: boolean; bigode?: boolean; careca?: boolean; bone?: string; listra?: string }) {
     const p = 0.03, P = (c: string) => papel(c);
     this.raiz = new THREE.Group(); this.corpo = new THREE.Group(); this.raiz.add(this.corpo);
-    const perna = (x: number) => { const g = new THREE.Group(); g.position.set(x, 0.62, 0); const c = recorte(sRet(0.19, 0.6, 0.05, -0.6), P(a.calca), p); g.add(c); const s = recorte(sRet(0.27, 0.11, 0.05, -0.65, x > 0 ? 0.03 : -0.03), P(a.sapato ?? "#2b2b33"), p); s.position.z = 0.012; g.add(s); this.corpo.add(g); return g; };
+    const perna = (x: number) => { const g = new THREE.Group(); g.position.set(x, 0.62, 0); const c = recorte(sRet(0.19, 0.6, 0.05, -0.6), P(a.calca), p); g.add(c); const s = recorte(sRet(0.27, 0.11, 0.05, -0.65, x > 0 ? 0.03 : -0.03), P(a.sapato ?? (CONFIG.descalco ? a.pele : "#2b2b33")), p); s.position.z = 0.012; g.add(s); this.corpo.add(g); return g; };
     this.pnE = perna(-0.14); this.pnD = perna(0.14);
     const tr = recorte(sRet(0.68, 0.76, 0.17, 0.56), P(a.roupa), p); tr.position.z = 0.03; this.corpo.add(tr);
     if (a.listra) { const li = recorte(sRet(0.68, 0.14, 0, 0.92), P(a.listra), 0.01); li.position.z = 0.062; this.corpo.add(li); }
@@ -223,7 +225,7 @@ export class MundoPapel {
     }
     // postes
     for (const [x, z] of [[3.3, -5], [-3.3, -11], [12, 5.3], [-14, 5.3]] as const) {
-      const g = new THREE.Group(); g.position.set(x, 0.12, z); this.cena.add(g); g.add(recorte(sRet(0.11, 3.1), papel("#3d4656"), 0.04)); const l = recorte(sCirc(0.26, 0, 3.2), papel("#fff2ad"), 0.05); g.add(l); this.pop(g, dist(x, z), "dobra", 0.45);
+      const g = new THREE.Group(); g.position.set(x, 0.12, z); this.cena.add(g); g.add(recorte(sRet(0.11, 3.1), papel("#3d4656"), 0.04)); const l = recorte(sCirc(0.26, 0, 3.2), papel("#fff2ad"), 0.05); g.add(l); ((this as any).lampadasLuz ??= []).push(l); this.pop(g, dist(x, z), "dobra", 0.45);
     }
   }
   private semaforo() {
@@ -232,7 +234,7 @@ export class MundoPapel {
     const cx = recorte(sRet(1.32, 3.4, 0.3, 4.1), papel("#1f2533"), 0.28, papel("#3a4354")); cx.position.z = -0.14; g.add(cx);
     const pala = (y: number) => { const s = new THREE.Shape(); s.absarc(0, 0, 0.5, 0, Math.PI, false); s.closePath(); const p = recorte(s, papel("#141923"), 0.3, papel("#2b3343")); p.position.set(0, y + 0.1, 0.13); p.rotation.x = -0.55; g.add(p); };
     const lampada = (y: number, cor: string, luz: number) => { const fundo = recorte(sCirc(0.47, 0, 0), papel("#0e121a"), 0.02); fundo.position.set(0, y, 0.14); g.add(fundo); const m = new THREE.MeshBasicMaterial({ color: cor, toneMapped: false }); const l = recorte(sCirc(0.39), m, 0.04, m); const pv = new THREE.Group(); pv.position.set(0, y, 0.17); pv.add(l); g.add(pv); return { m, pv }; };
-    const v = lampada(6.72, "#ff1020", 1); lampada(5.77, "#ffc000", 1); lampada(4.82, "#10c85a", 1);
+    const v = lampada(6.72, "#ff1020", 1), am = lampada(5.77, "#ffc000", 1), vd = lampada(4.82, "#10c85a", 1); (this as any).lampadasSemaforo = [am.m, vd.m]; // `cena.semEnergia` apaga estas lâmpadas e as dos postes (a energia sumiu no Dia 4)
     this.lamp = v; this.vira(v.pv, [v.m], this.ondaV, "y", "#3a3e47");
     this.pop(g, 0, "sobe", 0.2);
   }

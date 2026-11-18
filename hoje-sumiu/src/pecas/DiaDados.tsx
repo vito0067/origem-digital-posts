@@ -3,7 +3,7 @@
 import React, { useMemo } from "react";
 import { AbsoluteFill, Audio, staticFile, useCurrentFrame } from "remotion";
 import * as THREE from "three";
-import { sm } from "../mundo-papel";
+import { CONFIG, sm } from "../mundo-papel";
 import { AMAR, AZUL, CAVEAT, CENARIOS, CINZA, Cena3D, Comentario, Contador, Etiqueta, LILITA, Legenda, LinhaDia, NAVY, Tomada, V, adesivo, camBase, lim, sai, volta } from "../Dia";
 import { Spec, montaCena } from "./objetos";
 // motor 3D v2 (só quando o episódio tem `cena.motor: "v2"`): câmera calma, luz "papel-quente" e pulso de luz no impacto
@@ -164,7 +164,10 @@ const Pagina: React.FC<{ t: number; em: number }> = ({ t, em }) => {
 };
 export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
   const f = useCurrentFrame(), t = f / 30, m = l.marcas, c = l.cenas, d = l.cena, final = c[c.length - 1];
-  CENARIOS[l.dia] = (w) => { montaCena(w, [...(d.heroi?.peca ? [d.heroi.peca] : []), ...(d.pecas ?? [])]);
+  CONFIG.descalco = !!d.descalco; // `cena.descalco: true` (Dia 15, os tênis sumiram): todo boneco, o fundo inclusive, nasce com o pé da cor da pele
+  CENARIOS[l.dia] = (w) => {
+    // `semEnergia` (Dia 15): a energia sumiu no Dia 4, então o semáforo e os postes ficam apagados (cinza) o vídeo inteiro
+    if (d.semEnergia) { for (const mt of (w as any).lampadasSemaforo ?? []) mt?.color?.set("#4a4f5a"); for (const lp of (w as any).lampadasLuz ?? []) lp.traverse((o: any) => { const ms = Array.isArray(o.material) ? o.material : [o.material]; for (const mt of ms) mt?.color?.set("#4a4f5a"); }); } montaCena(w, [...(d.heroi?.peca ? [d.heroi.peca] : []), ...(d.pecas ?? [])]);
     // motor v2 + `luzMotor: true` (a luz é opção à parte: deixa o livro ~14% mais escuro e contrastado; aguarda o voto do Vito): troca as três luzes do livro pelo jogo de luz "papel-quente". Ajuste deste perfil: a luz fica 3,5x mais longe
     // (o livro tem ~100 unidades; na distância padrão do motor metade do cenário ficaria atrás da luz, sem sombra) e a neblina do livro é mantida.
     let luz: any = null;
@@ -191,8 +194,13 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
   const P = (v: V) => { const k = new THREE.PerspectiveCamera(cam.fov, 1080 / 1920, 0.1, 900); k.position.set(...cam.pos); k.lookAt(...cam.alvo); k.updateMatrixWorld(); k.updateProjectionMatrix(); const q = new THREE.Vector3(...v).project(k); return { x: (q.x + 1) * 540, y: (1 - q.y) * 960 }; };
   const virou = t >= m.onda + 0.15, gancho = t < m.onda + 0.55 ? (t < m.onda + 0.3 ? 1 : 1 - sai((t - m.onda - 0.3) / 0.25)) : 0, flipV = sm((t - m.onda) / 0.3);
   const corDia = cor(d.cor) ?? AZUL, calor = d.calor ? 0.16 * sm((t - m.onda - 0.5) / 5) * (t > c[m.iVirada].inicio ? 0.6 : 1) : 0;
-  const cad = sai((t - m.anotou + 0.15) / 0.3) * (t > c[m.iChamado].inicio ? 1 - sai((t - c[m.iChamado].inicio) / 0.2) : 1);
-  const atual = `Dia ${l.dia}: ${l.coisa}`, nCad = Math.floor(lim((t - m.anotou) / 1.2) * atual.length + 0.001), antes: string[] = (d.sumiram ?? []).slice(-2);
+  // `cadernoFica: true` (Dia 15, o caderno cheio): o caderno continua na tela durante o chamado, até o cartão final; `cadernoLinhas: N` mostra as N últimas linhas (letra menor)
+  const fimCad = d.cadernoFica ? m.comenta - 0.05 : c[m.iChamado].inicio;
+  const cad = sai((t - m.anotou + 0.15) / 0.3) * (t > fimCad ? 1 - sai((t - fimCad) / 0.2) : 1);
+  const nLin: number = d.cadernoLinhas ?? 2, fsCad = nLin > 3 ? 62 : 104, lhCad = nLin > 3 ? 54 : 88;
+  const atual = `Dia ${l.dia}: ${l.coisa}`, nCad = Math.floor(lim((t - m.anotou) / 1.2) * atual.length + 0.001), antes: string[] = (d.sumiram ?? []).slice(-(nLin));
+  // borracha (Dia 15): `borracha: { em, ate }`: uma borracha cai sobre o caderno e esfrega as linhas de cima, que ficam sumindo
+  const brk = d.borracha ? { e: volta((t - d.borracha.em) / 0.3) * (t > d.borracha.ate ? 0 : 1), x: Math.sin((t - d.borracha.em) * 9) * 150, apaga: lim((t - d.borracha.em - 0.3) / Math.max(0.5, d.borracha.ate - d.borracha.em - 0.3)) } : null;
   const semAzul: number = d.semAzul === undefined ? 0 : sm((t - d.semAzul) / 0.5);
   // visual "livro" + `noite` (Dia 13, o sol sumiu): escurece só o mundo 3D; cabeçalho, selos e legenda continuam claros
   const escuro: number = d.visual === "livro" ? Math.max(0, ...(d.noite ?? []).map((n: Spec) => sm((t - n.em) / 0.5) * (1 - sm((t - n.ate) / 0.5)) * (n.forca ?? 0.8))) : 0;
@@ -238,16 +246,20 @@ export const DiaDados: React.FC<{ linha: LinhaDados }> = ({ linha: l }) => {
       {d.abertura && <Abertura t={t} d={{ dia: l.dia, ...d.abertura }} ate={d.abertura.ate ?? m.onda - 0.1} />}
       <Transicoes t={t} lista={d.transicoes ?? []} />
       {m.regra < 1e5 && <Regra t={t} em={m.regra - 0.1} ate={m.anotou - 0.1} linhas={d.regra ?? ["NÃO SOME GOVERNO", "NEM PESSOA"]} />}
-      {cad > 0 && <div style={{ position: "absolute", left: 90, right: 90, top: 400, transform: `translateY(${(1 - cad) * -620}px) rotate(-2deg)`, background: "#fffdf6", borderRadius: 14, padding: "30px 34px 34px 92px", boxShadow: "0 16px 0 rgba(22,35,63,.28)", backgroundImage: "repeating-linear-gradient(transparent 0 84px, #bcd8f2 84px 88px)", backgroundPositionY: "22px", minHeight: 250 }}>
+      {cad > 0 && <div style={{ position: "absolute", left: 90, right: 90, top: 400, transform: `translateY(${(1 - cad) * -620}px) rotate(-2deg)`, background: "#fffdf6", borderRadius: 14, padding: "30px 34px 34px 92px", boxShadow: "0 16px 0 rgba(22,35,63,.28)", backgroundImage: `repeating-linear-gradient(transparent 0 ${lhCad - 4}px, #bcd8f2 ${lhCad - 4}px ${lhCad}px)`, backgroundPositionY: "22px", minHeight: 250 }}>
         <div style={{ position: "absolute", left: 56, top: 0, bottom: 0, width: 5, background: "#f2b8c6" }} />
         {[...Array(5)].map((_, i) => <div key={i} style={{ position: "absolute", left: 16, top: 26 + i * 50, width: 26, height: 26, borderRadius: 26, background: "#d9d3c2", boxShadow: "inset 0 3px 3px rgba(0,0,0,.25)" }} />)}
-        {antes.map((x) => <div key={x} style={{ fontFamily: CAVEAT, fontSize: 104, lineHeight: "88px", color: "#6b7079" }}>{x}</div>)}
-        <div style={{ fontFamily: CAVEAT, fontSize: 104, lineHeight: "88px", color: "#23304f" }}>{atual.slice(0, nCad)}<span style={{ opacity: nCad < atual.length ? 1 : 0, color: "#7a7f8a" }}>|</span></div>
+        {antes.map((x, i) => <div key={x} style={{ fontFamily: CAVEAT, fontSize: fsCad, lineHeight: `${lhCad}px`, color: "#6b7079", opacity: brk && i < antes.length - 1 ? 1 - brk.apaga * (0.85 - 0.12 * i) : 1 }}>{x}</div>)}
+        <div style={{ fontFamily: CAVEAT, fontSize: fsCad, lineHeight: `${lhCad}px`, color: "#23304f", opacity: brk ? 1 - brk.apaga * 0.7 : 1 }}>{atual.slice(0, nCad)}<span style={{ opacity: nCad < atual.length ? 1 : 0, color: "#7a7f8a" }}>|</span></div>
       </div>}
-      {t >= m.interrogacao - 0.1 && !fimCard && <div style={{ position: "absolute", top: 390, width: "100%", textAlign: "center", fontFamily: LILITA, fontSize: 118, lineHeight: 1.02, color: NAVY, ...adesivo(20, 10), transform: `rotate(-2deg) scale(${volta((t - m.interrogacao + 0.1) / 0.3)})` }}>AMANHÃ SOME<br />OUTRA COISA</div>}
+      {brk && brk.e > 0 && <div style={{ position: "absolute", left: 330 + brk.x, top: 470 + (1 - brk.e) * -300, width: 300, height: 150, transform: `rotate(-9deg) scale(${0.6 + 0.4 * brk.e})`, zIndex: 5 }}>
+        <div style={{ position: "absolute", inset: 0, background: "#ff9ec2", borderRadius: 26, border: "8px solid #fffdf6", boxShadow: "0 14px 0 rgba(22,35,63,.30)" }} />
+        <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 150, background: "#fffdf6", borderRadius: "26px 0 0 26px", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: LILITA, fontSize: 58, color: "#59616f" }}>NILO</div>
+      </div>}
+      {d.semInterrogacao ? null : t >= m.interrogacao - 0.1 && !fimCard && <div style={{ position: "absolute", top: 390, width: "100%", textAlign: "center", fontFamily: LILITA, fontSize: 118, lineHeight: 1.02, color: NAVY, ...adesivo(20, 10), transform: `rotate(-2deg) scale(${volta((t - m.interrogacao + 0.1) / 0.3)})` }}>AMANHÃ SOME<br />OUTRA COISA</div>}
       {fimCard && d.opcoes && <Opcoes t={t} d={d} em={m.comenta} />}
       {fimCard && !d.opcoes && <div style={{ position: "absolute", top: 360, left: 60, right: 60, display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ textAlign: "center", fontFamily: LILITA, fontSize: 124, lineHeight: 1, color: NAVY, ...adesivo(20, 10), transform: `rotate(-2deg) scale(${volta((t - m.comenta) / 0.28)})` }}>O QUE SOME<br /><span style={{ color: AZUL }}>AMANHÃ?</span></div>
+        <div style={{ textAlign: "center", fontFamily: LILITA, fontSize: 124, lineHeight: 1, color: NAVY, ...adesivo(20, 10), transform: `rotate(-2deg) scale(${volta((t - m.comenta) / 0.28)})` }}>{(d.fimTitulo ?? ["O QUE SOME", "AMANHÃ?"])[0]}<br /><span style={{ color: AZUL }}>{(d.fimTitulo ?? ["O QUE SOME", "AMANHÃ?"])[1]}</span></div>
         <div style={{ height: 8 }} />
         {((d.exemplos ?? ["o boleto", "as chaves", "o despertador"]) as string[]).map((x, i) => <Comentario key={x} txt={x} t={t} em={m.comenta + 0.55 + i * (d.motor === "livro" ? 1.3 : 0.45)} r={[-2, 1.5, -1][i % 3]} />)}
         <div style={{ alignSelf: "center", fontFamily: LILITA, fontSize: 30, color: "#fff", background: "rgba(22,35,63,.82)", padding: "7px 18px 5px", borderRadius: 10, opacity: lim((t - m.comenta - 1.6) * 4) }}>COMENTÁRIOS DE EXEMPLO · FICÇÃO CRIADA COM IA</div>
