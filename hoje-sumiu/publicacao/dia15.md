@@ -1,8 +1,8 @@
 # Hoje Sumiu · Dia 15: os tênis (ÚLTIMO EPISÓDIO DA FASE)
-**Status (18/11/2026): PUBLICADO no YouTube e no Instagram com o "aprovado" do Vito neste chat.**
+**Status (18/11/2026): PUBLICADO nas 3 redes com o "aprovado" do Vito neste chat.**
 - YouTube: https://youtube.com/shorts/sNhY-vg-K2E (público, rótulo de IA, verificação sem problemas; comentário do gancho FIXADO).
 - Instagram: https://www.instagram.com/reel/Df5hLlAB48Y/ (vertical 720x1280 conferido, rótulo de IA; a legenda não salvou na publicação e entrou pela edição do post; comentário do gancho postado, fixar só pelo app). Chrome conectado era o de outro perfil: entrei como origem__digital e troquei para @hojesumiu pelo "Trocar de conta" (sem senha), conferindo "Editar perfil".
-- TikTok: NÃO publicado. O Chrome da Origem Digital não estava conectado e o que estava tem o TikTok deslogado. O Vito posta pelo celular com o kit `hoje-sumiu-envios\celular-dia15` (vídeo, capa e texto-para-copiar).
+- TikTok: https://www.tiktok.com/@hojesumiu/video/7709635297465650453 (pelo Studio, no Chrome da Origem Digital, que o Vito conectou depois; rótulo de IA ligado à mão). O comentário do gancho não foi postado no TikTok (pelo navegador não salva): o Vito posta e fixa pelo celular.
 
 **O que muda neste episódio (pedido do Vito repassado em 18/11):** é o último da fase atual. No fim, o narrador explica que o caderno do Seu Nilo já está cheio e quase não sobra o que sumir, e o Seu Nilo pega uma borracha (corte seco). A pergunta final NÃO pede "o que some amanhã": é um gancho de suspense ("Amanhã começa uma coisa nova. Comente: o que você acha que acontece?"). NÃO revelar o nome nem a mecânica da próxima fase, e NÃO mudar a identidade visual nem escrever "Temporada 2" em lugar nenhum (o Vito ainda vota o visual).
 Também corrigido: no Dia 14 o semáforo apareceu aceso com a energia sumida desde o Dia 4. Agora `cena.semEnergia` apaga o semáforo e os postes.
