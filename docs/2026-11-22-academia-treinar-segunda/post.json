@@ -1,0 +1,69 @@
+{
+  "id": "2026-11-22-academia-treinar-segunda",
+  "publicar_em": "2026-11-22T19:00:00-03:00",
+  "formato": "reel",
+  "tema": "noite",
+  "legenda": "Domingo à noite, alguém decide começar a treinar na segunda.\n\nA pessoa chama a academia no WhatsApp querendo saber da aula experimental. Se ninguém responde, a vontade pode esfriar ou ela chama outra academia.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, se apresenta, responde em segundos, 24 horas por dia, e passa o contato para a sua equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#academia #fitness #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": {
+    "clima": "calmo"
+  },
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "Domingo · 20h",
+      "texto": "Alguém decide *treinar na segunda.*",
+      "fundo": "biblioteca/noite-sofa-domingo.mp4",
+      "artefatos": [
+        "biblioteca/objetos/lua.png",
+        "biblioteca/objetos/celular.png"
+      ],
+      "fala": "Domingo à noite, e alguém decide começar a treinar na segunda."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Academia Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Boa noite! Vocês têm aula experimental?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Boa noite! Sou a Aurora, atendente de IA da academia. Anotei seu interesse e a equipe te chama amanhã para combinar a aula."
+        }
+      ],
+      "fala": "A Aurora, atendente de inteligência artificial, se apresenta, responde em segundos e passa o contato para a equipe."
+    },
+    {
+      "tipo": "palavras",
+      "palavras": [
+        "Recebe.",
+        "Responde.",
+        "*Avisa.*"
+      ]
+    },
+    {
+      "tipo": "objeto",
+      "objeto": "biblioteca/objetos/relogio.png",
+      "texto": "A vontade de começar *aparece a qualquer hora.*",
+      "fala": "A vontade de começar aparece a qualquer hora."
+    },
+    {
+      "tipo": "frase",
+      "texto": "Segunda cedo, *a recepção já sabe* quem chamar.",
+      "fundo": "biblioteca/noite-cidade-janela.mp4",
+      "fala": "Segunda cedo, a recepção já sabe quem chamar."
+    }
+  ],
+  "narracao": {
+    "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261119_120723_7c07d358-3d00-4b4d-8166-0a4f3561c9cb.mp3"
+  },
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio.",
+  "midias": [
+    "https://vito0067.github.io/origem-digital-posts/2026-11-22-academia-treinar-segunda/reel.mp4"
+  ],
+  "capa": "https://vito0067.github.io/origem-digital-posts/2026-11-22-academia-treinar-segunda/capa.jpg",
+  "previa": "https://vito0067.github.io/origem-digital-posts/2026-11-22-academia-treinar-segunda/",
+  "hash": "d5d8207d68beea1b",
+  "renderizado_em": "2026-11-19T12:12:35.285Z"
+}
