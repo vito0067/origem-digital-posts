@@ -1,0 +1,72 @@
+{
+  "id": "2026-11-24-servico-mensagem-chegou",
+  "publicar_em": "2026-11-24T19:30:00-03:00",
+  "formato": "reel",
+  "tema": "gelo",
+  "legenda": "Você está no meio de um serviço e chega um pedido de orçamento no WhatsApp.\n\nSe a mão está ocupada, a resposta fica para depois. E o cliente, que queria saber o preço agora, pode chamar outro profissional.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, se apresenta, responde em segundos, 24 horas por dia, anota o pedido e passa para você.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#prestadordeservico #orcamento #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": {
+    "clima": "calmo"
+  },
+  "cenas": [
+    {
+      "tipo": "frase",
+      "etiqueta": "Terça · 14h",
+      "texto": "Você no meio do serviço. *A mensagem chega.*",
+      "fundo": "biblioteca/dia-mesa-trabalho.jpg",
+      "artefatos": [
+        "biblioteca/objetos/celular.png",
+        "biblioteca/objetos/relogio.png"
+      ],
+      "fala": "Você está no meio de um serviço, e chega uma mensagem no celular."
+    },
+    {
+      "tipo": "digitando",
+      "etiqueta": "Mensagem nova",
+      "texto": "Boa tarde! Quanto fica o conserto de um chuveiro?",
+      "fala": "Um cliente pergunta quanto custa, e quer uma resposta logo."
+    },
+    {
+      "tipo": "conversa",
+      "nome": "Serviços Exemplo",
+      "mensagens": [
+        {
+          "de": "cliente",
+          "texto": "Boa tarde! Quanto fica o conserto de um chuveiro?"
+        },
+        {
+          "de": "aurora",
+          "texto": "Boa tarde! Sou a Aurora, atendente de IA. Anotei seu pedido e o profissional te responde com o orçamento assim que sair do serviço."
+        }
+      ],
+      "fala": "A Aurora, atendente de inteligência artificial, se apresenta, anota o pedido e passa para você."
+    },
+    {
+      "tipo": "numero",
+      "valor": 24,
+      "de": 24,
+      "sufixo": "h",
+      "texto": "por dia, *mesmo com você fora.*",
+      "artefatos": [
+        "biblioteca/objetos/balao-conversa.png"
+      ],
+      "fala": "Vinte e quatro horas por dia, mesmo com você fora."
+    },
+    {
+      "tipo": "frase",
+      "texto": "Terminou o serviço? *O pedido já está anotado.*",
+      "fundo": "biblioteca/dia-abstrato-vidro.jpg",
+      "fala": "Terminou o serviço, e o pedido já está anotado."
+    }
+  ],
+  "narracao": {
+    "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261123_120743_0a9681e9-b79a-4ddd-af51-4a3c54c9323b.mp3"
+  },
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio.",
+  "midias": [
+    "https://vito0067.github.io/origem-digital-posts/2026-11-24-servico-mensagem-chegou/reel.mp4"
+  ],
+  "capa": "https://vito0067.github.io/origem-digital-posts/2026-11-24-servico-mensagem-chegou/capa.jpg",
+  "previa": "https://vito0067.github.io/origem-digital-posts/2026-11-24-servico-mensagem-chegou/",
+  "hash": "1460866444e9b4ae",
+  "renderizado_em": "2026-11-23T12:13:41.305Z"
+}
