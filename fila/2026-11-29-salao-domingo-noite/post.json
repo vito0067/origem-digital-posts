@@ -1,0 +1,20 @@
+{
+  "id": "2026-11-29-salao-domingo-noite",
+  "publicar_em": "2026-11-29T19:00:00-03:00",
+  "formato": "reel",
+  "tema": "noite",
+  "legenda": "Domingo à noite, o salão está fechado. A semana começa amanhã.\n\nUma cliente quer saber se tem horário na segunda. Se a mensagem fica sem resposta até abrir, ela pode procurar outro salão.\n\nCom a Origem Digital, a Aurora, atendente de inteligência artificial, se apresenta, responde em segundos, 24 horas por dia, anota o pedido e passa para a equipe.\n\nPeça seu diagnóstico gratuito: link na bio ou WhatsApp (11) 93929-9209.\n\nA conversa do vídeo é um exemplo.\n\n#salaodebeleza #beleza #atendimentoaocliente #whatsappbusiness #pequenosnegocios #inteligenciaartificial #saopaulo",
+  "musica": { "clima": "calmo" },
+  "cenas": [
+    { "tipo": "frase", "etiqueta": "Domingo · 20h", "texto": "Salão fechado. *A semana já começou.*", "fundo": "biblioteca/noite-salao.jpg", "artefatos": ["biblioteca/objetos/lua.png", "biblioteca/objetos/celular.png"], "fala": "Domingo à noite, o salão está fechado, e a semana começa amanhã." },
+    { "tipo": "digitando", "etiqueta": "Mensagem nova", "texto": "Oi! Amanhã tem horário para escova?", "fundo": "biblioteca/noite-maos-celular.mp4", "fala": "Uma cliente quer saber se tem horário amanhã." },
+    { "tipo": "conversa", "nome": "Salão Exemplo", "mensagens": [
+      { "de": "cliente", "texto": "Oi! Amanhã tem horário para escova?" },
+      { "de": "aurora", "texto": "Oi! Sou a Aurora, atendente de IA do salão. Anotei seu pedido e a equipe confirma o horário com você assim que abrir." }
+    ], "fala": "A Aurora, atendente de inteligência artificial, se apresenta, anota o pedido e passa para a equipe." },
+    { "tipo": "numero", "valor": 24, "de": 24, "sufixo": "h", "texto": "por dia, *até no domingo à noite.*", "artefatos": ["biblioteca/objetos/balao-conversa.png"], "fala": "Vinte e quatro horas por dia, até no domingo à noite." },
+    { "tipo": "frase", "texto": "Segunda o salão abre. *O pedido já está anotado.*", "fundo": "biblioteca/noite-abstrato-vidro.jpg", "fala": "Segunda o salão abre, e o pedido já está anotado." }
+  ],
+  "narracao": { "audio": "https://d8j0ntlcm91z4.cloudfront.net/user_3GgWMZRkhxVIevwtKUWgnJ7JLDW/hf_20261126_120817_35073a56-1bf2-40a1-9517-b3912cdc57aa.mp3" },
+  "falaFinal": "Peça seu diagnóstico gratuito. Link na bio."
+}
